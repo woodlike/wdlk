@@ -8,6 +8,7 @@
     "baseUrl": "src",
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
+    "jsx": "react",
     "importHelpers": true,
     "lib": ["es5", "es6", "es7", "es2017", "dom"],
     "module": "commonjs",
@@ -31,5 +32,5 @@
     "watch": false
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "build", "scripts"]
+  "exclude": ["node_modules", "build", "scripts", "./docz"]
 }
