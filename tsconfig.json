@@ -11,7 +11,7 @@
     "jsx": "react",
     "importHelpers": true,
     "lib": ["es5", "es6", "es7", "es2017", "dom"],
-    "module": "commonjs",
+    "module": "es6",
     "moduleResolution": "node",
     "noFallthroughCasesInSwitch": true,
     "noImplicitAny": true,
