@@ -4,11 +4,11 @@ module.exports = {
   globals: {
     'ts-jest': {
 			isolatedModules: true
-		}
+		},
+    setupFiles: ['./testing-library-setup.ts'],
   },
   preset: 'ts-jest',
   moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
-  // setupFiles: ['./testing-library-setup.js'],
   testEnvironment: 'jsdom',
   transform: {
     '.(ts|tsx)': 'ts-jest',

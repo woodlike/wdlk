@@ -3,10 +3,6 @@
     "tslint-react"
   ],
   "rules": {
-    "quotemark": [
-      true,
-      "single"
-    ],
     "no-submodule-imports": false,
     "adjacent-overload-signatures": true,
     "ban-comma-operator": true,
