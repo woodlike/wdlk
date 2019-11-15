@@ -1,5 +1,10 @@
-# component-library
+# WDLK component-library
+
+[![CircleCI](https://circleci.com/gh/woodlike/component-library.svg?style=svg)](https://circleci.com/gh/woodlike/component-library)
+
+
 > Woodlike React component library 🎨
+
 
 ## Requirements
 🐢 🚀 Node.js >=8
