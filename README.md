@@ -18,4 +18,8 @@ git clone git@github.com:woodlike/component-library.git
 cd component-library
 # Install packges
 yarn
+# Start development mode
+yarn dev
+# Run and watch Jest unit tests
+yarn test --watch
 ```
