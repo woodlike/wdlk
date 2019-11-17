@@ -1,10 +1,27 @@
 export type TypographyFormat = 'woff' | 'woff2';
-export type TypographyStyle = 'normal' | 'italic';
+export type TypographyKeys =
+  | 'font-family'
+  | 'font-size'
+  | 'font-style'
+  | 'font-variant'
+  | 'font-weight'
+  | 'line-height'
+  | 'letter-spacing'
+  | 'text-transform'
+  | '-webkit-font-smoothing'
+  | '-moz-osx-font-smoothing';
+export type TypographyToken = { [Key in TypographyKeys]: string | number };
 
-export type TypographyKeys = 'font-family' | 'font-size' | 'font-style' | 'font-variant' | 'font-weight' | 'line-height' | 'letter-spacing';
+export type TypographyCollection = {
+  readonly [key: number]: TypographyToken;
+};
 
-export type TypographyToken = {[Key in TypographyKeys] : string};
+export interface Heading {
+  readonly default: string;
+  readonly secondary?: string;
+}
 
-export type CollectionKey<T> = {
-  [key: T]: TypographyToken;
+export interface FontFamilies {
+  readonly display: string;
+  readonly heading: Heading;
 }
