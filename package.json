@@ -1,8 +1,8 @@
 {
   "private": true,
-  "name": "@wdlk/component-library",
+  "name": "@wdlk/ui-packages",
   "version": "1.0.0",
-  "description": "WDLK UI component library 🎨",
+  "description": "WDLK UI Packages",
   "workspaces": [
     "packages/*"
   ],
@@ -10,10 +10,14 @@
   "author": "Mauricio Palma <mauricio.palma@woodlikeocean.com>",
   "license": "MIT",
   "scripts": {
-    "build": "yarn workspace build",
-    "dev": "yarn workspace dev",
-    "test": "yarn workspace test",
-    "lint": "yarn workspace lint"
+    "build:lib": "yarn workspace @wdlk/component-library build",
+    "dev:lib": "yarn workspace @wdlk/component-library dev",
+    "test:lib": "yarn workspace @wdlk/component-library test",
+    "lint:lib": "yarn workspace @wdlk/component-library lint",
+    "build:theme": "yarn workspace gatsby-theme-design-factory build",
+    "dev:theme": "yarn workspace gatsby-theme-design-factory dev",
+    "test:theme": "yarn workspace gatsby-theme-design-factory test",
+    "lint:theme": "yarn workspace gatsby-theme-design-factory lint"
   },
   "devDependencies": {}
 }

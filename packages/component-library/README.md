@@ -16,7 +16,7 @@
 ```sh
 git clone git@github.com:woodlike/component-library.git
 cd component-library
-# Install packages
+# Install packges
 yarn
 # Start development mode
 yarn dev
