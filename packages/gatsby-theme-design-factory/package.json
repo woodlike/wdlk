@@ -2,12 +2,12 @@
   "name": "gatsby-theme-design-factory",
   "version": "1.0.0",
   "description": "Utility for creating meaningful design tokens",
-  "main": "index.js",
+  "main": "dist/index.js",
   "repository": "git@github.com:woodlike/component-library.git",
   "author": "Mauricio Palma <mauricio.palma@woodlikeocean.com>",
   "license": "MIT",
   "scripts": {
-    "build": "tsc --module commonjs --target es6 --outDir dist/esm",
+    "build": "tsc --module commonjs --target es6 --outDir dist/",
     "test": "jest",
     "test:coverage": "npm test -- --coverage",
     "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'"

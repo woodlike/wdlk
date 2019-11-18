@@ -1,11 +1,10 @@
-const TEST_REGEX = '(/__tests__/.*|(\\.|/)(test|spec))\\.(tsx?|ts?)$'
+const TEST_REGEX = '(/__tests__/.*|(\\.|/)test)\\.(tsx?|ts?)$'
 
 module.exports = {
   globals: {
     'ts-jest': {
 			isolatedModules: true
 		},
-    setupFiles: ['./testing-library-setup.ts'],
   },
   preset: 'ts-jest',
   moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
@@ -14,5 +13,5 @@ module.exports = {
     '.(ts|tsx)': 'ts-jest',
   },
   testRegex: TEST_REGEX,
-  testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/lib', '<rootDir>/.docz']
+  testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/lib/']
 }
