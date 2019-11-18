@@ -1,0 +1,45 @@
+{
+  "name": "@wdlk/component-library",
+  "version": "1.0.0",
+  "description": "WDLK UI component library 🎨",
+  "main": "index.js",
+  "repository": "git@github.com:woodlike/component-library.git",
+  "author": "Mauricio Palma <mauricio.palma@woodlikeocean.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "docz build",
+    "dev": "docz dev",
+    "test": "jest",
+    "test:coverage": "npm test -- --coverage",
+    "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'"
+  },
+  "dependencies": {
+    "@emotion/core": "^10.0.22",
+    "@emotion/styled": "^10.0.23",
+    "docz": "^1.3.2",
+    "docz-theme-default": "^1.2.0",
+    "emotion-theming": "^10.0.19",
+    "gatsby": "^2.17.16",
+    "gatsby-theme-design-factory": "*",
+    "gatsby-theme-docz": "^1.2.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "scheduler": "^0.18.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.7.2",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@types/jest": "^24.0.23",
+    "@types/jest-axe": "^3.2.1",
+    "@types/react": "^16.9.9",
+    "@types/react-dom": "^16.9.2",
+    "jest": "^24.9.0",
+    "jest-axe": "^3.2.0",
+    "prettier": "^1.19.1",
+    "ts-jest": "^24.1.0",
+    "tslint": "^5.20.1",
+    "tslint-react": "^4.1.0",
+    "typescript": "^3.7.2"
+  }
+}
