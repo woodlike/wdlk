@@ -1,4 +1,4 @@
-import { StyledFactoryConfig, StyledQuery, QueryResult } from './';
+import { StyledFactoryConfig, StyledQuery, QueryResult } from '.';
 
 export function create(config: StyledFactoryConfig): StyledQuery {
   const validConfig =

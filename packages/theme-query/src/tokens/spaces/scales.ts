@@ -1,4 +1,4 @@
-import { Space } from '.';
+import { Space } from '../spaces';
 
 export const spaces: Space = [
   0,

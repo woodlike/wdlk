@@ -1,3 +1,3 @@
-export * from './factory';
+export * from './query';
 export * from './tokens';
 export * from './theme';

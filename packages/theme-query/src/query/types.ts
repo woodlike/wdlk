@@ -1,4 +1,4 @@
-export interface StyledFactoryConfig {
+export interface ThemeQueryConfig {
   theme: {};
   styles?: StylesType;
 }

@@ -2,8 +2,8 @@
 import { jsx } from 'theme-ui';
 import { render } from '@testing-library/react';
 
-import * as StyledFactory from '../factory';
-import { StyledFactoryConfig } from '../factory';
+import * as ThemeQuery from '../query';
+import { ThemeQueryConfig } from '../query';
 import { theme } from '../theme';
 
 describe('StyledFactory', () => {
@@ -33,16 +33,16 @@ describe('StyledFactory', () => {
         'A valid configuration with a theme property must be provided';
 
       expect(() =>
-        StyledFactory.create((null as unknown) as StyledFactoryConfig)
+        ThemeQuery.create((null as unknown) as ThemeQueryConfig)
       ).toThrowError(errMsg);
       expect(() =>
-        StyledFactory.create((undefined as unknown) as StyledFactoryConfig)
+        ThemeQuery.create((undefined as unknown) as ThemeQueryConfig)
       ).toThrowError(errMsg);
       expect(() =>
-        StyledFactory.create((1 as unknown) as StyledFactoryConfig)
+        ThemeQuery.create((1 as unknown) as ThemeQueryConfig)
       ).toThrowError(errMsg);
       expect(() =>
-        StyledFactory.create(('hi' as unknown) as StyledFactoryConfig)
+        ThemeQuery.create(('hi' as unknown) as ThemeQueryConfig)
       ).toThrowError(errMsg);
     });
 
@@ -50,29 +50,29 @@ describe('StyledFactory', () => {
       const errMsg =
         'A valid configuration with a theme property must be provided';
       expect(() =>
-        StyledFactory.create({
+        ThemeQuery.create({
           theme: (undefined as unknown) as {},
         })
       ).toThrowError(errMsg);
       expect(() =>
-        StyledFactory.create({
+        ThemeQuery.create({
           theme: (null as unknown) as {},
         })
       ).toThrowError(errMsg);
       expect(() =>
-        StyledFactory.create({
+        ThemeQuery.create({
           theme: 1,
         })
       ).toThrowError(errMsg);
       expect(() =>
-        StyledFactory.create({
+        ThemeQuery.create({
           theme: '',
         })
       ).toThrowError(errMsg);
     });
 
     it('should return a query function on initialization', () => {
-      const query = StyledFactory.create({
+      const query = ThemeQuery.create({
         theme,
         styles: 'object',
       });
@@ -82,7 +82,7 @@ describe('StyledFactory', () => {
 
   describe('query(...)', () => {
     it('should return all the defined theme colors', () => {
-      const query = StyledFactory.create({
+      const query = ThemeQuery.create({
         theme,
         styles: 'object',
       });
@@ -90,7 +90,7 @@ describe('StyledFactory', () => {
     });
 
     it('should return all the corals colors which is a nested color array', () => {
-      const query = StyledFactory.create({
+      const query = ThemeQuery.create({
         theme,
         styles: 'object',
       });
@@ -99,7 +99,7 @@ describe('StyledFactory', () => {
     });
 
     it('should return the sand color which is a flat color', () => {
-      const query = StyledFactory.create({
+      const query = ThemeQuery.create({
         theme,
         styles: 'object',
       });
@@ -109,7 +109,7 @@ describe('StyledFactory', () => {
 
   describe('Component Styling', () => {
     it('should receive the necessary styling for the component', () => {
-      const query = StyledFactory.create({theme});
+      const query = ThemeQuery.create({theme});
       const { getByTestId, unmount } = render(
         <div
           data-testid="test-el"

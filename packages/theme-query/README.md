@@ -1,4 +1,4 @@
-# Styled Factory
+# Theme Query
 
 [![CircleCI](https://circleci.com/gh/woodlike/component-library.svg?style=svg)](https://circleci.com/gh/woodlike/component-library)
 

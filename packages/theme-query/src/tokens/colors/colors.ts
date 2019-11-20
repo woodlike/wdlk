@@ -1,4 +1,4 @@
-import { Colors } from '.';
+import { Colors } from '../colors';
 import { toRGB } from '../utils';
 export const colors: Colors = {
   corals: [

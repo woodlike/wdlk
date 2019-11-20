@@ -1,4 +1,4 @@
-import { FontKey, FontValue } from '.';
+import { FontKey, FontValue } from '../fonts';
 
 export const fontFamily: Record<FontKey, FontValue> = {
   display: `"museo_sans300", Helvetica, sans-serif`,

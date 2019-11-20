@@ -1,5 +1,5 @@
 {
-  "name": "styled-factory",
+  "name": "theme-query",
   "version": "1.0.0",
   "description": "Utility functions to query Styled System themes without a theme provider",
   "main": "lib/index.js",
