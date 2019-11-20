@@ -4,3 +4,6 @@ dist
 .docz
 .cache
 .DS_Store
+lib
+yarn-error.log
+

@@ -1,5 +1,5 @@
 {
-  "name": "gatsby-theme-design-factory",
+  "name": "gatsby-theme-styled-factory",
   "version": "1.0.0",
   "description": "Utility for creating meaningful design tokens",
   "main": "dist/index.js",

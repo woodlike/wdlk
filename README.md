@@ -7,7 +7,7 @@
 
 
 ## Requirements
-🐢 🚀 Node.js >=8
+🐢 🚀 Node.js >=10
 🌲 Git
 🐈 yarn >= 1.12
 
