@@ -1,4 +1,8 @@
-// tslint:disable-next-line: no-empty-interface
-export interface Typography {
-  
+export interface StyledFactoryConfig {
+  theme: {};
+  styles?: StylesType;
 }
+
+export type StylesType = 'object' | 'templateLitereal';
+export type QueryResult = {} | number[] | string[] | string | number;
+export type StyledQuery = (objPath: string) => QueryResult;
