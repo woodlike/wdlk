@@ -1,1 +1,2 @@
-export * from './typography';
+export * from './factory';
+export * from './types';
