@@ -5,7 +5,6 @@ import { render } from '@testing-library/react';
 import * as ThemeQuery from '../query';
 import { ThemeQueryConfig } from '../query';
 import { theme } from '../theme';
-import { fontSizes } from '../tokens';
 
 describe('StyledFactory', () => {
   // TODO test on component using theme-ui
@@ -14,7 +13,7 @@ describe('StyledFactory', () => {
   let coralMock: unknown;
   let coralDarkMock: unknown;
   let headingDefault: unknown;
-  let headingSecondary: unknown
+  let headingSecondary: unknown;
 
   beforeAll(() => {
     sandMock = 'rgb(204, 153, 102)';
@@ -55,7 +54,9 @@ describe('StyledFactory', () => {
       const errMsg =
         'A valid configuration with a theme property must be provided';
       expect(() =>
-        ThemeQuery.create({ theme: (undefined as unknown) as {}, styles: 'object'
+        ThemeQuery.create({
+          theme: (undefined as unknown) as {},
+          styles: 'object',
         })
       ).toThrowError(errMsg);
       expect(() =>
@@ -69,55 +70,61 @@ describe('StyledFactory', () => {
       ).toThrowError(errMsg);
     });
 
-    it('should return a query function on initialization', () => {
-      const query = ThemeQuery.create({ theme, styles: 'object' });
-      expect(query).toStrictEqual(expect.any(Function));
+    it('should return a qt function on initialization', () => {
+      const qt = ThemeQuery.create({ theme, styles: 'object' });
+      expect(qt).toStrictEqual(expect.any(Function));
     });
   });
 
-  describe('query(...)', () => {
+  describe('qt(...)', () => {
     it('should return all the defined theme colors', () => {
-      const query = ThemeQuery.create({ theme, styles: 'object' });
-      expect(query('colors')).toMatchSnapshot();
+      const qt = ThemeQuery.create({ theme, styles: 'object' });
+      expect(qt('colors')).toMatchSnapshot();
     });
 
     it('should return all the corals colors which is a nested color array', () => {
-      const query = ThemeQuery.create({ theme, styles: 'object' });
-      expect(query('corals')[0]).toBe(coralMock);
-      expect(query('corals')[1]).toBe(coralDarkMock);
+      const qt = ThemeQuery.create({ theme, styles: 'object' });
+
+      expect(qt('corals')[0]).toBe(coralMock);
+      expect(qt('corals')[1]).toBe(coralDarkMock);
     });
 
     it('should return the sand color which is a flat color', () => {
-      const query = ThemeQuery.create({ theme, styles: 'object'});
-      expect(query('sand')).toBe(sandMock);
+      const qt = ThemeQuery.create({ theme, styles: 'object' });
+
+      expect(qt('sand')).toBe(sandMock);
     });
 
     it('should return the value from fonts.heading.display ', () => {
-      const query = ThemeQuery.create({ theme, styles: 'object' });
-      expect(query('heading.display')).toBe(headingDefault);
+      const qt = ThemeQuery.create({ theme, styles: 'object' });
+
+      expect(qt('heading.display')).toBe(headingDefault);
     });
 
     it('should return the value from fonts.heading.secondary ', () => {
-      const query = ThemeQuery.create({ theme, styles: 'object' });
-      expect(query('heading.secondary')).toBe(headingSecondary);
+      const qt = ThemeQuery.create({ theme, styles: 'object' });
+
+      expect(qt('heading.secondary')).toBe(headingSecondary);
     });
   });
 
   describe('Component Styling', () => {
     it('should receive the necessary styling for the component', () => {
-      const query = ThemeQuery.create({ theme, styles: 'object' });
+      const qt = ThemeQuery.create({ theme, styles: 'object' });
+
       const { getByTestId, unmount } = render(
         <div
           data-testid="test-el"
           sx={{
-            fontSize: query('fontSizes')[4],
-            fontFamily: query('heading.secondary'),
-            color: query('sand'),
-            bg: query('corals')[0],
+            fontSize: qt('fontSizes')[4],
+            fontFamily: qt('heading.secondary'),
+            color: qt('sand'),
+            bg: qt('corals')[0],
           }}>
           Hi Mom!!!
         </div>
       );
+
       const div = getByTestId('test-el');
       const styles = getComputedStyle(div);
       expect(styles.getPropertyValue('color')).toBe(sandMock);

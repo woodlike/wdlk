@@ -1,6 +1,32 @@
 import { ThemeQueryConfig, StyledQuery, QueryResult } from '.';
 import { splitFromDot } from '..';
 
+export const query = (theme: {}, path: string): QueryResult => {
+  const result: QueryResult[] = [];
+  for (const prop in theme) {
+    if (prop === path) {
+      result.push(theme[prop]);
+      break;
+    }
+    const value = Object.keys(theme[prop]).find((val: string) =>
+      path.includes('.')
+        ? val === splitFromDot(path)[0]
+        : val === path
+    );
+
+    if (value && theme[prop][value]) {
+      if (path.includes('.')) {
+        const [key, val] = splitFromDot(path);
+        result.push(theme[prop][key][val]);
+        break;
+      }
+      result.push(theme[prop][value]);
+      break;
+    }
+  }
+  return result[0];
+};
+
 export function create(config: ThemeQueryConfig): StyledQuery {
   const validConfig =
     config && config.theme && typeof config.theme === 'object';
@@ -10,32 +36,8 @@ export function create(config: ThemeQueryConfig): StyledQuery {
   const { theme, styles } = config;
 
   return (objPath): QueryResult => {
-    const intResult: QueryResult[] = [];
-    if (objPath.includes('.')) {
-      const [prop1, prop2] = splitFromDot(objPath);
-      Object.entries(theme).forEach(([key, val]) => {
-        const keyQuery = Object.keys(val as QueryResult).find((entry: string) => entry === prop1);
-        if (typeof val === 'object' && val !== null && keyQuery) {
-          intResult.push(theme[key][keyQuery][prop2]);
-        }
-      })
-    } else {
-      Object.entries(theme).forEach(([key, val]) => {
-        if (key === objPath) {
-          intResult.push(theme[key]);
-          return;
-        }
+    const result = query(theme, objPath);
 
-        if (typeof val === 'object' && val !== null) {
-          const query = Object.keys(val as QueryResult).find((entry: string) => entry === objPath);
-          if (query) {
-            intResult.push(theme[key][query]);
-          }
-          return;
-        }
-      });
-    }
-
-    return !styles || styles === 'object' ? intResult[0] : `${intResult[0]}`;
+    return !styles || styles === 'object' ? result : `${result}`;
   };
 }
