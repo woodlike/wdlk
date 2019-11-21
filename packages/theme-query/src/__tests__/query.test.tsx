@@ -5,22 +5,23 @@ import { render } from '@testing-library/react';
 import * as ThemeQuery from '../query';
 import { ThemeQueryConfig } from '../query';
 import { theme } from '../theme';
+import { fontSizes } from '../tokens';
 
 describe('StyledFactory', () => {
-  // TODO
-  // 1 return either a style literal or object
-  //4 test on component using theme-ui
+  // TODO test on component using theme-ui
 
   let sandMock: unknown;
   let coralMock: unknown;
   let coralDarkMock: unknown;
   let headingDefault: unknown;
+  let headingSecondary: unknown
 
   beforeAll(() => {
     sandMock = 'rgb(204, 153, 102)';
     coralMock = 'rgb(255, 113, 99)';
     coralDarkMock = 'rgb(229, 85, 78)';
     headingDefault = '"museo300", serif';
+    headingSecondary = `"museo500", serif`;
   });
 
   afterAll(() => {
@@ -28,6 +29,7 @@ describe('StyledFactory', () => {
     coralMock = undefined;
     coralDarkMock = undefined;
     headingDefault = undefined;
+    headingSecondary = undefined;
   });
 
   describe('StyledFactory.create(config)', () => {
@@ -90,24 +92,26 @@ describe('StyledFactory', () => {
       expect(query('sand')).toBe(sandMock);
     });
 
-    it('should return the value from fonts.heading.body ', () => {
+    it('should return the value from fonts.heading.display ', () => {
       const query = ThemeQuery.create({ theme, styles: 'object' });
-      expect(query('heading.default')).toBe(headingDefault);
+      expect(query('heading.display')).toBe(headingDefault);
+    });
+
+    it('should return the value from fonts.heading.secondary ', () => {
+      const query = ThemeQuery.create({ theme, styles: 'object' });
+      expect(query('heading.secondary')).toBe(headingSecondary);
     });
   });
 
   describe('Component Styling', () => {
     it('should receive the necessary styling for the component', () => {
       const query = ThemeQuery.create({ theme, styles: 'object' });
-
-      // tslint:disable-next-line: no-console
-      console.log('11111', theme);
       const { getByTestId, unmount } = render(
         <div
           data-testid="test-el"
           sx={{
-            fontWeight: 'bold',
-            fontSize: 4,
+            fontSize: query('fontSizes')[4],
+            fontFamily: query('heading.secondary'),
             color: query('sand'),
             bg: query('corals')[0],
           }}>
@@ -118,6 +122,7 @@ describe('StyledFactory', () => {
       const styles = getComputedStyle(div);
       expect(styles.getPropertyValue('color')).toBe(sandMock);
       expect(styles.getPropertyValue('background-color')).toBe(coralMock);
+      expect(styles.getPropertyValue('font-size')).toBe('20px');
       unmount();
     });
   });

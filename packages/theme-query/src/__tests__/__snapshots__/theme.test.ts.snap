@@ -57,9 +57,9 @@ Object {
     900,
   ],
   "fonts": Object {
-    "display": "\\"museo_sans300\\", Helvetica, sans-serif",
+    "body": "\\"museo_sans300\\", Helvetica, sans-serif",
     "heading": Object {
-      "body": "\\"museo300\\", serif",
+      "display": "\\"museo300\\", serif",
       "secondary": "\\"museo500\\", serif",
     },
   },
