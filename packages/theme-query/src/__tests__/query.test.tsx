@@ -109,6 +109,7 @@ describe('StyledFactory', () => {
   describe('Component Styling', () => {
     it('should receive the necessary styling for the component', () => {
       const qt = ThemeQuery.create({ theme, styles: 'object' });
+      console.log(theme)
 
       const { getByTestId, unmount } = render(
         <div
