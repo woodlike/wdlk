@@ -7,8 +7,6 @@ import { ThemeQueryConfig } from '../query';
 import { theme } from '../theme';
 
 describe('StyledFactory', () => {
-  // TODO test on component using theme-ui
-
   let sandMock: unknown;
   let coralMock: unknown;
   let coralDarkMock: unknown;
@@ -85,8 +83,8 @@ describe('StyledFactory', () => {
     it('should return all the corals colors which is a nested color array', () => {
       const qt = ThemeQuery.create({ theme, styles: 'object' });
 
-      expect(qt('corals')[0]).toBe(coralMock);
-      expect(qt('corals')[1]).toBe(coralDarkMock);
+      expect(qt('corals')(0)).toBe(coralMock);
+      expect(qt('corals')(1)).toBe(coralDarkMock);
     });
 
     it('should return the sand color which is a flat color', () => {
@@ -116,10 +114,10 @@ describe('StyledFactory', () => {
         <div
           data-testid="test-el"
           sx={{
-            fontSize: qt('fontSizes')[4],
+            fontSize: qt('fontSizes')(4),
             fontFamily: qt('heading.secondary'),
             color: qt('sand'),
-            bg: qt('corals')[0],
+            bg: qt('corals')(0),
           }}>
           Hi Mom!!!
         </div>

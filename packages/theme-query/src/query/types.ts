@@ -4,5 +4,5 @@ export interface ThemeQueryConfig {
 }
 
 export type StylesType = 'object' | 'templateLitereal';
-export type QueryResult = {} | number[] | string[] | string | number;
-export type StyledQuery = (objPath: string) => QueryResult;
+export type QueryResult = ((idx: number) => string) & (string | number);
+export type ThemeQuery = (objPath: string) => QueryResult;
