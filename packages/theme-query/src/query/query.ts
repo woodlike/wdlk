@@ -1,6 +1,6 @@
-import { StyledFactoryConfig, StyledQuery, QueryResult } from '.';
+import { ThemeQueryConfig, StyledQuery, QueryResult } from '.';
 
-export function create(config: StyledFactoryConfig): StyledQuery {
+export function create(config: ThemeQueryConfig): StyledQuery {
   const validConfig =
     config && config.theme && typeof config.theme === 'object';
   if (!validConfig) {

@@ -3,12 +3,12 @@
 [![CircleCI](https://circleci.com/gh/woodlike/component-library.svg?style=svg)](https://circleci.com/gh/woodlike/component-library)
 
 
-> Utility functions to query Styled System / Theme UI themes without the need of theme provider.
+> Utility function to query Styled System / Theme UI themes.
 
 ## Motivation
-The [System UI](https://system-ui.com/theme/) specification allows us to write coherent and consistent UIs. It's definitely an amazing approach for providing branding compliance across web applications. On the other hand, [Styled System](https://styled-system.com/) offers an ergonomic approach for styling React components using constraint-based style props. Styled Factory offers an alternative to querying design tokens defined in the themes object without the need to depend on a theme provider. 
+The [System UI](https://system-ui.com/theme/) specification allows us to write coherent and consistent UIs. It's a solid approach for providing branding compliance across web applications. On the other hand, [Styled System](https://styled-system.com/) offers an ergonomic approach for styling React components using constraint-based style props. Styled Factory offers an alternative to querying design tokens defined in the themes object without the need to depend on a theme provider. 
 
-UI components are commonly developed in a dedicated component library as part of an overall design system. These libraries are stateless components with the responsibility to provide corporate identity consistency. At the same time, support developers create UIs in no time. At this first level of UI development, it would be nice to have to access theme tokens without depending on the theme provider.
+Usually, UI components are developed in a dedicated component library as part of an overall design system. These libraries are stateless components with the responsibility to provide corporate identity consistency. At the same time, support developers create UIs in no time. At this first level of UI development, it would be nice to have to access theme tokens without depending on the theme provider.
 
 
 ### Benefits
@@ -23,11 +23,15 @@ UI components are commonly developed in a dedicated component library as part of
 🌲 Git
 🐈 yarn >= 1.12
 
-## Getting started (recommended)
+## Getting started 
 ```bash
   yarn install styled-factory
-  yarn install theme-ui
+  yarn install theme-UI
   yarn install @emotion-core
+```
+
+## Example
+```js
 ```
 
 
