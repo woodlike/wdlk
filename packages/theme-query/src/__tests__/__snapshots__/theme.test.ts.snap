@@ -59,7 +59,7 @@ Object {
   "fonts": Object {
     "display": "\\"museo_sans300\\", Helvetica, sans-serif",
     "heading": Object {
-      "default": "\\"museo300\\", serif",
+      "body": "\\"museo300\\", serif",
       "secondary": "\\"museo500\\", serif",
     },
   },

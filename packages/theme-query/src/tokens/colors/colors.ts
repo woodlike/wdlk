@@ -1,5 +1,5 @@
 import { Colors } from '../colors';
-import { toRGB } from '../utils';
+import { toRGB } from '../../utils';
 export const colors: Colors = {
   corals: [
     toRGB([255, 113, 99]),

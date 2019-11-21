@@ -1,6 +1,6 @@
 export interface ThemeQueryConfig {
   theme: {};
-  styles?: StylesType;
+  styles: StylesType;
 }
 
 export type StylesType = 'object' | 'templateLitereal';
