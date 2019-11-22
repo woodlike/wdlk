@@ -1,0 +1,7 @@
+{
+  "extends": "../../tslint.json",
+  "rules": {
+    "jsx-no-multiline-js": false,
+    "jsx-alignment": false,
+  }
+}

@@ -1,9 +1,9 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "build/lib",
+    "outDir": "/lib",
     "rootDirs": ["src"],
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "build", "scripts", "./docz"]
+  "exclude": ["node_modules/", "lib"]
 }
