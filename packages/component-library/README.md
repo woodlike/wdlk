@@ -7,7 +7,7 @@
 
 
 ## Requirements
-🐢 🚀 Node.js >=10
+🐢 🚀 Node.js >=8
 🌲 Git
 🐈 yarn >= 1.12
 
@@ -16,7 +16,7 @@
 ```sh
 git clone git@github.com:woodlike/component-library.git
 cd component-library
-# Install packages
+# Install packges
 yarn
 # Start development mode
 yarn dev

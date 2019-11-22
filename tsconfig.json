@@ -19,18 +19,14 @@
     "noImplicitThis": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "outDir": "build/lib",
     "preserveConstEnums": true,
     "pretty": true,
     "removeComments": true,
-    "rootDirs": ["src"],
     "sourceMap": true,
     "strict": true,
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
     "target": "es5",
     "watch": false
-  },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "build", "scripts", "./docz"]
+  }
 }

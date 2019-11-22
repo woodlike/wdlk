@@ -3,6 +3,6 @@ export default {
   title: 'WDLK UI component library 🎨',
   menu: ['Components'],
   themeConfig: {
-    mode: 'dark',
+    mode: 'light',
   },
 }
