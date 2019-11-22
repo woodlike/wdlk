@@ -36,5 +36,4 @@ jobs:
       # run tests!
       - run: yarn test:lib
       - run: yarn lint:lib
-      - run: yarn test:theme
       - run: yarn lint:theme

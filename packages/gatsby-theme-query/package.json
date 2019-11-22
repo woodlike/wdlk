@@ -2,7 +2,7 @@
   "name": "gatsby-theme-query",
   "version": "1.0.0",
   "description": "A gatsby theme to query Styled System themes",
-  "main": "dist/index.js",
+  "main": "lib/index.js",
   "repository": "git@github.com:woodlike/component-library.git",
   "author": "Mauricio Palma <mauricio.palma@woodlikeocean.com>",
   "license": "MIT",
@@ -21,6 +21,6 @@
   },
   "peerDependencies": {
     "gatsby": "^2.17.16",
-    "theme-query": "^1.0.0"
+    "theme-query": "1.0.2"
   }
 }
