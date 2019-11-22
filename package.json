@@ -18,10 +18,8 @@
     "dev:lib": "yarn workspace theme-query dev",
     "test:lib": "yarn workspace theme-query test",
     "lint:lib": "yarn workspace theme-query lint",
-    "build:theme": "yarn workspace gatsby-theme-styled-factory build",
-    "dev:theme": "yarn workspace gatsby-theme-styled-factory dev",
-    "test:theme": "yarn workspace gatsby-theme-styled-factory test",
-    "lint:theme": "yarn workspace gatsby-theme-styled-factory lint"
+    "build:theme": "yarn workspace gatsby-theme-query build",
+    "lint:theme": "yarn workspace gatsby-theme-query lint"
   },
   "devDependencies": {}
 }
