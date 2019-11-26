@@ -1,4 +1,6 @@
 import * as ThemeQuery from 'theme-query';
-import * as theme from './theme';
+import theme from './theme';
 
-export const qt = ThemeQuery.create({ theme, styles: 'object'});
+export const qt = ThemeQuery.create({ theme, styles: 'object' });
+
+export default qt;
