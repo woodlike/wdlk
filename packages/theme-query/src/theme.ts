@@ -1,4 +1,5 @@
 import {
+  borderWidths,
   colors,
   fontFamily,
   fontSizes,
@@ -9,6 +10,7 @@ import {
 } from './tokens';
 
 export const theme = {
+  borderWidths,
   colors,
   fonts: {
     ...fontFamily,
