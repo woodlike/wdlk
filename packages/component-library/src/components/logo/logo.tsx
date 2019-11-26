@@ -6,6 +6,11 @@ import { qt } from '../query';
 export interface LogoProps {
   readonly title: string;
   readonly desc: string;
+  readonly focused: boolean;
+}
+
+interface SxLogoProps {
+  readonly focused: boolean;
 }
 
 const logoSize = {
@@ -13,7 +18,13 @@ const logoSize = {
   height: 46,
 };
 
-const themedLogo: SxStyleProp = {
+const outLineStyle: SxStyleProp =
+  {outline: `${qt('borderWidths')(1)}px solid ${qt('grays')(3)}`};
+
+const styledFocus = (props: SxLogoProps): SxStyleProp =>
+  props.focused ? outLineStyle : {};
+
+const styledBase: SxStyleProp = {
   width: `${logoSize.width}px`,
   height: `${logoSize.height}px`,
   fill: 'currentColor',
@@ -24,7 +35,15 @@ const themedLogo: SxStyleProp = {
     color: qt('corals')(1),
   },
   ':focus': {
-    outline: `${qt('borderWidths')(1)}px solid ${qt('grays')(2)}`
+    outline: `${outLineStyle}`,
+  },
+};
+
+const themedLogo = (props: SxLogoProps): SxStyleProp => {
+  const outline = Object.assign({}, styledFocus(props));
+  return {
+    ...styledBase,
+    ...outline,
   }
 };
 
@@ -33,7 +52,7 @@ export const Logo: React.FunctionComponent<LogoProps> = (
 ): JSX.Element => {
   return (
     <svg
-      sx={themedLogo}
+      sx={themedLogo(props)}
       aria-labelledby="logo-title-aria-id"
       data-testid="logo-test-id"
       viewBox="0 0 135 46">
