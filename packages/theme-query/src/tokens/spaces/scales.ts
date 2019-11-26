@@ -1,6 +1,4 @@
-import { Space } from '../spaces';
-
-export const spaces: Space = [
+export const spaces: number[] = [
   0,
   3,
   6,
