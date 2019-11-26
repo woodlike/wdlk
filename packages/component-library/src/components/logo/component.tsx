@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
+import { qt } from '../query';
 
 import { LogoPath, BrandPath } from './svg-paths';
-import { qt } from '../../utils';
 
 export interface LogoProps {
   readonly title: string;
@@ -22,7 +22,7 @@ const themedLogo: SxStyleProp = {
   cursor: 'pointer',
   transition: 'fill .35s ease',
   ':hover': {
-    color: qt('corals')(1),
+    color: qt('foo'),
   },
 };
 

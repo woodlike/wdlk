@@ -2,11 +2,11 @@ import * as React from 'react';
 import { render, cleanup } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
-import { color, toRGBString } from '../../../tokens';
-expect.extend(toHaveNoViolations);
 
 import { Logo } from '../';
+import { qt } from '../../../';
 
+expect.extend(toHaveNoViolations);
 describe('Logo', () => {
   let logoTitle: string;
   let logoDesc: string;
@@ -16,11 +16,6 @@ describe('Logo', () => {
       'Woodlike Ocean - Sustainable Swimwear crafted from ocean recovered fishing nets';
     logoDesc =
       'The Woodlike Ocean logo represents the moving water waves made by a drop of water';
-  });
-
-  afterAll(() => {
-    logoTitle = undefined;
-    logoDesc = undefined;
   });
 
   it('should not have accessibility violations', async done => {
@@ -60,14 +55,11 @@ describe('Logo', () => {
   });
 
   it('it should render with the default colors', () => {
-    const { container, unmount } = render(
-      <>
-        <Logo title={logoTitle} desc={logoDesc} />
-      </>
-    );
-    const svg = container.querySelector('svg') as SVGElement;
-    const styles = window.getComputedStyle(svg);
-    expect(styles.getPropertyValue('color')).toMatch(toRGBString(color.coral));
+    const { getByTestId, unmount } = render(<Logo title={logoTitle} desc={logoDesc} />);
+    const svg = getByTestId('logo-test-id');
+    const styles = getComputedStyle(svg);
+    expect(styles.getPropertyValue('color')).toMatch(qt('corals')(0));
+    console.log(qt('foo.reds'), '****')
     unmount();
   });
 });
