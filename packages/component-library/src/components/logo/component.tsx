@@ -1,8 +1,7 @@
 /** @jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
-import { qt } from '../query';
-
 import { LogoPath, BrandPath } from './svg-paths';
+import { qt } from '../query';
 
 export interface LogoProps {
   readonly title: string;
@@ -20,10 +19,13 @@ const themedLogo: SxStyleProp = {
   fill: 'currentColor',
   color: qt('corals')(0),
   cursor: 'pointer',
-  transition: 'fill .35s ease',
+  transition: `color ${qt('duration')(1)}s ${qt('timing')(0)}`,
   ':hover': {
-    color: qt('foo'),
+    color: qt('corals')(1),
   },
+  ':focus': {
+    outline: `${qt('borderWidths')(1)}px solid ${qt('grays')(2)}`
+  }
 };
 
 export const Logo: React.FunctionComponent<LogoProps> = (

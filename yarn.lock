@@ -14425,10 +14425,10 @@ text-table@0.2.0, text-table@^0.2.0:
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
 
-theme-query@1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/theme-query/-/theme-query-1.0.4.tgz#bf30aaa371e3384c9d3e2d94453451a7026e8275"
-  integrity sha512-zyujqEEjLiOgCa4nlZ/fWrkXWyzQ+C+h2LlOdIyUirVrZPch97FR55sHLTzmCxfK9CSpxn7TZ3DPxqGrEpMIoQ==
+theme-query@1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/theme-query/-/theme-query-1.0.5.tgz#13ad5572231967a466b084070a0c07b47e8cf481"
+  integrity sha512-bHQWNST9cmNVzxAQOyAXTshhF4ywNGnyWDD1PI0bsO7zxiQ/1rDN02oEh10qREpEdjUJVPviVBqW3MfBWeTqPQ==
   dependencies:
     styled-system "^5.1.2"
     theme-ui "^0.2.49"

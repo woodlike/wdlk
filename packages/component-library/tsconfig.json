@@ -4,6 +4,6 @@
     "outDir": "build/lib",
     "rootDirs": ["src"],
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "../theme-query/src/tokens/transitions"],
   "exclude": ["node_modules", "build", "scripts", "./docz"]
 }
