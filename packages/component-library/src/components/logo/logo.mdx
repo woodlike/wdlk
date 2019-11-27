@@ -1,6 +1,7 @@
 ---
 name: Logo
 route: /
+menu: Components
 ---
 
 import { Playground, Props } from 'docz';
@@ -18,9 +19,11 @@ A short list of the components properties
     title="Woodlike Ocean - Sustainable Swimwear crafted from ocean recovered fishing nets"
     desc="The Woodlike Ocean logo represents the moving water waves made by a drop of water"
   />
+
 </Playground>
 
 ### Focused state
+The focus state styling is provided from the _with-focus-style_ hoc
 <Playground>
-  <Logo focused={true} />
+  <Logo title="demo title" desc="desc" isfocused="focused" />
 </Playground>

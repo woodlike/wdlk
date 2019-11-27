@@ -13,6 +13,7 @@ module.exports = {
   transform: {
     '.(ts|tsx)': 'ts-jest'
   },
+  snapshotSerializers: ['jest-emotion'],
   testRegex: TEST_REGEX,
   testPathIgnorePatterns: [
     '<rootDir>/node_modules/',

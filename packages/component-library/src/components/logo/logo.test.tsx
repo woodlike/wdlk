@@ -1,9 +1,10 @@
-import * as React from 'react';
+/** @jsx jsx */
+import { jsx } from 'theme-ui';
 import { render, cleanup } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
 import { Logo } from '../';
-import { qt } from '../../query';
+import { qt } from '../query';
 
 expect.extend(toHaveNoViolations);
 describe('Logo', () => {
@@ -19,7 +20,7 @@ describe('Logo', () => {
 
   it('should not have accessibility violations', async done => {
     const { container, unmount } = render(
-      <Logo title={logoTitle} desc={logoDesc} focused={true} />
+      <Logo title={logoTitle} desc={logoDesc} isfocused="focused" />
     );
 
     const a11yResults = await axe(container);
@@ -31,7 +32,7 @@ describe('Logo', () => {
 
   it('should include an accessible title for screen readers', () => {
     const { container, unmount } = render(
-      <Logo title={logoTitle} desc={logoDesc} focused={true} />
+      <Logo title={logoTitle} desc={logoDesc} isfocused="focused" />
     );
 
     const svg = container.querySelector('svg') as SVGElement;
@@ -44,7 +45,7 @@ describe('Logo', () => {
 
   it('should include an accessible description for screen readers', () => {
     const { container, unmount } = render(
-      <Logo title={logoTitle} desc={logoDesc} focused={false} />
+      <Logo title={logoTitle} desc={logoDesc} isfocused="focused" />
     );
     const desc = container.querySelector('desc') as SVGDescElement;
     expect(desc.innerHTML).toMatch(logoDesc);
@@ -53,28 +54,11 @@ describe('Logo', () => {
 
   it('it should render with the default colors', () => {
     const { getByTestId, unmount } = render(
-      <Logo title={logoTitle} desc={logoDesc} focused={false} />
+      <Logo title={logoTitle} desc={logoDesc} isfocused="focused" />
     );
     const svg = getByTestId('logo-test-id');
     const styles = getComputedStyle(svg);
     expect(styles.getPropertyValue('color')).toMatch(qt('corals')(0));
-    unmount();
-  });
-
-  it('it should render with the visual focus', () => {
-    const { getByTestId, unmount } = render(
-      <Logo title={logoTitle} desc={logoDesc} focused={true} />
-    );
-    const svg = getByTestId('logo-test-id');
-    const styles = getComputedStyle(svg);
-    const result = `${qt('borderWidths')(1)}px solid ${qt('grays')(3)}`;
-
-    expect(
-      styles
-        .getPropertyValue('outline')
-        .split(',')
-        .join(', ')
-    ).toMatch(result);
     unmount();
   });
 });

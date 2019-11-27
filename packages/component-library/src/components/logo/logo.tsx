@@ -1,30 +1,16 @@
 /** @jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
 import { LogoPath, BrandPath } from './svg-paths';
+import { LogoProps } from '.';
 import { qt } from '../query';
-
-export interface LogoProps {
-  readonly title: string;
-  readonly desc: string;
-  readonly focused: boolean;
-}
-
-interface SxLogoProps {
-  readonly focused: boolean;
-}
+import { withFocusStyle } from '../with-focus-style';
 
 const logoSize = {
   width: 122,
   height: 46,
 };
 
-const outLineStyle: SxStyleProp =
-  {outline: `${qt('borderWidths')(1)}px solid ${qt('grays')(3)}`};
-
-const styledFocus = (props: SxLogoProps): SxStyleProp =>
-  props.focused ? outLineStyle : {};
-
-const styledBase: SxStyleProp = {
+const styledSVG: SxStyleProp = {
   width: `${logoSize.width}px`,
   height: `${logoSize.height}px`,
   fill: 'currentColor',
@@ -34,28 +20,18 @@ const styledBase: SxStyleProp = {
   ':hover': {
     color: qt('corals')(1),
   },
-  ':focus': {
-    outline: `${outLineStyle}`,
-  },
 };
 
-const themedLogo = (props: SxLogoProps): SxStyleProp => {
-  const outline = Object.assign({}, styledFocus(props));
-  return {
-    ...styledBase,
-    ...outline,
-  }
-};
-
-export const Logo: React.FunctionComponent<LogoProps> = (
+const LogoBase: React.FunctionComponent<LogoProps> = (
   props
 ): JSX.Element => {
   return (
     <svg
-      sx={themedLogo(props)}
+      sx={styledSVG}
       aria-labelledby="logo-title-aria-id"
       data-testid="logo-test-id"
-      viewBox="0 0 135 46">
+      viewBox="0 0 135 46"
+      {...props}>
       <title id="logo-title-aria-id">{props.title}</title>
       <desc>{props.desc}</desc>
       <LogoPath />
@@ -64,5 +40,7 @@ export const Logo: React.FunctionComponent<LogoProps> = (
   );
 };
 
-Logo.displayName = 'Logo';
+LogoBase.displayName = 'Logo';
+
+export const Logo = withFocusStyle<LogoProps>(LogoBase);
 export default Logo;
