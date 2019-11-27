@@ -7,13 +7,14 @@ import { withFocusStyle } from './with-focus-style';
 
 interface TestCompProps {
   isFocused: true;
+  className: string;
 }
 
 const TestComponent: React.FunctionComponent<TestCompProps> = (
   props
 ): JSX.Element => {
   return (
-    <a data-testid="test-test-id" href="#" {...props}>
+    <a className={props.className} data-testid="test-test-id" href="#">
       Hi mom
     </a>
   );
@@ -24,7 +25,7 @@ describe('with-outline', () => {
   it('should pass focus style to the argument component', () => {
     const FocusableTestElement = withFocusStyle<TestCompProps>(TestComponent);
     const { queryByTestId, unmount } = render(
-      <FocusableTestElement isfocused="focused" />
+      <FocusableTestElement isFocused={true} />
     );
     const element = queryByTestId('test-test-id') as HTMLElement;
     const styles = getComputedStyle(element);

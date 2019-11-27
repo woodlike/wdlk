@@ -17,13 +17,13 @@ const styledBase: SxStyleProp = {
 };
 
 function isFocused<T>(
-  props: Pick<MappedWithFocus<T>, 'isfocused'>
+  props: Pick<MappedWithFocus<T>, 'isFocused'>
 ): SxStyleProp {
-  return props.isfocused === 'focused' ? styledFocus : {};
+  return props.isFocused ? styledFocus : {};
 }
 
 function themedWithFocusStyles<T>(
-  props: Pick<MappedWithFocus<T>, 'isfocused'>
+  props: Pick<MappedWithFocus<T>, 'isFocused'>
 ): SxStyleProp {
   const outline = Object.assign({}, isFocused(props));
   return {
@@ -36,6 +36,6 @@ export function withFocusStyle<T>(
   Component: React.FunctionComponent
 ): (props: MappedWithFocus<T>) => JSX.Element {
   return (props: MappedWithFocus<T>): JSX.Element => {
-    return <Component sx={themedWithFocusStyles(props)} {...props} />;
+    return <Component sx={themedWithFocusStyles(props)} {...props}/>;
   };
 }

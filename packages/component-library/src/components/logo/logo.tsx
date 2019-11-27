@@ -22,16 +22,18 @@ const styledSVG: SxStyleProp = {
   },
 };
 
-const LogoBase: React.FunctionComponent<LogoProps> = (
+export const LogoBase: React.FunctionComponent<LogoProps> = (
   props
 ): JSX.Element => {
+
   return (
     <svg
       sx={styledSVG}
+      className={props.className}
       aria-labelledby="logo-title-aria-id"
       data-testid="logo-test-id"
       viewBox="0 0 135 46"
-      {...props}>
+      >
       <title id="logo-title-aria-id">{props.title}</title>
       <desc>{props.desc}</desc>
       <LogoPath />
@@ -40,7 +42,6 @@ const LogoBase: React.FunctionComponent<LogoProps> = (
   );
 };
 
-LogoBase.displayName = 'Logo';
 
 export const Logo = withFocusStyle<LogoProps>(LogoBase);
 export default Logo;

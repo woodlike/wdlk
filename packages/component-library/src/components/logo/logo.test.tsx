@@ -20,7 +20,7 @@ describe('Logo', () => {
 
   it('should not have accessibility violations', async done => {
     const { container, unmount } = render(
-      <Logo title={logoTitle} desc={logoDesc} isfocused="focused" />
+      <Logo title={logoTitle} desc={logoDesc} isFocused={true} />
     );
 
     const a11yResults = await axe(container);
@@ -32,7 +32,7 @@ describe('Logo', () => {
 
   it('should include an accessible title for screen readers', () => {
     const { container, unmount } = render(
-      <Logo title={logoTitle} desc={logoDesc} isfocused="focused" />
+      <Logo title={logoTitle} desc={logoDesc} isFocused={true} />
     );
 
     const svg = container.querySelector('svg') as SVGElement;
@@ -45,7 +45,7 @@ describe('Logo', () => {
 
   it('should include an accessible description for screen readers', () => {
     const { container, unmount } = render(
-      <Logo title={logoTitle} desc={logoDesc} isfocused="focused" />
+      <Logo title={logoTitle} desc={logoDesc} isFocused={true} />
     );
     const desc = container.querySelector('desc') as SVGDescElement;
     expect(desc.innerHTML).toMatch(logoDesc);
@@ -54,7 +54,7 @@ describe('Logo', () => {
 
   it('it should render with the default colors', () => {
     const { getByTestId, unmount } = render(
-      <Logo title={logoTitle} desc={logoDesc} isfocused="focused" />
+      <Logo title={logoTitle} desc={logoDesc} isFocused={true} />
     );
     const svg = getByTestId('logo-test-id');
     const styles = getComputedStyle(svg);

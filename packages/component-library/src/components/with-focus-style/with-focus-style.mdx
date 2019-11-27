@@ -1,6 +1,5 @@
 ---
 name: With Focus Style
-route: /
 menu: Hocs
 ---
 import { Playground, Props } from 'docz';
@@ -14,8 +13,8 @@ All of the components passed as an argument to the hoc must have a `isFocused` p
 ## Usage
 
 ```jsx
-// import { Logo, LogoProps } from '../logo';
-// import { withFocusStyle } from './with-focus-style';
+import { Logo, LogoProps } from '../logo';
+import { withFocusStyle } from './with-focus-style';
 
 const FocusableLogo = withFocusStyle<LogoProps>(Logo)
 <FocusableLogo title={logoTitle} desc={logoDesc} isFocused={false} />
