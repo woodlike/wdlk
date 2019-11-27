@@ -1,3 +1,3 @@
-import { theme as themeQuery } from 'theme-query';
-export const theme = themeQuery;
+import { theme } from 'theme-query';
+
 export default theme;

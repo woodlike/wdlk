@@ -1,12 +1,26 @@
-import { colors, fontFamily, fontSizes, fontWeights, spaces } from './tokens';
+import {
+  borderWidths,
+  colors,
+  fontFamily,
+  fontSizes,
+  fontWeights,
+  spaces,
+  timing,
+  duration,
+} from './tokens';
 
 export const theme = {
+  borderWidths,
   colors,
   fonts: {
-    ...fontFamily
+    ...fontFamily,
   },
   fontSizes,
   fontWeights,
-  spaces
+  spaces,
+  transition: {
+    duration,
+    timing
+  }
 };
 export default theme;

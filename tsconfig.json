@@ -2,7 +2,6 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "alwaysStrict": true,
     "declaration": true,
     "declarationMap": true,
     "baseUrl": "src",
@@ -23,10 +22,9 @@
     "pretty": true,
     "removeComments": true,
     "sourceMap": true,
-    "strict": true,
     "strictNullChecks": true,
     "suppressImplicitAnyIndexErrors": true,
-    "target": "es5",
+    "target": "es6",
     "watch": false
   }
 }
