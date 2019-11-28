@@ -2,7 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/woodlike/component-library.svg?style=svg)](https://circleci.com/gh/woodlike/component-library)
 
-Gatsby theme for adding a [Styled System](https://styled-system.com/) theme object. You can query your theme using [Theme Query](https://github.com/woodlike/component-library/tree/master/packages/theme-query) directly in your components.
+Gatsby theme for adding a [Styled System](https://styled-system.com/) theme object. You can query your theme using [Theme Query](https://github.com/woodlike/wdlk/tree/master/packages/theme-query) directly in your components.
 
 ## Getting started
 

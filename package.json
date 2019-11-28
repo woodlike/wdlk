@@ -18,6 +18,11 @@
     "dev:lib": "yarn workspace theme-query dev",
     "test:lib": "yarn workspace theme-query test",
     "lint:lib": "yarn workspace theme-query lint",
+    "build:store": "yarn workspace @wdlk/store-front build",
+    "dev:store": "yarn workspace @wdlk/store-front dev",
+    "test:store": "yarn workspace @wdlk/store-front test",
+    "type-check:store": "yarn workspace @wdlk/store-front type-check",
+    "lint:store": "yarn workspace @wdlk/store-front lint",
     "build:theme": "yarn workspace gatsby-theme-query build",
     "lint:theme": "yarn workspace gatsby-theme-query lint"
   },

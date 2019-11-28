@@ -14,7 +14,7 @@
 
 ## Getting started
 ```sh
-git clone git@github.com:woodlike/component-library.git
+git clone git@github.com:woodlike/wdlk.git
 cd component-library
 # Install packages
 yarn
