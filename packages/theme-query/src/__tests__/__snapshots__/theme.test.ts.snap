@@ -63,10 +63,10 @@ Object {
     900,
   ],
   "fonts": Object {
-    "body": "\\"museo_sans300\\", Helvetica, sans-serif",
+    "body": "\\"MuseoSans\\", Helvetica, sans-serif",
     "heading": Object {
-      "display": "\\"museo300\\", serif",
-      "secondary": "\\"museo500\\", serif",
+      "display": "\\"Museo\\", serif",
+      "secondary": "\\"Museo500\\", serif",
     },
   },
   "spaces": Array [
