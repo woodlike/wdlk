@@ -1,0 +1,28 @@
+---
+name: Navigation Link
+menu: Components
+---
+
+import { Playground, Props } from 'docz';
+import { NavLink, LinkBase } from './';
+
+# Navigation Link
+
+## Props glossary
+A short list of the components properties
+<Props of={LinkBase} />
+
+## Component
+<Playground>
+  <LinkBase href="#" current={false} isFocused={false}>
+    Link Text
+  </LinkBase>
+</Playground>
+
+### Focused state
+The focus state styling is provided by the _with-focus-style_ hoc
+<Playground>
+  <NavLink href="#" current={false} isFocused={true}>
+    Link Text
+  </NavLink>
+</Playground>
