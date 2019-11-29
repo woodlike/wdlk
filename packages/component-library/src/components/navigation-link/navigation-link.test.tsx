@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { render, cleanup } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
+import { matchers } from 'jest-emotion';
 
 import { qt } from '../query';
 import { NavLink } from './navigation-link';
 
+expect.extend(matchers);
 expect.extend(toHaveNoViolations);
 
 describe('<NavigationLink />', () => {
@@ -37,7 +39,7 @@ describe('<NavigationLink />', () => {
     expect(a.getAttribute('href')).toBe('#');
     expect(a.getAttribute('aria-current')).toBe('page');
     expect(a.getAttribute('aria-label')).toBe('current page');
-    expect(a.getAttribute('title')).toBe(title)
+    expect(a.getAttribute('title')).toBe(title);
     cleanup();
   });
 
@@ -56,17 +58,24 @@ describe('<NavigationLink />', () => {
     cleanup();
   });
 
-  it('should have required styling', () => {
+  it('should have styling for a current state link', () => {
     const { getByTestId } = render(
-      <NavLink href="#" current={false} isFocused={false}>
+      <NavLink href="#" current={true} isFocused={false}>
         Link Text
       </NavLink>
     );
     const li = getByTestId('navigation-link-test-id');
     const a = li.querySelector('a') as HTMLElement;
-    const liStyles = getComputedStyle(li);
-    const aStyles = getComputedStyle(a);
-    console.log(liStyles, aStyles);
+    expect(a).toHaveStyleRule('content', '""', { target: '::after' });
+    expect(a).toHaveStyleRule('transform', 'scaleX(1)', { target: '::after' });
+    expect(a).toHaveStyleRule('transform-origin', '0 0', { target: '::after' });
+    expect(a).toHaveStyleRule('width', '100%', { target: '::after' });
+    expect(a).toHaveStyleRule('height', `${qt('borderWidths')(0)}px`, {
+      target: '::after',
+    });
+    expect(a).toHaveStyleRule('background-color', 'currentColor', {
+      target: '::after',
+    });
     cleanup();
   });
 });

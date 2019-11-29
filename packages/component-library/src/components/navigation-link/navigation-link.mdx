@@ -4,19 +4,26 @@ menu: Components
 ---
 
 import { Playground, Props } from 'docz';
-import { NavLink, LinkBase } from './';
+import { NavLink, NavigationLinkBase } from './';
 
 # Navigation Link
 
 ## Props glossary
 A short list of the components properties
-<Props of={LinkBase} />
+<Props of={NavigationLinkBase} />
 
 ## Component
 <Playground>
-  <LinkBase href="#" current={false} isFocused={false}>
+  <NavigationLinkBase href="#" current={false} isFocused={false}>
     Link Text
-  </LinkBase>
+  </NavigationLinkBase>
+</Playground>
+
+## Current state
+<Playground>
+  <NavigationLinkBase href="#" current={true} isFocused={false}>
+    Link Text
+  </NavigationLinkBase>
 </Playground>
 
 ### Focused state
