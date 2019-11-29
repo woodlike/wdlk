@@ -6,6 +6,8 @@ import { qt } from '../query';
 import { withFocusStyle } from '../with-focus-style';
 
 const styledListItem: SxStyleProp = {
+  alignSelf: 'center',
+  justifySelf: ['left', 'center'],
   listStyle: 'none',
 };
 
@@ -38,7 +40,7 @@ const styledLink: SxStyleProp = {
   position: 'relative',
   display: 'inline-block',
   fontFamily: `${qt('body')}`,
-  fontSize: `${qt('fontSizes')(2)}px`,
+  fontSize: [`${qt('fontSizes')(3)}px`, `${qt('fontSizes')(2)}px`],
   letterSpacing: `${qt('letterSpacings')(0)}px`,
   textDecoration: 'none',
   color: qt('grays')(3),

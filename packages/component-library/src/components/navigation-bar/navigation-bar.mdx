@@ -1,0 +1,41 @@
+---
+name: Navigation Bar
+menu: Components
+---
+
+import { Playground, Props } from 'docz';
+import { NavBar } from './';
+import { NavLink } from '../navigation-link';
+
+# Navigation Bar
+
+## Props glossary
+
+A short list of the components properties
+
+<Props of={NavBar} />
+
+## Component
+
+<Playground>
+  <NavBar itemCount={6}>
+    <NavLink href="#" current={false} isFocused={true}>
+      Bikinis
+    </NavLink>
+    <NavLink href="#" current={true} isFocused={false}>
+      One Pieces
+    </NavLink>
+    <NavLink href="#" current={false} isFocused={false}>
+      Yoga & Surf
+    </NavLink>
+    <NavLink href="#" current={false} isFocused={false}>
+      Tanning
+    </NavLink>
+    <NavLink href="#" current={false} isFocused={false}>
+      Healing Flowers
+    </NavLink>
+    <NavLink href="#" current={false} isFocused={false}>
+      The Brand
+    </NavLink>
+  </NavBar>
+</Playground>
