@@ -69,6 +69,11 @@ Object {
       "secondary": "\\"Museo500\\", serif",
     },
   },
+  "letterSpacings": Array [
+    0.5,
+    1,
+    1.5,
+  ],
   "spaces": Array [
     0,
     3,

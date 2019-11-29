@@ -4,6 +4,7 @@ import {
   fontFamily,
   fontSizes,
   fontWeights,
+  letterSpacings,
   spaces,
   timing,
   duration,
@@ -17,6 +18,7 @@ export const theme = {
   },
   fontSizes,
   fontWeights,
+  letterSpacings,
   spaces,
   transition: {
     duration,
