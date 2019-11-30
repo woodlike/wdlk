@@ -1,6 +1,6 @@
 {
   "name": "gatsby-theme-query",
-  "version": "1.5.13",
+  "version": "1.6.13",
   "description": "A gatsby theme to query Styled System themes",
   "repository": "git@github.com:woodlike/component-library.git",
   "author": "Mauricio Palma <mauricio.palma@woodlikeocean.com>",
@@ -10,7 +10,7 @@
     "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'"
   },
   "dependencies": {
-    "theme-query": "1.3.5"
+    "theme-query": "1.4.5"
   },
   "devDependencies": {
     "gatsby": "^2.17.16",
