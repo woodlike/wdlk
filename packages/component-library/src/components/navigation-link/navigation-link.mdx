@@ -14,14 +14,14 @@ A short list of the components properties
 
 ## Component
 <Playground>
-  <NavigationLinkBase href="#" current={false} isFocused={false}>
+  <NavigationLinkBase href="#" current={false} isFocused={false} context="bar">
     Link Text
   </NavigationLinkBase>
 </Playground>
 
 ## Current state
 <Playground>
-  <NavigationLinkBase href="#" current={true} isFocused={false}>
+  <NavigationLinkBase href="#" current={true} isFocused={false} context="bar">
     Link Text
   </NavigationLinkBase>
 </Playground>
@@ -29,7 +29,7 @@ A short list of the components properties
 ### Focused state
 The focus state styling is provided by the _with-focus-style_ hoc
 <Playground>
-  <NavLink href="#" current={false} isFocused={true}>
+  <NavLink href="#" current={false} isFocused={true} context="panel">
     Link Text
   </NavLink>
 </Playground>

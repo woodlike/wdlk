@@ -10,7 +10,10 @@ expect.extend(toHaveNoViolations);
 describe('<NavigationBar />', () => {
   it('should not have accessibility violations', async done => {
     const { container, unmount } = render(
-      <NavPanel isExpanded={true} >
+      <NavPanel isExpanded={true}>
+        <NavLink href="#" current={true} isFocused={false}>
+          Link Text
+        </NavLink>
         <NavLink href="#" current={true} isFocused={false}>
           Link Text
         </NavLink>

@@ -14,7 +14,7 @@ describe('<NavigationLink />', () => {
     const title = 'only necessary if you can not write descriptive link texts';
     const { container, unmount } = render(
       <ul>
-        <NavLink href="#" current={true} isFocused={false} title={title}>
+        <NavLink href="#" current={true} isFocused={false} title={title} context="bar">
           Link Text
         </NavLink>
       </ul>
@@ -30,7 +30,7 @@ describe('<NavigationLink />', () => {
   it('should have all the relevant a11y attributes', () => {
     const title = 'only necessary if you can not write descriptive link texts';
     const { getByTestId } = render(
-      <NavLink href="#" current={true} isFocused={false} title={title}>
+      <NavLink href="#" current={true} isFocused={false} title={title} context="bar">
         Link Text
       </NavLink>
     );
@@ -45,7 +45,7 @@ describe('<NavigationLink />', () => {
 
   it('should not have the a11y attributes', () => {
     const { getByTestId } = render(
-      <NavLink href="#" current={false} isFocused={false}>
+      <NavLink href="#" current={false} isFocused={false} context="bar">
         Link Text
       </NavLink>
     );
@@ -60,7 +60,7 @@ describe('<NavigationLink />', () => {
 
   it('should have styling for a current state link', () => {
     const { getByTestId } = render(
-      <NavLink href="#" current={true} isFocused={false}>
+      <NavLink href="#" current={true} isFocused={false} context="bar">
         Link Text
       </NavLink>
     );
@@ -76,6 +76,31 @@ describe('<NavigationLink />', () => {
     expect(a).toHaveStyleRule('background-color', 'currentColor', {
       target: '::after',
     });
+    cleanup();
+  });
+
+  it('should recognize styling for a bar context', () => {
+    const { getByTestId } = render(
+      <NavLink href="#" current={true} isFocused={false} context="bar">
+        Link Text
+      </NavLink>
+    );
+    const li = getByTestId('navigation-link-test-id');
+    expect(li).toHaveStyleRule('justify-self', 'left');
+    expect(li).toHaveStyleRule('justify-self', 'center', {
+      media: 'screen and (min-width: 40em)'
+    });
+    cleanup();
+  });
+
+  it('should recognize styling for a panel context', () => {
+    const { getByTestId } = render(
+      <NavLink href="#" current={true} isFocused={false} context="panel">
+        Link Text
+      </NavLink>
+    );
+    const li = getByTestId('navigation-link-test-id');
+    expect(li).toHaveStyleRule('justify-self', 'left');
     cleanup();
   });
 });

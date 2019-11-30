@@ -1,15 +1,23 @@
 /** @jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
 
-import { NavLinkProps } from '.';
+import { NavLinkProps, NavLinkContext } from '.';
 import { qt } from '../query';
 import { withFocusStyle } from '../with-focus-style';
 
 const styledListItem: SxStyleProp = {
   alignSelf: 'center',
-  justifySelf: ['left', 'center'],
   listStyle: 'none',
 };
+
+const handleContext = (ctx: NavLinkContext): SxStyleProp => ({
+  justifySelf: ctx === 'bar' ? ['left', 'center'] : ['left'],
+});
+
+const createStyledLinkItem = (ctx: NavLinkContext): SxStyleProp => ({
+  ...styledListItem,
+  ...handleContext(ctx),
+});
 
 const isCurrentLink = (current: boolean): SxStyleProp =>
   current ? { transform: 'scaleX(1)' } : { transform: 'scaleX(0)' };
@@ -27,7 +35,7 @@ const styledCurrentLink: SxStyleProp = {
   transitionTimingFunction: `${qt('timing')(0)}`,
 };
 
-const generateCurrentLinkStyle = (current: boolean): SxStyleProp => {
+const createCurrentLinkStyle = (current: boolean): SxStyleProp => {
   return {
     '::after': {
       ...styledCurrentLink,
@@ -56,10 +64,12 @@ export const NavigationLinkBase: React.FunctionComponent<NavLinkProps> = (
 ): JSX.Element => {
   const themedNavigationLink = {
     ...styledLink,
-    ...generateCurrentLinkStyle(props.current),
+    ...createCurrentLinkStyle(props.current),
   };
   return (
-    <li sx={styledListItem} data-testid="navigation-link-test-id">
+    <li
+      sx={createStyledLinkItem(props.context)}
+      data-testid="navigation-link-test-id">
       <a
         sx={themedNavigationLink}
         className={props.className}

@@ -3,14 +3,18 @@ import { jsx, SxStyleProp } from 'theme-ui';
 import { NavPanelProps } from '.';
 import { qt } from '../query';
 
-const panelHeight = '220px';
+
+const panelDimensions = {
+  maxWidth: '500px'
+};
 
 const styledPanelBase: SxStyleProp = {
   position: 'absolute',
   top: 0,
   left: 0,
   width: '100%',
-  height: panelHeight,
+  maxWidht: panelDimensions.maxWidth,
+  padding: `${qt('spaces')(3)}px`,
   pointerEvents: 'none',
   opacity: 0,
   backgroundColor: qt('whites')(0),
@@ -24,18 +28,22 @@ const createExpandedStyles = (expanded: boolean): SxStyleProp => (
       pointerEvents: 'auto'
     }
   : {}
-)
+);
 
 const createStyledNavPanel = (expanded: boolean): SxStyleProp => {
  return {
    ...styledPanelBase,
    ...createExpandedStyles(expanded)
  }
-}
+};
 
 const styledPanelList: SxStyleProp = {
-  paddingLeft: 0
-}
+  display: 'grid',
+  gridTemplateColumns: '1fr 1fr',
+  gridColumnGap: `${qt('spaces')(5)}px`,
+  gridRowGap: `${qt('spaces')(5)}px`,
+  padding: `${qt('spaces')(4)}px ${qt('spaces')(3)}px`,
+};
 
 export const NavPanel: React.FunctionComponent<NavPanelProps> = props => (
   <div
