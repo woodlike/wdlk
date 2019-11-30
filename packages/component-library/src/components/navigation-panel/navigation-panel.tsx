@@ -5,7 +5,7 @@ import { qt } from '../query';
 
 
 const panelDimensions = {
-  maxWidth: '500px'
+  maxWidth: '540px'
 };
 
 const styledPanelBase: SxStyleProp = {
@@ -13,12 +13,15 @@ const styledPanelBase: SxStyleProp = {
   top: 0,
   left: 0,
   width: '100%',
-  maxWidht: panelDimensions.maxWidth,
+  maxWidth: panelDimensions.maxWidth,
   padding: `${qt('spaces')(3)}px`,
   pointerEvents: 'none',
   opacity: 0,
   backgroundColor: qt('whites')(0),
   zIndex: 2,
+  transitionProperty: 'transform',
+  transitionDuration: `${qt('duration')(2)}s`,
+  transitionTimingFunction: `${qt('timing')(2)}`,
 };
 
 const createExpandedStyles = (expanded: boolean): SxStyleProp => (
