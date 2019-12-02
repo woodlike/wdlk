@@ -63,12 +63,17 @@ Object {
     900,
   ],
   "fonts": Object {
-    "body": "\\"museo_sans300\\", Helvetica, sans-serif",
+    "body": "\\"MuseoSans\\", Helvetica, sans-serif",
     "heading": Object {
-      "display": "\\"museo300\\", serif",
-      "secondary": "\\"museo500\\", serif",
+      "display": "\\"Museo\\", serif",
+      "secondary": "\\"Museo500\\", serif",
     },
   },
+  "letterSpacings": Array [
+    0.5,
+    1,
+    1.5,
+  ],
   "spaces": Array [
     0,
     3,
@@ -84,12 +89,14 @@ Object {
   "transition": Object {
     "duration": Array [
       0.33,
+      0.5,
       0.66,
       0.99,
     ],
     "timing": Array [
       "cubic-bezier(0.455, 0.030, 0.515, 0.955)",
       "cubic-bezier(0.075, 0.820, 0.165, 1.000)",
+      "cubic-bezier(1.000, 0.000, 0.000, 1.000)",
     ],
   },
 }

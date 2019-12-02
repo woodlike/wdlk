@@ -1,6 +1,6 @@
 export default {
   typescript: true,
-  title: 'WDLK component library 🎨',
+  title: 'WDLK components',
   menu: ['Components'],
   themeConfig: {
     mode: 'light',

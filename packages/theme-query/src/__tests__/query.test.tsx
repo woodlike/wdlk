@@ -17,8 +17,8 @@ describe('StyledFactory', () => {
     sandMock = 'rgb(204, 153, 102)';
     coralMock = 'rgb(255, 113, 99)';
     coralDarkMock = 'rgb(229, 85, 78)';
-    headingDefault = '"museo300", serif';
-    headingSecondary = `"museo500", serif`;
+    headingDefault = '"Museo", serif';
+    headingSecondary = `"Museo500", serif`;
   });
 
   afterAll(() => {

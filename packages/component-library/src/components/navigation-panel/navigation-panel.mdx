@@ -1,0 +1,81 @@
+---
+name: Navigation Panel
+menu: Components
+---
+
+import { Box } from '@theme-ui/components';
+import { Playground, Props } from 'docz';
+import { NavPanel } from '.';
+import { DemoBox } from './demo-box';
+import { NavLink } from '../navigation-link';
+
+# Navigation Panel
+
+## Props glossary
+
+A short list of the components properties
+
+## Component
+
+<Playground>
+  <DemoBox>
+    <NavPanel isExpanded={true}>
+      <NavLink
+        href="#"
+        current={false}
+        isFocused={true}
+        context="panel"
+        text="Bikinis"
+      />
+      <NavLink
+        href="#"
+        current={true}
+        isFocused={false}
+        context="panel"
+        text="One Pieces"
+      />
+      <NavLink
+        href="#"
+        current={false}
+        isFocused={false}
+        context="panel"
+        text="Yoga & Surf"
+      />
+      <NavLink
+        href="#"
+        current={false}
+        isFocused={false}
+        context="panel"
+        text="Tanning"
+      />
+      <NavLink
+        href="#"
+        current={false}
+        isFocused={false}
+        context="panel"
+        text="Healing Flowers"
+      />
+      <NavLink
+        href="#"
+        current={false}
+        isFocused={false}
+        context="panel"
+        text="The Brand"
+      />
+      <NavLink
+        href="#"
+        current={false}
+        isFocused={false}
+        context="panel"
+        text="Sustainability"
+      />
+      <NavLink
+        href="#"
+        current={false}
+        isFocused={false}
+        context="panel"
+        text="Fabric"
+      />
+    </NavPanel>
+  </DemoBox>
+</Playground>
