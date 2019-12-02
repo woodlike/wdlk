@@ -5,23 +5,24 @@ import { qt } from '../query';
 
 
 const panelDimensions = {
-  maxWidth: '540px'
+  navHeight: '40px',
+  minWidth: '440px'
 };
 
 const styledPanelBase: SxStyleProp = {
   position: 'absolute',
-  top: 0,
-  left: 0,
+  top: panelDimensions.navHeight,
+  left: `-${qt('spaces')(5)}px`,
   width: '100%',
-  maxWidth: panelDimensions.maxWidth,
+  minWidth: panelDimensions.minWidth,
   padding: `${qt('spaces')(3)}px`,
   pointerEvents: 'none',
   opacity: 0,
   backgroundColor: qt('whites')(0),
   zIndex: 2,
-  transitionProperty: 'transform',
-  transitionDuration: `${qt('duration')(2)}s`,
-  transitionTimingFunction: `${qt('timing')(2)}`,
+  transitionProperty: 'opacity',
+  transitionDuration: `${qt('duration')(1)}s`,
+  transitionTimingFunction: 'ease-in-out',
 };
 
 const createExpandedStyles = (expanded: boolean): SxStyleProp => (

@@ -6,6 +6,7 @@ import { qt } from '../query';
 import { withFocusStyle } from '../with-focus-style';
 
 const styledListItem: SxStyleProp = {
+  position: 'relative',
   alignSelf: 'center',
   listStyle: 'none',
 };
@@ -77,8 +78,9 @@ export const NavigationLinkBase: React.FunctionComponent<NavLinkProps> = (
         aria-label={props.current ? 'current page' : undefined}
         href={props.href}
         title={props.title}>
-        {props.children}
+          {props.text}
       </a>
+        {props.children}
     </li>
   );
 };

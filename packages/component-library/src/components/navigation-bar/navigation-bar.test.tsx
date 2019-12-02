@@ -13,18 +13,10 @@ describe('<NavigationBar />', () => {
   it('should not have accessibility violations', async done => {
     const { container, unmount } = render(
       <NavBar itemCount={4}>
-        <NavLink href="#" current={true} isFocused={false}>
-          Link Text
-        </NavLink>
-        <NavLink href="#" current={true} isFocused={false}>
-          Link Text
-        </NavLink>
-        <NavLink href="#" current={true} isFocused={false}>
-          Link Text
-        </NavLink>
-        <NavLink href="#" current={true} isFocused={false}>
-          Link Text
-        </NavLink>
+        <NavLink href="#" current={true} isFocused={false} text="Link Text" />
+        <NavLink href="#" current={true} isFocused={false} text="Link Text" />
+        <NavLink href="#" current={true} isFocused={false} text="Link Text" />
+        <NavLink href="#" current={true} isFocused={false} text="Link Text" />
       </NavBar>
     );
 

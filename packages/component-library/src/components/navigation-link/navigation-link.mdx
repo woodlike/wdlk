@@ -9,27 +9,45 @@ import { NavLink, NavigationLinkBase } from './';
 # Navigation Link
 
 ## Props glossary
+
 A short list of the components properties
+
 <Props of={NavigationLinkBase} />
 
 ## Component
+
 <Playground>
-  <NavigationLinkBase href="#" current={false} isFocused={false} context="bar">
-    Link Text
-  </NavigationLinkBase>
+  <NavigationLinkBase
+    href="#"
+    current={false}
+    isFocused={false}
+    context="bar"
+    text="Link Text"
+  />
 </Playground>
 
 ## Current state
+
 <Playground>
-  <NavigationLinkBase href="#" current={true} isFocused={false} context="bar">
-    Link Text
-  </NavigationLinkBase>
+  <NavigationLinkBase
+    href="#"
+    current={true}
+    isFocused={false}
+    context="bar"
+    text="Link Text"
+  />
 </Playground>
 
 ### Focused state
+
 The focus state styling is provided by the _with-focus-style_ hoc
+
 <Playground>
-  <NavLink href="#" current={false} isFocused={true} context="panel">
-    Link Text
-  </NavLink>
+  <NavLink
+    href="#"
+    current={false}
+    isFocused={true}
+    context="panel"
+    text="Link Text"
+  />
 </Playground>

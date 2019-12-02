@@ -3,7 +3,8 @@ export interface NavLinkProps {
   readonly context: NavLinkContext;
   readonly href: string;
   readonly isFocused: boolean;
-  readonly children: string | React.FunctionComponent;
+  readonly text: string;
+  readonly children: string | React.ReactNode;
   readonly title?: string;
   readonly className?: string;
 }

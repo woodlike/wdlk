@@ -12,30 +12,17 @@ import { NavLink } from '../navigation-link';
 ## Props glossary
 
 A short list of the components properties
-
 <Props of={NavBar} />
 
 ## Component
 
 <Playground>
   <NavBar itemCount={6}>
-    <NavLink href="#" current={false} isFocused={true}>
-      Bikinis
-    </NavLink>
-    <NavLink href="#" current={true} isFocused={false}>
-      One Pieces
-    </NavLink>
-    <NavLink href="#" current={false} isFocused={false}>
-      Yoga & Surf
-    </NavLink>
-    <NavLink href="#" current={false} isFocused={false}>
-      Tanning
-    </NavLink>
-    <NavLink href="#" current={false} isFocused={false}>
-      Healing Flowers
-    </NavLink>
-    <NavLink href="#" current={false} isFocused={false}>
-      The Brand
-    </NavLink>
+    <NavLink href="#" current={false} isFocused={true} text="Bikinis" />
+    <NavLink href="#" current={true} isFocused={false} text="One Pieces" />
+    <NavLink href="#" current={false} isFocused={false} text="Yoga & Surf" />
+    <NavLink href="#" current={false} isFocused={false} text="Tanning" />
+    <NavLink href="#" current={false} isFocused={false} text="Healing Flowers" />
+    <NavLink href="#" current={false} isFocused={false} text="The Brand" />
   </NavBar>
 </Playground>
