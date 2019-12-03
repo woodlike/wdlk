@@ -11,6 +11,7 @@ const logoSize = {
 };
 
 const styledSVG: SxStyleProp = {
+  display: 'block',
   width: `${logoSize.width}px`,
   height: `${logoSize.height}px`,
   fill: 'currentColor',
