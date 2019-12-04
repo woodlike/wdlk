@@ -11,39 +11,24 @@ import { NavLink } from '../navigation-link';
 expect.extend(matchers);
 expect.extend(toHaveNoViolations);
 
+const renderLogo = () => (
+  <Logo title="demo title" desc="desc" isFocused={true} />
+);
+const renderNav = () => (
+  <NavBar itemCount={4}>
+    <NavLink href="#" current={true} isFocused={false} text="Link Text" />
+    <NavLink href="#" current={true} isFocused={false} text="Link Text" />
+    <NavLink href="#" current={true} isFocused={false} text="Link Text" />
+    <NavLink href="#" current={true} isFocused={false} text="Link Text" />
+  </NavBar>
+);
+const rederCart = () => <h1>Hi Mom</h1>
+
 describe('<Header />', () => {
   it('should not have accessibility violations', async done => {
     const { container, unmount } = render(
       <>
-      <Header areas={[
-        // tslint:disable: jsx-key
-        <Logo title="demo title" desc="desc" isFocused={true} />,
-        (
-          <NavBar itemCount={4}>
-            <NavLink
-              href="#"
-              current={true}
-              isFocused={false}
-              text="Link Text" />
-            <NavLink
-              href="#"
-              current={true}
-              isFocused={false}
-              text="Link Text" />
-            <NavLink
-              href="#"
-              current={true}
-              isFocused={false}
-              text="Link Text" />
-            <NavLink
-              href="#"
-              current={true}
-              isFocused={false}
-              text="Link Text" />
-          </NavBar>
-        ),
-        <h1>Hi Mom</h1>
-      ]} />
+        <Header areas={[renderLogo(), renderNav(), rederCart()]} />
       </>
     );
 
@@ -52,5 +37,5 @@ describe('<Header />', () => {
     cleanup();
     unmount();
     done();
-  })
-})
+  });
+});

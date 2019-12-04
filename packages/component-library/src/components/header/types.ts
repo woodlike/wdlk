@@ -1,3 +1,3 @@
 export interface HeaderProps {
-  areas: JSX.Element[];
+  areas: [JSX.Element, JSX.Element, JSX.Element];
 }

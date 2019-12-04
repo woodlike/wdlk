@@ -1,0 +1,25 @@
+---
+name: Mini Cart
+menu: Components
+---
+
+import { Playground, Props } from 'docz';
+
+import { MiniCart, CartLink } from './';
+
+# MiniCart
+
+## Props glossary
+
+A short list of the components properties
+
+<Props of={MiniCart} />
+
+## Full example
+
+<Playground>
+  <MiniCart>
+    <CartLink href="#" isFocused={true}>Log in</CartLink>
+    <CartLink href="#" isFocused={false}>Register</CartLink>
+  </MiniCart>
+</Playground>
