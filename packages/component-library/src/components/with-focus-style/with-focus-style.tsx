@@ -35,7 +35,10 @@ function themedWithFocusStyles<T>(
 export function withFocusStyle<T>(
   Component: React.FunctionComponent
 ): (props: MappedWithFocus<T>) => JSX.Element {
-  return (props: MappedWithFocus<T>): JSX.Element => {
-    return <Component sx={themedWithFocusStyles(props)} {...props}/>;
+  const WithFocusStyle = (props: MappedWithFocus<T>): JSX.Element => {
+    return <Component sx={themedWithFocusStyles(props)} {...props} />;
   };
+  WithFocusStyle.displayName = `WithFocusStyle(${Component.displayName ||
+    Component.name})`;
+  return WithFocusStyle;
 }
