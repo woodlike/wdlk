@@ -9,6 +9,8 @@ import { Header } from './';
 import { Logo } from '../logo';
 import { NavBar } from '../navigation-bar';
 import { NavLink } from '../navigation-link';
+import { Cart } from '../cart';
+import { MiniCart, MiniCartLink, CartLink } from '../mini-cart';
 
 # Header
 
@@ -68,7 +70,27 @@ A short list of the components properties
           context="bar"
         />
       </NavBar>,
-      <Logo title="demo title" desc="desc" isFocused={false} />,
+      <MiniCart>
+        <MiniCartLink>
+          <CartLink href="#" isFocused={false}>
+            Log in
+          </CartLink>
+        </MiniCartLink>
+        <MiniCartLink>
+          <CartLink href="#" isFocused={false}>
+            Register
+          </CartLink>
+        </MiniCartLink>
+        <MiniCartLink>
+          <Cart
+            href="#"
+            isFocused={false}
+            count={2}
+            isFilled={true}
+            title="Woodlike Ocean Shopping cart"
+          />
+        </MiniCartLink>
+      </MiniCart>,
     ]}
   />
 </Playground>
