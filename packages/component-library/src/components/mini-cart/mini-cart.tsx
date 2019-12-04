@@ -1,9 +1,26 @@
 /**@jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
 
-import { MiniCartProps, MiniCartLinkProps } from './';
+import { MiniCartProps, MiniCartLinkProps, MiniCartItemProps } from './';
 import { qt } from '../query';
 import { withFocusStyle } from '../with-focus-style';
+
+const styledMiniCart: SxStyleProp = {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  paddingLeft: 0,
+  listStyle: 'none',
+};
+
+const syledMiniCartLink: SxStyleProp = {
+  paddingLeft: `${qt('spaces')(2)}px`,
+  ':first-of-type': {
+    paddingRight: `${qt('spaces')(2)}px`,
+    paddingLeft: 0,
+    borderRight: `solid 1px ${qt('grays')(2)}`,
+  },
+};
 
 const styledCartLink: SxStyleProp = {
   fontFamily: `${qt('body')}`,
@@ -30,7 +47,15 @@ const Link: React.FunctionComponent<MiniCartLinkProps> = (
 export const MiniCart: React.FunctionComponent<MiniCartProps> = (
   props
 ): JSX.Element => {
-  return <div data-testid="mini-cart">{props.children}</div>;
+  return (
+    <ul sx={styledMiniCart} data-testid="mini-cart">
+      {props.children}
+    </ul>
+  );
 };
+
+export const MiniCartLink: React.FunctionComponent<MiniCartItemProps> = props => (
+  <li sx={syledMiniCartLink}>{props.children}</li>
+);
 
 export const CartLink = withFocusStyle<MiniCartLinkProps>(Link);
