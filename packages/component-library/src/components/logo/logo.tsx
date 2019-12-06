@@ -28,11 +28,13 @@ export const LogoBase: React.FunctionComponent<LogoProps> = (
 ): JSX.Element => {
 
   return (
+    <a
+      data-testid="logo-test-id"
+      href={props.href}>
     <svg
       sx={styledSVG}
       className={props.className}
       aria-labelledby="logo-title-aria-id"
-      data-testid="logo-test-id"
       viewBox="0 0 135 46"
       >
       <title id="logo-title-aria-id">{props.title}</title>
@@ -40,6 +42,7 @@ export const LogoBase: React.FunctionComponent<LogoProps> = (
       <LogoPath />
       <BrandPath />
     </svg>
+    </a>
   );
 };
 
