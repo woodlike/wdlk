@@ -1,6 +1,6 @@
 {
   "name": "@wdlk/component-library",
-  "version": "1.0.0",
+  "version": "1.2.1",
   "description": "WDLK UI component library 🎨",
   "main": "index.js",
   "repository": "git@github.com:woodlike/component-library.git",
@@ -8,6 +8,7 @@
   "license": "MIT",
   "scripts": {
     "build": "docz build",
+    "build:dist": "tsc --module commonjs --target es6 --outDir dist/",
     "dev": "docz dev",
     "serve": "docz build && docz serve",
     "test": "jest",

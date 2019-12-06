@@ -1,9 +1,9 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "build/lib",
-    "rootDirs": ["src"],
+    "outDir": "./dist",
+    "rootDirs": ["./src"],
   },
   "include": ["src/**/*", "../theme-query/src/tokens/"],
-  "exclude": ["node_modules", "build", "scripts", "./docz"]
+  "exclude": ["node_modules", "build", "scripts", "./docz", "./src/**/*.test.tsx"]
 }
