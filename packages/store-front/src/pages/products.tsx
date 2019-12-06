@@ -1,43 +1,17 @@
-import React from 'react';
-import { Link, graphql } from 'gatsby';
-import { Header } from '../components/header';
+import * as React from 'react';
+
+import * as Component from '../components';
+import {useNavigationData} from '../hooks';
 
 
-const ProductsPage = ({ data }) => (
-  <>
-    <Header />
-    <h1>Products</h1>
-    <ul>
-      {data.allShopifyProduct.edges.map(({ node }) => (
-        <li key={node.shopifyId}>
-          <h3>
-            <Link to={`/product/${node.handle}`}>{node.title}</Link>
-            {' - '}${node.priceRange.minVariantPrice.amount}
-          </h3>
-          <p>{node.description}</p>
-        </li>
-      ))}
-    </ul>
+const ProductsPage = () => {
+  const {items, url} = useNavigationData();
+  return (
+    <>
+    <Component.Navigation url={url} items={items} />
+    <h1>Hi Mom</h1>
   </>
-);
+  )
+};
+
 export default ProductsPage;
-// tslint:disable-next-line: no-void-expression
-export const query = graphql`
-  {
-    allShopifyProduct(sort: { fields: [title] }) {
-      edges {
-        node {
-          title
-          shopifyId
-          description
-          handle
-          priceRange {
-            minVariantPrice {
-              amount
-            }
-          }
-        }
-      }
-    }
-  }
-`;
