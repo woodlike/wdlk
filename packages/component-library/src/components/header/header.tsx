@@ -15,9 +15,19 @@ const styledHeader: SxStyleProp = {
   left: 0,
   width: '100%',
   padding: `${qt('spaces')(2)}px ${qt('spaces')(4)}px`,
-  borderBottom: `solid 1px ${qt('grays')(0)}`,
-  backgroundColor: `${qt('whites')(0)}`,
   zIndex: 1,
+  ':before': {
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100vw',
+    height: '100%',
+    borderBottom: `solid 1px ${qt('grays')(0)}`,
+    backgroundColor: `${qt('whites')(0)}`,
+    opacity: .94,
+    zIndex: -1
+  }
 };
 
 const styledHeaderItem: SxStyleProp = {

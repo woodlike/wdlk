@@ -5,7 +5,7 @@ import { qt } from '../query';
 
 
 const panelDimensions = {
-  navHeight: '40px',
+  navHeight: `60px`,
   minWidth: '440px'
 };
 
@@ -18,11 +18,21 @@ const styledPanelBase: SxStyleProp = {
   padding: `${qt('spaces')(3)}px`,
   pointerEvents: 'none',
   opacity: 0,
-  backgroundColor: qt('whites')(0),
   zIndex: 2,
   transitionProperty: 'opacity',
   transitionDuration: `${qt('duration')(1)}s`,
   transitionTimingFunction: 'ease-in-out',
+  ':before': {
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    backgroundColor: `${qt('whites')(0)}`,
+    opacity: .95,
+    zIndex: -1
+  }
 };
 
 const createExpandedStyles = (expanded: boolean): SxStyleProp => (
