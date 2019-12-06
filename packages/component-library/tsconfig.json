@@ -3,7 +3,8 @@
   "compilerOptions": {
     "outDir": "./dist",
     "rootDirs": ["./src"],
+    "allowJs": true
   },
-  "include": ["src/**/*", "../theme-query/src/tokens/"],
-  "exclude": ["node_modules", "build", "scripts", "./docz", "./src/**/*.test.tsx"]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "build", "scripts", "./docz", "./src/**/*.test.tsx", "./src/gatsby-theme-docz/**/*", "./src/gatsby-theme-query/**/*"]
 }
