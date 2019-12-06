@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link, graphql } from 'gatsby';
+import { Header } from '../components/header';
+
 
 const ProductsPage = ({ data }) => (
   <>
+    <Header />
     <h1>Products</h1>
     <ul>
       {data.allShopifyProduct.edges.map(({ node }) => (
