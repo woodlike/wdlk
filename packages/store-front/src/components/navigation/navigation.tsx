@@ -4,7 +4,7 @@ import {
   NavBar,
   NavPanel,
   NavLink,
-} from '@wdlk/component-library/src';
+} from '@wdlk/component-library';
 import { NavigationProps, NavDataProps, NavData } from './types';
 
 export const Navigation: React.FunctionComponent<NavigationProps> = (
