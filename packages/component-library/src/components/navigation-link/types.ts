@@ -1,4 +1,3 @@
-
 export interface NavLinkProps {
   readonly current: boolean;
   readonly context: NavLinkContext;
@@ -8,8 +7,8 @@ export interface NavLinkProps {
   readonly children: string | React.ReactNode;
   readonly title?: string;
   readonly className?: string;
-  onMouseEnter?(): React.MouseEventHandler<HTMLElement>;
-  onMouseLeave?(): React.MouseEventHandler<HTMLElement>;
+  readonly onMouseEnter?: React.MouseEventHandler<HTMLElement>;
+  readonly onMouseLeave?: React.MouseEventHandler<HTMLElement>;
 }
 
 export type NavLinkContext = 'bar' | 'panel';

@@ -16,7 +16,6 @@ const styledPanelBase: SxStyleProp = {
   width: '100%',
   minWidth: panelDimensions.minWidth,
   padding: `${qt('spaces')(3)}px`,
-  pointerEvents: 'none',
   opacity: 0,
   zIndex: 2,
   transitionProperty: 'opacity',

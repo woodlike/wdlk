@@ -70,7 +70,9 @@ export const NavigationLinkBase: React.FunctionComponent<NavLinkProps> = (
   return (
     <li
       sx={createStyledLinkItem(props.context)}
-      data-testid="navigation-link-test-id">
+      data-testid="navigation-link-test-id"
+      onMouseEnter={props.onMouseEnter}
+      onMouseLeave={props.onMouseLeave}>
       <a
         sx={themedNavigationLink}
         className={props.className}
