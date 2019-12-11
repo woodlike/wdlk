@@ -1,6 +1,7 @@
 export interface NavData {
   readonly handle: string;
   readonly title: string;
+  readonly url: string;
 }
 
 export interface NavigationProps {

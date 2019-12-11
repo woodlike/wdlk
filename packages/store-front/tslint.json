@@ -3,6 +3,7 @@
   "rules": {
     "jsx-no-multiline-js": false,
     "jsx-alignment": false,
+    "jsx-no-lambda": false,
     "no-void-expression": false
   }
 }
