@@ -41,7 +41,9 @@ export function create(config: ThemeQueryConfig): ThemeQuery {
       queryResult.length > 0 &&
       styles === 'object'
     ) {
-      return (idx: number) => queryResult[idx];
+      return idx => {
+        return Number.isInteger(idx as number) ? queryResult[idx] : queryResult;
+      };
     }
     return styles === 'object' ? queryResult : `${queryResult}`;
   };
