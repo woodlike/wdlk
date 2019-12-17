@@ -104,6 +104,13 @@ describe('StyledFactory', () => {
 
       expect(qt('heading.secondary')).toBe(headingSecondary);
     });
+
+    it('should return the complete array from the property value', () => {
+      const qt = ThemeQuery.create({ theme, styles: 'object' });
+
+      expect(qt('corals')('all')).toStrictEqual(theme.colors.corals);
+      expect(qt('borderWidths')('all')).toStrictEqual(theme.borderWidths);
+    });
   });
 
   describe('Component Styling', () => {
