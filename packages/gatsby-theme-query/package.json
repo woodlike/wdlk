@@ -1,11 +1,11 @@
 {
   "name": "gatsby-theme-query",
-  "version": "1.8.1",
+  "version": "1.8.5",
   "description": "A gatsby theme to query Styled System themes",
   "repository": "git@github.com:woodlike/component-library.git",
   "author": "Mauricio Palma <mauricio.palma@woodlikeocean.com>",
   "license": "MIT",
-  "main": "./lib/index.js",
+  "main": "./index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
     "build": "tsc --module commonjs --target es6 --outDir lib/",
