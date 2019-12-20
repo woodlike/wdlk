@@ -7351,6 +7351,13 @@ gatsby-theme-docz@^2.2.0-alpha.0:
     typography-theme-moraga "^0.16.19"
     yargs "^13.3.0"
 
+gatsby-theme-query@1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/gatsby-theme-query/-/gatsby-theme-query-1.7.0.tgz#abadae36c809fd31429ed3f747bc88c5dfec9733"
+  integrity sha512-ez8POnIuZ0cVTzgrpwdpJGhdhL7zvPDhP/tzwiMUZBBDMnbrLpkmu+iBzTaVyyG4M6hj/H1miI1cppSSek0PTQ==
+  dependencies:
+    theme-query "1.5.0"
+
 gatsby-transformer-json@^2.2.20:
   version "2.2.20"
   resolved "https://registry.yarnpkg.com/gatsby-transformer-json/-/gatsby-transformer-json-2.2.20.tgz#759e31b0ebbfdfa2cf3a363490ffb1ec7e2a2d72"
