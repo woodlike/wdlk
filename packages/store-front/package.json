@@ -11,6 +11,7 @@
     "start": "gatsby develop",
     "dev": "gatsby develop",
     "build": "gatsby build",
+    "serve": "gatsby serve",
     "test": "jest",
     "test:coverage": "npm test -- --coverage",
     "type-check": "tsc --noEmit",
@@ -33,7 +34,7 @@
   },
   "dependencies": {
     "@emotion/core": "^10.0.22",
-    "@wdlk/component-library": "1.2.4",
+    "@wdlk/component-library": "1.4.4",
     "dotenv": "^8.2.0",
     "gatsby": "^2.18.3",
     "gatsby-plugin-typescript": "^2.1.20",
