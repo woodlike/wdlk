@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
 import { NavBarProps } from '.';
-import { qt } from '../query';
+import { qt } from 'gatsby-theme-query';
 
 const styledNavBar: SxStyleProp = {
   display: 'grid',

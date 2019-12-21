@@ -4,7 +4,7 @@ import { render, cleanup } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
 import { Logo } from '../';
-import { qt } from '../query';
+import { qt } from 'gatsby-theme-query';
 
 expect.extend(toHaveNoViolations);
 describe('Logo', () => {

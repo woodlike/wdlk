@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
 import { NavPanelProps } from '.';
-import { qt } from '../query';
+import { qt } from 'gatsby-theme-query';
 
 
 const panelDimensions = {

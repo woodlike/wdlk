@@ -7,5 +7,5 @@
     "allowJs": true,
   },
   "include": ["src/**/*"],
-  "exclude": ["./node_modules", "./docz/**/*", "./src/**/*.test.tsx", "./src/gatsby-theme-docz/**/*", "./src/gatsby-theme-query/**/*"]
+  "exclude": ["./node_modules", "./docz/**/*", "./src/**/*.test.tsx", "./src/gatsby-theme-docz/**/*"]
 }

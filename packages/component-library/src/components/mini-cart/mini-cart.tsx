@@ -2,7 +2,7 @@
 import { jsx, SxStyleProp } from 'theme-ui';
 
 import { MiniCartProps, MiniCartLinkProps, MiniCartItemProps } from './';
-import { qt } from '../query';
+import { qt } from 'gatsby-theme-query';
 import { withFocusStyle } from '../with-focus-style';
 
 const styledMiniCart: SxStyleProp = {

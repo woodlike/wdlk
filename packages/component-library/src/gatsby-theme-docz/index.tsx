@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Styled, ThemeProvider } from 'theme-ui';
 import { theme as doczTheme, useConfig, ComponentsProvider } from 'docz';
-import theme from 'gatsby-theme-query/src/theme';
+import { theme } from 'gatsby-theme-query';
 // @ts-ignore
 import defaultTheme from '~theme';
 // @ts-ignore

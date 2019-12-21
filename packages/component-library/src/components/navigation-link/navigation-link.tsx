@@ -2,7 +2,7 @@
 import { jsx, SxStyleProp } from 'theme-ui';
 
 import { NavLinkProps, NavLinkContext } from '.';
-import { qt } from '../query';
+import { qt } from 'gatsby-theme-query';
 import { withFocusStyle } from '../with-focus-style';
 
 const styledListItem: SxStyleProp = {

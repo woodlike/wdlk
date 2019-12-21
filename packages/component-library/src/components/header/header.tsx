@@ -2,7 +2,7 @@
 import { jsx, SxStyleProp } from 'theme-ui';
 
 import { HeaderProps } from './types';
-import { qt } from '../query';
+import { qt } from 'gatsby-theme-query';
 
 const styledHeader: SxStyleProp = {
   display: 'grid',

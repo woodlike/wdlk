@@ -3,7 +3,7 @@ import { render, cleanup } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { matchers } from 'jest-emotion';
 
-import { qt } from '../query';
+import { qt } from 'gatsby-theme-query';
 import { NavLink } from './navigation-link';
 
 expect.extend(matchers);

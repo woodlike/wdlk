@@ -2,7 +2,7 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { matchers } from 'jest-emotion';
 
-import { qt } from '../';
+import { qt } from 'gatsby-theme-query';
 import { withFocusStyle } from './with-focus-style';
 
 interface TestCompProps {
