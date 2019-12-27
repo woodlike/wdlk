@@ -1,0 +1,135 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useNavigationData() should return an object containing the navigation data 1`] = `
+Object {
+  "items": Array [
+    Object {
+      "handle": "collections/bikinis",
+      "menuItems": Array [
+        Object {
+          "handle": "collections/bikini-tops",
+          "title": "Bikini Tops",
+        },
+        Object {
+          "handle": "collections/bikini-bottoms",
+          "title": "Bikini Bottoms",
+        },
+        Object {
+          "handle": "collections/bikini-sale",
+          "title": "Bikini-Sale",
+        },
+        Object {
+          "handle": "products/woodlike-ocean-gift-card-50-00-postcard",
+          "title": "Gift card 50",
+        },
+        Object {
+          "handle": "products/woodlike-ocean-gift-card-100-00-postcard",
+          "title": "Gift card 100",
+        },
+        Object {
+          "handle": "products/woodlike-ocean-gift-card-150-00-print-version",
+          "title": "Gift card 150",
+        },
+      ],
+      "title": "Bikinis",
+    },
+    Object {
+      "handle": "collections/one-pieces",
+      "menuItems": Array [
+        Object {
+          "handle": "collections/swimsuits-sale",
+          "title": "Swimsuits Sale",
+        },
+        Object {
+          "handle": "products/woodlike-ocean-gift-card-50-00-postcard",
+          "title": "Gift card 50",
+        },
+        Object {
+          "handle": "products/woodlike-ocean-gift-card-100-00-postcard",
+          "title": "Gift card 100",
+        },
+        Object {
+          "handle": "products/woodlike-ocean-gift-card-150-00-print-version",
+          "title": "Gift card 150",
+        },
+      ],
+      "title": "One Pieces",
+    },
+    Object {
+      "handle": "collections/movement",
+      "menuItems": Array [
+        Object {
+          "handle": "collections/movement/tops",
+          "title": "Tops",
+        },
+        Object {
+          "handle": "collections/movement/bottoms",
+          "title": "Bottoms",
+        },
+        Object {
+          "handle": "collections/movement/one-piece",
+          "title": "One Pieces",
+        },
+        Object {
+          "handle": "products/woodlike-ocean-gift-card-50-00-postcard",
+          "title": "Gift card 50",
+        },
+        Object {
+          "handle": "products/woodlike-ocean-gift-card-100-00-postcard",
+          "title": "Gift card 100",
+        },
+        Object {
+          "handle": "products/woodlike-ocean-gift-card-150-00-print-version",
+          "title": "Gift card 150",
+        },
+      ],
+      "title": "Movement",
+    },
+    Object {
+      "handle": "collections/shape-effect",
+      "menuItems": Array [
+        Object {
+          "handle": "collections/shape-effect/tops",
+          "title": "Tops",
+        },
+        Object {
+          "handle": "collections/shape-effect/bottoms",
+          "title": "Bottoms",
+        },
+        Object {
+          "handle": "collections/shape-effect/one-piece",
+          "title": "One Pieces",
+        },
+        Object {
+          "handle": "products/woodlike-ocean-gift-card-50-00-postcard",
+          "title": "Gift card 50",
+        },
+        Object {
+          "handle": "products/woodlike-ocean-gift-card-100-00-postcard",
+          "title": "Gift card 100",
+        },
+        Object {
+          "handle": "products/woodlike-ocean-gift-card-150-00-print-version",
+          "title": "Gift card 150",
+        },
+      ],
+      "title": "Shape Effect",
+    },
+    Object {
+      "handle": "pages/woodlike-ocean-the-brand",
+      "menuItems": Array [
+        Object {
+          "handle": "pages/sustainability",
+          "title": "Sustainability",
+        },
+        Object {
+          "handle": "pages/about-us",
+          "title": "About Us",
+        },
+      ],
+      "title": "The Brand",
+    },
+  ],
+  "url": "https://woodlikeocean.com",
+}
+`;
