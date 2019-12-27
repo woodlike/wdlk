@@ -4,6 +4,7 @@ export const theme = {
   ...ThemeQuery,
   borderWidths: [1, 2, 3, 4],
   letterSpacings: [0.5, 1, 1.5],
+  breakpoints: [375, 480, 769, 1024, 1440],
   colors: {
     ...ThemeQuery.colors,
     exotic: 'papayawhip'
