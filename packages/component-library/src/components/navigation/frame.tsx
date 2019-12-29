@@ -1,8 +1,7 @@
 /**@jsx jsx */
 import { jsx } from 'theme-ui';
-import { NavigationProps } from './types';
 
-export const Navigation: React.FunctionComponent<NavigationProps> = props => {
+export const Frame: React.FC = props => {
   return (
     <nav
       role="navigation"

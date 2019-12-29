@@ -4,8 +4,7 @@ menu: Components
 ---
 
 import { Playground, Props } from 'docz';
-import { NavBar } from './';
-import { NavLink } from '../navigation-link';
+import * as Nav from '.'
 
 # Navigation Bar
 
@@ -13,53 +12,53 @@ import { NavLink } from '../navigation-link';
 
 A short list of the components properties
 
-<Props of={NavBar} />
+<Props of={Nav.Bar} />
 
 ## Component
 
 <Playground>
-  <NavBar itemCount={6}>
-    <NavLink
+  <Nav.Bar itemCount={6}>
+    <Nav.Link
       href="#"
       current={false}
       isFocused={true}
       text="Bikinis"
       context="bar"
     />
-    <NavLink
+    <Nav.Link
       href="#"
       current={true}
       isFocused={false}
       text="One Pieces"
       context="bar"
     />
-    <NavLink
+    <Nav.Link
       href="#"
       current={false}
       isFocused={false}
       text="Yoga & Surf"
       context="bar"
     />
-    <NavLink
+    <Nav.Link
       href="#"
       current={false}
       isFocused={false}
       text="Tanning"
       context="bar"
     />
-    <NavLink
+    <Nav.Link
       href="#"
       current={false}
       isFocused={false}
       text="Sustainability"
       context="bar"
     />
-    <NavLink
+    <Nav.Link
       href="#"
       current={false}
       isFocused={false}
       text="The Brand"
       context="bar"
     />
-  </NavBar>
+  </Nav.Bar>
 </Playground>

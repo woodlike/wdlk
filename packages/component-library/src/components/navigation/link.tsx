@@ -2,7 +2,7 @@
 import { jsx, SxStyleProp } from 'theme-ui';
 
 import { NavLinkProps, NavLinkContext } from '.';
-import { qt } from 'gatsby-theme-query';
+import { qt } from '../../query';
 import { withFocusStyle } from '../with-focus-style';
 
 const styledListItem: SxStyleProp = {
@@ -87,5 +87,4 @@ export const NavigationLinkBase: React.FunctionComponent<NavLinkProps> = (
   );
 };
 
-export const NavLink = withFocusStyle<NavLinkProps>(NavigationLinkBase);
-export default NavLink;
+export const Link = withFocusStyle<NavLinkProps>(NavigationLinkBase);

@@ -5,9 +5,8 @@ menu: Components
 
 import { Box } from '@theme-ui/components';
 import { Playground, Props } from 'docz';
-import { NavPanel } from '.';
+import * as Nav from '.';
 import { DemoBox } from './demo-box';
-import { NavLink } from '../navigation-link';
 
 # Navigation Panel
 
@@ -19,63 +18,63 @@ A short list of the components properties
 
 <Playground>
   <DemoBox>
-    <NavPanel isExpanded={true}>
-      <NavLink
+    <Nav.Panel isExpanded={true}>
+      <Nav.Link
         href="#"
         current={false}
         isFocused={true}
         context="panel"
         text="Bikinis"
       />
-      <NavLink
+      <Nav.Link
         href="#"
         current={true}
         isFocused={false}
         context="panel"
         text="One Pieces"
       />
-      <NavLink
+      <Nav.Link
         href="#"
         current={false}
         isFocused={false}
         context="panel"
         text="Yoga & Surf"
       />
-      <NavLink
+      <Nav.Link
         href="#"
         current={false}
         isFocused={false}
         context="panel"
         text="Tanning"
       />
-      <NavLink
+      <Nav.Link
         href="#"
         current={false}
         isFocused={false}
         context="panel"
         text="Healing Flowers"
       />
-      <NavLink
+      <Nav.Link
         href="#"
         current={false}
         isFocused={false}
         context="panel"
         text="The Brand"
       />
-      <NavLink
+      <Nav.Link
         href="#"
         current={false}
         isFocused={false}
         context="panel"
         text="Sustainability"
       />
-      <NavLink
+      <Nav.Link
         href="#"
         current={false}
         isFocused={false}
         context="panel"
         text="Fabric"
       />
-    </NavPanel>
+    </Nav.Panel>
   </DemoBox>
 </Playground>

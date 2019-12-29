@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
 import { NavPanelProps } from '.';
-import { qt } from 'gatsby-theme-query';
+import { qt } from '../../query';
 
 
 const panelDimensions = {
@@ -58,7 +58,7 @@ const styledPanelList: SxStyleProp = {
   padding: `${qt('spaces')(4)}px ${qt('spaces')(3)}px`,
 };
 
-export const NavPanel: React.FunctionComponent<NavPanelProps> = props => (
+export const Panel: React.FunctionComponent<NavPanelProps> = props => (
   <div
     sx={createStyledNavPanel(props.isExpanded)}
     role="list"
@@ -68,3 +68,5 @@ export const NavPanel: React.FunctionComponent<NavPanelProps> = props => (
     <ul sx={styledPanelList}>{props.children}</ul>
   </div>
 );
+
+Panel.displayName = 'NavPanel';

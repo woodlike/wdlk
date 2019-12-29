@@ -3,8 +3,8 @@ import { render, cleanup } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { matchers } from 'jest-emotion';
 
-import { qt } from 'gatsby-theme-query';
-import { NavLink } from './navigation-link';
+import * as Nav from '..';
+import { qt } from '../../../query';
 
 expect.extend(matchers);
 expect.extend(toHaveNoViolations);
@@ -14,7 +14,7 @@ describe('<NavigationLink />', () => {
     const title = 'only necessary if you can not write descriptive link texts';
     const { container, unmount } = render(
       <ul>
-        <NavLink
+        <Nav.Link
           href="#"
           current={true}
           isFocused={false}
@@ -35,7 +35,7 @@ describe('<NavigationLink />', () => {
   it('should have all the relevant a11y attributes', () => {
     const title = 'only necessary if you can not write descriptive link texts';
     const { getByTestId } = render(
-      <NavLink
+      <Nav.Link
         href="#"
         current={true}
         isFocused={false}
@@ -55,7 +55,7 @@ describe('<NavigationLink />', () => {
 
   it('should not have the a11y attributes', () => {
     const { getByTestId } = render(
-      <NavLink
+      <Nav.Link
         href="#"
         current={false}
         isFocused={false}
@@ -74,7 +74,7 @@ describe('<NavigationLink />', () => {
 
   it('should have styling for a current state link', () => {
     const { getByTestId } = render(
-      <NavLink
+      <Nav.Link
         href="#"
         current={true}
         isFocused={false}
@@ -99,7 +99,7 @@ describe('<NavigationLink />', () => {
 
   it('should recognize styling for a bar context', () => {
     const { getByTestId } = render(
-      <NavLink
+      <Nav.Link
         href="#"
         current={true}
         isFocused={false}
@@ -117,7 +117,7 @@ describe('<NavigationLink />', () => {
 
   it('should recognize styling for a panel context', () => {
     const { getByTestId } = render(
-      <NavLink
+      <Nav.Link
         href="#"
         current={true}
         isFocused={false}

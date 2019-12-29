@@ -3,11 +3,7 @@ import { render, cleanup } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { matchers } from 'jest-emotion';
 
-import { Navigation } from './';
-
-import { NavBar } from '../navigation-bar';
-import { NavLink } from '../navigation-link';
-import { NavPanel } from '../navigation-panel';
+import * as Nav from '../';
 
 expect.extend(matchers);
 expect.extend(toHaveNoViolations);
@@ -15,96 +11,96 @@ expect.extend(toHaveNoViolations);
 describe('<Navigation />', () => {
   it('should not have accessibility violations', async done => {
     const { container, unmount } = render(
-      <Navigation>
-        <NavBar itemCount={6}>
-          <NavLink
+      <Nav.Frame>
+        <Nav.Bar itemCount={6}>
+          <Nav.Link
             href="#"
             current={true}
             isFocused={false}
             context="bar"
             text="Bikinis"
           />
-          <NavLink
+          <Nav.Link
             href="#"
             current={false}
             isFocused={true}
             context="bar"
             text="One Pieces">
-            <NavPanel isExpanded={true}>
-              <NavLink
+            <Nav.Panel isExpanded={true}>
+              <Nav.Link
                 href="#"
                 current={false}
                 isFocused={true}
                 context="panel"
                 text="One Pieces"
               />
-              <NavLink
+              <Nav.Link
                 href="#"
                 current={true}
                 isFocused={false}
                 context="panel"
                 text="Surf & Yoga"
               />
-              <NavLink
+              <Nav.Link
                 href="#"
                 current={false}
                 isFocused={false}
                 context="panel"
                 text="Mini Shape"
               />
-              <NavLink
+              <Nav.Link
                 href="#"
                 current={false}
                 isFocused={false}
                 context="panel"
                 text="Puch"
               />
-              <NavLink
+              <Nav.Link
                 href="#"
                 current={false}
                 isFocused={false}
                 context="panel"
                 text="Sale"
               />
-              <NavLink
+              <Nav.Link
                 href="#"
                 current={false}
                 isFocused={false}
                 context="panel"
                 text="Gift Card"
               />
-            </NavPanel>
-          </NavLink>
-          <NavLink
+            </Nav.Panel>
+          </Nav.Link>
+          <Nav.Link
             href="#"
             current={false}
             isFocused={false}
             context="bar"
             text="Surf & Yoga"
           />
-          <NavLink
+          <Nav.Link
             href="#"
             current={false}
             isFocused={false}
             context="bar"
             text="Tanning"
           />
-          <NavLink
+          <Nav.Link
             href="#"
             current={false}
             isFocused={false}
             context="bar"
             text="Sustainability"
           />
-          <NavLink
+          <Nav.Link
             href="#"
             current={false}
             isFocused={false}
             context="bar"
             text="The Brand"
           />
-        </NavBar>
-      </Navigation>
+        </Nav.Bar>
+      </Nav.Frame>
     );
 
     const a11yResults = await axe(container);

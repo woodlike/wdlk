@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
-import { NavBarProps } from '.';
-import { qt } from 'gatsby-theme-query';
+import { NavBarProps } from '..';
+import { qt } from '../../query';
 
 const styledNavBar: SxStyleProp = {
   display: 'grid',
@@ -26,7 +26,7 @@ const themedNavBar = (n: number): SxStyleProp => {
   };
 };
 
-export const NavBar: React.FunctionComponent<NavBarProps> = props => (
+export const Bar: React.FunctionComponent<NavBarProps> = props => (
   <ul sx={themedNavBar(props.itemCount)} data-testid="navigation-bar-test-id">
     {props.children}
   </ul>

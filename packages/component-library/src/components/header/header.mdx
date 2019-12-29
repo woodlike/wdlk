@@ -7,10 +7,7 @@ import { Playground, Props } from 'docz';
 
 import { Header } from './';
 import { Logo } from '../logo';
-import { Navigation } from '../navigation';
-import { NavBar } from '../navigation-bar';
-import { NavLink } from '../navigation-link';
-import { NavPanel } from '../navigation-panel'
+import * as Nav from '../navigation';
 import { Cart } from '../cart';
 import { MiniCart, MiniCartLink, CartLink } from '../mini-cart';
 
@@ -22,96 +19,96 @@ import { MiniCart, MiniCartLink, CartLink } from '../mini-cart';
   <Header
     areas={[
       <Logo title="demo title" desc="desc" isFocused={true} />,
-      <Navigation>
-        <NavBar itemCount={6}>
-          <NavLink
+      <Nav.Frame>
+        <Nav.Bar itemCount={6}>
+          <Nav.Link
             href="#"
             current={false}
             isFocused={false}
             context="bar"
             text="Bikinis"
           />
-          <NavLink
+          <Nav.Link
             href="#"
             current={false}
             isFocused={false}
             context="bar"
             text="One Pieces">
-            <NavPanel isExpanded={true}>
-              <NavLink
+            <Nav.Panel isExpanded={true}>
+              <Nav.Link
                 href="#"
                 current={false}
                 isFocused={true}
                 context="panel"
                 text="One Pieces"
               />
-              <NavLink
+              <Nav.Link
                 href="#"
                 current={true}
                 isFocused={false}
                 context="panel"
                 text="Surf & Yoga"
               />
-              <NavLink
+              <Nav.Link
                 href="#"
                 current={false}
                 isFocused={false}
                 context="panel"
                 text="Mini Shape"
               />
-              <NavLink
+              <Nav.Link
                 href="#"
                 current={false}
                 isFocused={false}
                 context="panel"
                 text="Puch"
               />
-              <NavLink
+              <Nav.Link
                 href="#"
                 current={false}
                 isFocused={false}
                 context="panel"
                 text="Sale"
               />
-              <NavLink
+              <Nav.Link
                 href="#"
                 current={false}
                 isFocused={false}
                 context="panel"
                 text="Gift Card"
               />
-            </NavPanel>
-          </NavLink>
-          <NavLink
+            </Nav.Panel>
+          </Nav.Link>
+          <Nav.Link
             href="#"
             current={true}
             isFocused={false}
             context="bar"
             text="Surf & Yoga"
           />
-          <NavLink
+          <Nav.Link
             href="#"
             current={false}
             isFocused={false}
             context="bar"
             text="Tanning"
           />
-          <NavLink
+          <Nav.Link
             href="#"
             current={false}
             isFocused={false}
             context="bar"
             text="Sustainability"
           />
-          <NavLink
+          <Nav.Link
             href="#"
             current={false}
             isFocused={false}
             context="bar"
             text="The Brand"
           />
-        </NavBar>
-      </Navigation>,
+        </Nav.Bar>
+      </Nav.Frame>,
       <MiniCart>
         <MiniCartLink>
           <CartLink href="#" isFocused={false}>

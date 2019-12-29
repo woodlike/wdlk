@@ -4,7 +4,8 @@ menu: Components
 ---
 
 import { Playground, Props } from 'docz';
-import { NavLink, NavigationLinkBase } from './';
+import * as Nav from '.';
+import { NavigationLinkBase } from './';
 
 # Navigation Link
 
@@ -43,7 +44,7 @@ A short list of the components properties
 The focus state styling is provided by the _with-focus-style_ hoc
 
 <Playground>
-  <NavLink
+  <Nav.Link
     href="#"
     current={false}
     isFocused={true}
