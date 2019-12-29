@@ -6,6 +6,10 @@ export interface NavPanelProps {
   isExpanded: boolean;
 }
 
+export interface NavLayerProps {
+  isExpanded: boolean;
+}
+
 export interface NavLinkProps {
   readonly current: boolean;
   readonly context: NavLinkContext;

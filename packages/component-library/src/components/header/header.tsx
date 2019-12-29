@@ -4,6 +4,7 @@ import { jsx, SxStyleProp } from 'theme-ui';
 import { HeaderProps } from './types';
 import { qt } from '../../query';
 
+
 const styledHeader: SxStyleProp = {
   display: 'grid',
   gridTemplateColumns: '1fr 5fr 1fr',

@@ -3,7 +3,6 @@ import { jsx, SxStyleProp } from 'theme-ui';
 import { NavPanelProps } from '.';
 import { qt } from '../../query';
 
-
 const panelDimensions = {
   navHeight: `60px`,
   minWidth: '440px'
