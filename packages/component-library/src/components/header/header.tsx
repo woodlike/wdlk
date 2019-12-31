@@ -15,7 +15,8 @@ const styledHeader: SxStyleProp = {
   top: 0,
   left: 0,
   width: '100%',
-  padding: `${qt('spaces')(2)}px ${qt('spaces')(4)}px`,
+  height: qt('header')('all'),
+  padding: `0 ${qt('spaces')(4)}px`,
   zIndex: 1,
   ':before': {
     content: '""',

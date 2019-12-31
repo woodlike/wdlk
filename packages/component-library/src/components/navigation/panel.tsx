@@ -1,16 +1,22 @@
 /** @jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
+
 import { NavPanelProps } from '.';
+import { calcYPosition } from './utils';
 import { qt } from '../../query';
 
+const headerScales = qt('header')('all') as unknown as string[];
+const fontSizeS = qt('fontSizes')(2) as unknown as number;
+const fontSizeM = qt('fontSizes')(3) as unknown as number;
+
 const panelDimensions = {
-  navHeight: `60px`,
+  y: calcYPosition(headerScales, fontSizeS, fontSizeM),
   minWidth: '440px'
 };
 
 const styledPanelBase: SxStyleProp = {
   position: 'absolute',
-  top: panelDimensions.navHeight,
+  top: panelDimensions.y,
   left: `-${qt('spaces')(5)}px`,
   width: '100%',
   minWidth: panelDimensions.minWidth,
