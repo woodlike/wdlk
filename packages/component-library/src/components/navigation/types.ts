@@ -24,5 +24,9 @@ export interface NavLinkProps {
   readonly onMouseLeave?: React.MouseEventHandler<HTMLElement>;
 }
 
+export interface BurgerProps {
+  isExpanded: boolean;
+}
+
 export type NavLinkContext = 'bar' | 'panel';
 export type NavLinkSize = 'S' | 'M' | 'L';
