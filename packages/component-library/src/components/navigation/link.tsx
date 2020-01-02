@@ -45,23 +45,46 @@ const createStylesLinkItem = (ctx: NavLinkContext): SxStyleProp => ({
   ...{
     ...stylesListItem,
     ...handleContext(ctx),
-  }
+  },
 });
 
 const createLinkSize = (size: NavLinkSize | undefined): SxStyleProp => {
-  switch(size) {
+  switch (size) {
+    case 'S':
+      return {
+        marginBottom: 0,
+        fontSize: `${qt('fontSizes')(0)}px`
+      };
     case 'M':
-      return {fontSize: `${qt('fontSizes')(4)}px`};
+      return {
+        marginBottom: `${qt('spaces')(1)}px`,
+        fontSize: `${qt('fontSizes')(4)}px`,
+        textTransform: 'uppercase',
+      };
     case 'L':
-      return {fontSize: `${qt('fontSizes')(5)}px`};
+      return {
+        marginBottom: `${qt('spaces')(1)}px`,
+        fontSize: `${qt('fontSizes')(5)}px`,
+        textTransform: 'uppercase',
+      };
     default:
-      return {fontSize: [`${qt('fontSizes')(3)}px`, `${qt('fontSizes')(2)}px`]};
+      return {
+        fontSize: [`${qt('fontSizes')(3)}px`, `${qt('fontSizes')(2)}px`],
+      };
   }
 };
 
-const createStylesCurrentLink = (current: boolean, isInverted: boolean = false): SxStyleProp => ({
+const createStylesCurrentLink = (
+  current: boolean,
+  isInverted: boolean = false
+): SxStyleProp => ({
   ...{
-    ...(isInverted ? {color: qt('whites')(2)}: {color: qt('grays')(3)}),
+    ...(isInverted
+      ? {
+          marginBottom: `${qt('spaces')(1)}px`,
+          color: qt('whites')(0),
+        }
+      : { color: qt('grays')(3) }),
     '::after': {
       ...stylesCurrentLink,
       ...(current ? { transform: 'scaleX(1)' } : { transform: 'scaleX(0)' }),

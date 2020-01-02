@@ -25,4 +25,4 @@ export interface NavLinkProps {
 }
 
 export type NavLinkContext = 'bar' | 'panel';
-export type NavLinkSize = 'M' | 'L';
+export type NavLinkSize = 'S' | 'M' | 'L';

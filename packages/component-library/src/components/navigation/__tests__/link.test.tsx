@@ -130,6 +130,24 @@ describe('<NavigationLink />', () => {
     cleanup();
   });
 
+  it('should return a size S link', () => {
+    const { getByTestId } = render(
+      <Nav.Link
+        href="#"
+        current={true}
+        isFocused={false}
+        context="panel"
+        size="S"
+        text="Link Text"
+      />
+    );
+    const li = getByTestId('navigation-link-test-id');
+    const a = li.querySelector('a');
+    expect(a).toHaveStyleRule('font-size', `${qt('fontSizes')(0)}px`);
+    expect(a).toHaveStyleRule('margin-bottom', '0');
+    cleanup();
+  });
+
   it('should return a size M link', () => {
     const { getByTestId } = render(
       <Nav.Link
@@ -144,6 +162,8 @@ describe('<NavigationLink />', () => {
     const li = getByTestId('navigation-link-test-id');
     const a = li.querySelector('a');
     expect(a).toHaveStyleRule('font-size', `${qt('fontSizes')(4)}px`);
+    expect(a).toHaveStyleRule('text-transform', 'uppercase');
+    expect(a).toHaveStyleRule('margin-bottom', `${qt('spaces')(1)}px`);
     cleanup();
   });
 
@@ -161,6 +181,8 @@ describe('<NavigationLink />', () => {
     const li = getByTestId('navigation-link-test-id');
     const a = li.querySelector('a');
     expect(a).toHaveStyleRule('font-size', `${qt('fontSizes')(5)}px`);
+    expect(a).toHaveStyleRule('text-transform', 'uppercase');
+    expect(a).toHaveStyleRule('margin-bottom', `${qt('spaces')(1)}px`);
     cleanup();
   });
 });
