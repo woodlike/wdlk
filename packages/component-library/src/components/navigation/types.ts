@@ -16,11 +16,13 @@ export interface NavLinkProps {
   readonly href: string;
   readonly isFocused: boolean;
   readonly text: string;
-  readonly children: string | React.ReactNode;
+  readonly isInverted?: boolean;
   readonly title?: string;
+  readonly size?: NavLinkSize;
   readonly className?: string;
   readonly onMouseEnter?: React.MouseEventHandler<HTMLElement>;
   readonly onMouseLeave?: React.MouseEventHandler<HTMLElement>;
 }
 
 export type NavLinkContext = 'bar' | 'panel';
+export type NavLinkSize = 'M' | 'L';

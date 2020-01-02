@@ -1,10 +1,13 @@
 /**@jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
 import { NavLayerProps } from '.';
+import { headerYPosition } from './utils';
 import { qt } from '../../query';
 
 const stylesLayer: SxStyleProp = {
   position: 'absolute',
+  top: headerYPosition,
+  left: 0,
   padding: `${qt('spaces')(5)}px ${qt('spaces')(4)}px`,
   backgroundColor: qt('corals')(0),
 }

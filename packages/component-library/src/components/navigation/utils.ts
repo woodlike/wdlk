@@ -1,3 +1,5 @@
+import { qt } from '../../query';
+
 export function calcYPosition(
   scales: string[],
   fontS: number,
@@ -14,4 +16,9 @@ export function calcYPosition(
       ? `${val - fontS * 1.5 - 2}px`
       : `${val - fontM * 1.5 + 2}px`
   );
-}
+};
+
+const headerScales = qt('header')('all') as unknown as string[];
+const fontSizeS = qt('fontSizes')(2) as unknown as number;
+const fontSizeM = qt('fontSizes')(3) as unknown as number;
+export const headerYPosition = calcYPosition(headerScales, fontSizeS, fontSizeM);

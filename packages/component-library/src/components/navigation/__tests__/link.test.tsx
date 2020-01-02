@@ -129,4 +129,38 @@ describe('<NavigationLink />', () => {
     expect(li).toHaveStyleRule('justify-self', 'left');
     cleanup();
   });
+
+  it('should return a size M link', () => {
+    const { getByTestId } = render(
+      <Nav.Link
+        href="#"
+        current={true}
+        isFocused={false}
+        context="panel"
+        size="M"
+        text="Link Text"
+      />
+    );
+    const li = getByTestId('navigation-link-test-id');
+    const a = li.querySelector('a');
+    expect(a).toHaveStyleRule('font-size', `${qt('fontSizes')(4)}px`);
+    cleanup();
+  });
+
+  it('should return a size L link', () => {
+    const { getByTestId } = render(
+      <Nav.Link
+        href="#"
+        current={true}
+        isFocused={false}
+        context="panel"
+        size="L"
+        text="Link Text"
+      />
+    );
+    const li = getByTestId('navigation-link-test-id');
+    const a = li.querySelector('a');
+    expect(a).toHaveStyleRule('font-size', `${qt('fontSizes')(5)}px`);
+    cleanup();
+  });
 });

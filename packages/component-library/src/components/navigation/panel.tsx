@@ -2,15 +2,12 @@
 import { jsx, SxStyleProp } from 'theme-ui';
 
 import { NavPanelProps } from '.';
-import { calcYPosition } from './utils';
+import { headerYPosition } from './utils';
 import { qt } from '../../query';
 
-const headerScales = qt('header')('all') as unknown as string[];
-const fontSizeS = qt('fontSizes')(2) as unknown as number;
-const fontSizeM = qt('fontSizes')(3) as unknown as number;
 
 const panelDimensions = {
-  y: calcYPosition(headerScales, fontSizeS, fontSizeM),
+  y: headerYPosition,
   minWidth: '440px'
 };
 

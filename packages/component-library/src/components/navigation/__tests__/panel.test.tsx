@@ -58,7 +58,6 @@ describe('<NavigationBar />', () => {
     expect(panel.getAttribute('aria-hidden')).toBe('true');
     expect(panel.getAttribute('aria-expanded')).toBe('false');
     expect(panel).toHaveStyleRule('opacity', '0');
-    // expect(panel).toHaveStyleRule('pointer-event', 'none');
     unmount();
   });
 });

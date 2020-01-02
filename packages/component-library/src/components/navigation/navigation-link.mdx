@@ -13,7 +13,7 @@ import { NavigationLinkBase } from './';
 
 A short list of the components properties
 
-<Props of={NavigationLinkBase} />
+<Props of={Nav.Link} />
 
 ## Component
 
@@ -49,6 +49,33 @@ The focus state styling is provided by the _with-focus-style_ hoc
     current={false}
     isFocused={true}
     context="panel"
+    text="Link Text"
+  />
+</Playground>
+
+
+### Mobile Size M
+
+<Playground>
+  <Nav.Link
+    href="#"
+    current={false}
+    isFocused={false}
+    context="panel"
+    size="M"
+    text="Link Text"
+  />
+</Playground>
+
+### Mobile Size L
+
+<Playground>
+  <Nav.Link
+    href="#"
+    current={false}
+    isFocused={false}
+    context="panel"
+    size="L"
     text="Link Text"
   />
 </Playground>
