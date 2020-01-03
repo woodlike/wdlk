@@ -11,7 +11,6 @@ beforeEach(() => {
 describe('useNavigationData()', () => {
   it('should return an object containing the navigation data', () => {
     const { result } = renderHook(() => useNavigationData());
-
     expect(result.current).toMatchSnapshot();
   });
 });

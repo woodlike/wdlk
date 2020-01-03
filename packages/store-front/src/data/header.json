@@ -1,0 +1,21 @@
+{
+  "logo": {
+    "title": "Woodlike Ocean Sustainable Swimwear",
+    "desc": "Go back to the main page"
+  },
+  "miniCart": {
+    "items": [
+      {
+        "handle": "account/login",
+        "title": "Log in"
+      },
+      {
+        "handle": "account/register",
+        "title": "Register"
+      }
+    ]
+  },
+  "cart": {
+    "handle": "cart"
+  }
+}
