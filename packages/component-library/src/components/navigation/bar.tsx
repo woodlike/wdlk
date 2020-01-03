@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
-import { NavBarProps } from '..';
+import { NavBarProps } from '../navigation';
 import { qt } from '../../query';
 
 const styledNavBar: SxStyleProp = {
