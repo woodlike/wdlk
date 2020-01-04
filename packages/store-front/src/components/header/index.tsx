@@ -12,7 +12,7 @@ import { Navigation, NavigationLayer, MiniCart } from '..';
 import { useNavigationData, useHeaderData, useBreakpoint } from '../../hooks';
 
 const min = (qt('breakpoints')(0) as unknown) as string;
-const max = (qt('breakpoints')(1) as unknown) as string;
+const max = (qt('breakpoints')(3) as unknown) as string;
 
 export function Header(): JSX.Element {
   const [isExpanded, setIsExPanded] = React.useState(false);
@@ -20,6 +20,7 @@ export function Header(): JSX.Element {
   const { header } = useHeaderData();
   const { logo } = header;
   const isMobile = useBreakpoint(min, max);
+  console.log(isMobile, '&&&&')
   return (
     <>
       <LibHeader

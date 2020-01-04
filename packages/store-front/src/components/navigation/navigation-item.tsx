@@ -12,6 +12,7 @@ export const NavigationItem: React.FC<NavDataProps> = (props): JSX.Element => {
       isFocused={false}
       context="bar"
       text={props.title}
+      isActive={isExpanded}
       onMouseEnter={() => setExpanded(true)}
       onMouseLeave={() => setExpanded(false)}>
       {props.menuItems.length > 0 && (
