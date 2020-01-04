@@ -2,6 +2,7 @@
 import { jsx, SxStyleProp } from 'theme-ui';
 
 import { NavLinkProps, NavLinkContext, NavLinkSize } from '.';
+import { headerScales } from './utils';
 import { qt } from '../../query';
 import { withFocusStyle } from '../with-focus-style';
 
@@ -30,6 +31,14 @@ const stylesLink: SxStyleProp = {
   fontFamily: `${qt('body')}`,
   letterSpacing: `${qt('letterSpacings')(0)}px`,
   textDecoration: 'none',
+  '::before': {
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    height: headerScales,
+    width: '100%',
+  },
   ':hover': {
     '::after': {
       transform: 'scaleX(1)',
@@ -53,7 +62,7 @@ const createLinkSize = (size: NavLinkSize | undefined): SxStyleProp => {
     case 'S':
       return {
         marginBottom: 0,
-        fontSize: `${qt('fontSizes')(0)}px`
+        fontSize: `${qt('fontSizes')(0)}px`,
       };
     case 'M':
       return {
@@ -76,6 +85,7 @@ const createLinkSize = (size: NavLinkSize | undefined): SxStyleProp => {
 
 const createStylesCurrentLink = (
   current: boolean,
+  isActive: boolean = false,
   isInverted: boolean = false
 ): SxStyleProp => ({
   ...{
@@ -87,28 +97,26 @@ const createStylesCurrentLink = (
       : { color: qt('grays')(3) }),
     '::after': {
       ...stylesCurrentLink,
-      ...(current ? { transform: 'scaleX(1)' } : { transform: 'scaleX(0)' }),
+      ...(isActive || current ? { transform: 'scaleX(1)' } : { transform: 'scaleX(0)' }),
     },
   },
 });
 
+const createStylesLink = (props: NavLinkProps) => ({
+  ...stylesLink,
+  ...createLinkSize(props.size),
+  ...createStylesCurrentLink(props.current, props.isActive, props.isInverted),
+});
+
 export const NavigationLinkBase: React.FC<NavLinkProps> = (
   props
-): JSX.Element => {
-  const themedNavigationLink = {
-    ...stylesLink,
-    ...createLinkSize(props.size),
-    ...createStylesCurrentLink(props.current, props.isInverted),
-  };
-
-  return (
-    <li
-      sx={createStylesLinkItem(props.context)}
-      data-testid="navigation-link-test-id"
-      onMouseEnter={props.onMouseEnter}
-      onMouseLeave={props.onMouseLeave}>
+): JSX.Element => (
+  <li
+    sx={createStylesLinkItem(props.context)}
+    data-testid="navigation-link-test-id">
+    <div onMouseEnter={props.onMouseEnter} onMouseLeave={props.onMouseLeave}>
       <a
-        sx={themedNavigationLink}
+        sx={createStylesLink(props)}
         className={props.className}
         aria-current={props.current ? 'page' : undefined}
         aria-label={props.current ? 'current page' : undefined}
@@ -117,8 +125,8 @@ export const NavigationLinkBase: React.FC<NavLinkProps> = (
         {props.text}
       </a>
       {props.children}
-    </li>
-  );
-};
+    </div>
+  </li>
+);
 
 export const Link = withFocusStyle<NavLinkProps>(NavigationLinkBase);

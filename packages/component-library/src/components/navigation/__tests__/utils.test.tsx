@@ -7,13 +7,15 @@ describe('calcYPosition()', () => {
     const fontSizeS = (qt('fontSizes')(2) as unknown) as number;
     const fontSizeM = (qt('fontSizes')(3) as unknown) as number;
     expect(calcYPosition(headerScales, fontSizeS, fontSizeM)).toStrictEqual([
-      '44px',
-      '44px',
-      '44px',
-      '54px',
+      '43px',
+      '43px',
+      '43px',
+      '53px',
+      '53px',
+      '53px',
     ]);
     expect(
       calcYPosition(['100px', '200px', '300px'], fontSizeS, fontSizeM)
-    ).toStrictEqual(['74px', '174px', '274px']);
+    ).toStrictEqual(['73px', '173px', '273px']);
   });
 });

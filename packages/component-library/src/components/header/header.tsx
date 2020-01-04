@@ -33,8 +33,11 @@ const styledHeader: SxStyleProp = {
 };
 
 const styledHeaderItem: SxStyleProp = {
-  ':last-child': {
-    justifySelf: 'end'
+  ':nth-of-type(2)': {
+    justifySelf: 'center',
+  },
+  ':nth-of-type(3)': {
+    justifySelf: 'end',
   }
 };
 

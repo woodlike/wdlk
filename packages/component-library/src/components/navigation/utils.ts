@@ -13,12 +13,12 @@ export function calcYPosition(
   );
   return values.map(val =>
     val <= Math.max(...values)
-      ? `${val - fontS * 1.5 - 2}px`
+      ? `${val - fontS * 1.5 - 3}px`
       : `${val - fontM * 1.5 + 2}px`
   );
 };
 
-const headerScales = qt('header')('all') as unknown as string[];
 const fontSizeS = qt('fontSizes')(2) as unknown as number;
 const fontSizeM = qt('fontSizes')(3) as unknown as number;
+export const headerScales = qt('header')('all') as unknown as string[];
 export const headerYPosition = calcYPosition(headerScales, fontSizeS, fontSizeM);

@@ -1,14 +1,6 @@
 import { theme as ThemeQuery } from 'gatsby-theme-query';
 
-const breakpoints = ['480px', '769px', '1024px', '1440px'];
-// tslint:disable-next-line:no-any
-(breakpoints as any).sm = breakpoints[0];
-// tslint:disable-next-line:no-any
-(breakpoints as any).md = breakpoints[1];
-// tslint:disable-next-line:no-any
-(breakpoints as any).lg = breakpoints[2];
-// tslint:disable-next-line:no-any
-(breakpoints as any).xl = breakpoints[3];
+const breakpoints = ['0px', '480px', '769px', '990px', '1024px', '1440px'];
 
 export const theme = {
   ...ThemeQuery,
@@ -18,5 +10,13 @@ export const theme = {
   colors: {
     ...ThemeQuery.colors,
   },
-  header: ['70px', '70px', '70px', '80px']
+  transition: {
+    duration: [...ThemeQuery.transition.duration],
+    timing: [
+      ...ThemeQuery.transition.timing,
+      'cubic-bezier(0.000, 0.755, 0.450, 0.910)',
+      'cubic-bezier(0.770, 0.000, 0.175, 1.000)',
+    ],
+  },
+  header: ['70px', '70px', '70px', '80px', '80px', '80px'],
 };

@@ -14,9 +14,11 @@ export interface NavLinkProps {
   readonly current: boolean;
   readonly context: NavLinkContext;
   readonly href: string;
-  readonly isFocused: boolean;
   readonly text: string;
+  readonly isFocused: boolean;
   readonly isInverted?: boolean;
+  readonly isActive?: boolean;
+  readonly children?: false | React.ReactNode;
   readonly title?: string;
   readonly size?: NavLinkSize;
   readonly className?: string;

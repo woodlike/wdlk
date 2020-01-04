@@ -5,10 +5,9 @@ import { NavPanelProps } from '.';
 import { headerYPosition } from './utils';
 import { qt } from '../../query';
 
-
 const panelDimensions = {
   y: headerYPosition,
-  minWidth: '440px'
+  minWidth: '440px',
 };
 
 const styledPanelBase: SxStyleProp = {
@@ -18,7 +17,6 @@ const styledPanelBase: SxStyleProp = {
   width: '100%',
   minWidth: panelDimensions.minWidth,
   padding: `${qt('spaces')(3)}px`,
-  opacity: 0,
   zIndex: 2,
   transitionProperty: 'opacity',
   transitionDuration: `${qt('duration')(1)}s`,
@@ -30,27 +28,33 @@ const styledPanelBase: SxStyleProp = {
     left: 0,
     width: '100%',
     height: '100%',
+    borderColor: qt('grays')(0),
+    borderStyle: 'solid',
+    borderWidth: '0 1px 1px',
     backgroundColor: `${qt('whites')(0)}`,
-    opacity: .95,
-    zIndex: -1
-  }
+    opacity: 0.95,
+    zIndex: -1,
+  },
 };
 
-const createExpandedStyles = (expanded: boolean): SxStyleProp => (
-  expanded
-  ? {
-      opacity: 1,
-      pointerEvents: 'auto'
-    }
-  : {}
-);
+const createStylesExpanded = (expanded: boolean): SxStyleProp => ({
+  ...(expanded
+    ? {
+        zIndex: 2,
+        opacity: 1,
+        pointerEvents: 'auto',
+      }
+    : {
+        zIndex: -1,
+        opacity: 0,
+        pointerEvents: 'none',
+      }),
+});
 
-const createStyledNavPanel = (expanded: boolean): SxStyleProp => {
- return {
-   ...styledPanelBase,
-   ...createExpandedStyles(expanded)
- }
-};
+const createStylesNavPanel = (expanded: boolean): SxStyleProp => ({
+  ...styledPanelBase,
+  ...createStylesExpanded(expanded),
+});
 
 const styledPanelList: SxStyleProp = {
   display: 'grid',
@@ -62,9 +66,9 @@ const styledPanelList: SxStyleProp = {
 
 export const Panel: React.FunctionComponent<NavPanelProps> = props => (
   <div
-    sx={createStyledNavPanel(props.isExpanded)}
+    sx={createStylesNavPanel(props.isExpanded)}
     role="list"
-    aria-hidden={!props.isExpanded  ? 'true' : 'false'}
+    aria-hidden={!props.isExpanded ? 'true' : 'false'}
     aria-expanded={props.isExpanded ? 'true' : 'false'}
     data-testid="navigation-panel-test-id">
     <ul sx={styledPanelList}>{props.children}</ul>

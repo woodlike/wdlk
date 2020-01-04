@@ -97,6 +97,32 @@ describe('<NavigationLink />', () => {
     cleanup();
   });
 
+  it('should have the styling for an active link', () => {
+    const { getByTestId } = render(
+      <Nav.Link
+        href="#"
+        current={false}
+        isFocused={false}
+        isActive={true}
+        context="bar"
+        text="Link Text"
+      />
+    );
+    const li = getByTestId('navigation-link-test-id');
+    const a = li.querySelector('a') as HTMLElement;
+    expect(a).toHaveStyleRule('content', '""', { target: '::after' });
+    expect(a).toHaveStyleRule('transform', 'scaleX(1)', { target: '::after' });
+    expect(a).toHaveStyleRule('transform-origin', '0 0', { target: '::after' });
+    expect(a).toHaveStyleRule('width', '100%', { target: '::after' });
+    expect(a).toHaveStyleRule('height', `${qt('borderWidths')(0)}px`, {
+      target: '::after',
+    });
+    expect(a).toHaveStyleRule('background-color', 'currentColor', {
+      target: '::after',
+    });
+    cleanup();
+  });
+
   it('should recognize styling for a bar context', () => {
     const { getByTestId } = render(
       <Nav.Link
