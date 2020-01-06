@@ -1,6 +1,6 @@
 {
   "name": "theme-query",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "Utility functions to query Styled System themes without a theme provider",
   "main": "lib/index.js",
   "repository": "git@github.com:woodlike/component-library.git",
