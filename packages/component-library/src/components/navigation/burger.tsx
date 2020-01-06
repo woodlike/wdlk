@@ -80,3 +80,5 @@ export const Burger: React.FC<BurgerProps> = props => (
     <span sx={createStylesBurgerLayer(props.isExpanded)} />
   </button>
 );
+
+Burger.displayName = 'Burger';

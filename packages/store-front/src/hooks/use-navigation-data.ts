@@ -8,9 +8,11 @@ export function useNavigationData(): NavigationProps {
         nodes {
           title
           handle
+          id
           menuItems {
             handle
             title
+            id
           }
         }
       }

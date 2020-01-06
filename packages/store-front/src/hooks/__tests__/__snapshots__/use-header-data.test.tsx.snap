@@ -14,10 +14,12 @@ Object {
       "items": Array [
         Object {
           "handle": "account/login",
+          "id": "4vnwZnPaFu",
           "title": "Log in",
         },
         Object {
           "handle": "account/register",
+          "id": "s4MSmQgXaG",
           "title": "Register",
         },
       ],

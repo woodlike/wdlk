@@ -4,6 +4,7 @@ export interface NavData {
   readonly handle: string;
   readonly title: string;
   readonly url: string;
+  readonly id?: string;
 }
 
 export interface NavigationProps {
@@ -13,6 +14,7 @@ export interface NavigationProps {
 
 export interface MenuItems {
   readonly menuItems: NavData[];
+  readonly id?: string;
 }
 
 export interface NavigationLayerProps {

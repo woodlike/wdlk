@@ -17,9 +17,9 @@ export const NavigationItem: React.FC<NavDataProps> = (props): JSX.Element => {
       onMouseLeave={() => setExpanded(false)}>
       {props.menuItems.length > 0 && (
         <Nav.Panel isExpanded={isExpanded}>
-          {props.menuItems.map((menuItem: NavData, i: number) => (
+          {props.menuItems.map((menuItem: NavData) => (
             <Nav.Link
-              key={`menu-panel-item-${i}`}
+              key={menuItem.id}
               href={`${props.url}/${menuItem.handle}`}
               current={false}
               isFocused={true}

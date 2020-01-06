@@ -8,9 +8,9 @@ export const Navigation: React.FC<NavigationProps> = (props): JSX.Element => {
   return (
     <Nav.Frame>
       <Nav.Bar itemCount={props.items.length}>
-        {props.items.map((item: NavDataProps, idx: number) => (
+        {props.items.map((item: NavDataProps) => (
           <NavigationItem
-            key={`navigation-item-${idx}`}
+            key={item.id}
             handle={item.handle}
             menuItems={item.menuItems}
             title={item.title}

@@ -5,29 +5,36 @@ Object {
   "items": Array [
     Object {
       "handle": "collections/bikinis",
+      "id": "w9XpzD45",
       "menuItems": Array [
         Object {
           "handle": "collections/bikini-tops",
+          "id": "gqv6qn1f",
           "title": "Bikini Tops",
         },
         Object {
           "handle": "collections/bikini-bottoms",
+          "id": "SffcMKCN",
           "title": "Bikini Bottoms",
         },
         Object {
           "handle": "collections/bikini-sale",
+          "id": "-aqvsu8_",
           "title": "Bikini-Sale",
         },
         Object {
           "handle": "products/woodlike-ocean-gift-card-50-00-postcard",
+          "id": "lZl-O7bb",
           "title": "Gift card 50",
         },
         Object {
           "handle": "products/woodlike-ocean-gift-card-100-00-postcard",
+          "id": "QAKJrS1d",
           "title": "Gift card 100",
         },
         Object {
           "handle": "products/woodlike-ocean-gift-card-150-00-print-version",
+          "id": "17lwT_y9",
           "title": "Gift card 150",
         },
       ],
@@ -35,21 +42,26 @@ Object {
     },
     Object {
       "handle": "collections/one-pieces",
+      "id": "VD8KXYJ7",
       "menuItems": Array [
         Object {
           "handle": "collections/swimsuits-sale",
+          "id": "BJ2XAIo",
           "title": "Swimsuits Sale",
         },
         Object {
           "handle": "products/woodlike-ocean-gift-card-50-00-postcard",
+          "id": "RIZFrAk",
           "title": "Gift card 50",
         },
         Object {
           "handle": "products/woodlike-ocean-gift-card-100-00-postcard",
+          "id": "IMkLrAJ",
           "title": "Gift card 100",
         },
         Object {
           "handle": "products/woodlike-ocean-gift-card-150-00-print-version",
+          "id": "Y2T8-UD",
           "title": "Gift card 150",
         },
       ],
@@ -57,29 +69,36 @@ Object {
     },
     Object {
       "handle": "collections/movement",
+      "id": "M_NC_Tka",
       "menuItems": Array [
         Object {
           "handle": "collections/movement/tops",
+          "id": "hlOPoHPy",
           "title": "Tops",
         },
         Object {
           "handle": "collections/movement/bottoms",
+          "id": "Qrc4vg2T",
           "title": "Bottoms",
         },
         Object {
           "handle": "collections/movement/one-piece",
+          "id": "cXI9NRXI",
           "title": "One Pieces",
         },
         Object {
           "handle": "products/woodlike-ocean-gift-card-50-00-postcard",
+          "id": "-17sFmV7",
           "title": "Gift card 50",
         },
         Object {
           "handle": "products/woodlike-ocean-gift-card-100-00-postcard",
+          "id": "C_il2Rz1",
           "title": "Gift card 100",
         },
         Object {
           "handle": "products/woodlike-ocean-gift-card-150-00-print-version",
+          "id": "NZcDa-3b",
           "title": "Gift card 150",
         },
       ],
@@ -87,29 +106,36 @@ Object {
     },
     Object {
       "handle": "collections/shape-effect",
+      "id": "UKvhrFRp",
       "menuItems": Array [
         Object {
           "handle": "collections/shape-effect/tops",
+          "id": "Fz525XDs",
           "title": "Tops",
         },
         Object {
           "handle": "collections/shape-effect/bottoms",
+          "id": "j5PeZjFI",
           "title": "Bottoms",
         },
         Object {
           "handle": "collections/shape-effect/one-piece",
+          "id": "nkUA34pk",
           "title": "One Pieces",
         },
         Object {
           "handle": "products/woodlike-ocean-gift-card-50-00-postcard",
+          "id": "LAFze9G-",
           "title": "Gift card 50",
         },
         Object {
           "handle": "products/woodlike-ocean-gift-card-100-00-postcard",
+          "id": "mv4BYSmc",
           "title": "Gift card 100",
         },
         Object {
           "handle": "products/woodlike-ocean-gift-card-150-00-print-version",
+          "id": "3H2ZPBL1",
           "title": "Gift card 150",
         },
       ],
@@ -117,13 +143,16 @@ Object {
     },
     Object {
       "handle": "pages/woodlike-ocean-the-brand",
+      "id": "ZVnTTk9g",
       "menuItems": Array [
         Object {
           "handle": "pages/sustainability",
+          "id": "HU9Ax2o0",
           "title": "Sustainability",
         },
         Object {
           "handle": "pages/about-us",
+          "id": "vOGf14mm",
           "title": "About Us",
         },
       ],

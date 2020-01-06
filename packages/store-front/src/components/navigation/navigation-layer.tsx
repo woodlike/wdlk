@@ -7,11 +7,11 @@ export const NavigationLayer: React.FC<NavigationLayerProps> = (
 ): JSX.Element => {
   const brandItem = props.items.find(item => item.title === 'The Brand');
   return (
-    <Nav.Layer isExpanded={false}>
+    <Nav.Layer isExpanded={props.isExpanded}>
       <Nav.LayerList>
-        {props.items.map((item: NavDataProps, idx: number) => (
+        {props.items.map((item: NavDataProps) => (
           <Nav.Link
-            key={idx}
+            key={item.id}
             href={`${props.url}/${item.handle}`}
             current={false}
             isFocused={false}
@@ -24,9 +24,9 @@ export const NavigationLayer: React.FC<NavigationLayerProps> = (
       </Nav.LayerList>
       <Nav.LayerList>
         {brandItem &&
-          brandItem.menuItems.map((item, idx: number) => (
+          brandItem.menuItems.map((item) => (
             <Nav.Link
-              key={idx}
+              key={item.id}
               href={`${props.url}/${item.handle}`}
               current={false}
               isFocused={false}

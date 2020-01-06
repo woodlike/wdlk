@@ -1,5 +1,4 @@
 import * as React from 'react';
-import shortid from 'shortid';
 import {
   Header as LibHeader,
   Logo,
@@ -10,26 +9,31 @@ import {
 
 import { Navigation, NavigationLayer, MiniCart } from '..';
 import { useNavigationData, useHeaderData, useBreakpoint } from '../../hooks';
+import { generateIds } from '../../utils';
 
+const id = generateIds(6);
 const min = (qt('breakpoints')(0) as unknown) as string;
 const max = (qt('breakpoints')(3) as unknown) as string;
 
 export function Header(): JSX.Element {
-  const [isExpanded, setIsExPanded] = React.useState(false);
+  const [isExpanded, setIsExpanded] = React.useState(false);
   const { items, url } = useNavigationData();
   const { header } = useHeaderData();
   const { logo } = header;
   const isMobile = useBreakpoint(min, max);
-  console.log(isMobile, '&&&&')
   return (
     <>
       <LibHeader
         areas={[
           isMobile ? (
-            <Nav.Burger key={shortid.generate()} isExpanded={isExpanded} />
+            <Nav.Burger
+              onClick={() => setIsExpanded(!isExpanded)}
+              key={id[0]}
+              isExpanded={isExpanded}
+            />
           ) : (
             <Logo
-              key={shortid.generate()}
+              key={id[1]}
               title={logo.title}
               desc={logo.desc}
               isFocused={false}
@@ -38,18 +42,18 @@ export function Header(): JSX.Element {
           ),
           isMobile ? (
             <Logo
-              key={shortid.generate()}
+              key={id[2]}
               title={logo.title}
               desc={logo.desc}
               isFocused={false}
               href={url}
             />
           ) : (
-            <Navigation key={shortid.generate()} url={url} items={items} />
+            <Navigation key={id[3]} url={url} items={items} />
           ),
           isMobile ? (
             <Cart
-              key={shortid.generate()}
+              key={id[4]}
               href={`${url}/${header.cart.handle}`}
               isFocused={false}
               count={0}
@@ -57,7 +61,7 @@ export function Header(): JSX.Element {
               title="Woodlike Ocean Shopping cart"
             />
           ) : (
-            <MiniCart key={shortid.generate()} />
+            <MiniCart key={id[5]} />
           ),
         ]}
       />

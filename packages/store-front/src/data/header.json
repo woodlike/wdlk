@@ -7,11 +7,13 @@
     "items": [
       {
         "handle": "account/login",
-        "title": "Log in"
+        "title": "Log in",
+        "id": "4vnwZnPaFu"
       },
       {
         "handle": "account/register",
-        "title": "Register"
+        "title": "Register",
+        "id": "s4MSmQgXaG"
       }
     ]
   },

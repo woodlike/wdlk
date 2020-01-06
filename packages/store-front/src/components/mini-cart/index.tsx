@@ -5,7 +5,6 @@ import {
   MiniCart as LibMiniCart,
   MiniCartLink,
 } from '@wdlk/component-library';
-import shortid from 'shortid';
 
 import { MiniCardItem } from './types';
 import { useHeaderData } from '../../hooks';
@@ -15,7 +14,7 @@ export function MiniCart(): JSX.Element {
   return (
     <LibMiniCart>
       {header.miniCart.items.map((item: MiniCardItem) => (
-        <MiniCartLink key={shortid.generate()}>
+        <MiniCartLink key={item.id}>
           <CartLink href={`${url}/${item.handle}`} isFocused={false}>
             {item.title}
           </CartLink>

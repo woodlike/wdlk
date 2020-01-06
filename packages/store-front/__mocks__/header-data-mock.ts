@@ -14,10 +14,12 @@ export const headerQueryMock = {
             {
               handle: 'account/login',
               title: 'Log in',
+              id: '4vnwZnPaFu'
             },
             {
               handle: 'account/register',
               title: 'Register',
+              id: 's4MSmQgXaG'
             },
           ],
         },

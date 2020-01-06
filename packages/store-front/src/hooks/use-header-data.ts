@@ -16,6 +16,7 @@ export function useHeaderData() {
             items {
               handle
               title
+              id
             }
           }
         }
