@@ -28,6 +28,7 @@ export interface NavLinkProps {
 
 export interface BurgerProps {
   isExpanded: boolean;
+  readonly onClick: React.MouseEventHandler<HTMLElement>;
 }
 
 export type NavLinkContext = 'bar' | 'panel';

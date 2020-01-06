@@ -46,34 +46,37 @@ const stylesBurgerLayers: SxStyleProp = {
 const stylesPseudoElementsExpanded: SxStyleProp = {
   top: 0,
   transition: 'top .3s ease, transform .3s .5s ease',
-}
+};
 
 const createStylesExpandedLines = (isExpanded: boolean): SxStyleProp => ({
   ...(isExpanded
     ? {
-      backgroundColor: 'transparent',
-      '::before': {
-        ...stylesPseudoElements,
-        ...stylesPseudoElementsExpanded,
-        transform: 'rotate3d(0, 0, 1, 45deg)'
-      },
-      '::after': {
-        ...stylesPseudoElements,
-        ...stylesPseudoElementsExpanded,
-        transform: 'rotate3d(0, 0, 1, -45deg)'
+        backgroundColor: 'transparent',
+        '::before': {
+          ...stylesPseudoElements,
+          ...stylesPseudoElementsExpanded,
+          transform: 'rotate3d(0, 0, 1, 45deg)',
+        },
+        '::after': {
+          ...stylesPseudoElements,
+          ...stylesPseudoElementsExpanded,
+          transform: 'rotate3d(0, 0, 1, -45deg)',
+        },
       }
-  }
     : { backgroundColor: 'currentColor' }),
 });
 
 const createStylesBurgerLayer = (isExpanded: boolean): SxStyleProp => ({
   ...stylesBurgerLayers,
-  ...createStylesExpandedLines(isExpanded)
-})
+  ...createStylesExpandedLines(isExpanded),
+});
 
 export const Burger: React.FC<BurgerProps> = props => (
-  <button sx={stylesBurger} aria-expanded={props.isExpanded} role="button">
+  <button
+    sx={stylesBurger}
+    onClick={props.onClick}
+    aria-expanded={props.isExpanded}
+    role="button">
     <span sx={createStylesBurgerLayer(props.isExpanded)} />
   </button>
 );
-
