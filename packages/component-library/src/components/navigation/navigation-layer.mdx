@@ -1,0 +1,109 @@
+---
+name: Navigation Layer
+menu: Components
+---
+
+import { Playground, Props } from 'docz';
+import * as Nav from '.';
+import { DemoBox } from './demo-box';
+
+# Navigation Panel
+
+## Props glossary
+
+A short list of the components properties
+
+## Component
+
+<Playground>
+  <DemoBox>
+    <Nav.Layer isExpanded={true}>
+      <Nav.LayerList>
+        <Nav.Link
+          href="#"
+          current={false}
+          isFocused={false}
+          isInverted={true}
+          context="panel"
+          size="L"
+          text="Bikinis"
+        />
+        <Nav.Link
+          href="#"
+          current={false}
+          isFocused={false}
+          isInverted={true}
+          context="panel"
+          size="L"
+          text="One Pieces"
+        />
+        <Nav.Link
+          href="#"
+          current={false}
+          isFocused={false}
+          isInverted={true}
+          context="panel"
+          size="L"
+          text="Yoga & Surf"
+        />
+        <Nav.Link
+          href="#"
+          current={false}
+          isFocused={false}
+          isInverted={true}
+          context="panel"
+          size="L"
+          text="Tanning"
+        />
+        <Nav.Link
+          href="#"
+          current={false}
+          isFocused={false}
+          isInverted={true}
+          context="panel"
+          size="L"
+          text="Healing Flowers"
+        />
+        <Nav.Link
+          href="#"
+          current={false}
+          isFocused={false}
+          isInverted={true}
+          context="panel"
+          size="L"
+          text="The Brand"
+        />
+      </Nav.LayerList>
+      <Nav.LayerList>
+        <Nav.Link
+          href="#"
+          current={false}
+          isFocused={false}
+          isInverted={true}
+          context="panel"
+          size="S"
+          text="About us"
+        />
+        <Nav.Link
+          href="#"
+          current={false}
+          isFocused={false}
+          isInverted={true}
+          context="panel"
+          size="S"
+          text="Sustainability"
+        />
+        <Nav.Link
+          href="#"
+          current={false}
+          isFocused={false}
+          isInverted={true}
+          context="panel"
+          size="S"
+          text="Login"
+        />
+      </Nav.LayerList>
+      <Nav.LayerFooter>®Woodlike 2020</Nav.LayerFooter>
+    </Nav.Layer>
+  </DemoBox>
+</Playground>

@@ -1,8 +1,8 @@
 /**@jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
 
-import { MiniCartProps, MiniCartLinkProps, MiniCartItemProps } from './';
-import { qt } from '../query';
+import { MiniCartLinkProps } from './';
+import { qt } from '../../query';
 import { withFocusStyle } from '../with-focus-style';
 
 const styledMiniCart: SxStyleProp = {
@@ -36,7 +36,7 @@ const styledCartLink: SxStyleProp = {
   },
 };
 
-const Link: React.FunctionComponent<MiniCartLinkProps> = (
+const Link: React.FC<MiniCartLinkProps> = (
   props
 ): JSX.Element => (
   <a sx={styledCartLink} href={props.href} className={props.className}>
@@ -44,7 +44,7 @@ const Link: React.FunctionComponent<MiniCartLinkProps> = (
   </a>
 );
 
-export const MiniCart: React.FunctionComponent<MiniCartProps> = (
+export const MiniCart: React.FC = (
   props
 ): JSX.Element => {
   return (
@@ -54,7 +54,7 @@ export const MiniCart: React.FunctionComponent<MiniCartProps> = (
   );
 };
 
-export const MiniCartLink: React.FunctionComponent<MiniCartItemProps> = props => (
+export const MiniCartLink: React.FC = props => (
   <li sx={syledMiniCartLink}>{props.children}</li>
 );
 

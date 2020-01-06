@@ -1,8 +1,11 @@
 # Gatsby Theme Query
 
-[![CircleCI](https://circleci.com/gh/woodlike/component-library.svg?style=svg)](https://circleci.com/gh/woodlike/component-library)
+> A Gatsby theme for theme sensitive Styled System queries.
+[![CircleCI](https://circleci.com/gh/woodlike/wdlk.svg?style=svg)](https://circleci.com/gh/woodlike/wdlk)
 
-Gatsby theme for adding a [Styled System](https://styled-system.com/) theme object. You can query your theme using [Theme Query](https://github.com/woodlike/wdlk/tree/master/packages/theme-query) directly in your components.
+The `gatsby-theme-query`  allows you to query your [Styled System](https://styled-system.com/) theme. It provides an instantiated `qt` **(query theme)** function for you to easily access style tokens.
+
+ [Theme Query](https://github.com/woodlike/wdlk/tree/master/packages/theme-query) is aware of your theme. You can shadow the theme like in any other Gatsby theme and the `qt` function is fully aware of the changes.
 
 ## Getting started
 
@@ -20,8 +23,13 @@ module.exports = {
 ## Shadow the theme with your own
 
 ```js
-// src/gatsby-theme-query/index.js
+// src/gatsby-theme-query/theme.js
+import { theme } from 'gatsby-theme-query';
+
 export default {
+  ...theme,
+  borderWidths: [1, 2, 3, 4],
+  letterSpacings: [0.5, 1, 1.5],
   colors: {
     text: 'magenta',
     background: 'papayawhip',

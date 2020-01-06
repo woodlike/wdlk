@@ -3,7 +3,7 @@ import { jsx, SxStyleProp } from 'theme-ui';
 import { Link } from 'docz';
 import { LogoPath, BrandPath } from './svg-paths';
 import { LogoProps } from './types';
-import { qt } from '../../query';
+import { qt } from 'gatsby-theme-query';
 
 const logoSize = {
   width: 122,

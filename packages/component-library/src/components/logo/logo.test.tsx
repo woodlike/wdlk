@@ -4,7 +4,7 @@ import { render, cleanup } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
 import { Logo } from '../';
-import { qt } from '../query';
+import { qt } from 'gatsby-theme-query';
 
 expect.extend(toHaveNoViolations);
 describe('Logo', () => {
@@ -20,7 +20,7 @@ describe('Logo', () => {
 
   it('should not have accessibility violations', async done => {
     const { container, unmount } = render(
-      <Logo title={logoTitle} desc={logoDesc} isFocused={true} />
+      <Logo href="#" title={logoTitle} desc={logoDesc} isFocused={true} />
     );
 
     const a11yResults = await axe(container);
@@ -32,7 +32,7 @@ describe('Logo', () => {
 
   it('should include an accessible title for screen readers', () => {
     const { container, unmount } = render(
-      <Logo title={logoTitle} desc={logoDesc} isFocused={true} />
+      <Logo href="#" title={logoTitle} desc={logoDesc} isFocused={true} />
     );
 
     const svg = container.querySelector('svg') as SVGElement;
@@ -45,7 +45,7 @@ describe('Logo', () => {
 
   it('should include an accessible description for screen readers', () => {
     const { container, unmount } = render(
-      <Logo title={logoTitle} desc={logoDesc} isFocused={true} />
+      <Logo href="#" title={logoTitle} desc={logoDesc} isFocused={true} />
     );
     const desc = container.querySelector('desc') as SVGDescElement;
     expect(desc.innerHTML).toMatch(logoDesc);
@@ -54,9 +54,10 @@ describe('Logo', () => {
 
   it('it should render with the default colors', () => {
     const { getByTestId, unmount } = render(
-      <Logo title={logoTitle} desc={logoDesc} isFocused={true} />
+      <Logo href="#" title={logoTitle} desc={logoDesc} isFocused={true} />
     );
-    const svg = getByTestId('logo-test-id');
+    const a = getByTestId('logo-test-id');
+    const svg = a.querySelector('svg') as SVGElement;
     const styles = getComputedStyle(svg);
     expect(styles.getPropertyValue('color')).toMatch(qt('corals')(0));
     unmount();

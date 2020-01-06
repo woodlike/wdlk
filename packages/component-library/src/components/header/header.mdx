@@ -7,18 +7,11 @@ import { Playground, Props } from 'docz';
 
 import { Header } from './';
 import { Logo } from '../logo';
-import { NavBar } from '../navigation-bar';
-import { NavLink } from '../navigation-link';
+import * as Nav from '../navigation';
 import { Cart } from '../cart';
 import { MiniCart, MiniCartLink, CartLink } from '../mini-cart';
 
 # Header
-
-## Props glossary
-
-A short list of the components properties
-
-<Props of={NavBar} />
 
 ## Full example
 
@@ -26,50 +19,96 @@ A short list of the components properties
   <Header
     areas={[
       <Logo title="demo title" desc="desc" isFocused={true} />,
-      <NavBar itemCount={6}>
-        <NavLink
-          href="#"
-          current={false}
-          isFocused={false}
-          text="Bikinis"
-          context="bar"
-        />
-        <NavLink
-          href="#"
-          current={true}
-          isFocused={false}
-          text="One Pieces"
-          context="bar"
-        />
-        <NavLink
-          href="#"
-          current={false}
-          isFocused={false}
-          text="Yoga & Surf"
-          context="bar"
-        />
-        <NavLink
-          href="#"
-          current={false}
-          isFocused={false}
-          text="Tanning"
-          context="bar"
-        />
-        <NavLink
-          href="#"
-          current={false}
-          isFocused={false}
-          text="Sustainability"
-          context="bar"
-        />
-        <NavLink
-          href="#"
-          current={false}
-          isFocused={false}
-          text="The Brand"
-          context="bar"
-        />
-      </NavBar>,
+      <Nav.Frame>
+        <Nav.Bar itemCount={6}>
+          <Nav.Link
+            href="#"
+            current={false}
+            isFocused={false}
+            context="bar"
+            text="Bikinis"
+          />
+          <Nav.Link
+            href="#"
+            current={false}
+            isFocused={false}
+            context="bar"
+            text="One Pieces">
+            <Nav.Panel isExpanded={true}>
+              <Nav.Link
+                href="#"
+                current={false}
+                isFocused={true}
+                context="panel"
+                text="One Pieces"
+              />
+              <Nav.Link
+                href="#"
+                current={true}
+                isFocused={false}
+                context="panel"
+                text="Surf & Yoga"
+              />
+              <Nav.Link
+                href="#"
+                current={false}
+                isFocused={false}
+                context="panel"
+                text="Mini Shape"
+              />
+              <Nav.Link
+                href="#"
+                current={false}
+                isFocused={false}
+                context="panel"
+                text="Puch"
+              />
+              <Nav.Link
+                href="#"
+                current={false}
+                isFocused={false}
+                context="panel"
+                text="Sale"
+              />
+              <Nav.Link
+                href="#"
+                current={false}
+                isFocused={false}
+                context="panel"
+                text="Gift Card"
+              />
+            </Nav.Panel>
+          </Nav.Link>
+          <Nav.Link
+            href="#"
+            current={true}
+            isFocused={false}
+            context="bar"
+            text="Surf & Yoga"
+          />
+          <Nav.Link
+            href="#"
+            current={false}
+            isFocused={false}
+            context="bar"
+            text="Tanning"
+          />
+          <Nav.Link
+            href="#"
+            current={false}
+            isFocused={false}
+            context="bar"
+            text="Sustainability"
+          />
+          <Nav.Link
+            href="#"
+            current={false}
+            isFocused={false}
+            context="bar"
+            text="The Brand"
+          />
+        </Nav.Bar>
+      </Nav.Frame>,
       <MiniCart>
         <MiniCartLink>
           <CartLink href="#" isFocused={false}>

@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
-import { qt } from '../query';
+import { qt } from 'gatsby-theme-query';
 import { MappedWithFocus } from './types';
 
 const styledFocus: SxStyleProp = {

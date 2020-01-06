@@ -1,8 +1,8 @@
 /**@jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
+import { qt } from 'gatsby-theme-query';
 
 import { CartProps } from '.';
-import { qt } from '../query';
 import { withFocusStyle } from '../with-focus-style';
 
 const styledCartLink: SxStyleProp = {

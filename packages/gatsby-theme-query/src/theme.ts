@@ -1,3 +1,7 @@
-import { theme } from 'theme-query';
+import { base } from '@theme-ui/presets';
+import { theme as ThemeQuery } from 'theme-query';
 
-export default theme;
+export const theme = {
+  ...base,
+  ...ThemeQuery
+};

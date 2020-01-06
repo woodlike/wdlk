@@ -1,9 +1,11 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "build/lib",
-    "rootDirs": ["src"],
+    "noImplicitUseStrict": true,
+    "outDir": "./dist",
+    "rootDirs": ["./src"],
+    "allowJs": true,
   },
-  "include": ["src/**/*", "../theme-query/src/tokens/"],
-  "exclude": ["node_modules", "build", "scripts", "./docz"]
+  "include": ["src/**/*"],
+  "exclude": ["./node_modules", "./docz/**/*", "./src/**/*.test.tsx", "./src/gatsby-theme-docz/**/*"]
 }
