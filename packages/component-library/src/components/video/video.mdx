@@ -4,6 +4,49 @@ menu: Components
 ---
 
 import { Playground, Props } from 'docz';
-import { Logo, LogoBase } from './';
+import { Video } from './';
 
 # Woodlike Ocean Video Component
+
+## Props glossary
+
+A short list of the components properties
+
+<Props of={Video} />
+
+## Default Video Component
+
+<Playground>
+  <Video
+    controls={true}
+    autoPlay={true}
+    muted={false}
+    loop={true}
+    sources={[
+      {
+        id: 'first-demo-video',
+        src: '/public/demo-video.mp4',
+        type: 'video/mp4',
+      },
+    ]}
+  />
+</Playground>
+
+## Full Height Video (deducting top margin)
+
+<Playground>
+  <Video
+    top={50}
+    controls={true}
+    autoPlay={true}
+    muted={false}
+    loop={true}
+    sources={[
+      {
+        id: 'first-demo-video',
+        src: '/public/demo-video.mp4',
+        type: 'video/mp4',
+      },
+    ]}
+  />
+</Playground>
