@@ -4,7 +4,7 @@ menu: Components
 ---
 
 import { Playground, Props } from 'docz';
-import { Video } from './';
+import * as Video from './';
 
 # Woodlike Ocean Video Component
 
@@ -12,15 +12,14 @@ import { Video } from './';
 
 A short list of the components properties
 
-<Props of={Video} />
+<Props of={Video.Media} />
 
 ## Default Video Component
 
 <Playground>
-  <Video
+  <Video.Media
     controls={true}
     autoPlay={true}
-    muted={false}
     loop={true}
     sources={[
       {
@@ -32,14 +31,14 @@ A short list of the components properties
   />
 </Playground>
 
-## Full Height Video (deducting top margin)
+## Full Width/Height Video (substracting top )
 
 <Playground>
-  <Video
+  <Video.Media
+    preload="auto"
     top={50}
     controls={true}
     autoPlay={true}
-    muted={false}
     loop={true}
     sources={[
       {

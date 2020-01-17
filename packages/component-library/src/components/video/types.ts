@@ -2,7 +2,6 @@ export interface VideoProps {
   controls: boolean;
   autoPlay: boolean;
   loop: boolean;
-  muted: boolean;
   preload: 'auto' | 'metadata' | 'none';
   sources: Source[];
   poster?: string;
