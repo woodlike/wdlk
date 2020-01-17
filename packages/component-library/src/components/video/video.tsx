@@ -2,6 +2,7 @@
 import { jsx, SxStyleProp } from 'theme-ui';
 
 import { VideoProps } from '.';
+import { withFocusStyle } from '..';
 
 const stylesVideo: SxStyleProp = {
   width: '100%',
@@ -16,7 +17,7 @@ const createStylesVideo = (top: number): SxStyleProp => ({
   ...handleHeight(top),
 });
 
-export const Media: React.FC<VideoProps> = (props): JSX.Element | null => {
+export const VideoMedia: React.FC<VideoProps> = (props): JSX.Element | null => {
   const { sources } = props;
   return sources.length > 0 ? (
     <video
@@ -34,4 +35,5 @@ export const Media: React.FC<VideoProps> = (props): JSX.Element | null => {
   ) : null;
 };
 
-Media.displayName = 'VideoMedia';
+VideoMedia.displayName = 'VideoMedia';
+export const Media = withFocusStyle<VideoProps>(VideoMedia);

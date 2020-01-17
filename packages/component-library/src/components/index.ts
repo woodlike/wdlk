@@ -1,4 +1,5 @@
 import * as LocalNav from './navigation';
+import * as LocalVid from './video';
 
 export * from './cart';
 export * from './logo';
@@ -8,3 +9,4 @@ export * from './with-focus-style';
 export * from './video';
 
 export const Nav = { ...LocalNav };
+export const Video = { ...LocalVid };

@@ -1,0 +1,62 @@
+---
+name: Video Stage
+menu: Components
+---
+
+import { Playground, Props } from 'docz';
+import * as Video from './';
+
+# Video Stage Component
+
+## Props glossary
+
+A short list of the components properties
+
+<Props of={Video.Stage} />
+
+## Default Video Component
+
+<Playground>
+  <Video.Stage
+    headline="Healing Flowers"
+    tag="h1"
+    copy="The new capsule collection by WDLK"
+  >
+    <Video.Media
+      top={0}
+      controls={true}
+      autoPlay={true}
+      loop={true}
+      sources={[
+        {
+          id: 'first-demo-video',
+          src: '/public/demo-video.mp4',
+          type: 'video/mp4',
+        },
+      ]}
+    />
+  </Video.Stage>
+</Playground>
+
+## Full Width/Height Video (substracting top)
+<Playground>
+  <Video.Stage
+    headline="Healing Flowers"
+    tag="h1"
+    copy="The new capsule collection by WDLK"
+  >
+    <Video.Media
+      top={40}
+      controls={true}
+      autoPlay={true}
+      loop={true}
+      sources={[
+        {
+          id: 'first-demo-video',
+          src: '/public/demo-video.mp4',
+          type: 'video/mp4',
+        },
+      ]}
+    />
+  </Video.Stage>
+</Playground>
