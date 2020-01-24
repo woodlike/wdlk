@@ -2,7 +2,7 @@
 import { jsx, SxStyleProp } from 'theme-ui';
 
 import { VideoProps } from '.';
-import { withFocusStyle } from '..';
+import { withFocusStyle } from '../with-focus-style';
 
 const stylesVideo: SxStyleProp = {
   width: '100%',
