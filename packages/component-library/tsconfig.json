@@ -6,6 +6,6 @@
     "rootDirs": ["./src"],
     "allowJs": true,
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "typings.d.ts"],
   "exclude": ["./node_modules", "./docz/**/*", "./src/**/*.test.tsx", "./src/gatsby-theme-docz/**/*"]
 }
