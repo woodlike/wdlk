@@ -22,11 +22,11 @@ const handleHeadlineSizes = (size: HeadlineSize): string => {
     case 'm':
       return qt('spaces')(5);
     case 'l':
-      return qt('spaces')(5);
-    case 'xl':
       return qt('spaces')(7);
-    case 'xxl':
+    case 'xl':
       return qt('spaces')(8);
+    case 'xxl':
+      return qt('spaces')(9);
   }
 };
 

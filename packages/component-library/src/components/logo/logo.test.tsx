@@ -36,7 +36,7 @@ describe('Logo', () => {
     );
 
     const svg = container.querySelector('svg') as SVGElement;
-    const title = svg.querySelector('title') as HTMLTitleElement;
+    const title = svg.querySelector('title');
     expect(svg.hasAttribute('aria-labelledby')).toBeTruthy();
     expect(svg.getAttribute('aria-labelledby')).toMatch('logo-title-aria-id');
     expect(title.innerHTML).toMatch(logoTitle);
