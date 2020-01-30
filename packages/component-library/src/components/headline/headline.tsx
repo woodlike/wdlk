@@ -10,7 +10,7 @@ const stylesHeadline: SxStyleProp = {
   marginBottom: `${qt('spaces')(5)}px`,
   color: qt('grays')(5),
   fontFamily: qt('display'),
-  fontWeight: 'normal',
+  fontWeight: 600,
   letterSpacing: `${qt('spaces')(1)}px`,
   lineHeight: '1.5',
 };
@@ -34,14 +34,22 @@ const createStylesSize = (size: HeadlineSize): SxStyleProp => ({
   fontSize: `${handleHeadlineSizes(size)}px`,
 });
 
-const createStylesHeadline = (size: HeadlineSize): SxStyleProp => ({
+const createStylesColor = (inverted: boolean): SxStyleProp => ({
+  ...(inverted ? { color: qt('grays')(5) } : { color: qt('whites')(4) }),
+});
+
+const createStylesHeadline = (
+  size: HeadlineSize,
+  inverted: boolean
+): SxStyleProp => ({
   ...stylesHeadline,
   ...createStylesSize(size),
+  ...createStylesColor(inverted),
 });
 
 export const Headline: React.FC<HeadlineProps> = (props): JSX.Element => (
   <Heading
-    sx={createStylesHeadline(props.size)}
+    sx={createStylesHeadline(props.size, props.inverted)}
     as={props.tag}
     size={props.size}>
     {props.children}

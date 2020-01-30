@@ -1,6 +1,7 @@
 export interface HeadlineProps {
   tag: Headline;
   size: HeadlineSize;
+  inverted: boolean;
 }
 
 export type Headline = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';

@@ -12,7 +12,7 @@ describe('<Headline />', () => {
   describe('Accessibility validation', () => {
     it('should not have any accessibility violations', async done => {
       const { container, unmount } = render(
-        <Headline tag="h1" size="xl">
+        <Headline tag="h1" size="xl" inverted={false}>
           Healing Flowers Collection
         </Headline>
       );
@@ -28,7 +28,7 @@ describe('<Headline />', () => {
   describe('Returns expected HTML tag', () => {
     it('should return an HTML h1', () => {
       const { container } = render(
-        <Headline tag="h1" size="xl">
+        <Headline tag="h1" size="xl" inverted={false}>
           Healing Flowers Collection
         </Headline>
       );
@@ -39,7 +39,7 @@ describe('<Headline />', () => {
 
     it('should return an HTML h2', () => {
       const { container } = render(
-        <Headline tag="h2" size="xl">
+        <Headline tag="h2" size="xl" inverted={false}>
           Healing Flowers Collection
         </Headline>
       );
@@ -50,7 +50,7 @@ describe('<Headline />', () => {
 
     it('should return an HTML h3', () => {
       const { container } = render(
-        <Headline tag="h3" size="xl">
+        <Headline tag="h3" size="xl" inverted={false}>
           Healing Flowers Collection
         </Headline>
       );
@@ -61,7 +61,7 @@ describe('<Headline />', () => {
 
     it('should return an HTML h4', () => {
       const { container } = render(
-        <Headline tag="h4" size="xl">
+        <Headline tag="h4" size="xl" inverted={false}>
           Healing Flowers Collection
         </Headline>
       );
@@ -72,7 +72,7 @@ describe('<Headline />', () => {
 
     it('should return an HTML h5', () => {
       const { container } = render(
-        <Headline tag="h5" size="xl">
+        <Headline tag="h5" size="xl" inverted={false}>
           Healing Flowers Collection
         </Headline>
       );
@@ -83,7 +83,7 @@ describe('<Headline />', () => {
 
     it('should return an HTML h6', () => {
       const { container } = render(
-        <Headline tag="h6" size="xl">
+        <Headline tag="h6" size="xl" inverted={false}>
           Healing Flowers Collection
         </Headline>
       );
@@ -96,7 +96,7 @@ describe('<Headline />', () => {
   describe('Returns the expeced font size', () => {
     it('should have a font size of 18px', () => {
       const { container } = render(
-        <Headline tag="h2" size="s">
+        <Headline tag="h2" size="s" inverted={false}>
           Healing Flowers Collection
         </Headline>
       );
@@ -106,7 +106,7 @@ describe('<Headline />', () => {
 
     it('should have a font size of 24px', () => {
       const { container } = render(
-        <Headline tag="h2" size="m">
+        <Headline tag="h2" size="m" inverted={false}>
           Healing Flowers Collection
         </Headline>
       );
@@ -117,7 +117,7 @@ describe('<Headline />', () => {
 
     it('should have a font size of 36px', () => {
       const { container } = render(
-        <Headline tag="h2" size="l">
+        <Headline tag="h2" size="l" inverted={false}>
           Healing Flowers Collection
         </Headline>
       );
@@ -128,7 +128,7 @@ describe('<Headline />', () => {
 
     it('should have a font size of 48px', () => {
       const { container } = render(
-        <Headline tag="h2" size="xl">
+        <Headline tag="h2" size="xl" inverted={false}>
           Healing Flowers Collection
         </Headline>
       );
@@ -139,7 +139,7 @@ describe('<Headline />', () => {
 
     it('should have a font size of 72px', () => {
       const { container } = render(
-        <Headline tag="h2" size="xxl">
+        <Headline tag="h2" size="xxl" inverted={false}>
           Healing Flowers Collection
         </Headline>
       );
