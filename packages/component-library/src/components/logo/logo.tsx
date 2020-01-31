@@ -6,8 +6,8 @@ import { qt } from 'gatsby-theme-query';
 import { withFocusStyle } from '../with-focus-style';
 
 const logoSize = {
-  width: 122,
-  height: 46,
+  width: 185,
+  height: 42,
 };
 
 const styledSVG: SxStyleProp = {
@@ -35,7 +35,7 @@ export const LogoBase: React.FunctionComponent<LogoProps> = (
       sx={styledSVG}
       className={props.className}
       aria-labelledby="logo-title-aria-id"
-      viewBox="0 0 135 46"
+      viewBox="0 0 194 46"
       >
       <title id="logo-title-aria-id">{props.title}</title>
       <desc>{props.desc}</desc>
