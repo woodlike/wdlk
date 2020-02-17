@@ -2,10 +2,9 @@ export interface VideoProps {
   controls: boolean;
   autoPlay: boolean;
   loop: boolean;
+  muted: boolean;
   preload: 'auto' | 'metadata' | 'none';
   sources: Source[];
-  top: number;
-  isFocused: boolean;
   poster?: string;
 }
 
@@ -19,4 +18,9 @@ export interface VideoStageProps {
   headline: string;
   tag: string;
   copy: string;
+}
+
+export interface ControlProps {
+  muted: boolean;
+  onClick: React.MouseEventHandler<SVGElement>;
 }

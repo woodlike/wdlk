@@ -1,6 +1,6 @@
 /**@jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
-import { VideoStageProps } from '.';
+import { Controls, VideoStageProps } from '.';
 import { qt } from '../../query';
 
 const stylesStageWrapper: SxStyleProp = {
@@ -23,6 +23,7 @@ export const Stage: React.FC<VideoStageProps> = (props): JSX.Element => {
     <figure sx={stylesStageWrapper}>
       {props.children}
       <figcaption sx={stylesCaption}>
+        <Controls muted={true} onClick={() => console.log('hiiii')} />
         <h1>{props.headline}</h1>
         <p>{props.copy}</p>
       </figcaption>

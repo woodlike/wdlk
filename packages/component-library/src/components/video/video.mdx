@@ -6,45 +6,50 @@ menu: Components
 import { Playground, Props } from 'docz';
 import * as Video from '../';
 
-# Video Component
+# Video Media
 
 ## Props glossary
 
-A short list of the components properties
-
 <Props of={Video.Media} />
 
-## Default Video Component
+## Video Large (Laptop / Desktop)
+It has no native controls, autoplay is on and it is muted.
 
 <Playground>
   <Video.Media
-    controls={true}
+    controls={false}
     autoPlay={true}
     loop={true}
+    muted={true}
     sources={[
       {
-        id: 'first-demo-video',
-        src: '/public/demo-video.mp4',
+        id: 'first-demo-video-mp4',
+        src: '/public/woodlike-sustainable-swimwear-healing-flowers-large.mp4',
         type: 'video/mp4',
       },
+      {
+        id: 'first-demo-video-web',
+        src: '/public/woodlike-sustainable-swimwear-healing-flowers-large.webm',
+        type: 'video/webm',
+      }
     ]}
   />
 </Playground>
 
-## Full Width/Height Video (substracting top)
+## Video Small (Mobile)
 
 <Playground>
-  <Video.VideoMedia
+  <Video.Media
     preload="auto"
-    top={50}
-    controls={true}
+    controls={false}
     autoPlay={true}
     loop={true}
+    muted={true}
     sources={[
       {
-        id: 'first-demo-video',
-        src: '/public/demo-video.mp4',
-        type: 'video/mp4',
+        id: 'second-demo-video-webm',
+        src: '/public/woodlike-sustainable-swimwear-healing-flowers.webm',
+        type: 'video/webm',
       },
     ]}
   />

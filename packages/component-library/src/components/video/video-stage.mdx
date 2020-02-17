@@ -14,8 +14,7 @@ A short list of the components properties
 
 <Props of={Video.Stage} />
 
-## Default Video Component
-
+## Video Stage Large (Laptop / Desktop)
 <Playground>
   <Video.Stage
     headline="Healing Flowers"
@@ -23,38 +22,44 @@ A short list of the components properties
     copy="The new capsule collection by WDLK"
   >
     <Video.Media
-      top={0}
-      controls={true}
+      controls={false}
       autoPlay={true}
       loop={true}
+      muted={true}
       sources={[
         {
-          id: 'first-demo-video',
-          src: '/public/demo-video.mp4',
-          type: 'video/mp4',
-        },
+        id: 'first-demo-video-mp4',
+        src: '/public/woodlike-sustainable-swimwear-healing-flowers-large.mp4',
+        type: 'video/mp4',
+      },
+      {
+        id: 'first-demo-video-web',
+        src: '/public/woodlike-sustainable-swimwear-healing-flowers-large.webm',
+        type: 'video/webm',
+      }
       ]}
     />
   </Video.Stage>
 </Playground>
 
 ## Full Width/Height Video (substracting top)
+
 <Playground>
   <Video.Stage
     headline="Healing Flowers"
     tag="h1"
-    copy="The new capsule collection by WDLK"
+    copy="Sustainable surf and yoga collection"
   >
     <Video.Media
-      top={40}
-      controls={true}
+      controls={false}
       autoPlay={true}
       loop={true}
+      muted={true}
       sources={[
         {
-          id: 'first-demo-video',
-          src: '/public/demo-video.mp4',
-          type: 'video/mp4',
+          id: 'second-demo-video-webm',
+          src: '/public/woodlike-sustainable-swimwear-healing-flowers.webm',
+          type: 'video/webm',
         },
       ]}
     />
