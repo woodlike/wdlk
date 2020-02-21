@@ -1,0 +1,21 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "noImplicitUseStrict": true,
+    "outDir": "./dist",
+    "rootDirs": [
+      "./src"
+    ],
+    "allowJs": true,
+  },
+  "include": [
+    "src/**/*",
+    "typings.d.ts"
+  ],
+  "exclude": [
+    "./node_modules",
+    "./docz/**/*",
+    "./src/**/*.test.tsx",
+    "./src/gatsby-theme-docz/**/*"
+  ]
+}

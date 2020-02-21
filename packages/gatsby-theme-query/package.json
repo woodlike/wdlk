@@ -9,7 +9,7 @@
   "types": "./lib/index.d.ts",
   "scripts": {
     "build": "tsc --module commonjs --target es6 --outDir lib/",
-    "lint": "tslint -c tslint.json 'src/**/*.{ts,tsx}'"
+    "lint": "eslint src --ext .ts,.tsx"
   },
   "dependencies": {
     "@theme-ui/presets": "^0.2.44",

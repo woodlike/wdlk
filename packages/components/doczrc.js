@@ -5,4 +5,4 @@ export default {
     mode: 'dark',
   },
   typescript: true,
-}
+};
