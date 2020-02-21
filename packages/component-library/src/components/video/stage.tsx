@@ -1,7 +1,12 @@
 /**@jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
-import { Controls, VideoStageProps } from '.';
 import { qt } from '../../query';
+
+export interface VideoStageProps {
+  headline: string;
+  tag: string;
+  copy: string;
+}
 
 const stylesStageWrapper: SxStyleProp = {
   position: 'relative',

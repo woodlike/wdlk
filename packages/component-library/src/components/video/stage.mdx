@@ -6,15 +6,16 @@ menu: Components
 import { Playground, Props } from 'docz';
 import * as Video from './';
 
-# Video Stage Component
+# Video Stage
+Art directing vides on three different devices.
 
 ## Props glossary
-
 A short list of the components properties
 
 <Props of={Video.Stage} />
 
-## Video Stage Large (Laptop / Desktop)
+## Laptop / Desktop
+
 <Playground>
   <Video.Stage
     headline="Healing Flowers"
@@ -42,7 +43,7 @@ A short list of the components properties
   </Video.Stage>
 </Playground>
 
-## Full Width/Height Video (substracting top)
+## Mobile Devices
 
 <Playground>
   <Video.Stage
@@ -58,8 +59,8 @@ A short list of the components properties
       sources={[
         {
           id: 'second-demo-video-webm',
-          src: '/public/woodlike-sustainable-swimwear-healing-flowers.webm',
-          type: 'video/webm',
+          src: '/public/woodlike-sustainable-swimwear-healing-flowers-small-lowres.mp4',
+          type: 'video/mp4',
         },
       ]}
     />

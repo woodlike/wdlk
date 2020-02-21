@@ -1,8 +1,8 @@
 export default {
-  typescript: true,
-  title: 'WDLK components',
-  menu: ['Components'],
+  menu: ['Components', 'Containers', 'Hocs'],
+  title: 'Woodlike UI Library',
   themeConfig: {
-    mode: 'light',
+    mode: 'dark',
   },
+  typescript: true,
 }

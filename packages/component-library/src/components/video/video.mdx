@@ -4,15 +4,16 @@ menu: Components
 ---
 
 import { Playground, Props } from 'docz';
-import * as Video from '../';
+import * as Video from './';
 
-# Video Media
+# Video
+Video sizes are defined by their original sources. For woodlike we recommend the three following sizes for art directing videos on different devices.
 
 ## Props glossary
-
 <Props of={Video.Media} />
 
-## Video Large (Laptop / Desktop)
+## Large
+Video dimension (9:16 | 1920 x 1080). Ideal for laptops and desktops.
 It has no native controls, autoplay is on and it is muted.
 
 <Playground>
@@ -36,7 +37,34 @@ It has no native controls, autoplay is on and it is muted.
   />
 </Playground>
 
-## Video Small (Mobile)
+## Medium
+Video dimension (703 x 1024). Ideal for tablets.
+It has no native controls, autoplay is on and it is muted.
+
+<Playground>
+  <Video.Media
+    controls={false}
+    autoPlay={true}
+    loop={true}
+    muted={true}
+    sources={[
+      {
+        id: 'first-demo-video-mp4',
+        src: '/public/woodlike-sustainable-swimwear-healing-flowers-medium-lowres.mp4',
+        type: 'video/mp4',
+      },
+      {
+        id: 'first-demo-video-web',
+        src: '/public/woodlike-sustainable-swimwear-healing-flowers-medium.webm',
+        type: 'video/webm',
+      }
+    ]}
+  />
+</Playground>
+
+## Small
+Video dimension (16:9 | 1080 x 1920). Ideal for tablets.
+It has no native controls, autoplay is on and it is muted.
 
 <Playground>
   <Video.Media
@@ -48,8 +76,8 @@ It has no native controls, autoplay is on and it is muted.
     sources={[
       {
         id: 'second-demo-video-webm',
-        src: '/public/woodlike-sustainable-swimwear-healing-flowers.webm',
-        type: 'video/webm',
+        src: '/public/woodlike-sustainable-swimwear-healing-flowers-small-lowres.mp4',
+        type: 'video/mp4',
       },
     ]}
   />
