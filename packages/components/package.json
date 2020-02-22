@@ -17,7 +17,6 @@
   },
   "dependencies": {
     "@emotion/core": "^10.0.22",
-    "@emotion/styled": "^10.0.23",
     "@theme-ui/components": "^0.3.1",
     "@theme-ui/presets": "^0.2.44",
     "docz": "^2.3.0-alpha.5",
@@ -47,7 +46,6 @@
     "prettier": "^1.19.1",
     "ts-jest": "^24.1.0",
     "tslint": "^5.20.1",
-    "tslint-react": "^4.1.0",
-    "typescript": "^3.7.2"
+    "tslint-react": "^4.1.0"
   }
 }

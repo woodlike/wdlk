@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { Volume2, VolumeX } from 'react-feather';
-
-import { qt } from '../..';
-
+import { qt } from '../../query';
 export interface ControlProps {
   muted: boolean;
   onClick: React.MouseEventHandler<SVGElement>;

@@ -3,18 +3,18 @@ import { render, cleanup } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { matchers } from 'jest-emotion';
 
-import { Headline } from '.';
+import { Heading } from '.';
 import { qt } from '../..';
 
 expect.extend(toHaveNoViolations);
 expect.extend(matchers);
-describe('<Headline />', () => {
+describe('<Heading />', () => {
   describe('Accessibility validation', () => {
     it('should not have any accessibility violations', async done => {
       const { container, unmount } = render(
-        <Headline tag="h1" size="xl" inverted={false}>
+        <Heading tag="h1" size="xl" inverted={false}>
           Healing Flowers Collection
-        </Headline>,
+        </Heading>,
       );
 
       const a11yResults = await axe(container);
@@ -28,9 +28,9 @@ describe('<Headline />', () => {
   describe('Returns expected HTML tag', () => {
     it('should return an HTML h1', () => {
       const { container } = render(
-        <Headline tag="h1" size="xl" inverted={false}>
+        <Heading tag="h1" size="xl" inverted={false}>
           Healing Flowers Collection
-        </Headline>,
+        </Heading>,
       );
       const h1 = container.querySelector('h1');
       expect(h1).toBeTruthy();
@@ -39,9 +39,9 @@ describe('<Headline />', () => {
 
     it('should return an HTML h2', () => {
       const { container } = render(
-        <Headline tag="h2" size="xl" inverted={false}>
+        <Heading tag="h2" size="xl" inverted={false}>
           Healing Flowers Collection
-        </Headline>,
+        </Heading>,
       );
       const h2 = container.querySelector('h2');
       expect(h2).toBeTruthy();
@@ -50,9 +50,9 @@ describe('<Headline />', () => {
 
     it('should return an HTML h3', () => {
       const { container } = render(
-        <Headline tag="h3" size="xl" inverted={false}>
+        <Heading tag="h3" size="xl" inverted={false}>
           Healing Flowers Collection
-        </Headline>,
+        </Heading>,
       );
       const h3 = container.querySelector('h3');
       expect(h3).toBeTruthy();
@@ -61,9 +61,9 @@ describe('<Headline />', () => {
 
     it('should return an HTML h4', () => {
       const { container } = render(
-        <Headline tag="h4" size="xl" inverted={false}>
+        <Heading tag="h4" size="xl" inverted={false}>
           Healing Flowers Collection
-        </Headline>,
+        </Heading>,
       );
       const h4 = container.querySelector('h4');
       expect(h4).toBeTruthy();
@@ -72,9 +72,9 @@ describe('<Headline />', () => {
 
     it('should return an HTML h5', () => {
       const { container } = render(
-        <Headline tag="h5" size="xl" inverted={false}>
+        <Heading tag="h5" size="xl" inverted={false}>
           Healing Flowers Collection
-        </Headline>,
+        </Heading>,
       );
       const h5 = container.querySelector('h5');
       expect(h5).toBeTruthy();
@@ -83,9 +83,9 @@ describe('<Headline />', () => {
 
     it('should return an HTML h6', () => {
       const { container } = render(
-        <Headline tag="h6" size="xl" inverted={false}>
+        <Heading tag="h6" size="xl" inverted={false}>
           Healing Flowers Collection
-        </Headline>,
+        </Heading>,
       );
       const h6 = container.querySelector('h6');
       expect(h6).toBeTruthy();
@@ -96,9 +96,9 @@ describe('<Headline />', () => {
   describe('Returns the expeced font size', () => {
     it('should have a font size of 18px', () => {
       const { container } = render(
-        <Headline tag="h2" size="s" inverted={false}>
+        <Heading tag="h2" size="s" inverted={false}>
           Healing Flowers Collection
-        </Headline>,
+        </Heading>,
       );
       const h2 = container.querySelector('h2');
       expect(h2).toHaveStyleRule('font-size', `${qt('spaces')(4)}px`);
@@ -106,9 +106,9 @@ describe('<Headline />', () => {
 
     it('should have a font size of 24px', () => {
       const { container } = render(
-        <Headline tag="h2" size="m" inverted={false}>
+        <Heading tag="h2" size="m" inverted={false}>
           Healing Flowers Collection
-        </Headline>,
+        </Heading>,
       );
 
       const h2 = container.querySelector('h2');
@@ -117,9 +117,9 @@ describe('<Headline />', () => {
 
     it('should have a font size of 36px', () => {
       const { container } = render(
-        <Headline tag="h2" size="l" inverted={false}>
+        <Heading tag="h2" size="l" inverted={false}>
           Healing Flowers Collection
-        </Headline>,
+        </Heading>,
       );
 
       const h2 = container.querySelector('h2');
@@ -128,9 +128,9 @@ describe('<Headline />', () => {
 
     it('should have a font size of 48px', () => {
       const { container } = render(
-        <Headline tag="h2" size="xl" inverted={false}>
+        <Heading tag="h2" size="xl" inverted={false}>
           Healing Flowers Collection
-        </Headline>,
+        </Heading>,
       );
 
       const h2 = container.querySelector('h2');
@@ -139,13 +139,43 @@ describe('<Headline />', () => {
 
     it('should have a font size of 72px', () => {
       const { container } = render(
-        <Headline tag="h2" size="xxl" inverted={false}>
+        <Heading tag="h2" size="xxl" inverted={false}>
           Healing Flowers Collection
-        </Headline>,
+        </Heading>,
       );
 
       const h2 = container.querySelector('h2');
       expect(h2).toHaveStyleRule('font-size', `${qt('spaces')(9)}px`);
+    });
+  });
+
+  describe('Returns the expected font-family', () => {
+    it('should have use `"Museo", serif` font-family as default', () => {
+      const { container } = render(
+        <Heading tag="h1" size="s">
+          Healing Flowers Collection
+        </Heading>,
+      );
+      const h2 = container.querySelector('h1');
+      expect(h2).toHaveStyleRule('font-family', `"Museo",serif`);
+    });
+    it('should have use `"MuseoSans",Helvetica,sans-serif`', () => {
+      const { container } = render(
+        <Heading tag="h1" size="s" family="secondary">
+          Healing Flowers Collection
+        </Heading>,
+      );
+      const h1 = container.querySelector('h1');
+      expect(h1).toHaveStyleRule('font-family', `"MuseoSans",Helvetica,sans-serif`);
+    });
+    it('should have use `"Challista_signature", serif` font-family', () => {
+      const { container } = render(
+        <Heading tag="h1" size="s" family="campaign">
+          Healing Flowers Collection
+        </Heading>,
+      );
+      const h1 = container.querySelector('h1');
+      expect(h1).toHaveStyleRule('font-family', `"Challista_signature",serif`);
     });
   });
 });

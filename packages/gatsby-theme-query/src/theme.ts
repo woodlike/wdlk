@@ -3,5 +3,5 @@ import { theme as ThemeQuery } from 'theme-query';
 
 export const theme = {
   ...base,
-  ...ThemeQuery
+  ...ThemeQuery,
 };

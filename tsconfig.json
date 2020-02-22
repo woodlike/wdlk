@@ -19,7 +19,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "experimentalDecorators": true,
-    "noEmit": true,
+    "noEmit": false,
     "incremental": true,
     "noFallthroughCasesInSwitch": true
   },

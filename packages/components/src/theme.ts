@@ -1,19 +1,29 @@
-import { theme as ThemeQuery } from 'gatsby-theme-query';
+import { base } from '@theme-ui/presets';
+import { theme as themeQuery } from 'theme-query';
 
 const breakpoints = ['0px', '480px', '769px', '990px', '1024px', '1440px'];
 
 export const theme = {
-  ...ThemeQuery,
+  ...base,
+  ...themeQuery,
   borderWidths: [1, 2, 3, 4],
   letterSpacings: [0.5, 1, 1.5],
   breakpoints,
   colors: {
-    ...ThemeQuery.colors,
+    ...themeQuery.colors,
+  },
+  fonts: {
+    ...themeQuery.fonts,
+    heading: {
+      display: `"Museo", serif`,
+      secondary: `"MuseoSans", Helvetica, sans-serif`,
+      campaign: `"Challista_signature", serif`,
+    },
   },
   transition: {
-    duration: [...ThemeQuery.transition.duration],
+    duration: [...themeQuery.transition.duration],
     timing: [
-      ...ThemeQuery.transition.timing,
+      ...themeQuery.transition.timing,
       'cubic-bezier(0.000, 0.755, 0.450, 0.910)',
       'cubic-bezier(0.770, 0.000, 0.175, 1.000)',
     ],

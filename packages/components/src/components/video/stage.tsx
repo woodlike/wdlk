@@ -1,7 +1,7 @@
 /**@jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
-import { qt } from '../../query';
 import { Controls } from '.';
+import { qt } from '../../query';
 
 export interface VideoStageProps {
   headline: string;

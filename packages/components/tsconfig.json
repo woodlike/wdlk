@@ -3,13 +3,10 @@
   "compilerOptions": {
     "outDir": "./dist",
   },
-  "include": [
-    "src/**/*",
-    "typings.d.ts"
-  ],
   "exclude": [
     "./node_modules",
     "./docz/**/*",
+    "./src/demo/**/*",
     "./src/**/*.test.tsx",
     "./src/gatsby-theme-docz/**/*"
   ]
