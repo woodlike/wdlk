@@ -10,10 +10,10 @@
   "author": "Mauricio Palma <mauricio.palma@woodlikeocean.com>",
   "license": "MIT",
   "scripts": {
-    "build:comp": "yarn workspace @wdlk/component-library build",
-    "dev:comp": "yarn workspace @wdlk/component-library dev",
-    "test:comp": "yarn workspace @wdlk/component-library test",
-    "lint:comp": "yarn workspace @wdlk/component-library lint",
+    "build:comp": "yarn workspace @wdlk/components build",
+    "dev:comp": "yarn workspace @wdlk/components dev",
+    "test:comp": "yarn workspace @wdlk/components test",
+    "lint:comp": "yarn workspace @wdlk/components lint",
     "build:lib": "yarn workspace styled-factory build",
     "dev:lib": "yarn workspace theme-query dev",
     "test:lib": "yarn workspace theme-query test",
@@ -26,5 +26,14 @@
     "build:theme": "yarn workspace gatsby-theme-query build",
     "lint:theme": "yarn workspace gatsby-theme-query lint"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.20.0",
+    "@typescript-eslint/parser": "^2.20.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-react": "^7.18.3",
+    "prettier": "^1.19.1",
+    "typescript": "3.8"
+  }
 }

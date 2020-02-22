@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  Header as LibHeader,
-  Logo,
-  Nav,
-  qt,
-  Cart,
-} from '@wdlk/component-library';
+import { Header as LibHeader, Logo, Nav, qt, Cart } from '@wdlk/component-library';
 
 import { Navigation, NavigationLayer, MiniCart } from '..';
 import { useNavigationData, useHeaderData, useBreakpoint } from '../../hooks';
@@ -26,28 +20,12 @@ export function Header(): JSX.Element {
       <LibHeader
         areas={[
           isMobile ? (
-            <Nav.Burger
-              onClick={() => setIsExpanded(!isExpanded)}
-              key={id[0]}
-              isExpanded={isExpanded}
-            />
+            <Nav.Burger onClick={(): void => setIsExpanded(!isExpanded)} key={id[0]} isExpanded={isExpanded} />
           ) : (
-            <Logo
-              key={id[1]}
-              title={logo.title}
-              desc={logo.desc}
-              isFocused={false}
-              href={url}
-            />
+            <Logo key={id[1]} title={logo.title} desc={logo.desc} isFocused={false} href={url} />
           ),
           isMobile ? (
-            <Logo
-              key={id[2]}
-              title={logo.title}
-              desc={logo.desc}
-              isFocused={false}
-              href={url}
-            />
+            <Logo key={id[2]} title={logo.title} desc={logo.desc} isFocused={false} href={url} />
           ) : (
             <Navigation key={id[3]} url={url} items={items} />
           ),
@@ -65,14 +43,7 @@ export function Header(): JSX.Element {
           ),
         ]}
       />
-      {isMobile && (
-        <NavigationLayer
-          url={url}
-          items={items}
-          isExpanded={isExpanded}
-          login={header.miniCart.items[0]}
-        />
-      )}
+      {isMobile && <NavigationLayer url={url} items={items} isExpanded={isExpanded} login={header.miniCart.items[0]} />}
     </>
   );
 }

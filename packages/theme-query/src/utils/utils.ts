@@ -5,8 +5,6 @@ import { RGB } from '../tokens';
  */
 export const toRGB = (color: RGB): string => `rgb(${color.join(', ')})`;
 
-
-
 /*
  * @description: Operation on strings
  */

@@ -1,30 +1,26 @@
 {
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
+    "target": "es2017",
+    "lib": [
+      "dom",
+      "es2017",
+      "esnext"
+    ],
+    "allowJs": true,
     "esModuleInterop": true,
-    "declaration": true,
-    "declarationMap": true,
-    "baseUrl": "src",
-    "experimentalDecorators": true,
+    "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "jsx": "react",
-    "importHelpers": true,
-    "lib": ["es5", "es6", "es7", "es2017", "dom"],
-    "module": "es6",
+    "module": "esnext",
     "moduleResolution": "node",
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitAny": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
+    "resolveJsonModule": true,
+    "jsx": "react",
+    "sourceMap": true,
+    "declaration": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "preserveConstEnums": true,
-    "pretty": true,
-    "removeComments": true,
-    "sourceMap": true,
-    "strictNullChecks": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "target": "es6",
-    "watch": false
-  }
+    "experimentalDecorators": true,
+    "noEmit": false,
+    "incremental": true,
+    "noFallthroughCasesInSwitch": true
+  },
 }

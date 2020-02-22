@@ -15,7 +15,7 @@ describe('Token Utils', () => {
     });
 
     it('should return an array containing only one word because dot is missing', () => {
-      expect(splitFromDot('verylongwordwithnodot')).toEqual(['verylongwordwithnodot'])
-    })
+      expect(splitFromDot('verylongwordwithnodot')).toEqual(['verylongwordwithnodot']);
+    });
   });
 });

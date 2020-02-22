@@ -22,7 +22,7 @@ export const theme = {
   spaces,
   transition: {
     duration,
-    timing
-  }
+    timing,
+  },
 };
 export default theme;

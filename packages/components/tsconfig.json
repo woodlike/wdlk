@@ -1,0 +1,13 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+  },
+  "exclude": [
+    "./node_modules",
+    "./docz/**/*",
+    "./src/demo/**/*",
+    "./src/**/*.test.tsx",
+    "./src/gatsby-theme-docz/**/*"
+  ]
+}
