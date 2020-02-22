@@ -1,9 +1,12 @@
 /** @jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
 
-import { NavPanelProps } from '.';
-import { headerYPosition } from './utils';
+import { headerYPosition } from '../../utils/utils';
 import { qt } from '../../query';
+
+export interface NavPanelProps {
+  isExpanded: boolean;
+}
 
 const panelDimensions = {
   y: headerYPosition,

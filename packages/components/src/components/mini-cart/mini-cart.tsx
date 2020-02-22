@@ -36,17 +36,13 @@ const styledCartLink: SxStyleProp = {
   },
 };
 
-const Link: React.FC<MiniCartLinkProps> = (
-  props
-): JSX.Element => (
+const Link: React.FC<MiniCartLinkProps> = (props): JSX.Element => (
   <a sx={styledCartLink} href={props.href} className={props.className}>
     {props.children}
   </a>
 );
 
-export const MiniCart: React.FC = (
-  props
-): JSX.Element => {
+export const MiniCart: React.FC = (props): JSX.Element => {
   return (
     <ul sx={styledMiniCart} data-testid="mini-cart">
       {props.children}
@@ -54,8 +50,6 @@ export const MiniCart: React.FC = (
   );
 };
 
-export const MiniCartLink: React.FC = props => (
-  <li sx={syledMiniCartLink}>{props.children}</li>
-);
+export const MiniCartLink: React.FC = props => <li sx={syledMiniCartLink}>{props.children}</li>;
 
 export const CartLink = withFocusStyle<MiniCartLinkProps>(Link);

@@ -1,7 +1,10 @@
 /** @jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
-import { NavBarProps } from '../navigation';
 import { qt } from '../../query';
+
+export interface NavBarProps {
+  itemCount: number;
+}
 
 const styledNavBar: SxStyleProp = {
   display: 'grid',

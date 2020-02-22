@@ -30,11 +30,10 @@ const styledCounter: SxStyleProp = {
   color: `${qt('whites')(0)}`,
   letterSpacing: `${qt('letterSpacings')(2)}px`,
   strokeWidth: 0,
-  transform: 'translate(38%, 85%)'
-}
+  transform: 'translate(38%, 85%)',
+};
 
-const styledFilled = (isFilled: boolean): SxStyleProp =>
-  isFilled ? { fillOpacity: 1 } : { fillOpacity: 0 };
+const styledFilled = (isFilled: boolean): SxStyleProp => (isFilled ? { fillOpacity: 1 } : { fillOpacity: 0 });
 
 const createStyledSVGStyle = (isFilled: boolean): SxStyleProp => {
   return {
@@ -54,13 +53,8 @@ const CartIcon: React.FunctionComponent<CartProps> = (props): JSX.Element => {
         <title id="cart-title-label-id">{props.title}</title>
         <desc>The cart currently contains {props.count} items</desc>
         <path d="M1.9 12.8h30l-2.2 15.1c-.4 2.7-3 4.9-5.7 4.9H9.8c-2.8 0-5.3-2.2-5.7-4.9L1.9 12.8z" />
-        <path
-          fillOpacity="0"
-          d="M12.2 5.3c.4-2.2 2.5-3.9 4.7-3.9s4.3 1.8 4.7 3.9l1.3 7.3h-12l1.3-7.3z"
-        />
-        <text sx={styledCounter}>
-          {props.count}
-        </text>
+        <path fillOpacity="0" d="M12.2 5.3c.4-2.2 2.5-3.9 4.7-3.9s4.3 1.8 4.7 3.9l1.3 7.3h-12l1.3-7.3z" />
+        <text sx={styledCounter}>{props.count}</text>
       </svg>
     </a>
   );

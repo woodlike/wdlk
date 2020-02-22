@@ -1,7 +1,11 @@
 /**@jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
-import { BurgerProps } from '.';
 import { qt } from '../../query';
+
+export interface BurgerProps {
+  isExpanded: boolean;
+  readonly onClick: React.MouseEventHandler<HTMLElement>;
+}
 
 const burgerLineHeight = 2;
 
@@ -72,11 +76,7 @@ const createStylesBurgerLayer = (isExpanded: boolean): SxStyleProp => ({
 });
 
 export const Burger: React.FC<BurgerProps> = props => (
-  <button
-    sx={stylesBurger}
-    onClick={props.onClick}
-    aria-expanded={props.isExpanded}
-    role="button">
+  <button sx={stylesBurger} onClick={props.onClick} aria-expanded={props.isExpanded} role="button">
     <span sx={createStylesBurgerLayer(props.isExpanded)} />
   </button>
 );

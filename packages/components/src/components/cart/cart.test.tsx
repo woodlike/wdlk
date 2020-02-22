@@ -11,13 +11,7 @@ expect.extend(toHaveNoViolations);
 describe('<MiniCart />', () => {
   it('should not have accessibility violations', async done => {
     const { container, unmount } = render(
-      <Cart
-        href="#"
-        isFocused={false}
-        count={0}
-        isFilled={true}
-        title="Woodlike Ocean Shopping cart"
-      />
+      <Cart href="#" isFocused={false} count={0} isFilled={true} title="Woodlike Ocean Shopping cart" />,
     );
 
     const a11yResults = await axe(container);
@@ -31,13 +25,7 @@ describe('<MiniCart />', () => {
     const count = 0;
     const result = 'Woodlike Ocean Shopping cart';
     const { getByTestId, unmount } = render(
-      <Cart
-        href="#"
-        isFocused={false}
-        count={count}
-        isFilled={false}
-        title={result}
-      />
+      <Cart href="#" isFocused={false} count={count} isFilled={false} title={result} />,
     );
     const cart = getByTestId('cart-link-test-id');
     const title = cart.querySelector('title') as HTMLTitleElement;
@@ -51,13 +39,7 @@ describe('<MiniCart />', () => {
   it('should be filled and should contain 2 items', () => {
     const result = 2;
     const { getByTestId, unmount } = render(
-      <Cart
-        href="#"
-        isFocused={false}
-        count={result}
-        isFilled={true}
-        title="Woodlike Ocean Shopping cart"
-      />
+      <Cart href="#" isFocused={false} count={result} isFilled={true} title="Woodlike Ocean Shopping cart" />,
     );
 
     const cart = getByTestId('cart-link-test-id');
@@ -71,13 +53,7 @@ describe('<MiniCart />', () => {
 
   it('should not be filled and should contain 0 items', () => {
     const { getByTestId, unmount } = render(
-      <Cart
-        href="#"
-        isFocused={false}
-        count={0}
-        isFilled={false}
-        title="Woodlike Ocean Shopping cart"
-      />
+      <Cart href="#" isFocused={false} count={0} isFilled={false} title="Woodlike Ocean Shopping cart" />,
     );
 
     const cart = getByTestId('cart-link-test-id');

@@ -22,10 +22,7 @@ const styledSVG: SxStyleProp = {
   },
 };
 
-export const Logo: React.FunctionComponent<LogoProps> = (
-  props
-): JSX.Element => {
-
+export const Logo: React.FunctionComponent<LogoProps> = (props): JSX.Element => {
   return (
     <Link to="/">
       <svg
@@ -33,8 +30,7 @@ export const Logo: React.FunctionComponent<LogoProps> = (
         className={props.className}
         aria-labelledby="logo-title-aria-id"
         data-testid="logo-test-id"
-        viewBox="0 0 135 46"
-        >
+        viewBox="0 0 135 46">
         <title id="logo-title-aria-id">{props.title}</title>
         <desc>{props.desc}</desc>
         <LogoPath />
@@ -43,4 +39,3 @@ export const Logo: React.FunctionComponent<LogoProps> = (
     </Link>
   );
 };
-

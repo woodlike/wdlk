@@ -14,7 +14,7 @@ describe('<Headline />', () => {
       const { container, unmount } = render(
         <Headline tag="h1" size="xl" inverted={false}>
           Healing Flowers Collection
-        </Headline>
+        </Headline>,
       );
 
       const a11yResults = await axe(container);
@@ -30,7 +30,7 @@ describe('<Headline />', () => {
       const { container } = render(
         <Headline tag="h1" size="xl" inverted={false}>
           Healing Flowers Collection
-        </Headline>
+        </Headline>,
       );
       const h1 = container.querySelector('h1');
       expect(h1).toBeTruthy();
@@ -41,7 +41,7 @@ describe('<Headline />', () => {
       const { container } = render(
         <Headline tag="h2" size="xl" inverted={false}>
           Healing Flowers Collection
-        </Headline>
+        </Headline>,
       );
       const h2 = container.querySelector('h2');
       expect(h2).toBeTruthy();
@@ -52,7 +52,7 @@ describe('<Headline />', () => {
       const { container } = render(
         <Headline tag="h3" size="xl" inverted={false}>
           Healing Flowers Collection
-        </Headline>
+        </Headline>,
       );
       const h3 = container.querySelector('h3');
       expect(h3).toBeTruthy();
@@ -63,7 +63,7 @@ describe('<Headline />', () => {
       const { container } = render(
         <Headline tag="h4" size="xl" inverted={false}>
           Healing Flowers Collection
-        </Headline>
+        </Headline>,
       );
       const h4 = container.querySelector('h4');
       expect(h4).toBeTruthy();
@@ -74,7 +74,7 @@ describe('<Headline />', () => {
       const { container } = render(
         <Headline tag="h5" size="xl" inverted={false}>
           Healing Flowers Collection
-        </Headline>
+        </Headline>,
       );
       const h5 = container.querySelector('h5');
       expect(h5).toBeTruthy();
@@ -85,7 +85,7 @@ describe('<Headline />', () => {
       const { container } = render(
         <Headline tag="h6" size="xl" inverted={false}>
           Healing Flowers Collection
-        </Headline>
+        </Headline>,
       );
       const h6 = container.querySelector('h6');
       expect(h6).toBeTruthy();
@@ -98,7 +98,7 @@ describe('<Headline />', () => {
       const { container } = render(
         <Headline tag="h2" size="s" inverted={false}>
           Healing Flowers Collection
-        </Headline>
+        </Headline>,
       );
       const h2 = container.querySelector('h2');
       expect(h2).toHaveStyleRule('font-size', `${qt('spaces')(4)}px`);
@@ -108,7 +108,7 @@ describe('<Headline />', () => {
       const { container } = render(
         <Headline tag="h2" size="m" inverted={false}>
           Healing Flowers Collection
-        </Headline>
+        </Headline>,
       );
 
       const h2 = container.querySelector('h2');
@@ -119,7 +119,7 @@ describe('<Headline />', () => {
       const { container } = render(
         <Headline tag="h2" size="l" inverted={false}>
           Healing Flowers Collection
-        </Headline>
+        </Headline>,
       );
 
       const h2 = container.querySelector('h2');
@@ -130,7 +130,7 @@ describe('<Headline />', () => {
       const { container } = render(
         <Headline tag="h2" size="xl" inverted={false}>
           Healing Flowers Collection
-        </Headline>
+        </Headline>,
       );
 
       const h2 = container.querySelector('h2');
@@ -141,7 +141,7 @@ describe('<Headline />', () => {
       const { container } = render(
         <Headline tag="h2" size="xxl" inverted={false}>
           Healing Flowers Collection
-        </Headline>
+        </Headline>,
       );
 
       const h2 = container.querySelector('h2');

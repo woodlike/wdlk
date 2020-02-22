@@ -14,15 +14,8 @@ describe('<NavigationLink />', () => {
     const title = 'only necessary if you can not write descriptive link texts';
     const { container, unmount } = render(
       <ul>
-        <Nav.Link
-          href="#"
-          current={true}
-          isFocused={false}
-          title={title}
-          context="bar"
-          text="Link Text"
-        />
-      </ul>
+        <Nav.Link href="#" current={true} isFocused={false} title={title} context="bar" text="Link Text" />
+      </ul>,
     );
 
     const a11yResults = await axe(container);
@@ -35,14 +28,7 @@ describe('<NavigationLink />', () => {
   it('should have all the relevant a11y attributes', () => {
     const title = 'only necessary if you can not write descriptive link texts';
     const { getByTestId } = render(
-      <Nav.Link
-        href="#"
-        current={true}
-        isFocused={false}
-        title={title}
-        context="bar"
-        text="Link Text"
-      />
+      <Nav.Link href="#" current={true} isFocused={false} title={title} context="bar" text="Link Text" />,
     );
     const li = getByTestId('navigation-link-test-id');
     const a = li.querySelector('a') as HTMLElement;
@@ -55,13 +41,7 @@ describe('<NavigationLink />', () => {
 
   it('should not have the a11y attributes', () => {
     const { getByTestId } = render(
-      <Nav.Link
-        href="#"
-        current={false}
-        isFocused={false}
-        context="bar"
-        text="Link Text"
-      />
+      <Nav.Link href="#" current={false} isFocused={false} context="bar" text="Link Text" />,
     );
     const li = getByTestId('navigation-link-test-id');
     const a = li.querySelector('a') as HTMLElement;
@@ -74,13 +54,7 @@ describe('<NavigationLink />', () => {
 
   it('should have styling for a current state link', () => {
     const { getByTestId } = render(
-      <Nav.Link
-        href="#"
-        current={true}
-        isFocused={false}
-        context="bar"
-        text="Link Text"
-      />
+      <Nav.Link href="#" current={true} isFocused={false} context="bar" text="Link Text" />,
     );
     const li = getByTestId('navigation-link-test-id');
     const a = li.querySelector('a') as HTMLElement;
@@ -99,14 +73,7 @@ describe('<NavigationLink />', () => {
 
   it('should have the styling for an active link', () => {
     const { getByTestId } = render(
-      <Nav.Link
-        href="#"
-        current={false}
-        isFocused={false}
-        isActive={true}
-        context="bar"
-        text="Link Text"
-      />
+      <Nav.Link href="#" current={false} isFocused={false} isActive={true} context="bar" text="Link Text" />,
     );
     const li = getByTestId('navigation-link-test-id');
     const a = li.querySelector('a') as HTMLElement;
@@ -125,13 +92,7 @@ describe('<NavigationLink />', () => {
 
   it('should recognize styling for a bar context', () => {
     const { getByTestId } = render(
-      <Nav.Link
-        href="#"
-        current={true}
-        isFocused={false}
-        context="bar"
-        text="Link Text"
-      />
+      <Nav.Link href="#" current={true} isFocused={false} context="bar" text="Link Text" />,
     );
     const li = getByTestId('navigation-link-test-id');
     expect(li).toHaveStyleRule('justify-self', 'left');
@@ -143,13 +104,7 @@ describe('<NavigationLink />', () => {
 
   it('should recognize styling for a panel context', () => {
     const { getByTestId } = render(
-      <Nav.Link
-        href="#"
-        current={true}
-        isFocused={false}
-        context="panel"
-        text="Link Text"
-      />
+      <Nav.Link href="#" current={true} isFocused={false} context="panel" text="Link Text" />,
     );
     const li = getByTestId('navigation-link-test-id');
     expect(li).toHaveStyleRule('justify-self', 'left');
@@ -158,14 +113,7 @@ describe('<NavigationLink />', () => {
 
   it('should return a size S link', () => {
     const { getByTestId } = render(
-      <Nav.Link
-        href="#"
-        current={true}
-        isFocused={false}
-        context="panel"
-        size="S"
-        text="Link Text"
-      />
+      <Nav.Link href="#" current={true} isFocused={false} context="panel" size="S" text="Link Text" />,
     );
     const li = getByTestId('navigation-link-test-id');
     const a = li.querySelector('a');
@@ -176,14 +124,7 @@ describe('<NavigationLink />', () => {
 
   it('should return a size M link', () => {
     const { getByTestId } = render(
-      <Nav.Link
-        href="#"
-        current={true}
-        isFocused={false}
-        context="panel"
-        size="M"
-        text="Link Text"
-      />
+      <Nav.Link href="#" current={true} isFocused={false} context="panel" size="M" text="Link Text" />,
     );
     const li = getByTestId('navigation-link-test-id');
     const a = li.querySelector('a');
@@ -195,14 +136,7 @@ describe('<NavigationLink />', () => {
 
   it('should return a size L link', () => {
     const { getByTestId } = render(
-      <Nav.Link
-        href="#"
-        current={true}
-        isFocused={false}
-        context="panel"
-        size="L"
-        text="Link Text"
-      />
+      <Nav.Link href="#" current={true} isFocused={false} context="panel" size="L" text="Link Text" />,
     );
     const li = getByTestId('navigation-link-test-id');
     const a = li.querySelector('a');

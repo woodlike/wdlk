@@ -5,7 +5,7 @@ menu: Components
 
 import { Playground, Props } from 'docz';
 import * as Nav from '.';
-import { DemoBox } from './demo-box';
+import { DemoBox } from '../demo';
 
 # Navigation Panel
 
@@ -93,15 +93,7 @@ A short list of the components properties
           size="S"
           text="Sustainability"
         />
-        <Nav.Link
-          href="#"
-          current={false}
-          isFocused={false}
-          isInverted={true}
-          context="panel"
-          size="S"
-          text="Login"
-        />
+        <Nav.Link href="#" current={false} isFocused={false} isInverted={true} context="panel" size="S" text="Login" />
       </Nav.LayerList>
       <Nav.LayerFooter>®Woodlike 2020</Nav.LayerFooter>
     </Nav.Layer>

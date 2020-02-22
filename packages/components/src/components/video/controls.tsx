@@ -10,17 +10,9 @@ export interface ControlProps {
 
 export const Controls: React.FC<ControlProps> = (props): JSX.Element =>
   props.muted ? (
-    <VolumeX
-      onClick={props.onClick}
-      color="currentColor"
-      size={`${qt('spaces')(5)}`}
-    />
+    <VolumeX onClick={props.onClick} color="currentColor" size={`${qt('spaces')(5)}`} />
   ) : (
-    <Volume2
-      onClick={props.onClick}
-      color="currentColor"
-      size={`${qt('spaces')(5)}`}
-    />
+    <Volume2 onClick={props.onClick} color="currentColor" size={`${qt('spaces')(5)}`} />
   );
 
 Controls.displayName = 'VideoControls';

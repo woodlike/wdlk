@@ -1,6 +1,7 @@
 import * as LocalNav from './navigation';
 import * as LocalVid from './video';
 
+export * from './burger';
 export * from './cart';
 export * from './logo';
 export * from './header';

@@ -1,5 +1,5 @@
 import * as React from 'react';
 
 // tslint:disable-next-line: no-any
-const Wrapper = ({ children }: any) => <>{children}</>;
-export default Wrapper
+const Wrapper: React.FC<{ children: React.ReactChildren }> = (props): JSX.Element => <>{props.children}</>;
+export default Wrapper;

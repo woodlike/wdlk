@@ -2,8 +2,10 @@
 import { jsx, Styled, ThemeProvider } from 'theme-ui';
 import { theme as doczTheme, useConfig, ComponentsProvider } from 'docz';
 import { theme } from 'gatsby-theme-query';
+// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
 // @ts-ignore
 import defaultTheme from '~theme';
+// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
 // @ts-ignore
 import components from '~components';
 
@@ -19,21 +21,20 @@ const libraryTheme = {
   letterSpacings: [0.5, 1, 1.5],
   fonts: {
     ...theme.fonts,
-    monospace: `"IBM Plex Mono", monospace`
+    monospace: `"IBM Plex Mono", monospace`,
   },
   colors: {
     ...defaultTheme.colors,
     ...theme.colors,
-  }
+  },
 };
 
-// tslint:disable-next-line: no-any
-const Theme = ({ children }: any) => {
+const Theme: React.FC = (props): JSX.Element => {
   const config = useConfig();
   return (
     <ThemeProvider theme={config.themeConfig}>
       <ComponentsProvider components={components}>
-        <Styled.root>{children}</Styled.root>
+        <Styled.root>{props.children}</Styled.root>
       </ComponentsProvider>
     </ThemeProvider>
   );

@@ -1,10 +1,28 @@
 /** @jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
 
-import { NavLinkProps, NavLinkContext, NavLinkSize } from '.';
-import { headerScales } from './utils';
-import { qt } from '../../query';
 import { withFocusStyle } from '../with-focus-style';
+import { headerScales } from '../../utils/utils';
+import { qt } from '../../query';
+
+export interface NavLinkProps {
+  readonly current: boolean;
+  readonly context: NavLinkContext;
+  readonly href: string;
+  readonly text: string;
+  readonly isFocused: boolean;
+  readonly isInverted?: boolean;
+  readonly isActive?: boolean;
+  readonly children?: false | React.ReactNode;
+  readonly title?: string;
+  readonly size?: NavLinkSize;
+  readonly className?: string;
+  readonly onMouseEnter?: React.MouseEventHandler<HTMLElement>;
+  readonly onMouseLeave?: React.MouseEventHandler<HTMLElement>;
+}
+
+export type NavLinkContext = 'bar' | 'panel';
+export type NavLinkSize = 'S' | 'M' | 'L';
 
 const stylesListItem: SxStyleProp = {
   position: 'relative',
@@ -83,11 +101,7 @@ const createLinkSize = (size: NavLinkSize | undefined): SxStyleProp => {
   }
 };
 
-const createStylesCurrentLink = (
-  current: boolean,
-  isActive: boolean = false,
-  isInverted: boolean = false
-): SxStyleProp => ({
+const createStylesCurrentLink = (current: boolean, isActive = false, isInverted = false): SxStyleProp => ({
   ...{
     ...(isInverted
       ? {
@@ -102,18 +116,14 @@ const createStylesCurrentLink = (
   },
 });
 
-const createStylesLink = (props: NavLinkProps) => ({
+const createStylesLink = (props: NavLinkProps): SxStyleProp => ({
   ...stylesLink,
   ...createLinkSize(props.size),
   ...createStylesCurrentLink(props.current, props.isActive, props.isInverted),
 });
 
-export const NavigationLinkBase: React.FC<NavLinkProps> = (
-  props
-): JSX.Element => (
-  <li
-    sx={createStylesLinkItem(props.context)}
-    data-testid="navigation-link-test-id">
+export const NavigationLinkBase: React.FC<NavLinkProps> = (props): JSX.Element => (
+  <li sx={createStylesLinkItem(props.context)} data-testid="navigation-link-test-id">
     <div onMouseEnter={props.onMouseEnter} onMouseLeave={props.onMouseLeave}>
       <a
         sx={createStylesLink(props)}

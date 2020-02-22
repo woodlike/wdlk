@@ -16,7 +16,7 @@ describe('<NavigationBar />', () => {
         <Nav.Link href="#" current={true} isFocused={false} text="Link Text" />
         <Nav.Link href="#" current={true} isFocused={false} text="Link Text" />
         <Nav.Link href="#" current={true} isFocused={false} text="Link Text" />
-      </Nav.Bar>
+      </Nav.Bar>,
     );
 
     const a11yResults = await axe(container);
@@ -24,5 +24,5 @@ describe('<NavigationBar />', () => {
     cleanup();
     unmount();
     done();
-  })
-})
+  });
+});

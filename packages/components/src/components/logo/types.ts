@@ -5,4 +5,3 @@ export interface LogoProps {
   readonly isFocused: boolean;
   readonly className?: string;
 }
-

@@ -8,7 +8,7 @@ import * as Video from '..';
 expect.extend(matchers);
 expect.extend(toHaveNoViolations);
 
-describe('<MiniCart />', () => {
+describe('<Video />', () => {
   it('should not have accessibility violations', async done => {
     const { container, unmount } = render(
       <Video.Media
@@ -24,7 +24,7 @@ describe('<MiniCart />', () => {
             type: 'video/mp4',
           },
         ]}
-      />
+      />,
     );
 
     const a11yResults = await axe(container);
@@ -35,7 +35,7 @@ describe('<MiniCart />', () => {
   });
 
   it('should contain all interface properties in DOM', () => {
-    const { getByTestId, unmount } = render(
+    const { unmount } = render(
       <Video.Media
         preload="auto"
         controls={true}
@@ -49,9 +49,9 @@ describe('<MiniCart />', () => {
             type: 'video/mp4',
           },
         ]}
-      />
+      />,
     );
-    const video = getByTestId('video-media-test-id');
+    const video = document.querySelector('video');
     expect(video.hasAttribute('controls')).toBeTruthy();
     expect(video.hasAttribute('autoplay')).toBeTruthy();
     expect(video.hasAttribute('loop')).toBeTruthy();
@@ -60,13 +60,14 @@ describe('<MiniCart />', () => {
   });
 
   it('should render a video according to the provided aspect ratio', () => {
-    const { getByTestId, unmount } = render(
+    const { unmount } = render(
       <Video.Media
         preload="auto"
         controls={true}
         autoPlay={true}
         muted={true}
         loop={true}
+        data-testid="video-media-test-id"
         sources={[
           {
             id: 'first-demo-video',
@@ -74,16 +75,16 @@ describe('<MiniCart />', () => {
             type: 'video/mp4',
           },
         ]}
-      />
+      />,
     );
-    const video = getByTestId('video-media-test-id');
+    const video = document.querySelector('video');
     expect(video).toHaveStyleRule('width', '100%');
     expect(video).toHaveStyleRule('object-fit', 'cover');
     unmount();
   });
 
   it('should render a video with full widht and a substracted full height', () => {
-    const { getByTestId, unmount } = render(
+    const { unmount } = render(
       <Video.Media
         preload="auto"
         controls={true}
@@ -97,9 +98,9 @@ describe('<MiniCart />', () => {
             type: 'video/mp4',
           },
         ]}
-      />
+      />,
     );
-    const video = getByTestId('video-media-test-id');
+    const video = document.querySelector('video');
     expect(video).toHaveStyleRule('width', '100%');
     unmount();
   });

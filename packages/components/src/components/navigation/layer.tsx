@@ -1,8 +1,11 @@
 /**@jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
-import { NavLayerProps } from '.';
-import { headerScales } from './utils';
+import { headerScales } from '../../utils/utils';
 import { qt } from '../../query';
+
+export interface NavLayerProps {
+  isExpanded: boolean;
+}
 
 const stylesLayer: SxStyleProp = {
   position: 'fixed',
@@ -46,13 +49,9 @@ const createStylesLayer = (isExpanded: boolean): SxStyleProp => ({
   ...createStylesExpanded(isExpanded),
 });
 
-export const LayerList: React.FC = (props): JSX.Element => (
-  <ul sx={stylesLayerList}>{props.children}</ul>
-);
+export const LayerList: React.FC = (props): JSX.Element => <ul sx={stylesLayerList}>{props.children}</ul>;
 
-export const LayerFooter: React.FC = (props): JSX.Element => (
-  <small sx={stylesLayerFooter}>{props.children}</small>
-);
+export const LayerFooter: React.FC = (props): JSX.Element => <small sx={stylesLayerFooter}>{props.children}</small>;
 
 export const Layer: React.FC<NavLayerProps> = (props): JSX.Element => (
   <div

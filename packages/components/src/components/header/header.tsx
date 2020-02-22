@@ -4,7 +4,6 @@ import { jsx, SxStyleProp } from 'theme-ui';
 import { HeaderProps } from './types';
 import { qt } from '../../query';
 
-
 const styledHeader: SxStyleProp = {
   display: 'grid',
   gridTemplateColumns: '1fr 5fr 1fr',
@@ -27,9 +26,9 @@ const styledHeader: SxStyleProp = {
     height: '100%',
     borderBottom: `solid 1px ${qt('grays')(0)}`,
     backgroundColor: `${qt('whites')(0)}`,
-    opacity: .94,
-    zIndex: -1
-  }
+    opacity: 0.94,
+    zIndex: -1,
+  },
 };
 
 const styledHeaderItem: SxStyleProp = {
@@ -38,12 +37,10 @@ const styledHeaderItem: SxStyleProp = {
   },
   ':nth-of-type(3)': {
     justifySelf: 'end',
-  }
+  },
 };
 
-export const Header: React.FunctionComponent<HeaderProps> = (
-  props
-): JSX.Element => {
+export const Header: React.FunctionComponent<HeaderProps> = (props): JSX.Element => {
   return (
     <header sx={styledHeader}>
       {props.areas.map((Component, i) => (

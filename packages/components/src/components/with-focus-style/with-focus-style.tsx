@@ -1,7 +1,8 @@
 /** @jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
 import { qt } from 'gatsby-theme-query';
-import { MappedWithFocus } from './types';
+
+export type MappedWithFocus<T> = T & { isFocused: boolean };
 
 const styledFocus: SxStyleProp = {
   outlineOffset: `${qt('borderWidths')(1)}px`,
@@ -16,15 +17,11 @@ const styledBase: SxStyleProp = {
   },
 };
 
-function isFocused<T>(
-  props: Pick<MappedWithFocus<T>, 'isFocused'>
-): SxStyleProp {
+function isFocused<T>(props: Pick<MappedWithFocus<T>, 'isFocused'>): SxStyleProp {
   return props.isFocused ? styledFocus : {};
 }
 
-function themedWithFocusStyles<T>(
-  props: Pick<MappedWithFocus<T>, 'isFocused'>
-): SxStyleProp {
+function themedWithFocusStyles<T>(props: Pick<MappedWithFocus<T>, 'isFocused'>): SxStyleProp {
   const outline = Object.assign({}, isFocused(props));
   return {
     ...styledBase,
@@ -32,13 +29,10 @@ function themedWithFocusStyles<T>(
   };
 }
 
-export function withFocusStyle<T>(
-  Component: React.FunctionComponent
-): (props: MappedWithFocus<T>) => JSX.Element {
-  const WithFocusStyle = (props: MappedWithFocus<T>): JSX.Element => {
-    return <Component sx={themedWithFocusStyles(props)} {...props} />;
-  };
-  WithFocusStyle.displayName = `WithFocusStyle(${Component.displayName ||
-    Component.name})`;
+export function withFocusStyle<T>(Component: React.FC<T>): (props: MappedWithFocus<T>) => JSX.Element {
+  const WithFocusStyle = (props: MappedWithFocus<T>): JSX.Element => (
+    <Component sx={themedWithFocusStyles(props)} {...props} />
+  );
+  WithFocusStyle.displayName = `WithFocusStyle(${Component.displayName || Component.name})`;
   return WithFocusStyle;
 }

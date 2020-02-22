@@ -24,15 +24,9 @@ describe('<MiniCart />', () => {
           </CartLink>
         </MiniCartLink>
         <MiniCartLink>
-          <Cart
-            href="#"
-            isFocused={false}
-            count={0}
-            isFilled={true}
-            title="Woodlike Ocean Shopping cart"
-          />
+          <Cart href="#" isFocused={false} count={0} isFilled={true} title="Woodlike Ocean Shopping cart" />
         </MiniCartLink>
-      </MiniCart>
+      </MiniCart>,
     );
 
     const a11yResults = await axe(container);

@@ -17,7 +17,7 @@ describe('<NavigationBar />', () => {
         <Nav.Link href="#" current={true} isFocused={false} text="Link Text" />
         <Nav.Link href="#" current={true} isFocused={false} text="Link Text" />
         <Nav.Link href="#" current={true} isFocused={false} text="Link Text" />
-      </Nav.Panel>
+      </Nav.Panel>,
     );
 
     const a11yResults = await axe(container);
@@ -35,7 +35,7 @@ describe('<NavigationBar />', () => {
         <Nav.Link href="#" current={true} isFocused={false} text="Link Text" />
         <Nav.Link href="#" current={true} isFocused={false} text="Link Text" />
         <Nav.Link href="#" current={true} isFocused={false} text="Link Text" />
-      </Nav.Panel>
+      </Nav.Panel>,
     );
     const panel = getByTestId('navigation-panel-test-id');
     expect(panel.getAttribute('aria-hidden')).toBe('false');
@@ -52,7 +52,7 @@ describe('<NavigationBar />', () => {
         <Nav.Link href="#" current={true} isFocused={false} text="Link Text" />
         <Nav.Link href="#" current={true} isFocused={false} text="Link Text" />
         <Nav.Link href="#" current={true} isFocused={false} text="Link Text" />
-      </Nav.Panel>
+      </Nav.Panel>,
     );
     const panel = getByTestId('navigation-panel-test-id');
     expect(panel.getAttribute('aria-hidden')).toBe('true');

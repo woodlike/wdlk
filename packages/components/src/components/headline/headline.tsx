@@ -38,20 +38,14 @@ const createStylesColor = (inverted: boolean): SxStyleProp => ({
   ...(inverted ? { color: qt('grays')(5) } : { color: qt('whites')(4) }),
 });
 
-const createStylesHeadline = (
-  size: HeadlineSize,
-  inverted: boolean
-): SxStyleProp => ({
+const createStylesHeadline = (size: HeadlineSize, inverted: boolean): SxStyleProp => ({
   ...stylesHeadline,
   ...createStylesSize(size),
   ...createStylesColor(inverted),
 });
 
 export const Headline: React.FC<HeadlineProps> = (props): JSX.Element => (
-  <Heading
-    sx={createStylesHeadline(props.size, props.inverted)}
-    as={props.tag}
-    size={props.size}>
+  <Heading sx={createStylesHeadline(props.size, props.inverted)} as={props.tag} size={props.size}>
     {props.children}
   </Heading>
 );

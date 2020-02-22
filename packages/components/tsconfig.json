@@ -1,12 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "noImplicitUseStrict": true,
     "outDir": "./dist",
-    "rootDirs": [
-      "./src"
-    ],
-    "allowJs": true,
   },
   "include": [
     "src/**/*",

@@ -24,7 +24,7 @@ const stylesVideo: SxStyleProp = {
 };
 
 const createStylesVideo = (): SxStyleProp => ({
-  ...stylesVideo
+  ...stylesVideo,
 });
 
 export const Media: React.FC<VideoProps> = (props): JSX.Element | null => {
