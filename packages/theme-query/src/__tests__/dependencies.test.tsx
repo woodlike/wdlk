@@ -22,7 +22,7 @@ describe('Theme UI & Emotion Theming', () => {
         <div data-testid="test-1">
           {`1st color: ${themeMock.colors.text}, 2nd color: ${themeMock.colors.background}, 3d color: ${themeMock.colors.nice}`}
         </div>
-      </ThemeProvider>
+      </ThemeProvider>,
     );
     expect(getByTestId('test-1').innerHTML).toMatch('1st color: #000, 2nd color: #fff, 3d color: papayawhip');
     unmount();
@@ -36,11 +36,11 @@ describe('Theme UI & Emotion Theming', () => {
             fontWeight: 'bold',
             fontSize: 4,
             color: 'nice',
-            bg: 'background'
+            bg: 'background',
           }}>
           {`1st color: ${themeMock.colors.text}, 2nd color: ${themeMock.colors.background}, 3d color: ${themeMock.colors.nice}`}
         </div>
-      </ThemeProvider>
+      </ThemeProvider>,
     );
     const div = getByTestId('test-1');
     const styles = getComputedStyle(div);

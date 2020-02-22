@@ -31,41 +31,25 @@ describe('StyledFactory', () => {
 
   describe('StyledFactory.create(config)', () => {
     it('should throw an error if no configuration is provided', () => {
-      const errMsg =
-        'A valid configuration with a theme property must be provided';
+      const errMsg = 'A valid configuration with a theme property must be provided';
 
-      expect(() =>
-        ThemeQuery.create((null as unknown) as ThemeQueryConfig)
-      ).toThrowError(errMsg);
-      expect(() =>
-        ThemeQuery.create((undefined as unknown) as ThemeQueryConfig)
-      ).toThrowError(errMsg);
-      expect(() =>
-        ThemeQuery.create((1 as unknown) as ThemeQueryConfig)
-      ).toThrowError(errMsg);
-      expect(() =>
-        ThemeQuery.create(('hi' as unknown) as ThemeQueryConfig)
-      ).toThrowError(errMsg);
+      expect(() => ThemeQuery.create((null as unknown) as ThemeQueryConfig)).toThrowError(errMsg);
+      expect(() => ThemeQuery.create((undefined as unknown) as ThemeQueryConfig)).toThrowError(errMsg);
+      expect(() => ThemeQuery.create((1 as unknown) as ThemeQueryConfig)).toThrowError(errMsg);
+      expect(() => ThemeQuery.create(('hi' as unknown) as ThemeQueryConfig)).toThrowError(errMsg);
     });
 
     it('should throw an error if the theme is not provided', () => {
-      const errMsg =
-        'A valid configuration with a theme property must be provided';
+      const errMsg = 'A valid configuration with a theme property must be provided';
       expect(() =>
         ThemeQuery.create({
           theme: (undefined as unknown) as {},
           styles: 'object',
-        })
+        }),
       ).toThrowError(errMsg);
-      expect(() =>
-        ThemeQuery.create({ theme: (null as unknown) as {}, styles: 'object' })
-      ).toThrowError(errMsg);
-      expect(() =>
-        ThemeQuery.create({ theme: 1, styles: 'object' })
-      ).toThrowError(errMsg);
-      expect(() =>
-        ThemeQuery.create({ theme: '', styles: 'object' })
-      ).toThrowError(errMsg);
+      expect(() => ThemeQuery.create({ theme: (null as unknown) as {}, styles: 'object' })).toThrowError(errMsg);
+      expect(() => ThemeQuery.create({ theme: (1 as unknown) as {}, styles: 'object' })).toThrowError(errMsg);
+      expect(() => ThemeQuery.create({ theme: ('' as unknown) as {}, styles: 'object' })).toThrowError(errMsg);
     });
 
     it('should return a qt function on initialization', () => {
@@ -127,7 +111,7 @@ describe('StyledFactory', () => {
             bg: qt('corals')(0),
           }}>
           Hi Mom!!!
-        </div>
+        </div>,
       );
 
       const div = getByTestId('test-el');
