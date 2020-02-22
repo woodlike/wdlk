@@ -1,6 +1,7 @@
 /**@jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
 import { Controls } from '.';
+import { Heading } from '../heading';
 import { qt } from '../../query';
 
 export interface VideoStageProps {
@@ -30,7 +31,9 @@ export const Stage: React.FC<VideoStageProps> = (props): JSX.Element => {
       {props.children}
       <figcaption sx={stylesCaption}>
         <Controls muted={true} onClick={(): void => console.log('hiiii')} />
-        <h1>{props.headline}</h1>
+        <Heading tag="h2" size="xl" family="campaign" inverted>
+          {props.headline}
+        </Heading>
         <p>{props.copy}</p>
       </figcaption>
     </figure>

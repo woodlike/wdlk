@@ -7,8 +7,9 @@ export * from './logo';
 export * from './header';
 export * from './heading';
 export * from './mini-cart';
-export * from './with-focus-style';
+export * from './text';
 export * from './video';
+export * from './with-focus-style';
 
 export const Nav = { ...LocalNav };
 export const Video = { ...LocalVid };
