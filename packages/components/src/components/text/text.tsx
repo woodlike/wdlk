@@ -30,8 +30,9 @@ const handleTextSizes = (size: TextSize): string => {
 };
 
 const createDynamicStyles = (size: TextSize, inverted = false): SxStyleProp => ({
-  color: inverted ? qt('whites')(4) : qt('grays')(5),
   fontSize: `${handleTextSizes(size)}px`,
+  color: inverted ? qt('whites')(4) : qt('grays')(5),
+  textShadow: inverted ? `0 0 2px ${qt('grays')(3)}` : 'unset',
 });
 
 const createStylesHeading = (size: TextSize, inverted: boolean): SxStyleProp => ({
@@ -44,3 +45,5 @@ export const Text: React.FC<TextProps> = (props): JSX.Element => (
     {props.children}
   </ThemeText>
 );
+
+Text.displayName = 'Text';

@@ -16,7 +16,7 @@ export type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 export type HeadlineSize = 's' | 'm' | 'l' | 'xl' | 'xxl';
 
 const stylesHeading: SxStyleProp = {
-  marginBottom: `${qt('spaces')(5)}px`,
+  margin: 0,
   color: qt('grays')(5),
   fontWeight: 500,
   letterSpacing: `${qt('spaces')(1)}px`,
@@ -42,12 +42,13 @@ const createStylesSize = (size: HeadlineSize): SxStyleProp => ({
 });
 
 const createStylesColor = (inverted: boolean): SxStyleProp => ({
-  ...(inverted ? { color: qt('whites')(4) } : { color: qt('grays')(5) }),
+  color: inverted ? qt('whites')(4) : qt('grays')(5),
+  textShadow: inverted ? `0 0 2px ${qt('grays')(3)}` : 'unset',
 });
 
 const createStylesFamily = (family: HeadingFamily = 'display'): SxStyleProp => ({
   fontFamily: qt(`heading.${family}`),
-  lineHeight: family === 'campaign' ? 2 : 1.4,
+  lineHeight: family === 'campaign' ? 2.5 : 1.4,
 });
 
 const createStylesHeading = (size: HeadlineSize, inverted: boolean, family?: HeadingFamily): SxStyleProp => ({

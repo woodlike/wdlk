@@ -1,5 +1,5 @@
-import { qt } from '@wdlk/component-library/';
 import { renderHook } from '@testing-library/react-hooks';
+import { qt } from '../../query';
 
 import { useBreakpoint } from '..';
 
@@ -15,7 +15,15 @@ describe('useNavigationData()', () => {
       })),
     });
   });
-  it('should match the current media query', () => {
+  it('should matched min-width only media query', () => {
+    const min = (qt('breakpoints')(1) as unknown) as string;
+    const mqlMock = window.matchMedia(`(min-width: ${min})`);
+    const { result } = renderHook(() => useBreakpoint(min));
+    expect(result.current).toBeTruthy();
+    expect(result.current).toEqual(mqlMock.matches);
+  });
+
+  it('should match a min-width and max-width media query', () => {
     const min = (qt('breakpoints')(1) as unknown) as string;
     const max = (qt('breakpoints')(2) as unknown) as string;
     const mqlMock = window.matchMedia(`(min-width: ${min}) and (max-width: ${max})`);

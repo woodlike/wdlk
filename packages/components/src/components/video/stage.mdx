@@ -7,9 +7,11 @@ import { Playground, Props } from 'docz';
 import * as Video from './';
 
 # Video Stage
+
 Art directing vides on three different devices.
 
 ## Props glossary
+
 A short list of the components properties
 
 <Props of={Video.Stage} />
@@ -20,8 +22,8 @@ A short list of the components properties
   <Video.Stage
     headline="Healing Flowers"
     tag="h1"
-    copy="The new capsule collection by WDLK"
-  >
+    muted={true}
+    copy="Sustainable surf and yoga collection in collaboration with @facingblankpages">
     <Video.Media
       controls={false}
       autoPlay={true}
@@ -29,15 +31,15 @@ A short list of the components properties
       muted={true}
       sources={[
         {
-        id: 'first-demo-video-mp4',
-        src: '/public/woodlike-sustainable-swimwear-healing-flowers-large.mp4',
-        type: 'video/mp4',
-      },
-      {
-        id: 'first-demo-video-web',
-        src: '/public/woodlike-sustainable-swimwear-healing-flowers-large.webm',
-        type: 'video/webm',
-      }
+          id: 'first-demo-video-mp4',
+          src: '/public/woodlike-sustainable-swimwear-healing-flowers-large.mp4',
+          type: 'video/mp4',
+        },
+        {
+          id: 'first-demo-video-web',
+          src: '/public/woodlike-sustainable-swimwear-healing-flowers-large.webm',
+          type: 'video/webm',
+        },
       ]}
     />
   </Video.Stage>
@@ -49,8 +51,8 @@ A short list of the components properties
   <Video.Stage
     headline="Healing Flowers"
     tag="h1"
-    copy="Sustainable surf and yoga collection"
-  >
+    muted={true}
+    copy="Sustainable surf and yoga collection in collaboration with @facingblankpages">
     <Video.Media
       controls={false}
       autoPlay={true}

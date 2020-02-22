@@ -1,7 +1,7 @@
 import { base } from '@theme-ui/presets';
 import { theme as themeQuery } from 'theme-query';
 
-const breakpoints = ['0px', '480px', '769px', '990px', '1024px', '1440px'];
+const breakpoints = ['0px', '480px', '768px', '990px', '1024px', '1440px'];
 
 export const theme = {
   ...base,

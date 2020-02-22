@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 export const useBreakpoint = (min: string, max?: string): boolean => {
-  const mql = window.matchMedia(max ? `(min-width: ${min}) and (max-width: ${max})` : `(max-width: ${max})`);
+  const mql = window.matchMedia(max ? `(min-width: ${min}) and (max-width: ${max})` : `(min-width: ${min})`);
   const [isInScreenRange, setIsScreenRange] = useState(mql.matches);
   const handleChange = (e: MediaQueryListEvent): void => setIsScreenRange(e.matches);
 
