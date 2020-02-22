@@ -32,10 +32,19 @@ const heartbeat = keyframes`
 const stylesMuted: SxStyleProp = {
   cursor: 'pointer',
   animation: `${heartbeat} 1.8s infinite cubic-bezier(0.455, 0.030, 0.515, 0.955)`,
+  transition: `color ${qt('duration')(0)}s linear`,
+  ':hover': {
+    color: qt('corals')(0),
+    animationPlayState: 'paused',
+  },
 };
 
 const stylesLoud: SxStyleProp = {
   cursor: 'pointer',
+  transition: `color ${qt('duration')(0)}s linear`,
+  ':hover': {
+    color: qt('corals')(0),
+  },
 };
 
 export const Controls: React.FC<ControlProps> = (props): JSX.Element =>

@@ -7,10 +7,11 @@ import { qt } from '../../query';
 import { useBreakpoint } from '../../hooks';
 
 export interface VideoStageProps {
-  headline: string;
-  tag: string;
-  copy: string;
-  muted: boolean;
+  readonly headline: string;
+  readonly tag: string;
+  readonly copy: string;
+  readonly muted: boolean;
+  handleClick(): React.MouseEventHandler<SVGElement>;
 }
 
 const stylesStageWrapper: SxStyleProp = {
@@ -34,7 +35,7 @@ export const Stage: React.FC<VideoStageProps> = (props): JSX.Element => {
     <figure sx={stylesStageWrapper}>
       {props.children}
       <figcaption sx={stylesCaption}>
-        <Controls muted={props.muted} onClick={(): void => console.log('hiiii')} />
+        <Controls muted={props.muted} onClick={props.handleClick} />
         <Heading tag="h2" size={isMediumDevice ? 'xl' : 'l'} family="campaign" inverted>
           {props.headline}
         </Heading>

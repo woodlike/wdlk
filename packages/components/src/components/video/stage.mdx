@@ -3,12 +3,12 @@ name: Video Stage
 menu: Components
 ---
 
-import { Playground, Props } from 'docz';
 import * as Video from './';
+import { Playground, Props } from 'docz';
 
 # Video Stage
 
-Art directing vides on three different devices.
+Art directing videos on three different devices.
 
 ## Props glossary
 
@@ -16,19 +16,22 @@ A short list of the components properties
 
 <Props of={Video.Stage} />
 
-## Laptop / Desktop
+## Fully functional Video Stage Example
 
 <Playground>
-  <Video.Stage
+  <Video.Container render={data => (
+    <Video.Stage
     headline="Healing Flowers"
     tag="h1"
-    muted={true}
+    muted={data.isMuted}
+    handleClick={() => data.setMuted(!data.isMuted)}
     copy="Sustainable surf and yoga collection in collaboration with @facingblankpages">
     <Video.Media
       controls={false}
       autoPlay={true}
       loop={true}
-      muted={true}
+      muted={data.isMuted}
+      ref={data.videoRef}
       sources={[
         {
           id: 'first-demo-video-mp4',
@@ -43,28 +46,5 @@ A short list of the components properties
       ]}
     />
   </Video.Stage>
-</Playground>
-
-## Mobile Devices
-
-<Playground>
-  <Video.Stage
-    headline="Healing Flowers"
-    tag="h1"
-    muted={true}
-    copy="Sustainable surf and yoga collection in collaboration with @facingblankpages">
-    <Video.Media
-      controls={false}
-      autoPlay={true}
-      loop={true}
-      muted={true}
-      sources={[
-        {
-          id: 'second-demo-video-webm',
-          src: '/public/woodlike-sustainable-swimwear-healing-flowers-small-lowres.mp4',
-          type: 'video/mp4',
-        },
-      ]}
-    />
-  </Video.Stage>
+  )}/>
 </Playground>

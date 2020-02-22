@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
-import { useRef } from 'react';
+import { forwardRef } from 'react';
 
 export interface VideoProps {
   controls: boolean;
@@ -27,9 +27,8 @@ const createStylesVideo = (): SxStyleProp => ({
   ...stylesVideo,
 });
 
-export const Media: React.FC<VideoProps> = (props): JSX.Element | null => {
+export const Media = forwardRef<HTMLVideoElement, VideoProps>((props, ref) => {
   const { sources } = props;
-  const videoRef = useRef(null);
 
   return sources.length > 0 ? (
     <video
@@ -41,12 +40,12 @@ export const Media: React.FC<VideoProps> = (props): JSX.Element | null => {
       preload={props.preload}
       poster={props.poster}
       playsInline={true}
-      ref={videoRef}>
+      ref={ref}>
       {sources.map(source => (
         <source key={source.id} src={source.src} type={source.type} />
       ))}
     </video>
   ) : null;
-};
+});
 
 Media.displayName = 'Media';
