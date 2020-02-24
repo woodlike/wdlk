@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
-import { forwardRef } from 'react';
+import { forwardRef, useRef, useImperativeHandle, RefObject } from 'react';
 
 export interface VideoProps {
   controls: boolean;
@@ -10,6 +10,15 @@ export interface VideoProps {
   preload: 'auto' | 'metadata' | 'none';
   sources: Source[];
   poster?: string;
+}
+
+export interface ImperativeRefProps {
+  play(): Promise<void>;
+}
+
+export interface CustomizedChildRef {
+  play(): Promise<void>;
+  pause(): void;
 }
 
 export interface Source {
@@ -27,8 +36,22 @@ const createStylesVideo = (): SxStyleProp => ({
   ...stylesVideo,
 });
 
-export const Media = forwardRef<HTMLVideoElement, VideoProps>((props, ref) => {
+export const Media = forwardRef<ImperativeRefProps, VideoProps>((props, ref) => {
+  const childRef = useRef<CustomizedChildRef>();
   const { sources } = props;
+
+  useImperativeHandle(ref, () => ({
+    async play(): Promise<void> {
+      try {
+        await childRef.current?.play();
+      } catch (err) {
+        Promise.resolve(console.error(`Video play control [error]:${err}`));
+      }
+    },
+    pause(): void {
+      childRef.current?.pause();
+    },
+  }));
 
   return sources.length > 0 ? (
     <video
@@ -40,7 +63,7 @@ export const Media = forwardRef<HTMLVideoElement, VideoProps>((props, ref) => {
       preload={props.preload}
       poster={props.poster}
       playsInline={true}
-      ref={ref}>
+      ref={(childRef as unknown) as RefObject<HTMLVideoElement>}>
       {sources.map(source => (
         <source key={source.id} src={source.src} type={source.type} />
       ))}
