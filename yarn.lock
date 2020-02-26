@@ -3111,10 +3111,10 @@
     semver "^6.3.0"
     tsutils "^3.17.1"
 
-"@wdlk/component-library@1.7.6":
-  version "1.7.6"
-  resolved "https://registry.yarnpkg.com/@wdlk/component-library/-/component-library-1.7.6.tgz#13089e207d9bc76e319a1fdc2509d7f84f255b32"
-  integrity sha512-U8p/1RTXLHrrCy/i9mwsz133UZqcaEeOzqnN1oj+fouwj764KDF3CIZC3kLoXNLKeDu5wf0zYQJyMwCWN90xfA==
+"@wdlk/component-library@1.7.7":
+  version "1.7.7"
+  resolved "https://registry.yarnpkg.com/@wdlk/component-library/-/component-library-1.7.7.tgz#b44c9dde7f6a5e80dd8fddaa0ddbabed53af1dfe"
+  integrity sha512-5xVOJlJgE3mrezYjhGlXujaOa18yhvJ25BuzQo/4AjIJBqYU5MD8gqDzC0KbpnG03GTfUMUvWAZqLNnPn4/1IA==
   dependencies:
     "@emotion/core" "^10.0.22"
     "@emotion/styled" "^10.0.23"
