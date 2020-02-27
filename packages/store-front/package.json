@@ -39,7 +39,7 @@
   },
   "dependencies": {
     "@emotion/core": "^10.0.22",
-    "@wdlk/component-library": "1.7.6",
+    "@wdlk/component-library": "1.7.7",
     "dotenv": "^8.2.0",
     "gatsby": "^2.18.3",
     "gatsby-image": "^2.2.37",
@@ -51,6 +51,6 @@
     "react-dom": "^16.12.0",
     "shopify-buy": "^2.8.1",
     "shortid": "^2.2.15",
-    "theme-ui": "^0.2.49"
+    "theme-ui": "^0.3.0"
   }
 }

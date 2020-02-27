@@ -9,11 +9,11 @@ describe('generateId', () => {
 
   it('should return two unique ids', () => {
     expect(generateIds(2).length).toBe(2);
-    expect(Array.isArray(generateIds(2))).toBeTruthy()
+    expect(Array.isArray(generateIds(2))).toBeTruthy();
   });
 
   it('should return ten unique ids', () => {
     expect(generateIds(10).length).toBe(10);
-    expect(Array.isArray(generateIds(10))).toBeTruthy()
+    expect(Array.isArray(generateIds(10))).toBeTruthy();
   });
 });

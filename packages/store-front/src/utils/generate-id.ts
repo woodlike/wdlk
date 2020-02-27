@@ -5,8 +5,8 @@ export function generateIds(n: number, result: string[] = []): string[] {
     return result;
   }
   if (n > 0) {
-    result.push(shortid.generate())
-    return generateIds(n = n - 1, result);
+    result.push(shortid.generate());
+    return generateIds((n = n - 1), result);
   }
   return result;
 }
