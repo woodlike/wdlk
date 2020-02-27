@@ -17,10 +17,10 @@
     "theme-query": "1.5.0"
   },
   "devDependencies": {
-    "gatsby": "2.19.22",
+    "gatsby": "2.18.16",
     "tslint": "5.20.1",
     "tslint-react": "4.1.0",
-    "typescript": "3.8.2"
+    "typescript": "3.7.2"
   },
   "peerDependencies": {
     "gatsby": "^2.18.16",

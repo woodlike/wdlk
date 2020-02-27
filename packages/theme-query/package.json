@@ -14,21 +14,21 @@
   },
   "dependencies": {
     "styled-system": "^5.1.2",
-    "theme-ui": "^0.3.0"
+    "theme-ui": "^0.2.49"
   },
   "devDependencies": {
-    "@emotion/core": "10.0.27",
-    "@emotion/styled": "10.0.27",
-    "@types/jest": "24.0.23",
-    "@types/react": "16.9.23",
-    "@types/react-dom": "16.9.5",
-    "@types/styled-system": "5.1.7",
-    "@types/theme-ui": "0.3.0",
-    "emotion-theming": "10.0.27",
-    "jest": "24.9.0",
-    "react": "16.13.0",
-    "react-dom": "16.13.0",
-    "ts-jest": "24.1.0",
-    "typescript": "3.8.2"
+    "@emotion/core": "^10.0.22",
+    "@emotion/styled": "^10.0.23",
+    "@types/jest": "^24.0.23",
+    "@types/react": "^16.9.11",
+    "@types/react-dom": "^16.9.4",
+    "@types/styled-system": "^5.1.4",
+    "@types/theme-ui": "^0.2.4",
+    "emotion-theming": "^10.0.19",
+    "jest": "^24.9.0",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "ts-jest": "^24.1.0",
+    "typescript": "^3.7.2"
   }
 }
