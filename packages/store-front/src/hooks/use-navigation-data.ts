@@ -25,6 +25,6 @@ export function useNavigationData(): NavigationProps {
   `);
   return {
     items: allNavigationJson.nodes,
-    url: site.siteMetadata.siteUrl
+    url: site.siteMetadata.siteUrl,
   };
 }

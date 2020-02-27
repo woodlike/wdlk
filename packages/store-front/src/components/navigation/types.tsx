@@ -20,7 +20,7 @@ export interface MenuItems {
 export interface NavigationLayerProps {
   readonly isExpanded: boolean;
   readonly items: NavDataProps[];
-  readonly login: MiniCardItem,
+  readonly login: MiniCardItem;
   readonly url: string;
 }
 
