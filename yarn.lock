@@ -2961,12 +2961,19 @@
   resolved "https://registry.yarnpkg.com/@types/stack-utils/-/stack-utils-1.0.1.tgz#0a851d3bd96498fa25c33ab7278ed3bd65f06c3e"
   integrity sha512-l42BggppR6zLmpfU6fq9HEa2oGPEI8yrSPL3GITjfRInppYFahObbIQOQK3UGxEnyQpltZLaPe75046NOZQikw==
 
-"@types/styled-system@*", "@types/styled-system@5.1.4":
+"@types/styled-system@*":
   version "5.1.4"
   resolved "https://registry.yarnpkg.com/@types/styled-system/-/styled-system-5.1.4.tgz#c273b1ebb9b26cb1bd9282c994fc56c82d0fbfaf"
   integrity sha512-iBtFFmlxBbiTMpoKvRupwg75PeVbf7BBsgTlpcVBBbZyUKrhuU/4jtJQUn/wsSndKfxW0U9T17Geq0GGFWkCZw==
   dependencies:
     csstype "^2.6.4"
+
+"@types/styled-system@5.1.7":
+  version "5.1.7"
+  resolved "https://registry.yarnpkg.com/@types/styled-system/-/styled-system-5.1.7.tgz#b5aeb6efea499103a497da762516cdf38efd9e02"
+  integrity sha512-0zMxF/B5Z4T6ZhCP8CKtxe8wBmH7sqDjK3lOMByNQ6gG/Qf6RDnBp1aZwkReS1uDVhrsPx9J+IbLigpAdYBkrQ==
+  dependencies:
+    csstype "^2.6.9"
 
 "@types/styled-system__css@*":
   version "5.0.4"
@@ -5847,6 +5854,11 @@ csstype@^2.2.0, csstype@^2.5.7, csstype@^2.6.4, csstype@^2.6.6:
   version "2.6.7"
   resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.7.tgz#20b0024c20b6718f4eda3853a1f5a1cce7f5e4a5"
   integrity sha512-9Mcn9sFbGBAdmimWb2gLVDtFJzeKtDGIr76TUqmjZrw9LFXBMSU70lcs+C0/7fyCd6iBDqmksUcCOUIkisPHsQ==
+
+csstype@^2.6.9:
+  version "2.6.9"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.9.tgz#05141d0cd557a56b8891394c1911c40c8a98d098"
+  integrity sha512-xz39Sb4+OaTsULgUERcCk+TJj8ylkL4aSVDQiX/ksxbELSqwkgt4d4RD7fovIdgJGSuNYqwZEiVjYY5l0ask+Q==
 
 currently-unhandled@^0.4.1:
   version "0.4.1"
