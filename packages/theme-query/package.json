@@ -25,7 +25,7 @@
     "@types/styled-system": "5.1.7",
     "@types/theme-ui": "0.3.0",
     "emotion-theming": "10.0.27",
-    "jest": "24.9.0",
+    "jest": "25.1.0",
     "react": "16.13.0",
     "react-dom": "16.13.0",
     "ts-jest": "24.1.0",
