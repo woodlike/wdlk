@@ -28,7 +28,7 @@
     "@types/shortid": "0.0.29",
     "@types/theme-ui": "0.3.0",
     "babel-jest": "24.9.0",
-    "babel-preset-gatsby": "0.2.26",
+    "babel-preset-gatsby": "0.2.29",
     "identity-obj-proxy": "3.0.0",
     "jest": "24.9.0",
     "jest-axe": "3.2.0",
