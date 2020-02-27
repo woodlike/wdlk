@@ -1,3 +1,4 @@
 {
-  "extends": ["config:base", "schedule:every weekend"]
+  "extends": ["config:base", "schedule:weekends", "prCreation:not-pending", "stabilityDays3"],
+  "masterIssue": true
 }
