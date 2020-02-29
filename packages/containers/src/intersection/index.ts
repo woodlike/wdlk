@@ -1,2 +1,2 @@
-export * from './intersection';
+export * from './root';
 export * from './target';
