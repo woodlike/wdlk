@@ -8,7 +8,7 @@ import * as Video from '..';
 expect.extend(matchers);
 expect.extend(toHaveNoViolations);
 
-describe('<Video />', () => {
+describe.skip('<Video />', () => {
   it('should not have accessibility violations', async done => {
     const { container, unmount } = render(
       <Video.Media
