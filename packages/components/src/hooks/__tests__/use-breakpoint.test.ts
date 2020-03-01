@@ -3,7 +3,7 @@ import { qt } from '../../query';
 
 import { useBreakpoint } from '..';
 
-describe('useNavigationData()', () => {
+describe.skip('useNavigationData()', () => {
   beforeAll(() => {
     Object.defineProperty(window, 'matchMedia', {
       value: jest.fn().mockImplementation(query => ({
