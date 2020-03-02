@@ -7,7 +7,7 @@ export interface IntersectionTargetProps {
 
 export interface TargetRenderData {
   readonly targetRef: React.RefObject<unknown>;
-  readonly entry: IntersectionEntryInit;
+  readonly entry: IntersectionObserverEntry;
 }
 
 export interface IntersectionEntryInit {
@@ -20,63 +20,46 @@ export interface IntersectionEntryInit {
 
 export type PickedDOMRect = 'x' | 'y' | 'width' | 'height' | 'top' | 'right' | 'bottom' | 'left';
 
+const entryDomRectInitValue: Pick<DOMRectReadOnly, PickedDOMRect> = {
+  x: 0,
+  y: 0,
+  width: 0,
+  height: 0,
+  top: 0,
+  right: 0,
+  bottom: 0,
+  left: 0,
+};
+
+const intEntryInitValue: IntersectionEntryInit = {
+  time: 0,
+  isIntersecting: false,
+  intersectionRatio: 0,
+  boundingClientRect: { ...entryDomRectInitValue },
+  rootBounds: { ...entryDomRectInitValue },
+};
+
 export const Target: React.FC<IntersectionTargetProps> = (props): JSX.Element => {
   const { options } = useIntersectionCtx();
   const targetRef = React.useRef<unknown>(null);
-  const [time, setTime] = React.useState(0);
-  const [isIntersecting, setIsIntersecting] = React.useState(false);
-  const [intersectionRatio, setIntersectionRatio] = React.useState(0);
-  const [boundingClientRect, setBoundingClientRect] = React.useState<Pick<DOMRectReadOnly, PickedDOMRect>>({
-    x: 0,
-    y: 0,
-    width: 0,
-    height: 0,
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0,
-  });
-  const [rootBounds, setRootBounds] = React.useState<Pick<DOMRectReadOnly, PickedDOMRect>>({
-    x: 0,
-    y: 0,
-    width: 0,
-    height: 0,
-    top: 0,
-    right: 0,
-    bottom: 0,
-    left: 0,
-  });
+  const [intEntryValue, setIntEntryValue] = React.useState<IntersectionObserverEntry>(
+    intEntryInitValue as IntersectionObserverEntry,
+  );
 
   React.useEffect(() => {
     function updateEntry(entries: IntersectionObserverEntry[]): void {
-      const entry = entries[0];
-
-      setTime(entry.time);
-      setBoundingClientRect(entry.boundingClientRect);
-      setIsIntersecting(entry.isIntersecting);
-      setIntersectionRatio(entry.intersectionRatio);
-      if (entry.rootBounds) {
-        setRootBounds(entry.rootBounds);
-      }
+      setIntEntryValue(entries[0]);
     }
 
     const observer = new IntersectionObserver(updateEntry, options);
     observer.observe(targetRef.current as Element);
 
     return () => observer.unobserve(targetRef.current as Element);
-  }, [isIntersecting]);
-
-  const intersectionEntry: IntersectionEntryInit = {
-    ...(rootBounds.width > 0 ? rootBounds : undefined),
-    time,
-    boundingClientRect,
-    isIntersecting,
-    intersectionRatio,
-  };
+  }, [intEntryValue.isIntersecting]);
 
   const data: TargetRenderData = {
     targetRef,
-    entry: intersectionEntry,
+    entry: intEntryValue,
   };
 
   return props.children(data);
