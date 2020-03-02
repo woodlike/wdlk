@@ -11,13 +11,9 @@ module.exports = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
   testEnvironment: 'jsdom',
   transform: {
-    '.(ts|tsx)': 'ts-jest'
+    '.(ts|tsx)': 'ts-jest',
   },
   snapshotSerializers: ['jest-emotion'],
   testRegex: TEST_REGEX,
-  testPathIgnorePatterns: [
-    '<rootDir>/node_modules/',
-    '<rootDir>/dist',
-    '<rootDir>/.docz',
-  ],
+  testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/lib', '<rootDir>/.docz'],
 };
