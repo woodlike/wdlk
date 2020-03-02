@@ -1,7 +1,7 @@
 import { useStaticQuery, graphql } from 'gatsby';
 
 export function useHeaderData() {
-  const {allDataJson, site } = useStaticQuery(graphql`
+  const { allDataJson, site } = useStaticQuery(graphql`
     query HeaderJson {
       allDataJson {
         nodes {
@@ -30,6 +30,6 @@ export function useHeaderData() {
   `);
   return {
     header: allDataJson.nodes[0],
-    url: site.siteMetadata.siteUrl
+    url: site.siteMetadata.siteUrl,
   };
 }
