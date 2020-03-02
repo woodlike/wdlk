@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "build": "docz build",
-    "build:dist": "tsc --module commonjs --target es6 --outDir dist/",
+    "build:dist": "tsc --module commonjs --target es6 --outDir lib/",
     "dev": "docz dev",
     "serve": "docz serve",
     "test": "jest",

@@ -7,7 +7,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build:components": "yarn workspace @wdlk/components build",
+    "build:components": "yarn workspace @wdlk/components build:dist",
     "build:containers": "yarn workspace @wdlk/containers build",
     "build:lib": "yarn workspace styled-factory build",
     "build:store": "yarn workspace @wdlk/store-front build",

@@ -17,7 +17,7 @@ module.exports = {
   testRegex: TEST_REGEX,
   testPathIgnorePatterns: [
     '<rootDir>/node_modules/',
-    '<rootDir>/dist',
+    '<rootDir>/lib',
     '<rootDir>/.docz',
   ],
 };
