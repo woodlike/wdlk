@@ -1,7 +1,7 @@
 {
-  "private": true,
   "name": "@wdlk/ui-packages",
   "version": "1.0.1",
+  "private": true,
   "description": "WDLK UI Packages",
   "workspaces": [
     "packages/*"
@@ -9,21 +9,21 @@
   "scripts": {
     "build:components": "yarn workspace @wdlk/components build:dist",
     "build:containers": "yarn workspace @wdlk/containers build",
-    "build:lib": "yarn workspace styled-factory build",
     "build:store": "yarn workspace @wdlk/store-front build",
     "build:theme": "yarn workspace gatsby-theme-query build",
+    "build:theme-query": "yarn workspace styled-factory build",
     "dev:components": "yarn workspace @wdlk/components dev",
-    "dev:lib": "yarn workspace theme-query dev",
     "dev:store": "yarn workspace @wdlk/store-front dev",
+    "dev:theme-query": "yarn workspace theme-query dev",
     "lint:components": "yarn workspace @wdlk/components lint",
-    "lint:container": "yarn workspace @wdlk/components lint",
-    "lint:lib": "yarn workspace theme-query lint",
+    "lint:containers": "yarn workspace @wdlk/containers lint",
     "lint:store": "yarn workspace @wdlk/store-front lint",
     "lint:theme": "yarn workspace gatsby-theme-query lint",
+    "lint:theme-query": "yarn workspace theme-query lint",
     "test:components": "yarn workspace @wdlk/components test",
     "test:containers": "yarn workspace @wdlk/containers test",
-    "test:lib": "yarn workspace theme-query test",
     "test:store": "yarn workspace @wdlk/store-front test",
+    "test:theme-query": "yarn workspace theme-query test",
     "type-check:store": "yarn workspace @wdlk/store-front type-check"
   },
   "devDependencies": {

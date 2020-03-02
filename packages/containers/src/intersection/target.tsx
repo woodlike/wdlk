@@ -54,7 +54,7 @@ export const Target: React.FC<IntersectionTargetProps> = (props): JSX.Element =>
     const observer = new IntersectionObserver(updateEntry, options);
     observer.observe(targetRef.current as Element);
 
-    return () => observer.unobserve(targetRef.current as Element);
+    return (): void => observer.unobserve(targetRef.current as Element);
   }, [intEntryValue.isIntersecting]);
 
   const data: TargetRenderData = {
