@@ -2,12 +2,12 @@ import * as React from 'react';
 import { render } from '@testing-library/react';
 import { matchers } from 'jest-emotion';
 
-import { qt } from 'gatsby-theme-query';
+import { qt } from '../../query';
 import { withFocusStyle } from './with-focus-style';
 
 interface TestCompProps {
   isFocused: true;
-  className: string;
+  className?: string;
 }
 
 const TestComponent: React.FunctionComponent<TestCompProps> = (props): JSX.Element => {

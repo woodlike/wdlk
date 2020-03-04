@@ -1,6 +1,6 @@
 /**@jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
-import { qt } from 'gatsby-theme-query';
+import { qt } from '../../query';
 
 import { CartProps } from '.';
 import { withFocusStyle } from '../with-focus-style';

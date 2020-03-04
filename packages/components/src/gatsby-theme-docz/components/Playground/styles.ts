@@ -1,4 +1,3 @@
-import { theme } from 'gatsby-theme-query';
 // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
 // @ts-ignore
 import * as mixins from '~utils/mixins';
@@ -7,7 +6,7 @@ export const editor = (): {} => ({
   p: 2,
   border: (t: { colors: { border: string } }): string => `1px solid ${t.colors.border}`,
   borderRadius: '0 0 4px 4px',
-  background: theme.colors.whites[4],
+  background: 'white',
   borderTop: 0,
   fontFamily: 'monospace',
   fontSize: 18,

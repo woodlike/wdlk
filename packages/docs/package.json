@@ -1,0 +1,31 @@
+{
+  "name": "@wdlk/docs",
+  "version": "1.0.0",
+  "private": false,
+  "description": "Woodlike packages documentation",
+  "repository": "https://github.com/woodlike/wdlk",
+  "license": "MIT",
+  "author": "Mauricio Palma <mauricio.palma@woodlikeocean.com>",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "gatsby build",
+    "dev": "gatsby develop",
+    "lint": "eslint src --ext .ts,.tsx",
+    "serve": "gatsby serve"
+  },
+  "dependencies": {
+    "docz": "^2.2.0",
+    "gatsby": "^2.19.28",
+    "gatsby-plugin-offline": "^3.0.35",
+    "gatsby-plugin-sharp": "^2.4.5",
+    "gatsby-theme-docz": "^2.2.0",
+    "gatsby-transformer-sharp": "^2.3.16",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
+    "react-helmet-async": "^1.0.4"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.13",
+    "@types/react-dom": "^16.9.4"
+  }
+}

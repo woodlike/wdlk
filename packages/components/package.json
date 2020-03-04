@@ -2,18 +2,18 @@
   "name": "@wdlk/components",
   "version": "1.8.0",
   "description": "Woodlike UI component library 🎨",
-  "main": "dist/index.js",
   "repository": "git@github.com:woodlike/component-library.git",
-  "author": "Mauricio Palma <mauricio.palma@woodlikeocean.com>",
   "license": "MIT",
+  "author": "Mauricio Palma <mauricio.palma@woodlikeocean.com>",
+  "main": "dist/index.js",
   "scripts": {
     "build": "docz build",
     "build:dist": "tsc --module commonjs --target es6 --outDir lib/",
     "dev": "docz dev",
+    "lint": "eslint src --ext .ts,.tsx",
     "serve": "docz serve",
     "test": "jest",
-    "test:coverage": "npm test -- --coverage",
-    "lint": "eslint src --ext .ts,.tsx"
+    "test:coverage": "npm test -- --coverage"
   },
   "dependencies": {
     "@emotion/core": "^10.0.22",
@@ -37,8 +37,8 @@
     "@testing-library/react": "^9.3.2",
     "@types/jest": "^24.0.23",
     "@types/jest-axe": "^3.2.1",
-    "@types/react": "^16.9.9",
-    "@types/react-dom": "^16.9.2",
+    "@types/react": "^16.9.13",
+    "@types/react-dom": "^16.9.4",
     "@types/theme-ui": "^0.2.5",
     "eslint-plugin-react-hooks": "^2.5.0",
     "jest": "^24.9.0",
