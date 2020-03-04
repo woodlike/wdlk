@@ -2,7 +2,7 @@
 import { jsx, SxStyleProp } from 'theme-ui';
 import { Heading as ThemeHeading } from '@theme-ui/components';
 
-import { qt } from '..';
+import { qt } from '../query';
 
 export interface HeadingProps {
   tag: HeadingLevel;

@@ -4,7 +4,7 @@ import { render, cleanup } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
 
 import { Logo } from '.';
-import { qt } from '..';
+import { qt } from '../query';
 
 expect.extend(toHaveNoViolations);
 describe('Logo', () => {

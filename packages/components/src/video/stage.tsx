@@ -1,7 +1,7 @@
 /**@jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
 import { Controls } from '.';
-import { qt } from '..';
+import { qt } from '../query';
 import { Heading } from '../heading';
 import { useBreakpoint } from '../hooks';
 import { Text } from '../text';

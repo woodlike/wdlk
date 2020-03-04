@@ -4,7 +4,7 @@ import { axe, toHaveNoViolations } from 'jest-axe';
 import { matchers } from 'jest-emotion';
 
 import * as Nav from '..';
-import { qt } from '../../../query';
+import { qt } from '../../query';
 
 expect.extend(matchers);
 expect.extend(toHaveNoViolations);

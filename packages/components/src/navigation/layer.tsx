@@ -1,10 +1,12 @@
 /**@jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
-import { headerScales, qt } from '..';
+import { qt } from '../query';
 
 export interface NavLayerProps {
   isExpanded: boolean;
 }
+
+const headerScales = (qt('header')('all') as unknown) as string[];
 
 const stylesLayer: SxStyleProp = {
   position: 'fixed',
