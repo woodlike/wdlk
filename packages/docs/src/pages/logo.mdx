@@ -1,0 +1,29 @@
+---
+name: Logo
+menu: Components
+---
+
+import { Playground, Props } from 'docz';
+import { Logo, LogoBase } from './';
+
+# Woodlike Ocean Brand Logo
+
+## Props glossary
+A short list of the components properties
+<Props of={LogoBase} />
+
+## Component
+<Playground>
+  <Logo
+    href="#"
+    title="Woodlike Ocean - Sustainable Swimwear crafted from ocean recovered fishing nets"
+    desc="The Woodlike Ocean logo represents the moving water waves made by a drop of water"
+  />
+
+</Playground>
+
+### Focused state
+The focus state styling is provided by the _with-focus-style_ hoc
+<Playground>
+  <Logo href="#" title="demo title" desc="desc" isFocused={true} />
+</Playground>

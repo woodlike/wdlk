@@ -15,5 +15,5 @@ module.exports = {
   },
   snapshotSerializers: ['jest-emotion'],
   testRegex: TEST_REGEX,
-  testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/lib', '<rootDir>/.docz'],
+  testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/lib'],
 };
