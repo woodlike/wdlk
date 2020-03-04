@@ -1,7 +1,5 @@
-import { base } from '@theme-ui/presets';
-// import { theme } from '../theme';
+import { theme } from '@wdlk/components';
 
 export default {
-  ...base,
-  // ...theme,
+  ...theme,
 };

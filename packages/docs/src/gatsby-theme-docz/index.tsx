@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, Styled, ThemeProvider } from 'theme-ui';
 import { theme as doczTheme, useConfig, ComponentsProvider } from 'docz';
-import { theme } from 'theme-query';
+import { theme } from '@wdlk/components';
 // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
 // @ts-ignore
 import defaultTheme from '~theme';

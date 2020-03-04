@@ -1,8 +1,8 @@
 {
-  "name": "@wdlk/ui-packages",
+  "name": "wdlk",
   "version": "1.0.1",
   "private": true,
-  "description": "WDLK UI Packages",
+  "description": "WDLK multi package repo",
   "workspaces": [
     "packages/*"
   ],

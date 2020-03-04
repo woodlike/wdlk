@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@theme-ui/presets": "^0.3.0",
-    "@wdlk/component-library": "^1.7.7",
+    "@wdlk/components": "^1.9.4",
     "docz": "^2.2.0",
     "gatsby": "^2.19.28",
     "gatsby-plugin-offline": "^3.0.35",

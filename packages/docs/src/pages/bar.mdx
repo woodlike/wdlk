@@ -4,7 +4,7 @@ menu: Components
 ---
 
 import { Playground, Props } from 'docz';
-import * as Nav from '.'
+import * as Nav from '@wdlk/components';
 
 # Navigation Bar
 
@@ -18,47 +18,11 @@ A short list of the components properties
 
 <Playground>
   <Nav.Bar itemCount={6}>
-    <Nav.Link
-      href="#"
-      current={false}
-      isFocused={true}
-      text="Bikinis"
-      context="bar"
-    />
-    <Nav.Link
-      href="#"
-      current={true}
-      isFocused={false}
-      text="One Pieces"
-      context="bar"
-    />
-    <Nav.Link
-      href="#"
-      current={false}
-      isFocused={false}
-      text="Yoga & Surf"
-      context="bar"
-    />
-    <Nav.Link
-      href="#"
-      current={false}
-      isFocused={false}
-      text="Tanning"
-      context="bar"
-    />
-    <Nav.Link
-      href="#"
-      current={false}
-      isFocused={false}
-      text="Sustainability"
-      context="bar"
-    />
-    <Nav.Link
-      href="#"
-      current={false}
-      isFocused={false}
-      text="The Brand"
-      context="bar"
-    />
+    <Nav.Link href="#" current={false} isFocused={true} text="Bikinis" context="bar" />
+    <Nav.Link href="#" current={true} isFocused={false} text="One Pieces" context="bar" />
+    <Nav.Link href="#" current={false} isFocused={false} text="Yoga & Surf" context="bar" />
+    <Nav.Link href="#" current={false} isFocused={false} text="Tanning" context="bar" />
+    <Nav.Link href="#" current={false} isFocused={false} text="Sustainability" context="bar" />
+    <Nav.Link href="#" current={false} isFocused={false} text="The Brand" context="bar" />
   </Nav.Bar>
 </Playground>
