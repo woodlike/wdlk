@@ -4,8 +4,8 @@ module.exports = {
   extends: ['plugin:mdx/recommended'],
   overrides: [
     {
-      'files': ['*.md'],
-      'rules': {
+      files: ['*.md'],
+      rules: {
         'prettier/prettier': [
           2,
           {
@@ -16,10 +16,10 @@ module.exports = {
       }
     },
     {
-      'files': ['*.mdx'],
-      'extends': ['plugin:mdx/overrides']
+      files: ['*.mdx'],
+      extends: ['plugin:mdx/overrides']
     }
-  ]
+  ],
   rules: {
     'react/prop-types': 'off'
   }
