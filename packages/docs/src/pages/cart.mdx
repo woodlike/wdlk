@@ -5,7 +5,7 @@ menu: Components
 
 import { Playground, Props } from 'docz';
 
-import { Cart } from './';
+import { Cart } from '@wdlk/components';
 
 # Cart
 
@@ -18,33 +18,17 @@ A short list of the components properties
 ## Empty cart
 
 <Playground>
-  <Cart
-    href="#"
-    title="Woodlike Ocean shopping cart"
-    count={0}
-    isFilled={false}
-  />
+  <Cart href="#" title="Woodlike Ocean shopping cart" count={0} isFilled={false} />
 </Playground>
 
 ## Cart with items
 
 <Playground>
-  <Cart
-    href="#"
-    title="Woodlike Ocean shopping cart"
-    count={1}
-    isFilled={true}
-  />
+  <Cart href="#" title="Woodlike Ocean shopping cart" count={1} isFilled={true} />
 </Playground>
 
 ## Focused Cart
 
 <Playground>
-  <Cart
-    isFocused={true}
-    href="#"
-    title="Woodlike Ocean shopping cart"
-    count={1}
-    isFilled={true}
-  />
+  <Cart isFocused={true} href="#" title="Woodlike Ocean shopping cart" count={1} isFilled={true} />
 </Playground>

@@ -5,11 +5,8 @@ menu: Components
 
 import { Playground, Props } from 'docz';
 
-import { Header } from './';
-import { Logo } from '../logo';
-import * as Nav from '../navigation';
-import { Cart } from '../cart';
-import { MiniCart, MiniCartLink, CartLink } from '../mini-cart';
+import * as Nav from '@wdlk/components';
+import { Cart, Header, Logo, MiniCart, MiniCartLink, CartLink } from '@wdlk/components';
 
 # Header
 
@@ -21,92 +18,21 @@ import { MiniCart, MiniCartLink, CartLink } from '../mini-cart';
       <Logo title="demo title" desc="desc" isFocused={true} />,
       <Nav.Frame>
         <Nav.Bar itemCount={6}>
-          <Nav.Link
-            href="#"
-            current={false}
-            isFocused={false}
-            context="bar"
-            text="Bikinis"
-          />
-          <Nav.Link
-            href="#"
-            current={false}
-            isFocused={false}
-            context="bar"
-            text="One Pieces">
+          <Nav.Link href="#" current={false} isFocused={false} context="bar" text="Bikinis" />
+          <Nav.Link href="#" current={false} isFocused={false} context="bar" text="One Pieces">
             <Nav.Panel isExpanded={true}>
-              <Nav.Link
-                href="#"
-                current={false}
-                isFocused={true}
-                context="panel"
-                text="One Pieces"
-              />
-              <Nav.Link
-                href="#"
-                current={true}
-                isFocused={false}
-                context="panel"
-                text="Surf & Yoga"
-              />
-              <Nav.Link
-                href="#"
-                current={false}
-                isFocused={false}
-                context="panel"
-                text="Mini Shape"
-              />
-              <Nav.Link
-                href="#"
-                current={false}
-                isFocused={false}
-                context="panel"
-                text="Puch"
-              />
-              <Nav.Link
-                href="#"
-                current={false}
-                isFocused={false}
-                context="panel"
-                text="Sale"
-              />
-              <Nav.Link
-                href="#"
-                current={false}
-                isFocused={false}
-                context="panel"
-                text="Gift Card"
-              />
+              <Nav.Link href="#" current={false} isFocused={true} context="panel" text="One Pieces" />
+              <Nav.Link href="#" current={true} isFocused={false} context="panel" text="Surf & Yoga" />
+              <Nav.Link href="#" current={false} isFocused={false} context="panel" text="Mini Shape" />
+              <Nav.Link href="#" current={false} isFocused={false} context="panel" text="Puch" />
+              <Nav.Link href="#" current={false} isFocused={false} context="panel" text="Sale" />
+              <Nav.Link href="#" current={false} isFocused={false} context="panel" text="Gift Card" />
             </Nav.Panel>
           </Nav.Link>
-          <Nav.Link
-            href="#"
-            current={true}
-            isFocused={false}
-            context="bar"
-            text="Surf & Yoga"
-          />
-          <Nav.Link
-            href="#"
-            current={false}
-            isFocused={false}
-            context="bar"
-            text="Tanning"
-          />
-          <Nav.Link
-            href="#"
-            current={false}
-            isFocused={false}
-            context="bar"
-            text="Sustainability"
-          />
-          <Nav.Link
-            href="#"
-            current={false}
-            isFocused={false}
-            context="bar"
-            text="The Brand"
-          />
+          <Nav.Link href="#" current={true} isFocused={false} context="bar" text="Surf & Yoga" />
+          <Nav.Link href="#" current={false} isFocused={false} context="bar" text="Tanning" />
+          <Nav.Link href="#" current={false} isFocused={false} context="bar" text="Sustainability" />
+          <Nav.Link href="#" current={false} isFocused={false} context="bar" text="The Brand" />
         </Nav.Bar>
       </Nav.Frame>,
       <MiniCart>
@@ -121,13 +47,7 @@ import { MiniCart, MiniCartLink, CartLink } from '../mini-cart';
           </CartLink>
         </MiniCartLink>
         <MiniCartLink>
-          <Cart
-            href="#"
-            isFocused={false}
-            count={2}
-            isFilled={true}
-            title="Woodlike Ocean Shopping cart"
-          />
+          <Cart href="#" isFocused={false} count={2} isFilled={true} title="Woodlike Ocean Shopping cart" />
         </MiniCartLink>
       </MiniCart>,
     ]}

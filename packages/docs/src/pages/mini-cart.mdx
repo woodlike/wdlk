@@ -5,8 +5,7 @@ menu: Components
 
 import { Playground, Props } from 'docz';
 
-import { MiniCart, MiniCartLink, CartLink } from './';
-import { Cart } from '../';
+import { Cart, MiniCart, MiniCartLink, CartLink } from '@wdlk/components';
 
 # MiniCart
 
@@ -31,13 +30,7 @@ A short list of the components properties
       </CartLink>
     </MiniCartLink>
     <MiniCartLink>
-      <Cart
-        href="#"
-        isFocused={false}
-        count={2}
-        isFilled={true}
-        title="Woodlike Ocean Shopping cart"
-      />
+      <Cart href="#" isFocused={false} count={2} isFilled={true} title="Woodlike Ocean Shopping cart" />
     </MiniCartLink>
   </MiniCart>
 </Playground>
@@ -57,13 +50,7 @@ A short list of the components properties
       </CartLink>
     </MiniCartLink>
     <MiniCartLink>
-      <Cart
-        href="#"
-        isFocused={false}
-        count={0}
-        isFilled={false}
-        title="Woodlike Ocean Shopping cart"
-      />
+      <Cart href="#" isFocused={false} count={0} isFilled={false} title="Woodlike Ocean Shopping cart" />
     </MiniCartLink>
   </MiniCart>
 </Playground>
