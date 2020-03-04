@@ -1,7 +1,7 @@
 /**@jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
 
-import { qt } from '..';
+import { qt } from '../query';
 import { withFocusStyle } from '../with-focus-style';
 
 export interface MiniCartLinkProps {

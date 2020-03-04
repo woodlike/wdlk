@@ -12,11 +12,11 @@ describe('<NavigationBar />', () => {
   it('should not have accessibility violations', async done => {
     const { container, unmount } = render(
       <Nav.Panel isExpanded={true}>
-        <Nav.Link href="#" current={true} isFocused={false} text="Link Text" />
-        <Nav.Link href="#" current={true} isFocused={false} text="Link Text" />
-        <Nav.Link href="#" current={true} isFocused={false} text="Link Text" />
-        <Nav.Link href="#" current={true} isFocused={false} text="Link Text" />
-        <Nav.Link href="#" current={true} isFocused={false} text="Link Text" />
+        <Nav.Link href="#" current={true} isFocused={false} text="Link Text" context="panel" />
+        <Nav.Link href="#" current={true} isFocused={false} text="Link Text" context="panel" />
+        <Nav.Link href="#" current={true} isFocused={false} text="Link Text" context="panel" />
+        <Nav.Link href="#" current={true} isFocused={false} text="Link Text" context="panel" />
+        <Nav.Link href="#" current={true} isFocused={false} text="Link Text" context="panel" />
       </Nav.Panel>,
     );
 
@@ -30,11 +30,11 @@ describe('<NavigationBar />', () => {
   it('should have expanded aria attributes', () => {
     const { getByTestId, unmount } = render(
       <Nav.Panel isExpanded={true}>
-        <Nav.Link href="#" current={true} isFocused={false} text="Link Text" />
-        <Nav.Link href="#" current={true} isFocused={false} text="Link Text" />
-        <Nav.Link href="#" current={true} isFocused={false} text="Link Text" />
-        <Nav.Link href="#" current={true} isFocused={false} text="Link Text" />
-        <Nav.Link href="#" current={true} isFocused={false} text="Link Text" />
+        <Nav.Link href="#" current={true} isFocused={false} text="Link Text" context="panel" />
+        <Nav.Link href="#" current={true} isFocused={false} text="Link Text" context="panel" />
+        <Nav.Link href="#" current={true} isFocused={false} text="Link Text" context="panel" />
+        <Nav.Link href="#" current={true} isFocused={false} text="Link Text" context="panel" />
+        <Nav.Link href="#" current={true} isFocused={false} text="Link Text" context="panel" />
       </Nav.Panel>,
     );
     const panel = getByTestId('navigation-panel-test-id');
@@ -47,11 +47,11 @@ describe('<NavigationBar />', () => {
   it('should be not visible and have hidden aria attributes', () => {
     const { getByTestId, unmount } = render(
       <Nav.Panel isExpanded={false}>
-        <Nav.Link href="#" current={true} isFocused={false} text="Link Text" />
-        <Nav.Link href="#" current={true} isFocused={false} text="Link Text" />
-        <Nav.Link href="#" current={true} isFocused={false} text="Link Text" />
-        <Nav.Link href="#" current={true} isFocused={false} text="Link Text" />
-        <Nav.Link href="#" current={true} isFocused={false} text="Link Text" />
+        <Nav.Link href="#" current={true} isFocused={false} text="Link Text" context="panel" />
+        <Nav.Link href="#" current={true} isFocused={false} text="Link Text" context="panel" />
+        <Nav.Link href="#" current={true} isFocused={false} text="Link Text" context="panel" />
+        <Nav.Link href="#" current={true} isFocused={false} text="Link Text" context="panel" />
+        <Nav.Link href="#" current={true} isFocused={false} text="Link Text" context="panel" />
       </Nav.Panel>,
     );
     const panel = getByTestId('navigation-panel-test-id');

@@ -2,7 +2,7 @@
 import { jsx, SxStyleProp } from 'theme-ui';
 import { keyframes } from '@emotion/core';
 import { Volume2, VolumeX } from 'react-feather';
-import { qt } from '..';
+import { qt } from '../query';
 
 export interface ControlProps {
   muted: boolean;

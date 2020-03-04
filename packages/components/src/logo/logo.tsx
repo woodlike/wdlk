@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
 import { LogoPath, BrandPath } from './svg-paths';
-import { qt } from '..';
+import { qt } from '../query';
 import { withFocusStyle } from '../with-focus-style';
 
 export interface LogoProps {
