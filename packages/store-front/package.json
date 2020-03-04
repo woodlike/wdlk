@@ -1,21 +1,37 @@
 {
   "name": "@wdlk/store-front",
   "version": "1.0.0",
-  "description": "Woodlike Shopify store app",
-  "main": "index.js",
-  "repository": "https://github.com/woodlike/wdlk",
-  "author": "Mauricio Palma <mauricio.palma@woodlikeocean.com>",
-  "license": "MIT",
   "private": false,
+  "description": "Woodlike Shopify store app",
+  "repository": "https://github.com/woodlike/wdlk",
+  "license": "MIT",
+  "author": "Mauricio Palma <mauricio.palma@woodlikeocean.com>",
+  "main": "index.js",
   "scripts": {
-    "start": "gatsby develop",
-    "dev": "gatsby develop",
     "build": "gatsby build",
+    "dev": "gatsby develop",
+    "lint": "eslint src --ext .ts,.tsx",
     "serve": "gatsby serve",
+    "start": "gatsby develop",
     "test": "jest",
     "test:coverage": "npm test -- --coverage",
-    "type-check": "tsc --noEmit",
-    "lint": "eslint src --ext .ts,.tsx"
+    "type-check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@emotion/core": "^10.0.22",
+    "@wdlk/component-library": "1.7.6",
+    "dotenv": "^8.2.0",
+    "gatsby": "^2.18.3",
+    "gatsby-image": "^2.2.37",
+    "gatsby-plugin-typescript": "^2.1.20",
+    "gatsby-source-shopify": "^3.0.31",
+    "gatsby-transformer-json": "^2.2.20",
+    "prettier": "^1.19.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "shopify-buy": "^2.8.1",
+    "shortid": "^2.2.15",
+    "theme-ui": "^0.2.49"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.7.7",
@@ -36,21 +52,5 @@
     "react-test-renderer": "^16.12.0",
     "tslint": "^5.20.1",
     "typescript": "^3.7.2"
-  },
-  "dependencies": {
-    "@emotion/core": "^10.0.22",
-    "@wdlk/component-library": "1.7.6",
-    "dotenv": "^8.2.0",
-    "gatsby": "^2.18.3",
-    "gatsby-image": "^2.2.37",
-    "gatsby-plugin-typescript": "^2.1.20",
-    "gatsby-source-shopify": "^3.0.31",
-    "gatsby-transformer-json": "^2.2.20",
-    "prettier": "^1.19.1",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "shopify-buy": "^2.8.1",
-    "shortid": "^2.2.15",
-    "theme-ui": "^0.2.49"
   }
 }
