@@ -7,7 +7,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build:components": "yarn workspace @wdlk/components build:dist",
+    "build:components": "yarn workspace @wdlk/components build",
     "build:containers": "yarn workspace @wdlk/containers build",
     "build:docs": "yarn workspace @wdlk/docs build",
     "build:store": "yarn workspace @wdlk/store-front build",
@@ -18,7 +18,7 @@
     "dev:theme-query": "yarn workspace theme-query dev",
     "lint:components": "yarn workspace @wdlk/components lint",
     "lint:containers": "yarn workspace @wdlk/containers lint",
-    "lint:docs": "yarn workspace @wdlk/docslint",
+    "lint:docs": "yarn workspace @wdlk/docs lint",
     "lint:store": "yarn workspace @wdlk/store-front lint",
     "lint:theme-query": "yarn workspace theme-query lint",
     "test:components": "yarn workspace @wdlk/components test",

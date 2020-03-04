@@ -2,7 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/woodlike/wdlk.svg?style=svg)](https://circleci.com/gh/woodlike/wdlk)
 
-> Woodlike React component library 🎨
+> Woodlike
 
 ## Requirements
 
