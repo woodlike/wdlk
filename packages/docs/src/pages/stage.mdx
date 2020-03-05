@@ -3,23 +3,15 @@ name: Video Stage
 menu: Components
 ---
 
-import * as Video from '@wdlk/components';
-import { Playground, Props } from 'docz';
+import { Video } from '@wdlk/components';
 
 # Video Stage
 
 Art directing videos on three different devices.
 
-## Props glossary
-
-A short list of the components properties
-
-<Props of={Video.Stage} />
-
 ## Fully functional Video Stage Example
 
-<Playground>
-  <Video.Container render={data => (
+<Video.Container render={data => (
     <Video.Stage
     headline="Healing Flowers"
     tag="h1"
@@ -35,16 +27,15 @@ A short list of the components properties
       sources={[
         {
           id: 'first-demo-video-mp4',
-          src: '/public/woodlike-sustainable-swimwear-healing-flowers-large.mp4',
+          src: '/woodlike-sustainable-swimwear-healing-flowers-large.mp4',
           type: 'video/mp4',
         },
         {
           id: 'first-demo-video-web',
-          src: '/public/woodlike-sustainable-swimwear-healing-flowers-large.webm',
+          src: '/woodlike-sustainable-swimwear-healing-flowers-large.webm',
           type: 'video/webm',
         },
       ]}
     />
   </Video.Stage>
-  )}/>
-</Playground>
+)}/>

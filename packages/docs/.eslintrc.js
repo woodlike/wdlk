@@ -9,7 +9,6 @@ module.exports = {
         'prettier/prettier': [
           2,
           {
-            // unnecessary if you're not using `eslint-plugin-prettier`, but required if you are
             'parser': 'markdown'
           }
         ]
