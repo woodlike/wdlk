@@ -1,10 +1,8 @@
 import * as React from 'react';
-import { Nav } from '@wdlk/component-library';
+import { Nav } from '@wdlk/components';
 import { NavigationLayerProps, NavDataProps } from '.';
 
-export const NavigationLayer: React.FC<NavigationLayerProps> = (
-  props
-): JSX.Element => {
+export const NavigationLayer: React.FC<NavigationLayerProps> = (props): JSX.Element => {
   const brandItem = props.items.find(item => item.title === 'The Brand');
   return (
     <Nav.Layer isExpanded={props.isExpanded}>
@@ -24,7 +22,7 @@ export const NavigationLayer: React.FC<NavigationLayerProps> = (
       </Nav.LayerList>
       <Nav.LayerList>
         {brandItem &&
-          brandItem.menuItems.map((item) => (
+          brandItem.menuItems.map(item => (
             <Nav.Link
               key={item.id}
               href={`${props.url}/${item.handle}`}
@@ -36,8 +34,8 @@ export const NavigationLayer: React.FC<NavigationLayerProps> = (
               text={item.title}
             />
           ))}
-          {props.login && (
-            <Nav.Link
+        {props.login && (
+          <Nav.Link
             href={`${props.url}/${props.login.handle}`}
             current={false}
             isFocused={false}
@@ -46,7 +44,7 @@ export const NavigationLayer: React.FC<NavigationLayerProps> = (
             size="S"
             text={props.login.title}
           />
-          )}
+        )}
       </Nav.LayerList>
       <Nav.LayerFooter>®Woodlike 2020</Nav.LayerFooter>
     </Nav.Layer>

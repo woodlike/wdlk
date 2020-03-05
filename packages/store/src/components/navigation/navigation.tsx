@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { Nav } from '@wdlk/component-library';
+import { Nav } from '@wdlk/components';
 
 import { NavigationItem, NavigationProps, NavDataProps } from '.';
-
 
 export const Navigation: React.FC<NavigationProps> = (props): JSX.Element => {
   return (
