@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Nav } from '@wdlk/component-library';
+import { Nav } from '@wdlk/components';
 
 import { NavDataProps, NavData } from '.';
 
@@ -13,8 +13,8 @@ export const NavigationItem: React.FC<NavDataProps> = (props): JSX.Element => {
       context="bar"
       text={props.title}
       isActive={isExpanded}
-      onMouseEnter={() => setExpanded(true)}
-      onMouseLeave={() => setExpanded(false)}>
+      onMouseEnter={(): void => setExpanded(true)}
+      onMouseLeave={(): void => setExpanded(false)}>
       {props.menuItems.length > 0 && (
         <Nav.Panel isExpanded={isExpanded}>
           {props.menuItems.map((menuItem: NavData) => (

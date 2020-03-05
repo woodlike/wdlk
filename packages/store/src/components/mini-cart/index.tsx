@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Cart, CartLink, MiniCart as LibMiniCart, MiniCartLink } from '@wdlk/component-library';
+import { Cart, CartLink, MiniCart as LibMiniCart, MiniCartLink } from '@wdlk/components';
 
 import { MiniCardItem } from './types';
 import { useHeaderData } from '../../hooks';

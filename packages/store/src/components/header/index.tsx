@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Header as LibHeader, Logo, Nav, qt, Cart } from '@wdlk/component-library';
+import { Header as LibHeader, Logo, qt, Cart, Burger } from '@wdlk/components';
 
 import { Navigation, NavigationLayer, MiniCart } from '..';
 import { useNavigationData, useHeaderData, useBreakpoint } from '../../hooks';
@@ -20,7 +20,7 @@ export function Header(): JSX.Element {
       <LibHeader
         areas={[
           isMobile ? (
-            <Nav.Burger onClick={(): void => setIsExpanded(!isExpanded)} key={id[0]} isExpanded={isExpanded} />
+            <Burger onClick={(): void => setIsExpanded(!isExpanded)} key={id[0]} isExpanded={isExpanded} />
           ) : (
             <Logo key={id[1]} title={logo.title} desc={logo.desc} isFocused={false} href={url} />
           ),
