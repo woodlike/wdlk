@@ -3,38 +3,31 @@ name: Heading
 menu: Components
 ---
 
-import { Playground, Props } from 'docz';
 import { Box } from '@theme-ui/components';
 import { Heading } from '@wdlk/components';
 
 # Headings
-
-## Props glossary
-
-<Props of={Heading} />
 
 ## Heading Sizes
 
 Covers sizes from **s** to **xxxl**.
 The heading component also has a `tag` prop that accepts all six section levels according the spec.
 
-<Playground>
-  <Heading tag="h1" size="xxl">
-    Healing Flowers Collection
-  </Heading>
-  <Heading tag="h2" size="xl">
-    Healing Flowers Collection
-  </Heading>
-  <Heading tag="h3" size="l">
-    Healing Flowers Collection
-  </Heading>
-  <Heading tag="h4" size="m">
-    Healing Flowers Collection
-  </Heading>
-  <Heading tag="h5" size="s">
-    Healing Flowers Collection
-  </Heading>
-</Playground>
+<Heading tag="h1" size="xxl">
+  Healing Flowers Collection
+</Heading>
+<Heading tag="h2" size="xl">
+  Healing Flowers Collection
+</Heading>
+<Heading tag="h3" size="l">
+  Healing Flowers Collection
+</Heading>
+<Heading tag="h4" size="m">
+  Healing Flowers Collection
+</Heading>
+<Heading tag="h5" size="s">
+  Healing Flowers Collection
+</Heading>
 
 ## Heading Families
 
@@ -44,7 +37,6 @@ Covering three families as defined in the theme `heading` props.
 - **secondary**
 - **campaign**
 
-<Playground>
   <Heading tag="h2" size="xxl">
     Healing Flowers Collection
   </Heading>
@@ -54,20 +46,17 @@ Covering three families as defined in the theme `heading` props.
   <Heading tag="h2" size="xxl" family="campaign">
     Healing Flowers Collection
   </Heading>
-</Playground>
 
 ## Heading Inverted
 
-<Playground>
-  <Box bg="corals" p={3}>
-    <Heading tag="h2" size="xxl" inverted>
-      Healing Flowers Collection
-    </Heading>
-    <Heading tag="h2" size="xxl" family="secondary" inverted>
-      Healing Flowers Collection
-    </Heading>
-    <Heading tag="h2" size="xxl" family="campaign" inverted>
-      Healing Flowers Collection
-    </Heading>
-  </Box>
-</Playground>
+<Box bg="corals" p={3}>
+  <Heading tag="h2" size="xxl" inverted>
+    Healing Flowers Collection
+  </Heading>
+  <Heading tag="h2" size="xxl" family="secondary" inverted>
+    Healing Flowers Collection
+  </Heading>
+  <Heading tag="h2" size="xxl" family="campaign" inverted>
+    Healing Flowers Collection
+  </Heading>
+</Box>

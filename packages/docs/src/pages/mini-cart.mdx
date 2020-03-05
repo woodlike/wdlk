@@ -3,54 +3,42 @@ name: Mini Cart
 menu: Components
 ---
 
-import { Playground, Props } from 'docz';
-
 import { Cart, MiniCart, MiniCartLink, CartLink } from '@wdlk/components';
 
 # MiniCart
 
-## Props glossary
-
-A short list of the components properties
-
-<Props of={MiniCart} />
-
 ## Default
 
-<Playground>
-  <MiniCart>
-    <MiniCartLink>
-      <CartLink href="#" isFocused={false}>
-        Log in
-      </CartLink>
-    </MiniCartLink>
-    <MiniCartLink>
-      <CartLink href="#" isFocused={false}>
-        Register
-      </CartLink>
-    </MiniCartLink>
-    <MiniCartLink>
-      <Cart href="#" isFocused={false} count={2} isFilled={true} title="Woodlike Ocean Shopping cart" />
-    </MiniCartLink>
-  </MiniCart>
-</Playground>
+<MiniCart>
+  <MiniCartLink>
+    <CartLink href="#" isFocused={false}>
+      Log in
+    </CartLink>
+  </MiniCartLink>
+  <MiniCartLink>
+    <CartLink href="#" isFocused={false}>
+      Register
+    </CartLink>
+  </MiniCartLink>
+  <MiniCartLink>
+    <Cart href="#" isFocused={false} count={2} isFilled={true} title="Woodlike Ocean Shopping cart" />
+  </MiniCartLink>
+</MiniCart>
 
 ## Focused
 
-<Playground>
-  <MiniCart>
-    <MiniCartLink>
-      <CartLink href="#" isFocused={false}>
-        Log in
-      </CartLink>
-    </MiniCartLink>
-    <MiniCartLink>
-      <CartLink href="#" isFocused={true}>
-        Register
-      </CartLink>
-    </MiniCartLink>
-    <MiniCartLink>
-      <Cart href="#" isFocused={false} count={0} isFilled={false} title="Woodlike Ocean Shopping cart" />
-    </MiniCartLink>
-  </MiniCart>
-</Playground>
+<MiniCart>
+  <MiniCartLink>
+    <CartLink href="#" isFocused={false}>
+      Log in
+    </CartLink>
+  </MiniCartLink>
+  <MiniCartLink>
+    <CartLink href="#" isFocused={true}>
+      Register
+    </CartLink>
+  </MiniCartLink>
+  <MiniCartLink>
+    <Cart href="#" isFocused={false} count={0} isFilled={false} title="Woodlike Ocean Shopping cart" />
+  </MiniCartLink>
+</MiniCart>
