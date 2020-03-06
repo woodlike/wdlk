@@ -11,6 +11,7 @@ export const theme = {
   breakpoints,
   colors: {
     ...themeQuery.colors,
+    primary: themeQuery.colors.corals[0],
   },
   fonts: {
     ...themeQuery.fonts,
