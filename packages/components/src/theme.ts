@@ -21,6 +21,9 @@ export const theme = {
       campaign: `"Challista_signature", serif`,
     },
   },
+  space: {
+    ...themeQuery.spaces,
+  },
   transition: {
     duration: [...themeQuery.transition.duration],
     timing: [
