@@ -22,8 +22,8 @@ export interface BaseSize {
 export type LogoSize = 'S' | 'M' | 'L' | 'XL';
 
 export const intBaseSize = {
-  width: 185,
-  height: 42,
+  width: 92,
+  height: 46,
 };
 
 const stylesDocsLogo: SxStyleProp = {
