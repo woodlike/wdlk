@@ -14,6 +14,7 @@ describe('<Docs.Logo />', () => {
   let resultBase: BaseSize;
 
   beforeEach(() => {
+    global.console = ({ error: jest.fn() } as unknown) as Console;
     logoTitle = 'Woodlike Docs';
     logoDesc = 'Discover the guidelines and thought processes behind our APIs and design system approach.';
     resultBase = {
@@ -38,6 +39,15 @@ describe('<Docs.Logo />', () => {
     cleanup();
     unmount();
     done();
+  });
+
+  it('should return null and an error message on missing path component', () => {
+    const { container, unmount } = render(
+      <Logo minX={0} minY={0} width={92} height={46} size="S" title={logoTitle} desc={logoDesc} path={undefined} />,
+    );
+    expect(container.querySelector('svg')).toBeNull();
+    expect(console.error).toHaveBeenCalled();
+    unmount();
   });
 
   describe('Logo internal size handling', () => {

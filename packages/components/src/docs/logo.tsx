@@ -57,15 +57,22 @@ const createLogoStyles = (size: LogoSize, base: BaseSize = intBaseSize): SxStyle
   ...createLogoSizes(size, base),
 });
 
-export const Logo: React.FC<DocsLogoProps> = (props): JSX.Element => (
-  <svg
-    sx={createLogoStyles(props.size, props.base)}
-    aria-labelledby={`docs-logo-${props.title.replace(/ /g, '')}`}
-    viewBox={`${props.minX} ${props.minY} ${props.width} ${props.height}`}>
-    <title id={`docs-logo-${props.title.replace(/ /g, '')}`}>{props.title}</title>
-    <desc>{props.desc}</desc>
-    {props.path}
-  </svg>
-);
+export const Logo: React.FC<DocsLogoProps> = (props): JSX.Element | null => {
+  if (!props.path) {
+    console.error('The Docs logo component requires of a SVG path component to render');
+    return null;
+  }
+
+  return (
+    <svg
+      sx={createLogoStyles(props.size, props.base)}
+      aria-labelledby={`docs-logo-${props.title.replace(/ /g, '')}`}
+      viewBox={`${props.minX} ${props.minY} ${props.width} ${props.height}`}>
+      <title id={`docs-logo-${props.title.replace(/ /g, '')}`}>{props.title}</title>
+      <desc>{props.desc}</desc>
+      {props.path}
+    </svg>
+  );
+};
 
 Logo.displayName = 'Docs.Logo';
