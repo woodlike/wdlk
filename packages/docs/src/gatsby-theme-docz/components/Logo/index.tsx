@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Link } from 'docz';
 import { Docs } from '@wdlk/components';
 
-export const Logo = (): JSX.Element => {
+export const Logo: React.FC = (): JSX.Element => {
   return (
     <Link to="/">
       <Docs.Logo
@@ -18,3 +18,5 @@ export const Logo = (): JSX.Element => {
     </Link>
   );
 };
+
+Logo.displayName = 'DoczLogo';

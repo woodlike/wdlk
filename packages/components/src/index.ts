@@ -4,6 +4,7 @@ import * as LocalNav from './navigation';
 import * as LocalVid from './video';
 
 export * from './burger';
+export * from './box';
 export * from './cart';
 export * from './header';
 export * from './heading';
