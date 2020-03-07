@@ -29,8 +29,6 @@ Our software design desitions are based on many years of experience building **l
 
 Our goal is to provide a composable, scalable and reusable component library that speeds up your web application development without compromising corporate identity coherency. It also enables frictionless change requests by separating concerns into these two pillars. We provide an opinionated implementation that is extensible to your application needs and coherent to a design system guidelines.
 
-> You might have noticed that we use the word coherent when we speak about design compliance. Let's elaborate a little bit more into that, for example, a company might offer different applications, their look might be slightly different like different colors and tokens, and yet both of them suggest they belong to one organization. In our opinion, a good design system offers coherency across several applications without compromising a web application's extensibility and flexibility.
-
 ### Technology Landscape
 
 - React
@@ -40,8 +38,12 @@ Our goal is to provide a composable, scalable and reusable component library tha
 
 ## Components
 
-Are reusable stateless functional components that are coherent to a design system. It uses Theme-UI under the hood to provide a design system constrained development. With this approach, the theme object becomes the heart of a user interface identity without setting constraints on layout and design decisions.
+Are reusable stateless functional components that are coherent to a design system. It uses [Theme-UI](https://theme-ui.com/) under the hood to provide a design system constrained development. With this approach, the theme object becomes the heart of a user interface identity without setting constraints on layout and design decisions.
 
 ## Containers
 
 Containers are stateful render-less functional components using the render props technique or/and React's context to offer cross-cutting behavior concerns. It also opens browser-related imperative APIs directly into React's declarative component composition. It provides UXs consistency avoiding the repeated implementation of stateful behavioral patterns within your web application.
+
+### Side Note
+
+You might have noticed that we use the word coherent when we speak about design compliance. Let's elaborate a little bit more into that, for example, a company might offer different applications, their look might be slightly different like different colors and tokens, and yet both of them suggest they belong to one organization. In our opinion, a good design system offers coherency across several applications without compromising a web application's extensibility and flexibility.
