@@ -8,7 +8,7 @@ expect.extend(toHaveNoViolations);
 describe('<Layout />', () => {
   it('should not have accessibility violations', async done => {
     const { container, unmount } = render(
-      <SideBar tag="aside">
+      <SideBar position="left" tag="aside">
         <div>Test Sidebar</div>
       </SideBar>,
     );
@@ -23,7 +23,7 @@ describe('<Layout />', () => {
   describe('Rendered prop tag', () => {
     it('should mount with an HTML aside tag', () => {
       const { container, unmount } = render(
-        <SideBar tag="aside">
+        <SideBar position="left" tag="aside">
           <div>Test Sidebar</div>
         </SideBar>,
       );
@@ -33,7 +33,7 @@ describe('<Layout />', () => {
     });
     it('should mount with an HTML div tag', () => {
       const { container, unmount } = render(
-        <SideBar tag="div">
+        <SideBar position="left" tag="div">
           <h1>Test Sidebar</h1>
         </SideBar>,
       );
@@ -44,7 +44,7 @@ describe('<Layout />', () => {
 
     it('should mount with an HTML div tag', () => {
       const { container, unmount } = render(
-        <SideBar tag="section">
+        <SideBar position="left" tag="section">
           <h1>Test Sidebar</h1>
         </SideBar>,
       );
@@ -55,7 +55,7 @@ describe('<Layout />', () => {
 
     it('should mount with an HTML div tag', () => {
       const { container, unmount } = render(
-        <SideBar tag="article">
+        <SideBar position="left" tag="article">
           <h1>Test Sidebar</h1>
         </SideBar>,
       );
@@ -66,7 +66,7 @@ describe('<Layout />', () => {
 
     it('should mount with an HTML div tag', () => {
       const { container, unmount } = render(
-        <SideBar tag="nav">
+        <SideBar position="left" tag="nav">
           <h1>Test Sidebar</h1>
         </SideBar>,
       );

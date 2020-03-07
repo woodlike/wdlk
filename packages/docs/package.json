@@ -14,6 +14,7 @@
     "serve": "gatsby serve"
   },
   "dependencies": {
+    "@theme-ui/components": "^0.3.1",
     "@theme-ui/presets": "^0.3.0",
     "@wdlk/components": "^1.9.4",
     "docz": "^2.2.0",
@@ -28,6 +29,7 @@
     "react-helmet-async": "^1.0.4"
   },
   "devDependencies": {
+    "@emotion/core": "^10.0.28",
     "@types/react": "^16.9.13",
     "@types/react-dom": "^16.9.4",
     "eslint-plugin-mdx": "^1.6.8",
