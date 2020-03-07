@@ -12,6 +12,8 @@ export const theme = {
   colors: {
     ...themeQuery.colors,
     primary: themeQuery.colors.corals[0],
+    border: themeQuery.colors.grays[0],
+    background: themeQuery.colors.whites[0],
   },
   fonts: {
     ...themeQuery.fonts,
