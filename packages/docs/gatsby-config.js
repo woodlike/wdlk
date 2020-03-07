@@ -1,3 +1,3 @@
 module.exports = {
-  plugins: ['gatsby-theme-docz', 'gatsby-transformer-sharp', 'gatsby-plugin-offline'],
+  plugins: ['gatsby-theme-docz', 'gatsby-plugin-typescript', 'gatsby-transformer-sharp', 'gatsby-plugin-offline'],
 };

@@ -1,7 +1,10 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "strict": true,
+    "noEmit": true,
+    "allowJs": true
   },
   "include": [
     "./src"
@@ -9,6 +12,7 @@
   "exclude": [
     "./node_modules",
     "./docz/**/*",
+    ".cache/**/*",
     "./src/**/*.test.tsx",
     "./src/gatsby-theme-docz/**/*"
   ]
