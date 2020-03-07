@@ -2,7 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/woodlike/wdlk.svg?style=svg)](https://circleci.com/gh/woodlike/wdlk)
 
-> Good documentation leads to easy to use APIs. On the @wdlk/docs you will find documentation regarding our Components and Container usage.
+> Good documentation leads to easy to use APIs. Discover the guidelines and thought processes behind our APIs and design system approach.
 
 ## Development Requirements
 

@@ -30,6 +30,7 @@
   "devDependencies": {
     "@types/react": "^16.9.13",
     "@types/react-dom": "^16.9.4",
-    "eslint-plugin-mdx": "^1.6.8"
+    "eslint-plugin-mdx": "^1.6.8",
+    "gatsby-plugin-typescript": "^2.2.0"
   }
 }

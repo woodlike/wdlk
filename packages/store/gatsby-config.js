@@ -1,10 +1,9 @@
 require('dotenv').config();
 
-
 module.exports = {
   siteMetadata: {
     siteName: 'Woodlike Ocean Store',
-    siteUrl: 'https://woodlikeocean.com'
+    siteUrl: 'https://woodlikeocean.com',
   },
   plugins: [
     'gatsby-plugin-typescript',

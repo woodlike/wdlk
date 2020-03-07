@@ -1,5 +1,10 @@
 # @WDLK
 
+<!-- markdownlint-disable MD033 -->
+<div align="center">
+  <img alt="Woodlike Logo" src="https://cdn.shopify.com/s/files/1/0742/2733/files/wdlk_logo_brand_coral.svg?v=1583499987" width="200">
+</div>
+
 [![CircleCI](https://circleci.com/gh/woodlike/wdlk.svg?style=svg)](https://circleci.com/gh/woodlike/wdlk)
 
 ## Motivation
