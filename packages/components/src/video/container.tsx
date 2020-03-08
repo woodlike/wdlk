@@ -21,13 +21,13 @@ export const Container: React.FC<VideoContainerProps> = (props): JSX.Element => 
 
   const play = async (): Promise<void> => {
     try {
-      await videoRef.current?.play();
+      await (videoRef.current as HTMLVideoElement).play();
     } catch (err) {
       Promise.resolve(console.error(`Video Container [error]: ${err}`));
     }
   };
 
-  const pause = (): void => videoRef.current?.pause();
+  const pause = (): void => (videoRef.current as HTMLVideoElement).pause();
 
   const data: VideoRenderProps = {
     isMuted,
