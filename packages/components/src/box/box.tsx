@@ -19,17 +19,14 @@ export type SpaceBox = [number, number, number, number];
 export type Space = SpaceBox | SpaceTuple | number;
 export type SpaceBoxType = 'p' | 'm';
 
-export function createSpaceBox(props: BoxProps): SpaceBox {
+export function createSpaceBox(props: BoxProps, type: SpaceBoxType): SpaceBox {
   return Object.entries(props)
-    .filter(([key]) => key.includes('p') || key.includes('m'))
+    .filter(([key]) => key.includes(type))
     .sort()
-    .reduce(reducer, [0, 0, 0, 0]);
+    .reduce(spaceBoxReducer, [0, 0, 0, 0]);
 }
 
-export function reducer(acc: SpaceBox, [key, val]: [string, SpaceTuple | SpaceBox]): SpaceBox {
-  if (!Array.isArray(val) && key === 'p') {
-    return (Array.from({ length: 4 }).map(() => val) as unknown) as SpaceBox;
-  }
+export function spaceBoxReducer(acc: SpaceBox, [key, val]: [string, SpaceTuple | SpaceBox]): SpaceBox {
   if (key === 'px' || key === 'mx') {
     return overrideX(acc, val as SpaceTuple);
   }
@@ -37,7 +34,9 @@ export function reducer(acc: SpaceBox, [key, val]: [string, SpaceTuple | SpaceBo
     return overrideY(acc, val as SpaceTuple);
   }
 
-  return [...val] as SpaceBox;
+  return !Array.isArray(val) && (key === 'p' || key === 'm')
+    ? ((Array.from({ length: 4 }).map(() => val) as unknown) as SpaceBox)
+    : ([...val] as SpaceBox);
 }
 
 export function overrideX(box: SpaceBox, val: SpaceTuple | number): SpaceBox {
