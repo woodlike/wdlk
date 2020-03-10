@@ -43,13 +43,13 @@ export const Media = forwardRef<ImperativeRefProps, VideoProps>((props, ref) => 
   useImperativeHandle(ref, () => ({
     async play(): Promise<void> {
       try {
-        await childRef.current?.play();
+        (await childRef) && childRef.current && childRef.current.play();
       } catch (err) {
         Promise.resolve(console.error(`Video play control [error]:${err}`));
       }
     },
     pause(): void {
-      childRef.current?.pause();
+      childRef && childRef.current && childRef.current.pause();
     },
   }));
 
