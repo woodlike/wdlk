@@ -22,9 +22,23 @@ export interface BoxProps {
   readonly mx?: SpaceTuple | number;
   readonly my?: SpaceTuple | number;
   readonly bg?: string;
+  readonly border?: BorderProps;
 }
 
-const isEmpty = (space: SpacePadding & SpaceMargin): boolean => {
+export interface BorderProps {
+  readonly width: number | [number, number, number, number];
+  readonly color: string;
+}
+
+const createStylesBg = (color: string): SxStyleProp => ({ backgroundColor: color });
+
+const createStylesBorder = (width: number | [number, number, number, number], color: string): SxStyleProp => ({
+  borderWidth: Array.isArray(width) ? `${width[0]}px ${width[1]}px ${width[2]}px ${width[3]}px` : `${width}px`,
+  borderColor: color,
+  borderStyle: 'solid',
+});
+
+const isEmpty = (space: SpacePadding | SpaceMargin): boolean => {
   for (const prop in space) {
     if (space.hasOwnProperty(prop)) {
       return false;
@@ -32,8 +46,6 @@ const isEmpty = (space: SpacePadding & SpaceMargin): boolean => {
   }
   return true;
 };
-
-const createStylesBg = (color: string): SxStyleProp => ({ backgroundColor: color });
 
 const createStylesSpace = (
   space: SpaceDeclaration,
@@ -77,6 +89,7 @@ const createStyles = (props: BoxProps, theme: Theme): SxStyleProp => {
   return {
     ...(typeof padding === 'object' && padding),
     ...(typeof margin === 'object' && margin),
+    ...(props.border && createStylesBorder(props.border.width, props.border.color)),
     ...(props.bg && createStylesBg(props.bg)),
   };
 };
