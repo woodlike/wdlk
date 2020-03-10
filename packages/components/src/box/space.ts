@@ -59,10 +59,9 @@ export function getThemeScale(space: SpaceDeclaration, theme: Theme): SpaceDecla
   return Object.entries(space).reduce(
     (acc: SpaceDeclaration, [key, val]: [string, SpaceTuple | SpaceBox]): SpaceDeclaration => {
       if (Array.isArray(val)) {
-        const themedVal = val.map(v => (scale[v] ? scale[v] : v));
         return {
           ...acc,
-          [key]: themedVal,
+          [key]: val.map(v => (scale[v] ? scale[v] : v)),
         };
       }
       return {
