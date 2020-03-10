@@ -1,11 +1,20 @@
 /**@jsx jsx */
-import { jsx, SxStyleProp } from 'theme-ui';
-import { SpaceBox, SpaceTuple, SpaceMargin, SpacePadding, StyleException } from '.';
+import { jsx, useThemeUI, SxStyleProp, Theme } from 'theme-ui';
+import {
+  getThemeScale,
+  CSSSpaceProperty,
+  SpaceBox,
+  SpaceDeclaration,
+  SpaceMargin,
+  SpacePadding,
+  SpaceTuple,
+  StyleException,
+} from '.';
 import { createSpaceBox } from '.';
 import { HTMLSectionType } from '../layout';
 
 export interface BoxProps {
-  readonly tag: HTMLSectionType;
+  readonly as: HTMLSectionType;
   readonly p?: SpaceBox | number;
   readonly px?: SpaceTuple | number;
   readonly py?: SpaceTuple | number;
@@ -24,30 +33,25 @@ const isEmpty = (space: SpacePadding & SpaceMargin): boolean => {
   return true;
 };
 
-const createStylesPadding = (space: SpacePadding): SxStyleProp | StyleException => {
-  if (isEmpty(space)) {
-    return '';
-  }
-  const [top, right, bottom, left] = createSpaceBox(space);
-  return {
-    padding: `${top}px ${right}px ${bottom}px ${left}px`,
-  };
-};
-
-const createStylesMargin = (space: SpaceMargin): SxStyleProp | StyleException => {
-  if (isEmpty(space)) {
-    return '';
-  }
-  const [top, right, bottom, left] = createSpaceBox(space);
-  return {
-    margin: `${top}px ${right}px ${bottom}px ${left}px`,
-  };
-};
-
 const createStylesBg = (color: string): SxStyleProp => ({ backgroundColor: color });
 
-const createStyles = (props: BoxProps): SxStyleProp => {
-  const padding = createStylesPadding(
+const createStylesSpace = (
+  space: SpaceDeclaration,
+  name: CSSSpaceProperty,
+  theme: Theme,
+): SxStyleProp | StyleException => {
+  if (isEmpty(space)) {
+    return '';
+  }
+
+  const [top, right, bottom, left] = createSpaceBox(theme ? getThemeScale(space, theme) : space);
+  return {
+    [name]: `${top}px ${right}px ${bottom}px ${left}px`,
+  };
+};
+
+const createStyles = (props: BoxProps, theme: Theme): SxStyleProp => {
+  const padding = createStylesSpace(
     JSON.parse(
       JSON.stringify({
         p: props.p,
@@ -55,8 +59,10 @@ const createStyles = (props: BoxProps): SxStyleProp => {
         py: props.py,
       }),
     ),
+    'padding',
+    theme,
   );
-  const margin = createStylesMargin(
+  const margin = createStylesSpace(
     JSON.parse(
       JSON.stringify({
         m: props.m,
@@ -64,6 +70,8 @@ const createStyles = (props: BoxProps): SxStyleProp => {
         my: props.my,
       }),
     ),
+    'margin',
+    theme,
   );
 
   return {
@@ -74,8 +82,8 @@ const createStyles = (props: BoxProps): SxStyleProp => {
 };
 
 export const Box: React.FC<BoxProps> = (props): JSX.Element => {
-  const styles = createStyles(props);
-  return <props.tag sx={styles}>{props.children}</props.tag>;
+  const { theme } = useThemeUI();
+  return <props.as sx={createStyles(props, theme)}>{props.children}</props.as>;
 };
 
 Box.displayName = 'Box';
