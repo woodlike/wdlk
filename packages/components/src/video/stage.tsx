@@ -36,7 +36,7 @@ export const Stage: React.FC<VideoStageProps> = (props): JSX.Element => {
       {props.children}
       <figcaption sx={stylesCaption}>
         <Controls muted={props.muted} onClick={props.handleClick} />
-        <Heading tag="h2" size={isMediumDevice ? 'xl' : 'l'} family="campaign" inverted>
+        <Heading as="h2" size={isMediumDevice ? 'xl' : 'l'} family="campaign" inverted>
           {props.headline}
         </Heading>
         <Text tag="p" size={isMediumDevice ? 'l' : 'm'} inverted>

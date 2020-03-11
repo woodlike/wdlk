@@ -11,10 +11,9 @@ import {
   StyleException,
 } from '.';
 import { createSpaceBox } from '.';
-import { HTMLSectionType } from '../layout';
 
 export interface BoxProps {
-  readonly as: HTMLSectionType;
+  readonly as: HTMLBoxType;
   readonly p?: SpaceBox | number;
   readonly px?: SpaceTuple | number;
   readonly py?: SpaceTuple | number;
@@ -30,7 +29,7 @@ export interface BorderProps {
   readonly color: string;
 }
 
-const createStylesBg = (color: string): SxStyleProp => ({ backgroundColor: color });
+export type HTMLBoxType = 'aside' | 'section' | 'article' | 'nav' | 'div' | 'ul' | 'li';
 
 const createStylesBorder = (width: number | [number, number, number, number], color: string): SxStyleProp => ({
   borderWidth: Array.isArray(width) ? `${width[0]}px ${width[1]}px ${width[2]}px ${width[3]}px` : `${width}px`,
@@ -90,7 +89,8 @@ const createStyles = (props: BoxProps, theme: Theme): SxStyleProp => {
     ...(typeof padding === 'object' && padding),
     ...(typeof margin === 'object' && margin),
     ...(props.border && createStylesBorder(props.border.width, props.border.color)),
-    ...(props.bg && createStylesBg(props.bg)),
+    ...(Boolean(props.bg) && { backgroundColor: props.bg }),
+    ...(props.as === 'ul' && { listStyle: 'none' }),
   };
 };
 

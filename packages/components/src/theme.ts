@@ -17,6 +17,7 @@ export const theme = {
     background: themeQuery.colors.whites[0],
     text: themeQuery.colors.blacks[0],
     textInverted: themeQuery.colors.whites[1],
+    headline: themeQuery.colors.grays[5],
   },
   fonts: {
     ...themeQuery.fonts,

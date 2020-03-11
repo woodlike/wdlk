@@ -10,6 +10,7 @@ export interface LinkTextProps extends LinkProps {
 
 const stylesText: SxStyleProp = {
   cursor: 'pointer',
+  textDecoration: 'none',
   ':hover': {
     textDecoration: 'underline',
   },

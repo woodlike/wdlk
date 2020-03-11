@@ -7,7 +7,7 @@ export interface LinkProps {
   readonly onClick?: React.MouseEventHandler<HTMLSpanElement>;
 }
 
-export type LinkType = 'a' | 'span';
+export type LinkType = 'a' | 'span' | 'strong';
 export type LinkSize = 's' | 'm' | 'l' | 'xl';
 
 export const handleLinkSize = (size: LinkSize, qt: ThemeQuery): string => {

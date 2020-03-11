@@ -21,6 +21,22 @@ describe('<Box />', () => {
     done();
   });
 
+  it('should not have accessibility (li) violations', async done => {
+    const { container, unmount } = render(
+      <Box as="ul">
+        <Box as="li">Test Children</Box>
+        <Box as="li">Test Children</Box>
+        <Box as="li">Test Children</Box>
+      </Box>,
+    );
+
+    const a11yResults = await axe(container);
+    expect(a11yResults).toHaveNoViolations();
+    cleanup();
+    unmount();
+    done();
+  });
+
   describe('As type prop', () => {
     it('should render a default div tag', () => {
       const { container, unmount } = render(<Box as="div">Test Children</Box>);
