@@ -1,70 +1,70 @@
 /** @jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
-import { Heading as ThemeHeading } from '@theme-ui/components';
-
-import { qt } from '../query';
+import { useThemeQuery } from '../query';
+import { ThemeQuery } from 'theme-query';
 
 export interface HeadingProps {
-  tag: HeadingLevel;
+  as: HeadingLevel;
   size: HeadlineSize;
   family?: HeadingFamily;
   inverted?: boolean;
 }
 
 export type HeadingFamily = 'display' | 'secondary' | 'campaign';
-export type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+export type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'strong';
 export type HeadlineSize = 's' | 'm' | 'l' | 'xl' | 'xxl';
 
 const stylesHeading: SxStyleProp = {
+  display: 'block',
   margin: 0,
-  color: qt('grays')(5),
+  color: 'headline',
   fontWeight: 500,
-  letterSpacing: `${qt('spaces')(1)}px`,
 };
 
-const handleHeadingSizes = (size: HeadlineSize): string => {
+const handleHeadingSizes = (size: HeadlineSize, qt: ThemeQuery): string => {
   switch (size) {
     case 's':
-      return qt('spaces')(4);
+      return qt('fontSizes')(3);
     case 'm':
-      return qt('spaces')(5);
+      return qt('fontSizes')(4);
     case 'l':
-      return qt('spaces')(7);
+      return qt('fontSizes')(5);
     case 'xl':
-      return qt('spaces')(8);
+      return qt('fontSizes')(6);
     case 'xxl':
-      return qt('spaces')(9);
+      return qt('fontSizes')(7);
   }
 };
 
-const createStylesSize = (size: HeadlineSize): SxStyleProp => ({
-  fontSize: `${handleHeadingSizes(size)}px`,
-});
-
-const createStylesColor = (inverted: boolean): SxStyleProp => ({
+const createStylesColor = (inverted: boolean, qt: ThemeQuery): SxStyleProp => ({
   color: inverted ? qt('whites')(4) : qt('grays')(5),
   textShadow: inverted ? `0 0 2px ${qt('grays')(3)}` : 'unset',
 });
 
-const createStylesFamily = (family: HeadingFamily = 'display'): SxStyleProp => ({
+const createStylesFamily = (qt: ThemeQuery, family: HeadingFamily = 'display'): SxStyleProp => ({
   fontFamily: qt(`heading.${family}`),
   lineHeight: family === 'campaign' ? 2.5 : 1.4,
 });
 
-const createStylesHeading = (size: HeadlineSize, inverted: boolean, family?: HeadingFamily): SxStyleProp => ({
+const createStylesHeading = (
+  size: HeadlineSize,
+  inverted: boolean,
+  qt: ThemeQuery,
+  family?: HeadingFamily,
+): SxStyleProp => ({
   ...stylesHeading,
-  ...createStylesFamily(family),
-  ...createStylesSize(size),
-  ...createStylesColor(inverted),
+  ...createStylesFamily(qt, family),
+  ...createStylesColor(inverted, qt),
+  fontSize: `${handleHeadingSizes(size, qt)}px`,
 });
 
-export const Heading: React.FC<HeadingProps> = (props): JSX.Element => (
-  <ThemeHeading
-    sx={createStylesHeading(props.size, Boolean(props.inverted), props.family)}
-    as={props.tag}
-    size={props.size}>
-    {props.children}
-  </ThemeHeading>
-);
+export const Heading: React.FC<HeadingProps> = (props): JSX.Element => {
+  const { qt } = useThemeQuery();
+  return (
+    <props.as sx={createStylesHeading(props.size, Boolean(props.inverted), qt, props.family)}>
+      {props.children}
+    </props.as>
+  );
+};
 
 Heading.displayName = 'Heading';

@@ -10,6 +10,7 @@ export interface LinkIconProps {
 }
 
 const stylesHighlight: SxStyleProp = {
+  textDecoration: 'none',
   cursor: 'pointer',
 };
 
