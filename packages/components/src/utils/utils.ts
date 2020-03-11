@@ -14,3 +14,12 @@ const fontSizeS = (qt('fontSizes')(2) as unknown) as number;
 const fontSizeM = (qt('fontSizes')(3) as unknown) as number;
 export const headerScales = (qt('header')('all') as unknown) as string[];
 export const headerYPosition = calcYPosition(headerScales, fontSizeS, fontSizeM);
+
+export function isEmptyObj<T>(obj: T): boolean {
+  for (const prop in obj) {
+    if ((obj as {}).hasOwnProperty(prop)) {
+      return false;
+    }
+  }
+  return true;
+}
