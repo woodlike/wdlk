@@ -37,7 +37,7 @@ const createStyles = (position: SideBarPosition, width = layoutConfig.width, bg 
 });
 
 export const SideBar: React.FC<SideBarProps> = (props): JSX.Element => {
-  return <props.tag sx={createStyles(props.position, props.width)}>{props.children}</props.tag>;
+  return <props.tag sx={createStyles(props.position, props.width, props.bg)}>{props.children}</props.tag>;
 };
 
 SideBar.displayName = 'Layout.Sidebar';
