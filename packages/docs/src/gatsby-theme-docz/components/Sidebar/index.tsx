@@ -1,8 +1,8 @@
 /** @jsx jsx */
 import { jsx } from 'theme-ui';
-import { Layout } from '@wdlk/components';
+import { Box, Layout, Link } from '@wdlk/components';
 import { useMenus } from 'docz';
-import { Link } from 'gatsby';
+// import { Link } from 'gatsby';
 
 import { Logo } from '../Logo';
 
@@ -16,28 +16,41 @@ export const Sidebar: React.FC = (): JSX.Element => {
   console.log(menus, '000000-------');
   return (
     <Layout.SideBar tag="aside" position="left">
-      <div>
+      <Box my={[4, 7]} as="div">
         <Logo />
-      </div>
+      </Box>
+
       {menus &&
         menus.map(menu => {
           if (Array.isArray(menu.menu)) {
             return (
-              <div key={menu.id}>
-                <div>{menu.name}</div>
-                {menu.menu.map(m => (
-                  <Link key={m.id} to={m.route}>
-                    {m.name}
-                  </Link>
-                ))}
-              </div>
+              <Box key={menu.id} my={[0, 7]} as="div">
+                <Link.Highlight size="m" as="strong">
+                  {menu.name}
+                </Link.Highlight>
+                <Box px={[0, 3]} my={[2, 0]} as="ul">
+                  {menu.menu.map(m => (
+                    <Box key={m.id} my={[0, 2]} as="li">
+                      <Link.Text href={m.route} size="s" as="a">
+                        {m.name}
+                      </Link.Text>
+                    </Box>
+                  ))}
+                </Box>
+              </Box>
             );
           }
-          return (
-            <Link key={menu.id} to={menu.route}>
-              {menu.name}
-            </Link>
-          );
+          {
+            return (
+              menu.route && (
+                <Box key={menu.id} my={[0, 4]} as="div">
+                  <Link.Highlight href={menu.route} size="m" as="a">
+                    {menu.name}
+                  </Link.Highlight>
+                </Box>
+              )
+            );
+          }
         })}
     </Layout.SideBar>
   );
