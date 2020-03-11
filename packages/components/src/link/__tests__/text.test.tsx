@@ -4,8 +4,8 @@ import { render, cleanup } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { matchers } from 'jest-emotion';
 
-import { Text } from '.';
-import { theme } from '../theme';
+import { Text } from '..';
+import { theme } from '../../theme';
 
 expect.extend(matchers);
 expect.extend(toHaveNoViolations);
@@ -13,7 +13,7 @@ expect.extend(toHaveNoViolations);
 describe('<Link />', () => {
   let id: string;
 
-  beforeEach(() => (id = 'test-children'));
+  beforeEach(() => (id = 'test-text'));
   afterEach(() => (id = undefined));
 
   describe('Accessibility', () => {
@@ -50,45 +50,6 @@ describe('<Link />', () => {
     });
   });
 
-  describe('Font-Family', () => {
-    it('should use the default font family', () => {
-      const { getByText, unmount } = render(
-        <Text href="#" as="a" size="s">
-          {id}
-        </Text>,
-      );
-      const link = getByText(id);
-      expect(link).toHaveStyleRule('font-family', `"MuseoSans",Helvetica,sans-serif`);
-      unmount();
-    });
-
-    it('should use the Theme-UI font family', () => {
-      const { getByText, unmount } = render(
-        <ThemeProvider theme={theme}>
-          <Text family="heading.display" href="#" as="a" size="s">
-            {id}
-          </Text>
-        </ThemeProvider>,
-      );
-      const link = getByText(id);
-      expect(link).toHaveStyleRule('font-family', `"Museo",serif`);
-      unmount();
-    });
-
-    it('should use the provided font family', () => {
-      const { getByText, unmount } = render(
-        <ThemeProvider theme={theme}>
-          <Text family="Helvetica" href="#" as="a" size="s">
-            {id}
-          </Text>
-        </ThemeProvider>,
-      );
-      const link = getByText(id);
-      expect(link).toHaveStyleRule('font-family', 'Helvetica');
-      unmount();
-    });
-  });
-
   describe('Font-Size', () => {
     it('should use the default S font family', () => {
       const { getByText, unmount } = render(
@@ -113,10 +74,10 @@ describe('<Link />', () => {
     });
 
     it('should use the Theme-UI S font family', () => {
-      const theme = { fontSizes: [0, 22, 44, 36, 65] };
+      // const theme = { fontSizes: [0, 22, 44, 36, 65] };
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
-          <Text family="Helvetica" href="#" as="a" size="s">
+          <Text href="#" as="a" size="s">
             {id}
           </Text>
         </ThemeProvider>,
@@ -130,7 +91,7 @@ describe('<Link />', () => {
       const theme = { fontSizes: [0, 22, 44, 36, 65] };
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
-          <Text family="Helvetica" href="#" as="a" size="xl">
+          <Text href="#" as="a" size="xl">
             {id}
           </Text>
         </ThemeProvider>,

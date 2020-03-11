@@ -12,8 +12,11 @@ export const theme = {
   colors: {
     ...themeQuery.colors,
     primary: themeQuery.colors.corals[0],
+    secondary: themeQuery.colors.corals[1],
     border: themeQuery.colors.grays[0],
     background: themeQuery.colors.whites[0],
+    text: themeQuery.colors.blacks[0],
+    textInverted: themeQuery.colors.whites[1],
   },
   fonts: {
     ...themeQuery.fonts,

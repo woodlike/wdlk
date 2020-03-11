@@ -1,4 +1,5 @@
 import * as LocalDocs from './docs';
+import * as LocalLink from './link';
 import * as LocalLayout from './layout';
 import * as LocalNav from './navigation';
 import * as LocalVid from './video';
@@ -19,6 +20,7 @@ export * from './video';
 export * from './with-focus-style';
 
 export const Docs = { ...LocalDocs };
+export const Link = { ...LocalLink };
 export const Layout = { ...LocalLayout };
 export const Nav = { ...LocalNav };
 export const Video = { ...LocalVid };
