@@ -9,11 +9,6 @@ export interface LinkIconProps {
   readonly size: LinkSize;
 }
 
-const stylesHighlight: SxStyleProp = {
-  textDecoration: 'none',
-  cursor: 'pointer',
-};
-
 const createStylesIcon: SxStyleProp = {
   color: 'primary',
   fill: 'currentcolor',
@@ -26,10 +21,11 @@ const createStylesIcon: SxStyleProp = {
 };
 
 const createStylesHighlight = (size: LinkSize, qt: ThemeQuery): SxStyleProp => ({
-  ...stylesHighlight,
   fontFamily: qt('body'),
   fontSize: handleLinkSize(size, qt),
   color: qt('primary'),
+  textDecoration: 'none',
+  cursor: 'pointer',
   transition: 'color 333ms linear',
   ':hover': {
     color: qt('secondary'),
@@ -50,7 +46,7 @@ export const Highlight: React.FC<LinkProps> = (props): JSX.Element => {
   );
 };
 
-Highlight.displayName = 'Link.HighLight';
+Highlight.displayName = 'Link.Highlight';
 
 export const IconRight: React.FC<LinkIconProps> = (props): JSX.Element => {
   const { qt } = useThemeQuery();
