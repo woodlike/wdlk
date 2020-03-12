@@ -94,12 +94,23 @@ describe('<Heading />', () => {
   });
 
   describe('Returns the expeced font size', () => {
-    it.only('should have a font size of 18px', () => {
+    it('should have a font size of 18px', () => {
+      const { container } = render(
+        <Heading as="h2" size="xs" inverted={false}>
+          Healing Flowers Collection
+        </Heading>,
+      );
+      const h2 = container.querySelector('h2');
+      expect(h2).toHaveStyleRule('font-size', `${qt('fontSizes')(3)}px`);
+    });
+
+    it('should have a font size of 20px', () => {
       const { container } = render(
         <Heading as="h2" size="s" inverted={false}>
           Healing Flowers Collection
         </Heading>,
       );
+
       const h2 = container.querySelector('h2');
       expect(h2).toHaveStyleRule('font-size', `${qt('fontSizes')(4)}px`);
     });
@@ -115,7 +126,7 @@ describe('<Heading />', () => {
       expect(h2).toHaveStyleRule('font-size', `${qt('fontSizes')(5)}px`);
     });
 
-    it('should have a font size of 36px', () => {
+    it('should have a font size of 32px', () => {
       const { container } = render(
         <Heading as="h2" size="l" inverted={false}>
           Healing Flowers Collection
@@ -123,10 +134,10 @@ describe('<Heading />', () => {
       );
 
       const h2 = container.querySelector('h2');
-      expect(h2).toHaveStyleRule('font-size', `${qt('fontSizes')(7)}px`);
+      expect(h2).toHaveStyleRule('font-size', `${qt('fontSizes')(6)}px`);
     });
 
-    it('should have a font size of 48px', () => {
+    it('should have a font size of 44px', () => {
       const { container } = render(
         <Heading as="h2" size="xl" inverted={false}>
           Healing Flowers Collection
@@ -134,7 +145,7 @@ describe('<Heading />', () => {
       );
 
       const h2 = container.querySelector('h2');
-      expect(h2).toHaveStyleRule('font-size', `${qt('fontSizes')(8)}px`);
+      expect(h2).toHaveStyleRule('font-size', `${qt('fontSizes')(7)}px`);
     });
 
     it('should have a font size of 72px', () => {
@@ -145,7 +156,7 @@ describe('<Heading />', () => {
       );
 
       const h2 = container.querySelector('h2');
-      expect(h2).toHaveStyleRule('font-size', `${qt('fontSizes')(9)}px`);
+      expect(h2).toHaveStyleRule('font-size', `${qt('fontSizes')(8)}px`);
     });
   });
 

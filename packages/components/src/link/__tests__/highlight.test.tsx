@@ -4,7 +4,7 @@ import { render, cleanup } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { matchers } from 'jest-emotion';
 
-import { Text as Highlight } from '..';
+import { Highlight } from '..';
 import { theme } from '../../theme';
 
 expect.extend(matchers);

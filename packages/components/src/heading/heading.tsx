@@ -12,7 +12,7 @@ export interface HeadingProps {
 
 export type HeadingFamily = 'display' | 'secondary' | 'campaign';
 export type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'strong';
-export type HeadlineSize = 's' | 'm' | 'l' | 'xl' | 'xxl';
+export type HeadlineSize = 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl';
 
 const stylesHeading: SxStyleProp = {
   display: 'block',
@@ -23,16 +23,18 @@ const stylesHeading: SxStyleProp = {
 
 const handleHeadingSizes = (size: HeadlineSize, qt: ThemeQuery): string => {
   switch (size) {
-    case 's':
+    case 'xs':
       return qt('fontSizes')(3);
-    case 'm':
+    case 's':
       return qt('fontSizes')(4);
-    case 'l':
+    case 'm':
       return qt('fontSizes')(5);
-    case 'xl':
+    case 'l':
       return qt('fontSizes')(6);
-    case 'xxl':
+    case 'xl':
       return qt('fontSizes')(7);
+    case 'xxl':
+      return qt('fontSizes')(8);
   }
 };
 
