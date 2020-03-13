@@ -1,25 +1,31 @@
-// import { SxStyleProp } from 'theme-ui';
 import { PrismTheme, PrismStyleProp, PrismStyleRule } from '.';
 import { isEmptyObj } from '../utils';
 
-export type ThemeMap = Map<string, PrismStyleProp>;
+export type CodeTheme = Map<string, PrismStyleProp>;
 
-export function convertor(prism: PrismTheme): void {
+export function convertor(prism: PrismTheme): CodeTheme {
+  const theme = new Map<string, PrismStyleProp>();
   try {
     if (!prism.styles || prism.styles.length < 1) {
       throw Error('Your theme should have a styles property (PrismStyles[])');
     }
-    const themeMap = new Map<string, PrismStyleProp>();
 
     prism.styles.forEach((styleRule: PrismStyleRule): void => {
-      if (!styleRule.types || styleRule.types.length < 1) {
+      const { types, style } = styleRule;
+
+      if (!types || types.length === 0) {
         throw Error('Your theme should have a types property (string[])');
       }
-      if (isEmptyObj(styleRule.style)) {
+      if (isEmptyObj(style)) {
         throw Error('Your theme should have a style property (PrismStyleProp)');
       }
+
+      types.forEach(type => {
+        theme.has(type) ? theme.set(type, { ...style, ...theme.get(type) }) : theme.set(type, { ...style });
+      });
     });
   } catch (err) {
     console.error(`${err}`);
   }
+  return theme;
 }

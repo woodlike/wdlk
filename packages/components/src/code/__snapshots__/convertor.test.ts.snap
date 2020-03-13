@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`convertor() Create theme map should match the snapshot map 1`] = `
+Map {
+  "comment" => Object {
+    "color": "rgb(95, 97, 103)",
+  },
+  "constant" => Object {
+    "color": "rgb(213, 206, 217)",
+  },
+  "punctuation" => Object {
+    "color": "rgb(249, 38, 114)",
+  },
+  "variable" => Object {
+    "color": "rgb(0, 232, 198)",
+  },
+  "tag" => Object {
+    "color": "rgb(0, 232, 198)",
+  },
+  "char" => Object {
+    "color": "rgb(0, 232, 198)",
+  },
+  "number" => Object {
+    "color": "rgb(243, 156, 18)",
+  },
+  "attr-name" => Object {
+    "color": "rgb(243, 156, 18)",
+  },
+  "builtin" => Object {
+    "color": "rgb(255, 230, 109)",
+  },
+  "at-rule" => Object {
+    "color": "rgb(255, 230, 109)",
+  },
+  "function" => Object {
+    "color": "rgb(255, 230, 109)",
+  },
+  "string" => Object {
+    "color": "rgb(124, 183, 255)",
+  },
+  "changed" => Object {
+    "color": "rgb(124, 183, 255)",
+  },
+  "operator" => Object {
+    "color": "rgb(238, 93, 67)",
+  },
+  "deleted" => Object {
+    "color": "rgb(238, 93, 67)",
+  },
+  "inserted" => Object {
+    "color": "rgb(150, 224, 114)",
+  },
+}
+`;
