@@ -1,23 +1,17 @@
-export interface PrismStyleProp {
-  readonly color: string;
-  readonly backgroundColor?: string;
-  readonly fontStyle?: 'normal' | 'italic';
-  readonly fontWeight?: 'normal' | 'bold' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900';
-  readonly textDecorationLine?: 'none' | 'underline' | 'line-through' | 'underline line-through';
-  readonly opacity?: number;
-  readonly [styleKey: string]: string | number | void;
-}
+import { PrismTheme } from '..';
 
-export interface PrismTheme {
-  styles: PrismStyleRule[];
-}
+/**
+ * @name Andromeda
+ * @author EliverLara
+ * @description: Theme created by EliverLara https://github.com/EliverLara/Andromeda
+ * Ported using themeFromVsCode https://github.com/FormidableLabs/prism-react-renderer/tree/master/tools/themeFromVsCode
+ */
 
-export interface PrismStyleRule {
-  readonly types: string[];
-  readonly style: PrismStyleProp;
-}
-
-export const prismTheme: PrismTheme = {
+export const andromeda: PrismTheme = {
+  plain: {
+    color: 'rgb(213,206,217)',
+    backgroundColor: 'rgb(38,42,51)',
+  },
   styles: [
     {
       types: ['comment'],

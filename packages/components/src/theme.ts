@@ -53,6 +53,7 @@ export const theme = {
       secondary: `"MuseoSans", Helvetica, sans-serif`,
       campaign: `"Challista_signature", serif`,
     },
+    monospace: `"IBM Plex Mono", monospace`,
   },
   space: {
     ...themeQuery.spaces,

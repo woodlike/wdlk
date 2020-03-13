@@ -1,4 +1,4 @@
-import { convertor, prismTheme, PrismTheme, PrismStyleRule } from '.';
+import { convertor, andromeda, PrismTheme, PrismStyleRule } from '..';
 
 describe('convertor()', () => {
   let stylePropMock1: PrismStyleRule[];
@@ -112,15 +112,16 @@ describe('convertor()', () => {
   });
 
   describe('Create theme map', () => {
+    const { plain } = andromeda;
     it('should return a codeTheme with the according value', () => {
-      const codeTheme = convertor({ styles: stylePropMock1 });
+      const codeTheme = convertor({ plain, styles: stylePropMock1 });
       expect(codeTheme.get('punctuation')).toStrictEqual({
         color: 'rgb(249, 38, 114)',
       });
     });
 
     it('should return the first found properties on duplicated styles', () => {
-      const codeTheme = convertor({ styles: stylePropDuplicate });
+      const codeTheme = convertor({ plain, styles: stylePropDuplicate });
       expect(codeTheme.get('punctuation')).toStrictEqual({
         color: 'rgb(249, 38, 114)',
         backgroundColor: 'rgb(255, 255, 255)',
@@ -128,7 +129,7 @@ describe('convertor()', () => {
     });
 
     it('should return the first found properties on duplicated styles and the last missing properties', () => {
-      const codeTheme = convertor({ styles: stylePropDuplicateII });
+      const codeTheme = convertor({ plain, styles: stylePropDuplicateII });
       expect(codeTheme.get('punctuation')).toStrictEqual({
         color: 'rgb(213, 206, 217)',
         backgroundColor: 'rgb(0, 0, 0)',
@@ -136,7 +137,7 @@ describe('convertor()', () => {
     });
 
     it('should match the snapshot map', () => {
-      const codeTheme = convertor(prismTheme);
+      const codeTheme = convertor(andromeda);
       expect(codeTheme).toMatchSnapshot();
     });
   });
