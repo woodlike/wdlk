@@ -1,4 +1,5 @@
 /**@jsx jsx */
+import * as Prism from 'prismjs';
 import { jsx, SxStyleProp } from 'theme-ui';
 import { ThemeQuery } from 'theme-query';
 
@@ -34,6 +35,7 @@ const createStylesPre = (size: CodeSize, qt: ThemeQuery, theme = andromeda): SxS
 
 export const Code: React.FC<CodeProps> = (props): JSX.Element => {
   const { qt } = useThemeQuery();
+  handleTokens(props.code);
   return (
     <pre sx={createStylesPre(props.size, qt, props.theme)}>
       <code>{JSON.stringify(props)}</code>
@@ -42,3 +44,5 @@ export const Code: React.FC<CodeProps> = (props): JSX.Element => {
 };
 
 Code.displayName = 'Code';
+
+export function handleTokens(code: string): void {}
