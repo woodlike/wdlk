@@ -1,3 +1,5 @@
+export * from './code';
 export * from './convertor';
 export * from './langugage';
-export * from './prism-theme';
+export * from './themes';
+export * from './types';
