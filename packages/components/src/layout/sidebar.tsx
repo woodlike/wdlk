@@ -17,12 +17,13 @@ export type SideBarPosition = 'left' | 'right';
 const stylesSidebar: SxStyleProp = {
   position: 'fixed',
   top: 0,
-  height: '100vh',
+  height: '100%',
   padding: qt('spaces')(3),
   boxSizing: 'border-box',
   borderColor: 'border',
   borderStyle: 'solid',
   borderWidth: '0px',
+  overflowY: 'auto',
 };
 
 const createStylesPosition = (position: SideBarPosition): SxStyleProp => ({
