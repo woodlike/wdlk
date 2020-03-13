@@ -1,7 +1,7 @@
 {
   "name": "@wdlk/components",
   "version": "1.9.4",
-  "description": "Woodlike UI component library 🎨",
+  "description": "Stateless functional components that are coherent to a design system",
   "repository": "git@github.com:woodlike/component-library.git",
   "license": "MIT",
   "author": "Mauricio Palma <mauricio.palma@woodlikeocean.com>",
@@ -9,6 +9,7 @@
   "scripts": {
     "build": "tsc --module commonjs --target es6 --outDir lib/",
     "dev": "tsc --watch --target es6 --outDir lib/",
+    "generate:prism:lang": "ts-node scripts/prism-lang.ts",
     "lint": "eslint src --ext .ts,.tsx",
     "test": "jest",
     "test:coverage": "npm test -- --coverage"
@@ -42,6 +43,7 @@
     "jest-emotion": "^10.0.17",
     "prettier": "^1.19.1",
     "ts-jest": "^24.1.0",
+    "ts-node": "^8.6.2",
     "typescript": "3.8.2"
   }
 }

@@ -3,9 +3,14 @@
   "version": "1.0.1",
   "private": true,
   "description": "WDLK multi package repo",
-  "workspaces": [
-    "packages/*"
-  ],
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/prismjs"
+    ]
+  },
   "scripts": {
     "build:components": "yarn workspace @wdlk/components build",
     "build:containers": "yarn workspace @wdlk/containers build",
