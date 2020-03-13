@@ -15,7 +15,7 @@ describe('<Link />', () => {
 
   beforeEach(() => (id = 'test-highlight'));
   afterEach(() => (id = undefined));
-
+  console.log('00000000000000', theme);
   describe('Accessibility', () => {
     it('should not have accessibility violations (anchor)', async done => {
       const { getByText, unmount } = render(
