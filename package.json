@@ -27,6 +27,7 @@
     "lint:docs": "yarn workspace @wdlk/docs lint",
     "lint:store": "yarn workspace @wdlk/store lint",
     "lint:theme-query": "yarn workspace theme-query lint",
+    "prism:components": "yarn workspace @wdlk/components prism:lang",
     "test:components": "yarn workspace @wdlk/components test",
     "test:containers": "yarn workspace @wdlk/containers test",
     "test:store": "yarn workspace @wdlk/store test",

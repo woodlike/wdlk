@@ -5,7 +5,7 @@
   },
   "include": [
     "./src",
-    "./scripts",
+    "node",
     "typings.d.ts"
   ],
   "exclude": [
