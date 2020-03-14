@@ -9,8 +9,8 @@
   "scripts": {
     "build": "tsc --module commonjs --target es6 --outDir lib/",
     "dev": "tsc --watch --target es6 --outDir lib/",
-    "generate:prism:lang": "ts-node scripts/prism-lang.ts",
     "lint": "eslint src --ext .ts,.tsx",
+    "prism:lang": "ts-node node/prism-lang.ts",
     "test": "jest",
     "test:coverage": "npm test -- --coverage"
   },
@@ -28,11 +28,16 @@
     "theme-ui": "^0.2.49"
   },
   "devDependencies": {
+    "@babel/generator": "^7.8.8",
+    "@babel/parser": "^7.8.8",
+    "@babel/types": "^7.8.7",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/react-hooks": "^3.2.1",
+    "@types/babel__parser": "^7.1.1",
     "@types/jest": "^24.0.23",
     "@types/jest-axe": "^3.2.1",
+    "@types/node": "^13.9.1",
     "@types/prismjs": "^1.16.0",
     "@types/react": "^16.9.13",
     "@types/react-dom": "^16.9.4",
