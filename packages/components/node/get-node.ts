@@ -1,9 +1,26 @@
-import { MemberExpression, CallExpression, ArgumentPlaceholder } from '@babel/types';
+import {
+  MemberExpression,
+  CallExpression,
+  ArgumentPlaceholder,
+  ObjectExpression,
+  ObjectMethod,
+  ObjectProperty,
+  SpreadElement,
+} from '@babel/types';
 
 // enum Statements {
 //   AssignmentExpression = 'AssignmentExpression',
 //   MemberExpression = 'MemberExpression',
 // }
+interface Statement {
+  expression: Expression;
+}
+interface Expression {
+  left: MemberExpression;
+  right: ObjectExpression;
+}
+
+type CLikeNode = [string, (ObjectMethod | ObjectProperty | SpreadElement)[]];
 
 type GetExpressionType = [string, CallExpression, ArgumentPlaceholder[]] | [string, MemberExpression] | [];
 
@@ -18,5 +35,16 @@ function handleStatement(node: any): GetExpressionType {
   }
   return [];
 }
-
 exports.handleStatement = handleStatement;
+
+function clikeNode(node: Statement): CLikeNode {
+  const name = node.expression.left.property.name;
+  const props = node.expression.right.properties;
+  return [name, props];
+}
+
+exports.clikeNode = clikeNode;
+
+function javaScript(node: Statement): JavaScriptNode {
+  const name = node.expression.left.property.name;
+}
