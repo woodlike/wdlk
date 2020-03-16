@@ -21,7 +21,7 @@ const languages = [
   // 'graphql',
   // 'json',
   // 'ocaml',
-  // 'reason',
+  'reason',
   // 'tsx',
   'typescript',
   // 'yaml',
@@ -38,6 +38,7 @@ function parseAst(path: string, file: string): void {
     const ast = parse(`${source}`);
     const name = file.split('.');
     name.splice(1, 1, 'ts');
+    console.log('ast--------', source);
 
     generateCode(convertASTBody(ast), name.join('.'));
   });
