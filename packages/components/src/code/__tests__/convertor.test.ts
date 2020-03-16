@@ -55,9 +55,9 @@ describe('convertor()', () => {
   });
 
   afterEach(() => {
-    stylePropMock1 = undefined as PrismStyleRule[];
-    stylePropDuplicate = undefined as PrismStyleRule[];
-    stylePropDuplicateII = undefined as PrismStyleRule[];
+    stylePropMock1 = (undefined as unknown) as PrismStyleRule[];
+    stylePropDuplicate = (undefined as unknown) as PrismStyleRule[];
+    stylePropDuplicateII = (undefined as unknown) as PrismStyleRule[];
   });
 
   describe('Error handling', () => {
