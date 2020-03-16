@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import { ArgumentPlaceholder, CallExpression, File, MemberExpression, Statement, Program } from '@babel/types';
+import { File, Statement, Program } from '@babel/types';
 const { default: generate } = require('@babel/generator');
 const { dirname, resolve } = require('path');
 const { parse } = require('@babel/parser');
 const { readdir, readFile, writeFile } = require('fs');
+const { handleStatement } = require('./handle-statement');
 const prettier = require('prettier');
-const create = require('./create-ast-nodes');
+const create = require('./create-nodes');
 
-type GetExpressionType = [string, CallExpression, ArgumentPlaceholder[]] | [string, MemberExpression];
 const pathToPrism = dirname(require.resolve('prismjs'));
 const languages = [
   // 'markup',
@@ -21,7 +21,7 @@ const languages = [
   // 'graphql',
   // 'json',
   // 'ocaml',
-  'reason',
+  // 'reason',
   // 'tsx',
   'typescript',
   // 'yaml',
@@ -38,7 +38,8 @@ function parseAst(path: string, file: string): void {
     const ast = parse(`${source}`);
     const name = file.split('.');
     name.splice(1, 1, 'ts');
-    console.log('ast--------', source);
+    console.log('***********', source);
+    console.log('ast--------', ast);
 
     generateCode(convertASTBody(ast), name.join('.'));
   });
@@ -48,8 +49,9 @@ function convertASTBody(ast: Partial<File>): Statement[] | [] {
   if (!ast || !ast.program) {
     return [];
   }
+
   return ast.program.body.map(node => {
-    const nodes = getExpression(node);
+    const nodes = handleStatement(node);
     if (nodes.length === 3) {
       const [name, callee, args] = nodes;
       return create.exportConst(name, callee, args);
@@ -57,14 +59,6 @@ function convertASTBody(ast: Partial<File>): Statement[] | [] {
     const [name, init] = nodes;
     return create.assignmentExp(name, init);
   }) as Statement[];
-}
-
-function getExpression(node: Statement): GetExpressionType {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const { expression } = node as any;
-  const { left, right } = expression;
-  const name = left.property.name;
-  return right.callee ? [name, right.callee, right.arguments] : [name, right.object];
 }
 
 function generateCode(body: Statement[], file: string): void {
