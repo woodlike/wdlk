@@ -1,0 +1,312 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`handle AST body statements should match a ts to typescript language assignment node 1`] = `
+Array [
+  "ts",
+  Object {
+    "computed": false,
+    "name": "typescript",
+    "object": Object {
+      "name": "Prism",
+      "type": "Identifier",
+    },
+    "property": Object {
+      "name": "languages",
+      "type": "Identifier",
+    },
+    "type": "Identifier",
+  },
+]
+`;
+
+exports[`handle AST body statements should match a ts to typescript language assignment representation 1`] = `
+Array [
+  "ts",
+  Object {
+    "computed": false,
+    "name": "typescript",
+    "object": Object {
+      "name": "Prism",
+      "type": "Identifier",
+    },
+    "property": Object {
+      "name": "languages",
+      "type": "Identifier",
+    },
+    "type": "Identifier",
+  },
+]
+`;
+
+exports[`handle AST body statements should match the typescript language assignment array representation 1`] = `
+Array [
+  "typescript",
+  Object {
+    "computed": false,
+    "object": Object {
+      "computed": false,
+      "object": Object {
+        "name": "Prism",
+        "type": "Identifier",
+      },
+      "property": Object {
+        "name": "languages",
+        "type": "Identifier",
+      },
+      "type": "MemberExpression",
+    },
+    "property": Object {
+      "name": "extend",
+      "type": "Identifier",
+    },
+    "type": "MemberExpression",
+  },
+  Array [
+    Object {
+      "extra": Object {
+        "raw": "'javascript'",
+        "rawValue": "javascript",
+      },
+      "type": "StringLiteral",
+      "value": "javascript",
+    },
+    Object {
+      "properties": Array [
+        Object {
+          "computed": false,
+          "key": Object {
+            "extra": Object {
+              "raw": "'keyword'",
+              "rawValue": "keyword",
+            },
+            "type": "StringLiteral",
+            "value": "keyword",
+          },
+          "leadingComments": Array [
+            Object {
+              "type": "CommentLine",
+              "value": " From JavaScript Prism keyword list and TypeScript language spec: https://github.com/Microsoft/TypeScript/blob/master/doc/spec.md#221-reserved-words",
+            },
+          ],
+          "method": false,
+          "shorthand": false,
+          "type": "ObjectProperty",
+          "value": Object {
+            "extra": Object {
+              "raw": "/\\\\b(?:abstract|as|async|await|break|case|catch|class|const|constructor|continue|debugger|declare|default|delete|do|else|enum|export|extends|finally|for|from|function|get|if|implements|import|in|instanceof|interface|is|keyof|let|module|namespace|new|null|of|package|private|protected|public|readonly|return|require|set|static|super|switch|this|throw|try|type|typeof|undefined|var|void|while|with|yield)\\\\b/",
+            },
+            "flags": "",
+            "pattern": "\\\\b(?:abstract|as|async|await|break|case|catch|class|const|constructor|continue|debugger|declare|default|delete|do|else|enum|export|extends|finally|for|from|function|get|if|implements|import|in|instanceof|interface|is|keyof|let|module|namespace|new|null|of|package|private|protected|public|readonly|return|require|set|static|super|switch|this|throw|try|type|typeof|undefined|var|void|while|with|yield)\\\\b",
+            "type": "RegExpLiteral",
+          },
+        },
+        Object {
+          "computed": false,
+          "key": Object {
+            "extra": Object {
+              "raw": "'builtin'",
+              "rawValue": "builtin",
+            },
+            "type": "StringLiteral",
+            "value": "builtin",
+          },
+          "method": false,
+          "shorthand": false,
+          "type": "ObjectProperty",
+          "value": Object {
+            "extra": Object {
+              "raw": "/\\\\b(?:string|Function|any|number|boolean|Array|symbol|console|Promise|unknown|never)\\\\b/",
+            },
+            "flags": "",
+            "pattern": "\\\\b(?:string|Function|any|number|boolean|Array|symbol|console|Promise|unknown|never)\\\\b",
+            "type": "RegExpLiteral",
+          },
+        },
+      ],
+      "type": "ObjectExpression",
+    },
+  ],
+]
+`;
+
+exports[`handle AST body statements should match the typescript language assignment node 1`] = `
+Array [
+  "typescript",
+  Object {
+    "computed": false,
+    "object": Object {
+      "computed": false,
+      "object": Object {
+        "name": "Prism",
+        "type": "Identifier",
+      },
+      "property": Object {
+        "name": "languages",
+        "type": "Identifier",
+      },
+      "type": "MemberExpression",
+    },
+    "property": Object {
+      "name": "extend",
+      "type": "Identifier",
+    },
+    "type": "MemberExpression",
+  },
+  Array [
+    Object {
+      "extra": Object {
+        "raw": "'javascript'",
+        "rawValue": "javascript",
+      },
+      "type": "StringLiteral",
+      "value": "javascript",
+    },
+    Object {
+      "properties": Array [
+        Object {
+          "computed": false,
+          "key": Object {
+            "extra": Object {
+              "raw": "'keyword'",
+              "rawValue": "keyword",
+            },
+            "type": "StringLiteral",
+            "value": "keyword",
+          },
+          "leadingComments": Array [
+            Object {
+              "type": "CommentLine",
+              "value": " From JavaScript Prism keyword list and TypeScript language spec: https://github.com/Microsoft/TypeScript/blob/master/doc/spec.md#221-reserved-words",
+            },
+          ],
+          "method": false,
+          "shorthand": false,
+          "type": "ObjectProperty",
+          "value": Object {
+            "extra": Object {
+              "raw": "/\\\\b(?:abstract|as|async|await|break|case|catch|class|const|constructor|continue|debugger|declare|default|delete|do|else|enum|export|extends|finally|for|from|function|get|if|implements|import|in|instanceof|interface|is|keyof|let|module|namespace|new|null|of|package|private|protected|public|readonly|return|require|set|static|super|switch|this|throw|try|type|typeof|undefined|var|void|while|with|yield)\\\\b/",
+            },
+            "flags": "",
+            "pattern": "\\\\b(?:abstract|as|async|await|break|case|catch|class|const|constructor|continue|debugger|declare|default|delete|do|else|enum|export|extends|finally|for|from|function|get|if|implements|import|in|instanceof|interface|is|keyof|let|module|namespace|new|null|of|package|private|protected|public|readonly|return|require|set|static|super|switch|this|throw|try|type|typeof|undefined|var|void|while|with|yield)\\\\b",
+            "type": "RegExpLiteral",
+          },
+        },
+        Object {
+          "computed": false,
+          "key": Object {
+            "extra": Object {
+              "raw": "'builtin'",
+              "rawValue": "builtin",
+            },
+            "type": "StringLiteral",
+            "value": "builtin",
+          },
+          "method": false,
+          "shorthand": false,
+          "type": "ObjectProperty",
+          "value": Object {
+            "extra": Object {
+              "raw": "/\\\\b(?:string|Function|any|number|boolean|Array|symbol|console|Promise|unknown|never)\\\\b/",
+            },
+            "flags": "",
+            "pattern": "\\\\b(?:string|Function|any|number|boolean|Array|symbol|console|Promise|unknown|never)\\\\b",
+            "type": "RegExpLiteral",
+          },
+        },
+      ],
+      "type": "ObjectExpression",
+    },
+  ],
+]
+`;
+
+exports[`handle AST body statements should return a typescript language statement AST map 1`] = `
+Array [
+  "typescript",
+  Object {
+    "computed": false,
+    "object": Object {
+      "computed": false,
+      "object": Object {
+        "name": "Prism",
+        "type": "Identifier",
+      },
+      "property": Object {
+        "name": "languages",
+        "type": "Identifier",
+      },
+      "type": "MemberExpression",
+    },
+    "property": Object {
+      "name": "extend",
+      "type": "Identifier",
+    },
+    "type": "MemberExpression",
+  },
+  Array [
+    Object {
+      "extra": Object {
+        "raw": "'javascript'",
+        "rawValue": "javascript",
+      },
+      "type": "StringLiteral",
+      "value": "javascript",
+    },
+    Object {
+      "properties": Array [
+        Object {
+          "computed": false,
+          "key": Object {
+            "extra": Object {
+              "raw": "'keyword'",
+              "rawValue": "keyword",
+            },
+            "type": "StringLiteral",
+            "value": "keyword",
+          },
+          "leadingComments": Array [
+            Object {
+              "type": "CommentLine",
+              "value": " From JavaScript Prism keyword list and TypeScript language spec: https://github.com/Microsoft/TypeScript/blob/master/doc/spec.md#221-reserved-words",
+            },
+          ],
+          "method": false,
+          "shorthand": false,
+          "type": "ObjectProperty",
+          "value": Object {
+            "extra": Object {
+              "raw": "/\\\\b(?:abstract|as|async|await|break|case|catch|class|const|constructor|continue|debugger|declare|default|delete|do|else|enum|export|extends|finally|for|from|function|get|if|implements|import|in|instanceof|interface|is|keyof|let|module|namespace|new|null|of|package|private|protected|public|readonly|return|require|set|static|super|switch|this|throw|try|type|typeof|undefined|var|void|while|with|yield)\\\\b/",
+            },
+            "flags": "",
+            "pattern": "\\\\b(?:abstract|as|async|await|break|case|catch|class|const|constructor|continue|debugger|declare|default|delete|do|else|enum|export|extends|finally|for|from|function|get|if|implements|import|in|instanceof|interface|is|keyof|let|module|namespace|new|null|of|package|private|protected|public|readonly|return|require|set|static|super|switch|this|throw|try|type|typeof|undefined|var|void|while|with|yield)\\\\b",
+            "type": "RegExpLiteral",
+          },
+        },
+        Object {
+          "computed": false,
+          "key": Object {
+            "extra": Object {
+              "raw": "'builtin'",
+              "rawValue": "builtin",
+            },
+            "type": "StringLiteral",
+            "value": "builtin",
+          },
+          "method": false,
+          "shorthand": false,
+          "type": "ObjectProperty",
+          "value": Object {
+            "extra": Object {
+              "raw": "/\\\\b(?:string|Function|any|number|boolean|Array|symbol|console|Promise|unknown|never)\\\\b/",
+            },
+            "flags": "",
+            "pattern": "\\\\b(?:string|Function|any|number|boolean|Array|symbol|console|Promise|unknown|never)\\\\b",
+            "type": "RegExpLiteral",
+          },
+        },
+      ],
+      "type": "ObjectExpression",
+    },
+  ],
+]
+`;
