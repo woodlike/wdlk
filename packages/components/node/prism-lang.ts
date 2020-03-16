@@ -1,12 +1,22 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import { File, Statement, Program } from '@babel/types';
+import { File, Program, MemberExpression, ObjectExpression, Statement } from '@babel/types';
 const { default: generate } = require('@babel/generator');
 const { dirname, resolve } = require('path');
 const { parse } = require('@babel/parser');
 const { readdir, readFile, writeFile } = require('fs');
-const { handleStatement } = require('./handle-statement');
+const { handleStatement } = require('./get-node');
 const prettier = require('prettier');
-const create = require('./create-nodes');
+const create = require('./create-node');
+const get = require('./get-node');
+
+interface StatementProps {
+  expression: Expression;
+}
+interface Expression {
+  type: string;
+  left: MemberExpression;
+  right: ObjectExpression;
+}
 
 const pathToPrism = dirname(require.resolve('prismjs'));
 const languages = [
@@ -14,7 +24,8 @@ const languages = [
   // 'bash',
   // 'css',
   // 'css-extras',
-  // 'javascript',
+  'clike',
+  'javascript',
   // 'jsx',
   // 'js-extras',
   // 'git',
@@ -23,7 +34,7 @@ const languages = [
   // 'ocaml',
   // 'reason',
   // 'tsx',
-  'typescript',
+  // 'typescript',
   // 'yaml',
 ];
 
@@ -51,6 +62,13 @@ function convertASTBody(ast: Partial<File>): Statement[] | [] {
   }
 
   return ast.program.body.map(node => {
+    if ((node as StatementProps).expression && (node as StatementProps).expression.type === 'AssignmentExpression') {
+      const { left } = (node as StatementProps).expression;
+      if (left.property.name === 'clike') {
+        const [name, props] = get.clikeNode(node);
+        return create.clikeBody(name, props);
+      }
+    }
     const nodes = handleStatement(node);
     if (nodes.length === 3) {
       const [name, callee, args] = nodes;

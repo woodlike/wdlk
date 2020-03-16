@@ -6,6 +6,10 @@ import {
   ExportNamedDeclaration,
   MemberExpression,
   ImportDeclaration,
+  ObjectProperty,
+  ObjectMethod,
+  SpreadElement,
+  Statement,
 } from '@babel/types';
 const t = require('@babel/types');
 
@@ -37,3 +41,16 @@ function importDeclaration(name: string, moduleName: string): ImportDeclaration 
 }
 
 exports.importDeclaration = importDeclaration;
+
+function clikeBody(name: string, props: (ObjectMethod | ObjectProperty | SpreadElement)[]): Statement {
+  const id = {
+    type: 'Identifier',
+    name,
+  } as LVal;
+  return t.exportNamedDeclaration(
+    t.variableDeclaration('const', [t.variableDeclarator(id, t.objectExpression(props))]),
+    [],
+  );
+}
+
+exports.clikeBody = clikeBody;
