@@ -62,14 +62,14 @@ Object.defineProperty(Prism.languages.markup.tag, 'addInlined', {
    * addInlined('style', 'css');
    */
   value: function addInlined(tagName, lang) {
-    var includedCdataInside = {};
+    const includedCdataInside = {};
     includedCdataInside['language-' + lang] = {
       pattern: /(^<!\[CDATA\[)[\s\S]+?(?=\]\]>$)/i,
       lookbehind: true,
       inside: Prism.languages[lang],
     };
     includedCdataInside['cdata'] = /^<!\[CDATA\[|\]\]>$/i;
-    var inside = {
+    const inside = {
       'included-cdata': {
         pattern: /<!\[CDATA\[[\s\S]*?\]\]>/i,
         inside: includedCdataInside,
@@ -79,7 +79,7 @@ Object.defineProperty(Prism.languages.markup.tag, 'addInlined', {
       pattern: /[\s\S]+/,
       inside: Prism.languages[lang],
     };
-    var def = {};
+    const def = {};
     def[tagName] = {
       pattern: RegExp(
         /(<__[\s\S]*?>)(?:<!\[CDATA\[[\s\S]*?\]\]>\s*|[\s\S])*?(?=<\/__>)/.source.replace(/__/g, tagName),
@@ -102,9 +102,9 @@ Prism.languages.svg = Prism.languages.markup;
   // + LC_ALL, RANDOM, REPLY, SECONDS.
   // + make sure PS1..4 are here as they are not always set,
   // - some useless things.
-  var envVars =
+  const envVars =
     '\\b(?:BASH|BASHOPTS|BASH_ALIASES|BASH_ARGC|BASH_ARGV|BASH_CMDS|BASH_COMPLETION_COMPAT_DIR|BASH_LINENO|BASH_REMATCH|BASH_SOURCE|BASH_VERSINFO|BASH_VERSION|COLORTERM|COLUMNS|COMP_WORDBREAKS|DBUS_SESSION_BUS_ADDRESS|DEFAULTS_PATH|DESKTOP_SESSION|DIRSTACK|DISPLAY|EUID|GDMSESSION|GDM_LANG|GNOME_KEYRING_CONTROL|GNOME_KEYRING_PID|GPG_AGENT_INFO|GROUPS|HISTCONTROL|HISTFILE|HISTFILESIZE|HISTSIZE|HOME|HOSTNAME|HOSTTYPE|IFS|INSTANCE|JOB|LANG|LANGUAGE|LC_ADDRESS|LC_ALL|LC_IDENTIFICATION|LC_MEASUREMENT|LC_MONETARY|LC_NAME|LC_NUMERIC|LC_PAPER|LC_TELEPHONE|LC_TIME|LESSCLOSE|LESSOPEN|LINES|LOGNAME|LS_COLORS|MACHTYPE|MAILCHECK|MANDATORY_PATH|NO_AT_BRIDGE|OLDPWD|OPTERR|OPTIND|ORBIT_SOCKETDIR|OSTYPE|PAPERSIZE|PATH|PIPESTATUS|PPID|PS1|PS2|PS3|PS4|PWD|RANDOM|REPLY|SECONDS|SELINUX_INIT|SESSION|SESSIONTYPE|SESSION_MANAGER|SHELL|SHELLOPTS|SHLVL|SSH_AUTH_SOCK|TERM|UID|UPSTART_EVENTS|UPSTART_INSTANCE|UPSTART_JOB|UPSTART_SESSION|USER|WINDOWID|XAUTHORITY|XDG_CONFIG_DIRS|XDG_CURRENT_DESKTOP|XDG_DATA_DIRS|XDG_GREETER_DATA_DIR|XDG_MENU_PREFIX|XDG_RUNTIME_DIR|XDG_SEAT|XDG_SEAT_PATH|XDG_SESSION_DESKTOP|XDG_SESSION_ID|XDG_SESSION_PATH|XDG_SESSION_TYPE|XDG_VTNR|XMODIFIERS)\\b';
-  var insideString = {
+  const insideString = {
     environment: {
       pattern: RegExp('\\$' + envVars),
       alias: 'constant',
@@ -267,7 +267,7 @@ Prism.languages.svg = Prism.languages.markup;
   };
   /* Patterns in command substitution. */
 
-  var toBeCopied = [
+  const toBeCopied = [
     'comment',
     'function-name',
     'for-or-select',
@@ -283,9 +283,9 @@ Prism.languages.svg = Prism.languages.markup;
     'punctuation',
     'number',
   ];
-  var inside = insideString.variable[1].inside;
+  const inside = insideString.variable[1].inside;
 
-  for (var i = 0; i < toBeCopied.length; i++) {
+  for (let i = 0; i < toBeCopied.length; i++) {
     inside[toBeCopied[i]] = Prism.languages.bash[toBeCopied[i]];
   }
 
@@ -293,7 +293,7 @@ Prism.languages.svg = Prism.languages.markup;
 })(Prism);
 
 (function(Prism) {
-  var string = /("|')(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/;
+  const string = /("|')(?:\\(?:\r\n|[\s\S])|(?!\1)[^\\\r\n])*\1/;
   Prism.languages.css = {
     comment: /\/\*[\s\S]*?\*\//,
     atrule: {
@@ -320,7 +320,7 @@ Prism.languages.svg = Prism.languages.markup;
     punctuation: /[(){};:,]/,
   };
   Prism.languages.css['atrule'].inside.rest = Prism.languages.css;
-  var markup = Prism.languages.markup;
+  const markup = Prism.languages.markup;
 
   if (markup) {
     markup.tag.addInlined('style', 'css');
@@ -411,12 +411,12 @@ Prism.languages.svg = Prism.languages.markup;
       lookbehind: true,
     },
   });
-  var unit = {
+  const unit = {
     pattern: /(\d)(?:%|[a-z]+)/,
     lookbehind: true,
   }; // 123 -123 .123 -.123 12.3 -12.3
 
-  var number = {
+  const number = {
     pattern: /(^|[^\w.-])-?\d*\.?\d+/,
     lookbehind: true,
   };
@@ -571,7 +571,7 @@ if (Prism.languages.markup) {
 Prism.languages.js = Prism.languages.javascript;
 
 (function(Prism) {
-  var javascript = Prism.util.clone(Prism.languages.javascript);
+  const javascript = Prism.util.clone(Prism.languages.javascript);
   Prism.languages.jsx = Prism.languages.extend('markup', javascript);
   Prism.languages.jsx.tag.pattern = /<\/?(?:[\w.:-]+\s*(?:\s+(?:[\w.:$-]+(?:=(?:("|')(?:\\[\s\S]|(?!\1)[^\\])*\1|[^\s{'">=]+|\{(?:\{(?:\{[^}]*\}|[^{}])*\}|[^{}])+\}))?|\{\s*\.{3}\s*[a-z_$][\w$]*(?:\.[a-z_$][\w$]*)*\s*\}))*\s*\/?)?>/i;
   Prism.languages.jsx.tag.inside['tag'].pattern = /^<\/?[^\s>\/]*/i;
@@ -628,11 +628,11 @@ Prism.languages.js = Prism.languages.javascript;
   };
 
   var walkTokens = function(tokens) {
-    var openedTags = [];
+    const openedTags = [];
 
-    for (var i = 0; i < tokens.length; i++) {
-      var token = tokens[i];
-      var notTagNorBrace = false;
+    for (let i = 0; i < tokens.length; i++) {
+      const token = tokens[i];
+      let notTagNorBrace = false;
 
       if (typeof token !== 'string') {
         if (token.type === 'tag' && token.content[0] && token.content[0].type === 'tag') {
@@ -677,7 +677,7 @@ Prism.languages.js = Prism.languages.javascript;
         if (openedTags.length > 0 && openedTags[openedTags.length - 1].openedBraces === 0) {
           // Here we are inside a tag, and not inside a JSX context.
           // That's plain text: drop any tokens matched.
-          var plainText = stringifyToken(token); // And merge text with adjacent text
+          let plainText = stringifyToken(token); // And merge text with adjacent text
 
           if (i < tokens.length - 1 && (typeof tokens[i + 1] === 'string' || tokens[i + 1].type === 'plain-text')) {
             plainText += stringifyToken(tokens[i + 1]);
@@ -783,11 +783,11 @@ Prism.languages.js = Prism.languages.javascript;
     },
   }); // add 'maybe-class-name' to tokens which might be a class name
 
-  var maybeClassNameTokens = ['function', 'function-variable', 'method', 'method-variable', 'property-access'];
+  const maybeClassNameTokens = ['function', 'function-variable', 'method', 'method-variable', 'property-access'];
 
-  for (var i = 0; i < maybeClassNameTokens.length; i++) {
-    var token = maybeClassNameTokens[i];
-    var value = Prism.languages.javascript[token]; // convert regex to object
+  for (let i = 0; i < maybeClassNameTokens.length; i++) {
+    const token = maybeClassNameTokens[i];
+    let value = Prism.languages.javascript[token]; // convert regex to object
 
     if (Prism.util.type(value) === 'RegExp') {
       value = Prism.languages.javascript[token] = {
@@ -795,7 +795,7 @@ Prism.languages.js = Prism.languages.javascript;
       };
     } // keep in mind that we don't support arrays
 
-    var inside = value.inside || {};
+    const inside = value.inside || {};
     value.inside = inside;
     inside['maybe-class-name'] = /^[A-Z][\s\S]*/;
   }
@@ -987,7 +987,7 @@ Prism.languages.insertBefore('reason', 'class-name', {
 }); // We can't match functions property, so let's not even try.
 
 delete Prism.languages.reason.function;
-var typescript = Prism.util.clone(Prism.languages.typescript);
+const typescript = Prism.util.clone(Prism.languages.typescript);
 Prism.languages.tsx = Prism.languages.extend('jsx', typescript);
 Prism.languages.typescript = Prism.languages.extend('javascript', {
   // From JavaScript Prism keyword list and TypeScript language spec: https://github.com/Microsoft/TypeScript/blob/master/doc/spec.md#221-reserved-words
