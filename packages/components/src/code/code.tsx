@@ -1,5 +1,5 @@
 /**@jsx jsx */
-// import * as Prism from 'prismjs';
+import * as Prism from './__prism';
 import { jsx, SxStyleProp } from 'theme-ui';
 import { ThemeQuery } from 'theme-query';
 
