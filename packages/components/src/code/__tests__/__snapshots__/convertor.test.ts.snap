@@ -8,6 +8,9 @@ Map {
   "constant" => Object {
     "color": "rgb(213, 206, 217)",
   },
+  "keyword" => Object {
+    "color": "rgb(213, 206, 217)",
+  },
   "punctuation" => Object {
     "color": "rgb(249, 38, 114)",
   },

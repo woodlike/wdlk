@@ -1,13 +1,16 @@
 /**@jsx jsx */
+import * as Prism from './__prism';
 import { jsx, SxStyleProp } from 'theme-ui';
 import { ThemeQuery } from 'theme-query';
 
-import { andromeda, PrismTheme } from '.';
+import { andromeda, convertor, Language, PrismTheme } from '.';
 import { useThemeQuery } from '../query';
+import { Token } from 'prismjs';
 
 export interface CodeProps {
   code: string;
   size: CodeSize;
+  lang: Language;
   theme?: PrismTheme;
 }
 
@@ -32,18 +35,31 @@ const createStylesPre = (size: CodeSize, qt: ThemeQuery, theme = andromeda): SxS
   backgroundColor: theme.plain.backgroundColor,
 });
 
+export function handleTokens(code: string, langs: Language): Token[] {
+  const { languages, tokenize } = Prism.default;
+  const grammar = languages[langs];
+  return tokenize(code, grammar) as Token[];
+}
+
 export const Code: React.FC<CodeProps> = (props): JSX.Element => {
   const { qt } = useThemeQuery();
-  // handleTokens(props.code);
+  const tokens = handleTokens(props.code, props.lang);
+  const tokenTheme = convertor(props.theme || andromeda);
   return (
     <pre sx={createStylesPre(props.size, qt, props.theme)}>
-      <code>{JSON.stringify(props)}</code>
+      <code>
+        {tokens.map((token, i) =>
+          token.type ? (
+            <span key={`token-${i}`} sx={tokenTheme.get(token.type)}>
+              {JSON.stringify(token.content)}
+            </span>
+          ) : (
+            <span key={`token-${i}`}>{token}</span>
+          ),
+        )}
+      </code>
     </pre>
   );
 };
 
 Code.displayName = 'Code';
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-// eslint-disable-next-line @typescript-eslint/no-empty-function
-// export function handleTokens(code: string): void {}

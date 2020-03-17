@@ -20,7 +20,7 @@ export const andromeda: PrismTheme = {
       },
     },
     {
-      types: ['constant'],
+      types: ['constant', 'keyword'],
       style: {
         color: 'rgb(213, 206, 217)',
       },
