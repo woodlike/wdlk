@@ -10,7 +10,7 @@
     "build": "tsc --module commonjs --target es6 --outDir lib/",
     "dev": "tsc --watch --target es6 --outDir lib/",
     "lint": "eslint src --ext .ts,.tsx",
-    "prism:lang": "ts-node node/prism-lang.ts",
+    "codemod:prism": "ts-node node/codemod-prism.ts",
     "test": "jest",
     "test:coverage": "npm test -- --coverage"
   },
