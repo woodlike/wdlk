@@ -3,7 +3,7 @@ import { render, cleanup } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { matchers } from 'jest-emotion';
 
-import { andromeda, Code } from '..';
+import { andromeda, Code, convertor } from '..';
 import { theme } from '../../theme';
 import { Language } from '../languages';
 
@@ -35,12 +35,25 @@ describe('<Code />', () => {
     done();
   });
 
-  describe('Code Theme', () => {
+  describe('Code generated Theme', () => {
     it('should use the default Andromeda theme', () => {
       const { container, unmount } = render(<Code code={code} lang={Language.typescript} size="s" />);
       const pre = container.querySelector('pre');
       expect(pre).toHaveStyleRule('color', andromeda.plain.color);
       expect(pre).toHaveStyleRule('background-color', andromeda.plain.backgroundColor);
+      unmount();
+    });
+
+    it('should provide the generated spans with the corresponding theme token styling', () => {
+      const theme = convertor(andromeda);
+      const { container, unmount } = render(<Code code={code} lang={Language.typescript} size="s" />);
+      const codeEl = container.querySelector('code');
+      Array.from(codeEl.querySelectorAll('span')).forEach((span: HTMLSpanElement) => {
+        const styles = getComputedStyle(span);
+        if (Boolean(styles.getPropertyValue('color'))) {
+          expect(Array.from(theme.values()).find(val => val.color === styles.getPropertyValue('color'))).toBeTruthy();
+        }
+      });
       unmount();
     });
   });
