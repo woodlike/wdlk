@@ -37,7 +37,7 @@ describe('<Code />', () => {
 
   describe('Code generated Theme', () => {
     it('should use the default Andromeda theme', () => {
-      const { container, unmount } = render(<Code code={code} lang={Language.typescript} size="s" />);
+      const { container, unmount } = render(<Code code={code} lang={Language.tsx} size="s" />);
       const pre = container.querySelector('pre');
       expect(pre).toHaveStyleRule('color', andromeda.plain.color);
       expect(pre).toHaveStyleRule('background-color', andromeda.plain.backgroundColor);

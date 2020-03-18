@@ -20,19 +20,19 @@ export const andromeda: PrismTheme = {
       },
     },
     {
-      types: ['constant', 'keyword'],
+      types: ['keyword'],
       style: {
         color: 'rgb(213, 206, 217)',
       },
     },
     {
-      types: ['punctuation'],
+      types: ['punctuation', 'arrow'],
       style: {
         color: 'rgb(249, 38, 114)',
       },
     },
     {
-      types: ['variable', 'tag', 'char'],
+      types: ['variable', 'constant', 'tag', 'char'],
       style: {
         color: 'rgb(0, 232, 198)',
       },
