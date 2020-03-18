@@ -34,6 +34,13 @@ const outputPath = resolve('./src', 'code/__prism/', 'index.ts');
 const introFileComment =
   'This is an auto-generated file to override the default Prism languages. Check the node directory to see the implementation or run the prism:lang command on this package to generate a fresh set of languages.';
 
+const typeCheckComment = `
+//@ts-nocheck
+/* eslint no-var: 0 */
+/* eslint @typescript-eslint/camelcase: 0 */
+/* eslint @typescript-eslint/explicit-function-return-type: 0 */
+`;
+
 function createImportNode(name: string, vendor: string): ImportDeclaration {
   return t.importDeclaration([t.importNamespaceSpecifier(t.identifier(name))], t.stringLiteral(vendor));
 }
@@ -71,7 +78,7 @@ function generateVendorCode(ast: File): string {
   };
 
   const { code } = generate(newAst, { auxiliaryCommentBefore: introFileComment });
-  return prettier.format(code, config);
+  return prettier.format(typeCheckComment.concat(code), config);
 }
 
 function generateFile(data: string, path: string): void {
