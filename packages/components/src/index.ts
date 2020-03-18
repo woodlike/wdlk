@@ -7,6 +7,7 @@ import * as LocalVid from './video';
 export * from './burger';
 export * from './box';
 export * from './cart';
+export * from './code';
 export * from './header';
 export * from './heading';
 export * from './hooks';

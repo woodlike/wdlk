@@ -3,9 +3,29 @@ import * as Prism from './__prism';
 import { jsx, SxStyleProp } from 'theme-ui';
 import { ThemeQuery } from 'theme-query';
 
-import { andromeda, convertor, Language, PrismTheme } from '.';
+import { andromeda, convertor, Language } from '.';
 import { useThemeQuery } from '../query';
 import { Token } from 'prismjs';
+
+export interface PrismStyleProp {
+  readonly color: string;
+  readonly backgroundColor?: string;
+  readonly fontStyle?: 'normal' | 'italic';
+  readonly fontWeight?: 'normal' | 'bold' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900';
+  readonly textDecorationLine?: 'none' | 'underline' | 'line-through' | 'underline line-through';
+  readonly opacity?: number;
+  readonly [styleKey: string]: string | number | void;
+}
+
+export interface PrismTheme {
+  plain: PrismStyleProp;
+  styles: PrismStyleRule[];
+}
+
+export interface PrismStyleRule {
+  readonly types: string[];
+  readonly style: PrismStyleProp;
+}
 
 export interface CodeProps {
   code: string;
@@ -50,11 +70,11 @@ export const Code: React.FC<CodeProps> = (props): JSX.Element => {
       <code>
         {tokens.map((token, i) =>
           token.type ? (
-            <span key={`token-${i}`} sx={tokenTheme.get(token.type)}>
+            <span key={`generated-token--${i}`} sx={tokenTheme.get(token.type)}>
               {JSON.stringify(token.content)}
             </span>
           ) : (
-            <span key={`token-${i}`}>{token}</span>
+            <span key={`generated-token--${i}`}>{token}</span>
           ),
         )}
       </code>
