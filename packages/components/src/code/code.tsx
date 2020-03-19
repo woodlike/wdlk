@@ -1,12 +1,11 @@
 /**@jsx jsx */
 import * as Prism from './__prism';
-import { Fragment } from 'react';
 import { jsx, SxStyleProp } from 'theme-ui';
 import { ThemeQuery } from 'theme-query';
 
-import { andromeda, convertor, Language, CodeTheme } from '.';
+import { andromeda, convertor, Language, TokenSwitch, RecursiveTokenStream } from '.';
 import { useThemeQuery } from '../query';
-import { Token, TokenStream } from 'prismjs';
+import { Token } from 'prismjs';
 
 export interface PrismStyleProp {
   readonly color: string;
@@ -33,11 +32,6 @@ export interface CodeProps {
   size: CodeSize;
   lang: Language;
   theme?: PrismTheme;
-}
-
-export interface TokenListProps {
-  content: TokenStream;
-  theme: CodeTheme;
 }
 
 export type CodeSize = 's' | 'm' | 'l';
@@ -75,19 +69,6 @@ export function handleTokens(code: string, langs: Language): Token[] {
   return tokenize(code, grammar) as Token[];
 }
 
-export const TokenList: React.FC<TokenListProps> = (props): JSX.Element => (
-  <Fragment>
-    {Array.isArray(props.content) &&
-      props.content.map((token, idx) => (
-        <span key={`list-tokens--${idx}`} sx={props.theme.get((token as Token).type)}>
-          {JSON.stringify((token as Token).content)}
-        </span>
-      ))}
-  </Fragment>
-);
-
-TokenList.displayName = 'TokenList';
-
 export const Code: React.FC<CodeProps> = (props): JSX.Element => {
   const { qt } = useThemeQuery();
   const tokens = handleTokens(props.code, props.lang);
@@ -96,17 +77,10 @@ export const Code: React.FC<CodeProps> = (props): JSX.Element => {
     <pre sx={createStylesPre(props.size, qt, props.theme)}>
       <code sx={stylesCode}>
         {tokens.map((token, i) => {
-          console.log(tokens);
-          return token.type ? (
-            Array.isArray(token.content) ? (
-              <TokenList key={`generated-token--${i}`} content={token.content} theme={theme} />
-            ) : (
-              <span key={`generated-token--${i}`} sx={theme.get(token.type)}>
-                {typeof token.content === 'string' && token.content}
-              </span>
-            )
+          return Array.isArray(token.content) ? (
+            <RecursiveTokenStream token={token.content} theme={theme} key={`first-level-token-stream-${i}`} />
           ) : (
-            <span key={`generated-token--${i}`}>{token}</span>
+            <TokenSwitch content={token} theme={theme} key={`first-level-token-stream-${i}`} />
           );
         })}
       </code>
