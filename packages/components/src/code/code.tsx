@@ -1,4 +1,5 @@
 /**@jsx jsx */
+import { useMemo, Fragment } from 'react';
 import * as Prism from './__prism';
 import { jsx, SxStyleProp } from 'theme-ui';
 import { ThemeQuery } from 'theme-query';
@@ -73,9 +74,9 @@ export const Code: React.FC<CodeProps> = (props): JSX.Element => {
   const { qt } = useThemeQuery();
   const tokens = handleTokens(props.code, props.lang);
   const theme = convertor(props.theme || andromeda);
-  return (
-    <pre sx={createStylesPre(props.size, qt, props.theme)}>
-      <code sx={stylesCode}>
+  const MemoTokens = useMemo<JSX.Element>(() => {
+    return (
+      <Fragment>
         {tokens.map((token, i) => {
           return Array.isArray(token.content) ? (
             <RecursiveTokenStream token={token.content} theme={theme} key={`first-level-token-stream-${i}`} />
@@ -83,7 +84,12 @@ export const Code: React.FC<CodeProps> = (props): JSX.Element => {
             <TokenSwitch content={token} theme={theme} key={`first-level-token-stream-${i}`} />
           );
         })}
-      </code>
+      </Fragment>
+    );
+  }, [tokens]);
+  return (
+    <pre sx={createStylesPre(props.size, qt, props.theme)}>
+      <code sx={stylesCode}>{MemoTokens}</code>
     </pre>
   );
 };
