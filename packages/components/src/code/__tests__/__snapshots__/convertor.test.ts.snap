@@ -9,22 +9,28 @@ Map {
     "color": "rgb(213, 206, 217)",
   },
   "punctuation" => Object {
-    "color": "rgb(249, 38, 114)",
+    "color": "rgb(255, 113, 99)",
   },
   "arrow" => Object {
-    "color": "rgb(249, 38, 114)",
+    "color": "rgb(255, 113, 99)",
+  },
+  "script-punctuation" => Object {
+    "color": "rgb(255, 113, 99)",
   },
   "variable" => Object {
-    "color": "rgb(0, 232, 198)",
+    "color": "rgb(255, 113, 99)",
   },
   "constant" => Object {
-    "color": "rgb(0, 232, 198)",
+    "color": "rgb(255, 113, 99)",
   },
   "tag" => Object {
-    "color": "rgb(0, 232, 198)",
+    "color": "rgb(255, 113, 99)",
   },
   "char" => Object {
-    "color": "rgb(0, 232, 198)",
+    "color": "rgb(255, 113, 99)",
+  },
+  "class-name" => Object {
+    "color": "rgb(255, 113, 99)",
   },
   "number" => Object {
     "color": "rgb(243, 156, 18)",

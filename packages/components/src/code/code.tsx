@@ -4,7 +4,7 @@ import * as Prism from './__prism';
 import { jsx, SxStyleProp } from 'theme-ui';
 import { ThemeQuery } from 'theme-query';
 
-import { andromeda, convertor, Language, TokenSwitch, RecursiveTokenStream } from '.';
+import { andromeda, convertor, normalizer, Language, TokenSwitch, RecursiveTokenStream } from '.';
 import { useThemeQuery } from '../query';
 import { Token } from 'prismjs';
 
@@ -64,10 +64,10 @@ const createStylesPre = (size: CodeSize, qt: ThemeQuery, theme = andromeda): SxS
   backgroundColor: theme.plain.backgroundColor,
 });
 
-export function handleTokens(code: string, langs: Language): Token[] {
+export function handleTokens(code: string, lang: Language): (string | Token)[] {
   const { languages, tokenize } = Prism.default;
-  const grammar = languages[langs];
-  return tokenize(code, grammar) as Token[];
+  console.log(normalizer(tokenize(code, languages[lang])));
+  return tokenize(code, languages[lang]);
 }
 
 export const Code: React.FC<CodeProps> = (props): JSX.Element => {
@@ -78,7 +78,7 @@ export const Code: React.FC<CodeProps> = (props): JSX.Element => {
     return (
       <Fragment>
         {tokens.map((token, i) => {
-          return Array.isArray(token.content) ? (
+          return typeof token === 'object' && Array.isArray(token.content) ? (
             <RecursiveTokenStream token={token.content} theme={theme} key={`first-level-token-stream-${i}`} />
           ) : (
             <TokenSwitch content={token} theme={theme} key={`first-level-token-stream-${i}`} />
@@ -87,6 +87,7 @@ export const Code: React.FC<CodeProps> = (props): JSX.Element => {
       </Fragment>
     );
   }, [tokens]);
+  console.log(JSON.stringify(tokens, null, 2), '------------');
   return (
     <pre sx={createStylesPre(props.size, qt, props.theme)}>
       <code sx={stylesCode}>{MemoTokens}</code>

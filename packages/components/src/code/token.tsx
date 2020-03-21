@@ -15,12 +15,13 @@ export interface TokenProps {
   theme: CodeTheme;
 }
 
-export const TokenSwitch: React.FC<TokenProps> = props =>
-  typeof props.content === 'object' ? (
+export const TokenSwitch: React.FC<TokenProps> = props => {
+  return typeof props.content === 'object' ? (
     <span sx={props.theme.get(props.content.type)}>{props.content.content}</span>
   ) : (
     <span>{props.content}</span>
   );
+};
 
 TokenSwitch.displayName = 'TokenSwitch';
 
@@ -28,12 +29,8 @@ export const RecursiveTokenStream: React.FC<TokenStreamProps> = props => (
   <Fragment>
     {Array.isArray(props.token) ? (
       props.token.map((token, idx) => {
-        return Array.isArray((token as Token).content) ? (
-          <RecursiveTokenStream
-            token={(token as Token).content}
-            theme={props.theme}
-            key={`recursive-token-stream-${idx}`}
-          />
+        return typeof token === 'object' && Array.isArray(token.content) ? (
+          <RecursiveTokenStream token={token.content} theme={props.theme} key={`recursive-token-stream-${idx}`} />
         ) : (
           <TokenSwitch content={token} theme={props.theme} key={`recursive-token-stream-${idx}`} />
         );

@@ -26,15 +26,15 @@ export const andromeda: PrismTheme = {
       },
     },
     {
-      types: ['punctuation', 'arrow'],
+      types: ['punctuation', 'arrow', 'script-punctuation'],
       style: {
-        color: 'rgb(249, 38, 114)',
+        color: 'rgb(255, 113, 99)',
       },
     },
     {
-      types: ['variable', 'constant', 'tag', 'char'],
+      types: ['variable', 'constant', 'tag', 'char', 'class-name'],
       style: {
-        color: 'rgb(0, 232, 198)',
+        color: 'rgb(255, 113, 99)',
       },
     },
     {
