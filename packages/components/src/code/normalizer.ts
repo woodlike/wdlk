@@ -9,13 +9,15 @@ export function normalizer(stream: (string | Token)[], type = 'plain'): Token[] 
     console.error(`${err}`);
     return [];
   }
-  return stream.reduce((acc: Token[], curr: string | Token) => {
-    return acc.concat(
-      typeof curr === 'object' && Array.isArray(curr.content)
-        ? normalizer(curr.content, (type = curr.type))
-        : createToken(curr, type),
-    );
-  }, []);
+  return stream.reduce(
+    (acc: Token[], curr: string | Token) =>
+      acc.concat(
+        typeof curr === 'object' && Array.isArray(curr.content)
+          ? normalizer(curr.content, (type = curr.type))
+          : createToken(curr, type),
+      ),
+    [],
+  );
 }
 
 export const createToken = (token: Token | string, type: string): Token => ({

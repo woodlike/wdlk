@@ -13,7 +13,6 @@ export interface SidebarProps {
 
 export const Sidebar: React.FC = (): JSX.Element => {
   const menus = useMenus({});
-  console.log(menus, '000000-------');
   return (
     <Layout.SideBar tag="aside" position="left">
       <Box my={[4, 7]} as="div">
