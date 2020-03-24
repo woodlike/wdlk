@@ -1,12 +1,12 @@
 /**@jsx jsx */
 import { useMemo, Fragment } from 'react';
-import * as Prism from './__prism';
 import { jsx, SxStyleProp } from 'theme-ui';
 import { ThemeQuery } from 'theme-query';
+import { Token } from 'prismjs';
+import * as Prism from './__prism';
 
 import { andromeda, convertor, Language, TokenSwitch, RecursiveTokenStream } from '.';
 import { useThemeQuery } from '../query';
-import { Token } from 'prismjs';
 
 export interface PrismStyleProp {
   readonly color: string;
@@ -74,6 +74,7 @@ export const Code: React.FC<CodeProps> = (props): JSX.Element => {
   const { qt } = useThemeQuery();
   const tokens = handleTokens(props.code, props.lang);
   const theme = convertor(props.theme || andromeda);
+
   const MemoTokens = useMemo<JSX.Element>(() => {
     return (
       <Fragment>

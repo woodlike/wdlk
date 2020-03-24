@@ -9,6 +9,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "gatsby build",
+    "clean": "gatsby clean",
     "dev": "gatsby develop",
     "lint": "eslint src --ext .ts,.tsx",
     "serve": "gatsby serve"
