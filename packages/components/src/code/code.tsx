@@ -69,7 +69,7 @@ export function handleTokens(code: string, langs: Language): Token[] {
   const { languages, tokenize } = Prism.default;
   const grammar = languages[langs];
 
-  return normalizer(tokenize(code, grammar) as Token[]);
+  return normalizer(tokenize(code, grammar));
 }
 
 export const Code: React.FC<CodeProps> = (props): JSX.Element => {
