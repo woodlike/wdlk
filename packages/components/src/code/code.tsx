@@ -61,6 +61,7 @@ const createStylesPre = (size: CodeSize, qt: ThemeQuery, theme = andromeda): SxS
   color: theme.plain.color,
   whiteSpace: 'pre-wrap',
   wordBreak: 'break-word',
+  textAlign: 'left',
   backgroundColor: theme.plain.backgroundColor,
 });
 
