@@ -5,7 +5,7 @@ import { ThemeQuery } from 'theme-query';
 import { Token } from 'prismjs';
 import * as Prism from './__prism';
 
-import { andromeda, convertor, Language, TokenSwitch, RecursiveTokenStream } from '.';
+import { andromeda, convertor, normalizer, Language } from '.';
 import { useThemeQuery } from '../query';
 
 export interface PrismStyleProp {
@@ -67,7 +67,7 @@ const createStylesPre = (size: CodeSize, qt: ThemeQuery, theme = andromeda): SxS
 export function handleTokens(code: string, langs: Language): Token[] {
   const { languages, tokenize } = Prism.default;
   const grammar = languages[langs];
-  return tokenize(code, grammar) as Token[];
+  return normalizer(tokenize(code, grammar) as Token[]);
 }
 
 export const Code: React.FC<CodeProps> = (props): JSX.Element => {
@@ -79,10 +79,10 @@ export const Code: React.FC<CodeProps> = (props): JSX.Element => {
     return (
       <Fragment>
         {tokens.map((token, i) => {
-          return Array.isArray(token.content) ? (
-            <RecursiveTokenStream token={token.content} theme={theme} key={`first-level-token-stream-${i}`} />
-          ) : (
-            <TokenSwitch content={token} theme={theme} key={`first-level-token-stream-${i}`} />
+          return (
+            <span sx={theme.get(token.type)} key={`first-level-token-stream-${i}`}>
+              {token.content}
+            </span>
           );
         })}
       </Fragment>

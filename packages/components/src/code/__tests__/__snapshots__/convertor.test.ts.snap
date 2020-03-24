@@ -6,30 +6,42 @@ Map {
     "color": "rgb(95, 97, 103)",
   },
   "keyword" => Object {
-    "color": "rgb(213, 206, 217)",
+    "color": "rgb(199, 77, 238)",
   },
   "punctuation" => Object {
-    "color": "rgb(249, 38, 114)",
+    "color": "rgb(238, 238, 238)",
   },
   "arrow" => Object {
-    "color": "rgb(249, 38, 114)",
-  },
-  "variable" => Object {
-    "color": "rgb(0, 232, 198)",
-  },
-  "constant" => Object {
-    "color": "rgb(0, 232, 198)",
-  },
-  "tag" => Object {
-    "color": "rgb(0, 232, 198)",
-  },
-  "char" => Object {
-    "color": "rgb(0, 232, 198)",
-  },
-  "number" => Object {
-    "color": "rgb(243, 156, 18)",
+    "color": "rgb(238, 238, 238)",
   },
   "attr-name" => Object {
+    "color": "rgb(255, 230, 109)",
+  },
+  "parameter" => Object {
+    "color": "rgb(255, 230, 109)",
+  },
+  "script-punctuation" => Object {
+    "color": "rgb(238, 93, 67)",
+  },
+  "function" => Object {
+    "color": "rgb(238, 93, 67)",
+  },
+  "script" => Object {
+    "color": "rgb(7, 212, 182)",
+  },
+  "variable" => Object {
+    "color": "rgb(249, 38, 114)",
+  },
+  "constant" => Object {
+    "color": "rgb(249, 38, 114)",
+  },
+  "tag" => Object {
+    "color": "rgb(249, 38, 114)",
+  },
+  "char" => Object {
+    "color": "rgb(249, 38, 114)",
+  },
+  "number" => Object {
     "color": "rgb(243, 156, 18)",
   },
   "builtin" => Object {
@@ -38,7 +50,7 @@ Map {
   "at-rule" => Object {
     "color": "rgb(255, 230, 109)",
   },
-  "function" => Object {
+  "class-name" => Object {
     "color": "rgb(255, 230, 109)",
   },
   "string" => Object {
