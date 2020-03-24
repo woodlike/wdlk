@@ -22,29 +22,47 @@ export const andromeda: PrismTheme = {
     {
       types: ['keyword'],
       style: {
-        color: 'rgb(213, 206, 217)',
+        color: 'rgb(199, 77, 238)',
       },
     },
     {
       types: ['punctuation', 'arrow'],
       style: {
-        color: 'rgb(249, 38, 114)',
+        color: 'rgb(238, 238, 238)',
+      },
+    },
+    {
+      types: ['attr-name', 'parameter'],
+      style: {
+        color: 'rgb(255, 230, 109)',
+      },
+    },
+    {
+      types: ['script-punctuation', 'function'],
+      style: {
+        color: 'rgb(238, 93, 67)',
+      },
+    },
+    {
+      types: ['script'],
+      style: {
+        color: 'rgb(7, 212, 182)',
       },
     },
     {
       types: ['variable', 'constant', 'tag', 'char'],
       style: {
-        color: 'rgb(0, 232, 198)',
+        color: 'rgb(249, 38, 114)',
       },
     },
     {
-      types: ['number', 'attr-name'],
+      types: ['number'],
       style: {
         color: 'rgb(243, 156, 18)',
       },
     },
     {
-      types: ['builtin', 'at-rule', 'function'],
+      types: ['builtin', 'at-rule', 'class-name'],
       style: {
         color: 'rgb(255, 230, 109)',
       },
