@@ -67,6 +67,7 @@ const createStylesPre = (size: CodeSize, qt: ThemeQuery, theme = andromeda): SxS
 export function handleTokens(code: string, langs: Language): Token[] {
   const { languages, tokenize } = Prism.default;
   const grammar = languages[langs];
+
   return normalizer(tokenize(code, grammar) as Token[]);
 }
 
