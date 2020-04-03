@@ -8,7 +8,8 @@
       "packages/*"
     ],
     "nohoist": [
-      "**/prismjs"
+      "**/prismjs",
+      "**/gatsby-theme-docz"
     ]
   },
   "scripts": {
@@ -17,6 +18,7 @@
     "build:docs": "yarn workspace @wdlk/docs build",
     "build:store": "yarn workspace @wdlk/store build",
     "build:theme-query": "yarn workspace theme-query build",
+    "clean:docs": "yarn workspace @wdlk/docs clean",
     "dev:components": "yarn workspace @wdlk/components dev",
     "dev:containers": "yarn workspace @wdlk/containers dev",
     "dev:docs": "yarn workspace @wdlk/docs dev",
@@ -41,7 +43,6 @@
     "eslint-config-prettier": "6.10.0",
     "eslint-plugin-prettier": "3.1.2",
     "eslint-plugin-react": "7.18.3",
-    "prettier": "1.19.1",
     "typescript": "3.8.2"
   }
 }
