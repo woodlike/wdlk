@@ -14,6 +14,7 @@ export * from './hooks';
 export * from './logo';
 export * from './mini-cart';
 export * from './query';
+export * from './Row';
 export * from './Rows';
 export * from './text';
 export * from './theme';
