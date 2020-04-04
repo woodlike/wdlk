@@ -7,7 +7,7 @@ export interface RowsProps {
   as: HTMLRowsType;
   collapseBelow?: number;
 }
-export type HTMLRowsType = 'div' | 'section' | 'main' | 'article';
+export type HTMLRowsType = 'div' | 'section' | 'main' | 'article' | 'nav' | 'footer' | 'header';
 
 const stylesRows: SxStyleProp = {
   display: 'flex',
