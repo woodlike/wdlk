@@ -12,7 +12,6 @@ import {
 import { createSpaceBox } from '.';
 
 export interface BoxProps {
-  readonly as: HTMLBoxType;
   readonly p?: SpaceBox | number;
   readonly px?: SpaceTuple | number;
   readonly py?: SpaceTuple | number;
@@ -24,8 +23,6 @@ export interface BorderProps {
   readonly width: number | [number, number, number, number];
   readonly color: string;
 }
-
-export type HTMLBoxType = 'aside' | 'section' | 'article' | 'nav' | 'div' | 'ul' | 'li';
 
 const createStylesBorder = (width: number | [number, number, number, number], color: string): SxStyleProp => ({
   borderWidth: Array.isArray(width) ? `${width[0]}px ${width[1]}px ${width[2]}px ${width[3]}px` : `${width}px`,
@@ -74,13 +71,12 @@ const createStyles = (props: BoxProps, theme: Theme): SxStyleProp => {
     ...(typeof padding === 'object' && padding),
     ...(props.border && createStylesBorder(props.border.width, props.border.color)),
     ...(Boolean(props.bg) && { backgroundColor: props.bg }),
-    ...(props.as === 'ul' && { listStyle: 'none' }),
   };
 };
 
 export const Box: React.FC<BoxProps> = (props): JSX.Element => {
   const { theme } = useThemeUI();
-  return <props.as sx={createStyles(props, theme)}>{props.children}</props.as>;
+  return <div sx={createStyles(props, theme)}>{props.children}</div>;
 };
 
 Box.displayName = 'Box';
