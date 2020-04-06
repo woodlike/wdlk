@@ -12,7 +12,7 @@ expect.extend(toHaveNoViolations);
 
 describe('<Box />', () => {
   it('should not have accessibility violations', async done => {
-    const { container, unmount } = render(<Box as="div">Test Children</Box>);
+    const { container, unmount } = render(<Box>Test Children</Box>);
 
     const a11yResults = await axe(container);
     expect(a11yResults).toHaveNoViolations();
@@ -23,10 +23,10 @@ describe('<Box />', () => {
 
   it('should not have accessibility (li) violations', async done => {
     const { container, unmount } = render(
-      <Box as="ul">
-        <Box as="li">Test Children</Box>
-        <Box as="li">Test Children</Box>
-        <Box as="li">Test Children</Box>
+      <Box>
+        <Box>Test Children</Box>
+        <Box>Test Children</Box>
+        <Box>Test Children</Box>
       </Box>,
     );
 
@@ -35,32 +35,6 @@ describe('<Box />', () => {
     cleanup();
     unmount();
     done();
-  });
-
-  describe('As type prop', () => {
-    it('should render a default div tag', () => {
-      const { container, unmount } = render(<Box as="div">Test Children</Box>);
-      expect(container.querySelector('div')).toBeTruthy();
-      unmount();
-    });
-
-    it('should render a section tag', () => {
-      const { container, unmount } = render(<Box as="section">Test Children</Box>);
-      expect(container.querySelector('section')).toBeTruthy();
-      unmount();
-    });
-
-    it('should render a aside tag', () => {
-      const { container, unmount } = render(<Box as="aside">Test Children</Box>);
-      expect(container.querySelector('aside')).toBeTruthy();
-      unmount();
-    });
-
-    it('should render a article tag', () => {
-      const { container, unmount } = render(<Box as="article">Test Children</Box>);
-      expect(container.querySelector('article')).toBeTruthy();
-      unmount();
-    });
   });
 
   describe('Theme UI space styling compatibility ', () => {
@@ -77,9 +51,7 @@ describe('<Box />', () => {
     it('should use default number functionality on non-existing scale value', () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
-          <Box p={20} as="section">
-            {id}
-          </Box>
+          <Box p={20}>{id}</Box>
         </ThemeProvider>,
       );
       const box = getByText(id);
@@ -90,9 +62,7 @@ describe('<Box />', () => {
     it('should use the default SpaceBox functionality on non-existing scale values', () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
-          <Box p={[10, 12, 22, 30]} as="section">
-            {id}
-          </Box>
+          <Box p={[10, 12, 22, 30]}>{id}</Box>
         </ThemeProvider>,
       );
       const box = getByText(id);
@@ -103,9 +73,7 @@ describe('<Box />', () => {
     it('should use a mixed SpaceBox values with Theme-UI scale values', () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
-          <Box p={[12, 7, 22, 9]} as="section">
-            {id}
-          </Box>
+          <Box p={[12, 7, 22, 9]}>{id}</Box>
         </ThemeProvider>,
       );
       const box = getByText(id);
@@ -116,9 +84,7 @@ describe('<Box />', () => {
     it('should use the Theme-UI padding value for top, right, bottom, left', () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
-          <Box p={9} as="section">
-            {id}
-          </Box>
+          <Box p={9}>{id}</Box>
         </ThemeProvider>,
       );
       const box = getByText(id);
@@ -132,9 +98,7 @@ describe('<Box />', () => {
     it('should use Theme-UIs space scale as the padding value', () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
-          <Box p={[0, 1, 2, 3]} as="section">
-            {id}
-          </Box>
+          <Box p={[0, 1, 2, 3]}>{id}</Box>
         </ThemeProvider>,
       );
       const box = getByText(id);
@@ -148,7 +112,7 @@ describe('<Box />', () => {
     it('should use Theme-UIs scale value from px and py', () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
-          <Box px={[2, 3]} py={[4, 5]} as="section">
+          <Box px={[2, 3]} py={[4, 5]}>
             {id}
           </Box>
         </ThemeProvider>,
@@ -174,7 +138,7 @@ describe('<Box />', () => {
     });
 
     it('should return a StyleException (empty string)', () => {
-      const { getByText, unmount } = render(<Box as="aside">{id}</Box>);
+      const { getByText, unmount } = render(<Box>{id}</Box>);
       const box = getByText(id);
       const padding = getComputedStyle(box);
       expect(padding.getPropertyValue('padding')).toBe('');
@@ -182,7 +146,7 @@ describe('<Box />', () => {
     });
 
     it('should return a StyleException (empty string)', () => {
-      const { getByText, unmount } = render(<Box as="aside">{id}</Box>);
+      const { getByText, unmount } = render(<Box>{id}</Box>);
       const box = getByText(id);
       const margin = getComputedStyle(box);
       expect(margin.getPropertyValue('margin')).toBe('');
@@ -190,22 +154,14 @@ describe('<Box />', () => {
     });
 
     it('should contain use the same padding value for top, right, bottom, left', () => {
-      const { getByText, unmount } = render(
-        <Box p={4} as="aside">
-          {id}
-        </Box>,
-      );
+      const { getByText, unmount } = render(<Box p={4}>{id}</Box>);
       const box = getByText(id);
       expect(box).toHaveStyleRule('padding', '4px 4px 4px 4px');
       unmount();
     });
 
     it('should contain a 4 padding value style', () => {
-      const { getByText, unmount } = render(
-        <Box p={[5, 6, 8, 9]} as="aside">
-          {id}
-        </Box>,
-      );
+      const { getByText, unmount } = render(<Box p={[5, 6, 8, 9]}>{id}</Box>);
       const box = getByText(id);
       expect(box).toHaveStyleRule('padding', '5px 6px 8px 9px');
       unmount();
