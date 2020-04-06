@@ -5,7 +5,6 @@ import {
   CSSSpaceProperty,
   SpaceBox,
   SpaceDeclaration,
-  SpaceMargin,
   SpacePadding,
   SpaceTuple,
   StyleException,
@@ -17,9 +16,6 @@ export interface BoxProps {
   readonly p?: SpaceBox | number;
   readonly px?: SpaceTuple | number;
   readonly py?: SpaceTuple | number;
-  readonly m?: SpaceBox | number;
-  readonly mx?: SpaceTuple | number;
-  readonly my?: SpaceTuple | number;
   readonly bg?: string;
   readonly border?: BorderProps;
 }
@@ -37,7 +33,7 @@ const createStylesBorder = (width: number | [number, number, number, number], co
   borderStyle: 'solid',
 });
 
-const isEmpty = (space: SpacePadding | SpaceMargin): boolean => {
+const isEmpty = (space: SpacePadding): boolean => {
   for (const prop in space) {
     if (space.hasOwnProperty(prop)) {
       return false;
@@ -73,21 +69,9 @@ const createStyles = (props: BoxProps, theme: Theme): SxStyleProp => {
     'padding',
     theme,
   );
-  const margin = createStylesSpace(
-    JSON.parse(
-      JSON.stringify({
-        m: props.m,
-        mx: props.mx,
-        my: props.my,
-      }),
-    ),
-    'margin',
-    theme,
-  );
 
   return {
     ...(typeof padding === 'object' && padding),
-    ...(typeof margin === 'object' && margin),
     ...(props.border && createStylesBorder(props.border.width, props.border.color)),
     ...(Boolean(props.bg) && { backgroundColor: props.bg }),
     ...(props.as === 'ul' && { listStyle: 'none' }),

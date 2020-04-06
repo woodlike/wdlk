@@ -6,13 +6,7 @@ export interface SpacePadding {
   readonly py?: SpaceTuple | number;
 }
 
-export interface SpaceMargin {
-  readonly m?: SpaceBox | number;
-  readonly mx?: SpaceTuple | number;
-  readonly my?: SpaceTuple | number;
-}
-
-export type SpaceDeclaration = SpacePadding | SpaceMargin;
+export type SpaceDeclaration = SpacePadding;
 export type StyleException = '';
 export type SpaceTuple = [number, number];
 export type SpaceBox = [number, number, number, number];
@@ -20,7 +14,7 @@ export type Space = SpaceBox | SpaceTuple | number;
 export type SpaceBoxType = 'p' | 'm';
 export type CSSSpaceProperty = 'padding' | 'margin';
 
-export function createSpaceBox(props: SpacePadding | SpaceMargin): SpaceBox | StyleException {
+export function createSpaceBox(props: SpacePadding): SpaceBox | StyleException {
   const result = Object.entries(props).filter(([key]) => key.includes('p') || key.includes('m'));
   return result.length > 0 ? result.sort().reduce(spaceBoxReducer, [0, 0, 0, 0]) : '';
 }

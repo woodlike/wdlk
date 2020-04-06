@@ -129,22 +129,6 @@ describe('<Box />', () => {
       unmount();
     });
 
-    it('should use the Theme-UI margin value for top, right, bottom, left', () => {
-      const { getByText, unmount } = render(
-        <ThemeProvider theme={theme}>
-          <Box m={5} as="section">
-            {id}
-          </Box>
-        </ThemeProvider>,
-      );
-      const box = getByText(id);
-      expect(box).toHaveStyleRule(
-        'margin',
-        `${theme.space[5]}px ${theme.space[5]}px ${theme.space[5]}px ${theme.space[5]}px`,
-      );
-      unmount();
-    });
-
     it('should use Theme-UIs space scale as the padding value', () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
@@ -173,22 +157,6 @@ describe('<Box />', () => {
       expect(box).toHaveStyleRule(
         'padding',
         `${theme.space[4]}px ${theme.space[2]}px ${theme.space[5]}px ${theme.space[3]}px`,
-      );
-      unmount();
-    });
-
-    it('should use Theme-UIs scale value from mx and my overriding m', () => {
-      const { getByText, unmount } = render(
-        <ThemeProvider theme={theme}>
-          <Box p={[0, 2, 0, 2]} px={[5, 7]} py={[3, 3]} as="section">
-            {id}
-          </Box>
-        </ThemeProvider>,
-      );
-      const box = getByText(id);
-      expect(box).toHaveStyleRule(
-        'padding',
-        `${theme.space[3]}px ${theme.space[5]}px ${theme.space[3]}px ${theme.space[7]}px`,
       );
       unmount();
     });
@@ -232,17 +200,6 @@ describe('<Box />', () => {
       unmount();
     });
 
-    it('should contain use the same margin value for top, right, bottom, left', () => {
-      const { getByText, unmount } = render(
-        <Box m={8} as="aside">
-          {id}
-        </Box>,
-      );
-      const box = getByText(id);
-      expect(box).toHaveStyleRule('margin', '8px 8px 8px 8px');
-      unmount();
-    });
-
     it('should contain a 4 padding value style', () => {
       const { getByText, unmount } = render(
         <Box p={[5, 6, 8, 9]} as="aside">
@@ -251,17 +208,6 @@ describe('<Box />', () => {
       );
       const box = getByText(id);
       expect(box).toHaveStyleRule('padding', '5px 6px 8px 9px');
-      unmount();
-    });
-
-    it('should contain a 4 margin value style', () => {
-      const { getByText, unmount } = render(
-        <Box m={[5, 6, 8, 9]} as="aside">
-          {id}
-        </Box>,
-      );
-      const box = getByText(id);
-      expect(box).toHaveStyleRule('margin', '5px 6px 8px 9px');
       unmount();
     });
   });
