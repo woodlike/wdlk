@@ -2,6 +2,7 @@ import { base } from '@theme-ui/presets';
 import { theme as themeQuery, Colors, toRGB } from 'theme-query';
 
 const breakpoints = ['0px', '480px', '768px', '990px', '1024px', '1440px'];
+const spaces = [0, 3, 6, 12, 18, 24, 30, 36, 48, 72];
 const fontWeights: number[] = [100, 200, 300, 400, 500, 600, 700, 800, 900];
 const fontSizes: number[] = [12, 14, 16, 18, 20, 24, 32, 44, 72];
 const colors: Colors = {
@@ -55,9 +56,7 @@ export const theme = {
     },
     monospace: `"IBM Plex Mono", monospace`,
   },
-  space: {
-    ...themeQuery.spaces,
-  },
+  space: spaces,
   transition: {
     duration: [...themeQuery.transition.duration],
     timing: [

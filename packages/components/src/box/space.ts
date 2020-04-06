@@ -6,16 +6,47 @@ export interface SpacePadding {
   readonly py?: SpaceTuple | number;
 }
 
-export type SpaceDeclaration = SpacePadding;
-export type StyleException = '';
+export type SpaceDefinition = number | SpaceTuple | SpaceTriple | SpaceBox;
 export type SpaceTuple = [number, number];
+export type SpaceTriple = [number, number, number];
 export type SpaceBox = [number, number, number, number];
+export type StyleException = '';
+
+export type SpaceDeclaration = SpacePadding;
 export type Space = SpaceBox | SpaceTuple | number;
-export type SpaceBoxType = 'p' | 'm';
-export type CSSSpaceProperty = 'padding' | 'margin';
+export type SpaceBoxType = 'p';
+export type CSSSpaceProperty = 'padding';
+
+function getThemeSpace(space: SpaceDefinition, scale: number[]): SpaceDefinition {
+  if (Array.isArray(space)) {
+    return space.map(value => scale[value]) as SpaceDefinition;
+  }
+  return scale[space];
+}
+
+function handleSpace(space: SpaceDefinition): SpaceBox {
+  if (Array.isArray(space)) {
+    if (space.length === 2) {
+      return [...space, ...space] as SpaceBox;
+    }
+    if (space.length === 3) {
+      return [...space, space[1]] as SpaceBox;
+    }
+    return [...space] as SpaceBox;
+  }
+  return [space, space, space, space];
+}
+
+export function create(space: SpaceDefinition, scale: number[] | undefined): SpaceBox {
+  if (!scale) {
+    return handleSpace(space);
+  }
+  return handleSpace(getThemeSpace(space, scale));
+}
 
 export function createSpaceBox(props: SpacePadding): SpaceBox | StyleException {
-  const result = Object.entries(props).filter(([key]) => key.includes('p') || key.includes('m'));
+  const result = Object.entries(props).filter(([key]) => key.includes('p'));
+  console.log(result);
   return result.length > 0 ? result.sort().reduce(spaceBoxReducer, [0, 0, 0, 0]) : '';
 }
 
