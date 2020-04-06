@@ -4,7 +4,7 @@ import * as LocalLink from './link';
 import * as LocalNav from './navigation';
 import * as LocalVid from './video';
 
-export * from './box';
+export * from './Box';
 export * from './burger';
 export * from './cart';
 export * from './code';
