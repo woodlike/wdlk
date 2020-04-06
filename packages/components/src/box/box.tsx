@@ -1,20 +1,10 @@
 /**@jsx jsx */
-import { jsx, useThemeUI, SxStyleProp, Theme } from 'theme-ui';
-import {
-  getThemeScale,
-  CSSSpaceProperty,
-  SpaceBox,
-  SpaceDeclaration,
-  SpacePadding,
-  SpaceTuple,
-  StyleException,
-} from '.';
-import { createSpaceBox } from '.';
+import { jsx, SxStyleProp } from 'theme-ui';
+import { SpaceDefinition } from '.';
+import * as Space from './space';
 
 export interface BoxProps {
-  readonly p?: SpaceBox | number;
-  readonly px?: SpaceTuple | number;
-  readonly py?: SpaceTuple | number;
+  readonly padding: SpaceDefinition;
   readonly bg?: string;
   readonly border?: BorderProps;
 }
@@ -30,53 +20,19 @@ const createStylesBorder = (width: number | [number, number, number, number], co
   borderStyle: 'solid',
 });
 
-const isEmpty = (space: SpacePadding): boolean => {
-  for (const prop in space) {
-    if (space.hasOwnProperty(prop)) {
-      return false;
-    }
-  }
-  return true;
-};
+const createStylesSpace = (padding: SpaceDefinition): SxStyleProp => ({
+  padding: theme => Space.toCSSPixel(Space.create(padding, theme.space)),
+});
 
-const createStylesSpace = (
-  space: SpaceDeclaration,
-  name: CSSSpaceProperty,
-  theme: Theme,
-): SxStyleProp | StyleException => {
-  if (isEmpty(space)) {
-    return '';
-  }
-
-  const [top, right, bottom, left] = createSpaceBox(theme ? getThemeScale(space, theme) : space);
+const createStyles = (props: BoxProps): SxStyleProp => {
+  const { padding } = props;
   return {
-    [name]: `${top}px ${right}px ${bottom}px ${left}px`,
-  };
-};
-
-const createStyles = (props: BoxProps, theme: Theme): SxStyleProp => {
-  const padding = createStylesSpace(
-    JSON.parse(
-      JSON.stringify({
-        p: props.p,
-        px: props.px,
-        py: props.py,
-      }),
-    ),
-    'padding',
-    theme,
-  );
-
-  return {
-    ...(typeof padding === 'object' && padding),
+    ...createStylesSpace(padding),
     ...(props.border && createStylesBorder(props.border.width, props.border.color)),
     ...(Boolean(props.bg) && { backgroundColor: props.bg }),
   };
 };
 
-export const Box: React.FC<BoxProps> = (props): JSX.Element => {
-  const { theme } = useThemeUI();
-  return <div sx={createStyles(props, theme)}>{props.children}</div>;
-};
+export const Box: React.FC<BoxProps> = (props): JSX.Element => <div sx={createStyles(props)}>{props.children}</div>;
 
 Box.displayName = 'Box';
