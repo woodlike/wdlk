@@ -1,10 +1,12 @@
 /**@jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
-import { SpaceDefinition } from '.';
-import * as Space from './space';
+import { ScaleDefinition } from '.';
+import * as Scale from './scale';
 
 export interface BoxProps {
-  readonly padding: SpaceDefinition;
+  readonly padding: ScaleDefinition;
+  readonly borderWidths?: ScaleDefinition;
+  readonly borderStyles?: ScaleDefinition;
   readonly bg?: string;
   readonly border?: BorderProps;
 }
@@ -14,22 +16,21 @@ export interface BorderProps {
   readonly color: string;
 }
 
-const createStylesBorder = (width: number | [number, number, number, number], color: string): SxStyleProp => ({
-  borderWidth: Array.isArray(width) ? `${width[0]}px ${width[1]}px ${width[2]}px ${width[3]}px` : `${width}px`,
-  borderColor: color,
-  borderStyle: 'solid',
+const createStylesBorderWidth = (widths: ScaleDefinition): SxStyleProp => ({
+  borderWidth: theme => Scale.toCSSPixel(Scale.create(widths, theme.borderWidths)),
 });
 
-const createStylesSpace = (padding: SpaceDefinition): SxStyleProp => ({
-  padding: theme => Space.toCSSPixel(Space.create(padding, theme.space)),
+const createStylesBorderStyle = (styles: ScaleDefinition): SxStyleProp => ({
+  borderStyle: theme => Scale.toCSSPixel(Scale.create(styles, theme.borderStyles)),
 });
 
 const createStyles = (props: BoxProps): SxStyleProp => {
-  const { padding } = props;
+  const { borderStyles, borderWidths, padding } = props;
   return {
-    ...createStylesSpace(padding),
-    ...(props.border && createStylesBorder(props.border.width, props.border.color)),
+    ...(borderWidths && createStylesBorderWidth(borderWidths)),
+    ...(borderStyles && createStylesBorderStyle(borderStyles)),
     ...(Boolean(props.bg) && { backgroundColor: props.bg }),
+    padding: ({ space }) => Scale.toCSSPixel(Scale.create(padding, space)),
   };
 };
 
