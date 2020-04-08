@@ -3,14 +3,14 @@ import { ThemeProvider } from 'theme-ui';
 import { render } from '@testing-library/react';
 import { matchers } from 'jest-emotion';
 
-import { theme } from '../../theme';
 import { Box } from '..';
+import { theme } from '../../theme';
 
 expect.extend(matchers);
 
 describe('<Box />', () => {
   const id = 'Test Box';
-  const { borderStyles, borderWidths, space } = theme;
+  const { borderStyles, borderWidths, colors, space } = theme;
   describe('Padding handling', () => {
     it('(shorthand): handles a Theme-UI shorthand padding area', () => {
       const { getByText, unmount } = render(
@@ -183,6 +183,22 @@ describe('<Box />', () => {
         'border-style',
         `${borderStyles[2]}px ${borderStyles[6]}px ${borderStyles[3]}px ${borderStyles[2]}px`,
       );
+      unmount();
+    });
+  });
+
+  describe('Border color handling', () => {
+    it('(shorthand): handles a Theme-UI shorthand border styles', () => {
+      const { getByText, unmount } = render(
+        <ThemeProvider theme={theme}>
+          <Box padding={2} borderColors={['corals', 'secondary']}>
+            {id}
+          </Box>
+        </ThemeProvider>,
+      );
+      const box = getByText(id);
+      const styles = getComputedStyle(box).getPropertyValue('border-color');
+      console.log(styles);
       unmount();
     });
   });

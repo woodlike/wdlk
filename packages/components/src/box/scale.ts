@@ -9,11 +9,15 @@ export type SpaceTuple = [Space, Space];
 export type SpaceTriple = [Space, Space, Space];
 export type SpaceBox = [Space, Space, Space, Space];
 
-function getThemeScale(scale: ScaleDefinition, space: Space[]): SpaceDefinition {
+export function getThemeScale(scale: ScaleDefinition, space: Space[]): SpaceDefinition {
   return Array.isArray(scale) ? (scale.map(value => space[value]) as ScaleDefinition) : space[scale];
 }
 
-function handleSpace(space: SpaceDefinition): SpaceBox {
+// export function getColorScale(scale: SpaceDefinition, colors: ThemeColorProps, idx?: number): SpaceDefinition {
+// qt: ThemeQuery
+// }
+
+export function handleSpace(space: SpaceDefinition): SpaceBox {
   if (Array.isArray(space)) {
     if (space.length === 2) {
       return [...space, ...space] as ScaleBox;
@@ -29,3 +33,4 @@ function handleSpace(space: SpaceDefinition): SpaceBox {
 export const create = (scale: ScaleDefinition, space: Space[]): SpaceBox => handleSpace(getThemeScale(scale, space));
 
 export const toCSSPixel = (box: SpaceBox): string => box.map(value => `${value}px`).join(' ');
+export const toCSSString = (box: SpaceBox): string => box.map(value => `${value}`).join(' ');
