@@ -1,6 +1,16 @@
 import { base } from '@theme-ui/presets';
 import { theme as themeQuery, Colors, toRGB } from 'theme-query';
 
+export interface Theme {
+  borderStyles: string[];
+  borderWidths: number[];
+  colors: ThemeColorProps;
+}
+
+export interface ThemeColorProps {
+  [key: string]: string | string[];
+}
+
 const borderStyles = ['none', 'hidden', 'dotted', 'dashed', 'solid', 'double', 'groove', 'ridge', 'inset', 'outset'];
 const borderWidths = [1, 2, 3, 4];
 const breakpoints = ['0px', '480px', '768px', '990px', '1024px', '1440px'];

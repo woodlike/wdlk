@@ -1,39 +1,51 @@
 /**@jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
-import { ScaleDefinition } from '.';
+import { ThemeQuery } from 'theme-query';
+import { ScaleDefinition, SpaceDefinition } from '.';
+
+import { Theme } from '..';
+import { useThemeQuery } from '../query';
 import * as Scale from './scale';
 
 export interface BoxProps {
   readonly padding: ScaleDefinition;
   readonly borderWidths?: ScaleDefinition;
   readonly borderStyles?: ScaleDefinition;
-  readonly bg?: string;
-  readonly border?: BorderProps;
-}
-
-export interface BorderProps {
-  readonly width: number | [number, number, number, number];
-  readonly color: string;
+  readonly borderColors?: SpaceDefinition;
 }
 
 const createStylesBorderWidth = (widths: ScaleDefinition): SxStyleProp => ({
-  borderWidth: theme => Scale.toCSSPixel(Scale.create(widths, theme.borderWidths)),
+  borderWidth: (theme: Theme) => Scale.toCSSPixel(Scale.create(widths, theme.borderWidths)),
 });
 
 const createStylesBorderStyle = (styles: ScaleDefinition): SxStyleProp => ({
-  borderStyle: theme => Scale.toCSSPixel(Scale.create(styles, theme.borderStyles)),
+  borderStyle: (theme: Theme) => Scale.toCSSPixel(Scale.create(styles, theme.borderStyles)),
 });
 
-const createStyles = (props: BoxProps): SxStyleProp => {
-  const { borderStyles, borderWidths, padding } = props;
+const createStylesBorderColor = (colorNames: SpaceDefinition, qt: ThemeQuery): SxStyleProp => {
+  const colors = Array.isArray(colorNames)
+    ? ((colorNames.map(name => qt(`${name}`)) as unknown) as SpaceDefinition)
+    : qt(`${colorNames}`);
+
+  console.log(colors, '&&&&&&&&');
+  return {
+    borderColor: Scale.toCSSString(Scale.handleSpace(colors)),
+  };
+};
+
+const createStyles = (props: BoxProps, qt: ThemeQuery): SxStyleProp => {
+  const { borderColors, borderStyles, borderWidths, padding } = props;
   return {
     ...(borderWidths && createStylesBorderWidth(borderWidths)),
     ...(borderStyles && createStylesBorderStyle(borderStyles)),
-    ...(Boolean(props.bg) && { backgroundColor: props.bg }),
+    ...(borderColors && createStylesBorderColor(borderColors, qt)),
     padding: ({ space }) => Scale.toCSSPixel(Scale.create(padding, space)),
   };
 };
 
-export const Box: React.FC<BoxProps> = (props): JSX.Element => <div sx={createStyles(props)}>{props.children}</div>;
+export const Box: React.FC<BoxProps> = (props): JSX.Element => {
+  const { qt } = useThemeQuery();
+  return <div sx={createStyles(props, qt)}>{props.children}</div>;
+};
 
 Box.displayName = 'Box';
