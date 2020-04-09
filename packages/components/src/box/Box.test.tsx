@@ -1,10 +1,10 @@
-import * as React from 'react';
-import { ThemeProvider } from 'theme-ui';
-import { render } from '@testing-library/react';
 import { matchers } from 'jest-emotion';
+import { render } from '@testing-library/react';
+import { ThemeProvider } from 'theme-ui';
+import * as React from 'react';
 
-import { Box } from '..';
-import { theme } from '../../theme/theme';
+import { Box } from '.';
+import { theme } from '..';
 
 expect.extend(matchers);
 

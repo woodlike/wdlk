@@ -1,4 +1,4 @@
-import { theme } from '../../theme';
+import { theme } from '..';
 import * as Scale from '../scale';
 
 describe('Padding Space Area', () => {
