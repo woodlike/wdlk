@@ -1,4 +1,4 @@
-export * from './highlight';
+export * from './Highlight';
 export * from './link';
-export * from './muted';
-export * from './text';
+export * from './Muted';
+export * from './Text';

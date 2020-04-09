@@ -2,7 +2,7 @@
 import { jsx, SxStyleProp } from 'theme-ui';
 
 import { layoutConfig, SideBarPosition } from '.';
-import { qt } from '../query';
+import { qt } from '../theme/query';
 
 export interface LayoutMainProps {
   readonly position?: SideBarPosition;

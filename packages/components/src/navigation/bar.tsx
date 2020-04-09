@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
-import { qt } from '../query';
+import { qt } from '../theme/query';
 
 export interface NavBarProps {
   itemCount: number;

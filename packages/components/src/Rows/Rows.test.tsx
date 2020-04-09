@@ -6,7 +6,7 @@ import * as React from 'react';
 
 import { Rows } from '.';
 import { theme } from '../theme';
-import { qt } from '../query';
+import { qt } from '../theme/query';
 
 expect.extend(matchers);
 expect.extend(toHaveNoViolations);

@@ -1,7 +1,7 @@
 /**@jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
 import { ThemeQuery } from 'theme-query';
-import { useThemeQuery } from '../query';
+import { useThemeQuery } from '../theme/query';
 import { LinkProps, LinkSize, handleLinkSize } from '.';
 
 export interface LinkTextProps extends LinkProps {

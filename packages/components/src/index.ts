@@ -1,25 +1,24 @@
 import * as LocalDocs from './docs';
 import * as LocalLayout from './layout';
-import * as LocalLink from './link';
+import * as LocalLink from './Link';
 import * as LocalNav from './navigation';
-import * as LocalVid from './video';
+import * as LocalVid from './Video';
 
 export * from './Box';
-export * from './burger';
-export * from './cart';
-export * from './code';
+export * from './Burger';
+export * from './Cart';
+export * from './Code';
 export * from './header';
-export * from './heading';
+export * from './Heading';
 export * from './hooks';
-export * from './logo';
+export * from './Logo';
 export * from './mini-cart';
-export * from './query';
 export * from './Row';
 export * from './Rows';
-export * from './text';
+export * from './Text';
 export * from './theme';
 export * from './utils';
-export * from './video';
+export * from './Video';
 export * from './with-focus-style';
 
 export const Docs = { ...LocalDocs };

@@ -1,7 +1,7 @@
 /**@jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
-import { useThemeQuery } from '../query';
-import { Code, Language, CodeSize } from '../code';
+import { useThemeQuery } from '../theme/query';
+import { Code, Language, CodeSize } from '../Code';
 
 export interface DocsSectionProps {
   breakpoint: number;

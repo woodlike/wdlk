@@ -3,7 +3,7 @@ import { jsx, SxStyleProp } from 'theme-ui';
 
 import { headerScales } from '../utils';
 import { withFocusStyle } from '../with-focus-style';
-import { qt } from '../query';
+import { qt } from '../theme/query';
 
 export interface NavLinkProps {
   readonly current: boolean;

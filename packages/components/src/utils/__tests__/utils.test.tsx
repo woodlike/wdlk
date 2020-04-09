@@ -1,5 +1,5 @@
 import { calcYPosition } from '../utils';
-import { qt } from '../../query';
+import { qt } from '../../theme/query';
 
 describe('calcYPosition()', () => {
   it('should return an array containing the px values in relation to the main navigation link', () => {

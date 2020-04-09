@@ -1,12 +1,12 @@
 /**@jsx jsx */
-import { useMemo, Fragment } from 'react';
 import { jsx, SxStyleProp } from 'theme-ui';
 import { ThemeQuery } from 'theme-query';
 import { Token } from 'prismjs';
+import { useMemo, Fragment } from 'react';
 import * as Prism from './__prism';
 
 import { andromeda, convertor, normalizer, Language } from '.';
-import { useThemeQuery } from '../query';
+import { useThemeQuery } from '../theme/query';
 
 export interface PrismStyleProp {
   readonly color: string;

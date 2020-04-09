@@ -1,8 +1,8 @@
 /**@jsx jsx */
-import { jsx, ThemeProvider } from 'theme-ui';
-import { render, cleanup } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
+import { jsx, ThemeProvider } from 'theme-ui';
 import { matchers } from 'jest-emotion';
+import { render, cleanup } from '@testing-library/react';
 
 import { Text } from '..';
 import { theme } from '../../theme';

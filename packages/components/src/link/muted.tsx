@@ -2,7 +2,7 @@
 import { jsx, SxStyleProp } from 'theme-ui';
 import { ThemeQuery } from 'theme-query';
 import { LinkProps, handleLinkSize, LinkSize } from '.';
-import { useThemeQuery } from '../query';
+import { useThemeQuery } from '../theme/query';
 
 const createStylesMuted = (size: LinkSize, qt: ThemeQuery): SxStyleProp => ({
   fontFamily: qt('body'),
