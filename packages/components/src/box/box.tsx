@@ -2,10 +2,9 @@
 import { jsx, SxStyleProp } from 'theme-ui';
 import { ThemeQuery } from 'theme-query';
 
-import { ScaleDefinition, SpaceDefinition } from '.';
-import { Theme } from '..';
+import { ScaleDefinition, SpaceDefinition, Theme } from '..';
 import { useThemeQuery } from '../theme';
-import * as Scale from './scale';
+import * as Scale from '../theme/scale';
 
 export interface BoxProps {
   readonly padding: ScaleDefinition;
