@@ -1,4 +1,4 @@
-import { qt } from '../query';
+import { qt } from '../theme/query';
 
 export function calcYPosition(scales: string[], fontS: number, fontM: number): string[] {
   const values = scales.map((scale: string) =>

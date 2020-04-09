@@ -1,10 +1,10 @@
 /**@jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
 import { Controls } from '.';
-import { qt } from '../query';
-import { Heading } from '../heading';
+import { qt } from '../theme/query';
+import { Heading } from '../Heading';
 import { useBreakpoint } from '../hooks';
-import { Text } from '../text';
+import { Text } from '../Text';
 
 export interface VideoStageProps {
   readonly headline: string;

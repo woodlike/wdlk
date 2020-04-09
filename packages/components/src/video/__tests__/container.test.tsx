@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
-import { Container, VideoRenderProps } from '../container';
+import { Container, VideoRenderProps } from '../Container';
 
 describe('<Video.Container />', () => {
   it.skip('should initiate the renderless container with muted video', () => {

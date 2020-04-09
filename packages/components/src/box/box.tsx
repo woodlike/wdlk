@@ -1,10 +1,10 @@
 /**@jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
 import { ThemeQuery } from 'theme-query';
-import { ScaleDefinition, SpaceDefinition } from '.';
 
+import { ScaleDefinition, SpaceDefinition } from '.';
 import { Theme } from '..';
-import { useThemeQuery } from '../query';
+import { useThemeQuery } from '../theme';
 import * as Scale from './scale';
 
 export interface BoxProps {

@@ -2,7 +2,7 @@
 import { jsx, SxStyleProp } from 'theme-ui';
 import { Text as ThemeText } from '@theme-ui/components';
 
-import { qt } from '../query';
+import { qt } from '../theme/query';
 
 export interface TextProps {
   size: TextSize;

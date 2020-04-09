@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
 import { headerYPosition } from '../utils/utils';
-import { qt } from '../query';
+import { qt } from '../theme/query';
 
 export interface NavPanelProps {
   isExpanded: boolean;

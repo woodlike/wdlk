@@ -4,13 +4,13 @@ import { render } from '@testing-library/react';
 import { matchers } from 'jest-emotion';
 
 import { Box } from '..';
-import { theme } from '../../theme';
+import { theme } from '../../theme/theme';
 
 expect.extend(matchers);
 
 describe('<Box />', () => {
   const id = 'Test Box';
-  const { borderStyles, borderWidths, colors, space } = theme;
+  const { borderStyles, borderWidths, space } = theme;
   describe('Padding handling', () => {
     it('(shorthand): handles a Theme-UI shorthand padding area', () => {
       const { getByText, unmount } = render(
@@ -191,7 +191,7 @@ describe('<Box />', () => {
     it('(shorthand): handles a Theme-UI shorthand border styles', () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
-          <Box padding={2} borderColors={['corals', 'secondary']}>
+          <Box padding={2} borderColors={['primary', 'secondary']}>
             {id}
           </Box>
         </ThemeProvider>,

@@ -1,4 +1,4 @@
-import { qt } from '../query';
+import { qt } from '../theme/query';
 
 export const layoutConfig = {
   width: 300,

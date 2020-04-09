@@ -2,7 +2,7 @@
 import { jsx, SxStyleProp } from 'theme-ui';
 import { ThemeQuery } from 'theme-query';
 import { ChevronRight, ChevronLeft } from 'react-feather';
-import { useThemeQuery } from '../query';
+import { useThemeQuery } from '../theme/query';
 import { handleLinkSize, LinkProps, LinkSize } from '.';
 
 export interface LinkIconProps {

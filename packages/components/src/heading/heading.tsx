@@ -1,7 +1,8 @@
 /** @jsx jsx */
-import { jsx, SxStyleProp } from 'theme-ui';
-import { useThemeQuery } from '../query';
 import { ThemeQuery } from 'theme-query';
+import { jsx, SxStyleProp } from 'theme-ui';
+
+import { useThemeQuery } from '../theme/query';
 
 export interface HeadingProps {
   as: HeadingLevel;
