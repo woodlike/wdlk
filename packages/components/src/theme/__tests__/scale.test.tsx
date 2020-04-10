@@ -1,16 +1,16 @@
 import { theme } from '..';
 import * as Scale from '../scale';
 
-describe('Padding Space Area', () => {
+describe('Padding scale area', () => {
   const { space } = theme;
-  describe('(shorthand): apply the same space value to the four padding sides', () => {
+  describe('(shorthand): apply the same scale value to the four padding sides', () => {
     it('should return a padding area with the 4th Theme-UI space scale', () => {
       expect(Scale.create(0, space)).toEqual([space[0], space[0], space[0], space[0]]);
       expect(Scale.create(8, space)).toEqual([space[8], space[8], space[8], space[8]]);
     });
   });
 
-  describe('(vertical | horizontal): apply values to the four padding sides', () => {
+  describe('(vertical | horizontal): apply scale values to the four padding sides', () => {
     it('should return a padding area with the 4th Theme-UI space scale', () => {
       expect(Scale.create([3, 8], space)).toEqual([space[3], space[8], space[3], space[8]]);
       expect(Scale.create([5, 6], space)).toEqual([space[5], space[6], space[5], space[6]]);

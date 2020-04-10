@@ -186,20 +186,4 @@ describe('<Box />', () => {
       unmount();
     });
   });
-
-  describe('Border color handling', () => {
-    it('(shorthand): handles a Theme-UI shorthand border styles', () => {
-      const { getByText, unmount } = render(
-        <ThemeProvider theme={theme}>
-          <Box padding={2} borderColors={['primary', 'secondary']}>
-            {id}
-          </Box>
-        </ThemeProvider>,
-      );
-      const box = getByText(id);
-      const styles = getComputedStyle(box).getPropertyValue('border-color');
-      console.log(styles);
-      unmount();
-    });
-  });
 });
