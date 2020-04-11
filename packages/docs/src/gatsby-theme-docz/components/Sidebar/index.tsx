@@ -1,9 +1,10 @@
 /** @jsx jsx */
+import { Box, Link } from '@wdlk/components';
 import { jsx } from 'theme-ui';
-import { Box, Layout, Link } from '@wdlk/components';
 import { useMenus } from 'docz';
-// import { Link } from 'gatsby';
+import { Fragment } from 'react';
 
+import { List, SideBar } from '../../../components';
 import { Logo } from '../Logo';
 
 export interface SidebarProps {
@@ -13,10 +14,9 @@ export interface SidebarProps {
 
 export const Sidebar: React.FC = (): JSX.Element => {
   const menus = useMenus({});
-  console.log(menus, '000000-------');
   return (
-    <Layout.SideBar tag="aside" position="left">
-      <Box my={[4, 7]} as="div">
+    <SideBar>
+      <Box padding={[2, 0, 4]} as="div">
         <Logo />
       </Box>
 
@@ -24,26 +24,30 @@ export const Sidebar: React.FC = (): JSX.Element => {
         menus.map(menu => {
           if (Array.isArray(menu.menu)) {
             return (
-              <Box key={menu.id} my={[0, 7]} as="div">
+              <Fragment key={menu.id}>
                 <Link.Muted size="m" as="strong">
                   {menu.name}
                 </Link.Muted>
-                <Box px={[0, 3]} my={[2, 0]} as="ul">
-                  {menu.menu.map(m => (
-                    <Box key={m.id} my={[0, 2]} as="li">
-                      <Link.Text href={m.route} size="s" as="a">
-                        {m.name}
-                      </Link.Text>
-                    </Box>
-                  ))}
+                <Box padding={[0, 3, 4]} as="div">
+                  <List.Unordered>
+                    {menu.menu.map(m => (
+                      <List.Item key={m.id}>
+                        <Box padding={[0, 0, 2]} as="div">
+                          <Link.Text href={m.route} size="s" as="a">
+                            {m.name}
+                          </Link.Text>
+                        </Box>
+                      </List.Item>
+                    ))}
+                  </List.Unordered>
                 </Box>
-              </Box>
+              </Fragment>
             );
           }
           {
             return (
               menu.route && (
-                <Box key={menu.id} my={[0, 4]} as="div">
+                <Box key={menu.id} padding={[4, 0]} as="div">
                   <Link.Muted href={menu.route} size="m" as="a">
                     {menu.name}
                   </Link.Muted>
@@ -52,7 +56,7 @@ export const Sidebar: React.FC = (): JSX.Element => {
             );
           }
         })}
-    </Layout.SideBar>
+    </SideBar>
   );
 };
 
