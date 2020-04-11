@@ -8,11 +8,14 @@ export interface BoxProps {
   readonly padding: ScaleArea;
   readonly borderWidths?: ScaleArea;
   readonly borderStyles?: ScaleArea;
-  readonly borderColors?: string | string[] | { color: string; idx: number };
+  readonly borderColors?: BorderColorProps;
+}
+export interface BorderColorScale {
+  color: string;
+  idx: number;
 }
 
-export type BorderColorArea = string | string[] | BorderColorScale;
-export type BorderColorScale = { color: string; idx: number };
+export type BorderColorProps = (string | BorderColorScale) | (string | BorderColorScale)[];
 
 const createStylesBorderWidth = (widths: ScaleArea): SxStyleProp => ({
   borderWidth: (theme: Theme) => Scale.toCSSPixel(Scale.create(widths, theme.borderWidths)),
@@ -22,21 +25,23 @@ const createStylesBorderStyle = (styles: ScaleArea): SxStyleProp => ({
   borderStyle: (theme: Theme) => Scale.toCSSPixel(Scale.create(styles, theme.borderStyles)),
 });
 
-const createStylesBorderColor = (borderColors: string | string[] | { color: string; idx: number }): SxStyleProp => {
-  return {
-    borderColor: (theme: Theme) => {
-      if (Array.isArray(borderColors)) {
-        const colors = borderColors.map(color => Color.query(color, theme.colors)) as string | string[];
-        return Scale.createBox(colors).join(' ');
-      }
-      if (typeof borderColors === 'object') {
-        const border = borderColors as BorderColorScale;
-        return Color.query(border.color, theme.colors, border.idx);
-      }
-      return Color.query(borderColors, theme.colors);
-    },
-  };
-};
+const createStylesBorderColor = (borderColors: BorderColorProps): SxStyleProp => ({
+  borderColor: (theme: Theme) => {
+    if (Array.isArray(borderColors)) {
+      const colors = borderColors.map(color => {
+        return typeof color === 'object'
+          ? Color.query(color.color, theme.colors, color.idx)
+          : Color.query(color, theme.colors);
+      }) as string[];
+
+      return Scale.createBox(colors).join(' ');
+    }
+
+    return typeof borderColors === 'object'
+      ? Color.query(borderColors.color, theme.colors, borderColors.idx)
+      : Color.query(borderColors, theme.colors);
+  },
+});
 
 const createStyles = (props: BoxProps): SxStyleProp => {
   const { borderColors, borderStyles, borderWidths, padding } = props;
