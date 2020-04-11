@@ -10,7 +10,7 @@ expect.extend(matchers);
 
 describe('<Box />', () => {
   const id = 'Test Box';
-  const { borderStyles, borderWidths, colors, space } = theme;
+  const { borderStyles, borderWidths, space } = theme;
   describe('Padding handling', () => {
     it('(shorthand): handles a Theme-UI shorthand padding area', () => {
       const { getByText, unmount } = render(
@@ -224,6 +224,37 @@ describe('<Box />', () => {
       expect(box).toHaveStyleRule(
         'border-color',
         'var(--theme-ui-colors-primary,rgb(255,113,99)) var(--theme-ui-colors-secondary,rgb(229,85,78)) var(--theme-ui-colors-primary,rgb(255,113,99)) var(--theme-ui-colors-secondary,rgb(229,85,78))',
+      );
+      unmount();
+    });
+    it('(vertical | horizontal):  handles a Theme-UI tuple border color scale', () => {
+      const { getByText, unmount } = render(
+        <ThemeProvider theme={theme}>
+          <Box padding={2} borderColors={[{ color: 'corals', idx: 1 }, 'secondary']}>
+            {id}
+          </Box>
+        </ThemeProvider>,
+      );
+      const box = getByText(id);
+      expect(box).toHaveStyleRule(
+        'border-color',
+        'var(--theme-ui-colors-corals-1,rgb(229,85,78)) var(--theme-ui-colors-secondary,rgb(229,85,78)) var(--theme-ui-colors-corals-1,rgb(229,85,78)) var(--theme-ui-colors-secondary,rgb(229,85,78))',
+      );
+      unmount();
+    });
+
+    it('(top | right | bottom | left):  handles a Theme-UI triple border color scale', () => {
+      const { getByText, unmount } = render(
+        <ThemeProvider theme={theme}>
+          <Box padding={2} borderColors={[{ color: 'whites', idx: 2 }, { color: 'blacks', idx: 1 }, 'secondary']}>
+            {id}
+          </Box>
+        </ThemeProvider>,
+      );
+      const box = getByText(id);
+      expect(box).toHaveStyleRule(
+        'border-color',
+        'var(--theme-ui-colors-whites-2,rgb(240,240,240)) var(--theme-ui-colors-blacks-1,rgb(51,51,51)) var(--theme-ui-colors-secondary,rgb(229,85,78)) var(--theme-ui-colors-blacks-1,rgb(51,51,51))',
       );
       unmount();
     });
