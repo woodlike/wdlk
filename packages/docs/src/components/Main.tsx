@@ -1,10 +1,9 @@
 /**@jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
-import { Theme } from '@wdlk/components';
 
 const stylesMain: SxStyleProp = {
   boxSizing: 'border-box',
-  padding: (theme: Theme) => `${theme.space[4]}px ${theme.space[4]}px ${theme.space[4]}px ${theme.space[4] + 300}px`,
+  paddingLeft: '300px',
   margin: 0,
   backgroundColor: 'background',
 };

@@ -20,6 +20,7 @@ const fontWeights: number[] = [100, 200, 300, 400, 500, 600, 700, 800, 900];
 const spaces = [0, 3, 6, 12, 18, 24, 30, 36, 48, 72];
 
 const colors: Colors = {
+  codeBg: toRGB([38, 42, 51]),
   corals: [toRGB([255, 113, 99]), toRGB([229, 85, 78])],
   whites: [
     toRGB([255, 255, 255]),
