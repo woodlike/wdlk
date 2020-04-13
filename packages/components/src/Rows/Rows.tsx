@@ -6,6 +6,7 @@ import { useThemeQuery } from '../theme/query';
 export interface RowsProps {
   as: HTMLRowsType;
   collapseBelow?: number;
+  className?: string;
 }
 export type HTMLRowsType = 'div' | 'section' | 'main' | 'article' | 'nav' | 'footer' | 'header';
 
@@ -33,7 +34,11 @@ export const Rows: React.FC<RowsProps> = props => {
   const { collapseBelow } = props;
   const { qt } = useThemeQuery();
 
-  return <props.as sx={createStylesRows(qt, collapseBelow)}>{props.children}</props.as>;
+  return (
+    <props.as sx={createStylesRows(qt, collapseBelow)} className={props.className}>
+      {props.children}
+    </props.as>
+  );
 };
 
 Rows.displayName = 'Rows';
