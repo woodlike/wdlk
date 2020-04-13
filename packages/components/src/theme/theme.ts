@@ -5,6 +5,7 @@ export interface Theme {
   borderStyles: string[];
   borderWidths: number[];
   colors: ThemeColorProps;
+  space: number[];
 }
 
 export interface ThemeColorProps {
