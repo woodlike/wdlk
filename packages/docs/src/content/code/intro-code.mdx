@@ -1,0 +1,25 @@
+
+import { Code, Language } from '@wdlk/components';
+
+<Code
+  code={`<pre sx={createStylesPre(props.size, qt, props.theme)}>
+    <code sx={stylesCode}>
+      {tokens.map((token: Token | string, i: number): JSX.Element => {
+        console.log(tokens);
+        return token.type ? (
+          Array.isArray(token.content) ? (
+            <TokenList content={token.content} theme={theme} />
+          ) : (
+            <span sx={theme.get(token.type)}>
+              {typeof token.content === 'string' && token.content}
+            </span>
+          )
+        ) : (
+          <span>{token}</span>
+        );
+      })}
+    </code>
+  </pre>`}
+  lang={Language.tsx}
+  size="m"
+/>

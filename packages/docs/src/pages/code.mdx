@@ -6,27 +6,7 @@ menu: Components
 import { Code, Language } from '@wdlk/components';
 import { SectionLayout } from '../components';
 import Intro from '../content/code/intro.mdx';
+import IntroCode from '../content/code/intro-code.mdx';
 
-<SectionLayout content={<Intro />} code={<Code
-  code={`<pre sx={createStylesPre(props.size, qt, props.theme)}>
-    <code sx={stylesCode}>
-      {tokens.map((token: Token | string, i: number): JSX.Element => {
-        console.log(tokens);
-        return token.type ? (
-          Array.isArray(token.content) ? (
-            <TokenList content={token.content} theme={theme} />
-          ) : (
-            <span sx={theme.get(token.type)}>
-              {typeof token.content === 'string' && token.content}
-            </span>
-          )
-        ) : (
-          <span>{token}</span>
-        );
-      })}
-    </code>
-  </pre>`}
-  lang={Language.tsx}
-  size="m"
-/>}/>
-
+<SectionLayout content={<Intro />} code={
+<IntroCode />}/>
