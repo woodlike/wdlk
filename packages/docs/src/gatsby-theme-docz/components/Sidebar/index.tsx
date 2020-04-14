@@ -46,7 +46,8 @@ export const Sidebar: React.FC = (): JSX.Element => {
           }
           {
             return (
-              menu.route && (
+              menu.route &&
+              !menu.filepath.includes('src/content') && (
                 <Box key={menu.id} padding={[4, 0]} as="div">
                   <Link.Muted href={menu.route} size="m" as="a">
                     {menu.name}
