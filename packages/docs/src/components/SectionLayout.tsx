@@ -18,6 +18,8 @@ const stylesContent: SxStyleProp = {
 };
 
 const stylesCode: SxStyleProp = {
+  display: 'flex',
+  alignItems: 'center',
   padding: (theme: Theme) => `${theme.space[6]}px ${theme.space[4]}px`,
   backgroundColor: 'codeBg',
 };
@@ -27,7 +29,7 @@ export const SectionLayout: React.FC<SectionLayoutProps> = props => (
     <Row sx={stylesContent} basis="1/2" as="section">
       {props.content}
     </Row>
-    <Row sx={stylesCode} as="aside">
+    <Row sx={stylesCode} basis="1/2" as="aside">
       {props.code}
     </Row>
     {props.children}
