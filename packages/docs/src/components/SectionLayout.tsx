@@ -7,25 +7,35 @@ export interface SectionLayoutProps {
   code: JSX.Element;
 }
 
-const stylesLayout: SxStyleProp = {
-  borderColor: (theme: Theme) => theme.colors.whites[1],
-  borderStyle: (theme: Theme) => theme.borderStyles[4],
-  borderWidth: (theme: Theme) => `0 0 ${theme.borderWidths[0]}px`,
-};
-
 const stylesContent: SxStyleProp = {
-  padding: (theme: Theme) => `${theme.space[6]}px ${theme.space[4]}px`,
+  padding: (theme: Theme) => `${theme.space[8]}px ${theme.space[4]}px`,
+
+  [`@media screen and (min-width: 990px)`]: {
+    padding: (theme: Theme) => `${theme.space[6]}px ${theme.space[4]}px`,
+    borderColor: (theme: Theme) => theme.colors.grays[0],
+    borderStyle: (theme: Theme) => theme.borderStyles[4],
+    borderWidth: (theme: Theme) => `0 0 ${theme.borderWidths[0]}px`,
+  },
 };
 
 const stylesCode: SxStyleProp = {
   display: 'flex',
   alignItems: 'center',
-  padding: (theme: Theme) => `${theme.space[6]}px ${theme.space[4]}px`,
-  backgroundColor: 'codeBg',
+  padding: (theme: Theme) => `${theme.space[8]}px ${theme.space[4]}px`,
+  borderColor: (theme: Theme) => theme.colors.whites[1],
+  borderStyle: (theme: Theme) => theme.borderStyles[4],
+  borderWidth: (theme: Theme) => `0 0 ${theme.borderWidths[0]}px`,
+  backgroundColor: 'background',
+
+  [`@media screen and (min-width: 990px)`]: {
+    padding: (theme: Theme) => `${theme.space[6]}px ${theme.space[4]}px`,
+    backgroundColor: 'codeBg',
+    borderColor: (theme: Theme) => theme.colors.grays[4],
+  },
 };
 
 export const SectionLayout: React.FC<SectionLayoutProps> = props => (
-  <Rows sx={stylesLayout} collapseBelow={2} as="article">
+  <Rows collapseBelow={2} as="article">
     <Row sx={stylesContent} basis="1/2" as="section">
       {props.content}
     </Row>
