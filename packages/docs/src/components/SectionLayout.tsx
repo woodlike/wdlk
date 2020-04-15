@@ -4,13 +4,14 @@ import { Rows, Row, Theme } from '@wdlk/components';
 
 export interface SectionLayoutProps {
   content: JSX.Element;
-  code: JSX.Element;
+  code?: JSX.Element;
 }
 
 const stylesContent: SxStyleProp = {
   padding: (theme: Theme) => `${theme.space[8]}px ${theme.space[4]}px`,
 
   [`@media screen and (min-width: 990px)`]: {
+    maxWidth: '50%',
     padding: (theme: Theme) => `${theme.space[6]}px ${theme.space[4]}px`,
     borderColor: (theme: Theme) => theme.colors.grays[0],
     borderStyle: (theme: Theme) => theme.borderStyles[4],
@@ -28,6 +29,7 @@ const stylesCode: SxStyleProp = {
   backgroundColor: 'background',
 
   [`@media screen and (min-width: 990px)`]: {
+    maxWidth: '50%',
     padding: (theme: Theme) => `${theme.space[6]}px ${theme.space[4]}px`,
     backgroundColor: 'codeBg',
     borderColor: (theme: Theme) => theme.colors.grays[4],
