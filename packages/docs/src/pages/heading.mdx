@@ -4,15 +4,15 @@ menu: Components
 ---
 
 import { Box } from '@theme-ui/components';
-import { Heading } from '@wdlk/components';
+import { Code, Language , Heading } from '@wdlk/components';
+import { SectionLayout } from '../components';
+import Sizes from '../content/heading/sizes.mdx';
+import Families from '../content/heading/families.mdx';
+import Inverted from '../content/heading/inverted.mdx';
 
-# Headings
-
-## Heading Sizes
-
-Covers sizes from **s** to **xxxl**.
-The heading component also has a `tag` prop that accepts all six section levels according the spec.
-
+<SectionLayout content={<Sizes />} code={
+<Code
+  code={`
 <Heading as="h1" size="xxl">
   Healing Flowers Collection
 </Heading>
@@ -31,35 +31,42 @@ The heading component also has a `tag` prop that accepts all six section levels 
 <Heading as="h5" size="xs">
   Healing Flowers Collection
 </Heading>
+`}
+  lang={Language.tsx}
+  size="m"
+/>}/>
 
-## Heading Families
+<SectionLayout content={<Families />} code={
+<Code
+  code={`
+<Heading as="h2" size="xxl">
+  Healing Flowers Collection
+</Heading>
+<Heading as="h2" size="xxl" family="secondary">
+  Healing Flowers Collection
+</Heading>
+<Heading as="h2" size="xxl" family="campaign">
+  Healing Flowers Collection
+</Heading>
+`}
+  lang={Language.tsx}
+  size="m"
+/>}/>
 
-Covering three families as defined in the theme `heading` props.
+<SectionLayout content={<Inverted />} code={
+<Code
+  code={`
+<Heading as="h2" size="xxl" inverted>
+  Healing Flowers Collection
+</Heading>
+<Heading as="h2" size="xxl" family="secondary" inverted>
+  Healing Flowers Collection
+</Heading>
+<Heading as="h2" size="xxl" family="campaign" inverted>
+  Healing Flowers Collection
+</Heading>
+`}
+  lang={Language.tsx}
+  size="m"
+/>}/>
 
-- **display**
-- **secondary**
-- **campaign**
-
-  <Heading as="h2" size="xxl">
-    Healing Flowers Collection
-  </Heading>
-  <Heading as="h2" size="xxl" family="secondary">
-    Healing Flowers Collection
-  </Heading>
-  <Heading as="h2" size="xxl" family="campaign">
-    Healing Flowers Collection
-  </Heading>
-
-## Heading Inverted
-
-<Box bg="corals" p={3}>
-  <Heading as="h2" size="xxl" inverted>
-    Healing Flowers Collection
-  </Heading>
-  <Heading as="h2" size="xxl" family="secondary" inverted>
-    Healing Flowers Collection
-  </Heading>
-  <Heading as="h2" size="xxl" family="campaign" inverted>
-    Healing Flowers Collection
-  </Heading>
-</Box>

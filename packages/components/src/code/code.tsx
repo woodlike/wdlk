@@ -53,6 +53,7 @@ export const handleCodeSize = (size: CodeSize, qt: ThemeQuery): string => {
 };
 
 const createStylesPre = (size: CodeSize, qt: ThemeQuery, theme = andromeda): SxStyleProp => ({
+  width: '100%',
   padding: 4,
   margin: 0,
   borderRadius: '9px',

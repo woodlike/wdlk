@@ -28,7 +28,7 @@ export const Sidebar: React.FC = (): JSX.Element => {
                 <Link.Muted size="m" as="strong">
                   {menu.name}
                 </Link.Muted>
-                <Box padding={[0, 3, 4]} as="div">
+                <Box padding={[2, 3, 4]} as="div">
                   <List.Unordered>
                     {menu.menu.map(m => (
                       <List.Item key={m.id}>
@@ -48,7 +48,7 @@ export const Sidebar: React.FC = (): JSX.Element => {
             return (
               menu.route &&
               !menu.filepath.includes('src/content') && (
-                <Box key={menu.id} padding={[4, 0]} as="div">
+                <Box key={menu.id} padding={[0, 0, 4]} as="div">
                   <Link.Muted href={menu.route} size="m" as="a">
                     {menu.name}
                   </Link.Muted>
