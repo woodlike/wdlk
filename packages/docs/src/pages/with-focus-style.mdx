@@ -2,19 +2,21 @@
 name: With Focus Style
 menu: Hocs
 ---
+import { Code, Language } from '@wdlk/components';
+import { SectionLayout } from '../components';
+import FocusStyle from '../content/with-focus-style.mdx';
 
-# withFocusStyle
+<SectionLayout content={<FocusStyle />}>
+  <Code
+  code={`
+  const FocusableLogo = withFocusStyle<LogoProps>(Logo);
 
-Provide visual focus styles to other components by using the _withFocusStyle_ higher order component. This hoc does not create any unnecessary HTML elements.
+  <FocusableLogo title={logoTitle} desc={logoDesc} isFocused={false} />
+  `}
+  lang={Language.tsx}
+  size="m"
+/>}
+</SectionLayout>
 
-All of the components passed as an argument to the hoc must have a `isFocused` prop interface.
 
-## Usage
 
-```jsx
-import { Logo, LogoProps } from '../logo';
-import { withFocusStyle } from './with-focus-style';
-
-const FocusableLogo = withFocusStyle<LogoProps>(Logo)
-<FocusableLogo title={logoTitle} desc={logoDesc} isFocused={false} />
-```

@@ -10,9 +10,9 @@ import Sizes from '../content/heading/sizes.mdx';
 import Families from '../content/heading/families.mdx';
 import Inverted from '../content/heading/inverted.mdx';
 
-<SectionLayout content={<Sizes />} code={
-<Code
-  code={`
+<SectionLayout content={<Sizes />}>
+  <Code
+    code={`
 <Heading as="h1" size="xxl">
   Healing Flowers Collection
 </Heading>
@@ -31,14 +31,15 @@ import Inverted from '../content/heading/inverted.mdx';
 <Heading as="h5" size="xs">
   Healing Flowers Collection
 </Heading>
-`}
-  lang={Language.tsx}
-  size="m"
-/>}/>
+    `}
+    lang={Language.tsx}
+    size="m"
+  />
+</SectionLayout>
 
-<SectionLayout content={<Families />} code={
-<Code
-  code={`
+<SectionLayout content={<Families />}>
+  <Code
+    code={`
 <Heading as="h2" size="xxl">
   Healing Flowers Collection
 </Heading>
@@ -48,14 +49,15 @@ import Inverted from '../content/heading/inverted.mdx';
 <Heading as="h2" size="xxl" family="campaign">
   Healing Flowers Collection
 </Heading>
-`}
-  lang={Language.tsx}
-  size="m"
-/>}/>
+  `}
+    lang={Language.tsx}
+    size="m"
+  />
+</SectionLayout>
 
-<SectionLayout content={<Inverted />} code={
-<Code
-  code={`
+<SectionLayout content={<Inverted />}>
+  <Code
+    code={`
 <Heading as="h2" size="xxl" inverted>
   Healing Flowers Collection
 </Heading>
@@ -65,8 +67,9 @@ import Inverted from '../content/heading/inverted.mdx';
 <Heading as="h2" size="xxl" family="campaign" inverted>
   Healing Flowers Collection
 </Heading>
-`}
-  lang={Language.tsx}
-  size="m"
-/>}/>
+    `}
+    lang={Language.tsx}
+    size="m"
+  />
+</SectionLayout>
 

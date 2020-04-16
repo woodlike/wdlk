@@ -1,5 +1,5 @@
 export default {
-  menu: ['Containers', 'Components', 'Hocs'],
+  menu: ['Components', 'Hooks', 'Hocs'],
   title: '@WDLK Docs',
   typescript: true,
 };

@@ -6,11 +6,31 @@ menu: Components
 import { Code, Language } from '@wdlk/components';
 import { SectionLayout } from '../components';
 import Intro from '../content/code/intro.mdx';
-import IntroCode from '../content/code/intro-code.mdx';
 
-<SectionLayout content={<Intro />} code={
-<IntroCode />}/>
-<SectionLayout content={<Intro />} code={
-<IntroCode />}/>
-<SectionLayout content={<Intro />} code={
-<IntroCode />}/>
+<SectionLayout content={<Intro />}>
+  <Code
+  code={`
+<Heading as="h1" size="xxl">
+  Healing Flowers Collection
+</Heading>
+<Heading as="h2" size="xl">
+  Healing Flowers Collection
+</Heading>
+<Heading as="h3" size="l">
+  Healing Flowers Collection
+</Heading>
+<Heading as="h4" size="m">
+  Healing Flowers Collection
+</Heading>
+<Heading as="h5" size="s">
+  Healing Flowers Collection
+</Heading>
+<Heading as="h5" size="xs">
+  Healing Flowers Collection
+</Heading>
+`}
+  lang={Language.tsx}
+  size="m"
+/>}
+</SectionLayout>
+

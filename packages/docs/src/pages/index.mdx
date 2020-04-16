@@ -1,49 +1,9 @@
 ---
-name: Home
+name: Introduction
 route: /
 ---
 
-import { Docs } from '@wdlk/components';
+import { SectionLayout } from '../components';
+import Index from '../content/index.mdx';
 
-<Docs.Logo
-  minX={0}
-  minY={0}
-  width={92}
-  height={46}
-  size="XL"
-  title="Woodlike Docs"
-  desc="Discover the guidelines and thought processes behind our APIs and design system approach."
-  path={<Docs.Path />}/>
-
-# @WDLK Docs
-
-Discover the guidelines and thought processes behind our APIs and design system approach.
-
-Docs is a comprehensive reference to our React component architecture, guidelines, and signatures. Components are divided into two pillars; UI/design and UX/behavior which constitutes the two major concerns in front-end development. Technically we refer to these two pillars as Components and Containers.
-
-## Motivation
-
-Our software design desitions are based on many years of experience building **large scale design systems** consumed by multiple product teams. We've recognized that interface design requirements change continually and faster than behavior, on the flip side, user experience needs to be consistent and endure the lifetime of ever-changing interfaces. Closing the gap in a coherent design system.
-
-## Benefits
-
-Our goal is to provide a composable, scalable and reusable component library that speeds up your web application development without compromising corporate identity coherency. It also enables frictionless change requests by separating concerns into these two pillars. We provide an opinionated implementation that is extensible to your application needs and coherent to a design system guidelines.
-
-### Technology Landscape
-
-- React
-- Theme-UI
-- Emotion
-- Typescript
-
-## Components
-
-Are reusable stateless functional components that are coherent to a design system. It uses [Theme-UI](https://theme-ui.com/) under the hood to provide a design system constrained development. With this approach, the theme object becomes the heart of a user interface identity without setting constraints on layout and design decisions.
-
-## Containers
-
-Containers are stateful render-less functional components using the render props technique or/and React's context to offer cross-cutting behavior concerns. It also opens browser-related imperative APIs directly into React's declarative component composition. It provides UXs consistency avoiding the repeated implementation of stateful behavioral patterns within your web application.
-
-### Side Note
-
-You might have noticed that we use the word coherent when we speak about design compliance. Let's elaborate a little bit more into that, for example, a company might offer different applications, their look might be slightly different like different colors and tokens, and yet both of them suggest they belong to one organization. In our opinion, a good design system offers coherency across several applications without compromising a web application's extensibility and flexibility.
+<SectionLayout content={<Index />} />
