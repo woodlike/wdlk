@@ -2571,6 +2571,24 @@
     theme-query "1.5.0"
     theme-ui "^0.2.49"
 
+"@wdlk/components@^1.9.4":
+  version "1.11.4"
+  resolved "https://registry.yarnpkg.com/@wdlk/components/-/components-1.11.4.tgz#6729616f46a588edae2cb1afc8e89cd7b75c6802"
+  integrity sha512-3JGAlgoG4CtInPbCcFCL/UZyBDSlqY3/AmLfyRRcdZzpZYhUBczaWiu3PZo5Hjdi4ymTV88e//RSKC6wUu1a/Q==
+  dependencies:
+    "@emotion/core" "^10.0.22"
+    "@theme-ui/components" "^0.3.1"
+    "@theme-ui/presets" "^0.3.0"
+    emotion-theming "^10.0.19"
+    prism-react-renderer "^1.0.2"
+    prismjs "^1.19.0"
+    react "^16.12.0"
+    react-dom "^16.12.0"
+    react-feather "^2.0.3"
+    shortid "^2.2.15"
+    theme-query "1.5.0"
+    theme-ui "^0.2.49"
+
 "@webassemblyjs/ast@1.8.5":
   version "1.8.5"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.8.5.tgz#51b1c5fe6576a34953bf4b253df9f0d490d9e359"
