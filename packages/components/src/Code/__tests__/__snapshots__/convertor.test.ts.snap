@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`convertor() Create theme map should match the snapshot map 1`] = `
+Map {
+  "comment" => Object {
+    "color": "rgb(95, 97, 103)",
+  },
+  "keyword" => Object {
+    "color": "rgb(199, 77, 238)",
+  },
+  "punctuation" => Object {
+    "color": "rgb(238, 238, 238)",
+  },
+  "arrow" => Object {
+    "color": "rgb(238, 238, 238)",
+  },
+  "attr-name" => Object {
+    "color": "rgb(255, 230, 109)",
+  },
+  "parameter" => Object {
+    "color": "rgb(255, 230, 109)",
+  },
+  "script-punctuation" => Object {
+    "color": "rgb(238, 93, 67)",
+  },
+  "function" => Object {
+    "color": "rgb(238, 93, 67)",
+  },
+  "script" => Object {
+    "color": "rgb(7, 212, 182)",
+  },
+  "variable" => Object {
+    "color": "rgb(249, 38, 114)",
+  },
+  "constant" => Object {
+    "color": "rgb(249, 38, 114)",
+  },
+  "tag" => Object {
+    "color": "rgb(249, 38, 114)",
+  },
+  "char" => Object {
+    "color": "rgb(249, 38, 114)",
+  },
+  "number" => Object {
+    "color": "rgb(243, 156, 18)",
+  },
+  "builtin" => Object {
+    "color": "rgb(255, 230, 109)",
+  },
+  "at-rule" => Object {
+    "color": "rgb(255, 230, 109)",
+  },
+  "class-name" => Object {
+    "color": "rgb(255, 230, 109)",
+  },
+  "string" => Object {
+    "color": "rgb(124, 183, 255)",
+  },
+  "changed" => Object {
+    "color": "rgb(124, 183, 255)",
+  },
+  "operator" => Object {
+    "color": "rgb(238, 93, 67)",
+  },
+  "deleted" => Object {
+    "color": "rgb(238, 93, 67)",
+  },
+  "inserted" => Object {
+    "color": "rgb(150, 224, 114)",
+  },
+}
+`;
