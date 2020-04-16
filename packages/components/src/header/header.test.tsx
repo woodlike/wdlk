@@ -5,7 +5,7 @@ import { matchers } from 'jest-emotion';
 
 import * as Nav from '../navigation';
 import { Header } from './';
-import { Logo } from '../logo';
+import { Logo } from '..';
 
 expect.extend(matchers);
 expect.extend(toHaveNoViolations);
