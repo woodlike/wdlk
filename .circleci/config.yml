@@ -33,8 +33,10 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
+      - run: yarn build:components
       - run: yarn test:containers
       - run: yarn test:theme-query
+      - run: yarn test:components
       - run: yarn lint:containers
       - run: yarn lint:components
       - run: yarn lint:theme-query
