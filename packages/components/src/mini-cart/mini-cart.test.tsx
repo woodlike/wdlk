@@ -4,7 +4,7 @@ import { axe, toHaveNoViolations } from 'jest-axe';
 import { matchers } from 'jest-emotion';
 
 import { MiniCart, CartLink, MiniCartLink } from './';
-import { Cart } from '../cart';
+import { Cart } from '..';
 
 expect.extend(matchers);
 expect.extend(toHaveNoViolations);
