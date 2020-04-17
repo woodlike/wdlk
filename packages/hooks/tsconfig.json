@@ -1,16 +1,8 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "./lib",
-    "alwaysStrict": false,
-    "strict": true,
-    "noImplicitUseStrict": true,
+    "outDir": "./lib"
   },
-  "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    "./node_modules/**/*",
-    "./lib/**/*"
-  ]
+  "include": ["src/**/*"],
+  "exclude": ["./node_modules/**/*", "./lib/**/*"]
 }
