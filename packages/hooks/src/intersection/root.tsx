@@ -41,7 +41,7 @@ export const Root: React.FC<IntersectionProps> = (props): JSX.Element => {
   const data = {
     options: {
       ...options,
-      threshold: options?.threshold || calcThreshold(steps),
+      threshold: (options && options.threshold) || calcThreshold(steps),
     },
   };
 

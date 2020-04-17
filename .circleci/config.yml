@@ -34,10 +34,11 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
 
       - run: yarn build:components
-      - run: yarn test:containers
+      - run: yarn build:hooks
+      - run: yarn test:hooks
       - run: yarn test:theme-query
       - run: yarn test:components
-      - run: yarn lint:containers
+      - run: yarn lint:hooks
       - run: yarn lint:components
       - run: yarn lint:theme-query
       - run: yarn lint:docs
