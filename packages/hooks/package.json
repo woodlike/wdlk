@@ -1,8 +1,14 @@
 {
-  "name": "@wdlk/containers",
+  "name": "@wdlk/hooks",
   "version": "1.0.0",
   "private": false,
-  "description": "Renderless React Components",
+  "description": "Reusable stateful UX behavior",
+  "keywords": [
+    "react",
+    "reactjs",
+    "hooks",
+    "state"
+  ],
   "repository": "https://github.com/woodlike/wdlk",
   "license": "MIT",
   "author": "Mauricio Palma <mauricio.palma@woodlikeocean.com>",
@@ -22,6 +28,7 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
+    "@testing-library/react-hooks": "^3.2.1",
     "@types/jest": "^24.0.23",
     "@types/react": "^16.9.13",
     "@types/react-dom": "^16.9.4",

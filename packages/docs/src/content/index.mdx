@@ -2,7 +2,7 @@
 
 Discover the guidelines and thought processes behind our APIs and design system approach.
 
-Docs is a comprehensive reference to our React component architecture, guidelines, and signatures. Components are divided into two pillars; UI/design and UX/behavior which constitutes the two major concerns in front-end development. Technically we refer to these two pillars as Components and Containers.
+Docs is a comprehensive reference to our React component architecture, guidelines, and signatures. Components are divided into two pillars; UI/design and UX/behavior which constitutes the two major concerns in front-end development. Technically we refer to these two pillars as Components and UX Hooks.
 
 ## Motivation
 
@@ -23,10 +23,10 @@ Our goal is to provide a composable, scalable and reusable component library tha
 
 Are reusable stateless functional components that are coherent to a design system. It uses [Theme-UI](https://theme-ui.com/) under the hood to provide a design system constrained development. With this approach, the theme object becomes the heart of a user interface identity without setting constraints on layout and design decisions.
 
-## Containers
+## UX Hooks
 
-Containers are stateful render-less functional components using the render props technique or/and React's context to offer cross-cutting behavior concerns. It also opens browser-related imperative APIs directly into React's declarative component composition. It provides UXs consistency avoiding the repeated implementation of stateful behavioral patterns within your web application.
+UX Hooks are reusable stateful functions and helpers that provide different types of UX behavior to your React components. It creates state and passes down the UX logic to the children, so you can handle your behavior. It also opens browser relevant imperative APIs directly into React's declarative component composition. It provides UXs consistency avoiding the repeated implementation of stateful behavioral patterns within your web application. For more detailed information about Hooks, you can take a look at the [docs](https://reactjs.org/docs/hooks-reference.html).
 
 ### Side Note
 
-You might have noticed that we use the word coherent when we speak about design compliance. Let's elaborate a little bit more into that, for example, a company might offer different applications, their look might be slightly different like different colors and tokens, and yet both of them suggest they belong to one organization. In our opinion, a good design system offers coherency across several applications without compromising a web application's extensibility and flexibility.
+You might have noticed that we use the word coherent when we speak about design compliance. Let's elaborate a little bit more into that, for example, a company might offer different applications, their looks might be slightly different like different colors and tokens, and yet both of them suggest they belong to one organization. In our opinion, a good design system offers coherency across several applications without compromising a web application's extensibility and flexibility.
