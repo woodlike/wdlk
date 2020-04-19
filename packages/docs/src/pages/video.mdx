@@ -4,40 +4,11 @@ menu: Components
 ---
 import { Code, Language } from '@wdlk/components';
 import { SectionLayout } from '../components';
-import Video from '../content/video.mdx';
+import VideoDocument, { demo } from '../content/video.mdx';
 
-<SectionLayout content={<Video />}>
+<SectionLayout content={<VideoDocument />}>
   <Code
-  code={`
-  <Video.Container render={data => (
-      <Video.Stage
-      headline="Healing Flowers"
-      tag="h1"
-      muted={data.isMuted}
-      handleClick={() => data.setMuted(!data.isMuted)}
-      copy="Sustainable surf and yoga collection in collaboration with @facingblankpages">
-      <Video.Media
-        controls={false}
-        autoPlay={true}
-        loop={true}
-        muted={data.isMuted}
-        ref={data.videoRef}
-        sources={[
-          {
-            id: 'first-demo-video-mp4',
-            src: '/woodlike-sustainable-swimwear-healing-flowers-large.mp4',
-            type: 'video/mp4',
-          },
-          {
-            id: 'first-demo-video-web',
-            src: '/woodlike-sustainable-swimwear-healing-flowers-large.webm',
-            type: 'video/webm',
-          },
-        ]}
-      />
-    </Video.Stage>
-  )}/>
-  `}
+    code={demo}
     lang={Language.tsx}
     size="m"
   />

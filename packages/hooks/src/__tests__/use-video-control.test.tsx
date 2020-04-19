@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook, act } from '@testing-library/react-hooks';
 import { useVideoControl } from '..';
 
 const TestVideo: React.FC = () => {
@@ -27,11 +27,32 @@ describe('use-video-control', () => {
   });
   it('should return true for a muted video as default', () => {
     const { result } = renderHook(() => useVideoControl());
-    expect(result.current.isMuted).toBeTruthy();
+    expect(result.current.mute).toBeTruthy();
   });
 
   it('should return false for a muted video', () => {
     const { result } = renderHook(() => useVideoControl(false));
-    expect(result.current.isMuted).toBeFalsy();
+    expect(result.current.mute).toBeFalsy();
+  });
+
+  it('should set the mute state to false and return it', () => {
+    const { result } = renderHook(() => useVideoControl(false));
+
+    act(() => {
+      result.current.setMute(false);
+    });
+
+    expect(result.current.mute).toBeFalsy();
+  });
+
+  it('should set the mute state to true and return it', () => {
+    const { result } = renderHook(() => useVideoControl(false));
+
+    act(() => {
+      result.current.setMute(false);
+      result.current.setMute(true);
+    });
+
+    expect(result.current.mute).toBeTruthy();
   });
 });

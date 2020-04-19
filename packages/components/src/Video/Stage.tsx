@@ -11,7 +11,7 @@ export interface VideoStageProps {
   readonly tag: string;
   readonly copy: string;
   readonly muted: boolean;
-  handleClick(): React.MouseEventHandler<SVGElement>;
+  handleClick(): void;
 }
 
 const stylesStageWrapper: SxStyleProp = {

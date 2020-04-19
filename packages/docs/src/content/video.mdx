@@ -1,4 +1,6 @@
 import { Video } from '@wdlk/components';
+import { useVideoControl } from '@wdlk/hooks';
+import { useState } from 'react';
 
 # Video Stage
 
@@ -6,31 +8,71 @@ Art directing videos on three different devices.
 
 ## Fully functional Video Stage Example
 
-<Video.Container render={data => (
+export function DemoVideo() {
+  const { videoRef, mute, setMute } = useVideoControl();
+  return (
     <Video.Stage
-    headline="Healing Flowers"
-    tag="h1"
-    muted={data.isMuted}
-    handleClick={() => data.setMuted(!data.isMuted)}
-    copy="Sustainable surf and yoga collection in collaboration with @facingblankpages">
-    <Video.Media
-      controls={false}
-      autoPlay={true}
-      loop={true}
-      muted={data.isMuted}
-      ref={data.videoRef}
-      sources={[
-        {
-          id: 'first-demo-video-mp4',
-          src: '/woodlike-sustainable-swimwear-healing-flowers-large.mp4',
-          type: 'video/mp4',
-        },
-        {
-          id: 'first-demo-video-web',
-          src: '/woodlike-sustainable-swimwear-healing-flowers-large.webm',
-          type: 'video/webm',
-        },
-      ]}
-    />
-  </Video.Stage>
-)}/>
+      headline="Healing Flowers"
+      tag="h1"
+      muted={mute}
+      handleClick={() => setMute(!mute)}
+      copy="Sustainable surf and yoga collection in collaboration with @facingblankpages">
+      <Video.Media
+        controls={false}
+        autoPlay={true}
+        loop={true}
+        muted={mute}
+        ref={videoRef}
+        preload="auto"
+        sources={[
+          {
+            id: 'first-demo-video-mp4',
+            src: '/woodlike-sustainable-swimwear-healing-flowers-large.mp4',
+            type: 'video/mp4',
+          },
+          {
+            id: 'first-demo-video-web',
+            src: '/woodlike-sustainable-swimwear-healing-flowers-large.webm',
+            type: 'video/webm',
+          },
+        ]}
+      />
+    </Video.Stage>
+  );
+}
+<DemoVideo />;
+
+export const demo = `
+export const DemoVideo = () => {
+  const { videoRef, mute, setMute } = useVideoControl();
+  return (
+    <Video.Stage
+      headline="Healing Flowers"
+      tag="h1"
+      muted={mute}
+      handleClick={() => setMute(!mute)}
+      copy="Sustainable surf and yoga collection in collaboration with @facingblankpages">
+      <Video.Media
+        controls={false}
+        autoPlay={true}
+        loop={true}
+        muted={mute}
+        ref={videoRef}
+        preload="auto"
+        sources={[
+          {
+            id: 'first-demo-video-mp4',
+            src: '/woodlike-sustainable-swimwear-healing-flowers-large.mp4',
+            type: 'video/mp4',
+          },
+          {
+            id: 'first-demo-video-web',
+            src: '/woodlike-sustainable-swimwear-healing-flowers-large.webm',
+            type: 'video/webm',
+          },
+        ]}
+      />
+    </Video.Stage>
+  );
+};
+`;
