@@ -1,16 +1,16 @@
 import { useRef, useState, RefObject } from 'react';
 
 export interface VideoControlState {
-  readonly isMuted: boolean;
-  readonly setMuted: React.Dispatch<React.SetStateAction<boolean>>;
+  readonly mute: boolean;
+  readonly setMute: React.Dispatch<React.SetStateAction<boolean>>;
   readonly videoRef: RefObject<HTMLVideoElement>;
   readonly play: () => Promise<void>;
   readonly pause: () => void;
 }
 
-export function useVideoControl(mute = true): VideoControlState {
+export function useVideoControl(muted = true): VideoControlState {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isMuted, setMuted] = useState<boolean>(mute);
+  const [mute, setMute] = useState<boolean>(muted);
 
   const play = async (): Promise<void> => {
     try {
@@ -32,8 +32,8 @@ export function useVideoControl(mute = true): VideoControlState {
 
   return {
     videoRef,
-    isMuted,
-    setMuted,
+    mute,
+    setMute,
     pause,
     play,
   };
