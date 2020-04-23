@@ -4,11 +4,11 @@ menu: Components
 ---
 import { Code, Language } from '@wdlk/components';
 import { SectionLayout } from '../components';
-import VideoDocument, { demo } from '../content/video.mdx';
+import VideoDocument, { displayCode } from '../content/video.mdx';
 
 <SectionLayout content={<VideoDocument />}>
   <Code
-    code={demo}
+    code={displayCode}
     lang={Language.tsx}
     size="m"
   />
