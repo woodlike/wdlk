@@ -3,7 +3,7 @@
 const { createCompiler } = require('@mdx-js/mdx');
 const { createFilePath } = require('gatsby-source-filesystem');
 const { basename } = require('path');
-const uuidv5 = require('uuid/v5');
+const uuid = require('uuid');
 const vfile = require('vfile');
 
 const createDocsNode = init => ({
@@ -11,7 +11,7 @@ const createDocsNode = init => ({
   baseName: init.baseName,
   parent: init.parent,
   children: [],
-  transcluded: [],
+  transclusions: [],
   internal: {
     type: 'Document',
     content: init.content,
@@ -21,7 +21,7 @@ const createDocsNode = init => ({
 
 const createDocTranscluded = init => ({
   documentation: init.documentation,
-  display: init.display,
+  ...(init.display ? { display: init.display } : null),
 });
 
 const sanitizeSlugPath = value => {
@@ -34,41 +34,53 @@ const sanitizeSlugPath = value => {
   return strings.splice(idx === 1 ? idx + 1 : 1, 1).join('/');
 };
 
-exports.sourceNodes = ({ getNodesByType }) => {
+exports.sourceNodes = ({ actions, getNodesByType }) => {
+  const { createNode } = actions;
   const nodes = getNodesByType('Mdx');
   const mdxCompiler = createCompiler();
-  const docCollection = [];
-  const NAMESPACE = '1b671a64-40d5-491e-99b0-da01ff1f3341';
+  const docs = [];
+
   nodes.forEach(node => {
     if (node.internal.type === 'Mdx') {
       const mdxAst = mdxCompiler.parse(vfile(node.internal.content));
       const displayNode = mdxAst.children.find(
         ({ type, value }) => typeof value === 'string' && value.includes('displayCode') && type === 'export',
       );
+      const doc = docs.find(({ baseName }) => baseName && baseName === basename(node.fileAbsolutePath));
+      if (doc) {
+        doc.transclusionList.push(
+          createDocTranscluded({
+            documentation: node.internal.content,
+            ...(displayNode && { display: displayNode }),
+          }),
+        );
+        return;
+      }
+
       const initDocNode = {
         ...createDocsNode({
-          id: uuidv5(basename(node.fileAbsolutePath), NAMESPACE),
+          id: uuid.v5(basename(node.fileAbsolutePath), '1b671a64-40d5-491e-99b0-da01ff1f3341'),
           baseName: basename(node.fileAbsolutePath),
           parent: node.parent,
-          children: [],
+          children: Array.isArray(node.children) ? [...node.children] : [],
           internal: {
-            content: node.content,
-            description: node.description,
+            content: node.internal.content,
+            ...(node.internal.description && { description: node.internal.description }),
           },
         }),
       };
 
-      initDocNode.transcluded.push(
+      initDocNode.transclusions.push(
         createDocTranscluded({
-          documentation: node.content,
+          documentation: node.internal.content,
           ...(displayNode && { display: displayNode }),
         }),
       );
-      //TODO: merge documents of the same category
-      // create Gatsby Node
-      docCollection.push(initDocNode);
+      docs.push(initDocNode);
     }
   });
+  //TODO: include proper content, contentDigest and description
+  //TODO: createNode
 };
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
@@ -87,23 +99,22 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 };
 
-exports.createPages = async ({ graphql, reporter }) => {
-  const result = await graphql(`
-    query {
-      allMdx {
-        edges {
-          node {
-            id
-            fields {
-              slug
-            }
-            mdxAST
-          }
-        }
-      }
-    }
-  `);
-  if (result.errors) {
-    reporter.panicOnBuild('🚨  ERROR: Loading "createPages" query');
-  }
-};
+// exports.createPages = async ({ graphql, reporter }) => {
+//   const result = await graphql(`
+//     query {
+//       allMdx {
+//         edges {
+//           node {
+//             id
+//             fields {
+//               slug
+//             }
+//           }
+//         }
+//       }
+//     }
+//   `);
+//   if (result.errors) {
+//     reporter.panicOnBuild('🚨  ERROR: Loading "createPages" query');
+//   }
+// };
