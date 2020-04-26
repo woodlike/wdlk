@@ -36,7 +36,9 @@
     "@types/react-dom": "^16.9.4",
     "eslint-plugin-mdx": "^1.6.8",
     "gatsby-plugin-typescript": "^2.2.0",
+    "remark-frontmatter": "^2.0.0",
     "uuid": "^7.0.3",
-    "vfile": "^4.1.0"
+    "vfile": "^4.1.0",
+    "yaml": "^1.9.2"
   }
 }

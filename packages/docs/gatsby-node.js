@@ -2,26 +2,28 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 const { createCompiler } = require('@mdx-js/mdx');
 const { createFilePath } = require('gatsby-source-filesystem');
-const { basename } = require('path');
+const crypto = require('crypto');
+const detectFrontmatter = require('remark-frontmatter');
 const uuid = require('uuid');
 const vfile = require('vfile');
 
 const createDocsNode = init => ({
   id: init.id,
-  baseName: init.baseName,
+  docName: init.docName,
   parent: init.parent,
   children: [],
   transclusions: [],
   internal: {
     type: 'Document',
-    content: init.content,
-    description: init.description,
+    contentDigest: init.internal.contentDigest,
+    content: init.internal.content,
+    ...(init.internal.description && { description: init.internal.description }),
   },
 });
 
-const createDocTranscluded = init => ({
+const createDocTransclusions = init => ({
   documentation: init.documentation,
-  ...(init.display ? { display: init.display } : null),
+  ...(init.codeDisplay && { codeDisplay: init.codeDisplay }),
 });
 
 const sanitizeSlugPath = value => {
@@ -34,24 +36,37 @@ const sanitizeSlugPath = value => {
   return strings.splice(idx === 1 ? idx + 1 : 1, 1).join('/');
 };
 
-exports.sourceNodes = ({ actions, getNodesByType }) => {
-  const { createNode } = actions;
-  const nodes = getNodesByType('Mdx');
-  const mdxCompiler = createCompiler();
+const getFrontmatterName = mdxAst => {
+  const node = mdxAst.children.find(node => node.type === 'yaml' && node.value);
+  return node
+    ? node.value
+      .split(/\n/g)
+      .splice(0, 1)
+      .join('')
+      .replace(/name:/g, '')
+      .trim()
+    : '';
+};
+
+const createDocs = nodes => {
+  const mdxCompiler = createCompiler({ remarkPlugins: [detectFrontmatter] });
   const docs = [];
 
   nodes.forEach(node => {
     if (node.internal.type === 'Mdx') {
       const mdxAst = mdxCompiler.parse(vfile(node.internal.content));
-      const displayNode = mdxAst.children.find(
-        ({ type, value }) => typeof value === 'string' && value.includes('displayCode') && type === 'export',
+      const codeDisplay = mdxAst.children.find(
+        ({ type, value }) => typeof value === 'string' && value.includes('codeDisplay') && type === 'export',
       );
-      const doc = docs.find(({ baseName }) => baseName && baseName === basename(node.fileAbsolutePath));
+
+      const name = getFrontmatterName(mdxAst);
+      const doc = docs.find(({ docName }) => docName && docName === name);
+
       if (doc) {
-        doc.transclusionList.push(
-          createDocTranscluded({
+        doc.transclusions.push(
+          createDocTransclusions({
             documentation: node.internal.content,
-            ...(displayNode && { display: displayNode }),
+            ...(codeDisplay && { codeDisplay }),
           }),
         );
         return;
@@ -59,33 +74,39 @@ exports.sourceNodes = ({ actions, getNodesByType }) => {
 
       const initDocNode = {
         ...createDocsNode({
-          id: uuid.v5(basename(node.fileAbsolutePath), '1b671a64-40d5-491e-99b0-da01ff1f3341'),
-          baseName: basename(node.fileAbsolutePath),
+          id: uuid.v5(name, '1b671a64-40d5-491e-99b0-da01ff1f3341'),
+          docName: name,
           parent: node.parent,
           children: Array.isArray(node.children) ? [...node.children] : [],
           internal: {
             content: node.internal.content,
+            contentDigest: crypto
+              .createHash('sha256')
+              .update(name)
+              .digest('hex'),
             ...(node.internal.description && { description: node.internal.description }),
           },
         }),
       };
 
       initDocNode.transclusions.push(
-        createDocTranscluded({
+        createDocTransclusions({
           documentation: node.internal.content,
-          ...(displayNode && { display: displayNode }),
+          ...(codeDisplay && { codeDisplay }),
         }),
       );
       docs.push(initDocNode);
     }
   });
-  //TODO: include proper content, contentDigest and description
-  //TODO: createNode
+  return docs;
 };
+
+exports.sourceNodes = ({ actions: { createNode }, getNodesByType }) =>
+  createDocs(getNodesByType('Mdx')).forEach(node => createNode(node));
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
-  if (node.internal.type === 'Mdx') {
+  if (node.internal.type === 'Document') {
     const value = createFilePath({ node, getNode });
     const path =
       node.frontmatter && node.frontmatter.menu
