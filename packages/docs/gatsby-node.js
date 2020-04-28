@@ -2,16 +2,19 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 const { createCompiler } = require('@mdx-js/mdx');
 const { createFilePath } = require('gatsby-source-filesystem');
+const { resolve } = require('path');
 const crypto = require('crypto');
 const detectFrontmatter = require('remark-frontmatter');
 const uuid = require('uuid');
 const vfile = require('vfile');
+const yaml = require('yaml');
 
 const createDocsNode = init => ({
   id: init.id,
   docName: init.docName,
   parent: init.parent,
   children: [],
+  frontmatter: init.frontmatter,
   transclusions: [],
   internal: {
     type: 'Document',
@@ -36,16 +39,9 @@ const sanitizeSlugPath = value => {
   return strings.splice(idx === 1 ? idx + 1 : 1, 1).join('/');
 };
 
-const getFrontmatterName = mdxAst => {
+const getFrontmatter = mdxAst => {
   const node = mdxAst.children.find(node => node.type === 'yaml' && node.value);
-  return node
-    ? node.value
-      .split(/\n/g)
-      .splice(0, 1)
-      .join('')
-      .replace(/name:/g, '')
-      .trim()
-    : '';
+  return node ? yaml.parse(node.value) : { name: '', menu: '' };
 };
 
 const createDocs = nodes => {
@@ -59,9 +55,8 @@ const createDocs = nodes => {
         ({ type, value }) => typeof value === 'string' && value.includes('codeDisplay') && type === 'export',
       );
 
-      const name = getFrontmatterName(mdxAst);
-      const doc = docs.find(({ docName }) => docName && docName === name);
-
+      const frontmatter = getFrontmatter(mdxAst);
+      const doc = docs.find(({ docName }) => docName && docName === frontmatter.name);
       if (doc) {
         doc.transclusions.push(
           createDocTransclusions({
@@ -74,15 +69,16 @@ const createDocs = nodes => {
 
       const initDocNode = {
         ...createDocsNode({
-          id: uuid.v5(name, '1b671a64-40d5-491e-99b0-da01ff1f3341'),
-          docName: name,
+          id: uuid.v5(frontmatter.name, '1b671a64-40d5-491e-99b0-da01ff1f3341'),
+          docName: frontmatter.name,
           parent: node.parent,
           children: Array.isArray(node.children) ? [...node.children] : [],
+          frontmatter,
           internal: {
             content: node.internal.content,
             contentDigest: crypto
               .createHash('sha256')
-              .update(name)
+              .update(frontmatter.name)
               .digest('hex'),
             ...(node.internal.description && { description: node.internal.description }),
           },
@@ -120,22 +116,34 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 };
 
-// exports.createPages = async ({ graphql, reporter }) => {
-//   const result = await graphql(`
-//     query {
-//       allMdx {
-//         edges {
-//           node {
-//             id
-//             fields {
-//               slug
-//             }
-//           }
-//         }
-//       }
-//     }
-//   `);
-//   if (result.errors) {
-//     reporter.panicOnBuild('🚨  ERROR: Loading "createPages" query');
-//   }
-// };
+exports.createPages = async ({ actions, graphql, reporter }) => {
+  const { createPage } = actions;
+
+  const result = await graphql(`
+    query {
+      allDocument {
+        edges {
+          node {
+            id
+            fields {
+              slug
+            }
+          }
+        }
+      }
+    }
+  `);
+
+  if (result.errors) {
+    reporter.panicOnBuild('🚨  ERROR: Loading "createPages" query');
+  }
+
+  const docs = result.data.allDocument.edges;
+  docs.forEach(({ node }) => {
+    createPage({
+      path: node.fields.slug,
+      component: resolve(`./src/components/Layout.tsx`),
+      context: { id: node.id },
+    });
+  });
+};
