@@ -25,7 +25,7 @@ exports.onCreateNode = async ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
   if (node.internal.type === 'Mdx') {
     const blat = await doc.collect();
-    console.log('****_______++++++');
+    console.log(blat, '****_______++++++');
     console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
     const value = createFilePath({ node, getNode });
     const path =

@@ -8,7 +8,9 @@ import vfile from 'vfile';
 import { DocumentField } from './document-field';
 import { getDisplay, getFrontmatter } from './mdx-ast';
 
-const readContent = async (path: string): Promise<string> =>
+const mdxCompiler = createCompiler({ remarkPlugins: [detectFrontmatter] });
+
+const getContent = async (path: string): Promise<string> =>
   new Promise((resolve, reject) => {
     readFile(path, 'utf-8', (err: unknown, data: string) => {
       if (err) {
@@ -18,7 +20,7 @@ const readContent = async (path: string): Promise<string> =>
     });
   });
 
-const readDirs = async (path: string): Promise<string[]> =>
+const getFileNames = async (path: string): Promise<string[]> =>
   new Promise((resolve, reject) => {
     readdir(path, (err: unknown, files: string[]) => {
       if (err) {
@@ -28,50 +30,50 @@ const readDirs = async (path: string): Promise<string[]> =>
     });
   });
 
-const collect = async (): Promise<DocumentField[] | undefined> => {
-  const basePath = resolve('./content/');
-  const mdxCompiler = createCompiler({ remarkPlugins: [detectFrontmatter] });
-  try {
-    const files = await readDirs(basePath);
-    const contents = Promise.all(
-      files.map(async file => {
-        if (!Boolean(extname(file))) {
-          const files = await readDirs(resolve(basePath, file));
-          Promise.all(
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            files.reduce(async (acc: any, curr: string) => {
-              const data = await readContent(resolve(basePath, curr));
-              const mdxAst = mdxCompiler.parse(vfile(data));
-              const { name } = getFrontmatter(mdxAst);
-              const docIdx = acc.find(doc => doc.name === name);
-              if (docIdx) {
-                const { name, content } = acc.splice(docIdx, 1)[0];
-                return [
-                  ...acc,
-                  {
-                    name,
-                    content: [...content, { body: data, display: getDisplay(mdxAst) }],
-                  },
-                ];
-              }
-              return [...acc];
-            }, []),
-          );
-          return {
-            name: 'not defined',
-            content: [{ body: '', display: '' }],
-          };
-        }
-        const data = await readContent(resolve(basePath, file));
-        const mdxAst = mdxCompiler.parse(vfile(data));
-        const { name } = getFrontmatter(mdxAst);
-        return {
-          name,
-          content: [{ body: data, display: getDisplay(mdxAst) }],
-        };
+const createDocField = async (path: string, files: string[]): Promise<DocumentField[]> => {
+  const contents = Promise.all(
+    files.map(async file => {
+      const data = await getContent(resolve(path, file));
+      const mdxAst = mdxCompiler.parse(vfile(data));
+      const { name } = getFrontmatter(mdxAst);
+      return {
+        name,
+        content: [{ body: data, display: getDisplay(mdxAst) }],
+      };
+    }),
+  );
+  return Promise.resolve(contents) as Promise<DocumentField[]>;
+};
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const foo = async (path: string, files: string[]): Promise<any> => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const contents = await files.reduce(async (prev: Promise<any>, curr: string) => {
+    await prev;
+    const data = await getContent(resolve(path, curr));
+    const mdxAst = mdxCompiler.parse(vfile(data));
+    const { name } = getFrontmatter(mdxAst);
+    console.log(prev, '%%%%%%%%%%%%%', curr);
+    return new Promise(resolve =>
+      resolve({
+        name,
+        content: [{ body: data, display: getDisplay(mdxAst) }],
       }),
     );
+  }, Promise.resolve([]));
+  return contents;
+};
 
+const collect = async (): Promise<DocumentField[] | undefined> => {
+  const basePath = resolve('./content/');
+
+  try {
+    const root = await getFileNames(basePath);
+    const rootFiles = root.filter(file => Boolean(extname(file)));
+    // const files = root.filter(file => !Boolean(extname(file)));
+    const dos = await foo(basePath, rootFiles);
+    console.log('dossssss', dos);
+    const contents = await createDocField(basePath, rootFiles);
     return contents;
   } catch (err) {
     Promise.reject(new Error(`🚨 ERROR collecting content${err}`));
