@@ -1,15 +1,13 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 const { createFilePath } = require('gatsby-source-filesystem');
-
 require('ts-node').register({
   compilerOptions: {
     module: 'commonjs',
     target: 'es2017',
   },
 });
-
-const doc = require('./gatsby/collect-content');
+const source = require('./gatsby/source-nodes');
 
 const sanitizeSlugPath = value => {
   if (typeof value !== 'string') {
@@ -21,12 +19,11 @@ const sanitizeSlugPath = value => {
   return strings.splice(idx === 1 ? idx + 1 : 1, 1).join('/');
 };
 
+exports.sourceNodes = async ({ actions }) => await source.nodes(actions.createNode);
+
 exports.onCreateNode = async ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
   if (node.internal.type === 'Mdx') {
-    const blat = await doc.collect();
-    console.log(blat, '****_______++++++');
-    console.log('^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
     const value = createFilePath({ node, getNode });
     const path =
       node.frontmatter && node.frontmatter.menu
