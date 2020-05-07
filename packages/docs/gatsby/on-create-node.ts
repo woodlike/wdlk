@@ -1,6 +1,6 @@
 import { createFilePath } from 'gatsby-source-filesystem';
 import { Actions, Node } from 'gatsby';
-// import { DocNode } from './source-nodes';
+import { createDocMap } from './docs-map';
 
 export interface AddFieldArgs {
   actions: Actions;
@@ -24,20 +24,27 @@ const sanitizeSlugPath = (value: string): string => {
   return strings.splice(idx === 1 ? idx + 1 : 1, 1).join('/');
 };
 
-const addField = (args: AddFieldArgs): void => {
+const addField = async (args: AddFieldArgs): Promise<void> => {
   const { actions, node, getNode } = args;
   const { createNodeField } = actions;
 
   if (node.internal.type === 'Mdx') {
+    const docs = await createDocMap();
     const path =
       node.frontmatter && node.frontmatter.menu
         ? `${node.frontmatter.menu.toLowerCase()}/${sanitizeSlugPath(createFilePath({ node, getNode }))}`
         : `${sanitizeSlugPath(createFilePath({ node, getNode }))}`;
 
     createNodeField({
-      name: 'slug',
       node,
+      name: 'slug',
       value: `/${path}`,
+    });
+
+    createNodeField({
+      node,
+      name: 'doc',
+      value: docs.get(node.frontmatter.name),
     });
   }
 };

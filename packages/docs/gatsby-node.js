@@ -5,8 +5,6 @@ require('ts-node').register({
     target: 'es2017',
   },
 });
-const source = require('./gatsby/source-nodes');
 const onCreateNode = require('./gatsby/on-create-node');
 
-exports.sourceNodes = async ({ actions }) => await source.nodes(actions.createNode);
-exports.onCreateNode = args => onCreateNode.addField(args);
+exports.onCreateNode = async args => await onCreateNode.addField(args);
