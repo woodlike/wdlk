@@ -10,7 +10,7 @@ import crypto from 'crypto';
 import detectFrontmatter from 'remark-frontmatter';
 import vfile from 'vfile';
 
-import { getDisplay, getFrontmatter } from './mdx-ast';
+import { getDisplay, getFrontmatter } from './mdx-utils';
 
 export interface Content {
   body: string;
@@ -23,7 +23,7 @@ export type DocMap = Map<string, Content[]>;
 
 const mdxCompiler = createCompiler({ remarkPlugins: [detectFrontmatter] });
 
-const read = async (path: string): Promise<string> =>
+export const read = async (path: string): Promise<string> =>
   new Promise((resolve, reject) => {
     readFile(path, 'utf-8', (err: unknown, data: string) => {
       if (err) {
@@ -33,7 +33,7 @@ const read = async (path: string): Promise<string> =>
     });
   });
 
-const readDir = async (path: string): Promise<string[]> =>
+export const readDir = async (path: string): Promise<string[]> =>
   new Promise((resolve, reject) => {
     readdir(path, (err: unknown, files: string[]) => {
       if (err) {
@@ -44,7 +44,7 @@ const readDir = async (path: string): Promise<string[]> =>
   });
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-async function* collect(): AsyncGenerator<string, any, undefined> {
+export async function* collect(): AsyncGenerator<string, any, undefined> {
   const basePath = './content/';
   const dirs = await readDir(resolve(basePath));
 
@@ -60,7 +60,7 @@ async function* collect(): AsyncGenerator<string, any, undefined> {
   }
 }
 
-async function createDocMap(): Promise<DocMap> {
+export async function createDocMap(): Promise<DocMap> {
   const docs = new Map<string, Content[]>();
   const collectedData = await collect();
   for await (const data of collectedData) {
@@ -77,7 +77,7 @@ async function createDocMap(): Promise<DocMap> {
   return docs;
 }
 
-const nodes = async (createNode: Actions['createNode']): Promise<void> => {
+const onNodeSource = async (createNode: Actions['createNode']): Promise<void> => {
   try {
     const docs = await createDocMap();
     for await (const name of docs.keys()) {
@@ -101,4 +101,4 @@ const nodes = async (createNode: Actions['createNode']): Promise<void> => {
   }
 };
 
-exports.nodes = nodes;
+exports.onNodeSource = onNodeSource;
