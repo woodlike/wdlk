@@ -31,7 +31,7 @@ export interface GatsbyNodeInternal {
   description?: string;
 }
 
-export type DocNode = GatsbyNode & { doc: Content[] | undefined };
+export type DocNode = GatsbyNode & { doc: Content[] | undefined; name: string };
 
 export type DocMap = Map<string, Content[]>;
 
@@ -65,12 +65,11 @@ async function* collect(): AsyncGenerator<string, any, undefined> {
   for await (const dir of dirs) {
     if (Boolean(extname(dir))) {
       yield await read(resolve(basePath, dir));
-      break;
-    }
-
-    const files = await readDir(resolve(basePath, dir));
-    for await (const file of files) {
-      yield await read(resolve(basePath, dir, file));
+    } else {
+      const files = await readDir(resolve(basePath, dir));
+      for await (const file of files) {
+        yield await read(resolve(basePath, dir, file));
+      }
     }
   }
 }
@@ -78,7 +77,6 @@ async function* collect(): AsyncGenerator<string, any, undefined> {
 async function createDocMap(): Promise<DocMap> {
   const docs = new Map<string, Content[]>();
   const collectedData = await collect();
-
   for await (const data of collectedData) {
     const mdxAst = mdxCompiler.parse(vfile(data));
     const { name } = getFrontmatter(mdxAst);
@@ -101,6 +99,7 @@ const nodes = async (createNode: (node: DocNode) => Promise<void>): Promise<void
         id: uuidv3(name, '56079aea-8fc9-11ea-bc55-0242ac130003'),
         parent: null,
         children: [],
+        name,
         doc: docs.get(name),
         internal: {
           type: 'DocContent',
