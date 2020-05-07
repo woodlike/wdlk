@@ -1,6 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
 //@ts-ignore
 import { createCompiler } from '@mdx-js/mdx';
+import { Actions, NodeInput } from 'gatsby';
 import { readdir, readFile } from 'fs';
 import { extname, resolve } from 'path';
 import { v3 as uuidv3 } from 'uuid';
@@ -16,22 +17,7 @@ export interface Content {
   display?: string;
 }
 
-export interface GatsbyNode {
-  id: string;
-  parent: string | null;
-  children: unknown[];
-  internal: GatsbyNodeInternal;
-}
-
-export interface GatsbyNodeInternal {
-  type: string;
-  contentDigest: string;
-  content?: string;
-  mediaType?: string;
-  description?: string;
-}
-
-export type DocNode = GatsbyNode & { doc: Content[] | undefined; name: string };
+export type DocNode = NodeInput & { doc: Content[] | undefined; name: string };
 
 export type DocMap = Map<string, Content[]>;
 
@@ -91,13 +77,13 @@ async function createDocMap(): Promise<DocMap> {
   return docs;
 }
 
-const nodes = async (createNode: (node: DocNode) => Promise<void>): Promise<void> => {
+const nodes = async (createNode: Actions['createNode']): Promise<void> => {
   try {
     const docs = await createDocMap();
     for await (const name of docs.keys()) {
       createNode({
         id: uuidv3(name, '56079aea-8fc9-11ea-bc55-0242ac130003'),
-        parent: null,
+        parent: '',
         children: [],
         name,
         doc: docs.get(name),
