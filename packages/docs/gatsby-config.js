@@ -8,8 +8,6 @@ module.exports = {
       },
     },
     'gatsby-plugin-mdx',
-    'gatsby-plugin-typescript',
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-offline',
+    'gatsby-plugin-theme-ui',
   ],
 };

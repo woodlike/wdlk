@@ -12,23 +12,24 @@
     "clean": "gatsby clean",
     "dev": "gatsby develop",
     "lint": "eslint src --ext .ts,.tsx",
-    "serve": "gatsby serve"
+    "serve": "gatsby serve",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@mdx-js/mdx": "^1.6.0",
-    "@mdx-js/react": "^1.6.0",
+    "@mdx-js/mdx": "^1.6.1",
+    "@mdx-js/react": "^1.6.1",
     "@theme-ui/components": "^0.3.1",
     "@theme-ui/presets": "^0.3.0",
     "@wdlk/components": "2.0.0",
     "@wdlk/hooks": "^1.0.0",
-    "gatsby": "^2.19.28",
-    "gatsby-plugin-mdx": "^1.2.4",
-    "gatsby-plugin-offline": "^3.0.35",
-    "gatsby-plugin-sharp": "^2.5.3",
-    "gatsby-transformer-sharp": "^2.4.3",
+    "gatsby": "^2.21.21",
+    "gatsby-plugin-mdx": "^1.2.6",
+    "gatsby-plugin-theme-ui": "^0.3.0",
+    "gatsby-source-filesystem": "^2.3.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
-    "react-helmet-async": "^1.0.4"
+    "react-helmet-async": "^1.0.4",
+    "theme-ui": "^0.3.1"
   },
   "devDependencies": {
     "@emotion/core": "^10.0.28",
@@ -38,10 +39,9 @@
     "@types/react-dom": "^16.9.4",
     "@types/uuid": "^7.0.3",
     "eslint-plugin-mdx": "^1.6.8",
-    "gatsby-plugin-typescript": "^2.2.0",
-    "gatsby-source-filesystem": "^2.3.0",
     "remark-frontmatter": "^2.0.0",
     "ts-node": "^8.9.1",
+    "typescript": "^3.8.3",
     "uuid": "^7.0.3",
     "vfile": "^4.1.0",
     "yaml": "^1.9.2"

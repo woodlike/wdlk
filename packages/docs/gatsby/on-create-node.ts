@@ -1,6 +1,6 @@
 import { createFilePath } from 'gatsby-source-filesystem';
 import { Actions, Node } from 'gatsby';
-import { createDocMap } from './docs-map';
+import { createDocMap } from './docs';
 
 export interface AddFieldArgs {
   actions: Actions;
@@ -43,7 +43,7 @@ const addField = async (args: AddFieldArgs): Promise<void> => {
 
     createNodeField({
       node,
-      name: 'doc',
+      name: 'docs',
       value: docs.get(node.frontmatter.name),
     });
   }

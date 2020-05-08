@@ -12,14 +12,15 @@ import vfile from 'vfile';
 
 import { getDisplay, getFrontmatter } from './mdx-utils';
 
-export interface Content {
+export interface Doc {
+  id: string;
   body: string;
   display?: string;
 }
 
-export type DocNode = NodeInput & { doc: Content[] | undefined; name: string };
+export type DocNode = NodeInput & { doc: Doc[] | undefined; name: string };
 
-export type DocMap = Map<string, Content[]>;
+export type DocMap = Map<string, Doc[]>;
 
 const mdxCompiler = createCompiler({ remarkPlugins: [detectFrontmatter] });
 
@@ -61,15 +62,19 @@ export async function* collect(): AsyncGenerator<string, any, undefined> {
 }
 
 export async function createDocMap(): Promise<DocMap> {
-  const docs = new Map<string, Content[]>();
+  const docs = new Map<string, Doc[]>();
   const collectedData = await collect();
   for await (const data of collectedData) {
     const mdxAst = mdxCompiler.parse(vfile(data));
     const { name } = getFrontmatter(mdxAst);
-    const content = { body: data, display: getDisplay(mdxAst) };
+    const content = {
+      id: uuidv3(data, '56079aea-8fc9-11ea-bc55-0242ac130003'),
+      body: data,
+      display: getDisplay(mdxAst),
+    };
 
     if (docs.has(name) && Array.isArray(docs.get(name))) {
-      docs.set(name, [...(docs.get(name) as Content[]), content]);
+      docs.set(name, [...(docs.get(name) as Doc[]), content]);
     } else {
       docs.set(name, [content]);
     }
@@ -89,10 +94,7 @@ const onNodeSource = async (createNode: Actions['createNode']): Promise<void> =>
         doc: docs.get(name),
         internal: {
           type: 'DocContent',
-          contentDigest: crypto
-            .createHash('sha256')
-            .update(name)
-            .digest('hex'),
+          contentDigest: crypto.createHash('sha256').update(name).digest('hex'),
         },
       });
     }
