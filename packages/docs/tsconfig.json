@@ -3,9 +3,8 @@
   "compilerOptions": {
     "outDir": "./dist",
     "strict": true,
-    "noEmit": true,
     "allowJs": true
   },
-  "include": ["./src", "./gatsby", "./typings.d.ts"],
-  "exclude": ["./node_modules", ".cache/**/*", "./src/**/*.test.tsx", "./src/gatsby-theme-docz/**/*"]
+  "include": ["./src", "./gatsby", "./typings.d.ts", "gatsby-theme-docz"],
+  "exclude": ["./node_modules", ".cache/**/*", "./src/**/*.test.tsx", "gatsby-theme-docz/**/*"]
 }

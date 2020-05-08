@@ -50,7 +50,7 @@ const createStylesContent = (isSingleContent: boolean): SxStyleProp => ({
   ...(isSingleContent ? stylesContentMultiple : stylesContentSingle),
 });
 
-export const SectionLayout: React.FC<SectionLayoutProps> = props => (
+export const SectionLayout: React.FC<SectionLayoutProps> = (props) => (
   <Rows collapseBelow={2} as="article">
     <Row
       sx={createStylesContent(Boolean(props.children))}
