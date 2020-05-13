@@ -19,10 +19,10 @@ export const getDisplay = (ast: PartialMdxAST): string => {
   const node = ast.children.find(
     ({ type, value }) => typeof value === 'string' && value.includes('_display') && type === 'export',
   );
-  return node ? node.value : '';
+  return node ? node.value.replace(/((export const _display = )|`+|;$)/g, '') : '';
 };
 
 export const getFrontmatter = (mdxAst: PartialMdxAST): Frontmatter => {
-  const node = mdxAst.children.find((node) => node.type === 'yaml' && node.value);
+  const node = mdxAst.children.find(node => node.type === 'yaml' && node.value);
   return node ? yaml.parse(node.value) : { menu: '', name: '', title: '' };
 };
