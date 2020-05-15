@@ -3,11 +3,7 @@ import { jsx, SxStyleProp } from 'theme-ui';
 import { Theme } from '@wdlk/components';
 
 const stylesSidebar: SxStyleProp = {
-  position: 'fixed',
-  top: 0,
-  left: 0,
   height: '100%',
-  width: '300px',
   padding: 4,
   boxSizing: 'border-box',
   borderColor: 'border',
@@ -18,7 +14,7 @@ const stylesSidebar: SxStyleProp = {
 };
 
 export const SideBar: React.FC = props => {
-  return <aside sx={stylesSidebar}>{props.children}</aside>;
+  return <div sx={stylesSidebar}>{props.children}</div>;
 };
 
 SideBar.displayName = 'Sidebar';

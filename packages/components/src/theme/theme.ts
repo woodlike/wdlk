@@ -4,6 +4,7 @@ import { theme as themeQuery, Colors, toRGB } from 'theme-query';
 export interface Theme {
   borderStyles: string[];
   borderWidths: number[];
+  breakpoints: string[];
   colors: ThemeColorProps;
   space: number[];
 }

@@ -2,7 +2,7 @@
 import { jsx, SxStyleProp } from 'theme-ui';
 import { Rows, Row, Theme } from '@wdlk/components';
 
-export interface SectionLayoutProps {
+export interface DocSlotProps {
   content: JSX.Element;
 }
 
@@ -12,14 +12,14 @@ const stylesContent: SxStyleProp = {
 };
 
 const stylesContentSingle: SxStyleProp = {
-  [`@media screen and (min-width: 990px)`]: {
+  [`@media screen and (min-width: 1024px)`]: {
     maxWidth: '768px',
     padding: (theme: Theme) => `${theme.space[6]}px ${theme.space[8]}px`,
   },
 };
 
 const stylesContentMultiple: SxStyleProp = {
-  [`@media screen and (min-width: 990px)`]: {
+  [`@media screen and (min-width: 1024px)`]: {
     maxWidth: '50%',
     padding: (theme: Theme) => `${theme.space[6]}px ${theme.space[8]}px`,
     borderColor: (theme: Theme) => theme.colors.grays[0],
@@ -37,7 +37,7 @@ const stylesCode: SxStyleProp = {
   borderWidth: (theme: Theme) => `0 0 ${theme.borderWidths[0]}px`,
   backgroundColor: 'background',
 
-  [`@media screen and (min-width: 990px)`]: {
+  [`@media screen and (min-width: 1024px)`]: {
     maxWidth: '50%',
     padding: (theme: Theme) => `${theme.space[6]}px ${theme.space[4]}px`,
     backgroundColor: 'codeBg',
@@ -50,8 +50,8 @@ const createStylesContent = (isSingleContent: boolean): SxStyleProp => ({
   ...(isSingleContent ? stylesContentMultiple : stylesContentSingle),
 });
 
-export const SectionLayout: React.FC<SectionLayoutProps> = props => (
-  <Rows collapseBelow={2} as="article">
+export const DocSlot: React.FC<DocSlotProps> = props => (
+  <Rows collapseBelow={4} as="article">
     <Row
       sx={createStylesContent(Boolean(props.children))}
       basis={Boolean(props.children) ? '1/2' : 'fluid'}
@@ -66,4 +66,4 @@ export const SectionLayout: React.FC<SectionLayoutProps> = props => (
   </Rows>
 );
 
-SectionLayout.displayName = 'SectionLayout';
+DocSlot.displayName = 'DocSlot';

@@ -5,7 +5,7 @@ import { graphql, Link, NodeInput } from 'gatsby';
 
 import { MDXFrontmatter } from '../../gatsby/on-create-node';
 import { Doc } from '../../gatsby/docs';
-import { SectionLayout } from '.';
+import { DocSlot, LayoutSlot, SideBar } from '.';
 import { Code, Language } from '@wdlk/components';
 
 const shortcodes = { Link };
@@ -33,11 +33,18 @@ export default function DocPageTemplate({ data }: MDXQuery): JSX.Element {
   } = mdx;
   return (
     <MDXProvider components={shortcodes}>
-      {docs.map(doc => (
-        <SectionLayout key={doc.id} content={<MDXRenderer>{mdx.body}</MDXRenderer>}>
-          {Boolean(doc.display) && <Code code={doc.display || ''} lang={Language.tsx} size="m" />}
-        </SectionLayout>
-      ))}
+      <LayoutSlot
+        document={
+          <>
+            {docs.map(doc => (
+              <DocSlot key={doc.id} content={<MDXRenderer>{mdx.body}</MDXRenderer>}>
+                {Boolean(doc.display) && <Code code={doc.display || ''} lang={Language.tsx} size="m" />}
+              </DocSlot>
+            ))}
+          </>
+        }
+        sidebar={<SideBar>Hi MOm</SideBar>}
+      />
     </MDXProvider>
   );
 }
