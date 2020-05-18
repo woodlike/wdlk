@@ -1,12 +1,11 @@
 {
   "name": "@wdlk/docs",
   "version": "1.0.0",
-  "private": false,
-  "description": "Woodlike packages documentation",
+  "private": true,
+  "description": "@wdlk APIs, components, and design systems documentation.",
   "repository": "https://github.com/woodlike/wdlk",
   "license": "MIT",
   "author": "Mauricio Palma <mauricio.palma@woodlikeocean.com>",
-  "main": "dist/index.js",
   "scripts": {
     "build": "gatsby build",
     "clean": "gatsby clean",
@@ -16,34 +15,9 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@mdx-js/mdx": "^1.6.1",
-    "@mdx-js/react": "^1.6.1",
-    "@theme-ui/components": "^0.3.1",
-    "@theme-ui/presets": "^0.3.0",
-    "@wdlk/components": "2.0.0",
-    "@wdlk/hooks": "^1.0.0",
-    "gatsby": "^2.21.21",
-    "gatsby-plugin-mdx": "^1.2.6",
-    "gatsby-plugin-theme-ui": "^0.3.0",
-    "gatsby-source-filesystem": "^2.3.1",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0",
-    "react-helmet-async": "^1.0.4",
-    "theme-ui": "^0.3.1"
-  },
-  "devDependencies": {
-    "@emotion/core": "^10.0.28",
-    "@types/mdx-js__react": "^1.5.1",
-    "@types/node": "^13.13.4",
-    "@types/react": "^16.9.13",
-    "@types/react-dom": "^16.9.4",
-    "@types/uuid": "^7.0.3",
-    "eslint-plugin-mdx": "^1.6.8",
-    "remark-frontmatter": "^2.0.0",
-    "ts-node": "^8.9.1",
-    "typescript": "^3.8.3",
-    "uuid": "^7.0.3",
-    "vfile": "^4.1.0",
-    "yaml": "^1.9.2"
+    "@wdlk/gatsby-theme-docs": "1.0.0",
+    "gatsby": "^2.21.36",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   }
 }

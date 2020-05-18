@@ -35,16 +35,17 @@ const addField = async (args: AddFieldArgs): Promise<void> => {
         ? `${node.frontmatter.menu.toLowerCase()}/${sanitizeSlugPath(createFilePath({ node, getNode }))}`
         : `${sanitizeSlugPath(createFilePath({ node, getNode }))}`;
 
-    createNodeField({
-      node,
-      name: 'slug',
-      value: `/${path}`,
-    });
-
+    console.log('are you going here?????????????????????');
     createNodeField({
       node,
       name: 'docs',
       value: docs.get(node.frontmatter.name),
+    });
+
+    createNodeField({
+      node,
+      name: 'slug',
+      value: `/${path}`,
     });
   }
 };
