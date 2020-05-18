@@ -3,7 +3,7 @@ import { MDXProvider } from '@mdx-js/react';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { graphql, Link, NodeInput } from 'gatsby';
 
-import { MDXFrontmatter } from '../../gatsby/on-create-node';
+import { MDXFrontmatter } from '../../gatsby/create-node';
 import { Doc } from '../../gatsby/docs';
 import { SectionLayout } from '.';
 import { Code, Language } from '@wdlk/components';
