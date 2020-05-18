@@ -2,5 +2,6 @@
     "typescript.tsdk": "node_modules/typescript/lib",
     "prettier.packageManager": "yarn",
     "prettier.configPath": "/Users/mauricio.palma/Projects/wdlk/.prettierrc.js",
-    "prettier.singleQuote": true
+    "prettier.singleQuote": true,
+    "editor.formatOnSave": true
 }

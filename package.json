@@ -32,6 +32,7 @@
     "lint:theme-query": "yarn workspace theme-query lint",
     "prism:components": "yarn workspace @wdlk/components codemod:prism",
     "test:components": "yarn workspace @wdlk/components test",
+    "test:docs": "yarn workspace @wdlk/docs test",
     "test:hooks": "yarn workspace @wdlk/hooks test",
     "test:store": "yarn workspace @wdlk/store test",
     "test:theme-query": "yarn workspace theme-query test",
