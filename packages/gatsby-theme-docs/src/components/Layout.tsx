@@ -33,11 +33,17 @@ export default function DocPageTemplate({ data }: MDXQuery): JSX.Element {
   } = mdx;
   return (
     <MDXProvider components={shortcodes}>
-      {docs.map(doc => (
-        <SectionLayout key={doc.id} content={<MDXRenderer>{mdx.body}</MDXRenderer>}>
-          {Boolean(doc.display) && <Code code={doc.display || ''} lang={Language.tsx} size="m" />}
-        </SectionLayout>
-      ))}
+      {docs.map(doc => {
+        return (
+          <SectionLayout
+            key={doc.id}
+            content={<MDXRenderer>{doc.body}</MDXRenderer>}>
+            {Boolean(doc.display) && (
+              <Code code={doc.display || ''} lang={Language.tsx} size="m" />
+            )}
+          </SectionLayout>
+        );
+      })}
     </MDXProvider>
   );
 }

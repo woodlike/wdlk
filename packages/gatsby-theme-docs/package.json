@@ -21,12 +21,9 @@
     "@theme-ui/presets": "^0.3.0",
     "@wdlk/components": "2.0.0",
     "@wdlk/hooks": "^1.0.0",
-    "gatsby": "^2.21.21",
     "gatsby-plugin-mdx": "^1.2.6",
     "gatsby-plugin-theme-ui": "^0.3.0",
     "gatsby-source-filesystem": "^2.3.1",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0",
     "react-helmet-async": "^1.0.4",
     "theme-ui": "^0.3.1"
   },
@@ -38,6 +35,9 @@
     "@types/react-dom": "^16.9.4",
     "@types/uuid": "^7.0.3",
     "eslint-plugin-mdx": "^1.6.8",
+    "gatsby": "^2.22.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "remark-frontmatter": "^2.0.0",
     "ts-node": "^8.9.1",
     "typescript": "^3.8.3",
@@ -45,9 +45,5 @@
     "vfile": "^4.1.0",
     "yaml": "^1.9.2"
   },
-  "peerDependencies": {
-    "gatsby": "^2.21.36",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
-  }
+  "peerDependencies": {}
 }

@@ -1,6 +1,7 @@
+// TODO: find why TS-Node cant find @mdx declaration file.
 // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
 //@ts-ignore
-import { createCompiler } from '@mdx-js/mdx';
+import mdx, { createCompiler } from '@mdx-js/mdx';
 import { Actions, NodeInput } from 'gatsby';
 import { readdir, readFile } from 'fs';
 import { extname, resolve } from 'path';
@@ -67,9 +68,10 @@ export async function createDocMap(): Promise<DocMap> {
   for await (const data of collectedData) {
     const mdxAst = mdxCompiler.parse(vfile(data));
     const { name } = getFrontmatter(mdxAst);
+    const jsx = await mdx(data);
     const content = {
       id: uuidv3(data, '56079aea-8fc9-11ea-bc55-0242ac130003'),
-      body: data,
+      body: jsx,
       display: getDisplay(mdxAst),
     };
 
@@ -82,7 +84,9 @@ export async function createDocMap(): Promise<DocMap> {
   return docs;
 }
 
-const onNodeSource = async (createNode: Actions['createNode']): Promise<void> => {
+const onNodeSource = async (
+  createNode: Actions['createNode'],
+): Promise<void> => {
   try {
     const docs = await createDocMap();
     for await (const name of docs.keys()) {

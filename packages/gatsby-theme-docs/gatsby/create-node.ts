@@ -35,7 +35,6 @@ const addField = async (args: AddFieldArgs): Promise<void> => {
         ? `${node.frontmatter.menu.toLowerCase()}/${sanitizeSlugPath(createFilePath({ node, getNode }))}`
         : `${sanitizeSlugPath(createFilePath({ node, getNode }))}`;
 
-    console.log('are you going here?????????????????????');
     createNodeField({
       node,
       name: 'docs',
