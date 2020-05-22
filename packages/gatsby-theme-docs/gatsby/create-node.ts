@@ -32,7 +32,9 @@ const addField = async (args: AddFieldArgs): Promise<void> => {
     const docs = await createDocMap();
     const path =
       node.frontmatter && node.frontmatter.menu
-        ? `${node.frontmatter.menu.toLowerCase()}/${sanitizeSlugPath(createFilePath({ node, getNode }))}`
+        ? `${node.frontmatter.menu.toLowerCase()}/${sanitizeSlugPath(
+            createFilePath({ node, getNode }),
+          )}`
         : `${sanitizeSlugPath(createFilePath({ node, getNode }))}`;
 
     createNodeField({

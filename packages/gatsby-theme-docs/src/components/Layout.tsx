@@ -34,10 +34,12 @@ export default function DocPageTemplate({ data }: MDXQuery): JSX.Element {
   return (
     <MDXProvider components={shortcodes}>
       {docs.map(doc => {
+        console.log(mdx.body);
+        console.log(doc.body);
         return (
           <SectionLayout
             key={doc.id}
-            content={<MDXRenderer>{doc.body}</MDXRenderer>}>
+            content={<MDXRenderer>{mdx.body}</MDXRenderer>}>
             {Boolean(doc.display) && (
               <Code code={doc.display || ''} lang={Language.tsx} size="m" />
             )}
@@ -49,15 +51,15 @@ export default function DocPageTemplate({ data }: MDXQuery): JSX.Element {
 }
 
 export const pageQuery = graphql`
-  query BlogPostQuery($id: String) {
+  query DocQuery($id: String) {
     mdx(id: { eq: $id }) {
       id
       body
       fields {
         docs {
           id
-          body
           display
+          body
         }
       }
     }

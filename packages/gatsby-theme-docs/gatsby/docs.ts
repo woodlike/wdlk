@@ -1,4 +1,19 @@
-// TODO: find why TS-Node cant find @mdx declaration file.
+// TODO: find why TS-Node cant find @mdx declaration files.
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const babel = require('@babel/core');
+// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+//@ts-ignore
+import babelObjSpread from '@babel/plugin-proposal-object-rest-spread';
+// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+//@ts-ignore
+import babelRemoveExports from 'babel-plugin-remove-export-keywords';
+// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+//@ts-ignore
+import BabelPluginPluckImports from 'babel-plugin-pluck-imports';
+// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
+//@ts-ignore
+import babelHtmlAttrToJSXAttr from 'gatsby-plugin-mdx/utils/babel-plugin-html-attr-to-jsx-attr';
+
 // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
 //@ts-ignore
 import mdx, { createCompiler } from '@mdx-js/mdx';
@@ -12,6 +27,29 @@ import detectFrontmatter from 'remark-frontmatter';
 import vfile from 'vfile';
 
 import { getDisplay, getFrontmatter } from './mdx-utils';
+
+export const babelPluckImports = new BabelPluginPluckImports();
+
+export const babelOptions = {
+  configFile: false,
+  plugins: [
+    babelPluckImports.plugin,
+    babelObjSpread,
+    babelHtmlAttrToJSXAttr,
+    babelRemoveExports,
+  ],
+  presets: [
+    require('@babel/preset-react'),
+    [
+      require('@babel/preset-env'),
+      {
+        useBuiltIns: `entry`,
+        corejs: 2,
+        modules: false,
+      },
+    ],
+  ],
+};
 
 export interface Doc {
   id: string;
@@ -69,6 +107,7 @@ export async function createDocMap(): Promise<DocMap> {
     const mdxAst = mdxCompiler.parse(vfile(data));
     const { name } = getFrontmatter(mdxAst);
     const jsx = await mdx(data);
+    const compiledJsx = babel.transform(jsx, babelOptions);
     const content = {
       id: uuidv3(data, '56079aea-8fc9-11ea-bc55-0242ac130003'),
       body: jsx,
