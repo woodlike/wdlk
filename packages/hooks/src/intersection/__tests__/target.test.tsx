@@ -14,7 +14,9 @@ describe('<Intersection.Target />', () => {
 
   it('should have rendered with the initial TargetRenderData', () => {
     const renderFn = jest.fn().mockReturnValue(null);
-    const { unmount } = render(<Intersection.Target>{renderFn}</Intersection.Target>);
+    const { unmount } = render(
+      <Intersection.Target>{renderFn}</Intersection.Target>,
+    );
     const data: TargetRenderData = renderFn.mock.calls[0][0];
     expect(renderFn).toHaveBeenCalled();
     expect(data).toMatchSnapshot();
