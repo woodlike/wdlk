@@ -107,10 +107,19 @@ export async function createDocMap(): Promise<DocMap> {
     const mdxAst = mdxCompiler.parse(vfile(data));
     const { name } = getFrontmatter(mdxAst);
     const jsx = await mdx(data);
-    const compiledJsx = babel.transform(jsx, babelOptions);
+    const { code } = babel.transform(jsx, babelOptions);
+
     const content = {
       id: uuidv3(data, '56079aea-8fc9-11ea-bc55-0242ac130003'),
-      body: jsx,
+      body: code
+        .replace(
+          /export\s*default\s*function\s*MDXContent\s*/,
+          `return function MDXContent`,
+        )
+        .replace(
+          /export\s*{\s*MDXContent\s+as\s+default\s*};?/,
+          `return MDXContent;`,
+        ),
       display: getDisplay(mdxAst),
     };
 

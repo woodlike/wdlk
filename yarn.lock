@@ -3655,6 +3655,16 @@ babel-plugin-macros@^2.0.0, babel-plugin-macros@^2.8.0:
     cosmiconfig "^6.0.0"
     resolve "^1.12.0"
 
+babel-plugin-pluck-imports@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/babel-plugin-pluck-imports/-/babel-plugin-pluck-imports-0.0.1.tgz#e5a68b33c66213c62499c0be620ab6583055d9c0"
+  integrity sha512-AkPrrNHUBOckkZgHdF6EY8VVkcwbOnS9IUPif9le3Xw0FquTYeyBLRiMo5P9luA3Iy/qzouMk8IoDSL8cozq8A==
+
+babel-plugin-remove-export-keywords@^1.6.4:
+  version "1.6.4"
+  resolved "https://registry.yarnpkg.com/babel-plugin-remove-export-keywords/-/babel-plugin-remove-export-keywords-1.6.4.tgz#a0b3b6bfd8bd7ec3e7834bbd4ae6f862eac9dfbf"
+  integrity sha512-6SX8IV6EqSfrsXUqL1h0GdK7OYSkv3A0Erag1Uu60QJ8kF0RsaqJVhbLR+GFzMZAfXg97tidECZMHbrmye+S6w==
+
 babel-plugin-remove-graphql-queries@^2.7.19, babel-plugin-remove-graphql-queries@^2.8.2:
   version "2.8.2"
   resolved "https://registry.yarnpkg.com/babel-plugin-remove-graphql-queries/-/babel-plugin-remove-graphql-queries-2.8.2.tgz#a2968ea62e2e39ceaabf95157d915dfee77ee36e"
