@@ -105,6 +105,7 @@ export async function createDocMap(): Promise<DocMap> {
   const collectedData = await collect();
   for await (const data of collectedData) {
     const mdxAst = mdxCompiler.parse(vfile(data));
+    console.log(mdxAst, '************----------');
     const { name } = getFrontmatter(mdxAst);
     const jsx = await mdx(data);
     const { code } = babel.transform(jsx, babelOptions);
