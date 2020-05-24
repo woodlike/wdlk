@@ -18,7 +18,15 @@ export interface IntersectionEntryInit {
   readonly rootBounds?: Pick<DOMRectReadOnly, PickedDOMRect>;
 }
 
-export type PickedDOMRect = 'x' | 'y' | 'width' | 'height' | 'top' | 'right' | 'bottom' | 'left';
+export type PickedDOMRect =
+  | 'x'
+  | 'y'
+  | 'width'
+  | 'height'
+  | 'top'
+  | 'right'
+  | 'bottom'
+  | 'left';
 
 const entryDomRectInitValue: Pick<DOMRectReadOnly, PickedDOMRect> = {
   x: 0,
@@ -39,12 +47,14 @@ const intEntryInitValue: IntersectionEntryInit = {
   rootBounds: { ...entryDomRectInitValue },
 };
 
-export const Target: React.FC<IntersectionTargetProps> = (props): JSX.Element => {
+export const Target: React.FC<IntersectionTargetProps> = (
+  props,
+): JSX.Element => {
   const { options } = useIntersectionCtx();
   const targetRef = React.useRef<unknown>(null);
-  const [intEntryValue, setIntEntryValue] = React.useState<IntersectionObserverEntry>(
-    intEntryInitValue as IntersectionObserverEntry,
-  );
+  const [intEntryValue, setIntEntryValue] = React.useState<
+    IntersectionObserverEntry
+  >(intEntryInitValue as IntersectionObserverEntry);
 
   React.useEffect(() => {
     function updateEntry(entries: IntersectionObserverEntry[]): void {

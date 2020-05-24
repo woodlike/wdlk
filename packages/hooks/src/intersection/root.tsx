@@ -15,7 +15,9 @@ export interface IntersectionCtxData {
   readonly options: IntersectionOptions;
 }
 
-const IntersectionCtx = React.createContext<IntersectionCtxData>({} as IntersectionCtxData);
+const IntersectionCtx = React.createContext<IntersectionCtxData>(
+  {} as IntersectionCtxData,
+);
 IntersectionCtx.displayName = 'Container:IntersectionContext';
 /**
  * @description This Consumer is meant to be used on tests only.
@@ -33,7 +35,9 @@ export function calcThreshold(steps: number): number | number[] {
   if (steps === 1) {
     return 1;
   }
-  return Array.from({ length: steps }).map((_, i) => +(i / steps).toPrecision(2));
+  return Array.from({ length: steps }).map(
+    (_, i) => +(i / steps).toPrecision(2),
+  );
 }
 
 export const Root: React.FC<IntersectionProps> = (props): JSX.Element => {
@@ -45,7 +49,11 @@ export const Root: React.FC<IntersectionProps> = (props): JSX.Element => {
     },
   };
 
-  return <IntersectionCtx.Provider value={data}>{props.children}</IntersectionCtx.Provider>;
+  return (
+    <IntersectionCtx.Provider value={data}>
+      {props.children}
+    </IntersectionCtx.Provider>
+  );
 };
 
 Root.displayName = 'Container:IntersectionRoot';
