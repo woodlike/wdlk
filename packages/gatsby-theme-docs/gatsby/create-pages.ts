@@ -20,7 +20,11 @@ interface MDXNode {
   node: Node & { fields: { slug: string } };
 }
 
-const create = async ({ actions, graphql, reporter }: CreatePagesArgs): Promise<void> => {
+const create = async ({
+  actions,
+  graphql,
+  reporter,
+}: CreatePagesArgs): Promise<void> => {
   const { createPage } = actions;
 
   const result: MDXQuery = await graphql(`

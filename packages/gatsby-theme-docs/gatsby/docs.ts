@@ -1,32 +1,21 @@
-// TODO: find why TS-Node cant find @mdx declaration files.
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const babel = require('@babel/core');
-// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-//@ts-ignore
-import babelObjSpread from '@babel/plugin-proposal-object-rest-spread';
-// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-//@ts-ignore
-import babelRemoveExports from 'babel-plugin-remove-export-keywords';
-// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-//@ts-ignore
-import BabelPluginPluckImports from 'babel-plugin-pluck-imports';
-// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-//@ts-ignore
-import babelHtmlAttrToJSXAttr from 'gatsby-plugin-mdx/utils/babel-plugin-html-attr-to-jsx-attr';
-
-// eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-//@ts-ignore
-import mdx, { createCompiler } from '@mdx-js/mdx';
 import { Actions, NodeInput } from 'gatsby';
 import { readdir, readFile } from 'fs';
 import { extname, resolve } from 'path';
 import { v3 as uuidv3 } from 'uuid';
-
 import crypto from 'crypto';
 import detectFrontmatter from 'remark-frontmatter';
 import vfile from 'vfile';
-
 import { getDisplay, getFrontmatter } from './mdx-utils';
+
+// Using require to avoid error TS7016:
+// Could not find a declaration file for module
+const babel = require('@babel/core');
+const { createCompiler } = require('@mdx-js/mdx');
+const mdx = require('@mdx-js/mdx');
+const babelObjSpread = require('@babel/plugin-proposal-object-rest-spread');
+const babelRemoveExports = require('babel-plugin-remove-export-keywords');
+const BabelPluginPluckImports = require('babel-plugin-pluck-imports');
+const babelHtmlAttrToJSXAttr = require('gatsby-plugin-mdx/utils/babel-plugin-html-attr-to-jsx-attr');
 
 export const babelPluckImports = new BabelPluginPluckImports();
 
@@ -105,7 +94,6 @@ export async function createDocMap(): Promise<DocMap> {
   const collectedData = await collect();
   for await (const data of collectedData) {
     const mdxAst = mdxCompiler.parse(vfile(data));
-    console.log(mdxAst, '************----------');
     const { name } = getFrontmatter(mdxAst);
     const jsx = await mdx(data);
     const { code } = babel.transform(jsx, babelOptions);

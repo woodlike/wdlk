@@ -1,8 +1,8 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 require('ts-node').register({
   compilerOptions: {
     module: 'commonjs',
-    target: 'es2017',
+    target: 'ES5',
+    typeRoots: ['./node_modules/@types', './typings'],
   },
 });
 const { verifyDir } = require('./gatsby/pre-bootstrap');

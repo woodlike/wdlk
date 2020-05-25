@@ -1,5 +1,25 @@
+import { mdxAst } from '../../__mocks__';
+import { findNodeByType } from '../mdx-utils';
+
 describe('MDX utils', () => {
-  it('should get Frontmatter from MDX', () => {
-    expect(1).toBe(1);
+  it('should return the Yaml node from the MDX AST', () => {
+    const node = findNodeByType(mdxAst, 'yaml');
+    expect(node).toStrictEqual({
+      type: 'yaml',
+      value: 'name: Heading\nmenu: Components',
+      position: {
+        start: {
+          line: 1,
+          column: 1,
+          offset: 0,
+        },
+        end: {
+          line: 4,
+          column: 4,
+          offset: 38,
+        },
+        indent: [1, 1, 1],
+      },
+    });
   });
 });
