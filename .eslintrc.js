@@ -4,10 +4,11 @@ module.exports = {
     "react-hooks"
   ],
   extends: [
+    'standard',
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
     'prettier/@typescript-eslint',
-    'plugin:prettier/recommended',
+    'prettier',
   ],
   parserOptions: {
     ecmaVersion: 2018,

@@ -12,20 +12,15 @@ import { getDisplay, getFrontmatter } from './mdx-ast';
 const babel = require('@babel/core');
 const { createCompiler } = require('@mdx-js/mdx');
 const mdx = require('@mdx-js/mdx');
-const babelObjSpread = require('@babel/plugin-proposal-object-rest-spread');
-const babelRemoveExports = require('babel-plugin-remove-export-keywords');
 const BabelPluginPluckImports = require('babel-plugin-pluck-imports');
-const babelHtmlAttrToJSXAttr = require('gatsby-plugin-mdx/utils/babel-plugin-html-attr-to-jsx-attr');
-
-export const babelPluckImports = new BabelPluginPluckImports();
 
 export const babelOptions = {
   configFile: false,
   plugins: [
-    babelPluckImports.plugin,
-    babelObjSpread,
-    babelHtmlAttrToJSXAttr,
-    babelRemoveExports,
+    new BabelPluginPluckImports().plugin,
+    require('@babel/plugin-proposal-object-rest-spread'),
+    require('gatsby-plugin-mdx/utils/babel-plugin-html-attr-to-jsx-attr'),
+    require('babel-plugin-remove-export-keywords'),
   ],
   presets: [
     require('@babel/preset-react'),
