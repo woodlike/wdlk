@@ -5,7 +5,7 @@ import { v3 as uuidv3 } from 'uuid';
 import crypto from 'crypto';
 import detectFrontmatter from 'remark-frontmatter';
 import vfile from 'vfile';
-import { getDisplay, getFrontmatter } from './mdx-utils';
+import { getDisplay, getFrontmatter } from './mdx-ast';
 
 // Using require to avoid error TS7016:
 // Could not find a declaration file for module
@@ -72,8 +72,7 @@ export const readDir = async (path: string): Promise<string[]> =>
     });
   });
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export async function* collect(): AsyncGenerator<string, any, undefined> {
+export async function* collect(): AsyncGenerator<string, void, undefined> {
   const basePath = './content/';
   const dirs = await readDir(resolve(basePath));
 
