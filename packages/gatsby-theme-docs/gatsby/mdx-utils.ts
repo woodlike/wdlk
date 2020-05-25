@@ -29,3 +29,9 @@ export const getFrontmatter = (mdxAst: PartialMdxAST): Frontmatter => {
   const node = mdxAst.children.find(node => node.type === 'yaml' && node.value);
   return node ? yaml.parse(node.value) : { menu: '', name: '', title: '' };
 };
+
+export const findNodeByType = (
+  mdxAst: PartialMdxAST,
+  type: string,
+): ASTNode | undefined =>
+  mdxAst.children.find(node => node.type === type && node.value);

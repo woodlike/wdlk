@@ -3,8 +3,9 @@
   "compilerOptions": {
     "outDir": "./dist",
     "strict": true,
-    "allowJs": true
+    "allowJs": true,
+    "typeRoots": ["./node_modules/@types", "./typings"]
   },
-  "include": ["./src", "./gatsby", "./typings.d.ts", "gatsby-theme-docz"],
-  "exclude": ["./node_modules", ".cache/**/*", "./src/**/*.test.tsx", "gatsby-theme-docz/**/*"]
+  "include": ["./src", "./gatsby", "typings.d.ts"],
+  "exclude": ["./node_modules", ".cache/**/*", "./src/**/*.test.tsx"]
 }
