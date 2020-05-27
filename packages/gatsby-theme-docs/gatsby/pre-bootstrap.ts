@@ -2,7 +2,7 @@ import { existsSync, mkdir } from 'fs';
 import { resolve } from 'path';
 import { Reporter } from 'gatsby';
 
-const verifyDir = ({ reporter }: { reporter: Reporter }): void => {
+export const verifyDir = ({ reporter }: { reporter: Reporter }): void => {
   const contentPath = resolve('./content');
   if (existsSync(contentPath)) {
     return;
@@ -15,5 +15,3 @@ const verifyDir = ({ reporter }: { reporter: Reporter }): void => {
     }
   });
 };
-
-exports.verifyDir = verifyDir;

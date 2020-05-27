@@ -1,6 +1,6 @@
 import { createFilePath } from 'gatsby-source-filesystem';
 import { Actions, Node } from 'gatsby';
-import { createDocMap } from './docs';
+import { createDocs } from './docs';
 
 export interface AddFieldArgs {
   actions: Actions;
@@ -29,7 +29,7 @@ const addField = async (args: AddFieldArgs): Promise<void> => {
   const { createNodeField } = actions;
 
   if (node.internal.type === 'Mdx') {
-    const docs = await createDocMap();
+    const docs = await createDocs();
     const path =
       node.frontmatter && node.frontmatter.menu
         ? `${node.frontmatter.menu.toLowerCase()}/${sanitizeSlugPath(

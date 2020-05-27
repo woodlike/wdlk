@@ -31,6 +31,7 @@ export default function DocPageTemplate({ data }: MDXQuery): JSX.Element {
   const {
     fields: { docs },
   } = mdx;
+  // TODO: make code component language configurable
   return (
     <MDXProvider components={shortcodes}>
       {docs.map(doc => {
