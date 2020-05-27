@@ -5,10 +5,12 @@ require('ts-node').register({
     typeRoots: ['./node_modules/@types', './typings'],
   },
 });
-const { verifyDir } = require('./gatsby/pre-bootstrap');
+
 const { addField } = require('./gatsby/create-node');
-const { create } = require('./gatsby/create-pages');
+const { createPages, createSchema, sourceNodes, verifyDir } = require('./gatsby');
 
 exports.onPreBootstrap = args => verifyDir(args);
+exports.sourceNodes = args => sourceNodes(args);
+exports.createSchemaCustomization = args => createSchema(args);
 exports.onCreateNode = async args => await addField(args);
-exports.createPages = async args => await create(args);
+exports.createPages = async args => await createPages(args);

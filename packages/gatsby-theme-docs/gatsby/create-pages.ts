@@ -20,7 +20,7 @@ interface MDXNode {
   node: Node & { fields: { slug: string } };
 }
 
-const create = async ({
+export const createPages = async ({
   actions,
   graphql,
   reporter,
@@ -57,5 +57,3 @@ const create = async ({
     });
   });
 };
-
-exports.create = create;

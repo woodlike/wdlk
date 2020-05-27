@@ -1,5 +1,5 @@
 import { mdxAst } from '../../__mocks__';
-import { findNodeByType } from '../mdx-ast';
+import { findNodeByType } from '../mdx';
 
 describe('MDX utils', () => {
   it('should return the Yaml node from the MDX AST', () => {
