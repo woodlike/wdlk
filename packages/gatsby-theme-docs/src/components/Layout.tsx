@@ -4,7 +4,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx';
 import { graphql, Link, NodeInput } from 'gatsby';
 
 import { MDXFrontmatter } from '../../gatsby/create-node';
-import { Doc } from '../../gatsby/docs';
+import { Docs } from '../../gatsby/docs';
 import { SectionLayout } from '.';
 import { Code, Language } from '@wdlk/components';
 
@@ -23,7 +23,7 @@ export interface MDXGatsbyNode extends NodeInput {
 }
 
 export interface MDXGatsbyFields {
-  docs: Doc[];
+  docs: Docs[];
 }
 
 export default function DocPageTemplate({ data }: MDXQuery): JSX.Element {

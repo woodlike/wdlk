@@ -1,8 +1,7 @@
-import { Actions, NodePluginSchema } from 'gatsby';
+import { Actions } from 'gatsby';
 
 export interface CreateSchemaProps {
   actions: Actions;
-  schema: NodePluginSchema;
 }
 
 export const createSchema = ({ actions }: CreateSchemaProps): void => {
@@ -11,14 +10,8 @@ export const createSchema = ({ actions }: CreateSchemaProps): void => {
     `type Doc implements Node @dontInfer {
       id: ID!
       name: String!
-      docs: [DocsContent!]!
+      docs: [Docs!]!
     }
-
-    type DocsContent {
-      key: String!
-      value: [Doc!]!
-    }
-
     type Docs {
       id: ID!
       body: String!
