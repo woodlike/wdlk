@@ -1,5 +1,7 @@
 import yaml from 'yaml';
 
+import { Frontmatter } from '.';
+
 export interface MDXAst {
   type: string;
   children: MDXAstNode[];
@@ -23,12 +25,6 @@ export interface Position {
   line: number;
   column: number;
   offset: number;
-}
-
-export interface Frontmatter {
-  name: string;
-  title: string;
-  menu: string;
 }
 
 export const getDisplay = (mdxAst: MDXAst): string => {

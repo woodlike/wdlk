@@ -1,7 +1,7 @@
 import { Reporter } from 'gatsby';
 
 import { gatsby } from '../../__mocks__';
-import { Frontmatter, slugify, hyphenize } from '..';
+import { slugify, hyphenize, Frontmatter } from '..';
 
 describe('utils', () => {
   describe('hyphenize', () => {
