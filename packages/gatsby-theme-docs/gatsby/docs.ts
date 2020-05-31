@@ -1,7 +1,6 @@
-import { Actions } from 'gatsby';
+import { NodeInput } from 'gatsby';
 import { extname, resolve } from 'path';
 import { v3 as uuidv3 } from 'uuid';
-import crypto from 'crypto';
 import vfile from 'vfile';
 import detectFrontmatter from 'remark-frontmatter';
 
@@ -14,10 +13,19 @@ const { createCompiler } = require('@mdx-js/mdx');
 const mdx = require('@mdx-js/mdx');
 const BabelPluginPluckImports = require('babel-plugin-pluck-imports');
 
+export type Doc = Docs & NodeInput;
+
 export interface Docs {
-  id: string;
-  body: string;
-  display: string;
+  readonly id: string;
+  readonly body: string;
+  readonly display: string;
+  readonly frontmatter: Frontmatter;
+}
+
+export interface Frontmatter {
+  readonly menu: string;
+  readonly name: string;
+  readonly title?: string;
 }
 
 export const babelOptions = {
@@ -63,9 +71,10 @@ async function* collectContent(): AsyncGenerator<string, void, undefined> {
 export async function createDocs(): Promise<Map<string, Docs[]>> {
   const docs = new Map<string, Docs[]>();
   const collectedData = await collectContent();
+
   for await (const data of collectedData) {
     const mdxAst = mdxCompiler.parse(vfile(data));
-    const { name } = getFrontmatter(mdxAst);
+    const { menu, name, title } = getFrontmatter(mdxAst);
     const jsx = await mdx(data);
     const { code } = babel.transform(jsx, babelOptions);
 
@@ -84,6 +93,7 @@ export async function createDocs(): Promise<Map<string, Docs[]>> {
           `return MDXContent;`,
         ),
       display: getDisplay(mdxAst),
+      frontmatter: { menu, name, title },
     };
 
     docs.has(name) && Array.isArray(docs.get(name))
@@ -92,28 +102,3 @@ export async function createDocs(): Promise<Map<string, Docs[]>> {
   }
   return docs;
 }
-
-const onNodeSource = async (
-  createNode: Actions['createNode'],
-): Promise<void> => {
-  try {
-    const docs = await createDocs();
-    for await (const name of docs.keys()) {
-      createNode({
-        id: uuidv3(name, '56079aea-8fc9-11ea-bc55-0242ac130003'),
-        parent: '',
-        children: [],
-        name,
-        doc: docs.get(name),
-        internal: {
-          type: 'DocContent',
-          contentDigest: crypto.createHash('sha256').update(name).digest('hex'),
-        },
-      });
-    }
-  } catch (err) {
-    Promise.reject(new Error(`🚨 ERROR collecting content${err}`));
-  }
-};
-
-exports.onNodeSource = onNodeSource;
