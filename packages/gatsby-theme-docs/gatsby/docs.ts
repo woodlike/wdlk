@@ -13,7 +13,7 @@ const { createCompiler } = require('@mdx-js/mdx');
 const mdx = require('@mdx-js/mdx');
 const BabelPluginPluckImports = require('babel-plugin-pluck-imports');
 
-export type Doc = Docs & NodeInput;
+export type Doc = Docs & NodeInput & { slug: string };
 
 export interface Docs {
   readonly id: string;

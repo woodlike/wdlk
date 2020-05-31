@@ -1,67 +1,46 @@
 import React from 'react';
 import { MDXProvider } from '@mdx-js/react';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
-import { graphql, Link, NodeInput } from 'gatsby';
-
-import { MDXFrontmatter } from '../../gatsby/create-node';
-import { Docs } from '../../gatsby/docs';
-import { SectionLayout } from '.';
 import { Code, Language } from '@wdlk/components';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
+import { graphql, Link } from 'gatsby';
+
+import { SectionLayout } from '.';
+import { Docs, Doc } from '../../gatsby';
 
 const shortcodes = { Link };
 
-export interface MDXQuery {
-  data: {
-    mdx: MDXGatsbyNode;
+interface DocQuery {
+  readonly data: {
+    readonly doc: Doc;
   };
 }
 
-export interface MDXGatsbyNode extends NodeInput {
-  frontmatter: MDXFrontmatter;
-  body: string;
-  fields: MDXGatsbyFields;
-}
-
-export interface MDXGatsbyFields {
-  docs: Docs[];
-}
-
-export default function DocPageTemplate({ data }: MDXQuery): JSX.Element {
-  const { mdx } = data;
-  const {
-    fields: { docs },
-  } = mdx;
+export default function DocPageTemplate({ data }: DocQuery): JSX.Element {
   // TODO: make code component language configurable
+  const { doc } = data;
   return (
     <MDXProvider components={shortcodes}>
-      {docs.map(doc => {
-        console.log(mdx.body);
-        console.log(doc.body);
-        return (
-          <SectionLayout
-            key={doc.id}
-            content={<MDXRenderer>{doc.body}</MDXRenderer>}>
-            {Boolean(doc.display) && (
-              <Code code={doc.display || ''} lang={Language.tsx} size="m" />
-            )}
-          </SectionLayout>
-        );
-      })}
+      {(doc.docs as Docs[]).map((doc: Docs) => (
+        <SectionLayout
+          key={doc.id}
+          content={<MDXRenderer>{doc.body}</MDXRenderer>}>
+          {Boolean(doc.display) && (
+            <Code code={doc.display || ''} lang={Language.tsx} size="m" />
+          )}
+        </SectionLayout>
+      ))}
     </MDXProvider>
   );
 }
 
-export const pageQuery = graphql`
-  query DocQuery($id: String) {
-    mdx(id: { eq: $id }) {
+export const query = graphql`
+  query PageQuery($id: String) {
+    doc(id: { eq: $id }) {
       id
-      body
-      fields {
-        docs {
-          id
-          display
-          body
-        }
+      docs {
+        id
+        display
+        body
       }
     }
   }

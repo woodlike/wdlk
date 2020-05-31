@@ -1,23 +1,20 @@
 import { resolve } from 'path';
-import { Actions, Reporter, Node } from 'gatsby';
+import { Actions, Reporter } from 'gatsby';
+import { Doc } from '.';
 
 export interface CreatePagesArgs {
   actions: Actions;
-  graphql: (query: string) => Promise<MDXQuery>;
+  graphql: (query: string) => Promise<DocQuery>;
   reporter: Reporter;
 }
 
-interface MDXQuery {
+interface DocQuery {
   data: {
-    allMdx: {
-      edges: MDXNode[];
+    allDoc: {
+      nodes: Pick<Doc, 'id' | 'slug'>[];
     };
   };
   errors: boolean;
-}
-
-interface MDXNode {
-  node: Node & { fields: { slug: string } };
 }
 
 export const createPages = async ({
@@ -27,32 +24,29 @@ export const createPages = async ({
 }: CreatePagesArgs): Promise<void> => {
   const { createPage } = actions;
 
-  const result: MDXQuery = await graphql(`
+  const result: DocQuery = await graphql(`
     query {
-      allMdx {
-        edges {
-          node {
-            id
-            fields {
-              slug
-            }
-          }
+      allDoc {
+        nodes {
+          id
+          slug
         }
       }
     }
   `);
+  const { errors, data } = result;
 
-  if (result.errors) {
+  if (errors) {
     reporter.panicOnBuild('🚨  ERROR: Loading "createPages" query');
   }
 
-  result.data.allMdx.edges.forEach(({ node }) => {
+  data.allDoc.nodes.forEach(doc => {
+    const { id, slug } = doc;
     createPage({
-      path: node.fields.slug,
+      path: slug,
       component: resolve('./src/components/Layout.tsx'),
       context: {
-        id: node.id,
-        slug: node.fields.slug,
+        id: id,
       },
     });
   });
