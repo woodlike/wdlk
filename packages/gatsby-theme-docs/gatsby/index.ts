@@ -1,5 +1,4 @@
 export * from './docs';
-export * from './create-node';
 export * from './create-pages';
 export * from './file';
 export * from './mdx';
