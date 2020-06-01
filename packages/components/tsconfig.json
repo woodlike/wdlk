@@ -1,14 +1,11 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
+    "alwaysStrict": false,
+    "noImplicitUseStrict": true,
     "outDir": "./lib",
+    "strict": true
   },
-  "include": [
-    "./src",
-    "typings.d.ts"
-  ],
-  "exclude": [
-    "./node_modules",
-    "./src/**/*.test.tsx",
-  ]
+  "include": ["./src", "typings.d.ts"],
+  "exclude": ["./node_modules", "./src/**/*.test.tsx"]
 }
