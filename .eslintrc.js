@@ -4,7 +4,6 @@ module.exports = {
     "react-hooks"
   ],
   extends: [
-    'standard',
     'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
     'prettier/@typescript-eslint',
@@ -18,7 +17,7 @@ module.exports = {
     },
   },
   "rules": {
-    "react-hooks/rules-of-hooks": "error"
+    "react-hooks/rules-of-hooks": "error",
   },
   settings: {
     react: {
