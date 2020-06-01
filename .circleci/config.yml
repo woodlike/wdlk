@@ -41,4 +41,3 @@ jobs:
       - run: yarn lint:hooks
       - run: yarn lint:components
       - run: yarn lint:theme-query
-      - run: yarn lint:docs
