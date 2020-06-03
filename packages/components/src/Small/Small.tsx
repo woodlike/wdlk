@@ -7,7 +7,7 @@ export interface SmallProps {
 }
 
 const createSmallStyle = (props: SmallProps): SxStyleProp => ({
-  fontFamily: 'inherit',
+  fontFamily: (theme: Theme) => theme.fonts.heading.display,
   color: (theme: Theme) => theme.colors.link,
   fontSize: (theme: Theme) => {
     const { scaleIdx } = props;
