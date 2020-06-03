@@ -5,12 +5,22 @@ export interface Theme {
   borderStyles: string[];
   borderWidths: number[];
   colors: ThemeColorProps;
+  fonts: ThemeFontsProps;
   fontSizes: number[];
   space: number[];
 }
 
 export interface ThemeColorProps {
   [key: string]: string | string[];
+}
+
+export interface ThemeFontsProps {
+  body: string;
+  heading: ThemeHeadingProps;
+}
+
+export interface ThemeHeadingProps {
+  display: string;
 }
 
 const borderStyles = [
