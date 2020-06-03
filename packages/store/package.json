@@ -25,6 +25,7 @@
     "dotenv": "^8.2.0",
     "gatsby": "^2.18.3",
     "gatsby-image": "^2.2.37",
+    "gatsby-plugin-theme-ui": "^0.3.0",
     "gatsby-plugin-typescript": "^2.1.20",
     "gatsby-source-shopify": "3.2.8",
     "gatsby-transformer-json": "^2.2.20",
