@@ -5,6 +5,7 @@ export interface Theme {
   borderStyles: string[];
   borderWidths: number[];
   colors: ThemeColorProps;
+  fontSizes: number[];
   space: number[];
 }
 
@@ -12,7 +13,18 @@ export interface ThemeColorProps {
   [key: string]: string | string[];
 }
 
-const borderStyles = ['none', 'hidden', 'dotted', 'dashed', 'solid', 'double', 'groove', 'ridge', 'inset', 'outset'];
+const borderStyles = [
+  'none',
+  'hidden',
+  'dotted',
+  'dashed',
+  'solid',
+  'double',
+  'groove',
+  'ridge',
+  'inset',
+  'outset',
+];
 const borderWidths = [1, 2, 3, 4];
 const breakpoints = ['0px', '480px', '768px', '990px', '1024px', '1440px'];
 const fontSizes: number[] = [12, 14, 16, 18, 20, 24, 32, 44, 72];
@@ -54,6 +66,7 @@ export const theme = {
     background: colors.whites[0],
     border: colors.grays[0],
     headline: colors.grays[5],
+    link: colors.grays[3],
     primary: colors.corals[0],
     muted: colors.grays[5],
     mutedHover: colors.grays[2],
