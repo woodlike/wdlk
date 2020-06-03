@@ -8,6 +8,7 @@ module.exports = {
   plugins: [
     'gatsby-plugin-typescript',
     'gatsby-transformer-json',
+    'gatsby-plugin-theme-ui',
     {
       resolve: 'gatsby-source-shopify',
       options: {
