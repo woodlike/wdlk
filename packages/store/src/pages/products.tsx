@@ -1,11 +1,12 @@
 import * as React from 'react';
 
-import { Header } from '../components';
+import { Footer, Header } from '../components';
 
 const ProductsPage = (): JSX.Element => {
   return (
     <>
       <Header />
+      <Footer />
     </>
   );
 };
