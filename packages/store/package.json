@@ -34,7 +34,7 @@
     "react-dom": "^16.12.0",
     "shopify-buy": "^2.8.1",
     "shortid": "^2.2.15",
-    "theme-ui": "^0.2.49"
+    "theme-ui": "^0.4.0-alpha.3"
   },
   "devDependencies": {
     "@babel/preset-typescript": "^7.7.7",
