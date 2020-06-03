@@ -1,6 +1,3 @@
-// import { fireEvent, render } from '@testing-library/react';
-// import { renderHook, act } from '@testing-library/react-hooks';
-
 import { calcThreshold } from '..';
 
 describe('useIntersectionObserver()', () => {
