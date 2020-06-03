@@ -11,8 +11,10 @@ module.exports = {
     {
       resolve: 'gatsby-source-shopify',
       options: {
-        shopName: process.env.SHOP_NAME,
         accessToken: process.env.ACCESS_TOKEN,
+        apiVersion: '2020-01',
+        shopName: process.env.SHOP_NAME,
+        verbose: true,
       },
     },
     {
