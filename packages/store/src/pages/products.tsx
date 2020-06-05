@@ -6,7 +6,7 @@ const ProductsPage = (): JSX.Element => {
   return (
     <>
       <Header />
-      <Footer />
+      <Footer.Layout iconBar={<Footer.IconBar />} />
     </>
   );
 };
