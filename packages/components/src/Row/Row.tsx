@@ -2,9 +2,9 @@
 import { jsx, SxStyleProp } from 'theme-ui';
 
 export interface RowProps {
-  as?: HTMLRowType;
-  basis?: RowFlexBasis;
-  className?: string;
+  readonly as?: HTMLRowType;
+  readonly basis?: RowFlexBasis;
+  readonly className?: string;
 }
 export type RowFlexBasis =
   | 'fluid'
