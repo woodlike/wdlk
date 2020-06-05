@@ -23,7 +23,7 @@ describe('<Rows />', () => {
   });
 
   it('should not have accessibility violations', async done => {
-    const { container, unmount } = render(<Rows as="main">{id}</Rows>);
+    const { container, unmount } = render(<Rows>{id}</Rows>);
 
     const a11yResults = await axe(container);
     expect(a11yResults).toHaveNoViolations();
@@ -34,7 +34,7 @@ describe('<Rows />', () => {
 
   describe('collapseBelow', () => {
     it('should use the flex row on missing collapseBelow props', () => {
-      const { queryByText, unmount } = render(<Rows as="main">{id}</Rows>);
+      const { queryByText, unmount } = render(<Rows>{id}</Rows>);
       const row = queryByText(id);
       expect(row).toHaveStyleRule('flex-direction', 'row');
       unmount();
@@ -43,9 +43,7 @@ describe('<Rows />', () => {
     it('should use flex-direction column as default value on provided collapseBelow', () => {
       const { queryByText, unmount } = render(
         <ThemeProvider theme={theme}>
-          <Rows as="main" collapseBelow={2}>
-            {id}
-          </Rows>
+          <Rows collapseBelow={2}>{id}</Rows>
         </ThemeProvider>,
       );
       const row = queryByText(id);
@@ -56,9 +54,7 @@ describe('<Rows />', () => {
     it('should use flex-direction row as value matching @media min-width', () => {
       const { queryByText, unmount } = render(
         <ThemeProvider theme={theme}>
-          <Rows as="main" collapseBelow={2}>
-            {id}
-          </Rows>
+          <Rows collapseBelow={2}>{id}</Rows>
         </ThemeProvider>,
       );
       const row = queryByText(id);
@@ -68,6 +64,42 @@ describe('<Rows />', () => {
       unmount();
     });
   });
+
+  describe('justifyContent', () => {
+    it('should not have a justify-content property', () => {
+      const { queryByText, unmount } = render(<Rows>{id}</Rows>);
+      const row = queryByText(id);
+      expect(
+        Boolean(getComputedStyle(row).getPropertyValue('justify-content')),
+      ).toBeFalsy();
+      unmount();
+    });
+    it('should have justify-content center rule', () => {
+      const { queryByText, unmount } = render(
+        <Rows justifyContent="center">{id}</Rows>,
+      );
+      const row = queryByText(id);
+      expect(row).toHaveStyleRule('justify-content', 'center');
+      unmount();
+    });
+    it('should have justify-content flex-end rule', () => {
+      const { queryByText, unmount } = render(
+        <Rows justifyContent="flex-end">{id}</Rows>,
+      );
+      const row = queryByText(id);
+      expect(row).toHaveStyleRule('justify-content', 'flex-end');
+      unmount();
+    });
+    it('should have justify-content flex-start rule', () => {
+      const { queryByText, unmount } = render(
+        <Rows justifyContent="flex-start">{id}</Rows>,
+      );
+      const row = queryByText(id);
+      expect(row).toHaveStyleRule('justify-content', 'flex-start');
+      unmount();
+    });
+  });
+
   describe('as', () => {
     it('should render a div', () => {
       const { queryByText, unmount } = render(<Rows as="div">{id}</Rows>);

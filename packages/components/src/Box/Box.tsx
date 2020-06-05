@@ -5,29 +5,45 @@ import { ScaleArea, Theme } from '..';
 import { Color, Scale } from '../theme';
 
 export interface BoxProps {
-  readonly as: BoxHTMLElement;
   readonly padding: ScaleArea;
+  readonly as?: BoxHTMLElement;
   readonly borderWidths?: ScaleArea;
   readonly borderStyles?: ScaleArea;
   readonly borderColors?: BorderColorProps;
   readonly backgroundColor?: string | BorderColorScale;
+  readonly className?: string;
 }
 export interface BorderColorScale {
   color: string;
   idx: number;
 }
-export type BoxHTMLElement = 'div' | 'span' | 'section' | 'article' | 'main' | 'header' | 'footer' | 'nav' | 'aside';
-export type BorderColorProps = (string | BorderColorScale) | (string | BorderColorScale)[];
+export type BoxHTMLElement =
+  | 'div'
+  | 'span'
+  | 'section'
+  | 'article'
+  | 'main'
+  | 'header'
+  | 'footer'
+  | 'nav'
+  | 'aside';
+export type BorderColorProps =
+  | (string | BorderColorScale)
+  | (string | BorderColorScale)[];
 
 const createStylesBorderWidth = (widths: ScaleArea): SxStyleProp => ({
-  borderWidth: (theme: Theme) => Scale.toCSSPixel(Scale.create(widths, theme.borderWidths)),
+  borderWidth: (theme: Theme) =>
+    Scale.toCSSPixel(Scale.create(widths, theme.borderWidths)),
 });
 
 const createStylesBorderStyle = (styles: ScaleArea): SxStyleProp => ({
-  borderStyle: (theme: Theme) => Scale.toCSSPixel(Scale.create(styles, theme.borderStyles)),
+  borderStyle: (theme: Theme) =>
+    Scale.toCSSPixel(Scale.create(styles, theme.borderStyles)),
 });
 
-const createStylesBorderColor = (borderColors: BorderColorProps): SxStyleProp => ({
+const createStylesBorderColor = (
+  borderColors: BorderColorProps,
+): SxStyleProp => ({
   borderColor: (theme: Theme) => {
     if (Array.isArray(borderColors)) {
       const colors = borderColors.map(color => {
@@ -45,13 +61,23 @@ const createStylesBorderColor = (borderColors: BorderColorProps): SxStyleProp =>
   },
 });
 
-const createStylesBgColor = (color: string | BorderColorScale): SxStyleProp => ({
+const createStylesBgColor = (
+  color: string | BorderColorScale,
+): SxStyleProp => ({
   backgroundColor: (theme: Theme) =>
-    typeof color === 'object' ? Color.query(color.color, theme.colors, color.idx) : Color.query(color, theme.colors),
+    typeof color === 'object'
+      ? Color.query(color.color, theme.colors, color.idx)
+      : Color.query(color, theme.colors),
 });
 
 const createStyles = (props: BoxProps): SxStyleProp => {
-  const { backgroundColor, borderColors, borderStyles, borderWidths, padding } = props;
+  const {
+    backgroundColor,
+    borderColors,
+    borderStyles,
+    borderWidths,
+    padding,
+  } = props;
   return {
     ...(borderWidths && createStylesBorderWidth(borderWidths)),
     ...(borderStyles && createStylesBorderStyle(borderStyles)),
@@ -61,8 +87,14 @@ const createStyles = (props: BoxProps): SxStyleProp => {
   };
 };
 
-export const Box: React.FC<BoxProps> = (props): JSX.Element => (
-  <props.as sx={createStyles(props)}>{props.children}</props.as>
-);
+export const Box: React.FC<BoxProps> = props => {
+  const Component = props.as || 'div';
+
+  return (
+    <Component sx={createStyles(props)} className={props.className}>
+      {props.children}
+    </Component>
+  );
+};
 
 Box.displayName = 'Box';
