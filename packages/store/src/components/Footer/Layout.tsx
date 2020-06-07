@@ -12,6 +12,7 @@ const stylesLayout: SxStyleProp = {
     position: 'absolute',
     top: 0,
     left: '50%',
+    zIndex: -1,
     width: '100vw',
     height: '100%',
     borderTop: (theme: Theme): string => `1px solid ${theme.colors.border}`,
