@@ -38,6 +38,8 @@ jobs:
       - run: yarn test:hooks
       - run: yarn test:theme-query
       - run: yarn test:components
+      - run: yarn test:store
       - run: yarn lint:hooks
       - run: yarn lint:components
+      - run: yarn lint:store
       - run: yarn lint:theme-query
