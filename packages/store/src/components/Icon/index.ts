@@ -1,4 +1,4 @@
-export * from './sizes';
+export * from './icon';
 
 import * as FacebookIcon from './Facebook';
 import * as InstagramIcon from './Instagram';

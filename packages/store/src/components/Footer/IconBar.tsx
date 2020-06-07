@@ -19,7 +19,7 @@ export const IconBar: React.FC = () => (
         target="_blank"
         rel="noopener noreferrer"
         href="https://directories.onepercentfortheplanet.org/business-members/woodlike">
-        <Icon.OnePercent size={IconSize.s} />
+        <Icon.OnePercent size={IconSize.s} color="primary" />
       </a>
     </Box>
     <Box sx={stylesIcon} padding={[0, 5]}>
@@ -27,7 +27,7 @@ export const IconBar: React.FC = () => (
         target="_blank"
         rel="noopener noreferrer"
         href="https://www.instagram.com/wdlk/">
-        <Icon.Instagram size={IconSize.s} />
+        <Icon.Instagram size={IconSize.s} color="primary" />
       </a>
     </Box>
     <Box sx={stylesIcon} padding={[0, 5]}>
@@ -35,7 +35,7 @@ export const IconBar: React.FC = () => (
         target="_blank"
         rel="noopener noreferrer"
         href="https://www.facebook.com/woodlike">
-        <Icon.Facebook size={IconSize.s} />
+        <Icon.Facebook size={IconSize.s} color="primary" />
       </a>
     </Box>
   </Rows>

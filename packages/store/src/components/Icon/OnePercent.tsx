@@ -1,11 +1,11 @@
 /**@jsx jsx */
 import { jsx } from 'theme-ui';
 
-import { IconProps, createSVGRectIconStyle } from '.';
+import { IconProps, createIconSizeStyles, createStyles } from '.';
 
 export const OnePercent: React.FC<IconProps> = props => (
   <svg
-    sx={createSVGRectIconStyle(props.size)}
+    sx={createStyles(props.color, createIconSizeStyles(props.size, 'rect'))}
     viewBox="0 0 264 110"
     id="onepfp">
     <title>One Percent For The Planet Icon</title>
