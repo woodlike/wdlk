@@ -1,6 +1,18 @@
 import { useStaticQuery, graphql } from 'gatsby';
+import { LinkNode } from '.';
 
-export function useHeaderData() {
+export interface UseHeaderData {
+  readonly header: HeaderData;
+  readonly url: string;
+}
+
+export interface HeaderData {
+  readonly miniCart: LinkNode & { items: LinkNode[] };
+  readonly cart: LinkNode;
+  readonly logo: LinkNode & { desc: string };
+}
+
+export function useHeaderData(): UseHeaderData {
   const { allDataJson, site } = useStaticQuery(graphql`
     query HeaderJson {
       allDataJson {

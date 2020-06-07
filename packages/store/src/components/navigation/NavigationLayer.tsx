@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Nav } from '@wdlk/components';
-import { NavigationLayerProps, NavDataProps } from '.';
+import { LinkNode } from '../../hooks';
+import { NavigationLayerProps } from '.';
 
 export const NavigationLayer: React.FC<NavigationLayerProps> = (
   props,
@@ -9,7 +10,7 @@ export const NavigationLayer: React.FC<NavigationLayerProps> = (
   return (
     <Nav.Layer isExpanded={props.isExpanded}>
       <Nav.LayerList>
-        {props.items.map((item: NavDataProps) => (
+        {props.items.map((item: LinkNode) => (
           <Nav.Link
             key={item.id}
             href={`${props.url}/${item.handle}`}

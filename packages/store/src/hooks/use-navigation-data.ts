@@ -1,7 +1,12 @@
 import { useStaticQuery, graphql } from 'gatsby';
-import { NavigationProps } from '../components/Navigation';
+import { LinkNode } from '.';
 
-export function useNavigationData(): NavigationProps {
+export interface UseNavigationData {
+  readonly items: LinkNode[];
+  readonly url: string;
+}
+
+export function useNavigationData(): UseNavigationData {
   const { allNavigationJson, site } = useStaticQuery(graphql`
     query SiteMetaDataAndAllNavigationJson {
       allNavigationJson {

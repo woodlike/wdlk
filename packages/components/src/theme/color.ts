@@ -1,6 +1,10 @@
-import { ThemeColorProps } from '.';
+import { GenericThemeColor } from '.';
 
-export const query = (colorQuery: string, color: ThemeColorProps, idx = 0): string | string[] => {
+export const query = (
+  colorQuery: string,
+  color: GenericThemeColor,
+  idx = 0,
+): string | string[] => {
   const themeColor = color[colorQuery];
   if (Array.isArray(themeColor)) {
     return themeColor[idx];

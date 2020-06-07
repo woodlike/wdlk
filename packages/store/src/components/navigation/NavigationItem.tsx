@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Nav } from '@wdlk/components';
 
-import { NavDataProps, NavData } from '.';
+import { NavDataProps } from '.';
 
 export const NavigationItem: React.FC<NavDataProps> = (props): JSX.Element => {
   const [isExpanded, setExpanded] = React.useState(false);
@@ -17,7 +17,7 @@ export const NavigationItem: React.FC<NavDataProps> = (props): JSX.Element => {
       onMouseLeave={(): void => setExpanded(false)}>
       {props.menuItems.length > 0 && (
         <Nav.Panel isExpanded={isExpanded}>
-          {props.menuItems.map((menuItem: NavData) => (
+          {props.menuItems.map(menuItem => (
             <Nav.Link
               key={menuItem.id}
               href={`${props.url}/${menuItem.handle}`}

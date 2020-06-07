@@ -1,11 +1,5 @@
-import * as React from './node_modules/react';
-import {
-  Header as LibHeader,
-  Logo,
-  qt,
-  Cart,
-  Burger,
-} from './node_modules/@wdlk/components';
+import * as React from 'react';
+import { Header as LibHeader, Logo, qt, Cart, Burger } from '@wdlk/components';
 
 import { Navigation, NavigationLayer, MiniCart } from '..';
 import { useNavigationData, useHeaderData, useBreakpoint } from '../../hooks';
