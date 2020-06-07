@@ -1,4 +1,4 @@
-import { MiniCardItem } from '../mini-cart/types';
+import { MiniCardItem } from '../MiniCart/types';
 
 export interface NavData {
   readonly handle: string;

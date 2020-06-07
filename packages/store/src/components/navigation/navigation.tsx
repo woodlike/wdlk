@@ -20,3 +20,5 @@ export const Navigation: React.FC<NavigationProps> = (props): JSX.Element => {
     </Nav.Frame>
   );
 };
+
+Navigation.displayName = 'Navigation';

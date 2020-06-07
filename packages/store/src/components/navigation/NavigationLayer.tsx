@@ -2,7 +2,9 @@ import * as React from 'react';
 import { Nav } from '@wdlk/components';
 import { NavigationLayerProps, NavDataProps } from '.';
 
-export const NavigationLayer: React.FC<NavigationLayerProps> = (props): JSX.Element => {
+export const NavigationLayer: React.FC<NavigationLayerProps> = (
+  props,
+): JSX.Element => {
   const brandItem = props.items.find(item => item.title === 'The Brand');
   return (
     <Nav.Layer isExpanded={props.isExpanded}>
