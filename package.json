@@ -8,26 +8,21 @@
       "packages/*"
     ],
     "nohoist": [
-      "**/prismjs",
-      "**/@mdx-js",
-      "**/gatsby-theme-docz"
+      "**/prismjs"
     ]
   },
   "scripts": {
     "build:components": "yarn workspace @wdlk/components build",
     "build:hooks": "yarn workspace @wdlk/hooks build",
-    "build:docs": "yarn workspace @wdlk/docs build",
     "build:store": "yarn workspace @wdlk/store build",
     "build:theme-query": "yarn workspace theme-query build",
     "clean:docs": "yarn workspace @wdlk/docs clean",
     "dev:components": "yarn workspace @wdlk/components dev",
     "dev:hooks": "yarn workspace @wdlk/hooks dev",
-    "dev:docs": "yarn workspace @wdlk/docs dev",
     "dev:store": "yarn workspace @wdlk/store dev",
     "dev:theme-query": "yarn workspace theme-query dev",
     "lint:components": "yarn workspace @wdlk/components lint",
     "lint:hooks": "yarn workspace @wdlk/hooks lint",
-    "lint:docs": "yarn workspace @wdlk/docs lint",
     "lint:store": "yarn workspace @wdlk/store lint",
     "lint:theme-query": "yarn workspace theme-query lint",
     "prism:components": "yarn workspace @wdlk/components codemod:prism",

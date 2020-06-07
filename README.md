@@ -36,16 +36,13 @@ The list of most important commands to work with the selected workspace.
 | ------------------------ | -------------------- | ------------------------------------------------------------- |
 | `yarn build:components`  | **@wdlk/components** | compile Typescript into JavaScript                            |
 | `yarn build:containers`  | **@wdlk/containers** | compile Typescript into JavaScript                            |
-| `yarn build:docs`        | **@wdlk/docs**       | Generate static site using Docz and Gatsby                    |
 | `yarn build:store`       | **@wdlk/store**      | Generate static site using Gatsby                             |
 | `yarn build:theme-query` | **theme-query**      | compile Typescript into JavaScript                            |
 | `yarn dev:components`    | **@wdlk/components** | compile Typescript into JavaScript in watch mode              |
 | `yarn dev:containers`    | **@wdlk/containers** | compile Typescript into JavaScript in watch mode              |
-| `yarn dev:docs`          | **@wdlk/docs**       | Run the development server to start writing documentation     |
 | `yarn dev:store`         | **@wdlk/store**      | Run the development server to develop the Shopify store front |
 | `yarn lint:components`   | **@wdlk/components** | Lint the package according to the Eslint configuration        |
 | `yarn lint:containers`   | **@wdlk/containers** | Lint the package according to the Eslint configuration        |
-| `yarn lint:docs`         | **@wdlk/docs**       | Lint the package according to the Eslint configuration        |
 | `yarn lint:store`        | **@wdlk/store**      | Lint the package according to the Eslint configuration        |
 | `yarn lint:theme-query`  | **theme-query**      | Lint the package according to the Eslint configuration        |
 | `yarn test:components`   | **@wdlk/components** | Run unit tests written with Jest                              |
