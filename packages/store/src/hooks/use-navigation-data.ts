@@ -1,5 +1,5 @@
 import { useStaticQuery, graphql } from 'gatsby';
-import { NavigationProps } from '../components/navigation';
+import { NavigationProps } from '../components/Navigation';
 
 export function useNavigationData(): NavigationProps {
   const { allNavigationJson, site } = useStaticQuery(graphql`
