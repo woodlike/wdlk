@@ -15,7 +15,9 @@ describe('<Small />', () => {
     it('should return 12px (default value) on missing scaleIdx prop', () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
-          <Small scaleIdx={null}>{id}</Small>
+          <Small family="body" scale={null}>
+            {id}
+          </Small>
         </ThemeProvider>,
       );
       const small = getByText(id);
@@ -26,7 +28,9 @@ describe('<Small />', () => {
     it('should return 12px (default value) on out of range idx', () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
-          <Small scaleIdx={fontSizes.length + 1}>{id}</Small>
+          <Small family="body" scale={fontSizes.length + 1}>
+            {id}
+          </Small>
         </ThemeProvider>,
       );
       const small = getByText(id);
@@ -37,7 +41,9 @@ describe('<Small />', () => {
     it('should return the first font size of the theme scale', () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
-          <Small scaleIdx={0}>{id}</Small>
+          <Small family="body" scale={0}>
+            {id}
+          </Small>
         </ThemeProvider>,
       );
       const small = getByText(id);
@@ -48,7 +54,9 @@ describe('<Small />', () => {
     it('should return the second font size of the theme scale', () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
-          <Small scaleIdx={1}>{id}</Small>
+          <Small family="body" scale={1}>
+            {id}
+          </Small>
         </ThemeProvider>,
       );
       const small = getByText(id);
