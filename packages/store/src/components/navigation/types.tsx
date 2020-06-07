@@ -1,4 +1,5 @@
 import { MiniCardItem } from '../MiniCart/types';
+import { LinkNode } from '../../hooks';
 
 export interface NavData {
   readonly handle: string;
@@ -8,7 +9,7 @@ export interface NavData {
 }
 
 export interface NavigationProps {
-  readonly items: NavDataProps[];
+  readonly items: LinkNode[];
   readonly url: string;
 }
 
@@ -19,7 +20,7 @@ export interface MenuItems {
 
 export interface NavigationLayerProps {
   readonly isExpanded: boolean;
-  readonly items: NavDataProps[];
+  readonly items: LinkNode[];
   readonly login: MiniCardItem;
   readonly url: string;
 }

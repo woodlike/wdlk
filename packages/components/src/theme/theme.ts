@@ -2,26 +2,38 @@ import { base } from '@theme-ui/presets';
 import { theme as themeQuery, Colors, toRGB } from 'theme-query';
 
 export interface Theme {
-  borderStyles: string[];
-  borderWidths: number[];
-  breakpoints: string[];
-  colors: ThemeColorProps;
-  fonts: ThemeFontsProps;
-  fontSizes: number[];
-  space: number[];
+  readonly borderStyles: string[];
+  readonly borderWidths: number[];
+  readonly breakpoints: string[];
+  readonly colors: ThemeColor & GenericThemeColor;
+  readonly fonts: ThemeFontsProps;
+  readonly fontSizes: number[];
+  readonly space: number[];
 }
 
-export interface ThemeColorProps {
-  [key: string]: string | string[];
+export interface GenericThemeColor {
+  readonly [key: string]: string | string[];
 }
 
 export interface ThemeFontsProps {
-  body: string;
-  heading: ThemeHeadingProps;
+  readonly body: string;
+  readonly heading: ThemeHeadingProps;
 }
 
 export interface ThemeHeadingProps {
-  display: string;
+  readonly display: string;
+}
+
+export interface ThemeColor {
+  readonly primary: string;
+  readonly secondary: string;
+  readonly text: string;
+  readonly border: string;
+  readonly muted: string;
+  readonly mutedHover: string;
+  readonly headline: string;
+  readonly link: string;
+  readonly textInverted: string;
 }
 
 const borderStyles = [
@@ -79,7 +91,7 @@ export const theme = {
     headline: colors.grays[5],
     link: colors.grays[3],
     primary: colors.corals[0],
-    muted: colors.grays[5],
+    muted: colors.grays[3],
     mutedHover: colors.grays[2],
     secondary: colors.corals[1],
     text: colors.blacks[0],

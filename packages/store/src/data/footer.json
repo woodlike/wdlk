@@ -1,0 +1,66 @@
+[
+  {
+    "handle": "",
+    "title": "First Row",
+    "id": "fXOCQsNmv",
+    "menuItems": [
+      {
+        "handle": "pages/sizing-guide",
+        "title": "Sizing Guide",
+        "id": "HJlOwXz_O"
+      },
+      {
+        "handle": "pages/shipping-information",
+        "title": "Shipping Information",
+        "id": "yfLQ-ym-o"
+      },
+      {
+        "handle": "pages/cancellation-right",
+        "title": "Returns & Exchanges",
+        "id": "E__6HSPrg"
+      },
+      {
+        "handle": "pages/terms-conditions",
+        "title": "Terms & Conditions",
+        "id": "ZXR8J3pZb"
+      },
+      {
+        "handle": "pages/privacy-policy",
+        "title": "Privacy Policy",
+        "id": "y0HyYoZuX"
+      },
+      {
+        "handle": "pages/imprint",
+        "title": "Imprint",
+        "id": "P5vvy04I7"
+      }
+    ]
+  },
+  {
+    "handle": "",
+    "title": "Second Row",
+    "id": "27xCj7Tkh",
+    "menuItems": [
+      {
+        "handle": "pages/agb",
+        "title": "AGB",
+        "id": "vY99xZ0k3"
+      },
+      {
+        "handle": "pages/widerrufsbelehrung",
+        "title": "Widerrufsbelehrung",
+        "id": "nZG17cchf"
+      },
+      {
+        "handle": "pages/datenschutzerklarung",
+        "title": "Datenschutzerklarung",
+        "id": "gFMKAISnE"
+      },
+      {
+        "handle": "pages/impressum",
+        "title": "Impressum",
+        "id": "53uAsYkRV"
+      }
+    ]
+  }
+]

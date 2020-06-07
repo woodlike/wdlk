@@ -2,6 +2,7 @@ require('dotenv').config();
 
 module.exports = {
   siteMetadata: {
+    brand: 'Woodlike',
     siteName: 'Woodlike Ocean Store',
     siteUrl: 'https://woodlikeocean.com',
   },
