@@ -1,5 +1,6 @@
-// import { resolve } from 'path';
+import { resolve } from 'path';
 import { Actions, Reporter } from 'gatsby';
+import { ShopifyProductNode } from '.';
 
 export interface CreatePagesArgs {
   readonly actions: Actions;
@@ -14,9 +15,43 @@ interface ProductQuery {
 
 export interface ProductQueryData {
   readonly allShopifyProduct: {
-    readonly nodes: unknown;
+    readonly nodes: ShopifyProductNode[];
   };
 }
-export async function createPages(): Promise<void> {
-  console.log('so far this should be working!!!!!!!!!!!!!');
+
+export async function createPages({
+  actions,
+  graphql,
+  reporter,
+}: CreatePagesArgs): Promise<void> {
+  const { createPage } = actions;
+  const result: ProductQuery = await graphql(`
+    query {
+      allShopifyProduct {
+        nodes {
+          id
+          fields {
+            slug
+          }
+        }
+      }
+    }
+  `);
+
+  if (result.errors) {
+    reporter.panicOnBuild(
+      `🚨  ERROR: creating Product pages: ${result.errors}`,
+    );
+  }
+
+  result.data.allShopifyProduct.nodes.forEach((product: ShopifyProductNode) => {
+    const { id, fields } = product;
+    createPage({
+      path: fields.slug,
+      component: resolve('./src/components/Product/Layout.tsx'),
+      context: {
+        id: id,
+      },
+    });
+  });
 }

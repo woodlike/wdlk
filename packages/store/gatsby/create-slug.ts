@@ -1,9 +1,5 @@
 import { Actions, Node } from 'gatsby';
 
-export interface ShopifyProductNode {
-  readonly handle: string;
-}
-
 export interface CreateSlugProps {
   readonly actions: Actions;
   readonly node: Node;
