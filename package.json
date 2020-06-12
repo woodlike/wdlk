@@ -16,7 +16,7 @@
     "build:hooks": "yarn workspace @wdlk/hooks build",
     "build:store": "yarn workspace @wdlk/store build",
     "build:theme-query": "yarn workspace theme-query build",
-    "clean:docs": "yarn workspace @wdlk/docs clean",
+    "clean:store": "yarn workspace @wdlk/store clean",
     "dev:components": "yarn workspace @wdlk/components dev",
     "dev:hooks": "yarn workspace @wdlk/hooks dev",
     "dev:store": "yarn workspace @wdlk/store dev",
