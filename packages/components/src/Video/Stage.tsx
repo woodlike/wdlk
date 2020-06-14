@@ -3,7 +3,6 @@ import { jsx, SxStyleProp } from 'theme-ui';
 import { Controls } from '.';
 import { qt } from '../theme/query';
 import { Heading } from '../Heading';
-import { useBreakpoint } from '../hooks';
 import { Text } from '../Text';
 
 export interface VideoStageProps {
@@ -30,16 +29,15 @@ const stylesCaption: SxStyleProp = {
 };
 
 export const Stage: React.FC<VideoStageProps> = (props): JSX.Element => {
-  const isMediumDevice = useBreakpoint(qt('breakpoints')(2));
   return (
     <figure sx={stylesStageWrapper}>
       {props.children}
       <figcaption sx={stylesCaption}>
         <Controls muted={props.muted} onClick={props.handleClick} />
-        <Heading as="h2" size={isMediumDevice ? 'xl' : 'l'} family="campaign" inverted>
+        <Heading as="h2" size="l" family="campaign" inverted>
           {props.headline}
         </Heading>
-        <Text tag="p" size={isMediumDevice ? 'l' : 'm'} inverted>
+        <Text tag="p" size="m" inverted>
           {props.copy}
         </Text>
       </figcaption>

@@ -8,7 +8,6 @@ export * from './Cart';
 export * from './Code';
 export * from './header';
 export * from './Heading';
-export * from './hooks';
 export * from './Logo';
 export * from './mini-cart';
 export * from './Row';
