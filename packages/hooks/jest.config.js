@@ -1,4 +1,6 @@
-const TEST_REGEX = '(/__tests__/.*|(\\.|/)(test|spec))\\.(tsx?|ts?)$';
+const tsJest = {
+  '.(ts|tsx)': 'ts-jest',
+}
 
 module.exports = {
   globals: {
@@ -7,12 +9,22 @@ module.exports = {
     },
     setupFiles: ['<rootDir>/testing-library-setup.ts'],
   },
-  preset: 'ts-jest',
+  projects: [
+    {
+      displayName: 'dom',
+      preset: 'ts-jest',
+      testEnvironment: 'jsdom',
+      testMatch: ['**/__tests__/**/*.test.ts?(x)'],
+      transform: tsJest,
+    },
+    {
+      displayName: 'node',
+      testEnvironment: 'node',
+      preset: 'ts-jest',
+      testMatch: ['**/__tests__/**/*.test.node.ts?(x)'],
+      transform: tsJest,
+    },
+  ],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
-  testEnvironment: 'jsdom',
-  transform: {
-    '.(ts|tsx)': 'ts-jest',
-  },
-  testRegex: TEST_REGEX,
   testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/lib'],
 };
