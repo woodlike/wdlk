@@ -36,6 +36,10 @@ export interface ThemeColor {
   readonly textInverted: string;
 }
 
+export interface ThemeHeader {
+  readonly header: string[];
+}
+
 const borderStyles = [
   'none',
   'hidden',
