@@ -2,6 +2,12 @@
 import { jsx, SxStyleProp } from 'theme-ui';
 import { Box, Theme } from '@wdlk/components';
 
+import { CopyRight } from '../CopyRight';
+
+const stylesCopyRight: SxStyleProp = {
+  textAlign: 'center',
+};
+
 const stylesLayout: SxStyleProp = {
   position: 'relative',
   maxWidth: (theme: Theme): string => theme.breakpoints[2],
@@ -22,6 +28,7 @@ const stylesLayout: SxStyleProp = {
 export const Layout: React.FC = props => (
   <Box sx={stylesLayout} as="footer" padding={[9, 8, 7]}>
     {props.children}
+    <CopyRight sx={stylesCopyRight} />
   </Box>
 );
 
