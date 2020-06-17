@@ -2,11 +2,7 @@
 import { jsx, SxStyleProp } from 'theme-ui';
 import { Theme } from '@wdlk/components';
 
-export interface HeaderProps {
-  areas: [JSX.Element, JSX.Element, JSX.Element];
-}
-
-const stylesHeader: SxStyleProp = {
+const stylesHeaderLayout: SxStyleProp = {
   display: 'grid',
   gridTemplateColumns: '1fr 5fr 1fr',
   gridColumnGap: (theme: Theme) => theme.space[3] as never,
@@ -42,14 +38,14 @@ const stylesItemSlot: SxStyleProp = {
   },
 };
 
-export const HeaderContainer: React.FC<HeaderProps> = props => (
-  <header sx={stylesHeader}>
-    {props.areas.map((Component, i) => (
-      <div sx={stylesItemSlot} key={`header-item-slot-${i}`}>
-        {Component}
-      </div>
-    ))}
-  </header>
+export const Container: React.FC = props => (
+  <header sx={stylesHeaderLayout}>{props.children}</header>
 );
 
-HeaderContainer.displayName = 'HeaderContainer';
+Container.displayName = 'HeaderContainer';
+
+export const Item: React.FC = props => (
+  <div sx={stylesItemSlot}>{props.children}</div>
+);
+
+Item.displayName = 'HeaderItem';

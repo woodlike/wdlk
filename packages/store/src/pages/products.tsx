@@ -9,7 +9,6 @@ const ProductsPage = (): JSX.Element => {
       <Footer.Layout>
         <Footer.Menu />
         <Footer.IconBar />
-        <Footer.CopyRight />
       </Footer.Layout>
     </>
   );

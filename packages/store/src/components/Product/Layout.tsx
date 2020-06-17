@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
+
+import { Header, Footer } from '..';
 import { ShopifyProductNode } from '../../../gatsby';
 
 export interface ProductLayoutProps {
@@ -14,7 +16,16 @@ export const ProductLayout: React.FC<ProductLayoutProps> = props => {
   const { data } = props;
   const { shopifyProduct } = data;
   const { title } = shopifyProduct;
-  return <main>{title}</main>;
+  return (
+    <>
+      <Header />
+      <main>{title}</main>
+      <Footer.Layout>
+        <Footer.Menu />
+        <Footer.IconBar />
+      </Footer.Layout>
+    </>
+  );
 };
 
 ProductLayout.displayName = 'ProductLayout';

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Nav } from '@wdlk/components';
 import { LinkNode } from '../../hooks';
 import { NavigationLayerProps } from '.';
+import { CopyRight } from '..';
 
 export const NavigationLayer: React.FC<NavigationLayerProps> = (
   props,
@@ -49,8 +50,9 @@ export const NavigationLayer: React.FC<NavigationLayerProps> = (
           />
         )}
       </Nav.LayerList>
-      <Nav.LayerFooter>®Woodlike 2020</Nav.LayerFooter>
+      <Nav.LayerFooter>
+        <CopyRight color="inverted" />
+      </Nav.LayerFooter>
     </Nav.Layer>
   );
 };
-NavigationLayer.displayName = 'NavigationLayer';
