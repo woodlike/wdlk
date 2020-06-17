@@ -6,7 +6,6 @@ export * from './Box';
 export * from './Burger';
 export * from './Cart';
 export * from './Code';
-export * from './header';
 export * from './Heading';
 export * from './Logo';
 export * from './mini-cart';
