@@ -3,14 +3,16 @@ import { jsx, SxStyleProp } from 'theme-ui';
 import { Theme } from '..';
 
 export interface SmallProps {
-  scale: number;
-  family: string;
+  readonly scale: number;
+  readonly family: string;
+  readonly color?: string;
+  readonly className?: string;
 }
 
 const createSmallStyle = (
   props: SmallProps,
 ): SxStyleProp & { ['-webkit-font-smoothing']: string } => ({
-  color: (theme: Theme) => theme.colors.link,
+  color: props.color ?? 'primary',
   fontFamily: props.family,
   fontKerning: 'normal',
   letterSpacing: 1,
@@ -24,7 +26,9 @@ const createSmallStyle = (
 });
 
 export const Small: React.FC<SmallProps> = props => (
-  <small sx={createSmallStyle(props)}>{props.children}</small>
+  <small sx={createSmallStyle(props)} className={props.className}>
+    {props.children}
+  </small>
 );
 
 Small.displayName = 'Small';
