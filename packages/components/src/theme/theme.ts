@@ -8,7 +8,14 @@ export interface Theme {
   readonly colors: ThemeColor & GenericThemeColor;
   readonly fonts: ThemeFontsProps;
   readonly fontSizes: number[];
+  readonly letterSpacings: number[];
   readonly space: number[];
+  readonly transition: ThemeTiming;
+}
+
+export interface ThemeTiming {
+  readonly duration: number[];
+  readonly timing: string[];
 }
 
 export interface GenericThemeColor {

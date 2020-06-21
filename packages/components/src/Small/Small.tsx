@@ -11,7 +11,7 @@ export interface SmallProps {
 
 const createSmallStyle = (
   props: SmallProps,
-): SxStyleProp & { ['-webkit-font-smoothing']: string } => ({
+): SxStyleProp & { WebkitFontSmoothing: string } => ({
   color: props.color ?? 'primary',
   fontFamily: props.family,
   fontKerning: 'normal',
@@ -22,7 +22,7 @@ const createSmallStyle = (
       ? scale
       : '12px';
   },
-  '-webkit-font-smoothing': 'antialiased',
+  WebkitFontSmoothing: 'antialiased',
 });
 
 export const Small: React.FC<SmallProps> = props => (
