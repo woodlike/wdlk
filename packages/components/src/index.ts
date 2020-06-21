@@ -1,5 +1,4 @@
 import * as LocalDocs from './docs';
-import * as LocalNav from './navigation';
 import * as LocalVid from './Video';
 
 export * from './Box';
@@ -19,5 +18,4 @@ export * from './Video';
 export * from './with-focus-style';
 
 export const Docs = { ...LocalDocs };
-export const Nav = { ...LocalNav };
 export const Video = { ...LocalVid };
