@@ -1,34 +1,36 @@
 import * as React from 'react';
-import { Nav } from '@wdlk/components';
 
-import { NavDataProps } from '.';
+import { Navigation, NavDataProps } from '.';
 
-export const NavigationItem: React.FC<NavDataProps> = (props): JSX.Element => {
+export const Item: React.FC<NavDataProps> = (props): JSX.Element => {
   const [isExpanded, setExpanded] = React.useState(false);
   return (
-    <Nav.Link
+    <Navigation.Link
       href={`${props.url}/${props.handle}`}
       current={false}
       isFocused={false}
       context="bar"
       text={props.title}
       isActive={isExpanded}
-      onMouseEnter={(): void => setExpanded(true)}
-      onMouseLeave={(): void => setExpanded(false)}>
+      onMouseEnter={() => setExpanded(true)}
+      onMouseLeave={() => setExpanded(false)}>
       {props.menuItems.length > 0 && (
-        <Nav.Panel isExpanded={isExpanded}>
+        <Navigation.Panel isExpanded={isExpanded}>
           {props.menuItems.map(menuItem => (
-            <Nav.Link
+            <Navigation.Link
               key={menuItem.id}
               href={`${props.url}/${menuItem.handle}`}
               current={false}
-              isFocused={true}
+              // TODO: this prop is meant for the upcomming focus manager
+              isFocused={false}
               context="panel"
               text={menuItem.title}
             />
           ))}
-        </Nav.Panel>
+        </Navigation.Panel>
       )}
-    </Nav.Link>
+    </Navigation.Link>
   );
 };
+
+Item.displayName = 'NavigationItem';

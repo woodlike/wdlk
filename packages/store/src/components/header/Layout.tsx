@@ -7,6 +7,7 @@ const stylesHeaderLayout: SxStyleProp = {
   gridTemplateColumns: '1fr 5fr 1fr',
   gridColumnGap: (theme: Theme) => theme.space[3] as never,
   alignItems: 'center',
+  alignContent: 'center',
   boxSizing: 'border-box',
   position: 'fixed',
   top: 0,
