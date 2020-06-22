@@ -16,7 +16,7 @@ const styledPanelBase: SxStyleProp = {
   padding: 3,
   zIndex: 2,
   transitionProperty: 'opacity',
-  transitionDuration: ({ transition }: Theme) => transition.duration[0],
+  transitionDuration: ({ transition }: Theme) => `${transition.duration[0]}s`,
   transitionTimingFunction: 'ease-in-out',
   ':before': {
     content: '""',

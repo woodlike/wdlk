@@ -1,44 +1,37 @@
 /**@jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
-import { Box, Rows } from '@wdlk/components';
+import { Rows, Theme } from '@wdlk/components';
 
-import { Icon, IconSize } from '..';
+export interface IconBarItemProps {
+  readonly href: string;
+}
 
 const stylesIconBar: SxStyleProp = {
   paddingBottom: 7,
 };
 
 const stylesIcon: SxStyleProp = {
+  display: 'inline-block',
   alignSelf: 'center',
+  padding: ({ space }: Theme) => `0 ${space[5]}px`,
 };
 
-export const IconBar: React.FC = () => (
+export const IconBarItem: React.FC<IconBarItemProps> = props => (
+  <a
+    sx={stylesIcon}
+    target="_blank"
+    rel="noopener noreferrer"
+    href={props.href}>
+    {props.children}
+  </a>
+);
+
+IconBarItem.displayName = 'FooterIconBarItem';
+
+export const IconBar: React.FC = props => (
   <Rows sx={stylesIconBar} justifyContent="center">
-    <Box sx={stylesIcon} padding={[0, 5]}>
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://directories.onepercentfortheplanet.org/business-members/woodlike">
-        <Icon.OnePercent size={IconSize.s} color="primary" />
-      </a>
-    </Box>
-    <Box sx={stylesIcon} padding={[0, 5]}>
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.instagram.com/wdlk/">
-        <Icon.Instagram size={IconSize.s} color="primary" />
-      </a>
-    </Box>
-    <Box sx={stylesIcon} padding={[0, 5]}>
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.facebook.com/woodlike">
-        <Icon.Facebook size={IconSize.s} color="primary" />
-      </a>
-    </Box>
+    {props.children}
   </Rows>
 );
 
-IconBar.displayName = 'IconBar';
+IconBar.displayName = 'FooterIconBar';

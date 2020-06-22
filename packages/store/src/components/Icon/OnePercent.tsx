@@ -1,9 +1,11 @@
 /**@jsx jsx */
 import { jsx } from 'theme-ui';
+import { createStyles, createIconSizeStyles, IconSize, IconColor } from '.';
 
-import { IconProps, createIconSizeStyles, createStyles } from '.';
-
-export const OnePercent: React.FC<IconProps> = props => (
+export const OnePercent: React.FC<{
+  readonly size: IconSize;
+  readonly color: IconColor;
+}> = props => (
   <svg
     sx={createStyles(props.color, createIconSizeStyles(props.size, 'rect'))}
     viewBox="0 0 264 110"
@@ -46,5 +48,3 @@ export const OnePercent: React.FC<IconProps> = props => (
     />
   </svg>
 );
-
-OnePercent.displayName = 'OnePercentIconPath';

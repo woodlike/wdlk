@@ -1,9 +1,16 @@
-import { SxStyleProp } from 'theme-ui';
-import { ThemeColor } from '@wdlk/components';
+/**@jsx jsx */
+import { jsx, SxStyleProp } from 'theme-ui';
+import { Facebook, Instagram, OnePercent } from '.';
 
 export interface IconProps {
-  size: IconSize;
-  color: ThemeColor;
+  readonly size: IconSize;
+  readonly color: IconColor;
+  readonly name: IconName;
+}
+
+export interface IconSizeStyle {
+  readonly width: string;
+  readonly height: string;
 }
 
 export enum IconSize {
@@ -12,10 +19,9 @@ export enum IconSize {
   l = 'l',
 }
 
-export interface IconSizeStyle {
-  width: string;
-  height: string;
-}
+export type IconName = 'facebook' | 'instagram' | 'onepercent';
+
+export type IconColor = 'primary' | 'secondary';
 
 export const getRectIconSize = (size: IconSize): number => {
   switch (size) {
@@ -55,7 +61,7 @@ export const createIconSizeStyles = (
 };
 
 export const createStyles = (
-  color: ThemeColor,
+  color: IconColor,
   size: SxStyleProp,
 ): SxStyleProp => ({
   ...size,
@@ -65,3 +71,14 @@ export const createStyles = (
     fill: 'secondary',
   },
 });
+
+export const Icon: React.FC<IconProps> = props => {
+  switch (props.name) {
+    case 'facebook':
+      return <Facebook size={props.size} color={props.color} />;
+    case 'instagram':
+      return <Instagram size={props.size} color={props.color} />;
+    case 'onepercent':
+      return <OnePercent size={props.size} color={props.color} />;
+  }
+};

@@ -1,8 +1,13 @@
 import * as React from 'react';
 
-import { Navigation, NavDataProps } from '.';
+import { Navigation, NavData } from '.';
+import { LinkNode } from '../..';
 
-export const Item: React.FC<NavDataProps> = (props): JSX.Element => {
+export interface NavigationItemProps extends NavData {
+  readonly menuItems: LinkNode[];
+}
+
+export const Item: React.FC<NavigationItemProps> = props => {
   const [isExpanded, setExpanded] = React.useState(false);
   return (
     <Navigation.Link
