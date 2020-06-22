@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
 
-import { Header, Footer } from '..';
+import { Footer, Header } from '..';
 import { ShopifyProductNode } from '../../../gatsby';
 
 export interface ProductLayoutProps {
@@ -9,7 +9,7 @@ export interface ProductLayoutProps {
 }
 
 export interface ShopifyProduct {
-  shopifyProduct: ShopifyProductNode;
+  readonly shopifyProduct: ShopifyProductNode;
 }
 
 export const ProductLayout: React.FC<ProductLayoutProps> = props => {
@@ -20,15 +20,11 @@ export const ProductLayout: React.FC<ProductLayoutProps> = props => {
     <>
       <Header />
       <main>{title}</main>
-      <Footer.Layout>
-        <Footer.Menu />
-        <Footer.IconBar />
-      </Footer.Layout>
+      <Footer />
     </>
   );
 };
 
-ProductLayout.displayName = 'ProductLayout';
 export default ProductLayout;
 
 export const query = graphql`

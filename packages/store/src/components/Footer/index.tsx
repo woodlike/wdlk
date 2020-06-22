@@ -1,9 +1,11 @@
-import * as FooterLayout from './Layout';
-import * as IconBarLayout from './IconBar';
-import * as MenuLayout from './Menu';
+import * as Frame from './Frame';
+import * as IconBar from './IconBar';
+import * as Menu from './Menu';
+import * as Row from './Row';
 
 export const Footer = {
-  ...FooterLayout,
-  ...IconBarLayout,
-  ...MenuLayout,
+  ...Frame,
+  ...IconBar,
+  ...Menu,
+  ...Row,
 };

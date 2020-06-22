@@ -24,5 +24,3 @@ export interface NavigationLayerProps {
   readonly login: MiniCardItem;
   readonly url: string;
 }
-
-export type NavDataProps = NavData & MenuItems;

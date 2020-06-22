@@ -8,7 +8,7 @@ const stylesCopyRight: SxStyleProp = {
   textAlign: 'center',
 };
 
-const stylesLayout: SxStyleProp = {
+const stylesFrame: SxStyleProp = {
   position: 'relative',
   maxWidth: (theme: Theme): string => theme.breakpoints[2],
   margin: 'auto',
@@ -25,11 +25,11 @@ const stylesLayout: SxStyleProp = {
     transform: 'translateX(-50%)',
   },
 };
-export const Layout: React.FC = props => (
-  <Box sx={stylesLayout} as="footer" padding={[9, 8, 7]}>
+export const Frame: React.FC = props => (
+  <Box sx={stylesFrame} as="footer" padding={[9, 8, 7]}>
     {props.children}
     <CopyRight sx={stylesCopyRight} />
   </Box>
 );
 
-Layout.displayName = 'FooterLayout';
+Frame.displayName = 'FooterFrame';

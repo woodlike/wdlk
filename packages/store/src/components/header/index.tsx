@@ -1,6 +1,4 @@
-import * as Header from './Layout';
+import * as Item from './Layout';
+import * as Frame from './Frame';
 
-export * from './Header';
-export * from './Items';
-
-export const HeaderLayout = { ...Header };
+export const Header = { ...Frame, ...Item };

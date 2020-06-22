@@ -26,7 +26,7 @@ const createStylesIcon: SxStyleProp = {
 const createStyles = (
   size: number,
   color = 'primary',
-): SxStyleProp & { ['-webkit-font-smoothing']: string } => ({
+): SxStyleProp & { WebkitFontSmoothing: string } => ({
   color,
   fontFamily: 'heading.display',
   fontSize: size,
@@ -36,7 +36,7 @@ const createStyles = (
   textTransform: 'uppercase',
   cursor: 'pointer',
   transition: 'color 500ms ease',
-  '-webkit-font-smoothing': 'antialiased',
+  WebkitFontSmoothing: 'antialiased',
   ':hover': {
     color: (): string => (color === 'primary' ? 'secondary' : 'mutedHover'),
   },
