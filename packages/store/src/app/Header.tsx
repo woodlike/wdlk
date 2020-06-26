@@ -6,20 +6,17 @@ import { Cart, Burger } from '@wdlk/components';
 import {
   Header as HeaderUI,
   Logo,
-  Navigation,
-  CopyRight,
   CartDisplay,
   CartDisplayItem,
   CartLink,
 } from '../components';
 import { useHeaderData, useNavigationData } from '../hooks';
+import { NavigationBar, NavigationLayer } from '.';
 
 const Compact: React.FC = () => {
   const [isExpanded, setIsExpanded] = React.useState(false);
   const { header } = useHeaderData();
-  const { items, url } = useNavigationData();
-  const brandItem = items.find(item => item.title === 'The Brand');
-  const login = header.miniCart.items[0];
+  const { url } = useNavigationData();
 
   return (
     <>
@@ -48,58 +45,14 @@ const Compact: React.FC = () => {
           />
         </HeaderUI.Item>
       </HeaderUI.Frame>
-      <Navigation.Layer isExpanded={isExpanded}>
-        <Navigation.LayerList>
-          {items.map(item => (
-            <Navigation.Link
-              key={item.id}
-              href={`${url}/${item.handle}`}
-              current={false}
-              isFocused={false}
-              isInverted={true}
-              context="panel"
-              size="L"
-              text={item.title}
-            />
-          ))}
-        </Navigation.LayerList>
-        <Navigation.LayerList>
-          {brandItem &&
-            brandItem.menuItems.map(item => (
-              <Navigation.Link
-                key={item.id}
-                href={`${url}/${item.handle}`}
-                current={false}
-                isFocused={false}
-                isInverted={true}
-                context="panel"
-                size="S"
-                text={item.title}
-              />
-            ))}
-          {login && (
-            <Navigation.Link
-              href={`${url}/${login.handle}`}
-              current={false}
-              isFocused={false}
-              isInverted={true}
-              context="panel"
-              size="S"
-              text={login.title}
-            />
-          )}
-        </Navigation.LayerList>
-        <Navigation.LayerFooter>
-          <CopyRight color="inverted" />
-        </Navigation.LayerFooter>
-      </Navigation.Layer>
+      <NavigationLayer isExpanded={isExpanded} />
     </>
   );
 };
 
 export const Expanded: React.FC = () => {
   const { header } = useHeaderData();
-  const { items, url } = useNavigationData();
+  const { url } = useNavigationData();
   return (
     <HeaderUI.Frame>
       <HeaderUI.Item>
@@ -111,19 +64,7 @@ export const Expanded: React.FC = () => {
         />
       </HeaderUI.Item>
       <HeaderUI.Item>
-        <Navigation.Frame>
-          <Navigation.Bar itemCount={items.length}>
-            {items.map(item => (
-              <Navigation.Item
-                key={item.id}
-                handle={item.handle}
-                menuItems={item.menuItems}
-                title={item.title}
-                url={url}
-              />
-            ))}
-          </Navigation.Bar>
-        </Navigation.Frame>
+        <NavigationBar />
       </HeaderUI.Item>
       <HeaderUI.Item>
         <CartDisplay>

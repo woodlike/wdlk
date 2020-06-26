@@ -13,7 +13,7 @@ const stylesHeaderLayout: SxStyleProp = {
   top: 0,
   left: 0,
   width: '100%',
-  height: (theme: Theme) => theme.header,
+  height: '70px',
   padding: (theme: Theme) => theme.space[4],
   zIndex: 1,
   ':before': {

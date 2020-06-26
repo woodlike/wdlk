@@ -1,13 +1,11 @@
 import * as React from 'react';
-
-import { Navigation, NavData } from '.';
-import { LinkNode } from '../..';
+import { LinkNode, NavData, Navigation, useNavigationData } from '..';
 
 export interface NavigationItemProps extends NavData {
   readonly menuItems: LinkNode[];
 }
 
-export const Item: React.FC<NavigationItemProps> = props => {
+export const NavigationItem: React.FC<NavigationItemProps> = props => {
   const [isExpanded, setExpanded] = React.useState(false);
   return (
     <Navigation.Link
@@ -38,4 +36,21 @@ export const Item: React.FC<NavigationItemProps> = props => {
   );
 };
 
-Item.displayName = 'NavigationItem';
+export const NavigationBar: React.FC = () => {
+  const { items, url } = useNavigationData();
+  return (
+    <Navigation.Frame>
+      <Navigation.Bar itemCount={items.length}>
+        {items.map(item => (
+          <NavigationItem
+            key={item.id}
+            handle={item.handle}
+            menuItems={item.menuItems}
+            title={item.title}
+            url={url}
+          />
+        ))}
+      </Navigation.Bar>
+    </Navigation.Frame>
+  );
+};

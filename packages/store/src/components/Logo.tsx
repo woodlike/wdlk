@@ -12,8 +12,8 @@ export interface LogoProps {
 }
 
 const logo = {
-  width: 185,
-  height: 42,
+  width: 150,
+  height: 38,
 };
 
 const styledSVG: SxStyleProp = {
