@@ -1,6 +1,6 @@
 /**@jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
-import { Small } from '@wdlk/components';
+import { Small, Theme } from '@wdlk/components';
 import { graphql, useStaticQuery } from 'gatsby';
 
 export interface CopyRightProps {
@@ -9,7 +9,8 @@ export interface CopyRightProps {
 }
 
 const createStylesCopyRight = (color = 'default'): SxStyleProp => ({
-  color: color === 'default' ? 'primary' : 'background',
+  color: ({ colors }: Theme) =>
+    color === 'default' ? colors.grays[3] : 'background',
 });
 
 export const CopyRight: React.FC<CopyRightProps> = props => {
@@ -27,7 +28,7 @@ export const CopyRight: React.FC<CopyRightProps> = props => {
     <aside className={props.className}>
       <Small
         sx={createStylesCopyRight(props.color)}
-        scale={1}
+        scale={0}
         family="heading.display">
         © {site.siteMetadata.brand} {date.getFullYear()}
       </Small>

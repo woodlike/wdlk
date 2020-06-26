@@ -6,12 +6,12 @@
     "menuItems": [
       {
         "handle": "collections/bikini-tops",
-        "title": "Bikini Tops",
+        "title": "Tops",
         "id": "gqv6qn1f"
       },
       {
         "handle": "collections/bikini-bottoms",
-        "title": "Bikini Bottoms",
+        "title": "Bottoms",
         "id": "SffcMKCN"
       },
       {
@@ -64,39 +64,29 @@
     ]
   },
   {
-    "handle": "collections/movement",
-    "title": "Movement",
+    "handle": "collections/surf-yoga",
+    "title": "Surf & Yoga",
     "id": "M_NC_Tka",
     "menuItems": [
       {
-        "handle": "collections/movement/tops",
+        "handle": "collections/surf-yoga/tops",
         "title": "Tops",
         "id": "hlOPoHPy"
       },
       {
-        "handle": "collections/movement/bottoms",
+        "handle": "collections/surf-yoga/bottoms",
         "title": "Bottoms",
         "id": "Qrc4vg2T"
       },
       {
-        "handle": "collections/movement/one-piece",
+        "handle": "collections/surf-yoga/one-piece",
         "title": "One Pieces",
         "id": "cXI9NRXI"
       },
       {
-        "handle": "products/woodlike-ocean-gift-card-50-00-postcard",
-        "title": "Gift card 50",
+        "handle": "collections/surf-yoga/collections/leggings-1/leggings",
+        "title": "Leggings",
         "id": "-17sFmV7"
-      },
-      {
-        "handle": "products/woodlike-ocean-gift-card-100-00-postcard",
-        "title": "Gift card 100",
-        "id": "C_il2Rz1"
-      },
-      {
-        "handle": "products/woodlike-ocean-gift-card-150-00-print-version",
-        "title": "Gift card 150",
-        "id": "NZcDa-3b"
       }
     ]
   },

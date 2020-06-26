@@ -77,24 +77,24 @@ const createLinkSize = (size: NavLinkSize | undefined): SxStyleProp => {
   switch (size) {
     case 'S':
       return {
-        marginBottom: 0,
+        paddingBottom: 0,
         fontSize: `${qt('fontSizes')(0)}px`,
       };
     case 'M':
       return {
-        marginBottom: `${qt('spaces')(1)}px`,
+        paddingBottom: `${qt('spaces')(1)}px`,
         fontSize: `${qt('fontSizes')(4)}px`,
         textTransform: 'uppercase',
       };
     case 'L':
       return {
-        marginBottom: `${qt('spaces')(1)}px`,
+        paddingBottom: `${qt('spaces')(1)}px`,
         fontSize: `${qt('fontSizes')(5)}px`,
         textTransform: 'uppercase',
       };
     default:
       return {
-        fontSize: [`${qt('fontSizes')(3)}px`, `${qt('fontSizes')(2)}px`],
+        fontSize: [`${qt('fontSizes')(1)}px`, `${qt('fontSizes')(1)}px`],
       };
   }
 };

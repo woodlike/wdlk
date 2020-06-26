@@ -25,11 +25,7 @@ const styledPanelBase: SxStyleProp = {
     left: 0,
     width: '100%',
     height: '100%',
-    borderColor: 'border',
-    borderStyle: 'solid',
-    borderWidth: '0 1px 1px',
     backgroundColor: 'background',
-    opacity: 0.95,
     zIndex: -1,
   },
 };

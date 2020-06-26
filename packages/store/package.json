@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@emotion/core": "^10.0.22",
+    "@emotion/styled": "^10.0.27",
     "@wdlk/component-library": "1.7.6",
     "@wdlk/components": "2.3.0",
     "@wdlk/hooks": "1.2.0",
