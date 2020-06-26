@@ -1,13 +1,16 @@
 import * as React from 'react';
 import { useThemeUI } from 'theme-ui';
 import { useMedia } from '@wdlk/hooks';
-import { Cart, Logo, Burger } from '@wdlk/components';
+import { Cart, Burger } from '@wdlk/components';
 
 import {
   Header as HeaderUI,
+  Logo,
   Navigation,
   CopyRight,
-  MiniCart,
+  CartDisplay,
+  CartDisplayItem,
+  CartLink,
 } from '../components';
 import { useHeaderData, useNavigationData } from '../hooks';
 
@@ -123,7 +126,24 @@ export const Expanded: React.FC = () => {
         </Navigation.Frame>
       </HeaderUI.Item>
       <HeaderUI.Item>
-        <MiniCart />
+        <CartDisplay>
+          {header.miniCart.items.map(item => (
+            <CartDisplayItem key={item.id}>
+              <CartLink href={`${url}/${item.handle}`} isFocused={false}>
+                {item.title}
+              </CartLink>
+            </CartDisplayItem>
+          ))}
+          <CartDisplayItem>
+            <Cart
+              href={`${url}/${header.cart.handle}`}
+              isFocused={false}
+              count={0}
+              isFilled={false}
+              title="Woodlike Ocean Shopping cart"
+            />
+          </CartDisplayItem>
+        </CartDisplay>
       </HeaderUI.Item>
     </HeaderUI.Frame>
   );
