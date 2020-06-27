@@ -8,6 +8,7 @@ export interface Theme {
   readonly colors: ThemeColor & GenericThemeColor;
   readonly fonts: ThemeFontsProps;
   readonly fontSizes: number[];
+  readonly header: string[];
   readonly letterSpacings: number[];
   readonly space: number[];
   readonly transition: ThemeTiming;
@@ -119,7 +120,7 @@ export const theme = {
     },
     monospace: `"IBM Plex Mono", monospace`,
   },
-  header: ['70px', '70px', '70px', '80px', '80px', '80px'],
+  header: ['70px', '70px', '70px', '70px', '70px', '70px'],
   letterSpacings: [0.5, 1, 1.5],
   space: spaces,
   transition: {
@@ -128,6 +129,7 @@ export const theme = {
       ...themeQuery.transition.timing,
       'cubic-bezier(0.000, 0.755, 0.450, 0.910)',
       'cubic-bezier(0.770, 0.000, 0.175, 1.000)',
+      'cubic-bezier(0.550, 0.055, 0.675, 0.190)',
     ],
   },
 };
