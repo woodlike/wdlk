@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
 import { Theme, qt, withFocusStyle } from '@wdlk/components';
-import { calcYPosition } from './utils';
+import { getHeaderHeight } from './utils';
 
 export interface NavigationLinkProps {
   readonly current: boolean;
@@ -52,7 +52,7 @@ const stylesLink: SxStyleProp = {
     position: 'absolute',
     top: 0,
     left: 0,
-    height: calcYPosition((qt('header')('all') as unknown) as string[]),
+    height: ({ header }: Theme) => getHeaderHeight(header),
     width: '100%',
   },
   ':hover': {
