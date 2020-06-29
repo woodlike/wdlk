@@ -2,6 +2,7 @@ import * as React from 'react';
 import { graphql } from 'gatsby';
 
 import { Footer, Header } from '..';
+import { Stage } from '../..';
 import { ShopifyProductNode } from '../../../gatsby';
 
 export interface ProductLayoutProps {
@@ -12,14 +13,30 @@ export interface ShopifyProduct {
   readonly shopifyProduct: ShopifyProductNode;
 }
 
-export const ProductLayout: React.FC<ProductLayoutProps> = props => {
-  const { data } = props;
-  const { shopifyProduct } = data;
-  const { title } = shopifyProduct;
+export const ProductLayout: React.FC<ProductLayoutProps> = () => {
   return (
     <>
       <Header />
-      <main>{title}</main>
+      <main>
+        <Stage.Layout
+          image={
+            <div
+              style={{
+                backgroundColor: 'papayaWhip',
+                width: '100%',
+                height: '100vh',
+              }}></div>
+          }
+          content={
+            <div
+              style={{
+                backgroundColor: 'red',
+                width: '100%',
+                height: '140vh',
+              }}></div>
+          }
+        />
+      </main>
       <Footer />
     </>
   );
