@@ -1,20 +1,16 @@
-import { useEffect, useRef, useState, RefObject } from 'react';
-
-export interface IntersectionInit {
-  readonly steps?: number;
-  readonly options?: IntersectionOptions;
-}
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from 'react';
 
 export interface IntersectionOptions {
-  readonly threshold?: number | number[];
+  readonly threshold: number | number[];
   readonly rootMargin?: string;
   readonly root?: Element | null;
 }
 
-export interface UseIntersectionObserver {
-  readonly entries: IntersectionObserverEntry[];
-  readonly targetRef: RefObject<Element>;
-}
+export type UseIntersectionObserver<T> = [
+  IntersectionObserverEntry,
+  T,
+  Dispatch<SetStateAction<T>>,
+];
 
 export function calcThreshold(steps: number): number | number[] {
   if (steps === 1) {
@@ -25,25 +21,27 @@ export function calcThreshold(steps: number): number | number[] {
   );
 }
 
-export function useIntersectionObserver(
-  init: IntersectionInit,
-): UseIntersectionObserver {
-  const targetRef = useRef<Element>(null);
-  const [entries, setEntries] = useState<IntersectionObserverEntry[]>([]);
-  const { options, steps = 1 } = init;
-
-  const updateEntries = (ent: IntersectionObserverEntry[]): void =>
-    setEntries([...ent]);
+export function useIntersectionObserver<T>(
+  init: IntersectionOptions,
+): UseIntersectionObserver<T> {
+  const [observerRef, setRef] = useState<T>((null as unknown) as T);
+  const [entry, setEntries] = useState<IntersectionObserverEntry>(
+    {} as IntersectionObserverEntry,
+  );
+  const observer = useRef(
+    new IntersectionObserver(
+      ([entry]: IntersectionObserverEntry[]) => setEntries(entry),
+      init,
+    ),
+  );
 
   useEffect(() => {
-    const observer = new IntersectionObserver(updateEntries, {
-      ...options,
-      threshold: (options && options.threshold) || calcThreshold(steps),
-    });
+    const { current: currentObserver } = observer;
+    if (observerRef) {
+      currentObserver.observe((observerRef as unknown) as Element);
+    }
+    return () => currentObserver.disconnect();
+  }, [observerRef]);
 
-    observer.observe(targetRef.current as Element);
-    return () => observer.unobserve(targetRef.current as Element);
-  }, []);
-
-  return { entries, targetRef };
+  return [entry, observerRef, setRef];
 }
