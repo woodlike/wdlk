@@ -6,3 +6,4 @@ export * from './Header';
 export * from './Icon';
 export * from './Link';
 export * from './Navigation';
+export * from './ProductStage';
