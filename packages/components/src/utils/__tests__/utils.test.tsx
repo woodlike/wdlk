@@ -10,10 +10,12 @@ describe('calcYPosition()', () => {
       '43px',
       '43px',
       '43px',
-      '53px',
-      '53px',
-      '53px',
+      '43px',
+      '43px',
+      '43px',
     ]);
-    expect(calcYPosition(['100px', '200px', '300px'], fontSizeS, fontSizeM)).toStrictEqual(['73px', '173px', '273px']);
+    expect(
+      calcYPosition(['100px', '200px', '300px'], fontSizeS, fontSizeM),
+    ).toStrictEqual(['73px', '173px', '273px']);
   });
 });
