@@ -7,9 +7,9 @@ export interface IntersectionOptions {
 }
 
 export type UseIntersectionObserver<T> = [
+  Dispatch<SetStateAction<T>>,
   IntersectionObserverEntry,
   T,
-  Dispatch<SetStateAction<T>>,
 ];
 
 export function calcThreshold(steps: number): number | number[] {
@@ -43,5 +43,5 @@ export function useIntersectionObserver<T>(
     return () => currentObserver.disconnect();
   }, [observerRef]);
 
-  return [entry, observerRef, setRef];
+  return [setRef, entry, observerRef];
 }
