@@ -9,11 +9,11 @@ const stylesHeaderLayout: SxStyleProp = {
   alignItems: 'center',
   alignContent: 'center',
   boxSizing: 'border-box',
-  position: 'fixed',
+  position: 'sticky',
   top: 0,
   left: 0,
   width: '100%',
-  height: '70px',
+  height: ({ header }: Theme) => header,
   padding: (theme: Theme) => theme.space[4],
   zIndex: 1,
   ':before': {

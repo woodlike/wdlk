@@ -9,7 +9,6 @@ export interface StageLayoutProps {
 
 const stylesStage: SxStyleProp = {
   display: ['block', 'block', 'block', 'flex'],
-  paddingTop: ({ header }: Theme) => header,
   paddingRight: [3, 4, 5],
   paddingLeft: [3, 4, 5],
 };
@@ -25,8 +24,6 @@ const stylesImage: SxStyleProp = {
   position: 'sticky',
   top: 0,
   height: '100vh',
-  transform: `translate3d(0, calc(var(--imageTopPosition) * 1px), 0)`,
-  transition: `transform 200ms ease`,
 };
 
 export const Layout: React.FC<StageLayoutProps> = props => {
