@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`useHeaderData() should return an object containing the navigation data 1`] = `
+Object {
+  "header": Object {
+    "cart": Object {
+      "handle": "cart",
+    },
+    "logo": Object {
+      "desc": "Go back to the main page",
+      "title": "Woodlike Ocean Sustainable Swimwear",
+    },
+    "miniCart": Object {
+      "items": Array [
+        Object {
+          "handle": "account/login",
+          "id": "4vnwZnPaFu",
+          "title": "Log in",
+        },
+        Object {
+          "handle": "account/register",
+          "id": "s4MSmQgXaG",
+          "title": "Register",
+        },
+      ],
+    },
+  },
+  "url": "https://woodlikeocean.com",
+}
+`;
