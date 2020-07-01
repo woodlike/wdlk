@@ -23,7 +23,7 @@
     "@emotion/styled": "^10.0.27",
     "@wdlk/component-library": "1.7.6",
     "@wdlk/components": "2.4.0",
-    "@wdlk/hooks": "1.2.0",
+    "@wdlk/hooks": "1.3.1",
     "dotenv": "^8.2.0",
     "gatsby": "^2.18.3",
     "gatsby-image": "^2.2.37",

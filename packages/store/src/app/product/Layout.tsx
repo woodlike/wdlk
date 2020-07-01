@@ -22,7 +22,7 @@ export const ProductLayout: React.FC<ProductLayoutProps> = () => {
           image={
             <div
               style={{
-                backgroundColor: 'papayaWhip',
+                backgroundColor: 'rebeccapurple',
                 width: '100%',
                 height: '100vh',
               }}></div>
@@ -32,7 +32,7 @@ export const ProductLayout: React.FC<ProductLayoutProps> = () => {
               style={{
                 backgroundColor: 'red',
                 width: '100%',
-                height: '140vh',
+                height: '180vh',
               }}></div>
           }
         />
