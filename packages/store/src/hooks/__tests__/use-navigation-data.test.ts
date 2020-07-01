@@ -1,7 +1,7 @@
 import { renderHook } from '@testing-library/react-hooks';
 import { useStaticQuery } from 'gatsby';
 
-import {useNavigationData} from '..';
+import { useNavigationData } from '..';
 import { navigationQueryMock } from '../../../__mocks__';
 
 beforeEach(() => {
