@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
 
+import { StageCarousel } from '.';
 import { Footer, Header } from '..';
 import { Stage } from '../..';
 import { ShopifyProductNode } from '../../../gatsby';
@@ -13,20 +14,15 @@ export interface ShopifyProduct {
   readonly shopifyProduct: ShopifyProductNode;
 }
 
-export const ProductLayout: React.FC<ProductLayoutProps> = () => {
+export const ProductLayout: React.FC<ProductLayoutProps> = query => {
+  const { data } = query;
+  const { shopifyProduct } = data;
   return (
     <>
       <Header />
       <main>
         <Stage.Layout
-          image={
-            <div
-              style={{
-                backgroundColor: 'rebeccapurple',
-                width: '100%',
-                height: '100vh',
-              }}></div>
-          }
+          image={<StageCarousel images={shopifyProduct.images} />}
           content={
             <div
               style={{
@@ -52,6 +48,7 @@ export const query = graphql`
       images {
         altText
         id
+        originalSrc
         localFile {
           name
         }

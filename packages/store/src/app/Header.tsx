@@ -95,10 +95,11 @@ export const Header: React.FC = () => {
   const isCompact = useMedia(
     [
       `(min-width: ${(theme.breakpoints as string[])[2]})`,
+      `(min-width: ${(theme.breakpoints as string[])[1]})`,
       `(min-width: ${(theme.breakpoints as string[])[0]})`,
     ],
-    [false, true],
-    false,
+    [false, true, true],
+    true,
   );
   return isCompact ? <Compact /> : <Expanded />;
 };

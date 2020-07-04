@@ -14,6 +14,7 @@ export interface ProductFields {
 export interface ProductImage {
   readonly altText: string;
   readonly id: string;
+  readonly originalSrc: string;
   readonly localFile: {
     readonly name: string;
   };
