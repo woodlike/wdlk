@@ -1,6 +1,5 @@
 /**@jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
-import { Theme } from '@wdlk/components';
 
 export interface StageLayoutProps {
   readonly image: JSX.Element;
@@ -9,8 +8,9 @@ export interface StageLayoutProps {
 
 const stylesStage: SxStyleProp = {
   display: ['block', 'block', 'block', 'flex'],
-  paddingRight: [3, 4, 5],
-  paddingLeft: [3, 4, 5],
+  paddingRight: [0, 0, 0, 4, 5],
+  paddingLeft: [0, 0, 0, 4, 5],
+  overflow: 'hidden',
 };
 
 const stylesSlot: SxStyleProp = {
@@ -19,9 +19,9 @@ const stylesSlot: SxStyleProp = {
   minHeight: '100vh',
 };
 
-const stylesImage: SxStyleProp = {
+const stylesImageFrame: SxStyleProp = {
   ...stylesSlot,
-  position: 'sticky',
+  position: ['relative', 'relative', 'relative', 'sticky'],
   top: 0,
   height: '100vh',
 };
@@ -29,7 +29,7 @@ const stylesImage: SxStyleProp = {
 export const Layout: React.FC<StageLayoutProps> = props => {
   return (
     <section sx={stylesStage}>
-      <div sx={stylesImage}>{props.image}</div>
+      <div sx={stylesImageFrame}>{props.image}</div>
       <div sx={stylesSlot}>{props.content}</div>
     </section>
   );
