@@ -1,30 +1,92 @@
-import { useState, useCallback, useMemo } from 'react';
+import { useReducer } from 'react';
 
 export interface UseCarousel {
   readonly coordinate: number;
-  set(curr: number): void;
+  jump(idx: number): void;
+  previous(): void;
+  next(): void;
 }
 
-export function previous(current: number, length: number): number {
-  return (current - 1 + length) % length;
+export enum CarouselType {
+  jump = 'jump',
+  previous = 'previous',
+  next = 'next',
 }
 
-export function next(current: number, length: number): number {
-  return (current + 1 + length) % length;
+export type Coordinate = number;
+interface State {
+  readonly coordinate: number;
+  readonly current: number;
+  readonly length: number;
 }
+
+interface Action {
+  readonly type: CarouselType;
+  readonly payload?: Payload;
+}
+
+interface Payload {
+  readonly current: number;
+}
+
+export function previous(current: number, length: number): Coordinate {
+  return (Math.abs((current - 1 + length) % length) * -1 * 100) / length;
+}
+
+export function next(current: number, length: number): Coordinate {
+  return (Math.abs((current + 1 + length) % length) * -1 * 100) / length;
+}
+
+export function jump(current: number, length: number): Coordinate {
+  return (Math.abs(current) * -1 * 100) / length;
+}
+
+function reducer(state: State, action: Action): State {
+  switch (action.type) {
+    case CarouselType.jump: {
+      const { current } = action.payload as Payload;
+      return {
+        ...state,
+        ...(current < state.length && {
+          coordinate: jump(current, state.length),
+        }),
+        current,
+      };
+    }
+
+    case CarouselType.previous: {
+      return { ...state, coordinate: previous(state.current, state.length) };
+    }
+
+    case CarouselType.next: {
+      return { ...state, coordinate: next(state.current, state.length) };
+    }
+
+    default: {
+      throw new Error(`Unhandled type: ${action.type}`);
+    }
+  }
+}
+
+const initialState: State = {
+  coordinate: 0,
+  current: 0,
+  length: 0,
+};
 
 export function useCarousel(length: number): UseCarousel {
-  const [coordinate, setCoordinate] = useState<number>(0);
-  const [current, setCurrent] = useState<number>(0);
+  Object.defineProperty(initialState, 'length', {
+    value: length,
+    writable: false,
+  });
+  const [{ coordinate }, dispatch] = useReducer(reducer, initialState);
 
-  const set = useCallback((n: number) => setCurrent(n), [current]);
-  useMemo(
-    () =>
-      setCoordinate(coordinate =>
-        current > length ? coordinate : current * 100,
-      ),
-    [current, coordinate],
-  );
+  const jump = (idx: number): void =>
+    dispatch({ type: CarouselType.jump, payload: { current: idx } });
 
-  return { coordinate, set };
+  const next = (): void => dispatch({ type: CarouselType.next });
+
+  const previous = (): void => dispatch({ type: CarouselType.previous });
+
+  return { coordinate, jump, previous, next };
 }
