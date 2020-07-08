@@ -6,7 +6,9 @@ require('ts-node').register({
   },
 });
 
-const { createPages, createSlugs: createSlug } = require('./gatsby');
+const { createPages, createSlugs: createSlug, createStoreResolvers, createCustomStoreTypes } = require('./gatsby');
 
+exports.sourceNodes = ({ actions }) => createCustomStoreTypes(actions);
 exports.createPages = async args => await createPages(args);
 exports.onCreateNode = (args) => createSlug(args);
+exports.createResolvers = ({ createResolvers }) => createStoreResolvers(createResolvers)
