@@ -1,5 +1,11 @@
 /**@jsx jsx */
+import { Fragment } from 'react';
 import { jsx, SxStyleProp } from 'theme-ui';
+
+export interface CarouselFrameProps {
+  readonly iconRight: JSX.Element;
+  readonly iconLeft: JSX.Element;
+}
 
 const stylesProp: SxStyleProp = {
   position: 'relative',
@@ -9,8 +15,12 @@ const stylesProp: SxStyleProp = {
   overflow: 'hidden',
 };
 
-export const Frame: React.FC = props => (
-  <div sx={stylesProp}>{props.children}</div>
+export const Frame: React.FC<CarouselFrameProps> = props => (
+  <Fragment>
+    <div sx={stylesProp}>{props.children}</div>
+    {props.iconRight}
+    {props.iconLeft}
+  </Fragment>
 );
 
 Frame.displayName = 'CarouselFrame';

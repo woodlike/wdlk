@@ -16,14 +16,14 @@ const stylesStage: SxStyleProp = {
 const stylesSlot: SxStyleProp = {
   boxSizing: 'border-box',
   width: ['100%', '100%', '100%', '50%'],
-  minHeight: '100vh',
+  minHeight: ['auto', 'auto', 'auto', '100vh'],
 };
 
 const stylesImageFrame: SxStyleProp = {
   ...stylesSlot,
   position: ['relative', 'relative', 'relative', 'sticky'],
   top: 0,
-  height: '100vh',
+  height: ['auto', 'auto', 'auto', '100vh'],
 };
 
 export const Layout: React.FC<StageLayoutProps> = props => {
