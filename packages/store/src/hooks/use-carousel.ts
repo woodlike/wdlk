@@ -29,12 +29,20 @@ interface Payload {
   readonly current: number;
 }
 
+export function nextItem(current: number, length: number): number {
+  return (current + 1 + length) % length;
+}
+
+export function previousItem(current: number, length: number): number {
+  return (current - 1 + length) % length;
+}
+
 export function previous(current: number, length: number): Coordinate {
-  return (Math.abs((current - 1 + length) % length) * -1 * 100) / length;
+  return (Math.abs(previousItem(current, length)) * -1 * 100) / length;
 }
 
 export function next(current: number, length: number): Coordinate {
-  return (Math.abs((current + 1 + length) % length) * -1 * 100) / length;
+  return (Math.abs(nextItem(current, length)) * -1 * 100) / length;
 }
 
 export function jump(current: number, length: number): Coordinate {
@@ -55,11 +63,19 @@ function reducer(state: State, action: Action): State {
     }
 
     case CarouselType.previous: {
-      return { ...state, coordinate: previous(state.current, state.length) };
+      return {
+        ...state,
+        current: previousItem(state.current, state.length),
+        coordinate: previous(state.current, state.length),
+      };
     }
 
     case CarouselType.next: {
-      return { ...state, coordinate: next(state.current, state.length) };
+      return {
+        ...state,
+        current: nextItem(state.current, state.length),
+        coordinate: next(state.current, state.length),
+      };
     }
 
     default: {

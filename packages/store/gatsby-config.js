@@ -7,7 +7,6 @@ module.exports = {
     siteUrl: 'https://woodlikeocean.com',
   },
   plugins: [
-    'gatsby-plugin-typescript',
     'gatsby-transformer-json',
     'gatsby-plugin-theme-ui',
     {

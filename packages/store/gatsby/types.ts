@@ -2,7 +2,7 @@ export interface ShopifyProductNode {
   readonly descriptions: string;
   readonly handle: string;
   readonly id: string;
-  readonly images: ProductImage;
+  readonly images: ProductImage[];
   readonly fields: ProductFields;
   readonly title: string;
 }
@@ -34,4 +34,10 @@ export enum ProductImageSize {
   small = '500x500',
   medium = '800x800',
   large = '1024x1024',
+}
+
+export enum ProductImageWidth {
+  small = 500,
+  medium = 800,
+  large = 1024,
 }

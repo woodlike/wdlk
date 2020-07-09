@@ -46,11 +46,12 @@ export const query = graphql`
       id
       description
       images {
-        altText
         id
+        altText
         originalSrc
-        localFile {
-          name
+        srcSet {
+          id
+          src
         }
       }
       title
