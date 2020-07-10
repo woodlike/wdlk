@@ -1,4 +1,5 @@
 import { useEffect, useReducer, useRef, RefObject } from 'react';
+import { match } from 'assert';
 
 export interface UseCarousel {
   readonly coordinate: number;
@@ -28,6 +29,11 @@ interface Action {
   readonly touchList?: TouchList;
 }
 
+interface Move {
+  coordinate: Coordinate;
+  percentage: number;
+}
+
 export function nextItem(current: number, length: number): number {
   return (current + 1 + length) % length;
 }
@@ -48,8 +54,21 @@ export function jump(current: number, length: number): Coordinate {
   return (Math.abs(current) * -1 * 100) / length;
 }
 
-export function move(offsetLeft: number): number {
-  return offsetLeft;
+export function move(
+  targetTouches: TouchList,
+  current: number,
+  length: number,
+): Move {
+  const { clientX, target } = targetTouches[0];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const { width } = target as any;
+  const delta = width / 2 - clientX;
+  const percentage = +((delta * 100) / width).toFixed(2);
+  const coordinate = +(
+    ((100 / length) * (current + 1) * percentage * -1) /
+    100
+  ).toFixed(2);
+  return { coordinate, percentage };
 }
 
 function reducer(state: State, action: Action): State {
@@ -81,10 +100,14 @@ function reducer(state: State, action: Action): State {
     }
 
     case CarouselType.move: {
-      console.log('swipe,------- state', state, 'payload', action.touchList);
-      console.log(action.touchList, '^^^^^^^^');
+      const { coordinate } = move(
+        action.touchList as TouchList,
+        state.current,
+        state.length,
+      );
       return {
         ...state,
+        coordinate: coordinate,
       };
     }
 
@@ -112,10 +135,9 @@ export function useCarousel(length: number): UseCarousel {
     dispatch({ type: CarouselType.jump, current: idx });
 
   const next = (): void => dispatch({ type: CarouselType.next });
-
   const previous = (): void => dispatch({ type: CarouselType.previous });
 
-  const swipe = (e: TouchEvent): void =>
+  const move = (e: TouchEvent): void =>
     dispatch({
       type: CarouselType.move,
       touchList: e.targetTouches,
@@ -125,9 +147,10 @@ export function useCarousel(length: number): UseCarousel {
     if (!carouselRef.current) {
       return;
     }
-    carouselRef.current.addEventListener('touchmove', e => swipe(e));
 
-    return () => carouselRef.current?.removeEventListener('touchmove', swipe);
+    carouselRef.current.addEventListener('touchmove', move);
+
+    return () => carouselRef.current?.removeEventListener('touchmove', move);
   }, []);
 
   return { coordinate, jump, previous, next, carouselRef };

@@ -1,5 +1,5 @@
 import { renderHook, act } from '@testing-library/react-hooks';
-import { previous, next, useCarousel, jump } from '..';
+import { previous, next, useCarousel, jump, move } from '..';
 
 describe('UseCarousel', () => {
   describe('useCarousel()', () => {
@@ -91,8 +91,20 @@ describe('UseCarousel', () => {
   });
 
   describe('move()', () => {
+    const createTouchEventMock = (x: number, width: number) =>
+      ([
+        {
+          clientX: x,
+          target: {
+            width,
+          },
+        },
+      ] as unknown) as TouchList;
     it('should return the next item if the event coordinates is below the item with', () => {
-      expect(1).toBe(1);
+      expect(move(createTouchEventMock(65, 375), 0, 6)).toEqual({
+        coordinate: -5.45,
+        percentage: 32.67,
+      });
     });
   });
 });
