@@ -7,6 +7,7 @@ import {
   SourceSetProps,
   ProductImageWidth,
 } from '../../../gatsby';
+import { Theme } from '@wdlk/components';
 
 export interface StageCarouselProps {
   images: ProductImage[];
@@ -23,17 +24,24 @@ function createSrcSets(srcSets: SourceSetProps[]): string {
 export const StageCarousel: React.FC<StageCarouselProps> = props => {
   const { images } = props;
   const { theme } = useThemeUI();
-  const { coordinate, previous, next } = useCarousel(images.length);
+  const { coordinate, previous, next, carouselRef } = useCarousel(
+    images.length,
+  );
   return (
     <Carousel.Frame
       iconRight={<Carousel.IconRight onClick={next} />}
       iconLeft={<Carousel.IconLeft onClick={previous} />}>
-      <Carousel.Track length={images.length} coordinate={coordinate}>
+      <Carousel.Track
+        ref={carouselRef}
+        length={images.length}
+        coordinate={coordinate}>
         {images.map(image => (
           <Image
             key={image.id}
             alt={image.altText}
-            sizes={`(min-width: ${theme.breakpoints[2]}) 50vw, 100vw`}
+            sizes={`(min-width: ${
+              ((theme as unknown) as Theme).breakpoints[2]
+            }) 50vw, 100vw`}
             src={image.originalSrc}
             srcSet={createSrcSets(image.srcSet)}
           />
