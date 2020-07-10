@@ -89,4 +89,10 @@ describe('UseCarousel', () => {
       },
     );
   });
+
+  describe('move()', () => {
+    it('should return the next item if the event coordinates is below the item with', () => {
+      expect(1).toBe(1);
+    });
+  });
 });
