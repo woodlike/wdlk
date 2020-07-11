@@ -15,7 +15,6 @@ export enum CarouselType {
   move = 'move',
 }
 
-export type Coordinate = number;
 interface State {
   readonly coordinate: number;
   readonly current: number;
@@ -28,28 +27,23 @@ interface Action {
   readonly touchList?: TouchList;
 }
 
-interface Move {
-  coordinate: Coordinate;
-  percentage: number;
-}
-
-export function nextItem(current: number, length: number): number {
+export function nextItem(current: number, length: number) {
   return (current + 1 + length) % length;
 }
 
-export function previousItem(current: number, length: number): number {
+export function previousItem(current: number, length: number) {
   return (current - 1 + length) % length;
 }
 
-export function previous(current: number, length: number): Coordinate {
+export function previous(current: number, length: number) {
   return (Math.abs(previousItem(current, length)) * -1 * 100) / length;
 }
 
-export function next(current: number, length: number): Coordinate {
+export function next(current: number, length: number) {
   return (Math.abs(nextItem(current, length)) * -1 * 100) / length;
 }
 
-export function jump(current: number, length: number): Coordinate {
+export function jump(current: number, length: number) {
   return (Math.abs(current) * -1 * 100) / length;
 }
 
@@ -57,7 +51,7 @@ export function move(
   targetTouches: TouchList,
   current: number,
   length: number,
-): Move {
+) {
   const { clientX, target } = targetTouches[0];
   const { width } = target as HTMLImageElement | HTMLVideoElement;
 
@@ -131,13 +125,13 @@ export function useCarousel(length: number): UseCarousel {
   const carouselRef = useRef<HTMLDivElement>(null);
   const [{ coordinate }, dispatch] = useReducer(reducer, initialState);
 
-  const jump = (idx: number): void =>
+  const jump = (idx: number) =>
     dispatch({ type: CarouselType.jump, current: idx });
 
-  const next = (): void => dispatch({ type: CarouselType.next });
-  const previous = (): void => dispatch({ type: CarouselType.previous });
+  const next = () => dispatch({ type: CarouselType.next });
+  const previous = () => dispatch({ type: CarouselType.previous });
 
-  const move = (e: TouchEvent): void =>
+  const move = (e: TouchEvent) =>
     dispatch({
       type: CarouselType.move,
       touchList: e.targetTouches,
