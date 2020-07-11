@@ -8,7 +8,9 @@
       "packages/*"
     ],
     "nohoist": [
-      "**/prismjs"
+      "**/prismjs",
+      "**/ts-node",
+      "**/@types/node"
     ]
   },
   "scripts": {

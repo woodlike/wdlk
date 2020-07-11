@@ -10,6 +10,48 @@ exports[`UseCarousel jump() should jump to 3 1`] = `-60`;
 
 exports[`UseCarousel jump() should jump to 4 1`] = `-80`;
 
+exports[`UseCarousel move() should return the percentage and coordinate when the clientX is 200 on each item 0 1`] = `
+Object {
+  "coordinate": 0.555,
+  "percentage": -3.333,
+}
+`;
+
+exports[`UseCarousel move() should return the percentage and coordinate when the clientX is 200 on each item 1 1`] = `
+Object {
+  "coordinate": 1.111,
+  "percentage": -3.333,
+}
+`;
+
+exports[`UseCarousel move() should return the percentage and coordinate when the clientX is 200 on each item 2 1`] = `
+Object {
+  "coordinate": 1.667,
+  "percentage": -3.333,
+}
+`;
+
+exports[`UseCarousel move() should return the percentage and coordinate when the clientX is 200 on each item 3 1`] = `
+Object {
+  "coordinate": 2.222,
+  "percentage": -3.333,
+}
+`;
+
+exports[`UseCarousel move() should return the percentage and coordinate when the clientX is 200 on each item 4 1`] = `
+Object {
+  "coordinate": 2.778,
+  "percentage": -3.333,
+}
+`;
+
+exports[`UseCarousel move() should return the percentage and coordinate when the clientX is 200 on each item 5 1`] = `
+Object {
+  "coordinate": 3.333,
+  "percentage": -3.333,
+}
+`;
+
 exports[`UseCarousel next() should return the next coordinate of 0 1`] = `-9.090909090909092`;
 
 exports[`UseCarousel next() should return the next coordinate of 1 1`] = `-18.181818181818183`;

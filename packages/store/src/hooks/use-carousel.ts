@@ -1,5 +1,4 @@
 import { useEffect, useReducer, useRef, RefObject } from 'react';
-import { match } from 'assert';
 
 export interface UseCarousel {
   readonly coordinate: number;
@@ -60,14 +59,15 @@ export function move(
   length: number,
 ): Move {
   const { clientX, target } = targetTouches[0];
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const { width } = target as any;
+  const { width } = target as HTMLImageElement | HTMLVideoElement;
+
   const delta = width / 2 - clientX;
-  const percentage = +((delta * 100) / width).toFixed(2);
+  const percentage = +((delta * 100) / width).toFixed(3);
   const coordinate = +(
     ((100 / length) * (current + 1) * percentage * -1) /
     100
-  ).toFixed(2);
+  ).toFixed(3);
+
   return { coordinate, percentage };
 }
 

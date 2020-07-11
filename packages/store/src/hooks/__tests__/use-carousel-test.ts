@@ -100,11 +100,15 @@ describe('UseCarousel', () => {
           },
         },
       ] as unknown) as TouchList;
-    it('should return the next item if the event coordinates is below the item with', () => {
-      expect(move(createTouchEventMock(65, 375), 0, 6)).toEqual({
-        coordinate: -5.45,
-        percentage: 32.67,
-      });
-    });
+    it.each([0, 1, 2, 3, 4, 5])(
+      'should return the percentage and coordinate when the clientX is 200 on each item %d',
+      current => {
+        /** Slide width: 375 */
+        /** clientX 200 */
+        expect(
+          move(createTouchEventMock(200, 375), current, 6),
+        ).toMatchSnapshot();
+      },
+    );
   });
 });
