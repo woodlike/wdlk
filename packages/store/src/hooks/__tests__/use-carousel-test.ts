@@ -90,25 +90,43 @@ describe('UseCarousel', () => {
     );
   });
 
-  describe('move()', () => {
+  describe.only('move()', () => {
     const createTouchEventMock = (x: number, width: number) =>
-      ([
-        {
-          clientX: x,
-          target: {
-            width,
+      (({
+        touches: [
+          {
+            clientX: x,
+            target: {
+              width,
+            },
           },
-        },
-      ] as unknown) as TouchList;
-    it.each([0, 1, 2, 3, 4, 5])(
-      'should return the percentage and coordinate when the clientX is 200 on each item %d',
-      current => {
-        /** Slide width: 375 */
-        /** clientX 200 */
-        expect(
-          move(createTouchEventMock(200, 375), current, 6),
-        ).toMatchSnapshot();
-      },
-    );
+        ],
+      } as unknown) as TouchEvent);
+
+    it('should return a 2.5 coordinate and a 10% percentage on the first item', () => {
+      const moveInit = {
+        event: createTouchEventMock(80, 100),
+        startX: 90,
+        current: 0,
+        length: 4,
+      };
+      expect(move(moveInit)).toStrictEqual({
+        coordinate: -2.5,
+        percentage: 10,
+      });
+    });
+
+    it('should return an 8 coordinate and a 20% percentage on the second item', () => {
+      const moveInit = {
+        event: createTouchEventMock(140, 200),
+        startX: 160,
+        current: 1,
+        length: 5,
+      };
+      expect(move(moveInit)).toStrictEqual({
+        coordinate: -8,
+        percentage: 20,
+      });
+    });
   });
 });
