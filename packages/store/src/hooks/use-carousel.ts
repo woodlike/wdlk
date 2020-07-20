@@ -15,16 +15,24 @@ export enum CarouselType {
   move = 'move',
 }
 
+export interface MoveInit {
+  readonly event: TouchEvent;
+  readonly startX: number;
+  readonly current: number;
+  readonly length: number;
+}
+
 interface State {
   readonly coordinate: number;
   readonly current: number;
   readonly length: number;
+  readonly percentage: number;
 }
 
 interface Action {
   readonly type: CarouselType;
   readonly current?: number;
-  readonly touchList?: TouchList;
+  readonly event?: TouchEvent;
 }
 
 export function nextItem(current: number, length: number) {
@@ -47,15 +55,11 @@ export function jump(current: number, length: number) {
   return (Math.abs(current) * -1 * 100) / length;
 }
 
-export function move(
-  targetTouches: TouchList,
-  current: number,
-  length: number,
-) {
-  const { clientX, target } = targetTouches[0];
+export function move({ event, startX, current, length }: MoveInit) {
+  const { clientX, target } = event.touches[0];
   const { width } = target as HTMLImageElement | HTMLVideoElement;
 
-  const delta = width / 2 - clientX;
+  const delta = width - (clientX + startX - clientX);
   const percentage = +((delta * 100) / width).toFixed(3);
   const coordinate = +(
     ((100 / length) * (current + 1) * percentage * -1) /
@@ -94,14 +98,20 @@ function reducer(state: State, action: Action): State {
     }
 
     case CarouselType.move: {
-      const { coordinate } = move(
-        action.touchList as TouchList,
-        state.current,
-        state.length,
-      );
+      action.event?.preventDefault();
+      const moveInit = {
+        event: action.event as TouchEvent,
+        startX: 90,
+        current: state.current,
+        length: state.length,
+      };
+
+      const { coordinate, percentage } = move(moveInit);
+
       return {
         ...state,
-        coordinate: coordinate,
+        coordinate,
+        percentage,
       };
     }
 
@@ -115,6 +125,7 @@ const initialState: State = {
   coordinate: 0,
   current: 0,
   length: 0,
+  percentage: 0,
 };
 
 export function useCarousel(length: number): UseCarousel {
@@ -134,17 +145,18 @@ export function useCarousel(length: number): UseCarousel {
   const move = (e: TouchEvent) =>
     dispatch({
       type: CarouselType.move,
-      touchList: e.targetTouches,
+      event: e,
     });
 
   useEffect(() => {
     if (!carouselRef.current) {
       return;
     }
-
     carouselRef.current.addEventListener('touchmove', move);
 
-    return () => carouselRef.current?.removeEventListener('touchmove', move);
+    return () => {
+      carouselRef.current?.removeEventListener('touchmove', move);
+    };
   }, []);
 
   return { coordinate, jump, previous, next, carouselRef };
