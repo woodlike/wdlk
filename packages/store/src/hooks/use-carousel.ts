@@ -55,18 +55,34 @@ export function jump(current: number, length: number) {
   return (Math.abs(current) * -1 * 100) / length;
 }
 
+// export function move({ event, startX, current, length }: MoveInit) {
+//   const { clientX, target } = event.touches[0];
+//   const { width } = target as HTMLImageElement | HTMLVideoElement;
+
+//   const delta = width - (clientX + startX - clientX);
+//   const percentage = +((delta * 100) / width).toFixed(3);
+//   const coordinate = +(
+//     ((100 / length) * (current + 1) * percentage * -1) /
+//     100
+//   ).toFixed(3);
+
+//   return { coordinate, percentage };
+// }
+
 export function move({ event, startX, current, length }: MoveInit) {
   const { clientX, target } = event.touches[0];
   const { width } = target as HTMLImageElement | HTMLVideoElement;
 
-  const delta = width - (clientX + startX - clientX);
-  const percentage = +((delta * 100) / width).toFixed(3);
-  const coordinate = +(
-    ((100 / length) * (current + 1) * percentage * -1) /
-    100
-  ).toFixed(3);
+  const delta = startX - clientX;
+  const percentage = (delta * 100) / width;
+  const direction = Math.sign(-percentage);
 
-  return { coordinate, percentage };
+  const coordinate = (percentage / length) * direction * (current + 1);
+
+  return {
+    coordinate: +coordinate.toFixed(3),
+    percentage: Math.abs(+percentage.toFixed(3)),
+  };
 }
 
 function reducer(state: State, action: Action): State {
