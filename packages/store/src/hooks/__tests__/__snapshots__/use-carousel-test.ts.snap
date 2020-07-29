@@ -10,6 +10,174 @@ exports[`UseCarousel jump() should jump to 3 1`] = `-60`;
 
 exports[`UseCarousel jump() should jump to 4 1`] = `-80`;
 
+exports[`UseCarousel move() it should return the coordinate (-2.444 * idx + 1) for each item in the carousel [swipe right to left] 1`] = `
+Object {
+  "coordinate": -2.444,
+  "percentage": 14.667,
+}
+`;
+
+exports[`UseCarousel move() it should return the coordinate (-2.444 * idx + 1) for each item in the carousel [swipe right to left] 2`] = `
+Object {
+  "coordinate": -4.889,
+  "percentage": 14.667,
+}
+`;
+
+exports[`UseCarousel move() it should return the coordinate (-2.444 * idx + 1) for each item in the carousel [swipe right to left] 3`] = `
+Object {
+  "coordinate": -7.333,
+  "percentage": 14.667,
+}
+`;
+
+exports[`UseCarousel move() it should return the coordinate (-2.444 * idx + 1) for each item in the carousel [swipe right to left] 4`] = `
+Object {
+  "coordinate": -9.778,
+  "percentage": 14.667,
+}
+`;
+
+exports[`UseCarousel move() it should return the coordinate (-2.444 * idx + 1) for each item in the carousel [swipe right to left] 5`] = `
+Object {
+  "coordinate": -12.222,
+  "percentage": 14.667,
+}
+`;
+
+exports[`UseCarousel move() it should return the coordinate (-2.444 * idx + 1) for each item in the carousel [swipe right to left] 6`] = `
+Object {
+  "coordinate": -14.667,
+  "percentage": 14.667,
+}
+`;
+
+exports[`UseCarousel move() it should return the coordinate (-5.333 * idx + 1) for each item in the carousel [swipe right to left] 1`] = `
+Object {
+  "coordinate": -5.333,
+  "percentage": 32,
+}
+`;
+
+exports[`UseCarousel move() it should return the coordinate (-5.333 * idx + 1) for each item in the carousel [swipe right to left] 2`] = `
+Object {
+  "coordinate": -10.667,
+  "percentage": 32,
+}
+`;
+
+exports[`UseCarousel move() it should return the coordinate (-5.333 * idx + 1) for each item in the carousel [swipe right to left] 3`] = `
+Object {
+  "coordinate": -16,
+  "percentage": 32,
+}
+`;
+
+exports[`UseCarousel move() it should return the coordinate (-5.333 * idx + 1) for each item in the carousel [swipe right to left] 4`] = `
+Object {
+  "coordinate": -21.333,
+  "percentage": 32,
+}
+`;
+
+exports[`UseCarousel move() it should return the coordinate (-5.333 * idx + 1) for each item in the carousel [swipe right to left] 5`] = `
+Object {
+  "coordinate": -26.667,
+  "percentage": 32,
+}
+`;
+
+exports[`UseCarousel move() it should return the coordinate (-5.333 * idx + 1) for each item in the carousel [swipe right to left] 6`] = `
+Object {
+  "coordinate": -32,
+  "percentage": 32,
+}
+`;
+
+exports[`UseCarousel move() it should return the coordinate (-5.333 * idx + 1) for each item in the carousel [swipe right to left] 7`] = `
+Object {
+  "coordinate": -5.333,
+  "percentage": 32,
+}
+`;
+
+exports[`UseCarousel move() it should return the coordinate (-5.333 * idx + 1) for each item in the carousel [swipe right to left] 8`] = `
+Object {
+  "coordinate": -10.667,
+  "percentage": 32,
+}
+`;
+
+exports[`UseCarousel move() it should return the coordinate (-5.333 * idx + 1) for each item in the carousel [swipe right to left] 9`] = `
+Object {
+  "coordinate": -16,
+  "percentage": 32,
+}
+`;
+
+exports[`UseCarousel move() it should return the coordinate (-5.333 * idx + 1) for each item in the carousel [swipe right to left] 10`] = `
+Object {
+  "coordinate": -21.333,
+  "percentage": 32,
+}
+`;
+
+exports[`UseCarousel move() it should return the coordinate (-5.333 * idx + 1) for each item in the carousel [swipe right to left] 11`] = `
+Object {
+  "coordinate": -26.667,
+  "percentage": 32,
+}
+`;
+
+exports[`UseCarousel move() it should return the coordinate (-5.333 * idx + 1) for each item in the carousel [swipe right to left] 12`] = `
+Object {
+  "coordinate": -32,
+  "percentage": 32,
+}
+`;
+
+exports[`UseCarousel move() it should return the coordinate (5.333 * idx + 1) for each item in the carousel [swipe right to left] 1`] = `
+Object {
+  "coordinate": -5.333,
+  "percentage": 32,
+}
+`;
+
+exports[`UseCarousel move() it should return the coordinate (5.333 * idx + 1) for each item in the carousel [swipe right to left] 2`] = `
+Object {
+  "coordinate": -10.667,
+  "percentage": 32,
+}
+`;
+
+exports[`UseCarousel move() it should return the coordinate (5.333 * idx + 1) for each item in the carousel [swipe right to left] 3`] = `
+Object {
+  "coordinate": -16,
+  "percentage": 32,
+}
+`;
+
+exports[`UseCarousel move() it should return the coordinate (5.333 * idx + 1) for each item in the carousel [swipe right to left] 4`] = `
+Object {
+  "coordinate": -21.333,
+  "percentage": 32,
+}
+`;
+
+exports[`UseCarousel move() it should return the coordinate (5.333 * idx + 1) for each item in the carousel [swipe right to left] 5`] = `
+Object {
+  "coordinate": -26.667,
+  "percentage": 32,
+}
+`;
+
+exports[`UseCarousel move() it should return the coordinate (5.333 * idx + 1) for each item in the carousel [swipe right to left] 6`] = `
+Object {
+  "coordinate": -32,
+  "percentage": 32,
+}
+`;
+
 exports[`UseCarousel next() should return the next coordinate of 0 1`] = `-9.090909090909092`;
 
 exports[`UseCarousel next() should return the next coordinate of 1 1`] = `-18.181818181818183`;

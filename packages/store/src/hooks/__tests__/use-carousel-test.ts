@@ -1,6 +1,18 @@
 import { renderHook, act } from '@testing-library/react-hooks';
 import { previous, next, useCarousel, jump, move } from '..';
 
+const createTouchEventMock = (x: number, width: number) =>
+  (({
+    touches: [
+      {
+        clientX: x,
+        target: {
+          width,
+        },
+      },
+    ],
+  } as unknown) as TouchEvent);
+
 describe('UseCarousel', () => {
   describe('useCarousel()', () => {
     it('should return a default coordinate state of 0', () => {
@@ -91,42 +103,89 @@ describe('UseCarousel', () => {
   });
 
   describe.only('move()', () => {
-    const createTouchEventMock = (x: number, width: number) =>
-      (({
-        touches: [
-          {
-            clientX: x,
-            target: {
-              width,
-            },
-          },
-        ],
-      } as unknown) as TouchEvent);
+    let width: number;
+    let length: number;
+    beforeEach(() => {
+      width = 375;
+      length = 6;
+    });
 
-    it('should return a 2.5 coordinate and a 10% percentage on the first item', () => {
+    afterEach(() => {
+      width = (undefined as unknown) as number;
+      length = (undefined as unknown) as number;
+    });
+
+    it('should return an absolute 2.666 percentage [swipe right to left]', () => {
+      const startEvent = createTouchEventMock(275, width);
+      const moveEvent = createTouchEventMock(265, width);
       const moveInit = {
-        event: createTouchEventMock(80, 100),
-        startX: 90,
+        event: moveEvent,
+        startX: startEvent.touches[0].clientX,
         current: 0,
-        length: 4,
+        length,
       };
-      expect(move(moveInit)).toStrictEqual({
-        coordinate: -2.5,
-        percentage: 10,
+
+      expect(move(moveInit)).toMatchObject({ percentage: 2.667 });
+    });
+
+    it('should return an absolute 34.667 percentage [swipe left to right]', () => {
+      const startEvent = createTouchEventMock(20, width);
+      const moveEvent = createTouchEventMock(150, width);
+      const moveInit = {
+        event: moveEvent,
+        startX: startEvent.touches[0].clientX,
+        current: 0,
+        length,
+      };
+
+      expect(move(moveInit)).toMatchObject({ percentage: 34.667 });
+    });
+
+    it('should return an absolute 34.667 percentage [swipe right to left]', () => {
+      const startEvent = createTouchEventMock(150, width);
+      const moveEvent = createTouchEventMock(20, width);
+      const moveInit = {
+        event: moveEvent,
+        startX: startEvent.touches[0].clientX,
+        current: 0,
+        length,
+      };
+
+      expect(move(moveInit)).toMatchObject({ percentage: 34.667 });
+    });
+
+    it('it should return the coordinate (-2.444 * idx + 1) for each item in the carousel [swipe right to left]', () => {
+      const startEvent = createTouchEventMock(40, width);
+      const moveEvent = createTouchEventMock(-15, width);
+
+      Array.from({ length }).forEach((_, idx) => {
+        const moveInit = {
+          event: moveEvent,
+          startX: startEvent.touches[0].clientX,
+          current: idx,
+          length,
+        };
+
+        expect(move(moveInit)).toMatchSnapshot();
       });
     });
 
-    it('should return an 8 coordinate and a 20% percentage on the second item', () => {
-      const moveInit = {
-        event: createTouchEventMock(140, 200),
-        startX: 160,
-        current: 1,
-        length: 5,
-      };
-      expect(move(moveInit)).toStrictEqual({
-        coordinate: -8,
-        percentage: 20,
+    it('it should return the coordinate (-5.333 * idx + 1) for each item in the carousel [swipe right to left]', () => {
+      const startEvent = createTouchEventMock(300, width);
+      const moveEvent = createTouchEventMock(180, width);
+
+      Array.from({ length }).forEach((_, idx) => {
+        const moveInit = {
+          event: moveEvent,
+          startX: startEvent.touches[0].clientX,
+          current: idx,
+          length,
+        };
+
+        expect(move(moveInit)).toMatchSnapshot();
       });
     });
+
+    //TODO: test positive direction coordinates left to right swipe
   });
 });
