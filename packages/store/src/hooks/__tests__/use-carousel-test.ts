@@ -3,6 +3,7 @@ import { previous, next, useCarousel, jump, move } from '..';
 
 const createTouchEventMock = (x: number, width: number) =>
   (({
+    preventDefault: jest.fn(),
     touches: [
       {
         clientX: x,
