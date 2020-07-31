@@ -102,7 +102,7 @@ describe('UseCarousel', () => {
     );
   });
 
-  describe.only('move()', () => {
+  describe('move()', () => {
     let width: number;
     let length: number;
     beforeEach(() => {
@@ -154,6 +154,18 @@ describe('UseCarousel', () => {
       expect(move(moveInit)).toMatchObject({ percentage: 34.667 });
     });
 
+    it('should return the coordinate -2.444 [swipe right to left]', () => {
+      const startEvent = createTouchEventMock(40, width);
+      const moveEvent = createTouchEventMock(-15, width);
+      const moveInit = {
+        event: moveEvent,
+        startX: startEvent.touches[0].clientX,
+        current: 0,
+        length,
+      };
+      expect(move(moveInit)).toMatchObject({ coordinate: -2.444 });
+    });
+
     it('it should return the coordinate (-2.444 * idx + 1) for each item in the carousel [swipe right to left]', () => {
       const startEvent = createTouchEventMock(40, width);
       const moveEvent = createTouchEventMock(-15, width);
@@ -186,6 +198,31 @@ describe('UseCarousel', () => {
       });
     });
 
-    //TODO: test positive direction coordinates left to right swipe
+    it('should return the coordinate 5.333 [swipe left to right]', () => {
+      const startEvent = createTouchEventMock(180, width);
+      const moveEvent = createTouchEventMock(300, width);
+      const moveInit = {
+        event: moveEvent,
+        startX: startEvent.touches[0].clientX,
+        current: 0,
+        length,
+      };
+      expect(move(moveInit)).toMatchObject({ coordinate: 5.333 });
+    });
+
+    it('should return the coordinate (5.333 * idx + 1) for each item in the carousel [swipe left to right]', () => {
+      const startEvent = createTouchEventMock(180, width);
+      const moveEvent = createTouchEventMock(300, width);
+      Array.from({ length }).forEach((_, idx) => {
+        const moveInit = {
+          event: moveEvent,
+          startX: startEvent.touches[0].clientX,
+          current: idx,
+          length,
+        };
+
+        expect(move(moveInit)).toMatchSnapshot();
+      });
+    });
   });
 });
