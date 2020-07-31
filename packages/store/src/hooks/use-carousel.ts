@@ -13,13 +13,8 @@ export enum CarouselType {
   previous = 'previous',
   next = 'next',
   move = 'move',
-}
-
-export interface MoveInit {
-  readonly event: TouchEvent;
-  readonly startX: number;
-  readonly current: number;
-  readonly length: number;
+  moveStart = 'moveStart',
+  moveEnd = 'moveEnd',
 }
 
 interface State {
@@ -27,12 +22,20 @@ interface State {
   readonly current: number;
   readonly length: number;
   readonly percentage: number;
+  readonly startX: number;
 }
 
 interface Action {
   readonly type: CarouselType;
   readonly current?: number;
   readonly event?: TouchEvent;
+}
+
+export interface MoveInit {
+  readonly event: TouchEvent;
+  readonly startX: number;
+  readonly current: number;
+  readonly length: number;
 }
 
 export function nextItem(current: number, length: number) {
@@ -56,6 +59,7 @@ export function jump(current: number, length: number) {
 }
 
 export function move({ event, startX, current, length }: MoveInit) {
+  event.preventDefault();
   const { clientX, target } = event.touches[0];
   const { width } = target as HTMLImageElement | HTMLVideoElement;
 
@@ -100,11 +104,17 @@ function reducer(state: State, action: Action): State {
       };
     }
 
+    case CarouselType.moveStart: {
+      return {
+        ...state,
+        startX: action.event?.touches[0].clientX ?? 0,
+      };
+    }
+
     case CarouselType.move: {
-      action.event?.preventDefault();
       const moveInit = {
         event: action.event as TouchEvent,
-        startX: 90,
+        startX: state.startX ?? 0,
         current: state.current,
         length: state.length,
       };
@@ -129,6 +139,7 @@ const initialState: State = {
   current: 0,
   length: 0,
   percentage: 0,
+  startX: 0,
 };
 
 export function useCarousel(length: number): UseCarousel {
@@ -145,19 +156,21 @@ export function useCarousel(length: number): UseCarousel {
   const next = () => dispatch({ type: CarouselType.next });
   const previous = () => dispatch({ type: CarouselType.previous });
 
-  const move = (e: TouchEvent) =>
+  const moveStart = (event: TouchEvent) =>
+    dispatch({ type: CarouselType.moveStart, event });
+
+  const move = (event: TouchEvent) =>
     dispatch({
       type: CarouselType.move,
-      event: e,
+      event,
     });
 
   useEffect(() => {
-    if (!carouselRef.current) {
-      return;
-    }
-    carouselRef.current.addEventListener('touchmove', move);
+    carouselRef.current?.addEventListener('touchstart', moveStart);
+    carouselRef.current?.addEventListener('touchmove', move);
 
     return () => {
+      carouselRef.current?.removeEventListener('touchstart', moveStart);
       carouselRef.current?.removeEventListener('touchmove', move);
     };
   }, []);
