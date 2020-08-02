@@ -1,13 +1,14 @@
 import React from 'react';
 import { useThemeUI } from 'theme-ui';
+import { Theme } from '@wdlk/components';
+import { useCarousel } from '@wdlk/hooks';
 
-import { Carousel, Image, useCarousel } from '../..';
+import { Carousel, Image } from '../..';
 import {
   ProductImage,
   SourceSetProps,
   ProductImageWidth,
 } from '../../../gatsby';
-import { Theme } from '@wdlk/components';
 
 export interface StageCarouselProps {
   images: ProductImage[];

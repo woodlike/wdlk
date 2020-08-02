@@ -1,4 +1,3 @@
-export * from './use-carousel';
 export * from './use-footer-links';
 export * from './use-header-data';
 export * from './use-navigation-data';
