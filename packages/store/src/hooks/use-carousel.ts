@@ -20,6 +20,7 @@ export enum CarouselType {
 interface State {
   readonly coordinate: number;
   readonly current: number;
+  readonly direction: number;
   readonly length: number;
   readonly percentage: number;
   readonly startX: number;
@@ -36,6 +37,13 @@ export interface MoveInit {
   readonly startX: number;
   readonly current: number;
   readonly length: number;
+}
+
+export interface MoveEndInit {
+  readonly state: State;
+  readonly threshold: number;
+  next(curr: number, length: number): number;
+  nextItem(curr: number, length: number): number;
 }
 
 export function nextItem(current: number, length: number) {
@@ -65,14 +73,40 @@ export function move({ event, startX, current, length }: MoveInit) {
 
   const delta = startX - clientX;
   const percentage = (delta * 100) / width;
-  const direction = Math.sign(-percentage);
 
-  const coordinate =
-    (Math.abs(percentage) / length) * direction * (current + 1);
+  const prevCoordinate = (100 / length) * current;
+  const coordinate = -prevCoordinate - percentage / length;
 
   return {
     coordinate: +coordinate.toFixed(3),
+    direction: Math.sign(percentage),
     percentage: Math.abs(+percentage.toFixed(3)),
+  };
+}
+
+export function moveEnd({ state, threshold, next }: MoveEndInit) {
+  const { current, direction, percentage, length } = state;
+  const prevCoordinate = (100 / length) * current;
+
+  if (percentage >= threshold) {
+    if (direction > 0 && current < length - 1) {
+      return {
+        coordinate: next(current, length),
+        current: nextItem(current, length),
+      };
+    }
+
+    if (current > 0) {
+      return {
+        coordinate: previous(current, length),
+        current: previousItem(current, length),
+      };
+    }
+  }
+
+  return {
+    coordinate: -prevCoordinate,
+    current: state.current,
   };
 }
 
@@ -118,13 +152,28 @@ function reducer(state: State, action: Action): State {
         current: state.current,
         length: state.length,
       };
-
-      const { coordinate, percentage } = move(moveInit);
+      const { coordinate, direction, percentage } = move(moveInit);
 
       return {
         ...state,
         coordinate,
+        direction,
         percentage,
+      };
+    }
+
+    case CarouselType.moveEnd: {
+      const moveEndInit = {
+        state,
+        threshold: 30,
+        next,
+        nextItem,
+      };
+      const { coordinate, current } = moveEnd(moveEndInit);
+      return {
+        ...state,
+        coordinate,
+        current,
       };
     }
 
@@ -137,6 +186,7 @@ function reducer(state: State, action: Action): State {
 const initialState: State = {
   coordinate: 0,
   current: 0,
+  direction: 1,
   length: 0,
   percentage: 0,
   startX: 0,
@@ -165,13 +215,17 @@ export function useCarousel(length: number): UseCarousel {
       event,
     });
 
+  const moveEnd = () => dispatch({ type: CarouselType.moveEnd });
+
   useEffect(() => {
     carouselRef.current?.addEventListener('touchstart', moveStart);
     carouselRef.current?.addEventListener('touchmove', move);
+    carouselRef.current?.addEventListener('touchend', moveEnd);
 
     return () => {
       carouselRef.current?.removeEventListener('touchstart', moveStart);
       carouselRef.current?.removeEventListener('touchmove', move);
+      carouselRef.current?.removeEventListener('touchend', moveEnd);
     };
   }, []);
 
