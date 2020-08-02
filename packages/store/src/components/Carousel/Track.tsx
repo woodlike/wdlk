@@ -19,8 +19,7 @@ const createStylesTrack = (
   ...stylesTrack,
   width: `${length * 100}%`,
   transform: `translate3d(${coordinate}%, 0, 0)`,
-  // transition: ({ transition }: Theme) =>
-  //   `transform ${transition.duration[1]}s linear`,
+  transition: 'transform 300ms linear',
 });
 
 export const Track = forwardRef<
