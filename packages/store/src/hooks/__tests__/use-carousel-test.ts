@@ -15,6 +15,18 @@ const createTouchEventMock = (x: number, width: number) =>
   } as unknown) as TouchEvent);
 
 describe('UseCarousel', () => {
+  let width: number;
+  let length: number;
+  beforeEach(() => {
+    width = 375;
+    length = 6;
+  });
+
+  afterEach(() => {
+    width = (undefined as unknown) as number;
+    length = (undefined as unknown) as number;
+  });
+
   describe('useCarousel()', () => {
     it('should return a default coordinate state of 0', () => {
       const { result } = renderHook(() => useCarousel(4));
@@ -104,25 +116,13 @@ describe('UseCarousel', () => {
   });
 
   describe('move()', () => {
-    let width: number;
-    let length: number;
-    beforeEach(() => {
-      width = 375;
-      length = 6;
-    });
-
-    afterEach(() => {
-      width = (undefined as unknown) as number;
-      length = (undefined as unknown) as number;
-    });
-
     it('should return an absolute 2.666 percentage [swipe right to left]', () => {
       const startEvent = createTouchEventMock(275, width);
       const moveEvent = createTouchEventMock(265, width);
       const moveInit = {
         event: moveEvent,
         startX: startEvent.touches[0].clientX,
-        current: 0,
+        current: 2,
         length,
       };
 
@@ -148,26 +148,27 @@ describe('UseCarousel', () => {
       const moveInit = {
         event: moveEvent,
         startX: startEvent.touches[0].clientX,
-        current: 0,
+        current: 3,
         length,
       };
 
       expect(move(moveInit)).toMatchObject({ percentage: 34.667 });
     });
 
-    it('should return the coordinate -2.444 [swipe right to left]', () => {
+    it('should return the coordinate -19.111 [swipe right to left]', () => {
       const startEvent = createTouchEventMock(40, width);
       const moveEvent = createTouchEventMock(-15, width);
+
       const moveInit = {
         event: moveEvent,
         startX: startEvent.touches[0].clientX,
-        current: 0,
+        current: 1,
         length,
       };
-      expect(move(moveInit)).toMatchObject({ coordinate: -2.444 });
+      expect(move(moveInit)).toMatchObject({ coordinate: -19.111 });
     });
 
-    it('it should return the coordinate (-2.444 * idx + 1) for each item in the carousel [swipe right to left]', () => {
+    it('it should return the coordinate (-2.444 - currentCoordinate) for each item in the carousel [swipe right to left]', () => {
       const startEvent = createTouchEventMock(40, width);
       const moveEvent = createTouchEventMock(-15, width);
 
@@ -183,35 +184,19 @@ describe('UseCarousel', () => {
       });
     });
 
-    it('it should return the coordinate (-5.333 * idx + 1) for each item in the carousel [swipe right to left]', () => {
-      const startEvent = createTouchEventMock(300, width);
-      const moveEvent = createTouchEventMock(180, width);
-
-      Array.from({ length }).forEach((_, idx) => {
-        const moveInit = {
-          event: moveEvent,
-          startX: startEvent.touches[0].clientX,
-          current: idx,
-          length,
-        };
-
-        expect(move(moveInit)).toMatchSnapshot();
-      });
-    });
-
-    it('should return the coordinate 5.333 [swipe left to right]', () => {
+    it('should return the coordinate -44.667 [swipe left to right]', () => {
       const startEvent = createTouchEventMock(180, width);
       const moveEvent = createTouchEventMock(300, width);
       const moveInit = {
         event: moveEvent,
         startX: startEvent.touches[0].clientX,
-        current: 0,
+        current: 3,
         length,
       };
-      expect(move(moveInit)).toMatchObject({ coordinate: 5.333 });
+      expect(move(moveInit)).toMatchObject({ coordinate: -44.667 });
     });
 
-    it('should return the coordinate (5.333 * idx + 1) for each item in the carousel [swipe left to right]', () => {
+    it('should return the coordinate (-5.333 + currentCoordinate) for each item in the carousel [swipe left to right]', () => {
       const startEvent = createTouchEventMock(180, width);
       const moveEvent = createTouchEventMock(300, width);
       Array.from({ length }).forEach((_, idx) => {
