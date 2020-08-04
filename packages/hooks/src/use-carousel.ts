@@ -96,7 +96,7 @@ export function moveEnd({ state, threshold, next }: MoveEndInit) {
       };
     }
 
-    if (current > 0) {
+    if (direction < 0 && current > 0) {
       return {
         coordinate: previous(current, length),
         current: previousItem(current, length),
