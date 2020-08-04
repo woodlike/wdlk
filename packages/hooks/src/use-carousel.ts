@@ -218,9 +218,13 @@ export function useCarousel(length: number): UseCarousel {
   const moveEnd = () => dispatch({ type: CarouselType.moveEnd });
 
   useEffect(() => {
-    carouselRef.current?.addEventListener('touchstart', moveStart);
-    carouselRef.current?.addEventListener('touchmove', move);
-    carouselRef.current?.addEventListener('touchend', moveEnd);
+    carouselRef.current?.addEventListener('touchstart', moveStart, {
+      passive: true,
+    });
+    carouselRef.current?.addEventListener('touchmove', move, { passive: true });
+    carouselRef.current?.addEventListener('touchend', moveEnd, {
+      passive: true,
+    });
 
     return () => {
       carouselRef.current?.removeEventListener('touchstart', moveStart);
