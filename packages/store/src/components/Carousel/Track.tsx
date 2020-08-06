@@ -10,6 +10,7 @@ export interface CarouselTrackProps {
 const stylesTrack: SxStyleProp = {
   display: 'flex',
   flexWrap: 'nowrap',
+  height: 'inherit',
 };
 
 const createStylesTrack = (
