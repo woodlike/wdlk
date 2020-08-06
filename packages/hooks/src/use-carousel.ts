@@ -67,7 +67,6 @@ export function jump(current: number, length: number) {
 }
 
 export function move({ event, startX, current, length }: MoveInit) {
-  event.preventDefault();
   const { clientX, target } = event.touches[0];
   const { width } = target as HTMLImageElement | HTMLVideoElement;
 

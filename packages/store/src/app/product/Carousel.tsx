@@ -3,6 +3,7 @@ import { useThemeUI } from 'theme-ui';
 import { Theme } from '@wdlk/components';
 import { useCarousel } from '@wdlk/hooks';
 
+import { Thumbnails } from '.';
 import { Carousel, Image } from '../..';
 import {
   ProductImage,
@@ -10,8 +11,8 @@ import {
   ProductImageWidth,
 } from '../../../gatsby';
 
-export interface StageCarouselProps {
-  images: ProductImage[];
+interface StageCarouselProps {
+  readonly images: ProductImage[];
 }
 
 function createSrcSets(srcSets: SourceSetProps[]): string {
@@ -31,13 +32,15 @@ export const StageCarousel: React.FC<StageCarouselProps> = props => {
   return (
     <Carousel.Frame
       iconRight={<Carousel.IconRight onClick={next} />}
-      iconLeft={<Carousel.IconLeft onClick={previous} />}>
+      iconLeft={<Carousel.IconLeft onClick={previous} />}
+      thumbnails={<Thumbnails active={false} images={images} />}>
       <Carousel.Track
         ref={carouselRef}
         length={images.length}
         coordinate={coordinate}>
         {images.map(image => (
           <Image
+            fit={'cover'}
             key={image.id}
             alt={image.altText}
             sizes={`(min-width: ${

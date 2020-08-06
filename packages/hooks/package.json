@@ -1,6 +1,6 @@
 {
   "name": "@wdlk/hooks",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "private": false,
   "description": "Reusable stateful UX behavior",
   "keywords": [
