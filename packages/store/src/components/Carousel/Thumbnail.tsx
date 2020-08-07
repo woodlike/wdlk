@@ -1,31 +1,34 @@
 /**@jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
+import { Theme } from '@wdlk/components';
 
 export interface ThumbnailProps {
   readonly alt: string;
-  readonly active: boolean;
+  readonly isActive: boolean;
   readonly url: string;
+  onClick: React.MouseEventHandler<HTMLDivElement>;
 }
 
 const stylesThumbnail: SxStyleProp = {
-  width: [0, 0, 0, 0, 60, 80],
-  height: [0, 0, 0, 0, 60, 80],
+  width: [50, 50, 50, 70, 70, 90],
+  height: [50, 50, 50, 70, 70, 90],
+  boxSizing: 'border-box',
   borderStyle: 'solid',
   borderWidth: '1px 1px 1px 1px',
 };
 
 const stylesImage: SxStyleProp = {
-  width: 'inherit',
-  height: 'inherit',
+  width: '100%',
+  height: '100%',
 };
 
-const createStylesThumbnail = (active: boolean) => ({
+const createStylesThumbnail = (isActive: boolean) => ({
   ...stylesThumbnail,
-  borderColor: active ? 'papayawhip' : 'transparent',
+  borderColor: ({ colors }: Theme) => (isActive ? colors.link : 'transparent'),
 });
 
 export const Thumbnail: React.FC<ThumbnailProps> = props => (
-  <div sx={createStylesThumbnail(props.active)}>
+  <div sx={createStylesThumbnail(props.isActive)} onClick={props.onClick}>
     <img sx={stylesImage} src={props.url} alt={props.alt} />
   </div>
 );

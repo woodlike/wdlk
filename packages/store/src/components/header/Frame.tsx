@@ -12,10 +12,11 @@ const stylesHeaderLayout: SxStyleProp = {
   position: 'sticky',
   top: 0,
   left: 0,
-  width: '100%',
+  width: '100vw',
   height: ({ header }: Theme) => header,
   padding: (theme: Theme) => theme.space[4],
   zIndex: 1,
+  overflowX: 'hidden',
   ':before': {
     content: '""',
     position: 'absolute',

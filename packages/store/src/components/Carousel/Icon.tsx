@@ -1,8 +1,10 @@
 /**@jsx jsx */
 import { ChevronLeft, ChevronRight } from 'react-feather';
 import { jsx, SxStyleProp } from 'theme-ui';
+import { Theme } from '@wdlk/components';
 
 export interface CarouselIconProps {
+  readonly color?: string;
   readonly onClick?: React.MouseEventHandler<SVGElement>;
 }
 
@@ -16,20 +18,21 @@ const stylesIcons: SxStyleProp = {
 
 const stylesIconRight: SxStyleProp = {
   ...stylesIcons,
-  right: 0,
+  right: ({ space }: Theme) => [space[1], space[2], space[3], space[4]],
 };
 
 const stylesIconLeft: SxStyleProp = {
   ...stylesIcons,
-  left: 0,
+  left: ({ space }: Theme) => [space[1], space[2], space[3], space[4]],
 };
 
 export const IconRight: React.FC<CarouselIconProps> = props => (
   <ChevronRight
     sx={stylesIconRight}
+    color={props.color}
     onClick={props.onClick}
-    size={30}
     pointerEvents="visible"
+    size={25}
   />
 );
 IconRight.displayName = 'CarouselIconRight';
@@ -37,9 +40,10 @@ IconRight.displayName = 'CarouselIconRight';
 export const IconLeft: React.FC<CarouselIconProps> = props => (
   <ChevronLeft
     sx={stylesIconLeft}
+    color={props.color}
     onClick={props.onClick}
-    size={30}
     pointerEvents="visible"
+    size={25}
   />
 );
 IconLeft.displayName = 'CarouselIconLeft';
