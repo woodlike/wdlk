@@ -23,7 +23,8 @@ const stylesSlot: SxStyleProp = {
 const stylesImageFrame: SxStyleProp = {
   ...stylesSlot,
   position: ['relative', 'relative', 'relative', 'sticky'],
-  top: ({ header }: Theme) => header,
+  top: ({ header }: Theme) =>
+    header.map((value, idx) => (idx <= 2 ? 0 : value)),
   height: ({ header }: Theme) => createHeightStyles(header),
 };
 
