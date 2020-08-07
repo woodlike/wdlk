@@ -21,9 +21,9 @@ const stylesProp: SxStyleProp = {
 const stylesThumbnails: SxStyleProp = {
   position: 'absolute',
   display: 'grid',
-  gridRowGap: ({ space }: Theme) => [0, 0, 0, 0, space[4], space[5]],
-  bottom: ({ space }: Theme) => [0, 0, 0, 0, space[4], space[5]],
-  left: ({ space }: Theme) => [0, 0, 0, 0, space[4], space[5]],
+  gridRowGap: ({ space }: Theme) => [0, 0, 0, 0, space[1], space[4]],
+  bottom: ({ space }: Theme) => [space[1], space[1], space[2], space[4]],
+  left: ({ space }: Theme) => [space[1], space[2], space[3], space[4]],
 };
 
 export const Frame: React.FC<CarouselFrameProps> = props => (
