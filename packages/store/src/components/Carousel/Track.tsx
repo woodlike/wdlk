@@ -1,6 +1,7 @@
 /**@jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
 import { forwardRef, PropsWithChildren } from 'react';
+import { Theme } from '@wdlk/components';
 
 export interface CarouselTrackProps {
   readonly length: number;
@@ -20,7 +21,14 @@ const createStylesTrack = (
   ...stylesTrack,
   width: `${length * 100}%`,
   transform: `translate3d(${coordinate}%, 0, 0)`,
-  transition: 'transform 300ms linear',
+  transitionDuration: ({ transition }: Theme) => [
+    `${transition.duration[0]}s`,
+    `${transition.duration[0]}s`,
+    `${transition.duration[0]}s`,
+    `${transition.duration[1]}s`,
+  ],
+  transitionProperty: 'transform',
+  transitionTimingFunction: ({ transition }: Theme) => transition.timing[0],
 });
 
 export const Track = forwardRef<
