@@ -22,7 +22,7 @@
     "@emotion/core": "^10.0.22",
     "@wdlk/component-library": "1.7.6",
     "@wdlk/components": "2.4.0",
-    "@wdlk/hooks": "1.4.4",
+    "@wdlk/hooks": "1.4.5",
     "gatsby": "^2.23.22",
     "gatsby-plugin-theme-ui": "^0.3.0",
     "gatsby-source-shopify": "3.2.8",

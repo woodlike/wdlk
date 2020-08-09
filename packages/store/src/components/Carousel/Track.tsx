@@ -28,7 +28,11 @@ const createStylesTrack = (
     `${transition.duration[1]}s`,
   ],
   transitionProperty: 'transform',
-  transitionTimingFunction: ({ transition }: Theme) => transition.timing[0],
+  transitionTimingFunction: ({ transition }: Theme) => [
+    'linear',
+    'linear',
+    transition.timing[0],
+  ],
 });
 
 export const Track = forwardRef<
