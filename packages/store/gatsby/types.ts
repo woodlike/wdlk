@@ -5,6 +5,23 @@ export interface ShopifyProductNode {
   readonly images: ProductImage[];
   readonly fields: ProductFields;
   readonly title: string;
+  readonly variants: Variant[];
+}
+
+export interface Variant {
+  readonly title: string;
+  readonly compareAtPrice: string;
+  readonly priceV2: Price;
+}
+
+export interface PriceRange {
+  readonly minVariantPrice: Price;
+  readonly maxVariantPrice: Price;
+}
+
+export interface Price {
+  readonly amount: string;
+  readonly currencyCode: string;
 }
 
 export interface ProductFields {

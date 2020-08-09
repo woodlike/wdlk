@@ -21,7 +21,7 @@
   "dependencies": {
     "@emotion/core": "^10.0.22",
     "@wdlk/component-library": "1.7.6",
-    "@wdlk/components": "2.4.0",
+    "@wdlk/components": "2.4.1",
     "@wdlk/hooks": "1.4.5",
     "gatsby": "^2.23.22",
     "gatsby-plugin-theme-ui": "^0.3.0",
@@ -40,7 +40,7 @@
     "@testing-library/react-hooks": "^3.3.0",
     "@types/jest": "^24.0.23",
     "@types/node": "^14.0.22",
-    "@types/react": "^16.9.13",
+    "@types/react": "^16.9.45",
     "@types/react-dom": "^16.9.4",
     "@types/shortid": "^0.0.29",
     "@types/theme-ui": "^0.3.2",
