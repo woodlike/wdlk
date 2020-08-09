@@ -164,7 +164,7 @@ function reducer(state: State, action: Action): State {
     case CarouselType.moveEnd: {
       const moveEndInit = {
         state,
-        threshold: 30,
+        threshold: 5,
         next,
         nextItem,
       };
