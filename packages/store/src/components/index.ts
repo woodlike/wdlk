@@ -9,3 +9,4 @@ export * from './Image';
 export * from './Link';
 export * from './Navigation';
 export * from './ProductStage';
+export * from './Price';
