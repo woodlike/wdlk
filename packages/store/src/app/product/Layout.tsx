@@ -1,10 +1,13 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
+import { Box, Theme, ScaleArea } from '@wdlk/components';
 
 import { StageCarousel } from '.';
-import { Footer, Header } from '..';
+import { Footer, Header, Title } from '..';
 import { Stage } from '../..';
 import { ShopifyProductNode } from '../../../gatsby';
+import { useThemeUI } from 'theme-ui';
+import { useMedia } from '@wdlk/hooks';
 
 export interface ProductLayoutProps {
   readonly data: ShopifyProduct;
@@ -15,21 +18,34 @@ export interface ShopifyProduct {
 }
 
 export const ProductLayout: React.FC<ProductLayoutProps> = query => {
-  const { data } = query;
-  const { shopifyProduct } = data;
+  const { theme } = useThemeUI();
+  const { breakpoints } = (theme as unknown) as Theme;
+  const contentSpacing = useMedia<ScaleArea>(
+    [
+      `(min-width: ${breakpoints[3]})`,
+      `(min-width: ${breakpoints[2]})`,
+      `(min-width: ${breakpoints[1]})`,
+    ],
+    [
+      [8, 8],
+      [8, 7],
+      [8, 4],
+    ],
+    [8, 4],
+  );
+  const {
+    shopifyProduct: { images, title },
+  } = query.data;
   return (
     <>
       <Header />
       <main>
         <Stage.Layout
-          image={<StageCarousel images={shopifyProduct.images} />}
+          image={<StageCarousel images={images} />}
           content={
-            <div
-              style={{
-                backgroundColor: 'red',
-                width: '100%',
-                height: '180vh',
-              }}></div>
+            <Box padding={contentSpacing}>
+              <Title>{title}</Title>
+            </Box>
           }
         />
       </main>
