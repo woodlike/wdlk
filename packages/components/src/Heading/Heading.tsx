@@ -18,8 +18,8 @@ export type HeadlineSize = 'xs' | 's' | 'm' | 'l' | 'xl' | 'xxl';
 const stylesHeading: SxStyleProp = {
   display: 'block',
   margin: 0,
-  color: 'headline',
-  fontWeight: 500,
+  color: 'text',
+  fontWeight: 300,
 };
 
 const handleHeadingSizes = (size: HeadlineSize, qt: ThemeQuery): string => {
@@ -44,7 +44,10 @@ const createStylesColor = (inverted: boolean, qt: ThemeQuery): SxStyleProp => ({
   textShadow: inverted ? `0 0 2px ${qt('grays')(3)}` : 'unset',
 });
 
-const createStylesFamily = (qt: ThemeQuery, family: HeadingFamily = 'display'): SxStyleProp => ({
+const createStylesFamily = (
+  qt: ThemeQuery,
+  family: HeadingFamily = 'display',
+): SxStyleProp => ({
   fontFamily: qt(`heading.${family}`),
   lineHeight: family === 'campaign' ? 2.5 : 1.4,
 });
@@ -64,7 +67,13 @@ const createStylesHeading = (
 export const Heading: React.FC<HeadingProps> = (props): JSX.Element => {
   const { qt } = useThemeQuery();
   return (
-    <props.as sx={createStylesHeading(props.size, Boolean(props.inverted), qt, props.family)}>
+    <props.as
+      sx={createStylesHeading(
+        props.size,
+        Boolean(props.inverted),
+        qt,
+        props.family,
+      )}>
       {props.children}
     </props.as>
   );
