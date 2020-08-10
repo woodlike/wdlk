@@ -4,11 +4,7 @@ import { Theme } from '@wdlk/components';
 import { useCarousel } from '@wdlk/hooks';
 
 import { Carousel, Image } from '../..';
-import {
-  ProductImage,
-  SourceSetProps,
-  ProductImageWidth,
-} from '../../../gatsby';
+import { ProductImage, SourceSetProps, ProductImageWidth } from '../../gatsby';
 
 interface StageCarouselProps {
   readonly images: ProductImage[];
