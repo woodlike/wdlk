@@ -5,7 +5,7 @@ import { Box, Theme, ScaleArea } from '@wdlk/components';
 import { StageCarousel } from '.';
 import { Footer, Header, Title } from '..';
 import { Price, Stage } from '../..';
-import { ShopifyProductNode, Variant } from '../../../gatsby';
+import { ShopifyProductNode, Variant } from '../../gatsby';
 import { useThemeUI } from 'theme-ui';
 import { useMedia } from '@wdlk/hooks';
 
@@ -40,7 +40,6 @@ export const ProductLayout: React.FC<ProductLayoutProps> = ({ data }) => {
   );
   const [activeVariant] = React.useState<Variant>(variants[0]);
 
-  console.log(variants);
   return (
     <>
       <Header />
@@ -51,7 +50,7 @@ export const ProductLayout: React.FC<ProductLayoutProps> = ({ data }) => {
             <Box padding={scales}>
               <Title>{title}</Title>
               <Price.Layout
-                //TODO: Make this value tranlatable
+                //TODO: Make this value translatable
                 label={<Price.Label>(VAT included)</Price.Label>}
                 sale={
                   !!activeVariant.compareAtPrice && (
