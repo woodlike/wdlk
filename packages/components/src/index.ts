@@ -8,6 +8,7 @@ export * from './Code';
 export * from './Heading';
 export * from './Row';
 export * from './Rows';
+export * from './Select';
 export * from './Small';
 export * from './Text';
 export * from './theme';
