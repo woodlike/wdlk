@@ -53,11 +53,13 @@ export const ProductLayout: React.FC<ProductLayoutProps> = ({ data }) => {
                 //TODO: Make this value translatable
                 label={<Price.Label>(VAT included)</Price.Label>}
                 sale={
-                  !!activeVariant.compareAtPrice && (
-                    <Price.Sale>{activeVariant.compareAtPrice}</Price.Sale>
+                  !!activeVariant.compareAtLocalePrice && (
+                    <Price.Sale>
+                      {activeVariant.compareAtLocalePrice.amount}
+                    </Price.Sale>
                   )
                 }>
-                <Price.Total>{activeVariant.priceV2.amount}</Price.Total>
+                <Price.Total>{activeVariant.priceLocale.amount}</Price.Total>
               </Price.Layout>
             </Box>
           }
@@ -87,10 +89,11 @@ export const query = graphql`
       title
       variants {
         title
-        compareAtPrice
-        priceV2 {
+        priceLocale {
           amount
-          currencyCode
+        }
+        compareAtLocalePrice {
+          amount
         }
       }
     }
