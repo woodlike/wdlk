@@ -84,12 +84,12 @@ const colors: Colors = {
     toRGB([77, 77, 79]),
     toRGB([56, 72, 82]),
   ],
-  blacks: [toRGB([34, 34, 34]), toRGB([51, 51, 51])],
+  blacks: [toRGB([0, 0, 0]), toRGB([34, 34, 34]), toRGB([51, 51, 51])],
   beiges: [toRGB([250, 245, 244])],
   sand: toRGB([204, 153, 102]),
   yellows: [toRGB([223, 199, 129]), toRGB([255, 202, 84])],
 };
-export const theme = {
+export const theme: Theme = {
   ...base,
   ...themeQuery,
 
@@ -100,6 +100,7 @@ export const theme = {
     ...colors,
     background: colors.whites[0],
     border: colors.grays[0],
+    borderActive: colors.blacks[1],
     headline: colors.grays[5],
     link: colors.grays[3],
     primary: colors.corals[0],
