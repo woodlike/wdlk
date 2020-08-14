@@ -9,14 +9,14 @@ export interface ShopifyProductNode {
 }
 
 export interface Variant {
-  readonly title: string;
-  readonly compareAtPrice: string;
+  readonly compareAtPriceV2: Price | null;
+  readonly compareAtLocalePrice: Price | null;
+  readonly priceLocale: Price;
   readonly priceV2: Price;
-}
-
-export interface PriceRange {
-  readonly minVariantPrice: Price;
-  readonly maxVariantPrice: Price;
+  readonly sku: string;
+  readonly title: string;
+  readonly weight: number;
+  readonly weightUnit: string;
 }
 
 export interface Price {
