@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
-import { Box, Theme, ScaleArea } from '@wdlk/components';
+import { Box, Theme, ScaleArea, Select } from '@wdlk/components';
 
 import { StageCarousel } from '.';
 import { Footer, Header, Title } from '..';
@@ -23,6 +23,11 @@ const contestScales: ScaleArea[] = [
   [8, 4],
 ];
 
+export interface SelectItem {
+  readonly isActive: boolean;
+  setActive(variant: Variant): void;
+}
+
 export const ProductLayout: React.FC<ProductLayoutProps> = ({ data }) => {
   const {
     shopifyProduct: { images, variants, title },
@@ -38,7 +43,8 @@ export const ProductLayout: React.FC<ProductLayoutProps> = ({ data }) => {
     contestScales,
     contestScales[contestScales.length - 1],
   );
-  const [activeVariant] = React.useState<Variant>(variants[0]);
+  const [activeVariant, setActiveVariant] = React.useState(variants[0]);
+  console.log(activeVariant);
 
   return (
     <>
@@ -61,6 +67,21 @@ export const ProductLayout: React.FC<ProductLayoutProps> = ({ data }) => {
                 }>
                 <Price.Total>{activeVariant.priceLocale.amount}</Price.Total>
               </Price.Layout>
+              <Select.Frame
+                ariaLabel="size-variant-select"
+                ariaActivedescendant={activeVariant.id}
+                fontSize={2}>
+                {variants.map(variant => (
+                  <Select.Item
+                    id={variant.id}
+                    key={variant.id}
+                    isActive={activeVariant.title === variant.title}
+                    fontSize={2}
+                    onClick={() => setActiveVariant(variant)}>
+                    {variant.title}
+                  </Select.Item>
+                ))}
+              </Select.Frame>
             </Box>
           }
         />
@@ -88,6 +109,7 @@ export const query = graphql`
       }
       title
       variants {
+        id
         title
         priceLocale {
           amount

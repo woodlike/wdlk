@@ -9,6 +9,7 @@ export interface ShopifyProductNode {
 }
 
 export interface Variant {
+  readonly id: string;
   readonly compareAtPriceV2: Price | null;
   readonly compareAtLocalePrice: Price | null;
   readonly priceLocale: Price;
