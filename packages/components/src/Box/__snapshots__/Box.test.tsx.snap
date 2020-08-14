@@ -54,7 +54,7 @@ exports[`<Box /> Border color handling (shorthand): handles a Theme-UI shorthand
 
 exports[`<Box /> Border color handling (top | horizontal | bottom):  handles a Theme-UI triple border color scale 1`] = `
 .emotion-0 {
-  border-color: var(--theme-ui-colors-whites-2,rgb(240,240,240)) var(--theme-ui-colors-blacks-1,rgb(51,51,51)) var(--theme-ui-colors-secondary,rgb(229,85,78)) var(--theme-ui-colors-blacks-1,rgb(51,51,51));
+  border-color: var(--theme-ui-colors-whites-2,rgb(240,240,240)) var(--theme-ui-colors-blacks-1,rgb(34,34,34)) var(--theme-ui-colors-secondary,rgb(229,85,78)) var(--theme-ui-colors-blacks-1,rgb(34,34,34));
   padding: 6px 6px 6px 6px;
 }
 
@@ -67,7 +67,7 @@ exports[`<Box /> Border color handling (top | horizontal | bottom):  handles a T
 
 exports[`<Box /> Border color handling (top | right | bottom | left):  handles a Theme-UI triple border color scale 1`] = `
 .emotion-0 {
-  border-color: var(--theme-ui-colors-whites-2,rgb(240,240,240)) var(--theme-ui-colors-blacks-1,rgb(51,51,51)) var(--theme-ui-colors-grays-0,rgb(222,223,224)) var(--theme-ui-colors-corals-1,rgb(229,85,78));
+  border-color: var(--theme-ui-colors-whites-2,rgb(240,240,240)) var(--theme-ui-colors-blacks-1,rgb(34,34,34)) var(--theme-ui-colors-grays-0,rgb(222,223,224)) var(--theme-ui-colors-corals-1,rgb(229,85,78));
   padding: 6px 6px 6px 6px;
 }
 
