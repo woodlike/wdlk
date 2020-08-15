@@ -3,6 +3,7 @@ import * as LocalVid from './Video';
 
 export * from './Box';
 export * from './Burger';
+export * from './Button';
 export * from './Cart';
 export * from './Code';
 export * from './Heading';
