@@ -1,46 +1,25 @@
-/**@jsx jsx */
-import { jsx, SxStyleProp } from 'theme-ui';
-import {
-  Theme,
-  Scale,
-  ScaleArea,
-  BorderColorScale,
-  Color,
-  ThemeColor,
-  GenericThemeColor,
-} from '.';
+import React from 'react';
+import styled from '@emotion/styled';
+
+import { Theme, Scale, ScaleArea } from '.';
 
 export interface ButtonProps {
-  readonly color: string | BorderColorScale;
-  readonly backgroundColor: string | BorderColorScale;
   readonly padding?: ScaleArea;
 }
 
-const stylesButton: SxStyleProp = {
-  textAlign: 'center',
-  textTransform: 'uppercase',
+interface StyledButtonProps {
+  readonly padding: ScaleArea;
+  readonly theme: Theme;
+}
+
+const StyledButton = styled.button<StyledButtonProps>`
+  padding: ${({ padding, theme }) =>
+    Scale.toCSSPixel(Scale.create(padding, theme.space))};
+  text-align: center;
+  text-transform: uppercase;
+`;
+
+export const Button: React.FC<ButtonProps> = props => {
+  const paddingInit = props.padding || 1;
+  return <StyledButton padding={paddingInit}>{props.children}</StyledButton>;
 };
-
-const createStylesPadding = (padding: ScaleArea = 1): SxStyleProp => ({
-  padding: ({ space }: Theme) => Scale.toCSSPixel(Scale.create(padding, space)),
-});
-
-const createColor = (
-  color: string | BorderColorScale,
-  colors: ThemeColor & GenericThemeColor,
-): string | string[] =>
-  typeof color === 'object'
-    ? Color.query(color.color, colors, color.idx)
-    : Color.query(color, colors);
-
-const createStylesButton = (props: ButtonProps): SxStyleProp => ({
-  ...stylesButton,
-  ...createStylesPadding(props.padding),
-  color: ({ colors }: Theme) => createColor(props.color, colors),
-  backgroundColor: ({ colors }: Theme) =>
-    createColor(props.backgroundColor, colors),
-});
-
-export const Button: React.FC<ButtonProps> = props => (
-  <button sx={createStylesButton(props)}>{props.children}</button>
-);
