@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
-import { Box, Theme, ScaleArea, Select } from '@wdlk/components';
+import { Box, Button, Theme, ScaleArea, Select } from '@wdlk/components';
 
 import { StageCarousel } from '.';
 import { Footer, Header, Title } from '..';
@@ -82,6 +82,7 @@ export const ProductLayout: React.FC<ProductLayoutProps> = ({ data }) => {
                   </Select.Item>
                 ))}
               </Select.Frame>
+              <Button padding={[3, 4]}>Hi Mom</Button>
             </Box>
           }
         />

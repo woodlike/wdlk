@@ -7,5 +7,6 @@
     "allowJs": true
   },
   "include": ["./src/**/*", "__mocks__"],
-  "exclude": ["node_modules", "build", ".cache"]
+  "exclude": ["node_modules", "build", ".cache"],
+  "references": [{ "path": "../components" }, { "path": "../hooks" }]
 }
