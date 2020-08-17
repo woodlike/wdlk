@@ -1,17 +1,19 @@
-import { base } from '@theme-ui/presets';
 import { theme as themeQuery, Colors, toRGB } from 'theme-query';
+import { ButtonVariants } from '.';
 
 export interface Theme {
   readonly borderStyles: string[];
   readonly borderWidths: number[];
   readonly breakpoints: string[];
-  readonly colors: ThemeColor & GenericThemeColor;
+  readonly colors: ThemeColor;
   readonly fonts: ThemeFontsProps;
   readonly fontSizes: number[];
+  readonly fontWeights: number[];
   readonly header: string[];
   readonly letterSpacings: number[];
   readonly space: number[];
   readonly transition: ThemeTiming;
+  readonly buttons: ButtonVariants;
 }
 
 export interface ThemeTiming {
@@ -19,17 +21,16 @@ export interface ThemeTiming {
   readonly timing: string[];
 }
 
-export interface GenericThemeColor {
-  readonly [key: string]: string | string[];
-}
-
 export interface ThemeFontsProps {
   readonly body: string;
   readonly heading: ThemeHeadingProps;
+  readonly monospace: string;
 }
 
 export interface ThemeHeadingProps {
   readonly display: string;
+  readonly campaign: string;
+  readonly secondary: string;
 }
 
 export interface ThemeColor {
@@ -42,6 +43,7 @@ export interface ThemeColor {
   readonly headline: string;
   readonly link: string;
   readonly textInverted: string;
+  readonly [key: string]: string | string[];
 }
 
 export interface ThemeHeader {
@@ -89,10 +91,9 @@ const colors: Colors = {
   sand: toRGB([204, 153, 102]),
   yellows: [toRGB([223, 199, 129]), toRGB([255, 202, 84])],
 };
-export const theme: Theme = {
-  ...base,
-  ...themeQuery,
 
+export const theme: Theme = {
+  ...themeQuery,
   borderStyles,
   borderWidths,
   breakpoints,
@@ -113,7 +114,7 @@ export const theme: Theme = {
   fontSizes,
   fontWeights,
   fonts: {
-    ...themeQuery.fonts,
+    body: `"MuseoSans", Helvetica, sans-serif`,
     heading: {
       display: `"Museo", serif`,
       secondary: `"MuseoSans", Helvetica, sans-serif`,
@@ -132,5 +133,15 @@ export const theme: Theme = {
       'cubic-bezier(0.770, 0.000, 0.175, 1.000)',
       'cubic-bezier(0.550, 0.055, 0.675, 0.190)',
     ],
+  },
+  buttons: {
+    primary: {
+      color: colors.whites[0],
+      bg: colors.blacks[0],
+    },
+    secondary: {
+      color: colors.corals[0],
+      bg: colors.whites[0],
+    },
   },
 };

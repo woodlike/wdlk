@@ -1,8 +1,6 @@
-import { GenericThemeColor } from '.';
-
 export const query = (
   colorQuery: string,
-  color: GenericThemeColor,
+  color: { readonly [key: string]: string | string[] },
   idx = 0,
 ): string | string[] => {
   const themeColor = color[colorQuery];

@@ -85,4 +85,62 @@ describe('<Button />', () => {
       unmount();
     });
   });
+
+  describe('Variant properties', () => {
+    const id = 'button-test-id';
+    const { buttons } = theme;
+    it('should have the primary variant styles as default', () => {
+      const { getByText, unmount } = render(
+        <ThemeProvider theme={theme}>
+          <Button>{id}</Button>
+        </ThemeProvider>,
+      );
+      const button = getByText(id);
+      expect(button).toHaveStyleRule(
+        'color',
+        buttons.primary.color.split(' ').join(''),
+      );
+      expect(button).toHaveStyleRule(
+        'background-color',
+        buttons.primary.bg.split(' ').join(''),
+      );
+      unmount();
+    });
+
+    it('should have the primary variant styles', () => {
+      const { getByText, unmount } = render(
+        <ThemeProvider theme={theme}>
+          <Button variant="primary">{id}</Button>
+        </ThemeProvider>,
+      );
+      const button = getByText(id);
+      expect(button).toHaveStyleRule(
+        'color',
+        buttons.primary.color.split(' ').join(''),
+      );
+      expect(button).toHaveStyleRule(
+        'background-color',
+        buttons.primary.bg.split(' ').join(''),
+      );
+      unmount();
+    });
+
+    it('should have the secondary variant styles', () => {
+      const { getByText, unmount } = render(
+        <ThemeProvider theme={theme}>
+          <Button variant="secondary">{id}</Button>
+        </ThemeProvider>,
+      );
+      const button = getByText(id);
+      expect(button).toHaveStyleRule(
+        'color',
+        buttons.secondary.color.split(' ').join(''),
+      );
+      expect(button).toHaveStyleRule(
+        'background-color',
+        buttons.secondary.bg.split(' ').join(''),
+      );
+      unmount();
+    });
+  });
 });

@@ -17,7 +17,6 @@
   "dependencies": {
     "@emotion/core": "^10.0.22",
     "@theme-ui/components": "^0.3.1",
-    "@theme-ui/presets": "^0.3.0",
     "prism-react-renderer": "^1.0.2",
     "prismjs": "^1.19.0",
     "react": "^16.12.0",
