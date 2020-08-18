@@ -4,7 +4,6 @@ import styled from '@emotion/styled';
 
 import { Theme, Scale, ScaleArea } from '.';
 import { getVariant } from './theme';
-import { fontSizes } from 'theme-query';
 
 export interface ButtonProps {
   readonly onClick: React.MouseEventHandler<HTMLButtonElement>;

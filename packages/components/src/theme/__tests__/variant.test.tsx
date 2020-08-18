@@ -21,8 +21,8 @@ describe('Theme Variant', () => {
   it('should find the secondary variant in the theme object', () => {
     expect(getVariant(theme, 'buttons', 'secondary')).toMatchInlineSnapshot(`
       Object {
-        "bg": "rgb(255, 255, 255)",
-        "color": "rgb(255, 113, 99)",
+        "bg": "rgb(255, 113, 99)",
+        "color": "rgb(255, 255, 255)",
       }
     `);
   });

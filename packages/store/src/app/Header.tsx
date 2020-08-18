@@ -24,7 +24,7 @@ const Compact: React.FC = () => {
         <HeaderUI.Item>
           <Burger
             onClick={(): void => setIsExpanded(!isExpanded)}
-            isExpanded={isExpanded}
+            isActive={isExpanded}
           />
         </HeaderUI.Item>
         <HeaderUI.Item>
