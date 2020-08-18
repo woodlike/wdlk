@@ -1,25 +1,27 @@
 import React from 'react';
-import { css } from '@emotion/core';
+import { css, SerializedStyles } from '@emotion/core';
 import styled from '@emotion/styled';
 
 import { Theme, Scale, ScaleArea } from '.';
 import { getVariant } from './theme';
 
 export interface ButtonProps {
-  readonly onclick: React.MouseEventHandler<HTMLButtonElement>;
+  readonly onClick: React.MouseEventHandler<HTMLButtonElement>;
+  readonly inverted?: boolean;
   readonly padding?: ScaleArea;
   readonly variant?: ButtonVariant;
 }
 
 interface StyledButtonProps {
   readonly theme: Theme;
+  readonly inverted?: boolean;
   readonly padding?: ScaleArea;
   readonly variant?: ButtonVariant;
 }
 
 type ButtonVariant = 'primary' | 'secondary';
 
-const pseudoElementStyles = css`
+const stylesPseudoElements = css`
   content: '';
   position: absolute;
   bottom: 0;
@@ -28,6 +30,40 @@ const pseudoElementStyles = css`
   width: 100%;
   height: 100%;
 `;
+
+const createStylesVariant = (
+  inverted: boolean,
+  color: string,
+  bg: string,
+): SerializedStyles =>
+  inverted
+    ? css`
+        color: ${bg};
+        border: 2px solid ${bg};
+      `
+    : css`
+        color: ${color};
+        ::before {
+          ${stylesPseudoElements}
+          background-color: ${bg};
+        }
+
+        ::after {
+          ${stylesPseudoElements}
+          background-color: ${bg};
+          filter: contrast(0.7);
+          pointer-events: none;
+          transform: translate3d(0, 100%, 0);
+          transition: transform 100ms linear;
+        }
+
+        :hover {
+          &::after {
+            transform: translate3d(0, 0, 0);
+            pointer-events: auto;
+          }
+        }
+      `;
 
 const StyledButton = styled.button<StyledButtonProps>`
   position: relative;
@@ -42,45 +78,23 @@ const StyledButton = styled.button<StyledButtonProps>`
   cursor: pointer;
   overflow: hidden;
   background: transparent;
-  ${({ variant, theme }) => {
+  ${({ inverted, variant, theme }) => {
     const result = getVariant(theme, 'buttons', variant || 'primary');
+
     return result
-      ? css`
-          color: ${result.color};
-          ::before {
-            background-color: ${result.bg};
-          }
-          ::after {
-            background-color: ${result.bg};
-          }
-        `
-      : css``;
+      ? createStylesVariant(inverted || false, result.color, result.bg)
+      : ``;
   }};
-
-  ::before {
-    ${pseudoElementStyles}
-  }
-
-  ::after {
-    ${pseudoElementStyles}
-    filter: contrast(0.7);
-    pointer-events: none;
-    transform: translate3d(0, 100%, 0);
-    transition: transform 100ms linear;
-  }
-
-  :hover {
-    &::after {
-      transform: translate3d(0, 0, 0);
-      pointer-events: auto;
-    }
-  }
 `;
 
 StyledButton.displayName = 'StyledButton';
 
 export const Button: React.FC<ButtonProps> = props => (
-  <StyledButton padding={props.padding} variant={props.variant}>
+  <StyledButton
+    onClick={props.onClick}
+    inverted={props.inverted}
+    padding={props.padding}
+    variant={props.variant}>
     {props.children}
   </StyledButton>
 );

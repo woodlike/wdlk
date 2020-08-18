@@ -82,7 +82,9 @@ export const ProductLayout: React.FC<ProductLayoutProps> = ({ data }) => {
                   </Select.Item>
                 ))}
               </Select.Frame>
-              <Button padding={[3, 4]}>Hi Mom</Button>
+              <Button onClick={() => console.log('*****')} padding={[3, 4]}>
+                Hola
+              </Button>
             </Box>
           }
         />
