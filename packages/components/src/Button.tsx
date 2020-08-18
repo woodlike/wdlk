@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 
 import { Theme, Scale, ScaleArea } from '.';
 import { getVariant } from './theme';
+import { fontSizes } from 'theme-query';
 
 export interface ButtonProps {
   readonly onClick: React.MouseEventHandler<HTMLButtonElement>;
@@ -71,8 +72,9 @@ const StyledButton = styled.button<StyledButtonProps>`
   padding: ${({ padding, theme }) =>
     Scale.toCSSPixel(Scale.create(padding || 1, theme.space))};
   border: none;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   line-height: 1;
+  font-size: ${({ theme }) => `${theme.fontSizes[3]}px`};
   text-align: center;
   text-transform: uppercase;
   cursor: pointer;
