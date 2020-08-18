@@ -140,8 +140,8 @@ export const theme: Theme = {
       bg: colors.blacks[0],
     },
     secondary: {
-      color: colors.corals[0],
-      bg: colors.whites[0],
+      color: colors.whites[0],
+      bg: colors.corals[0],
     },
   },
 };

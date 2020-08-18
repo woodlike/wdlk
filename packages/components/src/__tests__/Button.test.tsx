@@ -14,7 +14,7 @@ describe('<Button />', () => {
     it('should not have any accessibility violations', async done => {
       const { container, unmount } = render(
         <ThemeProvider theme={theme}>
-          <Button onclick={() => jest.fn()}>Test Button</Button>
+          <Button onClick={() => jest.fn()}>Test Button</Button>
         </ThemeProvider>,
       );
 
@@ -32,7 +32,7 @@ describe('<Button />', () => {
     it('should use the second scale on missing padding prop', () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
-          <Button onclick={() => jest.fn()}>{id}</Button>
+          <Button onClick={() => jest.fn()}>{id}</Button>
         </ThemeProvider>,
       );
       const button = getByText(id);
@@ -46,7 +46,7 @@ describe('<Button />', () => {
     it('should have a padding that matches with the provided ScaleArea (shorthand)', () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
-          <Button onclick={() => jest.fn()} padding={5}>
+          <Button onClick={() => jest.fn()} padding={5}>
             {id}
           </Button>
         </ThemeProvider>,
@@ -62,7 +62,7 @@ describe('<Button />', () => {
     it('should have a padding that matches with the provided ScaleArea (vertical | horizontal)', () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
-          <Button onclick={() => jest.fn()} padding={[2, 4]}>
+          <Button onClick={() => jest.fn()} padding={[2, 4]}>
             {id}
           </Button>
         </ThemeProvider>,
@@ -78,7 +78,7 @@ describe('<Button />', () => {
     it('should have a padding that matches with the provided ScaleArea (top | right | bottom | left)', () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
-          <Button onclick={() => jest.fn()} padding={[1, 2, 3, 4]}>
+          <Button onClick={() => jest.fn()} padding={[1, 2, 3, 4]}>
             {id}
           </Button>
         </ThemeProvider>,
@@ -98,7 +98,7 @@ describe('<Button />', () => {
     it('should have the primary variant styles as default', () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
-          <Button onclick={() => jest.fn()}>{id}</Button>
+          <Button onClick={() => jest.fn()}>{id}</Button>
         </ThemeProvider>,
       );
       const button = getByText(id);
@@ -117,7 +117,7 @@ describe('<Button />', () => {
     it('should have the primary variant styles', () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
-          <Button onclick={() => jest.fn()} variant="primary">
+          <Button onClick={() => jest.fn()} variant="primary">
             {id}
           </Button>
         </ThemeProvider>,
@@ -138,7 +138,7 @@ describe('<Button />', () => {
     it('should have the secondary variant styles', () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
-          <Button onclick={() => jest.fn()} variant="secondary">
+          <Button onClick={() => jest.fn()} variant="secondary">
             {id}
           </Button>
         </ThemeProvider>,
@@ -152,6 +152,79 @@ describe('<Button />', () => {
         'background-color',
         buttons.secondary.bg.split(' ').join(''),
         { target: '::before' },
+      );
+      unmount();
+    });
+  });
+
+  describe('Inverted properties', () => {
+    const id = 'button-test-id';
+    const { buttons } = theme;
+    it('should have the inverted primary styles by default', () => {
+      const { getByText, unmount } = render(
+        <ThemeProvider theme={theme}>
+          <Button onClick={() => jest.fn()} inverted>
+            {id}
+          </Button>
+        </ThemeProvider>,
+      );
+
+      const button = getByText(id);
+
+      expect(button).toHaveStyleRule(
+        'color',
+        buttons.primary.bg.split(' ').join(''),
+      );
+
+      expect(button).toHaveStyleRule(
+        'border',
+        `2px solid ${buttons.primary.bg.split(' ').join('')}`,
+      );
+      unmount();
+    });
+
+    it('should have the primary variant styles inverted', () => {
+      const { getByText, unmount } = render(
+        <ThemeProvider theme={theme}>
+          <Button inverted onClick={() => jest.fn()} variant="primary">
+            {id}
+          </Button>
+        </ThemeProvider>,
+      );
+
+      const button = getByText(id);
+
+      expect(button).toHaveStyleRule(
+        'color',
+        buttons.primary.bg.split(' ').join(''),
+      );
+
+      expect(button).toHaveStyleRule(
+        'border',
+        `2px solid ${buttons.primary.bg.split(' ').join('')}`,
+      );
+      unmount();
+    });
+
+    it('should have the secondary variant styles inverted', () => {
+      const { getByText, unmount } = render(
+        <ThemeProvider theme={theme}>
+          <Button inverted onClick={() => jest.fn()} variant="secondary">
+            {id}
+          </Button>
+        </ThemeProvider>,
+      );
+
+      const button = getByText(id);
+
+      expect(button).toHaveStyleRule(
+        'color',
+        buttons.secondary.bg.split(' ').join(''),
+      );
+
+      expect(button).toHaveStyleRule(
+        'border',
+        `2px solid ${buttons.secondary.bg.split(' ').join('')}`,
       );
       unmount();
     });
