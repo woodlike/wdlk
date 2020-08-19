@@ -30,6 +30,7 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-feather": "^2.0.8",
+    "shopify-buy": "^2.11.0",
     "shortid": "^2.2.15",
     "theme-ui": "0.3.1"
   },
@@ -42,6 +43,7 @@
     "@types/node": "^14.0.22",
     "@types/react": "^16.9.45",
     "@types/react-dom": "^16.9.4",
+    "@types/shopify-buy": "^2.10.2",
     "@types/shortid": "^0.0.29",
     "@types/theme-ui": "^0.3.2",
     "babel-jest": "^24.9.0",

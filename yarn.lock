@@ -2127,6 +2127,11 @@
     "@types/glob" "*"
     "@types/node" "*"
 
+"@types/shopify-buy@^2.10.2":
+  version "2.10.2"
+  resolved "https://registry.yarnpkg.com/@types/shopify-buy/-/shopify-buy-2.10.2.tgz#c2d47ab3c66af2b67e7c0b1dbea552b01b241c88"
+  integrity sha512-l+bL/kBP8/Bd3Xno7SATUtIwuEIgjVuGqkczfKV7XW14toX7uXYY/FggvuuruHNmDHMWKBub3HHUxdEQAA4lqQ==
+
 "@types/shortid@^0.0.29":
   version "0.0.29"
   resolved "https://registry.yarnpkg.com/@types/shortid/-/shortid-0.0.29.tgz#8093ee0416a6e2bf2aa6338109114b3fbffa0e9b"
@@ -14123,6 +14128,11 @@ shellwords@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/shellwords/-/shellwords-0.1.1.tgz#d6b9181c1a48d397324c84871efbcfc73fc0654b"
   integrity sha512-vFwSUfQvqybiICwZY5+DAWIPLKsWO31Q91JSKl3UYv+K5c2QRPzn0qzec6QPu1Qc9eHYItiP3NdJqNVqetYAww==
+
+shopify-buy@^2.11.0:
+  version "2.11.0"
+  resolved "https://registry.yarnpkg.com/shopify-buy/-/shopify-buy-2.11.0.tgz#0f7cb52741395e4ae778c336f32ddf3fe67c2f35"
+  integrity sha512-bGjS1b/VCPvCjazSstlKwgLtK1WBotWom06/12loja8yfo/cWkLuJsakBbQe1uEIDiOLhKaR0M0CAXZFheYDug==
 
 shortid@^2.2.15:
   version "2.2.15"
