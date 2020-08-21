@@ -8,3 +8,4 @@ lib
 yarn-error.log
 public
 .env
+.env.*

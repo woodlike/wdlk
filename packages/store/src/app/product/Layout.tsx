@@ -8,6 +8,7 @@ import { Price, Stage } from '../..';
 import { ShopifyProductNode, Variant } from '../../gatsby';
 import { useThemeUI } from 'theme-ui';
 import { useMedia } from '@wdlk/hooks';
+import { CartProvider } from '../../context';
 
 export interface ProductLayoutProps {
   readonly data: ShopifyProduct;
@@ -44,10 +45,9 @@ export const ProductLayout: React.FC<ProductLayoutProps> = ({ data }) => {
     contestScales[contestScales.length - 1],
   );
   const [activeVariant, setActiveVariant] = React.useState(variants[0]);
-  console.log(activeVariant);
 
   return (
-    <>
+    <CartProvider>
       <Header />
       <main>
         <Stage.Layout
@@ -90,7 +90,7 @@ export const ProductLayout: React.FC<ProductLayoutProps> = ({ data }) => {
         />
       </main>
       <Footer />
-    </>
+    </CartProvider>
   );
 };
 
