@@ -48,7 +48,7 @@ export async function createPages({
     const { id, fields } = product;
     createPage({
       path: fields.slug,
-      component: resolve('./src/app/product/Layout.tsx'),
+      component: resolve('./src/app/Product/Layout.tsx'),
       context: {
         id: id,
       },
