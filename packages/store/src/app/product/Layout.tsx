@@ -99,16 +99,12 @@ export default ProductLayout;
 export const query = graphql`
   query ProductQuery($id: String) {
     shopifyProduct(id: { eq: $id }) {
-      id
       description
       images {
         id
         altText
         originalSrc
-        srcSet {
-          id
-          src
-        }
+        srcSet
       }
       title
       variants {

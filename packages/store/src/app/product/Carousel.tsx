@@ -31,7 +31,7 @@ function handleThumbnailClick({
 function createSrcSets(srcSets: SourceSetProps[]): string {
   const sizes = Object.keys(ProductImageWidth);
   return srcSets.reduce(
-    (acc, set, idx) => acc.concat(`${set.src} ${sizes[idx]}w,`),
+    (acc, set, idx) => acc.concat(`${set} ${sizes[idx]}w,`),
     '',
   );
 }
