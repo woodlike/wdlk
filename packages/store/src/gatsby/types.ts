@@ -9,11 +9,11 @@ export interface ShopifyProductNode {
 }
 
 export interface Variant {
-  readonly id: string;
   readonly compareAtPriceV2: Price | null;
   readonly compareAtLocalePrice: Price | null;
   readonly priceLocale: Price;
   readonly priceV2: Price;
+  readonly shopifyId: string;
   readonly sku: string;
   readonly title: string;
   readonly weight: number;

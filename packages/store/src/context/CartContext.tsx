@@ -1,12 +1,7 @@
 import React, { useEffect, useReducer, Dispatch } from 'react';
 import Client from 'shopify-buy';
 
-import {
-  cartReducer,
-  Action,
-  CartState,
-  initializeCheckout,
-} from './cart-reducer';
+import { cartReducer, Action, CartState } from './cart-reducer';
 
 /**
  * @name CartContext
@@ -31,7 +26,9 @@ const client = Client.buildClient({
 
 const initialState: CartState = {
   client,
-  cart: {} as ShopifyBuy.Cart,
+  cart: {
+    lineItems: [] as ShopifyBuy.LineItem[],
+  } as ShopifyBuy.Cart,
 };
 
 export const CartProvider: React.FC = props => {
@@ -39,7 +36,10 @@ export const CartProvider: React.FC = props => {
 
   useEffect(() => {
     const cartId = localStorage.getItem('shopify_checkout_id');
-    initializeCheckout(client, cartId, dispatch);
+    dispatch({
+      type: 'initialize_checkout',
+      payload: { cartId, client, dispatch },
+    });
   }, [cart.id]);
 
   const state = {
@@ -48,10 +48,10 @@ export const CartProvider: React.FC = props => {
   };
 
   return (
-    <CartContext.Provider value={state}>
-      <CartDispatchContext.Provider value={dispatch}>
+    <CartDispatchContext.Provider value={dispatch}>
+      <CartContext.Provider value={state}>
         {props.children}
-      </CartDispatchContext.Provider>
-    </CartContext.Provider>
+      </CartContext.Provider>
+    </CartDispatchContext.Provider>
   );
 };
