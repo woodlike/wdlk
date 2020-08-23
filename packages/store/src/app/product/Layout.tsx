@@ -1,22 +1,15 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 
+import { Content, StageCarousel } from '.';
 import { Footer, Header } from '..';
-import { ShopifyProductNode, Variant } from '../../gatsby';
-import { CartProvider } from '../../context';
-import { ProductStage } from './Stage';
+import { CartProvider, Stage } from '../..';
+import { ShopifyProductNode } from '../../gatsby';
 
 export interface ProductLayoutProps {
-  readonly data: ShopifyProduct;
-}
-
-export interface ShopifyProduct {
-  readonly shopifyProduct: ShopifyProductNode;
-}
-
-export interface SelectItem {
-  readonly isActive: boolean;
-  setActive(variant: Variant): void;
+  readonly data: {
+    readonly shopifyProduct: ShopifyProductNode;
+  };
 }
 
 export const ProductLayout: React.FC<ProductLayoutProps> = ({ data }) => {
@@ -28,7 +21,10 @@ export const ProductLayout: React.FC<ProductLayoutProps> = ({ data }) => {
     <CartProvider>
       <Header />
       <main>
-        <ProductStage images={images} title={title} variants={variants} />
+        <Stage.Layout
+          image={<StageCarousel images={images} />}
+          content={<Content title={title} variants={variants} />}
+        />
       </main>
       <Footer />
     </CartProvider>
