@@ -1,3 +1,3 @@
-export * from './Layout';
 export * from './Carousel';
-export * from './Stage';
+export * from './Content';
+export * from './Layout';
