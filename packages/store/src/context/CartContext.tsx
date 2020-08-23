@@ -1,9 +1,12 @@
 import React, { useEffect, useReducer, Dispatch } from 'react';
 import Client from 'shopify-buy';
 
-import { cartReducer, Action, CartState } from './cart-reducer';
-
-export const SHOPIFY_CHECKOUT_ID_KEY = 'shopify_checkout_id';
+import {
+  cartReducer,
+  Action,
+  CartState,
+  initializeCheckout,
+} from './cart-reducer';
 
 /**
  * @name CartContext
@@ -34,29 +37,9 @@ const initialState: CartState = {
 export const CartProvider: React.FC = props => {
   const [{ cart, client }, dispatch] = useReducer(cartReducer, initialState);
 
-  const setCart = (cart: ShopifyBuy.Cart) => {
-    localStorage.setItem(SHOPIFY_CHECKOUT_ID_KEY, cart.id as string);
-    dispatch({ type: 'update_checkout', payload: cart });
-  };
   useEffect(() => {
-    const cartId = localStorage.getItem(SHOPIFY_CHECKOUT_ID_KEY);
-    (async () => {
-      try {
-        if (!!cartId) {
-          const cart = await client.checkout.fetch(cartId);
-          if (!cart || !cart.id) {
-            const cart = await client.checkout.create();
-            setCart(cart);
-          }
-        } else {
-          const cart = await client.checkout.create();
-          setCart(cart);
-        }
-      } catch (error) {
-        console.warn(error);
-        localStorage.setItem(SHOPIFY_CHECKOUT_ID_KEY, '');
-      }
-    })();
+    const cartId = localStorage.getItem('shopify_checkout_id');
+    initializeCheckout(client, cartId, dispatch);
   }, [cart.id]);
 
   const state = {
@@ -65,10 +48,10 @@ export const CartProvider: React.FC = props => {
   };
 
   return (
-    <CartDispatchContext.Provider value={dispatch}>
-      <CartContext.Provider value={state}>
+    <CartContext.Provider value={state}>
+      <CartDispatchContext.Provider value={dispatch}>
         {props.children}
-      </CartContext.Provider>
-    </CartDispatchContext.Provider>
+      </CartDispatchContext.Provider>
+    </CartContext.Provider>
   );
 };

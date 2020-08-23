@@ -1,0 +1,822 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CartProvider /> CartContext should have an initialized shopify client 1`] = `
+"Received: {
+  \\"graphQLClient\\": {
+    \\"typeBundle\\": {
+      \\"types\\": {
+        \\"AppliedGiftCard\\": {
+          \\"name\\": \\"AppliedGiftCard\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"amountUsedV2\\": \\"MoneyV2\\",
+            \\"balanceV2\\": \\"MoneyV2\\",
+            \\"id\\": \\"ID\\",
+            \\"lastCharacters\\": \\"String\\",
+            \\"presentmentAmountUsed\\": \\"MoneyV2\\"
+          },
+          \\"implementsNode\\": true
+        },
+        \\"Attribute\\": {
+          \\"name\\": \\"Attribute\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"key\\": \\"String\\",
+            \\"value\\": \\"String\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"AutomaticDiscountApplication\\": {
+          \\"name\\": \\"AutomaticDiscountApplication\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"title\\": \\"String\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"Boolean\\": {
+          \\"name\\": \\"Boolean\\",
+          \\"kind\\": \\"SCALAR\\"
+        },
+        \\"Checkout\\": {
+          \\"name\\": \\"Checkout\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"appliedGiftCards\\": \\"AppliedGiftCard\\",
+            \\"completedAt\\": \\"DateTime\\",
+            \\"createdAt\\": \\"DateTime\\",
+            \\"currencyCode\\": \\"CurrencyCode\\",
+            \\"customAttributes\\": \\"Attribute\\",
+            \\"discountApplications\\": \\"DiscountApplicationConnection\\",
+            \\"email\\": \\"String\\",
+            \\"id\\": \\"ID\\",
+            \\"lineItems\\": \\"CheckoutLineItemConnection\\",
+            \\"lineItemsSubtotalPrice\\": \\"MoneyV2\\",
+            \\"note\\": \\"String\\",
+            \\"order\\": \\"Order\\",
+            \\"orderStatusUrl\\": \\"URL\\",
+            \\"paymentDue\\": \\"Money\\",
+            \\"paymentDueV2\\": \\"MoneyV2\\",
+            \\"ready\\": \\"Boolean\\",
+            \\"requiresShipping\\": \\"Boolean\\",
+            \\"shippingAddress\\": \\"MailingAddress\\",
+            \\"shippingLine\\": \\"ShippingRate\\",
+            \\"subtotalPrice\\": \\"Money\\",
+            \\"subtotalPriceV2\\": \\"MoneyV2\\",
+            \\"taxExempt\\": \\"Boolean\\",
+            \\"taxesIncluded\\": \\"Boolean\\",
+            \\"totalPrice\\": \\"Money\\",
+            \\"totalPriceV2\\": \\"MoneyV2\\",
+            \\"totalTax\\": \\"Money\\",
+            \\"totalTaxV2\\": \\"MoneyV2\\",
+            \\"updatedAt\\": \\"DateTime\\",
+            \\"webUrl\\": \\"URL\\"
+          },
+          \\"implementsNode\\": true
+        },
+        \\"CheckoutAttributesUpdateV2Payload\\": {
+          \\"name\\": \\"CheckoutAttributesUpdateV2Payload\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"checkout\\": \\"Checkout\\",
+            \\"checkoutUserErrors\\": \\"CheckoutUserError\\",
+            \\"userErrors\\": \\"UserError\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"CheckoutCreatePayload\\": {
+          \\"name\\": \\"CheckoutCreatePayload\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"checkout\\": \\"Checkout\\",
+            \\"checkoutUserErrors\\": \\"CheckoutUserError\\",
+            \\"userErrors\\": \\"UserError\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"CheckoutDiscountCodeApplyV2Payload\\": {
+          \\"name\\": \\"CheckoutDiscountCodeApplyV2Payload\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"checkout\\": \\"Checkout\\",
+            \\"checkoutUserErrors\\": \\"CheckoutUserError\\",
+            \\"userErrors\\": \\"UserError\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"CheckoutDiscountCodeRemovePayload\\": {
+          \\"name\\": \\"CheckoutDiscountCodeRemovePayload\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"checkout\\": \\"Checkout\\",
+            \\"checkoutUserErrors\\": \\"CheckoutUserError\\",
+            \\"userErrors\\": \\"UserError\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"CheckoutEmailUpdateV2Payload\\": {
+          \\"name\\": \\"CheckoutEmailUpdateV2Payload\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"checkout\\": \\"Checkout\\",
+            \\"checkoutUserErrors\\": \\"CheckoutUserError\\",
+            \\"userErrors\\": \\"UserError\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"CheckoutErrorCode\\": {
+          \\"name\\": \\"CheckoutErrorCode\\",
+          \\"kind\\": \\"ENUM\\"
+        },
+        \\"CheckoutGiftCardRemoveV2Payload\\": {
+          \\"name\\": \\"CheckoutGiftCardRemoveV2Payload\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"checkout\\": \\"Checkout\\",
+            \\"checkoutUserErrors\\": \\"CheckoutUserError\\",
+            \\"userErrors\\": \\"UserError\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"CheckoutGiftCardsAppendPayload\\": {
+          \\"name\\": \\"CheckoutGiftCardsAppendPayload\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"checkout\\": \\"Checkout\\",
+            \\"checkoutUserErrors\\": \\"CheckoutUserError\\",
+            \\"userErrors\\": \\"UserError\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"CheckoutLineItem\\": {
+          \\"name\\": \\"CheckoutLineItem\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"customAttributes\\": \\"Attribute\\",
+            \\"discountAllocations\\": \\"DiscountAllocation\\",
+            \\"id\\": \\"ID\\",
+            \\"quantity\\": \\"Int\\",
+            \\"title\\": \\"String\\",
+            \\"variant\\": \\"ProductVariant\\"
+          },
+          \\"implementsNode\\": true
+        },
+        \\"CheckoutLineItemConnection\\": {
+          \\"name\\": \\"CheckoutLineItemConnection\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"edges\\": \\"CheckoutLineItemEdge\\",
+            \\"pageInfo\\": \\"PageInfo\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"CheckoutLineItemEdge\\": {
+          \\"name\\": \\"CheckoutLineItemEdge\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"cursor\\": \\"String\\",
+            \\"node\\": \\"CheckoutLineItem\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"CheckoutLineItemsAddPayload\\": {
+          \\"name\\": \\"CheckoutLineItemsAddPayload\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"checkout\\": \\"Checkout\\",
+            \\"checkoutUserErrors\\": \\"CheckoutUserError\\",
+            \\"userErrors\\": \\"UserError\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"CheckoutLineItemsRemovePayload\\": {
+          \\"name\\": \\"CheckoutLineItemsRemovePayload\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"checkout\\": \\"Checkout\\",
+            \\"checkoutUserErrors\\": \\"CheckoutUserError\\",
+            \\"userErrors\\": \\"UserError\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"CheckoutLineItemsReplacePayload\\": {
+          \\"name\\": \\"CheckoutLineItemsReplacePayload\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"checkout\\": \\"Checkout\\",
+            \\"userErrors\\": \\"CheckoutUserError\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"CheckoutLineItemsUpdatePayload\\": {
+          \\"name\\": \\"CheckoutLineItemsUpdatePayload\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"checkout\\": \\"Checkout\\",
+            \\"checkoutUserErrors\\": \\"CheckoutUserError\\",
+            \\"userErrors\\": \\"UserError\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"CheckoutShippingAddressUpdateV2Payload\\": {
+          \\"name\\": \\"CheckoutShippingAddressUpdateV2Payload\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"checkout\\": \\"Checkout\\",
+            \\"checkoutUserErrors\\": \\"CheckoutUserError\\",
+            \\"userErrors\\": \\"UserError\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"CheckoutUserError\\": {
+          \\"name\\": \\"CheckoutUserError\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"code\\": \\"CheckoutErrorCode\\",
+            \\"field\\": \\"String\\",
+            \\"message\\": \\"String\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"Collection\\": {
+          \\"name\\": \\"Collection\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"description\\": \\"String\\",
+            \\"descriptionHtml\\": \\"HTML\\",
+            \\"handle\\": \\"String\\",
+            \\"id\\": \\"ID\\",
+            \\"image\\": \\"Image\\",
+            \\"products\\": \\"ProductConnection\\",
+            \\"title\\": \\"String\\",
+            \\"updatedAt\\": \\"DateTime\\"
+          },
+          \\"implementsNode\\": true
+        },
+        \\"CollectionConnection\\": {
+          \\"name\\": \\"CollectionConnection\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"edges\\": \\"CollectionEdge\\",
+            \\"pageInfo\\": \\"PageInfo\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"CollectionEdge\\": {
+          \\"name\\": \\"CollectionEdge\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"cursor\\": \\"String\\",
+            \\"node\\": \\"Collection\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"CountryCode\\": {
+          \\"name\\": \\"CountryCode\\",
+          \\"kind\\": \\"ENUM\\"
+        },
+        \\"CurrencyCode\\": {
+          \\"name\\": \\"CurrencyCode\\",
+          \\"kind\\": \\"ENUM\\"
+        },
+        \\"DateTime\\": {
+          \\"name\\": \\"DateTime\\",
+          \\"kind\\": \\"SCALAR\\"
+        },
+        \\"Decimal\\": {
+          \\"name\\": \\"Decimal\\",
+          \\"kind\\": \\"SCALAR\\"
+        },
+        \\"DiscountAllocation\\": {
+          \\"name\\": \\"DiscountAllocation\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"allocatedAmount\\": \\"MoneyV2\\",
+            \\"discountApplication\\": \\"DiscountApplication\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"DiscountApplication\\": {
+          \\"name\\": \\"DiscountApplication\\",
+          \\"kind\\": \\"INTERFACE\\",
+          \\"fieldBaseTypes\\": {
+            \\"allocationMethod\\": \\"DiscountApplicationAllocationMethod\\",
+            \\"targetSelection\\": \\"DiscountApplicationTargetSelection\\",
+            \\"targetType\\": \\"DiscountApplicationTargetType\\",
+            \\"value\\": \\"PricingValue\\"
+          },
+          \\"possibleTypes\\": [
+            \\"AutomaticDiscountApplication\\",
+            \\"DiscountCodeApplication\\",
+            \\"ManualDiscountApplication\\",
+            \\"ScriptDiscountApplication\\"
+          ]
+        },
+        \\"DiscountApplicationAllocationMethod\\": {
+          \\"name\\": \\"DiscountApplicationAllocationMethod\\",
+          \\"kind\\": \\"ENUM\\"
+        },
+        \\"DiscountApplicationConnection\\": {
+          \\"name\\": \\"DiscountApplicationConnection\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"edges\\": \\"DiscountApplicationEdge\\",
+            \\"pageInfo\\": \\"PageInfo\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"DiscountApplicationEdge\\": {
+          \\"name\\": \\"DiscountApplicationEdge\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"node\\": \\"DiscountApplication\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"DiscountApplicationTargetSelection\\": {
+          \\"name\\": \\"DiscountApplicationTargetSelection\\",
+          \\"kind\\": \\"ENUM\\"
+        },
+        \\"DiscountApplicationTargetType\\": {
+          \\"name\\": \\"DiscountApplicationTargetType\\",
+          \\"kind\\": \\"ENUM\\"
+        },
+        \\"DiscountCodeApplication\\": {
+          \\"name\\": \\"DiscountCodeApplication\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"applicable\\": \\"Boolean\\",
+            \\"code\\": \\"String\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"Domain\\": {
+          \\"name\\": \\"Domain\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"host\\": \\"String\\",
+            \\"sslEnabled\\": \\"Boolean\\",
+            \\"url\\": \\"URL\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"Float\\": {
+          \\"name\\": \\"Float\\",
+          \\"kind\\": \\"SCALAR\\"
+        },
+        \\"HTML\\": {
+          \\"name\\": \\"HTML\\",
+          \\"kind\\": \\"SCALAR\\"
+        },
+        \\"ID\\": {
+          \\"name\\": \\"ID\\",
+          \\"kind\\": \\"SCALAR\\"
+        },
+        \\"Image\\": {
+          \\"name\\": \\"Image\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"altText\\": \\"String\\",
+            \\"id\\": \\"ID\\",
+            \\"originalSrc\\": \\"URL\\",
+            \\"src\\": \\"URL\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"ImageConnection\\": {
+          \\"name\\": \\"ImageConnection\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"edges\\": \\"ImageEdge\\",
+            \\"pageInfo\\": \\"PageInfo\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"ImageEdge\\": {
+          \\"name\\": \\"ImageEdge\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"cursor\\": \\"String\\",
+            \\"node\\": \\"Image\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"Int\\": {
+          \\"name\\": \\"Int\\",
+          \\"kind\\": \\"SCALAR\\"
+        },
+        \\"MailingAddress\\": {
+          \\"name\\": \\"MailingAddress\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"address1\\": \\"String\\",
+            \\"address2\\": \\"String\\",
+            \\"city\\": \\"String\\",
+            \\"company\\": \\"String\\",
+            \\"country\\": \\"String\\",
+            \\"countryCodeV2\\": \\"CountryCode\\",
+            \\"firstName\\": \\"String\\",
+            \\"formatted\\": \\"String\\",
+            \\"id\\": \\"ID\\",
+            \\"lastName\\": \\"String\\",
+            \\"latitude\\": \\"Float\\",
+            \\"longitude\\": \\"Float\\",
+            \\"name\\": \\"String\\",
+            \\"phone\\": \\"String\\",
+            \\"province\\": \\"String\\",
+            \\"provinceCode\\": \\"String\\",
+            \\"zip\\": \\"String\\"
+          },
+          \\"implementsNode\\": true
+        },
+        \\"ManualDiscountApplication\\": {
+          \\"name\\": \\"ManualDiscountApplication\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"description\\": \\"String\\",
+            \\"title\\": \\"String\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"Money\\": {
+          \\"name\\": \\"Money\\",
+          \\"kind\\": \\"SCALAR\\"
+        },
+        \\"MoneyV2\\": {
+          \\"name\\": \\"MoneyV2\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"amount\\": \\"Decimal\\",
+            \\"currencyCode\\": \\"CurrencyCode\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"Mutation\\": {
+          \\"name\\": \\"Mutation\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"checkoutAttributesUpdateV2\\": \\"CheckoutAttributesUpdateV2Payload\\",
+            \\"checkoutCreate\\": \\"CheckoutCreatePayload\\",
+            \\"checkoutDiscountCodeApplyV2\\": \\"CheckoutDiscountCodeApplyV2Payload\\",
+            \\"checkoutDiscountCodeRemove\\": \\"CheckoutDiscountCodeRemovePayload\\",
+            \\"checkoutEmailUpdateV2\\": \\"CheckoutEmailUpdateV2Payload\\",
+            \\"checkoutGiftCardRemoveV2\\": \\"CheckoutGiftCardRemoveV2Payload\\",
+            \\"checkoutGiftCardsAppend\\": \\"CheckoutGiftCardsAppendPayload\\",
+            \\"checkoutLineItemsAdd\\": \\"CheckoutLineItemsAddPayload\\",
+            \\"checkoutLineItemsRemove\\": \\"CheckoutLineItemsRemovePayload\\",
+            \\"checkoutLineItemsReplace\\": \\"CheckoutLineItemsReplacePayload\\",
+            \\"checkoutLineItemsUpdate\\": \\"CheckoutLineItemsUpdatePayload\\",
+            \\"checkoutShippingAddressUpdateV2\\": \\"CheckoutShippingAddressUpdateV2Payload\\"
+          },
+          \\"implementsNode\\": false,
+          \\"relayInputObjectBaseTypes\\": {
+            \\"checkoutAttributesUpdate\\": \\"CheckoutAttributesUpdateInput\\",
+            \\"checkoutAttributesUpdateV2\\": \\"CheckoutAttributesUpdateV2Input\\",
+            \\"checkoutCreate\\": \\"CheckoutCreateInput\\",
+            \\"customerAccessTokenCreate\\": \\"CustomerAccessTokenCreateInput\\",
+            \\"customerActivate\\": \\"CustomerActivateInput\\",
+            \\"customerCreate\\": \\"CustomerCreateInput\\",
+            \\"customerReset\\": \\"CustomerResetInput\\"
+          }
+        },
+        \\"Node\\": {
+          \\"name\\": \\"Node\\",
+          \\"kind\\": \\"INTERFACE\\",
+          \\"fieldBaseTypes\\": {},
+          \\"possibleTypes\\": [
+            \\"AppliedGiftCard\\",
+            \\"Article\\",
+            \\"Blog\\",
+            \\"Checkout\\",
+            \\"CheckoutLineItem\\",
+            \\"Collection\\",
+            \\"Comment\\",
+            \\"ExternalVideo\\",
+            \\"MailingAddress\\",
+            \\"MediaImage\\",
+            \\"Metafield\\",
+            \\"Model3d\\",
+            \\"Order\\",
+            \\"Page\\",
+            \\"Payment\\",
+            \\"Product\\",
+            \\"ProductOption\\",
+            \\"ProductVariant\\",
+            \\"ShopPolicy\\",
+            \\"Video\\"
+          ]
+        },
+        \\"Order\\": {
+          \\"name\\": \\"Order\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"currencyCode\\": \\"CurrencyCode\\",
+            \\"customerUrl\\": \\"URL\\",
+            \\"id\\": \\"ID\\",
+            \\"lineItems\\": \\"OrderLineItemConnection\\",
+            \\"orderNumber\\": \\"Int\\",
+            \\"processedAt\\": \\"DateTime\\",
+            \\"shippingAddress\\": \\"MailingAddress\\",
+            \\"subtotalPrice\\": \\"Money\\",
+            \\"subtotalPriceV2\\": \\"MoneyV2\\",
+            \\"totalPrice\\": \\"Money\\",
+            \\"totalPriceV2\\": \\"MoneyV2\\",
+            \\"totalRefunded\\": \\"Money\\",
+            \\"totalRefundedV2\\": \\"MoneyV2\\",
+            \\"totalShippingPrice\\": \\"Money\\",
+            \\"totalShippingPriceV2\\": \\"MoneyV2\\",
+            \\"totalTax\\": \\"Money\\",
+            \\"totalTaxV2\\": \\"MoneyV2\\"
+          },
+          \\"implementsNode\\": true
+        },
+        \\"OrderLineItem\\": {
+          \\"name\\": \\"OrderLineItem\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"customAttributes\\": \\"Attribute\\",
+            \\"quantity\\": \\"Int\\",
+            \\"title\\": \\"String\\",
+            \\"variant\\": \\"ProductVariant\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"OrderLineItemConnection\\": {
+          \\"name\\": \\"OrderLineItemConnection\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"edges\\": \\"OrderLineItemEdge\\",
+            \\"pageInfo\\": \\"PageInfo\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"OrderLineItemEdge\\": {
+          \\"name\\": \\"OrderLineItemEdge\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"cursor\\": \\"String\\",
+            \\"node\\": \\"OrderLineItem\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"PageInfo\\": {
+          \\"name\\": \\"PageInfo\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"hasNextPage\\": \\"Boolean\\",
+            \\"hasPreviousPage\\": \\"Boolean\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"PaymentSettings\\": {
+          \\"name\\": \\"PaymentSettings\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"enabledPresentmentCurrencies\\": \\"CurrencyCode\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"PricingPercentageValue\\": {
+          \\"name\\": \\"PricingPercentageValue\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"percentage\\": \\"Float\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"PricingValue\\": {
+          \\"name\\": \\"PricingValue\\",
+          \\"kind\\": \\"UNION\\"
+        },
+        \\"Product\\": {
+          \\"name\\": \\"Product\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"availableForSale\\": \\"Boolean\\",
+            \\"createdAt\\": \\"DateTime\\",
+            \\"description\\": \\"String\\",
+            \\"descriptionHtml\\": \\"HTML\\",
+            \\"handle\\": \\"String\\",
+            \\"id\\": \\"ID\\",
+            \\"images\\": \\"ImageConnection\\",
+            \\"onlineStoreUrl\\": \\"URL\\",
+            \\"options\\": \\"ProductOption\\",
+            \\"productType\\": \\"String\\",
+            \\"publishedAt\\": \\"DateTime\\",
+            \\"title\\": \\"String\\",
+            \\"updatedAt\\": \\"DateTime\\",
+            \\"variants\\": \\"ProductVariantConnection\\",
+            \\"vendor\\": \\"String\\"
+          },
+          \\"implementsNode\\": true
+        },
+        \\"ProductConnection\\": {
+          \\"name\\": \\"ProductConnection\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"edges\\": \\"ProductEdge\\",
+            \\"pageInfo\\": \\"PageInfo\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"ProductEdge\\": {
+          \\"name\\": \\"ProductEdge\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"cursor\\": \\"String\\",
+            \\"node\\": \\"Product\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"ProductOption\\": {
+          \\"name\\": \\"ProductOption\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"name\\": \\"String\\",
+            \\"values\\": \\"String\\"
+          },
+          \\"implementsNode\\": true
+        },
+        \\"ProductVariant\\": {
+          \\"name\\": \\"ProductVariant\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"availableForSale\\": \\"Boolean\\",
+            \\"compareAtPrice\\": \\"Money\\",
+            \\"compareAtPriceV2\\": \\"MoneyV2\\",
+            \\"id\\": \\"ID\\",
+            \\"image\\": \\"Image\\",
+            \\"presentmentPrices\\": \\"ProductVariantPricePairConnection\\",
+            \\"price\\": \\"Money\\",
+            \\"priceV2\\": \\"MoneyV2\\",
+            \\"product\\": \\"Product\\",
+            \\"selectedOptions\\": \\"SelectedOption\\",
+            \\"sku\\": \\"String\\",
+            \\"title\\": \\"String\\",
+            \\"unitPrice\\": \\"MoneyV2\\",
+            \\"unitPriceMeasurement\\": \\"UnitPriceMeasurement\\",
+            \\"weight\\": \\"Float\\"
+          },
+          \\"implementsNode\\": true
+        },
+        \\"ProductVariantConnection\\": {
+          \\"name\\": \\"ProductVariantConnection\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"edges\\": \\"ProductVariantEdge\\",
+            \\"pageInfo\\": \\"PageInfo\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"ProductVariantEdge\\": {
+          \\"name\\": \\"ProductVariantEdge\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"cursor\\": \\"String\\",
+            \\"node\\": \\"ProductVariant\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"ProductVariantPricePair\\": {
+          \\"name\\": \\"ProductVariantPricePair\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"compareAtPrice\\": \\"MoneyV2\\",
+            \\"price\\": \\"MoneyV2\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"ProductVariantPricePairConnection\\": {
+          \\"name\\": \\"ProductVariantPricePairConnection\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"edges\\": \\"ProductVariantPricePairEdge\\",
+            \\"pageInfo\\": \\"PageInfo\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"ProductVariantPricePairEdge\\": {
+          \\"name\\": \\"ProductVariantPricePairEdge\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"node\\": \\"ProductVariantPricePair\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"QueryRoot\\": {
+          \\"name\\": \\"QueryRoot\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"collectionByHandle\\": \\"Collection\\",
+            \\"collections\\": \\"CollectionConnection\\",
+            \\"node\\": \\"Node\\",
+            \\"nodes\\": \\"Node\\",
+            \\"productByHandle\\": \\"Product\\",
+            \\"products\\": \\"ProductConnection\\",
+            \\"shop\\": \\"Shop\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"ScriptDiscountApplication\\": {
+          \\"name\\": \\"ScriptDiscountApplication\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"description\\": \\"String\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"SelectedOption\\": {
+          \\"name\\": \\"SelectedOption\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"name\\": \\"String\\",
+            \\"value\\": \\"String\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"ShippingRate\\": {
+          \\"name\\": \\"ShippingRate\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"handle\\": \\"String\\",
+            \\"price\\": \\"Money\\",
+            \\"priceV2\\": \\"MoneyV2\\",
+            \\"title\\": \\"String\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"Shop\\": {
+          \\"name\\": \\"Shop\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"currencyCode\\": \\"CurrencyCode\\",
+            \\"description\\": \\"String\\",
+            \\"moneyFormat\\": \\"String\\",
+            \\"name\\": \\"String\\",
+            \\"paymentSettings\\": \\"PaymentSettings\\",
+            \\"primaryDomain\\": \\"Domain\\",
+            \\"privacyPolicy\\": \\"ShopPolicy\\",
+            \\"refundPolicy\\": \\"ShopPolicy\\",
+            \\"termsOfService\\": \\"ShopPolicy\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"ShopPolicy\\": {
+          \\"name\\": \\"ShopPolicy\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"body\\": \\"String\\",
+            \\"id\\": \\"ID\\",
+            \\"title\\": \\"String\\",
+            \\"url\\": \\"URL\\"
+          },
+          \\"implementsNode\\": true
+        },
+        \\"String\\": {
+          \\"name\\": \\"String\\",
+          \\"kind\\": \\"SCALAR\\"
+        },
+        \\"URL\\": {
+          \\"name\\": \\"URL\\",
+          \\"kind\\": \\"SCALAR\\"
+        },
+        \\"UnitPriceMeasurement\\": {
+          \\"name\\": \\"UnitPriceMeasurement\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"measuredType\\": \\"UnitPriceMeasurementMeasuredType\\",
+            \\"quantityUnit\\": \\"UnitPriceMeasurementMeasuredUnit\\",
+            \\"quantityValue\\": \\"Float\\",
+            \\"referenceUnit\\": \\"UnitPriceMeasurementMeasuredUnit\\",
+            \\"referenceValue\\": \\"Int\\"
+          },
+          \\"implementsNode\\": false
+        },
+        \\"UnitPriceMeasurementMeasuredType\\": {
+          \\"name\\": \\"UnitPriceMeasurementMeasuredType\\",
+          \\"kind\\": \\"ENUM\\"
+        },
+        \\"UnitPriceMeasurementMeasuredUnit\\": {
+          \\"name\\": \\"UnitPriceMeasurementMeasuredUnit\\",
+          \\"kind\\": \\"ENUM\\"
+        },
+        \\"UserError\\": {
+          \\"name\\": \\"UserError\\",
+          \\"kind\\": \\"OBJECT\\",
+          \\"fieldBaseTypes\\": {
+            \\"field\\": \\"String\\",
+            \\"message\\": \\"String\\"
+          },
+          \\"implementsNode\\": false
+        }
+      },
+      \\"queryType\\": \\"QueryRoot\\",
+      \\"mutationType\\": \\"Mutation\\",
+      \\"subscriptionType\\": null
+    },
+    \\"classRegistry\\": {
+      \\"classStore\\": {}
+    }
+  }
+}"
+`;
