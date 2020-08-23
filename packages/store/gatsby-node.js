@@ -8,13 +8,11 @@ require('ts-node').register({
 
 const {
   createPages,
-  createSlugs: createSlug,
+  createSlugs,
   createStoreResolvers,
-  createCustomStoreTypes,
 } = require('./src/gatsby');
 
-exports.sourceNodes = ({ actions }) => createCustomStoreTypes(actions);
 exports.createPages = async args => await createPages(args);
-exports.onCreateNode = args => createSlug(args);
-exports.createResolvers = ({ createResolvers }) =>
-  createStoreResolvers(createResolvers);
+exports.onCreateNode = args => createSlugs(args);
+exports.createResolvers = ({ createResolvers, reporter }) =>
+  createStoreResolvers(createResolvers, reporter);
