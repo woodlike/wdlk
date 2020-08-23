@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { CartProvider, CartDispatchContext, CartContext } from '.';
+import { CartProvider, CartDispatchContext, CartContext } from '..';
 
 describe('<CartProvider />', () => {
   describe('CartContext', () => {
