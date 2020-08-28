@@ -14,7 +14,7 @@ export interface ProductLayoutProps {
 
 export const ProductLayout: React.FC<ProductLayoutProps> = ({ data }) => {
   const {
-    shopifyProduct: { images, title, variants },
+    shopifyProduct: { description, images, title, variants },
   } = data;
 
   return (
@@ -23,7 +23,13 @@ export const ProductLayout: React.FC<ProductLayoutProps> = ({ data }) => {
       <main>
         <Stage.Layout
           image={<StageCarousel images={images} />}
-          content={<Content title={title} variants={variants} />}
+          content={
+            <Content
+              description={description}
+              title={title}
+              variants={variants}
+            />
+          }
         />
       </main>
       <Footer />

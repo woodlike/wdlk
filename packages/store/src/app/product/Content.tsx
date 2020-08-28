@@ -1,15 +1,16 @@
 import React, { useState, useContext } from 'react';
 import { useThemeUI } from 'theme-ui';
 import { useMedia } from '@wdlk/hooks';
-import { Box, Button, Theme, ScaleArea, Select } from '@wdlk/components';
+import { Box, Button, Theme, Text, ScaleArea, Select } from '@wdlk/components';
 
 import { Title } from '..';
 import { CartContext, CartDispatchContext, Price, useProductData } from '../..';
 import { Variant } from '../../gatsby';
 
 export interface StageContentProps {
-  readonly variants: Variant[];
+  readonly description: string;
   readonly title: string;
+  readonly variants: Variant[];
 }
 
 const contestScales: ScaleArea[] = [
@@ -22,7 +23,7 @@ export const Content: React.FC<StageContentProps> = props => {
   const dispatch = useContext(CartDispatchContext);
   const { client, cart } = useContext(CartContext);
   const { cartButton } = useProductData();
-  const { variants, title } = props;
+  const { description, title, variants } = props;
   const [activeVariant, setActiveVariant] = useState(variants[0]);
   const { theme } = useThemeUI();
   const { breakpoints } = (theme as unknown) as Theme;
@@ -79,6 +80,9 @@ export const Content: React.FC<StageContentProps> = props => {
         padding={[3, 4]}>
         {cartButton}
       </Button>
+      <Text size="l" tag="p">
+        {description}
+      </Text>
     </Box>
   );
 };
