@@ -1,23 +1,20 @@
 import { useStaticQuery, graphql } from 'gatsby';
 
 export function useProductData() {
-  const { allDataJson, site } = useStaticQuery(graphql`
-    query ProductJson {
-      allDataJson {
+  const { allProductJson } = useStaticQuery(graphql`
+    query ProductDetailQuery {
+      allProductJson {
         nodes {
+          cartButton
           ariaLabels {
             select
           }
-          cartButton
         }
       }
     }
   `);
-  const result = allDataJson.nodes.filter(
-    node => node.ariaLabels && node.cartButton,
-  );
-  return {
-    header: allDataJson.nodes[0],
-    url: site.siteMetadata.siteUrl,
-  };
+
+  const { nodes } = allProductJson;
+  const [node] = nodes;
+  return node;
 }

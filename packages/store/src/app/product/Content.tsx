@@ -4,7 +4,7 @@ import { useMedia } from '@wdlk/hooks';
 import { Box, Button, Theme, ScaleArea, Select } from '@wdlk/components';
 
 import { Title } from '..';
-import { CartContext, CartDispatchContext, Price } from '../..';
+import { CartContext, CartDispatchContext, Price, useProductData } from '../..';
 import { Variant } from '../../gatsby';
 
 export interface StageContentProps {
@@ -21,6 +21,7 @@ const contestScales: ScaleArea[] = [
 export const Content: React.FC<StageContentProps> = props => {
   const dispatch = useContext(CartDispatchContext);
   const { client, cart } = useContext(CartContext);
+  const { cartButton } = useProductData();
   const { variants, title } = props;
   const [activeVariant, setActiveVariant] = useState(variants[0]);
   const { theme } = useThemeUI();
@@ -76,7 +77,7 @@ export const Content: React.FC<StageContentProps> = props => {
           dispatch({ type: 'add_cart_items', payload: addCartItemsPayload })
         }
         padding={[3, 4]}>
-        Hola
+        {cartButton}
       </Button>
     </Box>
   );
