@@ -1,38 +1,35 @@
 import { Actions } from 'gatsby';
 
 const schema = `
-  type ShopifyProduct implements Node   {
-    id: ID!
+  type ShopifyProduct implements Node  {
+    id: String!
     description: String!
-    fields: Fields
     images: [ShopifyProductImages!]!
     title: String!
+    slug: String!
     variants: [ShopifyProductVariant!]!
   }
 
-  type ShopifyProductVariant implements Node {
-    id: ID!
+  type ShopifyProductVariant implements Node @dontInfer {
+    id: String!
     compareAtLocalePrice: ShopifyProductVariantPriceV2
     priceLocale: ShopifyProductVariantPriceV2!
     shopifyId: String!
     title: String!
   }
 
-  type ShopifyProductVariantPriceV2 {
+  type ShopifyProductVariantPriceV2 @dontInfer {
     amount: String!
     currencyCode: String!
   }
 
-  type ShopifyProductImages {
+  type ShopifyProductImages @dontInfer {
     id: ID!
     altText: String
     originalSrc: String!
     srcSet: [String!]!
   }
 
-  type Fields {
-    slug: String!
-  }
 `;
 
 export function createCustomSchema(actions: Actions): void {

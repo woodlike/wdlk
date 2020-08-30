@@ -26,35 +26,32 @@ jobs:
         uses: actions/setup-node@v1.4.2
 
       # Runs a single command using the runners shell
-      - name: Install
+      - name: Yarn Install
         run: yarn
 
-      - name: Lint Components
-        run: yarn lint:components
+      - name: Lint
+        run: |
+          yarn lint:components
+          yarn lint:hooks
+          yarn lint:store
+          yarn lint:theme-query
 
-      - name: Lint Hooks
-        run: yarn lint:hooks
+      - name: Test
+        run: |
+          yarn test:components
+          yarn test:hooks
+          yarn test:store
+          yarn test:theme-query
 
-      - name: Lint Store
-        run: yarn lint:store
+      - name: Build
+        run: |
+          yarn build:components
+          yarn build:hooks
 
-      - name: Lint Theme Query
-        run: yarn lint:theme-query
-
-      - name: Test Components
-        run: yarn test:components
-
-      - name: Test Hooks
-        run: yarn test:hooks
-
-      - name: Test Store
-        run: yarn test:store
-
-      - name: Test Theme Query
-        run: yarn test:theme-query
-
-      - name: Build Components
-        run: yarn build:components
-
-      - name: Build Hooks
-        run: yarn build:hooks
+      - name: Build Store
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          SHOP_NAME: ${{ secrets.SHOP_NAME }}
+        run: |
+          yarn clean:store
+          yarn build:store

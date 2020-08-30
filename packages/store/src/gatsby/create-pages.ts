@@ -27,34 +27,35 @@ export async function createPages({
   reporter,
 }: CreatePagesArgs): Promise<void> {
   const { createPage } = actions;
-  const result: ProductQuery = await graphql(`
-    query {
-      allShopifyProduct {
-        edges {
-          node {
-            id
-            slug
+  try {
+    const result: ProductQuery = await graphql(`
+      query {
+        allShopifyProduct {
+          edges {
+            node {
+              id
+              slug
+            }
           }
         }
       }
-    }
-  `);
+    `);
 
-  if (result.errors) {
-    reporter.panicOnBuild(
-      `🚨  ERROR: creating Product pages: ${result.errors}`,
+    result.data.allShopifyProduct.edges.forEach(
+      (edge: { readonly node: ShopifyProductNode }) => {
+        createPage({
+          path: edge.node.slug,
+          component: resolve('./src/app/product/Layout.tsx'),
+          context: {
+            id: edge.node.id,
+          },
+        });
+      },
     );
+  } catch (error) {
+    if (error) {
+      reporter.panicOnBuild(`🚨  ERROR: creating Product pages: ${error}`);
+      return Promise.reject(new Error(error));
+    }
   }
-
-  result.data.allShopifyProduct.edges.forEach(
-    (edge: { readonly node: ShopifyProductNode }) => {
-      createPage({
-        path: edge.node.slug,
-        component: resolve('./src/app/Product/Layout.tsx'),
-        context: {
-          id: edge.node.id,
-        },
-      });
-    },
-  );
 }
