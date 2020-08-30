@@ -2,9 +2,9 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "alwaysStrict": false,
+    "composite": true,
     "noImplicitUseStrict": true,
-    "outDir": "./lib",
-    "strict": true
+    "outDir": "./lib"
   },
   "include": ["./src", "typings.d.ts"],
   "exclude": ["./node_modules", "./src/**/*.test.tsx"]

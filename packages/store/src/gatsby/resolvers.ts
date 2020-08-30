@@ -1,8 +1,21 @@
 import { Reporter } from 'gatsby';
-import { ProductImage, ProductImageSize, Variant } from '.';
+import { ProductImage, ProductImageSize, Variant, ShopifyProductNode } from '.';
 import { priceFormatter } from '../utils';
 
 const LOCALE = 'en-GB';
+
+export function createShopifyProductResolver() {
+  return {
+    ShopifyProduct: {
+      slug: {
+        type: 'String!',
+        resolve(source: ShopifyProductNode) {
+          return `/products/${source.handle}`.replace(/\/\/+/g, '/');
+        },
+      },
+    },
+  };
+}
 
 export function createShopifyProductImagesField() {
   return {
@@ -72,6 +85,7 @@ export function createStoreResolvers(
   reporter: Reporter,
 ): void {
   createResolvers({
+    ...createShopifyProductResolver(),
     ...createShopifyProductImagesField(),
     ...createProductVariantPriceFields(reporter),
   });

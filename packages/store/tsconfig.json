@@ -1,10 +1,9 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "rootDirs": ["./src"],
-    "strict": true,
-    "noEmit": true,
-    "allowJs": true
+    "allowJs": true,
+    "incremental": true,
+    "rootDirs": ["./src"]
   },
   "include": ["./src/**/*", "__mocks__"],
   "exclude": ["node_modules", "build", ".cache"],

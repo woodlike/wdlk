@@ -15,7 +15,6 @@
     "noUnusedParameters": true,
     "experimentalDecorators": true,
     "noEmit": false,
-    "incremental": true,
     "noFallthroughCasesInSwitch": true
   },
   "references": [
