@@ -9,10 +9,12 @@ require('ts-node').register({
 const {
   createPages,
   createSlugs,
+  createCustomSchema,
   createStoreResolvers,
 } = require('./src/gatsby');
 
-exports.createPages = async args => await createPages(args);
+exports.sourceNodes = ({ actions }) => createCustomSchema(actions);
 exports.onCreateNode = args => createSlugs(args);
 exports.createResolvers = ({ createResolvers, reporter }) =>
   createStoreResolvers(createResolvers, reporter);
+exports.createPages = async args => await createPages(args);

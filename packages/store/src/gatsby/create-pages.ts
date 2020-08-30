@@ -15,7 +15,9 @@ interface ProductQuery {
 
 export interface ProductQueryData {
   readonly allShopifyProduct: {
-    readonly nodes: ShopifyProductNode[];
+    readonly edges: {
+      readonly node: ShopifyProductNode;
+    }[];
   };
 }
 
@@ -28,10 +30,12 @@ export async function createPages({
   const result: ProductQuery = await graphql(`
     query {
       allShopifyProduct {
-        nodes {
-          id
-          fields {
-            slug
+        edges {
+          node {
+            id
+            fields {
+              slug
+            }
           }
         }
       }
@@ -44,14 +48,15 @@ export async function createPages({
     );
   }
 
-  result.data.allShopifyProduct.nodes.forEach((product: ShopifyProductNode) => {
-    const { id, fields } = product;
-    createPage({
-      path: fields.slug,
-      component: resolve('./src/app/Product/Layout.tsx'),
-      context: {
-        id: id,
-      },
-    });
-  });
+  result.data.allShopifyProduct.edges.forEach(
+    (edge: { readonly node: ShopifyProductNode }) => {
+      createPage({
+        path: edge.node.fields.slug,
+        component: resolve('./src/app/Product/Layout.tsx'),
+        context: {
+          id: edge.node.id,
+        },
+      });
+    },
+  );
 }
