@@ -7,14 +7,15 @@ require('ts-node').register({
 });
 
 const {
-  createPages,
-  createSlugs,
   createCustomSchema,
   createStoreResolvers,
+  createPages,
 } = require('./src/gatsby');
 
 exports.sourceNodes = ({ actions }) => createCustomSchema(actions);
-exports.onCreateNode = args => createSlugs(args);
+
 exports.createResolvers = ({ createResolvers, reporter }) =>
   createStoreResolvers(createResolvers, reporter);
-exports.createPages = async args => await createPages(args);
+
+exports.createPages = async ({ actions, graphql, reporter }) =>
+  await createPages({ actions, graphql, reporter });

@@ -33,9 +33,7 @@ export async function createPages({
         edges {
           node {
             id
-            fields {
-              slug
-            }
+            slug
           }
         }
       }
@@ -51,7 +49,7 @@ export async function createPages({
   result.data.allShopifyProduct.edges.forEach(
     (edge: { readonly node: ShopifyProductNode }) => {
       createPage({
-        path: edge.node.fields.slug,
+        path: edge.node.slug,
         component: resolve('./src/app/Product/Layout.tsx'),
         context: {
           id: edge.node.id,

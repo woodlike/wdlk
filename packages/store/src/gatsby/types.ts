@@ -1,10 +1,11 @@
 export interface ShopifyProductNode {
-  readonly descriptions: string;
+  readonly description: string;
   readonly handle: string;
   readonly id: string;
   readonly images: ProductImage[];
   readonly fields: ProductFields;
   readonly title: string;
+  readonly slug: string;
   readonly variants: Variant[];
 }
 
