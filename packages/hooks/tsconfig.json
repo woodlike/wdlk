@@ -4,6 +4,7 @@
     "alwaysStrict": false,
     "composite": true,
     "noImplicitUseStrict": true,
+    "rootDir": "./src",
     "outDir": "./lib"
   },
   "include": ["src/**/*"],
