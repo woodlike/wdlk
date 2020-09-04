@@ -6,10 +6,12 @@ export interface ShopifyProductNode {
   readonly fields: ProductFields;
   readonly title: string;
   readonly slug: string;
+  readonly shopifyId: string;
   readonly variants: Variant[];
 }
 
 export interface Variant {
+  readonly available?: boolean;
   readonly compareAtPriceV2: Price | null;
   readonly compareAtLocalePrice: Price | null;
   readonly priceLocale: Price;

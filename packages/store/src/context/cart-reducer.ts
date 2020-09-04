@@ -58,7 +58,6 @@ export function handleAddLineItems(payload: AddCartItemsPayload) {
   client.checkout
     .addLineItems(cartId, lineItemsToAdd)
     .then(cart => {
-      console.log('its defenitely being fired!!!!!!!!!');
       dispatch({ type: 'update_cart', payload: cart });
     })
     .catch(error =>
