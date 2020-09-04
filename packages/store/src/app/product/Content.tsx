@@ -99,6 +99,7 @@ export const Content: React.FC<StageContentProps> = props => {
       });
     }
   }, []);
+  console.log(variants, '*****');
 
   return (
     <Box padding={scales}>
@@ -122,6 +123,7 @@ export const Content: React.FC<StageContentProps> = props => {
             id={variant.shopifyId}
             key={variant.shopifyId}
             isActive={activeVariant.title === variant.title}
+            isAvailable={!!variant.available}
             fontSize={2}
             onClick={() => setActiveVariant(variant)}>
             {variant.title}
