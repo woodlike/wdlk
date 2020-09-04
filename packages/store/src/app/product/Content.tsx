@@ -99,7 +99,6 @@ export const Content: React.FC<StageContentProps> = props => {
       });
     }
   }, []);
-  console.log(variants, '*****');
 
   return (
     <Box padding={scales}>
