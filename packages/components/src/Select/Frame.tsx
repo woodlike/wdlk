@@ -1,7 +1,7 @@
-/**@jsx jsx */
-import { jsx, SxStyleProp } from 'theme-ui';
+import React from 'react';
+
+import styled from '../styled';
 import { calcSize } from './utils';
-import { Theme } from '..';
 
 export interface SelectFrameProps {
   readonly ariaLabel: string;
@@ -9,30 +9,32 @@ export interface SelectFrameProps {
   readonly fontSize: number;
 }
 
-const stylesFrame: SxStyleProp = {
-  display: 'grid',
-  padding: 0,
-  margin: 0,
-};
+interface StyledFrameProps {
+  readonly fontSize: number;
+}
 
-const createStylesFrame = (fontSize: number): SxStyleProp =>
-  ({
-    ...stylesFrame,
-    gridTemplateColumns: ({ fontSizes }: Theme) =>
-      `repeat(auto-fit, ${calcSize(fontSize, fontSizes)}px)`,
-    gridColumnGap: ({ fontSizes }: Theme) =>
-      `${calcSize(fontSize, fontSizes) / 2.5}px`,
-  } as SxStyleProp);
+const StyledFrame = styled.ul<StyledFrameProps>`
+  display: grid;
+  grid-template-columns: ${props =>
+    `repeat(auto-fit, ${calcSize(props.fontSize, props.theme.fontSizes)}px)`};
+  grid-column-gap: ${props =>
+    `${calcSize(props.fontSize, props.theme.fontSizes) / 2.5}px`};
+  padding: 0;
+  margin: 0;
+  outline: none;
+`;
+
+StyledFrame.displayName = 'Select.StyledFrame';
 
 export const Frame: React.FC<SelectFrameProps> = props => (
-  <ul
+  <StyledFrame
     aria-label={props.ariaLabel}
     aria-activedescendant={props.ariaActivedescendant}
+    fontSize={props.fontSize}
     role="listbox"
-    sx={createStylesFrame(props.fontSize)}
     tabIndex={0}>
     {props.children}
-  </ul>
+  </StyledFrame>
 );
 
 Frame.displayName = 'Select.Frame';

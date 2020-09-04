@@ -258,22 +258,23 @@ describe('<Select />', () => {
 
       expect(item).toMatchInlineSnapshot(`
         .emotion-0 {
-          list-style: none;
-          cursor: pointer;
-          text-align: center;
-          font-family: "MuseoSans",Helvetica,sans-serif;
-          border-style: solid;
-          border-color: var(--theme-ui-colors-border,rgb(222,223,224));
-          border-width: 1px;
           width: 30px;
           height: 30px;
-          font-size: 12px;
+          border-color: var(--theme-ui-colors-border,rgb(222,223,224));
+          border-width: 1px;
+          border-style: solid;
           line-height: 30px;
+          list-style: none;
+          font-family: "MuseoSans",Helvetica,sans-serif;
+          font-size: 12px;
+          text-align: center;
+          cursor: pointer;
         }
 
         <li
           aria-selected="false"
           class="emotion-0"
+          font-size="0"
           id="0"
           role="option"
         >
@@ -304,22 +305,23 @@ describe('<Select />', () => {
 
       expect(item).toMatchInlineSnapshot(`
         .emotion-0 {
-          list-style: none;
-          cursor: pointer;
-          text-align: center;
-          font-family: "MuseoSans",Helvetica,sans-serif;
-          border-style: solid;
-          border-color: var(--theme-ui-colors-borderActive,rgb(34,34,34));
-          border-width: 1px;
           width: 30px;
           height: 30px;
-          font-size: 12px;
+          border-color: var(--theme-ui-colors-borderActive,rgb(34,34,34));
+          border-width: 1px;
+          border-style: solid;
           line-height: 30px;
+          list-style: none;
+          font-family: "MuseoSans",Helvetica,sans-serif;
+          font-size: 12px;
+          text-align: center;
+          cursor: pointer;
         }
 
         <li
           aria-selected="true"
           class="emotion-0"
+          font-size="0"
           id="0"
           role="option"
         >
