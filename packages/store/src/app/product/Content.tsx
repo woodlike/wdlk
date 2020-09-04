@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useThemeUI } from 'theme-ui';
 import { useMedia } from '@wdlk/hooks';
 import { Box, Button, Theme, Text, ScaleArea, Select } from '@wdlk/components';
@@ -11,6 +11,13 @@ export interface StageContentProps {
   readonly description: string;
   readonly title: string;
   readonly variants: Variant[];
+  readonly shopifyId: string;
+}
+
+interface FetchVariantsArgs {
+  readonly client: ShopifyBuy.Client;
+  readonly localVariantsId: string;
+  readonly shopifyId: string;
 }
 
 const contestScales: ScaleArea[] = [
@@ -19,14 +26,38 @@ const contestScales: ScaleArea[] = [
   [8, 4],
 ];
 
+async function fetchVariants({
+  client,
+  localVariantsId,
+  shopifyId,
+}: FetchVariantsArgs) {
+  try {
+    const { variants } = await client.product.fetch(shopifyId);
+
+    localStorage.setItem(localVariantsId, JSON.stringify(variants));
+
+    return variants;
+  } catch (error) {
+    console.warn(`Fetch Shopify product: ${JSON.stringify(error, null, 2)}`);
+    return null;
+  }
+}
+
 export const Content: React.FC<StageContentProps> = props => {
   const dispatch = useContext(CartDispatchContext);
   const { client, cart } = useContext(CartContext);
   const { cartButton } = useProductData();
-  const { description, title, variants } = props;
-  const [activeVariant, setActiveVariant] = useState(variants[0]);
+  const { description, title, shopifyId, variants: queryVariants } = props;
   const { theme } = useThemeUI();
   const { breakpoints } = (theme as unknown) as Theme;
+
+  const [variants, setVariants] = useState(queryVariants);
+  const [activeVariant, setActiveVariant] = useState(variants[0]);
+
+  const localVariantsId = `variants_${title
+    .toLowerCase()
+    .split(' ')
+    .join('_')}`;
 
   const scales = useMedia<ScaleArea>(
     [
@@ -44,6 +75,30 @@ export const Content: React.FC<StageContentProps> = props => {
     lineItemsToAdd: [{ variantId: activeVariant.shopifyId, quantity: 1 }],
     dispatch,
   };
+
+  useEffect(() => {
+    const localStorageVariants = localStorage.getItem(localVariantsId);
+
+    if (!!localStorageVariants) {
+      setVariants(prevVariants =>
+        prevVariants.map((variant, idx) => ({
+          ...variant,
+          available: JSON.parse(localStorageVariants)[idx].available,
+        })),
+      );
+    } else {
+      fetchVariants({ client, localVariantsId, shopifyId }).then(variants => {
+        if (variants) {
+          setVariants(prevVariants =>
+            prevVariants.map((variant, idx) => ({
+              ...variant,
+              available: variants[idx].available,
+            })),
+          );
+        }
+      });
+    }
+  }, []);
 
   return (
     <Box padding={scales}>

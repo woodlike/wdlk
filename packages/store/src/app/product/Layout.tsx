@@ -14,7 +14,7 @@ export interface ProductLayoutProps {
 
 export const ProductLayout: React.FC<ProductLayoutProps> = ({ data }) => {
   const {
-    shopifyProduct: { description, images, title, variants },
+    shopifyProduct: { description, images, shopifyId, title, variants },
   } = data;
 
   return (
@@ -25,6 +25,7 @@ export const ProductLayout: React.FC<ProductLayoutProps> = ({ data }) => {
           image={<StageCarousel images={images} />}
           content={
             <Content
+              shopifyId={shopifyId}
               description={description}
               title={title}
               variants={variants}
@@ -49,6 +50,7 @@ export const query = graphql`
         originalSrc
         srcSet
       }
+      shopifyId
       title
       variants {
         shopifyId
