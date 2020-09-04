@@ -1,7 +1,9 @@
-/**@jsx jsx */
-import { jsx, SxStyleProp } from 'theme-ui';
-import { calcSize } from './utils';
+import React from 'react';
+import { css, SerializedStyles } from '@emotion/core';
+
 import { Theme } from '..';
+import styled from '../styled';
+import { calcSize } from './utils';
 
 export interface SelectTileProps {
   readonly id: string;
@@ -11,53 +13,55 @@ export interface SelectTileProps {
   readonly borderWidth?: number;
 }
 
-const stylesTile: SxStyleProp = {
-  listStyle: 'none',
-  cursor: 'pointer',
-  textAlign: 'center',
-  fontFamily: 'body',
-};
+interface StyledSelectItemProps {
+  readonly borderWidth?: number;
+  readonly isActive: boolean;
+  readonly fontSize: number;
+}
 
-const createStylesBorder = (
-  isActive: boolean,
+const createStylesSize = (
+  theme: Theme,
   borderWidth: number,
-): SxStyleProp => ({
-  borderStyle: 'solid',
-  borderColor: ({ colors }: Theme) =>
-    isActive ? colors.borderActive : colors.border,
-  borderWidth: ({ borderWidths }: Theme) =>
-    borderWidth < borderWidths.length
-      ? `${borderWidths[borderWidth]}px`
-      : `${borderWidths[0]}px`,
-});
-
-const createStylesSize = (fontSize: number): SxStyleProp => ({
-  width: ({ fontSizes }: Theme) => calcSize(fontSize, fontSizes),
-  height: ({ fontSizes }: Theme) => calcSize(fontSize, fontSizes),
-  fontSize: ({ fontSizes }: Theme) =>
-    fontSize < fontSizes.length ? fontSizes[fontSize] : fontSizes[0],
-  lineHeight: ({ fontSizes }: Theme) => `${calcSize(fontSize, fontSizes)}px`,
-});
-
-const createStylesTile = (
   isActive: boolean,
   fontSize: number,
-  borderWidth = 0,
-): SxStyleProp => ({
-  ...stylesTile,
-  ...createStylesBorder(isActive, borderWidth),
-  ...createStylesSize(fontSize),
-});
+): SerializedStyles => css`
+  width: ${calcSize(fontSize, theme.fontSizes)}px;
+  height: ${calcSize(fontSize, theme.fontSizes)}px;
+  border-color: ${isActive ? theme.colors.borderActive : theme.colors.border};
+  border-width: ${borderWidth < theme.borderWidths.length
+    ? `${theme.borderWidths[borderWidth]}px`
+    : `${theme.borderWidths[0]}px`};
+  border-style: solid;
+  line-height: ${calcSize(fontSize, theme.fontSizes)}px;
+`;
+
+const StyledItem = styled.li<StyledSelectItemProps>`
+  ${({ isActive, borderWidth = 0, fontSize, theme }) =>
+    createStylesSize(theme, borderWidth, isActive, fontSize)}
+
+  list-style: none;
+  font-family: ${({ theme }) => theme.fonts.body};
+  font-size: ${({ fontSize, theme }) =>
+    fontSize < theme.fontSizes.length
+      ? `${theme.fontSizes[fontSize]}px`
+      : `${theme.fontSizes[0]}px`};
+  text-align: center;
+  cursor: pointer;
+`;
+
+StyledItem.displayName = 'Select.StyledItem';
 
 export const Item: React.FC<SelectTileProps> = props => (
-  <li
+  <StyledItem
     id={props.id}
+    isActive={props.isActive}
+    fontSize={props.fontSize}
+    borderWidth={props.borderWidth}
     role="option"
     aria-selected={props.isActive}
-    onClick={props.onClick}
-    sx={createStylesTile(props.isActive, props.fontSize, props.borderWidth)}>
+    onClick={props.onClick}>
     {props.children}
-  </li>
+  </StyledItem>
 );
 
 Item.displayName = 'Select.Item';

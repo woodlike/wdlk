@@ -9,3 +9,4 @@ yarn-error.log
 public
 .env
 .env.*
+packages/*/tsconfig.tsbuildinfo
