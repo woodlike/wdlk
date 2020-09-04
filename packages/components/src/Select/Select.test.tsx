@@ -19,6 +19,7 @@ describe('<Select />', () => {
             ariaActivedescendant={'0'}
             fontSize={3}>
             <Select.Item
+              isAvailable={true}
               id="0"
               onClick={() => jest.fn()}
               isActive={false}
@@ -98,6 +99,7 @@ describe('<Select />', () => {
             ariaActivedescendant={'0'}
             fontSize={0}>
             <Select.Item
+              isAvailable={true}
               id="0"
               onClick={() => jest.fn()}
               isActive={false}
@@ -122,6 +124,7 @@ describe('<Select />', () => {
             ariaActivedescendant={'0'}
             fontSize={3}>
             <Select.Item
+              isAvailable={true}
               id="0"
               onClick={() => jest.fn()}
               isActive={false}
@@ -146,6 +149,7 @@ describe('<Select />', () => {
             ariaActivedescendant={'0'}
             fontSize={0}>
             <Select.Item
+              isAvailable={true}
               id="0"
               onClick={() => jest.fn()}
               isActive={false}
@@ -174,6 +178,7 @@ describe('<Select />', () => {
             ariaActivedescendant={'0'}
             fontSize={0}>
             <Select.Item
+              isAvailable={true}
               id="0"
               onClick={() => jest.fn()}
               isActive={false}
@@ -196,6 +201,7 @@ describe('<Select />', () => {
             ariaActivedescendant={'0'}
             fontSize={0}>
             <Select.Item
+              isAvailable={true}
               id="0"
               onClick={() => jest.fn()}
               isActive={false}
@@ -219,6 +225,7 @@ describe('<Select />', () => {
             ariaActivedescendant={'0'}
             fontSize={3}>
             <Select.Item
+              isAvailable={true}
               id="0"
               onClick={() => jest.fn()}
               isActive={false}
@@ -235,7 +242,7 @@ describe('<Select />', () => {
     });
   });
 
-  describe('isActive State', () => {
+  describe('Active State', () => {
     const id = 'Test Select Item';
     it('should have the borders color as default', () => {
       const { getByText, unmount } = render(
@@ -245,6 +252,7 @@ describe('<Select />', () => {
             ariaActivedescendant={'0'}
             fontSize={0}>
             <Select.Item
+              isAvailable={true}
               id="0"
               onClick={() => jest.fn()}
               isActive={false}
@@ -260,15 +268,19 @@ describe('<Select />', () => {
         .emotion-0 {
           width: 30px;
           height: 30px;
-          border-color: var(--theme-ui-colors-border,rgb(222,223,224));
           border-width: 1px;
           border-style: solid;
           line-height: 30px;
+          color: currentColor;
+          border-color: var(--theme-ui-colors-border,rgb(222,223,224));
+          cursor: pointer;
+          pointer-events: all;
+          -webkit-text-decoration: none;
+          text-decoration: none;
           list-style: none;
           font-family: "MuseoSans",Helvetica,sans-serif;
           font-size: 12px;
           text-align: center;
-          cursor: pointer;
         }
 
         <li
@@ -292,6 +304,7 @@ describe('<Select />', () => {
             ariaActivedescendant={'0'}
             fontSize={0}>
             <Select.Item
+              isAvailable={true}
               id="0"
               onClick={() => jest.fn()}
               isActive={true}
@@ -307,15 +320,70 @@ describe('<Select />', () => {
         .emotion-0 {
           width: 30px;
           height: 30px;
-          border-color: var(--theme-ui-colors-borderActive,rgb(34,34,34));
           border-width: 1px;
           border-style: solid;
           line-height: 30px;
+          color: currentColor;
+          border-color: var(--theme-ui-colors-borderActive,rgb(34,34,34));
+          cursor: pointer;
+          pointer-events: all;
+          -webkit-text-decoration: none;
+          text-decoration: none;
           list-style: none;
           font-family: "MuseoSans",Helvetica,sans-serif;
           font-size: 12px;
           text-align: center;
-          cursor: pointer;
+        }
+
+        <li
+          aria-selected="true"
+          class="emotion-0"
+          font-size="0"
+          id="0"
+          role="option"
+        >
+          Test Select Item
+        </li>
+      `);
+      unmount();
+    });
+
+    it('should have the disabled styles', () => {
+      const { getByText, unmount } = render(
+        <ThemeProvider theme={theme}>
+          <Select.Frame
+            ariaLabel="size-select"
+            ariaActivedescendant={'0'}
+            fontSize={0}>
+            <Select.Item
+              id="0"
+              isAvailable={false}
+              isActive={true}
+              onClick={() => jest.fn()}
+              fontSize={0}>
+              {id}
+            </Select.Item>
+          </Select.Frame>
+        </ThemeProvider>,
+      );
+      const item = getByText(id);
+      expect(item).toMatchInlineSnapshot(`
+        .emotion-0 {
+          width: 30px;
+          height: 30px;
+          border-width: 1px;
+          border-style: solid;
+          line-height: 30px;
+          color: var(--theme-ui-colors-borderDisabled,rgb(222,223,224));
+          border-color: var(--theme-ui-colors-borderDisabled,rgb(222,223,224));
+          cursor: unset;
+          pointer-events: none;
+          -webkit-text-decoration: line-through;
+          text-decoration: line-through;
+          list-style: none;
+          font-family: "MuseoSans",Helvetica,sans-serif;
+          font-size: 12px;
+          text-align: center;
         }
 
         <li

@@ -102,6 +102,7 @@ export const theme: Theme = {
     background: colors.whites[0],
     border: colors.grays[0],
     borderActive: colors.blacks[1],
+    borderDisabled: colors.grays[0],
     headline: colors.grays[5],
     link: colors.grays[3],
     primary: colors.corals[0],
