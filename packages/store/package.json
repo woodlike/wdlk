@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@emotion/core": "^10.0.22",
-    "@wdlk/components": "2.5.0",
+    "@wdlk/components": "2.5.1",
     "@wdlk/hooks": "1.4.5",
     "gatsby": "^2.23.22",
     "gatsby-plugin-theme-ui": "^0.3.0",

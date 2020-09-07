@@ -1,8 +1,9 @@
-import * as React from 'react';
+import React, { useContext, useState } from 'react';
 import { useThemeUI } from 'theme-ui';
 import { useMedia } from '@wdlk/hooks';
 import { Cart, Burger } from '@wdlk/components';
 
+import { CartContext } from '..';
 import {
   Header as HeaderUI,
   Logo,
@@ -14,9 +15,10 @@ import { useHeaderData, useNavigationData } from '../hooks';
 import { NavigationBar, NavigationLayer } from '.';
 
 const Compact: React.FC = () => {
-  const [isExpanded, setIsExpanded] = React.useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
   const { header } = useHeaderData();
   const { url } = useNavigationData();
+  const { cart } = useContext(CartContext);
 
   return (
     <>
@@ -39,8 +41,8 @@ const Compact: React.FC = () => {
           <Cart
             href={`${url}/${header.cart.handle}`}
             isFocused={false}
-            count={0}
-            isFilled={false}
+            count={cart.lineItems.length}
+            isFilled={!!cart.lineItems.length}
             title="Woodlike Ocean Shopping cart"
           />
         </HeaderUI.Item>
@@ -53,6 +55,7 @@ const Compact: React.FC = () => {
 export const Expanded: React.FC = () => {
   const { header } = useHeaderData();
   const { url } = useNavigationData();
+  const { cart } = useContext(CartContext);
   return (
     <HeaderUI.Frame>
       <HeaderUI.Item>
@@ -79,8 +82,8 @@ export const Expanded: React.FC = () => {
             <Cart
               href={`${url}/${header.cart.handle}`}
               isFocused={false}
-              count={0}
-              isFilled={false}
+              count={cart.lineItems.length}
+              isFilled={!!cart.lineItems.length}
               title="Woodlike Ocean Shopping cart"
             />
           </CartDisplayItem>
