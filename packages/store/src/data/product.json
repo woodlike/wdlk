@@ -3,6 +3,11 @@
     "cartButton": "Add to bag",
     "ariaLabels": {
       "select": "size-variant-select"
+    },
+    "preOrder": {
+      "title": "This is a Pre-order item",
+      "description": "Shipping will be approximately on the",
+      "label": "Pre-order"
     }
   }
 ]
