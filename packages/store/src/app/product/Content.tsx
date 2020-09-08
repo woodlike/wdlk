@@ -1,17 +1,33 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useThemeUI } from 'theme-ui';
 import { useMedia } from '@wdlk/hooks';
-import { Box, Button, Theme, Text, ScaleArea, Select } from '@wdlk/components';
+import {
+  Box,
+  Button,
+  Theme,
+  Text,
+  ScaleArea,
+  Select,
+  Heading,
+  Small,
+} from '@wdlk/components';
 
 import { Title } from '..';
-import { CartContext, CartDispatchContext, Price, useProductData } from '../..';
+import {
+  CartContext,
+  CartDispatchContext,
+  Price,
+  useProductData,
+  findString,
+} from '../..';
 import { Variant } from '../../gatsby';
 
 export interface StageContentProps {
   readonly description: string;
+  readonly shopifyId: string;
+  readonly tags: string[];
   readonly title: string;
   readonly variants: Variant[];
-  readonly shopifyId: string;
 }
 
 interface FetchVariantsArgs {
@@ -46,10 +62,16 @@ async function fetchVariants({
 export const Content: React.FC<StageContentProps> = props => {
   const dispatch = useContext(CartDispatchContext);
   const { client, cart } = useContext(CartContext);
-  const { cartButton } = useProductData();
-  const { description, title, shopifyId, variants: queryVariants } = props;
+  const { cartButton, preOrder, taxLabel } = useProductData();
+  const {
+    description,
+    shopifyId,
+    tags,
+    title,
+    variants: queryVariants,
+  } = props;
   const { theme } = useThemeUI();
-  const { breakpoints } = (theme as unknown) as Theme;
+  const { breakpoints, colors } = (theme as unknown) as Theme;
 
   const [variants, setVariants] = useState(queryVariants);
   const [activeVariant, setActiveVariant] = useState(variants[0]);
@@ -75,6 +97,8 @@ export const Content: React.FC<StageContentProps> = props => {
     lineItemsToAdd: [{ variantId: activeVariant.shopifyId, quantity: 1 }],
     dispatch,
   };
+
+  const isPreOrder = findString(tags, 'pre-order');
 
   useEffect(() => {
     const localStorageVariants = localStorage.getItem(localVariantsId);
@@ -102,10 +126,14 @@ export const Content: React.FC<StageContentProps> = props => {
 
   return (
     <Box padding={scales}>
+      {isPreOrder && (
+        <Small color={colors.headline} family="body" scale={3}>
+          {preOrder.label.toUpperCase()}
+        </Small>
+      )}
       <Title>{title}</Title>
       <Price.Layout
-        //TODO: Make this value translatable
-        label={<Price.Label>(VAT included)</Price.Label>}
+        label={<Price.Label>{taxLabel}</Price.Label>}
         sale={
           !!activeVariant.compareAtLocalePrice && (
             <Price.Sale>{activeVariant.compareAtLocalePrice.amount}</Price.Sale>
@@ -136,6 +164,16 @@ export const Content: React.FC<StageContentProps> = props => {
         padding={[3, 4]}>
         {cartButton}
       </Button>
+      {isPreOrder && (
+        <>
+          <Heading as="strong" size="s">
+            {preOrder.title.toUpperCase()}
+          </Heading>
+          <Text size="l" tag="p">
+            {preOrder.description.toUpperCase()}
+          </Text>
+        </>
+      )}
       <Text size="l" tag="p">
         {description}
       </Text>

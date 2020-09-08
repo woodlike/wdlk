@@ -5,9 +5,10 @@
       "select": "size-variant-select"
     },
     "preOrder": {
-      "title": "This is a Pre-order item",
+      "title": "This is a pre-order item",
       "description": "Shipping will be approximately on the",
       "label": "Pre-order"
-    }
+    },
+    "taxLabel": "(VAT included)"
   }
 ]
