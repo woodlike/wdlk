@@ -6,7 +6,6 @@
     },
     "preOrder": {
       "title": "This is a pre-order item",
-      "description": "Shipping will be approximately on the",
       "label": "Pre-order"
     },
     "taxLabel": "(VAT included)"
