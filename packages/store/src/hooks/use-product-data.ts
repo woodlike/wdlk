@@ -10,7 +10,6 @@ export function useProductData() {
           }
           cartButton
           preOrder {
-            description
             label
             title
           }

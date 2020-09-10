@@ -71,7 +71,7 @@ export const Content: React.FC<StageContentProps> = props => {
     variants: queryVariants,
   } = props;
   const { theme } = useThemeUI();
-  const { breakpoints, colors } = (theme as unknown) as Theme;
+  const { breakpoints, colors, fonts } = (theme as unknown) as Theme;
 
   const [variants, setVariants] = useState(queryVariants);
   const [activeVariant, setActiveVariant] = useState(variants[0]);
@@ -166,12 +166,9 @@ export const Content: React.FC<StageContentProps> = props => {
       </Button>
       {isPreOrder && (
         <>
-          <Heading as="strong" size="s">
+          <Heading as="h2" size="s" family="secondary">
             {preOrder.title.toUpperCase()}
           </Heading>
-          <Text size="l" tag="p">
-            {preOrder.description.toUpperCase()}
-          </Text>
         </>
       )}
       <Text size="l" tag="p">
