@@ -10,6 +10,13 @@ export interface Theme {
   readonly fontSizes: number[];
   readonly fontWeights: number[];
   readonly header: string[];
+  readonly legend: {
+    readonly color: string;
+    readonly fontFamily: string;
+    readonly s: LegendSize;
+    readonly m: LegendSize;
+    readonly l: LegendSize;
+  };
   readonly letterSpacings: number[];
   readonly space: number[];
   readonly transition: ThemeTiming;
@@ -48,6 +55,10 @@ export interface ThemeColor {
 
 export interface ThemeHeader {
   readonly header: string[];
+}
+
+export interface LegendSize {
+  readonly fontSize: number;
 }
 
 const borderStyles = [
@@ -92,6 +103,16 @@ const colors: Colors = {
   yellows: [toRGB([223, 199, 129]), toRGB([255, 202, 84])],
 };
 
+const fonts = {
+  body: `"MuseoSans", Helvetica, sans-serif`,
+  heading: {
+    display: `"Museo", serif`,
+    secondary: `"MuseoSans", Helvetica, sans-serif`,
+    campaign: `"Challista_signature", serif`,
+  },
+  monospace: `"IBM Plex Mono", monospace`,
+};
+
 export const theme: Theme = {
   ...themeQuery,
   borderStyles,
@@ -114,16 +135,21 @@ export const theme: Theme = {
   },
   fontSizes,
   fontWeights,
-  fonts: {
-    body: `"MuseoSans", Helvetica, sans-serif`,
-    heading: {
-      display: `"Museo", serif`,
-      secondary: `"MuseoSans", Helvetica, sans-serif`,
-      campaign: `"Challista_signature", serif`,
-    },
-    monospace: `"IBM Plex Mono", monospace`,
-  },
+  fonts,
   header: ['70px', '70px', '70px', '70px', '70px', '70px'],
+  legend: {
+    color: colors.blacks[0],
+    fontFamily: fonts.body,
+    s: {
+      fontSize: fontSizes[2],
+    },
+    m: {
+      fontSize: fontSizes[3],
+    },
+    l: {
+      fontSize: fontSizes[4],
+    },
+  },
   letterSpacings: [0.5, 1, 1.5],
   space: spaces,
   transition: {

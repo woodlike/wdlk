@@ -4,12 +4,13 @@ import { useMedia } from '@wdlk/hooks';
 import {
   Box,
   Button,
-  Theme,
-  Text,
+  Heading,
+  Legend,
   ScaleArea,
   Select,
-  Heading,
   Small,
+  Text,
+  Theme,
 } from '@wdlk/components';
 
 import { Title } from '..';
@@ -71,7 +72,7 @@ export const Content: React.FC<StageContentProps> = props => {
     variants: queryVariants,
   } = props;
   const { theme } = useThemeUI();
-  const { breakpoints, colors, fonts } = (theme as unknown) as Theme;
+  const { breakpoints, colors } = (theme as unknown) as Theme;
 
   const [variants, setVariants] = useState(queryVariants);
   const [activeVariant, setActiveVariant] = useState(variants[0]);
@@ -127,9 +128,9 @@ export const Content: React.FC<StageContentProps> = props => {
   return (
     <Box padding={scales}>
       {isPreOrder && (
-        <Small color={colors.headline} family="body" scale={3}>
+        <Legend size="m" as="strong">
           {preOrder.label.toUpperCase()}
-        </Small>
+        </Legend>
       )}
       <Title>{title}</Title>
       <Price.Layout
