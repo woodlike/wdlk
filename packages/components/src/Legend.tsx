@@ -21,11 +21,12 @@ const StyledLegend = styled.div<LegendProps>`
   color: ${({ theme }) => theme.legend.color};
   font-family: ${({ theme }) => theme.legend.fontFamily};
   font-size: ${({ size, theme }) => `${theme.legend[size].fontSize}px`};
-  text-transform: ${({ type }) =>
-    type === 'primary' ? 'uppercase' : 'lowercase'};
   font-kerning: normal;
   font-weight: normal;
   line-height: 1;
+  letter-spacing: 2px;
+  text-transform: ${({ type }) =>
+    type === 'primary' ? 'uppercase' : 'capitalize'};
   -webkit-font-smoothing: antialiased;
 `;
 

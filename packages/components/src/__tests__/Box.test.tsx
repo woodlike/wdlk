@@ -1,9 +1,9 @@
 import { matchers } from 'jest-emotion';
 import { render } from '@testing-library/react';
-import { ThemeProvider } from 'theme-ui';
+import { ThemeProvider } from 'emotion-theming';
 import * as React from 'react';
 
-import { Box } from '.';
+import { Box } from '../Box';
 import { theme } from '..';
 
 expect.extend(matchers);
@@ -211,7 +211,10 @@ describe('<Box />', () => {
         </ThemeProvider>,
       );
       const box = getByText(id);
-      expect(box).toMatchSnapshot();
+      expect(box).toHaveStyleRule(
+        'border-color',
+        theme.colors.primary.replace(/\s/g, ''),
+      );
       unmount();
     });
 
@@ -225,7 +228,10 @@ describe('<Box />', () => {
         </ThemeProvider>,
       );
       const box = getByText(id);
-      expect(box).toMatchSnapshot();
+      expect(box).toHaveStyleRule(
+        'border-color',
+        theme.colors.corals[1].replace(/\s/g, ''),
+      );
       unmount();
     });
 
@@ -238,7 +244,19 @@ describe('<Box />', () => {
         </ThemeProvider>,
       );
       const box = getByText(id);
-      expect(box).toMatchSnapshot();
+      expect(box).toHaveStyleRule(
+        'border-color',
+        `${theme.colors.primary.replace(
+          /\s/g,
+          '',
+        )} ${theme.colors.secondary.replace(
+          /\s/g,
+          '',
+        )} ${theme.colors.primary.replace(
+          /\s/g,
+          '',
+        )} ${theme.colors.secondary.replace(/\s/g, '')}`,
+      );
       unmount();
     });
 
@@ -252,7 +270,19 @@ describe('<Box />', () => {
         </ThemeProvider>,
       );
       const box = getByText(id);
-      expect(box).toMatchSnapshot();
+      expect(box).toHaveStyleRule(
+        'border-color',
+        `${theme.colors.corals[1].replace(
+          /\s/g,
+          '',
+        )} ${theme.colors.secondary.replace(
+          /\s/g,
+          '',
+        )} ${theme.colors.corals[1].replace(
+          /\s/g,
+          '',
+        )} ${theme.colors.secondary.replace(/\s/g, '')}`,
+      );
       unmount();
     });
 
@@ -270,7 +300,19 @@ describe('<Box />', () => {
         </ThemeProvider>,
       );
       const box = getByText(id);
-      expect(box).toMatchSnapshot();
+      expect(box).toHaveStyleRule(
+        'border-color',
+        `${theme.colors.whites[2].replace(
+          /\s/g,
+          '',
+        )} ${theme.colors.blacks[1].replace(
+          /\s/g,
+          '',
+        )} ${theme.colors.secondary.replace(
+          /\s/g,
+          '',
+        )} ${theme.colors.blacks[1].replace(/\s/g, '')}`,
+      );
       unmount();
     });
 
@@ -290,7 +332,19 @@ describe('<Box />', () => {
         </ThemeProvider>,
       );
       const box = getByText(id);
-      expect(box).toMatchSnapshot();
+      expect(box).toHaveStyleRule(
+        'border-color',
+        `${theme.colors.whites[2].replace(
+          /\s/g,
+          '',
+        )} ${theme.colors.blacks[1].replace(
+          /\s/g,
+          '',
+        )} ${theme.colors.grays[0].replace(
+          /\s/g,
+          '',
+        )} ${theme.colors.corals[1].replace(/\s/g, '')}`,
+      );
       unmount();
     });
   });
@@ -305,7 +359,10 @@ describe('<Box />', () => {
         </ThemeProvider>,
       );
       const box = getByText(id);
-      expect(box).toMatchSnapshot();
+      expect(box).toHaveStyleRule(
+        'background-color',
+        theme.colors.primary.replace(/\s/g, ''),
+      );
       unmount();
     });
 
@@ -319,7 +376,10 @@ describe('<Box />', () => {
         </ThemeProvider>,
       );
       const box = getByText(id);
-      expect(box).toMatchSnapshot();
+      expect(box).toHaveStyleRule(
+        'background-color',
+        theme.colors.grays[3].replace(/\s/g, ''),
+      );
       unmount();
     });
   });
