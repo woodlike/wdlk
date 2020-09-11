@@ -37,7 +37,7 @@ export const Stage: React.FC<VideoStageProps> = (props): JSX.Element => {
         <Heading as="h2" size="l" family="campaign" inverted>
           {props.headline}
         </Heading>
-        <Text tag="p" size="m" inverted>
+        <Text size="m" isInverted>
           {props.copy}
         </Text>
       </figcaption>

@@ -189,7 +189,7 @@ describe('<Select />', () => {
         </ThemeProvider>,
       );
       const item = getByText(id);
-      expect(item).toHaveStyleRule('border-width', `${borderWidths[0]}px`);
+      expect(item).toHaveStyleRule('border-width', `${borderWidths[1]}px`);
       unmount();
     });
 

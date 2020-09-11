@@ -13,9 +13,20 @@ export interface Theme {
   readonly legend: {
     readonly color: string;
     readonly fontFamily: string;
-    readonly s: LegendSize;
-    readonly m: LegendSize;
-    readonly l: LegendSize;
+    readonly xs: TextSize;
+    readonly s: TextSize;
+    readonly m: TextSize;
+    readonly l: TextSize;
+  };
+  readonly text: {
+    readonly color: string;
+    readonly fontFamily: string;
+    readonly modes: {
+      color: string;
+    };
+    readonly s: TextSize;
+    readonly m: TextSize;
+    readonly l: TextSize;
   };
   readonly letterSpacings: number[];
   readonly space: number[];
@@ -57,7 +68,7 @@ export interface ThemeHeader {
   readonly header: string[];
 }
 
-export interface LegendSize {
+export interface TextSize {
   readonly fontSize: number;
 }
 
@@ -73,7 +84,7 @@ const borderStyles = [
   'inset',
   'outset',
 ];
-const borderWidths = [1, 2, 3, 4];
+const borderWidths = [0, 1, 2, 3, 4];
 const breakpoints = ['0px', '480px', '768px', '990px', '1024px', '1440px'];
 const fontSizes: number[] = [12, 14, 16, 18, 20, 24, 32, 44, 72];
 const fontWeights: number[] = [100, 200, 300, 400, 500, 600, 700, 800, 900];
@@ -140,6 +151,9 @@ export const theme: Theme = {
   legend: {
     color: colors.blacks[0],
     fontFamily: fonts.body,
+    xs: {
+      fontSize: fontSizes[1],
+    },
     s: {
       fontSize: fontSizes[2],
     },
@@ -148,6 +162,22 @@ export const theme: Theme = {
     },
     l: {
       fontSize: fontSizes[4],
+    },
+  },
+  text: {
+    fontFamily: fonts.body,
+    color: colors.blacks[0],
+    modes: {
+      color: colors.whites[0],
+    },
+    s: {
+      fontSize: fontSizes[1],
+    },
+    m: {
+      fontSize: fontSizes[2],
+    },
+    l: {
+      fontSize: fontSizes[3],
     },
   },
   letterSpacings: [0.5, 1, 1.5],

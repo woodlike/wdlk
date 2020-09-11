@@ -7,6 +7,6 @@
     "rootDir": "./src",
     "outDir": "./lib"
   },
-  "include": ["./src", "typings.d.ts", "./src/styled"],
+  "include": ["./src", "typings.d.ts"],
   "exclude": ["./node_modules", "./src/**/*.test.tsx"]
 }

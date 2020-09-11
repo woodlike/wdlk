@@ -15,14 +15,14 @@ type LegendTypes =
   | 'span'
   | 'div';
 
-type LegendSize = 's' | 'm' | 'l';
+type LegendSize = 'xs' | 's' | 'm' | 'l';
 
 const StyledLegend = styled.div<LegendProps>`
   color: ${({ theme }) => theme.legend.color};
   font-family: ${({ theme }) => theme.legend.fontFamily};
   font-size: ${({ size, theme }) => `${theme.legend[size].fontSize}px`};
   font-kerning: normal;
-  font-weight: normal;
+  font-weight: 600;
   line-height: 1;
   letter-spacing: 2px;
   text-transform: ${({ type }) =>
