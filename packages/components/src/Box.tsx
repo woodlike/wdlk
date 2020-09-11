@@ -27,6 +27,8 @@ export type BoxHTMLElement =
   | 'footer'
   | 'figure'
   | 'nav'
+  | 'ul'
+  | 'li'
   | 'aside';
 
 export type BorderColorProps =

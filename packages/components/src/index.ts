@@ -12,6 +12,7 @@ export * from './Row';
 export * from './Rows';
 export * from './Select';
 export * from './Small';
+export * from './Stack';
 export * from './Text';
 export * from './theme';
 export * from './utils';
