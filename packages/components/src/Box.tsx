@@ -65,6 +65,7 @@ const StyledBox = styled.div<BoxProps>`
     typeof backgroundColor === 'object'
       ? Color.query(backgroundColor.color, theme.colors, backgroundColor.idx)
       : Color.query(backgroundColor as string, theme.colors)};
+  margin: 0;
 `;
 
 StyledBox.displayName = 'StyledBox';
