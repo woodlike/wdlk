@@ -11,10 +11,13 @@ export type TextType = 'p' | 'div';
 
 const StyledText = styled.p<TextProps>`
   font-family: ${({ theme }) => theme.text.fontFamily};
+  font-kerning: normal;
   font-size: ${({ size, theme }) => `${theme.text[size].fontSize}px`};
+  line-height: 1.5;
+  letter-spacing: 0.2px;
   color: ${({ isInverted, theme }) =>
     !!isInverted ? theme.text.modes.color : theme.text.color};
-  -webkit-font-smoothing: antialised;
+  -webkit-font-smoothing: antialiased;
 `;
 
 StyledText.displayName = 'StyledText';
