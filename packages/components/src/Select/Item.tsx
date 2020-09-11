@@ -2,8 +2,8 @@ import React from 'react';
 import { css, SerializedStyles } from '@emotion/core';
 
 import { Theme } from '..';
-import styled from '../styled';
 import { calcSize } from './utils';
+import styled from '../styled';
 
 export interface SelectTileProps {
   readonly id: string;

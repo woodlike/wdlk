@@ -1,6 +1,5 @@
 import * as LocalDocs from './docs';
 import * as LocalVid from './Video';
-import styled from './styled';
 
 export * from './Box';
 export * from './Burger';
@@ -21,5 +20,3 @@ export * from './with-focus-style';
 
 export const Docs = { ...LocalDocs };
 export const Video = { ...LocalVid };
-
-export default styled;

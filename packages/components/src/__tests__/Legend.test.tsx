@@ -15,7 +15,7 @@ describe('<Legend />', () => {
   });
 
   afterEach(() => {
-    testId = undefined;
+    testId = (undefined as unknown) as string;
   });
 
   it('should not have accessibility violations', async done => {
@@ -114,7 +114,7 @@ describe('<Legend />', () => {
         </ThemeProvider>,
       );
       const legend = getByText(testId);
-      expect(legend).toHaveStyleRule('text-transform', 'lowercase');
+      expect(legend).toHaveStyleRule('text-transform', 'capitalize');
       unmount();
     });
   });
