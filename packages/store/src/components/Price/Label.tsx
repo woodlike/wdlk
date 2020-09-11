@@ -6,11 +6,7 @@ const stylesLabel: SxStyleProp = {
   display: 'inline-block',
   color: ({ colors }: Theme) => colors.grays[1],
   fontFamily: 'body',
-  fontSize: ({ fontSizes }: Theme) => [
-    fontSizes[0],
-    fontSizes[0],
-    fontSizes[1],
-  ],
+  fontSize: ({ fontSizes }: Theme) => fontSizes[0],
   fontWeight: 300,
   lineHeight: 1,
 };

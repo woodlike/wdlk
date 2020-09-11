@@ -5,13 +5,18 @@ export function useProductData() {
     query ProductDetailQuery {
       allProductJson {
         nodes {
-          ariaLabels {
-            select
-          }
           cartButton
+          description {
+            label
+          }
           preOrder {
             label
             title
+          }
+          sizes {
+            label
+            link
+            ariaLabel
           }
           taxLabel
         }

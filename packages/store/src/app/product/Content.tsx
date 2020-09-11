@@ -8,9 +8,9 @@ import {
   Legend,
   ScaleArea,
   Select,
-  Small,
   Text,
   Theme,
+  Stack,
 } from '@wdlk/components';
 
 import { Title } from '..';
@@ -38,8 +38,8 @@ interface FetchVariantsArgs {
 }
 
 const contestScales: ScaleArea[] = [
+  [8, 9],
   [8, 8],
-  [8, 7],
   [8, 4],
 ];
 
@@ -63,7 +63,13 @@ async function fetchVariants({
 export const Content: React.FC<StageContentProps> = props => {
   const dispatch = useContext(CartDispatchContext);
   const { client, cart } = useContext(CartContext);
-  const { cartButton, preOrder, taxLabel } = useProductData();
+  const {
+    cartButton,
+    description: contentDescription,
+    preOrder,
+    sizes,
+    taxLabel,
+  } = useProductData();
   const {
     description,
     shopifyId,
@@ -72,7 +78,7 @@ export const Content: React.FC<StageContentProps> = props => {
     variants: queryVariants,
   } = props;
   const { theme } = useThemeUI();
-  const { breakpoints, colors } = (theme as unknown) as Theme;
+  const { breakpoints } = (theme as unknown) as Theme;
 
   const [variants, setVariants] = useState(queryVariants);
   const [activeVariant, setActiveVariant] = useState(variants[0]);
@@ -127,54 +133,80 @@ export const Content: React.FC<StageContentProps> = props => {
 
   return (
     <Box padding={scales}>
-      {isPreOrder && (
-        <Legend size="m" as="strong">
-          {preOrder.label.toUpperCase()}
-        </Legend>
-      )}
-      <Title>{title}</Title>
-      <Price.Layout
-        label={<Price.Label>{taxLabel}</Price.Label>}
-        sale={
-          !!activeVariant.compareAtLocalePrice && (
-            <Price.Sale>{activeVariant.compareAtLocalePrice.amount}</Price.Sale>
-          )
-        }>
-        <Price.Total>{activeVariant.priceLocale.amount}</Price.Total>
-      </Price.Layout>
-      <Select.Frame
-        ariaLabel="size-variant-select"
-        ariaActivedescendant={activeVariant.shopifyId}
-        fontSize={2}>
-        {variants.map(variant => (
-          <Select.Item
-            id={variant.shopifyId}
-            key={variant.shopifyId}
-            isActive={activeVariant.title === variant.title}
-            isAvailable={!!variant.available}
-            fontSize={2}
-            onClick={() => setActiveVariant(variant)}>
-            {variant.title}
-          </Select.Item>
-        ))}
-      </Select.Frame>
-      <Button
-        onClick={() =>
-          dispatch({ type: 'add_cart_items', payload: addCartItemsPayload })
-        }
-        padding={[3, 4]}>
-        {cartButton}
-      </Button>
-      {isPreOrder && (
-        <>
-          <Heading as="h2" size="s" family="secondary">
-            {preOrder.title.toUpperCase()}
-          </Heading>
-        </>
-      )}
-      <Text size="l" tag="p">
-        {description}
-      </Text>
+      <Stack as="div" space={7}>
+        <Box as="header" padding={0}>
+          <Box padding={[0, 0, 2, 0]}>
+            {isPreOrder && (
+              <Legend size="m" as="strong">
+                {preOrder.label}
+              </Legend>
+            )}
+          </Box>
+          <Box padding={[0, 0, 4, 0]}>
+            <Title>{title}</Title>
+          </Box>
+          <Price.Layout
+            label={<Price.Label>{taxLabel}</Price.Label>}
+            sale={
+              !!activeVariant.compareAtLocalePrice && (
+                <Price.Sale>
+                  {activeVariant.compareAtLocalePrice.amount}
+                </Price.Sale>
+              )
+            }>
+            <Price.Total>{activeVariant.priceLocale.amount}</Price.Total>
+          </Price.Layout>
+        </Box>
+
+        <Stack as="div" space={4}>
+          <Legend size="xs" as="strong">
+            {sizes.label}
+          </Legend>
+
+          <Select.Frame
+            ariaLabel={sizes.ariaLabel}
+            ariaActivedescendant={activeVariant.shopifyId}
+            fontSize={2}>
+            {variants.map(variant => (
+              <Select.Item
+                id={variant.shopifyId}
+                key={variant.shopifyId}
+                isActive={activeVariant.title === variant.title}
+                isAvailable={!!variant.available}
+                fontSize={2}
+                onClick={() => setActiveVariant(variant)}>
+                {variant.title}
+              </Select.Item>
+            ))}
+          </Select.Frame>
+          <Box padding={[6, 0, 3, 0]}>
+            <Button
+              onClick={() =>
+                dispatch({
+                  type: 'add_cart_items',
+                  payload: addCartItemsPayload,
+                })
+              }
+              padding={[3, 4]}>
+              {cartButton}
+            </Button>
+          </Box>
+        </Stack>
+
+        <Stack as="figure" space={3}>
+          <Legend size="xs" as="figcaption">
+            {contentDescription.label}
+          </Legend>
+          {isPreOrder && (
+            <>
+              <Heading as="h2" size="s" family="secondary">
+                {preOrder.title}
+              </Heading>
+            </>
+          )}
+          <Text size="m">{description}</Text>
+        </Stack>
+      </Stack>
     </Box>
   );
 };

@@ -13,7 +13,7 @@ export const Total: React.FC = props => {
       `(min-width: ${breakpoints[1]})`,
       `(min-width: ${breakpoints[0]})`,
     ],
-    ['l', 'm', 's', 's'],
+    ['m', 'm', 's', 's'],
     's',
   );
   return (
