@@ -1,8 +1,13 @@
 [
   {
+    "sizes": {
+      "label": "Size",
+      "link": "Sizing guide",
+      "ariaLabel": "size-variant-select"
+    },
     "cartButton": "Add to bag",
-    "ariaLabels": {
-      "select": "size-variant-select"
+    "description": {
+      "label": "description"
     },
     "preOrder": {
       "title": "This is a pre-order item",

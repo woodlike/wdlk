@@ -8,7 +8,7 @@ const theme = {
   },
   ...wdlkTheme,
   breakpoints,
-  borderWidths: [1, 2, 3, 4],
+  borderWidths: [0, 1, 2, 3, 4],
   letterSpacings: [0.5, 1, 1.5],
   fonts: {
     ...wdlkTheme.fonts,

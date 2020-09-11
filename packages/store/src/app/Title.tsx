@@ -13,7 +13,7 @@ export const Title: React.FC = props => {
       `(min-width: ${breakpoints[1]})`,
       `(min-width: ${breakpoints[0]})`,
     ],
-    ['xl', 'l', 'm', 'm'],
+    ['l', 'l', 'm', 'm'],
     'm',
   );
 
