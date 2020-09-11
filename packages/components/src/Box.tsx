@@ -39,11 +39,13 @@ const StyledBox = styled.div<BoxProps>`
   padding: ${({ padding, theme }) =>
     Scale.toCSSPixel(Scale.create(padding, theme.space))};
   border-width: ${({ borderWidths, theme }) =>
+    borderWidths &&
     Scale.toCSSPixel(
       Scale.create(borderWidths as ScaleArea, theme.borderWidths),
     )};
   border-style: ${({ borderStyles, theme }) =>
-    Scale.toCSSPixel(
+    borderStyles &&
+    Scale.toCSSString(
       Scale.create(borderStyles as ScaleArea, theme.borderStyles),
     )};
   border-color: ${({ borderColors, theme }) => {

@@ -147,7 +147,7 @@ describe('<Box />', () => {
       const box = getByText(id);
       expect(box).toHaveStyleRule(
         'border-style',
-        `${borderStyles[3]}px ${borderStyles[3]}px ${borderStyles[3]}px ${borderStyles[3]}px`,
+        `${borderStyles[3]} ${borderStyles[3]} ${borderStyles[3]} ${borderStyles[3]}`,
       );
       unmount();
     });
@@ -163,7 +163,7 @@ describe('<Box />', () => {
       const box = getByText(id);
       expect(box).toHaveStyleRule(
         'border-style',
-        `${borderStyles[3]}px ${borderStyles[5]}px ${borderStyles[3]}px ${borderStyles[5]}px`,
+        `${borderStyles[3]} ${borderStyles[5]} ${borderStyles[3]} ${borderStyles[5]}`,
       );
       unmount();
     });
@@ -179,7 +179,7 @@ describe('<Box />', () => {
       const box = getByText(id);
       expect(box).toHaveStyleRule(
         'border-style',
-        `${borderStyles[3]}px ${borderStyles[5]}px ${borderStyles[9]}px ${borderStyles[5]}px`,
+        `${borderStyles[3]} ${borderStyles[5]} ${borderStyles[9]} ${borderStyles[5]}`,
       );
       unmount();
     });
@@ -195,7 +195,7 @@ describe('<Box />', () => {
       const box = getByText(id);
       expect(box).toHaveStyleRule(
         'border-style',
-        `${borderStyles[2]}px ${borderStyles[6]}px ${borderStyles[3]}px ${borderStyles[2]}px`,
+        `${borderStyles[2]} ${borderStyles[6]} ${borderStyles[3]} ${borderStyles[2]}`,
       );
       unmount();
     });

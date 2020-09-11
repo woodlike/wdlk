@@ -52,7 +52,7 @@ const createActiveStyles = (
 `;
 
 const StyledItem = styled.li<StyledSelectItemProps>`
-  ${({ borderWidth = 0, fontSize, theme }) =>
+  ${({ borderWidth = 1, fontSize, theme }) =>
     createStylesSize(theme, borderWidth, fontSize)};
   ${({ theme, isActive, isAvailable }) =>
     createActiveStyles(theme, isActive, isAvailable)}
