@@ -16,6 +16,8 @@ const StyledStack = styled.div<StackProps>`
         ? theme.space[space]
         : theme.space[1]
     }px`};
+  padding: 0;
+  margin: 0;
 `;
 StyledStack.displayName = 'StyledStack';
 
