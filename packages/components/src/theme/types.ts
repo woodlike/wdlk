@@ -52,6 +52,12 @@ export interface Theme {
     readonly m: TextSize;
     readonly l: TextSize;
   };
+  readonly small: {
+    readonly fontFamily: string;
+    readonly s: TextSize;
+    readonly m: TextSize;
+    readonly l: TextSize;
+  };
   readonly text: {
     readonly color: string;
     readonly fontFamily: string;
