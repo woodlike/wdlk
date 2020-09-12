@@ -10,6 +10,7 @@ export * from './Column';
 export * from './Columns';
 export * from './Heading';
 export * from './Legend';
+export * from './Link';
 export * from './Select';
 export * from './Small';
 export * from './Stack';
