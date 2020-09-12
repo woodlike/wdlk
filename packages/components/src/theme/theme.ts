@@ -77,6 +77,7 @@ export const theme: Theme = {
   fontSizes,
   fontWeights,
   fonts,
+  lineHeights: [1, 1.5, 2],
   header: ['70px', '70px', '70px', '70px', '70px', '70px'],
   heading: {
     color: colors.blacks[0],
@@ -131,7 +132,7 @@ export const theme: Theme = {
         hover: colors.blacks[2],
       },
       secondary: {
-        default: colors.grays[0],
+        default: colors.grays[1],
         hover: colors.grays[4],
       },
     },

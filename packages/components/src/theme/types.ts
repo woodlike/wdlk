@@ -8,6 +8,7 @@ export interface Theme {
   readonly fonts: ThemeFontsProps;
   readonly fontSizes: number[];
   readonly fontWeights: number[];
+  readonly lineHeights: number[];
   readonly header: string[];
   readonly heading: {
     readonly color: string;
