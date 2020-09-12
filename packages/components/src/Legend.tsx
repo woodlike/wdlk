@@ -23,7 +23,7 @@ const StyledLegend = styled.div<LegendProps>`
   font-size: ${({ size, theme }) => `${theme.legend[size].fontSize}px`};
   font-kerning: normal;
   font-weight: normal;
-  line-height: 1;
+  line-height: ${props => props.theme.lineHeights[1]};
   letter-spacing: 2px;
   text-transform: ${({ type }) =>
     type === 'primary' ? 'uppercase' : 'capitalize'};

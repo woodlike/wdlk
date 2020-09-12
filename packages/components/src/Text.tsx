@@ -13,7 +13,7 @@ const StyledText = styled.p<TextProps>`
   font-family: ${({ theme }) => theme.text.fontFamily};
   font-kerning: normal;
   font-size: ${({ size, theme }) => `${theme.text[size].fontSize}px`};
-  line-height: 1.5;
+  line-height: ${props => props.theme.lineHeights[1]};
   letter-spacing: 0.2px;
   color: ${({ isInverted, theme }) =>
     !!isInverted ? theme.text.modes.color : theme.text.color};
