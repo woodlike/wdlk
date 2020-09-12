@@ -1,76 +1,5 @@
 import { theme as themeQuery, Colors, toRGB } from 'theme-query';
-import { ButtonVariants } from '.';
-
-export interface Theme {
-  readonly borderStyles: string[];
-  readonly borderWidths: number[];
-  readonly breakpoints: string[];
-  readonly colors: ThemeColor;
-  readonly fonts: ThemeFontsProps;
-  readonly fontSizes: number[];
-  readonly fontWeights: number[];
-  readonly header: string[];
-  readonly legend: {
-    readonly color: string;
-    readonly fontFamily: string;
-    readonly xs: TextSize;
-    readonly s: TextSize;
-    readonly m: TextSize;
-    readonly l: TextSize;
-  };
-  readonly text: {
-    readonly color: string;
-    readonly fontFamily: string;
-    readonly modes: {
-      color: string;
-    };
-    readonly s: TextSize;
-    readonly m: TextSize;
-    readonly l: TextSize;
-  };
-  readonly letterSpacings: number[];
-  readonly space: number[];
-  readonly transition: ThemeTiming;
-  readonly buttons: ButtonVariants;
-}
-
-export interface ThemeTiming {
-  readonly duration: number[];
-  readonly timing: string[];
-}
-
-export interface ThemeFontsProps {
-  readonly body: string;
-  readonly heading: ThemeHeadingProps;
-  readonly monospace: string;
-}
-
-export interface ThemeHeadingProps {
-  readonly display: string;
-  readonly campaign: string;
-  readonly secondary: string;
-}
-
-export interface ThemeColor {
-  readonly primary: string;
-  readonly secondary: string;
-  readonly text: string;
-  readonly border: string;
-  readonly muted: string;
-  readonly mutedHover: string;
-  readonly headline: string;
-  readonly link: string;
-  readonly textInverted: string;
-  readonly [key: string]: string | string[];
-}
-
-export interface ThemeHeader {
-  readonly header: string[];
-}
-
-export interface TextSize {
-  readonly fontSize: number;
-}
+import { Theme } from '.';
 
 const borderStyles = [
   'none',
@@ -84,6 +13,7 @@ const borderStyles = [
   'inset',
   'outset',
 ];
+
 const borderWidths = [0, 1, 2, 3, 4];
 const breakpoints = ['0px', '480px', '768px', '990px', '1024px', '1440px'];
 const fontSizes: number[] = [12, 14, 16, 18, 20, 24, 32, 44, 72];
@@ -148,8 +78,33 @@ export const theme: Theme = {
   fontWeights,
   fonts,
   header: ['70px', '70px', '70px', '70px', '70px', '70px'],
-  legend: {
+  heading: {
     color: colors.blacks[0],
+    fontFamily: fonts.body,
+    modes: {
+      color: colors.whites[0],
+    },
+    xs: {
+      fontSize: fontSizes[3],
+    },
+    s: {
+      fontSize: fontSizes[4],
+    },
+    m: {
+      fontSize: fontSizes[5],
+    },
+    l: {
+      fontSize: fontSizes[6],
+    },
+    xl: {
+      fontSize: fontSizes[7],
+    },
+    xxl: {
+      fontSize: fontSizes[8],
+    },
+  },
+  legend: {
+    color: colors.blacks[1],
     fontFamily: fonts.body,
     xs: {
       fontSize: fontSizes[1],
@@ -162,6 +117,19 @@ export const theme: Theme = {
     },
     l: {
       fontSize: fontSizes[4],
+    },
+  },
+  link: {
+    color: colors.blacks[1],
+    fontFamily: fonts.body,
+    s: {
+      fontSize: fontSizes[0],
+    },
+    m: {
+      fontSize: fontSizes[1],
+    },
+    l: {
+      fontSize: fontSizes[2],
     },
   },
   text: {
