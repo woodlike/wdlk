@@ -4,13 +4,15 @@ import { useMedia } from '@wdlk/hooks';
 import {
   Box,
   Button,
+  Columns,
   Heading,
   Legend,
+  Link,
   ScaleArea,
   Select,
+  Stack,
   Text,
   Theme,
-  Stack,
 } from '@wdlk/components';
 
 import { Title } from '..';
@@ -159,9 +161,14 @@ export const Content: React.FC<StageContentProps> = props => {
         </Box>
 
         <Stack as="div" space={4}>
-          <Legend size="xs" as="strong">
-            {sizes.label}
-          </Legend>
+          <Columns justifyContent="space-between">
+            <Legend size="xs" as="strong">
+              {sizes.label}
+            </Legend>
+            <Link as="span" size="s" type="secondary">
+              {sizes.link}
+            </Link>
+          </Columns>
 
           <Select.Frame
             ariaLabel={sizes.ariaLabel}
@@ -199,7 +206,7 @@ export const Content: React.FC<StageContentProps> = props => {
           </Legend>
           {isPreOrder && (
             <>
-              <Heading as="h2" size="s" family="secondary">
+              <Heading as="h3" size="s" type="secondary">
                 {preOrder.title}
               </Heading>
             </>

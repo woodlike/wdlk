@@ -18,7 +18,7 @@ export const Title: React.FC = props => {
   );
 
   return (
-    <Heading as="h1" size={size}>
+    <Heading as="h1" size={size} type="primary">
       {props.children}
     </Heading>
   );
