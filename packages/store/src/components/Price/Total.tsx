@@ -17,7 +17,7 @@ export const Total: React.FC = props => {
     's',
   );
   return (
-    <Heading as="h2" size={size}>
+    <Heading as="h2" size={size} type="primary">
       {props.children}
     </Heading>
   );

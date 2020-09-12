@@ -1,6 +1,6 @@
 /**@jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
-import { Rows, Theme } from '@wdlk/components';
+import { Columns, Theme } from '@wdlk/components';
 
 export interface IconBarItemProps {
   readonly href: string;
@@ -29,9 +29,9 @@ export const IconBarItem: React.FC<IconBarItemProps> = props => (
 IconBarItem.displayName = 'FooterIconBarItem';
 
 export const IconBar: React.FC = props => (
-  <Rows sx={stylesIconBar} justifyContent="center">
+  <Columns sx={stylesIconBar} justifyContent="center">
     {props.children}
-  </Rows>
+  </Columns>
 );
 
 IconBar.displayName = 'FooterIconBar';
