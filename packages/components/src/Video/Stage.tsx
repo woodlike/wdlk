@@ -34,7 +34,7 @@ export const Stage: React.FC<VideoStageProps> = (props): JSX.Element => {
       {props.children}
       <figcaption sx={stylesCaption}>
         <Controls muted={props.muted} onClick={props.handleClick} />
-        <Heading as="h2" size="l" isInverted>
+        <Heading as="h2" size="l" type="primary" isInverted>
           {props.headline}
         </Heading>
         <Text size="m" isInverted>

@@ -9,11 +9,15 @@ import { theme, Heading } from '..';
 expect.extend(toHaveNoViolations);
 expect.extend(matchers);
 describe('<Heading />', () => {
+  let testId: string;
+  beforeEach(() => (testId = 'test-heading'));
+  afterEach(() => (testId = (undefined as unknown) as string));
+
   describe('Accessibility validation', () => {
     it('should not have any accessibility violations', async done => {
       const { container, unmount } = render(
         <ThemeProvider theme={theme}>
-          <Heading as="h2" size="xs">
+          <Heading as="h2" size="xs" type="primary">
             Healing Flowers Collection
           </Heading>
         </ThemeProvider>,
@@ -31,7 +35,7 @@ describe('<Heading />', () => {
     it('should have a font size of 18px', () => {
       const { container } = render(
         <ThemeProvider theme={theme}>
-          <Heading as="h2" size="xs">
+          <Heading as="h2" size="xs" type="primary">
             Healing Flowers Collection
           </Heading>
         </ThemeProvider>,
@@ -43,7 +47,7 @@ describe('<Heading />', () => {
     it('should have a font size of 20px', () => {
       const { container } = render(
         <ThemeProvider theme={theme}>
-          <Heading as="h2" size="s">
+          <Heading as="h2" size="s" type="primary">
             Healing Flowers Collection
           </Heading>
         </ThemeProvider>,
@@ -56,7 +60,7 @@ describe('<Heading />', () => {
     it('should have a font size of 24px', () => {
       const { container } = render(
         <ThemeProvider theme={theme}>
-          <Heading as="h2" size="m">
+          <Heading as="h2" size="m" type="primary">
             Healing Flowers Collection
           </Heading>
         </ThemeProvider>,
@@ -69,7 +73,7 @@ describe('<Heading />', () => {
     it('should have a font size of 32px', () => {
       const { container } = render(
         <ThemeProvider theme={theme}>
-          <Heading as="h2" size="l">
+          <Heading as="h2" size="l" type="primary">
             Healing Flowers Collection
           </Heading>
         </ThemeProvider>,
@@ -82,7 +86,7 @@ describe('<Heading />', () => {
     it('should have a font size of 44px', () => {
       const { container } = render(
         <ThemeProvider theme={theme}>
-          <Heading as="h2" size="xl">
+          <Heading as="h2" size="xl" type="primary">
             Healing Flowers Collection
           </Heading>
         </ThemeProvider>,
@@ -95,7 +99,7 @@ describe('<Heading />', () => {
     it('should have a font size of 72px', () => {
       const { container } = render(
         <ThemeProvider theme={theme}>
-          <Heading as="h2" size="xxl">
+          <Heading as="h2" size="xxl" type="primary">
             Healing Flowers Collection
           </Heading>
         </ThemeProvider>,
@@ -106,6 +110,56 @@ describe('<Heading />', () => {
         'font-size',
         `${theme.heading.xxl.fontSize}px`,
       );
+    });
+  });
+
+  describe('Font-Family', () => {
+    it('should return a primary family', () => {
+      const { getByText, unmount } = render(
+        <ThemeProvider theme={theme}>
+          <Heading as="h2" size="xxl" type="primary">
+            {testId}
+          </Heading>
+        </ThemeProvider>,
+      );
+      const heading = getByText(testId);
+      expect(heading).toHaveStyleRule(
+        'font-family',
+        theme.heading.fonts.primary.replace(/\s/g, ''),
+      );
+      unmount();
+    });
+
+    it('should return a secondary family', () => {
+      const { getByText, unmount } = render(
+        <ThemeProvider theme={theme}>
+          <Heading as="h2" size="xxl" type="secondary">
+            {testId}
+          </Heading>
+        </ThemeProvider>,
+      );
+      const heading = getByText(testId);
+      expect(heading).toHaveStyleRule(
+        'font-family',
+        theme.heading.fonts.secondary.replace(/\s/g, ''),
+      );
+      unmount();
+    });
+
+    it('should return a campaign family', () => {
+      const { getByText, unmount } = render(
+        <ThemeProvider theme={theme}>
+          <Heading as="h2" size="xxl" type="campaign">
+            {testId}
+          </Heading>
+        </ThemeProvider>,
+      );
+      const heading = getByText(testId);
+      expect(heading).toHaveStyleRule(
+        'font-family',
+        theme.heading.fonts.campaign.replace(/\s/g, ''),
+      );
+      unmount();
     });
   });
 });

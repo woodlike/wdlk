@@ -11,7 +11,12 @@ export interface Theme {
   readonly header: string[];
   readonly heading: {
     readonly color: string;
-    readonly fontFamily: string;
+    readonly fonts: {
+      readonly primary: string;
+      readonly secondary: string;
+      readonly campaign: string;
+    };
+    readonly fontWeight: number;
     readonly modes: {
       color: string;
     };

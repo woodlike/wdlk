@@ -80,7 +80,12 @@ export const theme: Theme = {
   header: ['70px', '70px', '70px', '70px', '70px', '70px'],
   heading: {
     color: colors.blacks[0],
-    fontFamily: fonts.body,
+    fontWeight: 400,
+    fonts: {
+      primary: fonts.heading.display,
+      secondary: fonts.heading.secondary,
+      campaign: fonts.heading.campaign,
+    },
     modes: {
       color: colors.whites[0],
     },
