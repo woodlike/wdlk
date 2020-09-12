@@ -1,6 +1,6 @@
 {
   "name": "@wdlk/components",
-  "version": "2.9.1",
+  "version": "2.9.3",
   "description": "Stateless functional components that are coherent to a design system",
   "repository": "git@github.com:woodlike/component-library.git",
   "license": "MIT",
@@ -17,7 +17,6 @@
   "dependencies": {
     "@emotion/core": "^10.0.22",
     "@emotion/styled": "^10.0.27",
-    "@theme-ui/components": "^0.3.1",
     "prismjs": "^1.19.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",

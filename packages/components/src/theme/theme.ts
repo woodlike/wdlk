@@ -147,6 +147,18 @@ export const theme: Theme = {
       fontSize: fontSizes[3],
     },
   },
+  small: {
+    fontFamily: fonts.body,
+    s: {
+      fontSize: fontSizes[0],
+    },
+    m: {
+      fontSize: fontSizes[1],
+    },
+    l: {
+      fontSize: fontSizes[2],
+    },
+  },
   text: {
     fontFamily: fonts.body,
     color: colors.blacks[0],
