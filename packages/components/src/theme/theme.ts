@@ -125,16 +125,25 @@ export const theme: Theme = {
     },
   },
   link: {
-    color: colors.blacks[1],
+    color: {
+      primary: {
+        default: colors.blacks[0],
+        hover: colors.blacks[2],
+      },
+      secondary: {
+        default: colors.grays[0],
+        hover: colors.grays[4],
+      },
+    },
     fontFamily: fonts.body,
     s: {
-      fontSize: fontSizes[0],
-    },
-    m: {
       fontSize: fontSizes[1],
     },
-    l: {
+    m: {
       fontSize: fontSizes[2],
+    },
+    l: {
+      fontSize: fontSizes[3],
     },
   },
   text: {

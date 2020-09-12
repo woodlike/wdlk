@@ -36,7 +36,16 @@ export interface Theme {
     readonly l: TextSize;
   };
   readonly link: {
-    readonly color: string;
+    readonly color: {
+      readonly primary: {
+        readonly default: string;
+        readonly hover: string;
+      };
+      readonly secondary: {
+        readonly default: string;
+        readonly hover: string;
+      };
+    };
     readonly fontFamily: string;
     readonly s: TextSize;
     readonly m: TextSize;
