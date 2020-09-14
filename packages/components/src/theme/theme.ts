@@ -1,5 +1,6 @@
 import { theme as themeQuery, Colors, toRGB } from 'theme-query';
 import { Theme } from '.';
+import { andromeda } from './code-theme';
 
 const borderStyles = [
   'none',
@@ -79,6 +80,18 @@ export const theme: Theme = {
   fonts,
   lineHeights: [1, 1.5, 2],
   header: ['70px', '70px', '70px', '70px', '70px', '70px'],
+  code: {
+    s: {
+      fontSize: fontSizes[0],
+    },
+    m: {
+      fontSize: fontSizes[1],
+    },
+    l: {
+      fontSize: fontSizes[2],
+    },
+    theme: andromeda,
+  },
   heading: {
     color: colors.blacks[0],
     fontWeight: 400,

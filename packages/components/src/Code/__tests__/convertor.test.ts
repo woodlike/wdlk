@@ -1,4 +1,5 @@
-import { convertor, andromeda, PrismTheme, PrismStyleRule } from '..';
+import { convertor, PrismTheme, PrismStyleRule } from '..';
+import { andromeda } from '../../theme/code-theme';
 
 describe('convertor()', () => {
   let stylePropMock1: PrismStyleRule[];
@@ -68,7 +69,9 @@ describe('convertor()', () => {
     it('should log an error on missing styles prop', () => {
       convertor({} as PrismTheme);
       expect(console.error).toHaveBeenCalled();
-      expect(console.error).toHaveBeenCalledWith('Error: Your theme should have a styles property (PrismStyles[])');
+      expect(console.error).toHaveBeenCalledWith(
+        'Error: Your theme should have a styles property (PrismStyles[])',
+      );
     });
 
     it('should log an error on missing types prop', () => {
@@ -82,7 +85,9 @@ describe('convertor()', () => {
         ],
       } as PrismTheme);
       expect(console.error).toHaveBeenCalled();
-      expect(console.error).toHaveBeenCalledWith('Error: Your theme should have a types property (string[])');
+      expect(console.error).toHaveBeenCalledWith(
+        'Error: Your theme should have a types property (string[])',
+      );
     });
 
     it('should log an error on missing types prop', () => {
@@ -107,7 +112,9 @@ describe('convertor()', () => {
         ],
       } as PrismTheme);
       expect(console.error).toHaveBeenCalled();
-      expect(console.error).toHaveBeenCalledWith('Error: Your theme should have a style property (PrismStyleProp)');
+      expect(console.error).toHaveBeenCalledWith(
+        'Error: Your theme should have a style property (PrismStyleProp)',
+      );
     });
   });
 
@@ -115,13 +122,15 @@ describe('convertor()', () => {
     const { plain } = andromeda;
     it('should return a codeTheme with the according value', () => {
       const codeTheme = convertor({ plain, styles: stylePropMock1 });
+
       expect(codeTheme.get('punctuation')).toStrictEqual({
         color: 'rgb(249, 38, 114)',
       });
     });
 
-    it('should return the first found properties on duplicated styles', () => {
+    it.only('should return the first found properties on duplicated styles', () => {
       const codeTheme = convertor({ plain, styles: stylePropDuplicate });
+
       expect(codeTheme.get('punctuation')).toStrictEqual({
         color: 'rgb(249, 38, 114)',
         backgroundColor: 'rgb(255, 255, 255)',

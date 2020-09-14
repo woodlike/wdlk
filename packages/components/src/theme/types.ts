@@ -1,4 +1,5 @@
 import { ButtonVariants } from '.';
+import { PrismTheme } from '..';
 
 export interface Theme {
   readonly borderStyles: string[];
@@ -10,6 +11,12 @@ export interface Theme {
   readonly fontWeights: number[];
   readonly lineHeights: number[];
   readonly header: string[];
+  readonly code: {
+    readonly s: TextSize;
+    readonly m: TextSize;
+    readonly l: TextSize;
+    readonly theme: PrismTheme;
+  };
   readonly heading: {
     readonly color: string;
     readonly fonts: {
