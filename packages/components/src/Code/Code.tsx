@@ -1,26 +1,22 @@
-/**@jsx jsx */
-import { jsx, SxStyleProp } from 'theme-ui';
-import { ThemeQuery } from 'theme-query';
+import { useTheme } from 'emotion-theming';
+import React, { useMemo } from 'react';
 import { Token } from 'prismjs';
-import { useMemo, Fragment } from 'react';
+
 import * as Prism from './__prism';
+import { convertor, normalizer } from '.';
+import { CSSConverter, Theme } from '..';
+import styled from '../styled';
 
-import { andromeda, convertor, normalizer, Language } from '.';
-import { useThemeQuery } from '../theme/query';
-
-export interface PrismStyleProp {
-  readonly color: string;
-  readonly backgroundColor?: string;
-  readonly fontStyle?: 'normal' | 'italic';
-  readonly fontWeight?: 'normal' | 'bold' | '100' | '200' | '300' | '400' | '500' | '600' | '700' | '800' | '900';
-  readonly textDecorationLine?: 'none' | 'underline' | 'line-through' | 'underline line-through';
-  readonly opacity?: number;
-  readonly [styleKey: string]: string | number | void;
+export interface CodeProps {
+  readonly code: string;
+  readonly size: 's' | 'm' | 'l';
+  readonly lang: Language;
+  readonly theme?: PrismTheme;
 }
 
 export interface PrismTheme {
-  plain: PrismStyleProp;
-  styles: PrismStyleRule[];
+  readonly plain: PrismStyleProp;
+  readonly styles: PrismStyleRule[];
 }
 
 export interface PrismStyleRule {
@@ -28,43 +24,78 @@ export interface PrismStyleRule {
   readonly style: PrismStyleProp;
 }
 
-export interface CodeProps {
-  code: string;
-  size: CodeSize;
-  lang: Language;
-  theme?: PrismTheme;
+export interface PrismStyleProp {
+  readonly color: string;
+  readonly backgroundColor?: string;
+  readonly fontStyle?: 'normal' | 'italic';
+  readonly fontWeight?:
+    | 'normal'
+    | 'bold'
+    | '100'
+    | '200'
+    | '300'
+    | '400'
+    | '500'
+    | '600'
+    | '700'
+    | '800'
+    | '900';
+  readonly textDecorationLine?:
+    | 'none'
+    | 'underline'
+    | 'line-through'
+    | 'underline line-through';
+  readonly opacity?: number;
+  readonly [styleKey: string]: string | number | void;
 }
 
-export type CodeSize = 's' | 'm' | 'l';
+interface StyledPreProps {
+  readonly size: 's' | 'm' | 'l';
+}
 
-const stylesCode: SxStyleProp = {
-  fontFamily: 'monospace',
-};
+export enum Language {
+  markup = 'markup',
+  bash = 'bash',
+  css = 'css',
+  cssExtras = 'css-extras',
+  clike = 'clike',
+  javascript = 'javascript',
+  jsx = 'jsx',
+  jsExtras = 'js-extras',
+  git = 'git',
+  graphql = 'graphql',
+  json = 'json',
+  ocaml = 'ocaml',
+  reason = 'reason',
+  tsx = 'tsx',
+  typescript = 'typescript',
+  yaml = 'yaml',
+}
 
-export const handleCodeSize = (size: CodeSize, qt: ThemeQuery): string => {
-  switch (size) {
-    case 's':
-      return qt('fontSizes')(0);
-    case 'm':
-      return qt('fontSizes')(1);
-    case 'l':
-      return qt('fontSizes')(2);
-  }
-};
+const StyledPre = styled.pre<StyledPreProps>`
+  width: 100%;
+  padding: ${props => props.theme.space[4]}px;
+  border-radius: 9px;
+  margin: 0;
+  font-family: ${props => props.theme.fonts.monospace};
+  font-size: ${props => {
+    const { size, theme } = props;
+    return !!theme.code[size] ? `${theme.code[size].fontSize}px` : '';
+  }};
+  white-space: pre-wrap;
+  word-break: break-word;
+  text-align: left;
+  color: ${props => props.theme.code.theme.plain.color};
+  background-color: ${props => props.theme.code.theme.plain.backgroundColor};
+`;
 
-const createStylesPre = (size: CodeSize, qt: ThemeQuery, theme = andromeda): SxStyleProp => ({
-  width: '100%',
-  padding: 4,
-  margin: 0,
-  borderRadius: '9px',
-  fontFamily: 'monospace',
-  fontSize: handleCodeSize(size, qt),
-  color: theme.plain.color,
-  whiteSpace: 'pre-wrap',
-  wordBreak: 'break-word',
-  textAlign: 'left',
-  backgroundColor: theme.plain.backgroundColor,
-});
+StyledPre.displayName = 'StyledPre';
+
+const StyledCode = styled.code`
+  font-family: inherit;
+`;
+
+StyledCode.displayName = 'StyledCode';
 
 export function handleTokens(code: string, langs: Language): Token[] {
   const { languages, tokenize } = Prism.default;
@@ -73,29 +104,28 @@ export function handleTokens(code: string, langs: Language): Token[] {
   return normalizer(tokenize(code, grammar));
 }
 
-export const Code: React.FC<CodeProps> = (props): JSX.Element => {
-  const { qt } = useThemeQuery();
+export const Code: React.FC<CodeProps> = props => {
+  const { code } = useTheme() as Theme;
   const tokens = handleTokens(props.code, props.lang);
-  const theme = convertor(props.theme || andromeda);
+  const theme = convertor(props.theme || code.theme);
 
   const MemoTokens = useMemo<JSX.Element>(() => {
     return (
-      <Fragment>
-        {tokens.map((token, i) => {
-          return (
-            <span sx={theme.get(token.type)} key={`first-level-token-stream-${i}`}>
-              {token.content}
-            </span>
-          );
-        })}
-      </Fragment>
+      <>
+        {tokens.map((token, i) => (
+          <CSSConverter
+            cssObject={theme.get(token.type)}
+            key={`first-level-token-stream-${i}`}>
+            {token.content}
+          </CSSConverter>
+        ))}
+      </>
     );
   }, [tokens]);
+
   return (
-    <pre sx={createStylesPre(props.size, qt, props.theme)}>
-      <code sx={stylesCode}>{MemoTokens}</code>
-    </pre>
+    <StyledPre size={props.size}>
+      <StyledCode>{MemoTokens}</StyledCode>
+    </StyledPre>
   );
 };
-
-Code.displayName = 'Code';

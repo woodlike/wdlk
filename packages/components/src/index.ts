@@ -1,4 +1,3 @@
-import * as LocalDocs from './docs';
 import * as LocalVid from './Video';
 
 export * from './Box';
@@ -8,6 +7,7 @@ export * from './Cart';
 export * from './Code';
 export * from './Column';
 export * from './Columns';
+export * from './CSSConverter';
 export * from './Heading';
 export * from './Legend';
 export * from './Link';
@@ -20,5 +20,4 @@ export * from './utils';
 export * from './Video';
 export * from './with-focus-style';
 
-export const Docs = { ...LocalDocs };
 export const Video = { ...LocalVid };
