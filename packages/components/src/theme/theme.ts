@@ -188,6 +188,7 @@ export const theme: Theme = {
       fontSize: fontSizes[3],
     },
   },
+  video: { color: colors.whites[0], controls: { color: colors.corals[0] } },
   letterSpacings: [0.5, 1, 1.5],
   space: spaces,
   transition: {

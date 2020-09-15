@@ -75,6 +75,12 @@ export interface Theme {
     readonly m: TextSize;
     readonly l: TextSize;
   };
+  readonly video: {
+    readonly color: string;
+    readonly controls: {
+      readonly color: string;
+    };
+  };
   readonly letterSpacings: number[];
   readonly space: number[];
   readonly transition: ThemeTiming;

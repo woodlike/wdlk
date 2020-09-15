@@ -1,3 +1,5 @@
-export * from './Controls';
-export * from './Video';
-export * from './Stage';
+import * as Controls from './Controls';
+import * as Media from './Video';
+import * as Stage from './Stage';
+
+export const Video = { ...Controls, ...Media, ...Stage };
