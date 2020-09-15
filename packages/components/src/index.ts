@@ -1,5 +1,3 @@
-import * as LocalVid from './Video';
-
 export * from './Box';
 export * from './Burger';
 export * from './Button';
@@ -19,5 +17,3 @@ export * from './theme';
 export * from './utils';
 export * from './Video';
 export * from './with-focus-style';
-
-export const Video = { ...LocalVid };

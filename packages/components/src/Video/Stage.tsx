@@ -1,48 +1,54 @@
-/**@jsx jsx */
-import { jsx, SxStyleProp } from 'theme-ui';
-import { Controls } from '.';
-import { qt } from '../theme/query';
-import { Heading } from '../Heading';
-import { Text } from '../Text';
+import React from 'react';
+import { css } from '@emotion/core';
+
+import styled from '../styled';
 
 export interface VideoStageProps {
-  readonly headline: string;
-  readonly tag: string;
-  readonly copy: string;
   readonly muted: boolean;
+  readonly video: JSX.Element;
+  readonly controls?: JSX.Element;
   handleClick(): void;
 }
 
-const stylesStageWrapper: SxStyleProp = {
-  position: 'relative',
-  margin: 0,
-};
+const StyledStageContainer = styled.figure`
+  position: relative;
+  margin: 0;
+`;
 
-const stylesCaption: SxStyleProp = {
-  position: 'absolute',
-  right: ['50%', 'unset'],
-  bottom: [0, `${qt('spaces')(8)}px`],
-  left: ['uset', `${qt('spaces')(7)}px`],
-  zIndex: 1,
-  transform: ['translate(50%, -10%)', 'none'],
-  color: `${qt('whites')(0)}`,
-};
+StyledStageContainer.displayName = 'Video.StyledStageContainer';
 
-export const Stage: React.FC<VideoStageProps> = (props): JSX.Element => {
-  return (
-    <figure sx={stylesStageWrapper}>
+const StyledStageCaption = styled.figcaption`
+  position: absolute;
+  right: 50%;
+  bottom: 0;
+  z-index: 1;
+  transform: translate(50%, -10%);
+  color: ${props => props.theme.video.color};
+
+  ${props => {
+    const {
+      theme: { breakpoints, space },
+    } = props;
+
+    return css`
+      @media (min-width: ${breakpoints[1]}) {
+        right: unset;
+        bottom: ${space[8]}px;
+        left: ${space[7]}px;
+        transform: none;
+      }
+    `;
+  }};
+`;
+
+StyledStageCaption.displayName = 'Video.StyledStageCaption';
+
+export const Stage: React.FC<VideoStageProps> = props => (
+  <StyledStageContainer>
+    {props.video}
+    <StyledStageCaption>
+      {props.controls}
       {props.children}
-      <figcaption sx={stylesCaption}>
-        <Controls muted={props.muted} onClick={props.handleClick} />
-        <Heading as="h2" size="l" type="primary" isInverted>
-          {props.headline}
-        </Heading>
-        <Text size="m" isInverted>
-          {props.copy}
-        </Text>
-      </figcaption>
-    </figure>
-  );
-};
-
-Stage.displayName = 'VideoStage';
+    </StyledStageCaption>
+  </StyledStageContainer>
+);

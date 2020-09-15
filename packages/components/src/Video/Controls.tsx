@@ -1,12 +1,15 @@
-/**@jsx jsx */
-import { jsx, SxStyleProp } from 'theme-ui';
+import React from 'react';
 import { keyframes } from '@emotion/core';
+import { useTheme } from 'emotion-theming';
 import { Volume2, VolumeX } from 'react-feather';
-import { qt } from '../theme/query';
+
+import { Theme } from '..';
+import styled from '../styled';
 
 export interface ControlProps {
-  muted: boolean;
-  onClick: React.MouseEventHandler<SVGElement>;
+  readonly size: number;
+  readonly muted: boolean;
+  readonly onClick: React.MouseEventHandler<SVGElement>;
 }
 
 const heartbeat = keyframes`
@@ -30,29 +33,35 @@ const heartbeat = keyframes`
   }
 `;
 
-const stylesMuted: SxStyleProp = {
-  cursor: 'pointer',
-  animation: `${heartbeat} 1.8s infinite cubic-bezier(0.455, 0.030, 0.515, 0.955)`,
-  transition: `color ${qt('duration')(0)}s linear`,
-  ':hover': {
-    color: qt('corals')(0),
-    animationPlayState: 'paused',
-  },
-};
+const StyledControlMuted = styled(VolumeX)`
+  cursor: pointer;
+  animation: ${heartbeat} 1.8s infinite cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  transition: color ${props => props.theme.transition.duration[0]}s linear;
+  :hover {
+    color: ${props => props.theme.video.controls.color};
+    animation-play-state: paused;
+  }
+`;
 
-const stylesLoud: SxStyleProp = {
-  cursor: 'pointer',
-  transition: `color ${qt('duration')(0)}s linear`,
-  ':hover': {
-    color: qt('corals')(0),
-  },
-};
+StyledControlMuted.displayName = 'Video.StyledControlMuted';
 
-export const Controls: React.FC<ControlProps> = (props): JSX.Element =>
-  props.muted ? (
-    <VolumeX sx={stylesMuted} onClick={props.onClick} color="currentColor" size={`${qt('spaces')(5)}`} />
+const StyledControlLoud = styled(Volume2)`
+  cursor: pointer;
+  transition: color ${props => props.theme.transition.duration[0]}s linear;
+  :hover {
+    color: ${props => props.theme.video.controls.color};
+  }
+`;
+
+StyledControlLoud.displayName = 'Video.StyledControlLoud';
+
+export const Controls: React.FC<ControlProps> = props => {
+  const { space }: Theme = useTheme();
+  const size = !!space[props.size] ? space[props.size] : 10;
+
+  return props.muted ? (
+    <StyledControlMuted onClick={props.onClick} size={size} />
   ) : (
-    <Volume2 sx={stylesLoud} onClick={props.onClick} color="currentColor" size={`${qt('spaces')(5)}`} />
+    <StyledControlLoud onClick={props.onClick} size={size} />
   );
-
-Controls.displayName = 'VideoControls';
+};

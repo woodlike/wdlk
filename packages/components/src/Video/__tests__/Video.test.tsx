@@ -1,30 +1,40 @@
+import React from 'react';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { matchers } from 'jest-emotion';
+import { ThemeProvider } from 'emotion-theming';
 import { render, cleanup } from '@testing-library/react';
-import * as React from 'react';
 
-import * as Video from '..';
+import { theme, Video } from '../..';
 
 expect.extend(matchers);
 expect.extend(toHaveNoViolations);
 
-describe.skip('<Video />', () => {
+describe('<Video />', () => {
+  const ref = {
+    current: {
+      play: jest.fn(),
+      pause: jest.fn(),
+    },
+  };
   it('should not have accessibility violations', async done => {
     const { container, unmount } = render(
-      <Video.Media
-        preload="auto"
-        controls={true}
-        autoPlay={true}
-        muted={true}
-        loop={true}
-        sources={[
-          {
-            id: 'first-demo-video',
-            src: '/public/demo-video.mp4',
-            type: 'video/mp4',
-          },
-        ]}
-      />,
+      <ThemeProvider theme={theme}>
+        <Video.Media
+          preload="auto"
+          controls={true}
+          autoPlay={true}
+          muted={true}
+          loop={true}
+          ref={ref}
+          sources={[
+            {
+              id: 'first-demo-video',
+              src: '/public/demo-video.mp4',
+              type: 'video/mp4',
+            },
+          ]}
+        />
+      </ThemeProvider>,
     );
 
     const a11yResults = await axe(container);
@@ -36,20 +46,23 @@ describe.skip('<Video />', () => {
 
   it('should contain all interface properties in DOM', () => {
     const { unmount } = render(
-      <Video.Media
-        preload="auto"
-        controls={true}
-        autoPlay={true}
-        muted={true}
-        loop={true}
-        sources={[
-          {
-            id: 'first-demo-video',
-            src: '/public/demo-video.mp4',
-            type: 'video/mp4',
-          },
-        ]}
-      />,
+      <ThemeProvider theme={theme}>
+        <Video.Media
+          preload="auto"
+          controls={true}
+          autoPlay={true}
+          muted={true}
+          loop={true}
+          ref={ref}
+          sources={[
+            {
+              id: 'first-demo-video',
+              src: '/public/demo-video.mp4',
+              type: 'video/mp4',
+            },
+          ]}
+        />
+      </ThemeProvider>,
     );
     const video = document.querySelector('video');
     expect(video.hasAttribute('controls')).toBeTruthy();
@@ -61,21 +74,24 @@ describe.skip('<Video />', () => {
 
   it('should render a video according to the provided aspect ratio', () => {
     const { unmount } = render(
-      <Video.Media
-        preload="auto"
-        controls={true}
-        autoPlay={true}
-        muted={true}
-        loop={true}
-        data-testid="video-media-test-id"
-        sources={[
-          {
-            id: 'first-demo-video',
-            src: '/public/demo-video.mp4',
-            type: 'video/mp4',
-          },
-        ]}
-      />,
+      <ThemeProvider theme={theme}>
+        <Video.Media
+          preload="auto"
+          controls={true}
+          autoPlay={true}
+          muted={true}
+          loop={true}
+          ref={ref}
+          data-testid="video-media-test-id"
+          sources={[
+            {
+              id: 'first-demo-video',
+              src: '/public/demo-video.mp4',
+              type: 'video/mp4',
+            },
+          ]}
+        />
+      </ThemeProvider>,
     );
     const video = document.querySelector('video');
     expect(video).toHaveStyleRule('width', '100%');
@@ -85,20 +101,23 @@ describe.skip('<Video />', () => {
 
   it('should render a video with full widht and a substracted full height', () => {
     const { unmount } = render(
-      <Video.Media
-        preload="auto"
-        controls={true}
-        autoPlay={true}
-        muted={true}
-        loop={true}
-        sources={[
-          {
-            id: 'first-demo-video',
-            src: '/public/demo-video.mp4',
-            type: 'video/mp4',
-          },
-        ]}
-      />,
+      <ThemeProvider theme={theme}>
+        <Video.Media
+          preload="auto"
+          controls={true}
+          autoPlay={true}
+          muted={true}
+          loop={true}
+          ref={ref}
+          sources={[
+            {
+              id: 'first-demo-video',
+              src: '/public/demo-video.mp4',
+              type: 'video/mp4',
+            },
+          ]}
+        />
+      </ThemeProvider>,
     );
     const video = document.querySelector('video');
     expect(video).toHaveStyleRule('width', '100%');
