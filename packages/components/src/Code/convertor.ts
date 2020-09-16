@@ -1,7 +1,15 @@
 import { PrismTheme, PrismStyleProp, PrismStyleRule } from '.';
-import { isEmptyObj } from '../utils';
 
 export type CodeTheme = Map<string, PrismStyleProp>;
+
+export function isEmptyObj<T>(obj: T): boolean {
+  for (const prop in obj) {
+    if ((obj as {}).hasOwnProperty(prop)) {
+      return false;
+    }
+  }
+  return true;
+}
 
 export function convertor(prism: PrismTheme): CodeTheme {
   const theme = new Map<string, PrismStyleProp>();
@@ -21,7 +29,9 @@ export function convertor(prism: PrismTheme): CodeTheme {
       }
 
       types.forEach(type => {
-        theme.has(type) ? theme.set(type, { ...style, ...theme.get(type) }) : theme.set(type, { ...style });
+        theme.has(type)
+          ? theme.set(type, { ...style, ...theme.get(type) })
+          : theme.set(type, { ...style });
       });
     });
   } catch (err) {

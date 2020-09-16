@@ -1,7 +1,6 @@
 import * as ColorQuery from './color';
 import * as InternalScale from './scale';
 
-export * from './query';
 export * from './types';
 export * from './scale';
 export * from './variant';
