@@ -160,6 +160,12 @@ export const theme: Theme = {
       fontSize: fontSizes[3],
     },
   },
+  outline: {
+    color: colors.grays[4],
+    offset: borderWidths[1],
+    style: 'solid',
+    width: borderWidths[1],
+  },
   small: {
     fontFamily: fonts.body,
     s: {
