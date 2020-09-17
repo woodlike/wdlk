@@ -19,9 +19,11 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@emotion/core": "^10.0.22",
-    "@wdlk/components": "2.9.3",
+    "@emotion/core": "^10.0.35",
+    "@emotion/styled": "^10.0.27",
+    "@wdlk/components": "3.0.0",
     "@wdlk/hooks": "1.4.5",
+    "emotion-theming": "^10.0.27",
     "gatsby": "^2.23.22",
     "gatsby-plugin-theme-ui": "^0.3.0",
     "gatsby-source-shopify": "^3.2.29",

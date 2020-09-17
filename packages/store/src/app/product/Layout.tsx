@@ -1,5 +1,7 @@
 import React from 'react';
+import { ThemeProvider } from 'emotion-theming';
 import { graphql } from 'gatsby';
+import { theme } from '@wdlk/components';
 
 import { Content, StageCarousel } from '.';
 import { Footer, Header } from '..';
@@ -17,24 +19,26 @@ export const ProductLayout: React.FC<ProductLayoutProps> = ({ data }) => {
     shopifyProduct: { description, images, shopifyId, tags, title, variants },
   } = data;
   return (
-    <CartProvider>
-      <Header />
-      <main>
-        <Stage.Layout
-          image={<StageCarousel images={images} />}
-          content={
-            <Content
-              description={description}
-              shopifyId={shopifyId}
-              tags={tags}
-              title={title}
-              variants={variants}
-            />
-          }
-        />
-      </main>
-      <Footer />
-    </CartProvider>
+    <ThemeProvider theme={theme}>
+      <CartProvider>
+        <Header />
+        <main>
+          <Stage.Layout
+            image={<StageCarousel images={images} />}
+            content={
+              <Content
+                description={description}
+                shopifyId={shopifyId}
+                tags={tags}
+                title={title}
+                variants={variants}
+              />
+            }
+          />
+        </main>
+        <Footer />
+      </CartProvider>
+    </ThemeProvider>
   );
 };
 

@@ -1,6 +1,6 @@
 /** @jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
-import { Theme, qt, withFocusStyle } from '@wdlk/components';
+import { Theme } from '@wdlk/components';
 import { getHeaderHeight } from './utils';
 
 export interface NavigationLinkProps {
@@ -78,23 +78,23 @@ const createLinkSize = (size: NavLinkSize | undefined): SxStyleProp => {
     case 'S':
       return {
         paddingBottom: 0,
-        fontSize: `${qt('fontSizes')(0)}px`,
+        fontSize: `12px`,
       };
     case 'M':
       return {
-        paddingBottom: `${qt('spaces')(1)}px`,
-        fontSize: `${qt('fontSizes')(4)}px`,
+        paddingBottom: `3px`,
+        fontSize: `14px`,
         textTransform: 'uppercase',
       };
     case 'L':
       return {
-        paddingBottom: `${qt('spaces')(1)}px`,
-        fontSize: `${qt('fontSizes')(5)}px`,
+        paddingBottom: `3px`,
+        fontSize: `24px`,
         textTransform: 'uppercase',
       };
     default:
       return {
-        fontSize: [`${qt('fontSizes')(1)}px`, `${qt('fontSizes')(1)}px`],
+        fontSize: [`14px`, `14px`],
       };
   }
 };
@@ -126,7 +126,7 @@ const createStylesLink = (props: NavigationLinkProps): SxStyleProp => ({
   ...createStylesCurrentLink(props.current, props.isActive, props.isInverted),
 });
 
-export const NavigationLinkBase: React.FC<NavigationLinkProps> = props => (
+export const Link: React.FC<NavigationLinkProps> = props => (
   <li sx={createStylesLinkItem(props.context)}>
     <div onMouseEnter={props.onMouseEnter} onMouseLeave={props.onMouseLeave}>
       <a
@@ -142,5 +142,3 @@ export const NavigationLinkBase: React.FC<NavigationLinkProps> = props => (
     </div>
   </li>
 );
-
-export const Link = withFocusStyle<NavigationLinkProps>(NavigationLinkBase);

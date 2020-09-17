@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { Fragment } from 'react';
 import { jsx, SxStyleProp } from 'theme-ui';
-import { withFocusStyle, Theme } from '@wdlk/components';
+import { Theme } from '@wdlk/components';
 
 export interface LogoProps {
   readonly href: string;
@@ -45,7 +45,7 @@ export const BrandPath: React.FC = () => (
   </g>
 );
 
-export const LogoBase: React.FunctionComponent<LogoProps> = (
+export const Logo: React.FunctionComponent<LogoProps> = (
   props,
 ): JSX.Element => {
   return (
@@ -63,5 +63,3 @@ export const LogoBase: React.FunctionComponent<LogoProps> = (
     </a>
   );
 };
-
-export const Logo = withFocusStyle(LogoBase);

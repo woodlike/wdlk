@@ -1,6 +1,6 @@
 /**@jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
-import { qt, Theme } from '@wdlk/components';
+import { Theme } from '@wdlk/components';
 
 export interface NavLayerProps {
   readonly isExpanded: boolean;
@@ -8,7 +8,7 @@ export interface NavLayerProps {
 
 const stylesLayer: SxStyleProp = {
   position: 'fixed',
-  top: (qt('header')('all') as unknown) as string[],
+  top: '70px',
   left: 0,
   zIndex: 1,
   display: 'flex',
@@ -16,14 +16,14 @@ const stylesLayer: SxStyleProp = {
   justifyContent: 'space-around',
   boxSizing: 'border-box',
   width: '100vw',
-  height: `calc(100vh - ${qt('header')(0)})`,
-  padding: ({ space }: Theme) => `${space[9]}px ${space[4]}px ${space[5]}px`,
+  height: `calc(100vh - 70px)`,
+  padding: `72px 18px 24px`,
   backgroundColor: 'primary',
 };
 
 const stylesLayerList: SxStyleProp = {
   padding: 0,
-  margin: ({ space }: Theme) => `0 0 ${space[5]}px 0`,
+  margin: `0 0 24px 0`,
 };
 
 const stylesLayerFooter: SxStyleProp = {
