@@ -1,5 +1,5 @@
-/**@jsx jsx */
-import { jsx, SxStyleProp } from 'theme-ui';
+import React from 'react';
+import styled from './styled';
 
 export interface ImageProps {
   readonly src: string;
@@ -11,24 +11,28 @@ export interface ImageProps {
   readonly srcSet?: string;
 }
 
+interface StyledImage {
+  readonly fit: ImageFit;
+  readonly width?: string;
+  readonly height?: string;
+}
+
 export type ImageFit = 'fill' | 'contain' | 'cover';
 
-const createStylesImage = (
-  fit: ImageFit,
-  width = '100%',
-  height = 'auto',
-): SxStyleProp => ({
-  objectFit: fit,
-  width: width,
-  height: height,
-});
+const StyledImage = styled.img<StyledImage>`
+  width: ${props => props.width ?? '100%'};
+  height: ${props => props.height ?? 'auto'};
+  object-fit: ${props => props.fit};
+`;
 
 export const Image: React.FC<ImageProps> = props => (
-  <img
-    sx={createStylesImage(props.fit, props.width, props.height)}
-    src={props.src}
+  <StyledImage
+    width={props.width}
+    height={props.height}
     alt={props.alt}
+    fit={props.fit}
     sizes={props.sizes}
+    src={props.src}
     srcSet={props.srcSet}
   />
 );
