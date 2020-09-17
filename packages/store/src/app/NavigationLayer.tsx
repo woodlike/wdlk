@@ -1,5 +1,6 @@
 import React from 'react';
-import { CopyRight, Navigation, useHeaderData, useNavigationData } from '..';
+import { Small } from '@wdlk/components';
+import { Navigation, useHeaderData, useNavigationData, useSiteData } from '..';
 
 export interface NavigationLayerProps {
   readonly isExpanded: boolean;
@@ -8,7 +9,11 @@ export interface NavigationLayerProps {
 export const NavigationLayer: React.FC<NavigationLayerProps> = props => {
   const { items, url } = useNavigationData();
   const { header } = useHeaderData();
+  const site = useSiteData();
+
   const brandItem = items.find(item => item.title === 'The Brand');
+  const date = new Date();
+
   const { isExpanded } = props;
   return (
     <Navigation.Layer isExpanded={isExpanded}>
@@ -54,7 +59,9 @@ export const NavigationLayer: React.FC<NavigationLayerProps> = props => {
         ))}
       </Navigation.LayerList>
       <Navigation.LayerFooter>
-        <CopyRight color="inverted" />
+        <Small size="s" color="background">
+          © {site.siteMetadata.brand} {date.getFullYear()}
+        </Small>
       </Navigation.LayerFooter>
     </Navigation.Layer>
   );

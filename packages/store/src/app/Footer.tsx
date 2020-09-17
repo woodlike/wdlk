@@ -1,13 +1,21 @@
+import { Small } from '@wdlk/components';
 import * as React from 'react';
 
 import { Footer as FooterUI, Icon, IconSize } from '../components';
-import { useFooterLinks, useSocialLinks } from '../hooks';
+import { useFooterLinks, useSiteData, useSocialLinks } from '../hooks';
 
 export const Footer: React.FC = () => {
   const { nodes, url } = useFooterLinks();
   const channels = useSocialLinks();
+  const { siteMetadata } = useSiteData();
+  const date = new Date();
   return (
-    <FooterUI.Frame>
+    <FooterUI.Frame
+      small={
+        <Small size="s">
+          © {siteMetadata.brand} {date.getFullYear()}
+        </Small>
+      }>
       <FooterUI.Menu>
         {nodes.map(node => (
           <FooterUI.Row key={node.id}>

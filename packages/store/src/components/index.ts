@@ -1,6 +1,5 @@
 export * from './Carousel';
 export * from './CartDisplay';
-export * from './CopyRight';
 export * from './Footer';
 export * from './Header';
 export * from './Icon';

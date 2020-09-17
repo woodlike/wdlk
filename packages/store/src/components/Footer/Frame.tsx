@@ -2,7 +2,9 @@
 import { jsx, SxStyleProp } from 'theme-ui';
 import { Box, Theme } from '@wdlk/components';
 
-import { CopyRight } from '../CopyRight';
+export interface FooterFrameProps {
+  readonly small: JSX.Element;
+}
 
 const stylesCopyRight: SxStyleProp = {
   textAlign: 'center',
@@ -25,10 +27,10 @@ const stylesFrame: SxStyleProp = {
     transform: 'translateX(-50%)',
   },
 };
-export const Frame: React.FC = props => (
+export const Frame: React.FC<FooterFrameProps> = props => (
   <Box sx={stylesFrame} as="footer" padding={[9, 8, 7]}>
     {props.children}
-    <CopyRight sx={stylesCopyRight} />
+    <div sx={stylesCopyRight}>{props.small}</div>
   </Box>
 );
 

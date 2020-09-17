@@ -4,7 +4,7 @@ import styled from './styled';
 
 export interface SmallProps {
   readonly size: 's' | 'm' | 'l';
-  readonly color?: 'primary' | 'secondary' | 'text' | 'muted';
+  readonly color?: 'primary' | 'secondary' | 'text' | 'muted' | 'background';
 }
 
 const StyledSmall = styled.small<SmallProps>`
