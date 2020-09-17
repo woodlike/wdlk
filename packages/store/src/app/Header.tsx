@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useThemeUI } from 'theme-ui';
 import { useMedia } from '@wdlk/hooks';
-import { Cart, Burger } from '@wdlk/components';
+import { Cart, Burger, Link } from '@wdlk/components';
 
 import { CartContext } from '..';
 import {
@@ -9,7 +9,6 @@ import {
   Logo,
   CartDisplay,
   CartDisplayItem,
-  CartLink,
 } from '../components';
 import { useHeaderData, useNavigationData } from '../hooks';
 import { NavigationBar, NavigationLayer } from '.';
@@ -73,9 +72,9 @@ export const Expanded: React.FC = () => {
         <CartDisplay>
           {header.miniCart.items.map(item => (
             <CartDisplayItem key={item.id}>
-              <CartLink href={`${url}/${item.handle}`} isFocused={false}>
+              <Link href={`${url}/${item.handle}`} size="s">
                 {item.title}
-              </CartLink>
+              </Link>
             </CartDisplayItem>
           ))}
           <CartDisplayItem>

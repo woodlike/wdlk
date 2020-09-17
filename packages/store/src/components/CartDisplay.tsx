@@ -1,6 +1,6 @@
 /**@jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
-import { Theme, withFocusStyle } from '@wdlk/components';
+import { Theme } from '@wdlk/components';
 
 export interface MiniCartLinkProps {
   readonly href: string;
@@ -39,7 +39,7 @@ const styledCartLink: SxStyleProp = {
   },
 };
 
-const Link: React.FC<MiniCartLinkProps> = props => (
+export const Link: React.FC<MiniCartLinkProps> = props => (
   <a sx={styledCartLink} href={props.href} className={props.className}>
     {props.children}
   </a>
@@ -56,5 +56,3 @@ export const CartDisplay: React.FC = props => {
 export const CartDisplayItem: React.FC = props => (
   <li sx={syledMiniCartLink}>{props.children}</li>
 );
-
-export const CartLink = withFocusStyle(Link);

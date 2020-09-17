@@ -1,6 +1,5 @@
 /** @jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
-import { qt } from '@wdlk/components';
 
 export interface NavBarProps {
   readonly itemCount: number;
@@ -8,8 +7,8 @@ export interface NavBarProps {
 
 const styledNavBar: SxStyleProp = {
   display: 'grid',
-  gridColumnGap: ['none', `${qt('spaces')(5)}px`],
-  gridRowGap: [`${qt('spaces')(4)}px`, 'none'],
+  gridColumnGap: ['none', `24px`],
+  gridRowGap: [`18px`, 'none'],
   paddingLeft: 0,
   margin: 0,
 };
