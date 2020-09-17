@@ -1,17 +1,12 @@
 import React, { useContext, useState } from 'react';
 import { useThemeUI } from 'theme-ui';
 import { useMedia } from '@wdlk/hooks';
-import { Cart, Burger, Link } from '@wdlk/components';
+import { Cart, Burger, Link, Columns, Column } from '@wdlk/components';
 
-import { CartContext } from '..';
-import {
-  Header as HeaderUI,
-  Logo,
-  CartDisplay,
-  CartDisplayItem,
-} from '../components';
-import { useHeaderData, useNavigationData } from '../hooks';
 import { NavigationBar, NavigationLayer } from '.';
+import { CartContext } from '..';
+import { Header as HeaderUI, Logo } from '../components';
+import { useHeaderData, useNavigationData } from '../hooks';
 
 const Compact: React.FC = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -69,15 +64,15 @@ export const Expanded: React.FC = () => {
         <NavigationBar />
       </HeaderUI.Item>
       <HeaderUI.Item>
-        <CartDisplay>
+        <Columns align="center">
           {header.miniCart.items.map(item => (
-            <CartDisplayItem key={item.id}>
+            <Column key={item.id}>
               <Link href={`${url}/${item.handle}`} size="s">
                 {item.title}
               </Link>
-            </CartDisplayItem>
+            </Column>
           ))}
-          <CartDisplayItem>
+          <Column>
             <Cart
               href={`${url}/${header.cart.handle}`}
               isFocused={false}
@@ -85,8 +80,8 @@ export const Expanded: React.FC = () => {
               isFilled={!!cart.lineItems.length}
               title="Woodlike Ocean Shopping cart"
             />
-          </CartDisplayItem>
-        </CartDisplay>
+          </Column>
+        </Columns>
       </HeaderUI.Item>
     </HeaderUI.Frame>
   );
