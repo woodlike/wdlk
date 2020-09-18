@@ -3,7 +3,6 @@ export * from './Footer';
 export * from './Header';
 export * from './Icon';
 export * from './Image';
-export * from './Link';
 export * from './Logo';
 export * from './NavigationItem';
 export * from './NavigationList';

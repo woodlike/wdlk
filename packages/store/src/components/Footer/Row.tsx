@@ -1,6 +1,6 @@
+import { Link } from '@wdlk/components';
 /**@jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
-import { LinkHighlight } from '..';
 
 export interface FooterRowItem {
   readonly url: string;
@@ -25,9 +25,13 @@ Row.displayName = 'FooterMenuRow';
 
 export const RowItem: React.FC<FooterRowItem> = props => (
   <li sx={stylesListItem}>
-    <LinkHighlight href={`${props.url}/${props.handle}`} size={2} color="muted">
+    <Link
+      href={`${props.url}/${props.handle}`}
+      size="m"
+      color="primary"
+      type="block">
       {props.children}
-    </LinkHighlight>
+    </Link>
   </li>
 );
 
