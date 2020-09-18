@@ -66,7 +66,7 @@ describe('<Columns />', () => {
   describe('justifyContent', () => {
     it('should not have a justify-content property', () => {
       const { queryByText, unmount } = render(<Columns>{id}</Columns>);
-      const columns = queryByText(id);
+      const columns = queryByText(id) as HTMLElement;
       expect(
         Boolean(getComputedStyle(columns).getPropertyValue('justify-content')),
       ).toBeFalsy();
@@ -94,6 +94,41 @@ describe('<Columns />', () => {
       );
       const columns = queryByText(id);
       expect(columns).toHaveStyleRule('justify-content', 'flex-start');
+      unmount();
+    });
+  });
+
+  describe('align', () => {
+    it('should not have a align-items property', () => {
+      const { queryByText, unmount } = render(<Columns>{id}</Columns>);
+      const columns = queryByText(id) as HTMLElement;
+      expect(
+        Boolean(getComputedStyle(columns).getPropertyValue('align-items')),
+      ).toBeFalsy();
+      unmount();
+    });
+    it('should have align-items center rule', () => {
+      const { queryByText, unmount } = render(
+        <Columns align="center">{id}</Columns>,
+      );
+      const columns = queryByText(id);
+      expect(columns).toHaveStyleRule('align-items', 'center');
+      unmount();
+    });
+    it('should have align-items flex-end rule', () => {
+      const { queryByText, unmount } = render(
+        <Columns align="flex-end">{id}</Columns>,
+      );
+      const columns = queryByText(id);
+      expect(columns).toHaveStyleRule('align-items', 'flex-end');
+      unmount();
+    });
+    it('should have align-items flex-start rule', () => {
+      const { queryByText, unmount } = render(
+        <Columns align="flex-start">{id}</Columns>,
+      );
+      const columns = queryByText(id);
+      expect(columns).toHaveStyleRule('align-items', 'flex-start');
       unmount();
     });
   });
