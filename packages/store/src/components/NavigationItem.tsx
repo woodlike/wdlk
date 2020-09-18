@@ -17,6 +17,14 @@ const StyledNavigationItem = styled.li<StyledNavigationItemProps>`
   align-self: center;
   list-style: none;
   justify-self: left;
+  ::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: ${props => props.theme.header.height}px;
+  }
   ${props =>
     props.context === 'bar' ??
     `
@@ -29,9 +37,10 @@ const StyledNavigationItem = styled.li<StyledNavigationItemProps>`
 StyledNavigationItem.displayName = 'StyledNavigationItem';
 
 export const NavigationItem: React.FC<NavigationItemProps> = props => (
-  <StyledNavigationItem context={props.context}>
-    <div onMouseEnter={props.onMouseEnter} onMouseLeave={props.onMouseLeave}>
-      {props.children}
-    </div>
+  <StyledNavigationItem
+    context={props.context}
+    onMouseEnter={props.onMouseEnter}
+    onMouseLeave={props.onMouseLeave}>
+    {props.children}
   </StyledNavigationItem>
 );
