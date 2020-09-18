@@ -69,7 +69,7 @@ export const theme: Theme = {
     headline: colors.grays[5],
     link: colors.grays[3],
     primary: colors.corals[0],
-    muted: colors.grays[3],
+    muted: colors.grays[1],
     mutedHover: colors.grays[2],
     secondary: colors.corals[1],
     text: colors.blacks[0],
