@@ -55,11 +55,16 @@ export interface Theme {
         readonly default: string;
         readonly hover: string;
       };
+      readonly tertiary: {
+        readonly default: string;
+        readonly hover: string;
+      };
     };
     readonly fontFamily: string;
     readonly s: TextSize;
     readonly m: TextSize;
     readonly l: TextSize;
+    readonly xl: TextSize;
   };
   readonly outline: {
     readonly color: string;
