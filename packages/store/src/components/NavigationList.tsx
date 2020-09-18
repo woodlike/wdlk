@@ -16,7 +16,7 @@ const StyledNavigationList = styled.ul<NavBarProps>`
     grid-template-columns: repeat(${props => props.itemCount}, 1fr [nav-item]);
     grid-template-rows: none;
     grid-column-gap: ${props => props.theme.space[5]}px;
-    grid-row-gap: none;
+    grid-row-gap: unset;
   }
 `;
 

@@ -1,18 +1,35 @@
 import React, { useContext, useState } from 'react';
 import { useThemeUI } from 'theme-ui';
 import { useMedia } from '@wdlk/hooks';
-import { Cart, Burger, Link, Columns, Column } from '@wdlk/components';
+import {
+  Cart,
+  Burger,
+  Link,
+  Columns,
+  Column,
+  Box,
+  Small,
+} from '@wdlk/components';
 
-import { Navigation, NavigationLayer } from '.';
-import { CartContext } from '..';
-import { Header as HeaderUI, Logo } from '../components';
-import { useHeaderData, useNavigationData } from '../hooks';
+import { Navigation } from '.';
+import {
+  CartContext,
+  Header as HeaderUI,
+  Logo,
+  NavigationItem,
+  NavigationLayout,
+} from '..';
+import { useHeaderData, useNavigationData, useSiteData } from '../hooks';
 
-const Compact: React.FC = () => {
+const MobileHeader: React.FC = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const { header } = useHeaderData();
-  const { url } = useNavigationData();
+  const { items, url } = useNavigationData();
   const { cart } = useContext(CartContext);
+  const site = useSiteData();
+
+  const brandItem = items.find(item => item.title === 'The Brand');
+  const date = new Date();
 
   return (
     <>
@@ -41,7 +58,52 @@ const Compact: React.FC = () => {
           />
         </HeaderUI.Item>
       </HeaderUI.Frame>
-      <NavigationLayer isExpanded={isExpanded} />
+      <NavigationLayout isExpanded={isExpanded}>
+        <Box as="ul" padding={[0, 0, 5, 0]}>
+          {items.map(item => (
+            <NavigationItem key={item.id} current={false} context="panel">
+              <Link
+                color="tertiary"
+                isActive={false}
+                size="xl"
+                type="block"
+                href={`${url}/${item.handle}`}>
+                {item.title}
+              </Link>
+            </NavigationItem>
+          ))}
+        </Box>
+        <Box as="ul" padding={[0, 0, 5, 0]}>
+          {brandItem &&
+            brandItem.menuItems.map(item => (
+              <NavigationItem key={item.id} current={false} context="panel">
+                <Link
+                  color="tertiary"
+                  isActive={false}
+                  size="m"
+                  type="block"
+                  href={`${url}/${item.handle}`}>
+                  {item.title}
+                </Link>
+              </NavigationItem>
+            ))}
+          {header.miniCart.items.map(item => (
+            <NavigationItem key={item.id} current={false} context="panel">
+              <Link
+                color="tertiary"
+                isActive={false}
+                size="m"
+                type="block"
+                href={`${url}/${item.handle}`}>
+                {item.title}
+              </Link>
+            </NavigationItem>
+          ))}
+        </Box>
+        <Small size="s" color="background">
+          © {site.siteMetadata.brand} {date.getFullYear()}
+        </Small>
+      </NavigationLayout>
     </>
   );
 };
@@ -98,5 +160,5 @@ export const Header: React.FC = () => {
     [false, true, true],
     true,
   );
-  return isCompact ? <Compact /> : <Expanded />;
+  return isCompact ? <MobileHeader /> : <Expanded />;
 };

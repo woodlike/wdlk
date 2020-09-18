@@ -23,14 +23,23 @@ export const Item: React.FC<NavigationItemProps> = props => {
       onMouseEnter={() => setExpanded(true)}
       onMouseLeave={() => setExpanded(false)}>
       <>
-        <Link size="s" href={`${props.url}/${props.handle}`}>
+        <Link
+          color="secondary"
+          isActive={false}
+          size="s"
+          type="block"
+          href={`${props.url}/${props.handle}`}>
           {props.title}
         </Link>
         {props.menuItems.length > 0 && (
           <SubNavigation isExpanded={isExpanded}>
             {props.menuItems.map(menuItem => (
               <NavigationItem key={menuItem.id} current={false} context="panel">
-                <Link size="s" href={`${props.url}/${menuItem.handle}`}>
+                <Link
+                  size="s"
+                  isActive={false}
+                  type="block"
+                  href={`${props.url}/${menuItem.handle}`}>
                   {menuItem.title}
                 </Link>
               </NavigationItem>
