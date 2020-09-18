@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { useThemeUI } from 'theme-ui';
+import { useTheme } from 'emotion-theming';
 import { useMedia } from '@wdlk/hooks';
 import {
   Cart,
@@ -14,118 +14,141 @@ import {
 import { Navigation } from '.';
 import {
   CartContext,
-  Header as HeaderUI,
+  HeaderLayout,
   Logo,
   NavigationItem,
   NavigationLayout,
 } from '..';
-import { useHeaderData, useNavigationData, useSiteData } from '../hooks';
+import {
+  HeaderData,
+  LinkNode,
+  useHeaderData,
+  useNavigationData,
+  useSiteData,
+} from '../hooks';
 
-const MobileHeader: React.FC = () => {
-  const [isExpanded, setIsExpanded] = useState(false);
-  const { header } = useHeaderData();
-  const { items, url } = useNavigationData();
-  const { cart } = useContext(CartContext);
+interface MobileNavigationProps {
+  readonly header: HeaderData;
+  readonly isExpanded: boolean;
+  readonly items: LinkNode[];
+  readonly url: string;
+}
+
+const MobileNavigation: React.FC<MobileNavigationProps> = props => {
   const site = useSiteData();
 
-  const brandItem = items.find(item => item.title === 'The Brand');
+  const brandItem = props.items.find(item => item.title === 'The Brand');
   const date = new Date();
-
   return (
-    <>
-      <HeaderUI.Frame>
-        <HeaderUI.Item>
-          <Burger
-            onClick={(): void => setIsExpanded(!isExpanded)}
-            isActive={isExpanded}
-          />
-        </HeaderUI.Item>
-        <HeaderUI.Item>
-          <Logo
-            title={header.logo.title}
-            desc={header.logo.desc}
-            isFocused={false}
-            href={url}
-          />
-        </HeaderUI.Item>
-        <HeaderUI.Item>
-          <Cart
-            href={`${url}/${header.cart.handle}`}
-            isFocused={false}
-            count={cart.lineItems.length}
-            isFilled={!!cart.lineItems.length}
-            title="Woodlike Ocean Shopping cart"
-          />
-        </HeaderUI.Item>
-      </HeaderUI.Frame>
-      <NavigationLayout isExpanded={isExpanded}>
-        <Box as="ul" padding={[0, 0, 5, 0]}>
-          {items.map(item => (
-            <NavigationItem key={item.id} current={false} context="panel">
-              <Link
-                color="tertiary"
-                isActive={false}
-                size="xl"
-                type="block"
-                href={`${url}/${item.handle}`}>
-                {item.title}
-              </Link>
-            </NavigationItem>
-          ))}
-        </Box>
-        <Box as="ul" padding={[0, 0, 5, 0]}>
-          {brandItem &&
-            brandItem.menuItems.map(item => (
-              <NavigationItem key={item.id} current={false} context="panel">
-                <Link
-                  color="tertiary"
-                  isActive={false}
-                  size="m"
-                  type="block"
-                  href={`${url}/${item.handle}`}>
-                  {item.title}
-                </Link>
-              </NavigationItem>
-            ))}
-          {header.miniCart.items.map(item => (
+    <NavigationLayout isExpanded={props.isExpanded}>
+      <Box as="ul" padding={[0, 0, 5, 0]}>
+        {props.items.map(item => (
+          <NavigationItem key={item.id} current={false} context="panel">
+            <Link
+              color="tertiary"
+              isActive={false}
+              size="xl"
+              type="block"
+              href={`${props.url}/${item.handle}`}>
+              {item.title}
+            </Link>
+          </NavigationItem>
+        ))}
+      </Box>
+      <Box as="ul" padding={[0, 0, 5, 0]}>
+        {brandItem &&
+          brandItem.menuItems.map(item => (
             <NavigationItem key={item.id} current={false} context="panel">
               <Link
                 color="tertiary"
                 isActive={false}
                 size="m"
                 type="block"
-                href={`${url}/${item.handle}`}>
+                href={`${props.url}/${item.handle}`}>
                 {item.title}
               </Link>
             </NavigationItem>
           ))}
-        </Box>
-        <Small size="s" color="background">
-          © {site.siteMetadata.brand} {date.getFullYear()}
-        </Small>
-      </NavigationLayout>
-    </>
+        {props.header.miniCart.items.map(item => (
+          <NavigationItem key={item.id} current={false} context="panel">
+            <Link
+              color="tertiary"
+              isActive={false}
+              size="m"
+              type="block"
+              href={`${props.url}/${item.handle}`}>
+              {item.title}
+            </Link>
+          </NavigationItem>
+        ))}
+      </Box>
+      <Small size="s" color="background">
+        © {site.siteMetadata.brand} {date.getFullYear()}
+      </Small>
+    </NavigationLayout>
   );
 };
 
-export const Expanded: React.FC = () => {
-  const { header } = useHeaderData();
-  const { url } = useNavigationData();
+export const Header: React.FC = () => {
+  const [isExpanded, setIsExpanded] = useState(false);
   const { cart } = useContext(CartContext);
-  return (
-    <HeaderUI.Frame>
-      <HeaderUI.Item>
+  const { breakpoints } = useTheme();
+  const { header } = useHeaderData();
+  const { items, url } = useNavigationData();
+
+  const isCompact = useMedia(
+    [
+      `(min-width: ${breakpoints[2]})`,
+      `(min-width: ${breakpoints[1]})`,
+      `(min-width: ${breakpoints[0]})`,
+    ],
+    [false, true, true],
+    true,
+  );
+  return isCompact ? (
+    <HeaderLayout
+      firstSlot={
+        <Burger
+          onClick={() => setIsExpanded(!isExpanded)}
+          isActive={isExpanded}
+        />
+      }
+      midSlot={
         <Logo
           title={header.logo.title}
           desc={header.logo.desc}
           isFocused={false}
           href={url}
         />
-      </HeaderUI.Item>
-      <HeaderUI.Item>
-        <Navigation />
-      </HeaderUI.Item>
-      <HeaderUI.Item>
+      }
+      lastSlot={
+        <Cart
+          href={`${url}/${header.cart.handle}`}
+          isFocused={false}
+          count={cart.lineItems.length}
+          isFilled={!!cart.lineItems.length}
+          title="Woodlike Ocean Shopping cart"
+        />
+      }>
+      <MobileNavigation
+        header={header}
+        isExpanded={isExpanded}
+        items={items}
+        url={url}
+      />
+    </HeaderLayout>
+  ) : (
+    <HeaderLayout
+      firstSlot={
+        <Logo
+          title={header.logo.title}
+          desc={header.logo.desc}
+          isFocused={false}
+          href={url}
+        />
+      }
+      midSlot={<Navigation />}
+      lastSlot={
         <Columns align="center">
           {header.miniCart.items.map(item => (
             <Column key={item.id}>
@@ -144,21 +167,7 @@ export const Expanded: React.FC = () => {
             />
           </Column>
         </Columns>
-      </HeaderUI.Item>
-    </HeaderUI.Frame>
+      }
+    />
   );
-};
-
-export const Header: React.FC = () => {
-  const { theme } = useThemeUI();
-  const isCompact = useMedia(
-    [
-      `(min-width: ${(theme.breakpoints as string[])[2]})`,
-      `(min-width: ${(theme.breakpoints as string[])[1]})`,
-      `(min-width: ${(theme.breakpoints as string[])[0]})`,
-    ],
-    [false, true, true],
-    true,
-  );
-  return isCompact ? <MobileHeader /> : <Expanded />;
 };
