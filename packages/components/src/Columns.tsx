@@ -6,6 +6,7 @@ export interface RowsProps {
   as?: HTMLRowsType;
   collapseBelow?: number;
   justifyContent?: CSSJustify;
+  align?: CSSAlign;
 }
 
 export type HTMLRowsType =
@@ -28,6 +29,14 @@ export type CSSJustify =
   | 'space-between'
   | 'space-evenly';
 
+export type CSSAlign =
+  | 'center'
+  | 'baseline'
+  | 'flex-end'
+  | 'flex-start'
+  | 'self-end'
+  | 'self-start';
+
 const StyledColumns = styled.div<RowsProps>`
   display: flex;
   flex-direction: row;
@@ -43,11 +52,12 @@ const StyledColumns = styled.div<RowsProps>`
   }};
   ${props => {
     const { justifyContent } = props;
-    return !!justifyContent
-      ? css`
-          justify-content: ${justifyContent};
-        `
-      : '';
+    return !!justifyContent ? `justify-content: ${justifyContent};` : '';
+  }}
+
+  ${props => {
+    const { align } = props;
+    return !!align ? `align-items: ${align};` : '';
   }}
 `;
 
@@ -56,6 +66,7 @@ StyledColumns.displayName = 'StyledColumns';
 export const Columns: React.FC<RowsProps> = props => (
   <StyledColumns
     as={props.as || 'div'}
+    align={props.align}
     collapseBelow={props.collapseBelow}
     justifyContent={props.justifyContent}>
     {props.children}
