@@ -5,7 +5,7 @@ import { theme } from '@wdlk/components';
 
 import { Content, StageCarousel } from '.';
 import { Footer, Header } from '..';
-import { CartProvider, Stage, ProductLayout } from '../..';
+import { CartProvider, ProductLayout } from '../..';
 import { ShopifyProductNode } from '../../gatsby';
 
 export interface ProductLayoutProps {
