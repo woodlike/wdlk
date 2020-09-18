@@ -1,6 +1,6 @@
 export * from './Carousel';
 export * from './Footer';
-export * from './Header';
+export * from './HeaderLayout';
 export * from './Icon';
 export * from './Image';
 export * from './Logo';
