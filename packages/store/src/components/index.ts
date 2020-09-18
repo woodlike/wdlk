@@ -7,4 +7,4 @@ export * from './Link';
 export * from './Logo';
 export * from './Navigation';
 export * from './Price';
-export * from './ProductStage';
+export * from './ProductLayout';
