@@ -3,7 +3,7 @@ import { useThemeUI } from 'theme-ui';
 import { useMedia } from '@wdlk/hooks';
 import { Cart, Burger, Link, Columns, Column } from '@wdlk/components';
 
-import { NavigationBar, NavigationLayer } from '.';
+import { Navigation, NavigationLayer } from '.';
 import { CartContext } from '..';
 import { Header as HeaderUI, Logo } from '../components';
 import { useHeaderData, useNavigationData } from '../hooks';
@@ -61,7 +61,7 @@ export const Expanded: React.FC = () => {
         />
       </HeaderUI.Item>
       <HeaderUI.Item>
-        <NavigationBar />
+        <Navigation />
       </HeaderUI.Item>
       <HeaderUI.Item>
         <Columns align="center">
