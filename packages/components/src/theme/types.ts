@@ -10,7 +10,9 @@ export interface Theme {
   readonly fontSizes: number[];
   readonly fontWeights: number[];
   readonly lineHeights: number[];
-  readonly header: string[];
+  readonly header: {
+    readonly height: number;
+  };
   readonly code: {
     readonly s: TextSize;
     readonly m: TextSize;
