@@ -171,7 +171,7 @@ export const Content: React.FC<StageContentProps> = props => {
             <Legend size="xs" as="strong">
               {sizes.label}
             </Legend>
-            <Link as="span" size="s" type="secondary">
+            <Link as="span" size="s" color="secondary">
               {sizes.link}
             </Link>
           </Columns>

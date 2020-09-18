@@ -2,15 +2,17 @@ import React from 'react';
 import { Link } from '@wdlk/components';
 import {
   LinkNode,
-  NavData,
   NavigationItem,
   NavigationList,
   SubNavigation,
   useNavigationData,
 } from '..';
 
-export interface NavigationItemProps extends NavData {
+export interface NavigationItemProps {
+  readonly handle: string;
   readonly menuItems: LinkNode[];
+  readonly title: string;
+  readonly url: string;
 }
 
 export const Item: React.FC<NavigationItemProps> = props => {
