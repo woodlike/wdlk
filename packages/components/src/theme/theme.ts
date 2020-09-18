@@ -79,7 +79,9 @@ export const theme: Theme = {
   fontWeights,
   fonts,
   lineHeights: [1, 1.5, 2],
-  header: ['70px', '70px', '70px', '70px', '70px', '70px'],
+  header: {
+    height: 70,
+  },
   code: {
     s: {
       fontSize: fontSizes[0],
