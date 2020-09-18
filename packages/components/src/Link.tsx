@@ -7,19 +7,27 @@ import styled from './styled';
 export interface LinkProps {
   readonly size: 's' | 'm' | 'l';
   readonly as?: 'a' | 'span' | 'button';
+  readonly color?: 'primary' | 'secondary';
   readonly href?: string;
+  readonly isActive?: boolean;
   readonly onClick?: React.MouseEventHandler<HTMLElement>;
-  readonly type?: 'primary' | 'secondary';
+  readonly type?: 'inline' | 'block';
 }
 
 interface StyledLinkProps {
   readonly size: 's' | 'm' | 'l';
   readonly as?: 'a' | 'span' | 'button';
+  readonly isActive?: boolean;
+  readonly color?: 'primary' | 'secondary';
   readonly onClick?: React.MouseEventHandler<HTMLElement>;
-  readonly type?: 'primary' | 'secondary';
+  readonly type?: 'inline' | 'block';
 }
 
-const stylesUnderline = (theme: Theme): SerializedStyles => css`
+const stylesUnderline = (
+  props: {
+    readonly theme: Theme;
+  } & StyledLinkProps,
+): SerializedStyles => css`
   ::after {
     content: '';
     position: absolute;
@@ -28,15 +36,20 @@ const stylesUnderline = (theme: Theme): SerializedStyles => css`
     width: 100%;
     height: 1px;
     background-color: currentColor;
-    transform: translate3d(100%, 0, 0);
-    transition: transform ${theme.transition.duration[0]}s ${theme.transition.timing[0]};
+    transform: ${props.type === 'inline' || props.isActive
+      ? 'translate3d(100%, 0, 0)'
+      : 'none'};
+    transition: transform ${props.theme.transition.duration[0]}s
+      ${props.theme.transition.timing[0]};
   }
-  }
-  :hover {
+  ${!props.isActive &&
+    `:hover {
     ::after {
-      transform: none;
+      transform: ${
+        props.type === 'inline' ? 'none' : 'translate3d(100%, 0, 0)'
+      };
     }
-  }
+  }`}
 `;
 
 const StyledLink = styled.a<StyledLinkProps>`
@@ -52,22 +65,24 @@ const StyledLink = styled.a<StyledLinkProps>`
     return !!theme.link[size] ? `${theme.link[size].fontSize}px` : '';
   }};
   color: ${props => {
-    const { type, theme } = props;
-    return !!type
-      ? theme.link.color[type].default
+    const { color, theme } = props;
+    return !!color
+      ? theme.link.color[color].default
       : theme.link.color.primary.default;
   }};
   font-kerning: normal;
+  text-decoration: none;
   line-height: ${props => props.theme.lineHeights[1]};
   letter-spacing: 1px;
   cursor: pointer;
   -webkit-font-smoothing: antialiased;
-  ${props => stylesUnderline(props.theme)};
+  ${props => stylesUnderline(props)};
+
   :hover {
     color: ${props => {
-      const { type, theme } = props;
-      return !!type
-        ? theme.link.color[type].hover
+      const { color, theme } = props;
+      return !!color
+        ? theme.link.color[color].hover
         : theme.link.color.primary.hover;
     }};
   }
@@ -77,10 +92,12 @@ StyledLink.displayName = 'StyledLink';
 export const Link: React.FC<LinkProps> = props => (
   <StyledLink
     as={props.as || 'a'}
+    color={props.color || 'primary'}
     href={props.href}
+    isActive={props.isActive}
     onClick={props.onClick}
     size={props.size}
-    type={props.type}>
+    type={props.type || 'inline'}>
     {props.children}
   </StyledLink>
 );

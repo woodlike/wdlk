@@ -147,7 +147,7 @@ export const theme: Theme = {
         hover: colors.blacks[2],
       },
       secondary: {
-        default: colors.grays[1],
+        default: colors.grays[3],
         hover: colors.grays[4],
       },
     },

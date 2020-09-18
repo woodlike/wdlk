@@ -71,7 +71,7 @@ describe('<Link />', () => {
     it('should have the link primary color on missing prop', () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
-          <Link size="s" type="primary">
+          <Link size="s" color="primary">
             {testId}
           </Link>
         </ThemeProvider>,
@@ -93,7 +93,7 @@ describe('<Link />', () => {
     it('should have the link primary color', () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
-          <Link size="s" type="primary">
+          <Link size="s" color="primary">
             {testId}
           </Link>
         </ThemeProvider>,
@@ -116,7 +116,7 @@ describe('<Link />', () => {
     it('should have the link primary color', () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
-          <Link size="s" type="secondary">
+          <Link size="s" color="secondary">
             {testId}
           </Link>
         </ThemeProvider>,
