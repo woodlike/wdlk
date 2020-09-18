@@ -1,7 +1,6 @@
 /** @jsx jsx */
 import { jsx, SxStyleProp } from 'theme-ui';
 import { Theme } from '@wdlk/components';
-import { getHeaderHeight } from './utils';
 
 export interface NavPanelProps {
   readonly isExpanded: boolean;
@@ -9,7 +8,7 @@ export interface NavPanelProps {
 
 const stylesPanelBase: SxStyleProp = {
   position: 'absolute',
-  top: ({ header }: Theme) => getHeaderHeight(header),
+  top: ({ header }: Theme) => `${header.height}px`,
   width: '100%',
   minWidth: '440px',
   padding: 3,
