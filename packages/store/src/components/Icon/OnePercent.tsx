@@ -1,13 +1,14 @@
-/**@jsx jsx */
-import { jsx } from 'theme-ui';
-import { createStyles, createIconSizeStyles, IconSize, IconColor } from '.';
+import React from 'react';
+import { IconSize, IconColor, StyledSVGIcon } from '.';
 
 export const OnePercent: React.FC<{
   readonly size: IconSize;
   readonly color: IconColor;
 }> = props => (
-  <svg
-    sx={createStyles(props.color, createIconSizeStyles(props.size, 'rect'))}
+  <StyledSVGIcon
+    size={props.size}
+    color={props.color}
+    form="rect"
     viewBox="0 0 264 110"
     id="onepfp">
     <title>One Percent For The Planet Icon</title>
@@ -46,5 +47,5 @@ export const OnePercent: React.FC<{
       d="M72.6 48a6.21 6.21 0 106.21-6.2A6.22 6.22 0 0072.6 48zm3.47 0a2.74 2.74 0 112.74 2.74A2.74 2.74 0 0176.07 48zM88.77 61.87a6.21 6.21 0 106.2-6.2 6.21 6.21 0 00-6.2 6.2zm3.47 0A2.74 2.74 0 1195 64.61a2.74 2.74 0 01-2.76-2.74z"
       transform="translate(-.94 -1.43)"
     />
-  </svg>
+  </StyledSVGIcon>
 );

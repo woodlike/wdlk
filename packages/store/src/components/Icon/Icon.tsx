@@ -1,16 +1,20 @@
-/**@jsx jsx */
-import { jsx, SxStyleProp } from 'theme-ui';
+import React from 'react';
 import { Facebook, Instagram, OnePercent } from '.';
+import styled from '../styled';
 
 export interface IconProps {
-  readonly size: IconSize;
   readonly color: IconColor;
+  readonly form: 'square' | 'rect';
+  readonly height: string;
   readonly name: IconName;
+  readonly size: IconSize;
+  readonly width: string;
 }
 
-export interface IconSizeStyle {
-  readonly width: string;
-  readonly height: string;
+export interface StyledSVGIconProps {
+  readonly color: IconColor;
+  readonly form: 'square' | 'rect';
+  readonly size: IconSize;
 }
 
 export enum IconSize {
@@ -45,32 +49,25 @@ export const getSquaredIconSize = (size: IconSize): number => {
   }
 };
 
-export const createIconSizeStyles = (
-  size: IconSize,
-  form = 'squared',
-): SxStyleProp => {
-  return form === 'squared'
-    ? {
-        width: getSquaredIconSize(size),
-        height: getSquaredIconSize(size),
-      }
-    : {
-        width: getRectIconSize(size),
-        height: getRectIconSize(size) / 2,
-      };
-};
+export const StyledSVGIcon = styled.svg<StyledSVGIconProps>`
+  ${props =>
+    props.form === 'square'
+      ? `
+      width: ${getSquaredIconSize(props.size)}px;
+      height: ${getSquaredIconSize(props.size)}px;
+    `
+      : `
+      width: ${getRectIconSize(props.size)}px;
+      height: ${getRectIconSize(props.size) / 2}px;
+    `};
+  fill: ${props => props.theme.colors[props.color]};
+  transition: fill 500ms ease;
+  :hover {
+    fill: ${props => props.theme.colors.secondary};
+  }
+`;
 
-export const createStyles = (
-  color: IconColor,
-  size: SxStyleProp,
-): SxStyleProp => ({
-  ...size,
-  fill: color,
-  transition: 'fill 500ms ease',
-  ':hover': {
-    fill: 'secondary',
-  },
-});
+StyledSVGIcon.displayName = 'StyledSVGIcon';
 
 export const Icon: React.FC<IconProps> = props => {
   switch (props.name) {
