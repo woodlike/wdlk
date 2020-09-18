@@ -5,9 +5,9 @@ import { Theme } from '.';
 import styled from './styled';
 
 export interface LinkProps {
-  readonly size: 's' | 'm' | 'l';
+  readonly size: 's' | 'm' | 'l' | 'xl';
   readonly as?: 'a' | 'span' | 'button';
-  readonly color?: 'primary' | 'secondary';
+  readonly color?: 'primary' | 'secondary' | 'tertiary';
   readonly href?: string;
   readonly isActive?: boolean;
   readonly onClick?: React.MouseEventHandler<HTMLElement>;
@@ -15,10 +15,10 @@ export interface LinkProps {
 }
 
 interface StyledLinkProps {
-  readonly size: 's' | 'm' | 'l';
+  readonly size: 's' | 'm' | 'l' | 'xl';
   readonly as?: 'a' | 'span' | 'button';
   readonly isActive?: boolean;
-  readonly color?: 'primary' | 'secondary';
+  readonly color?: 'primary' | 'secondary' | 'tertiary';
   readonly onClick?: React.MouseEventHandler<HTMLElement>;
   readonly type?: 'inline' | 'block';
 }

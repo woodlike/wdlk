@@ -150,6 +150,10 @@ export const theme: Theme = {
         default: colors.grays[3],
         hover: colors.grays[4],
       },
+      tertiary: {
+        default: colors.whites[0],
+        hover: colors.grays[0],
+      },
     },
     fontFamily: fonts.body,
     s: {
@@ -160,6 +164,9 @@ export const theme: Theme = {
     },
     l: {
       fontSize: fontSizes[3],
+    },
+    xl: {
+      fontSize: fontSizes[5],
     },
   },
   outline: {

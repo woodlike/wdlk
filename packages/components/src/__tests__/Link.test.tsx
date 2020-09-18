@@ -58,11 +58,22 @@ describe('<Link />', () => {
     it('should have the size L styles', () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
-          <Link size="m">{testId}</Link>
+          <Link size="l">{testId}</Link>
         </ThemeProvider>,
       );
       const link = getByText(testId);
-      expect(link).toHaveStyleRule('font-size', `${theme.link.m.fontSize}px`);
+      expect(link).toHaveStyleRule('font-size', `${theme.link.l.fontSize}px`);
+      unmount();
+    });
+
+    it('should have the size L styles', () => {
+      const { getByText, unmount } = render(
+        <ThemeProvider theme={theme}>
+          <Link size="xl">{testId}</Link>
+        </ThemeProvider>,
+      );
+      const link = getByText(testId);
+      expect(link).toHaveStyleRule('font-size', `${theme.link.xl.fontSize}px`);
       unmount();
     });
   });
@@ -113,7 +124,7 @@ describe('<Link />', () => {
       unmount();
     });
 
-    it('should have the link primary color', () => {
+    it('should have the link secondary color', () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
           <Link size="s" color="secondary">
@@ -129,6 +140,29 @@ describe('<Link />', () => {
       expect(link).toHaveStyleRule(
         'color',
         theme.link.color.secondary.hover.replace(/\s/g, ''),
+        {
+          target: ':hover',
+        },
+      );
+      unmount();
+    });
+
+    it('should have the link tertiary color', () => {
+      const { getByText, unmount } = render(
+        <ThemeProvider theme={theme}>
+          <Link size="s" color="tertiary">
+            {testId}
+          </Link>
+        </ThemeProvider>,
+      );
+      const link = getByText(testId);
+      expect(link).toHaveStyleRule(
+        'color',
+        theme.link.color.tertiary.default.replace(/\s/g, ''),
+      );
+      expect(link).toHaveStyleRule(
+        'color',
+        theme.link.color.tertiary.hover.replace(/\s/g, ''),
         {
           target: ':hover',
         },
