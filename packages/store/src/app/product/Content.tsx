@@ -10,6 +10,7 @@ import {
   Link,
   ScaleArea,
   Select,
+  Small,
   Stack,
   Text,
   Theme,
@@ -19,9 +20,10 @@ import { Title } from '..';
 import {
   CartContext,
   CartDispatchContext,
-  Price,
-  useProductData,
   findString,
+  Price,
+  PriceLayout,
+  useProductData,
 } from '../..';
 import { Variant } from '../../gatsby';
 
@@ -147,17 +149,21 @@ export const Content: React.FC<StageContentProps> = props => {
           <Box padding={[0, 0, 4, 0]}>
             <Title>{title}</Title>
           </Box>
-          <Price.Layout
-            label={<Price.Label>{taxLabel}</Price.Label>}
+          <PriceLayout
+            label={
+              <Small size="s" color="muted">
+                {taxLabel}
+              </Small>
+            }
             sale={
-              !!activeVariant.compareAtLocalePrice && (
-                <Price.Sale>
+              activeVariant.compareAtLocalePrice && (
+                <Price type="secondary">
                   {activeVariant.compareAtLocalePrice.amount}
-                </Price.Sale>
+                </Price>
               )
             }>
-            <Price.Total>{activeVariant.priceLocale.amount}</Price.Total>
-          </Price.Layout>
+            <Price type="primary">{activeVariant.priceLocale.amount}</Price>
+          </PriceLayout>
         </Box>
 
         <Stack as="div" space={4}>
