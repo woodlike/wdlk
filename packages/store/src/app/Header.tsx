@@ -149,13 +149,18 @@ export const Header: React.FC = () => {
       }
       midSlot={<Navigation />}
       lastSlot={
-        <Columns align="center">
+        <Columns align="baseline">
           {header.miniCart.items.map(item => (
-            <Column key={item.id}>
-              <Link href={`${url}/${item.handle}`} size="s">
+            <Box key={item.id} padding={[0, 2]}>
+              <Link
+                color="secondary"
+                isActive={false}
+                size="s"
+                type="block"
+                href={`${url}/${item.handle}`}>
                 {item.title}
               </Link>
-            </Column>
+            </Box>
           ))}
           <Column>
             <Cart

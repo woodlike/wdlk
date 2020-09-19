@@ -12,4 +12,5 @@ export * from './PriceLayout';
 export * from './ProductLayout';
 export * from './SubNavigation';
 export * from './Thumbnail';
+export * from './Title';
 export * from './Track';

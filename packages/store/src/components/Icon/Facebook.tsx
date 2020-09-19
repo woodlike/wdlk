@@ -1,5 +1,4 @@
-/**@jsx jsx */
-import { jsx } from 'theme-ui';
+import React from 'react';
 import { IconSize, IconColor, StyledSVGIcon } from '.';
 
 export const Facebook: React.FC<{

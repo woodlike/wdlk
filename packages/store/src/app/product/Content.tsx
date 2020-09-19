@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { useThemeUI } from 'theme-ui';
+import { useTheme } from 'emotion-theming';
 import { useMedia } from '@wdlk/hooks';
 import {
   Box,
@@ -13,16 +13,15 @@ import {
   Small,
   Stack,
   Text,
-  Theme,
 } from '@wdlk/components';
 
-import { Title } from '..';
 import {
   CartContext,
   CartDispatchContext,
   findString,
   Price,
   PriceLayout,
+  Title,
   useProductData,
 } from '../..';
 import { Variant } from '../../gatsby';
@@ -81,8 +80,7 @@ export const Content: React.FC<StageContentProps> = props => {
     title,
     variants: queryVariants,
   } = props;
-  const { theme } = useThemeUI();
-  const { breakpoints } = (theme as unknown) as Theme;
+  const { breakpoints } = useTheme();
 
   const [variants, setVariants] = useState(queryVariants);
   const [activeVariant, setActiveVariant] = useState(variants[0]);
