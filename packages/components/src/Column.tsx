@@ -2,7 +2,7 @@ import { css } from '@emotion/core';
 import React from 'react';
 import styled from './styled';
 
-export interface RowProps {
+export interface ColumnProps {
   readonly as?: HTMLRowType;
   readonly basis?: RowFlexBasis;
 }
@@ -26,7 +26,7 @@ const calculateFlexBasis = (basis: RowFlexBasis): string =>
     .split('/')
     .reduce((prev: string, curr: string) => ((+prev * 100) / +curr).toString());
 
-const StyledColumn = styled.div<RowProps>`
+const StyledColumn = styled.div<ColumnProps>`
   box-sizing: border-box;
   ${props => {
     const { basis } = props;
@@ -40,7 +40,7 @@ const StyledColumn = styled.div<RowProps>`
 
 StyledColumn.displayName = 'StyledColumn';
 
-export const Column: React.FC<RowProps> = props => (
+export const Column: React.FC<ColumnProps> = props => (
   <StyledColumn as={props.as || 'div'} basis={props.basis}>
     {props.children}
   </StyledColumn>
