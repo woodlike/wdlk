@@ -4,11 +4,8 @@ import styled from '../styled';
 
 export interface IconProps {
   readonly color: IconColor;
-  readonly form: 'square' | 'rect';
-  readonly height: string;
   readonly name: IconName;
   readonly size: IconSize;
-  readonly width: string;
 }
 
 export interface StyledSVGIconProps {

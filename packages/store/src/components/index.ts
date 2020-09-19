@@ -1,5 +1,5 @@
 export * from './Carousel';
-export * from './Footer';
+export * from './FooterLayout';
 export * from './HeaderLayout';
 export * from './Icon';
 export * from './Image';
