@@ -10,7 +10,6 @@ module.exports = {
   },
   plugins: [
     'gatsby-transformer-json',
-    'gatsby-plugin-theme-ui',
     {
       resolve: 'gatsby-source-shopify',
       options: {

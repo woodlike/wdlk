@@ -1,11 +1,10 @@
 import React from 'react';
-import { useThemeUI } from 'theme-ui';
-import { Heading, Theme, HeadlineSize } from '@wdlk/components';
+import { useTheme } from 'emotion-theming';
+import { Heading, HeadlineSize } from '@wdlk/components';
 import { useMedia } from '@wdlk/hooks';
 
 export const Title: React.FC = props => {
-  const { theme } = useThemeUI();
-  const { breakpoints } = (theme as unknown) as Theme;
+  const { breakpoints } = useTheme();
   const size = useMedia<HeadlineSize>(
     [
       `(min-width: ${breakpoints[3]})`,
