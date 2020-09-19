@@ -68,6 +68,7 @@ const StyledBox = styled.div<BoxProps>`
       ? Color.query(backgroundColor.color, theme.colors, backgroundColor.idx)
       : Color.query(backgroundColor as string, theme.colors)};
   margin: 0;
+  list-style: ${props => props.as === 'ul' && 'none'};
 `;
 
 StyledBox.displayName = 'StyledBox';

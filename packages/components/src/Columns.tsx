@@ -2,11 +2,11 @@ import { css } from '@emotion/core';
 import React from 'react';
 import styled from './styled';
 
-export interface RowsProps {
-  as?: HTMLRowsType;
-  collapseBelow?: number;
-  justifyContent?: CSSJustify;
-  align?: CSSAlign;
+export interface ColumnsProps {
+  readonly as?: HTMLRowsType;
+  readonly collapseBelow?: number;
+  readonly justifyContent?: CSSJustify;
+  readonly align?: CSSAlign;
 }
 
 export type HTMLRowsType =
@@ -37,7 +37,7 @@ export type CSSAlign =
   | 'self-end'
   | 'self-start';
 
-const StyledColumns = styled.div<RowsProps>`
+const StyledColumns = styled.div<ColumnsProps>`
   display: flex;
   flex-direction: row;
   ${props => {
@@ -63,7 +63,7 @@ const StyledColumns = styled.div<RowsProps>`
 
 StyledColumns.displayName = 'StyledColumns';
 
-export const Columns: React.FC<RowsProps> = props => (
+export const Columns: React.FC<ColumnsProps> = props => (
   <StyledColumns
     as={props.as || 'div'}
     align={props.align}
