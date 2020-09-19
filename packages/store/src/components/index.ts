@@ -1,4 +1,4 @@
-export * from './Carousel';
+export * from './CarouselLayout';
 export * from './FooterLayout';
 export * from './HeaderLayout';
 export * from './Icon';
@@ -11,3 +11,5 @@ export * from './Price';
 export * from './PriceLayout';
 export * from './ProductLayout';
 export * from './SubNavigation';
+export * from './Thumbnail';
+export * from './Track';

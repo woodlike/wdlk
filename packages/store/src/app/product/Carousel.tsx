@@ -1,9 +1,9 @@
 import React from 'react';
-import { useThemeUI } from 'theme-ui';
-import { Theme } from '@wdlk/components';
+import { useTheme } from 'emotion-theming';
 import { useCarousel } from '@wdlk/hooks';
+import { ChevronLeft, ChevronRight } from 'react-feather';
 
-import { Carousel, Image } from '../..';
+import { CarouselLayout, Image, Thumbnail, Track } from '../..';
 import { ProductImage, SourceSetProps, ProductImageWidth } from '../../gatsby';
 
 interface StageCarouselProps {
@@ -41,12 +41,25 @@ export const StageCarousel: React.FC<StageCarouselProps> = props => {
   const { carouselRef, coordinate, jump, next, previous } = useCarousel(
     props.images.length,
   );
-  const { theme } = useThemeUI();
-  const { colors } = (theme as unknown) as Theme;
+  const { breakpoints, colors } = useTheme();
   return (
-    <Carousel.Frame
-      iconRight={<Carousel.IconRight color={colors.link} onClick={next} />}
-      iconLeft={<Carousel.IconLeft color={colors.link} onClick={previous} />}
+    <CarouselLayout
+      iconRight={
+        <ChevronRight
+          color={colors.link}
+          onClick={next}
+          pointerEvents="visible"
+          size={25}
+        />
+      }
+      iconLeft={
+        <ChevronLeft
+          color={colors.link}
+          onClick={previous}
+          pointerEvents="visible"
+          size={25}
+        />
+      }
       thumbnails={
         <>
           {/**
@@ -57,7 +70,7 @@ export const StageCarousel: React.FC<StageCarouselProps> = props => {
           {props.images
             .filter((_, idx) => idx <= 3)
             .map((image, idx) => (
-              <Carousel.Thumbnail
+              <Thumbnail
                 alt={image.altText}
                 isActive={activeIdx === idx}
                 key={`carousel-thumbnail-${image.id}`}
@@ -69,7 +82,7 @@ export const StageCarousel: React.FC<StageCarouselProps> = props => {
             ))}
         </>
       }>
-      <Carousel.Track
+      <Track
         ref={carouselRef}
         length={props.images.length}
         coordinate={coordinate}>
@@ -78,14 +91,12 @@ export const StageCarousel: React.FC<StageCarouselProps> = props => {
             fit={'cover'}
             key={`carousel-image-${image.id}`}
             alt={image.altText}
-            sizes={`(min-width: ${
-              ((theme as unknown) as Theme).breakpoints[2]
-            }) 50vw, 100vw`}
+            sizes={`(min-width: ${breakpoints[2]}) 50vw, 100vw`}
             src={image.originalSrc}
             srcSet={createSrcSets(image.srcSet)}
           />
         ))}
-      </Carousel.Track>
-    </Carousel.Frame>
+      </Track>
+    </CarouselLayout>
   );
 };
