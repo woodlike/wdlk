@@ -2075,6 +2075,19 @@
   dependencies:
     wonka "^4.0.14"
 
+"@wdlk/components@3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@wdlk/components/-/components-3.1.0.tgz#dd2948a83f9633a39d8aacba120e996a746a7f13"
+  integrity sha512-tn053+rCrx31ThwP2Zf0QO/j0OjdMX38XwnuI+Rd1Mwowp4pVvH23dmVh+NIAEbtlLbE1F15eUM0rlUPsBbXfQ==
+  dependencies:
+    "@emotion/core" "^10.0.22"
+    "@emotion/styled" "^10.0.27"
+    prismjs "^1.19.0"
+    react "^16.12.0"
+    react-dom "^16.12.0"
+    shortid "^2.2.15"
+    theme-query "1.5.0"
+
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.9.0.tgz#bd850604b4042459a5a41cd7d338cbed695ed964"
