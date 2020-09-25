@@ -37,6 +37,11 @@ export interface Theme {
     readonly xl: TextSize;
     readonly xxl: TextSize;
   };
+  readonly layer: {
+    readonly maxWidth: string;
+    readonly shimColor: string;
+    readonly top: number;
+  };
   readonly legend: {
     readonly color: string;
     readonly fontFamily: string;

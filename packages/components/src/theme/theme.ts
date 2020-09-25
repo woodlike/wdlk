@@ -124,6 +124,11 @@ export const theme: Theme = {
       fontSize: fontSizes[8],
     },
   },
+  layer: {
+    maxWidth: breakpoints[3],
+    top: spaces[9],
+    shimColor: colors.grays[0],
+  },
   legend: {
     color: colors.blacks[1],
     fontFamily: fonts.body,
