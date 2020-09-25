@@ -21,7 +21,7 @@
   "dependencies": {
     "@emotion/core": "^10.0.35",
     "@emotion/styled": "^10.0.27",
-    "@wdlk/components": "3.1.0",
+    "@wdlk/components": "3.2.0",
     "@wdlk/hooks": "1.4.5",
     "emotion-theming": "^10.0.27",
     "gatsby": "^2.23.22",
