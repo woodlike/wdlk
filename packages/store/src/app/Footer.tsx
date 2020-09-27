@@ -38,10 +38,14 @@ export const Footer: React.FC = () => {
       {!!channels.length && (
         <Box padding={[0, 0, 6, 0]}>
           <Columns justifyContent="center" align="center">
-            {channels.map(channel => (
+            {channels.map((channel, idx) => (
               <Box key={channel.id} padding={[0, 5]}>
                 <a target="_blank" rel="noopener noreferrer" href={channel.url}>
-                  <Icon name={channel.name} size={IconSize.s} color="primary" />
+                  <Icon
+                    name={channel.name}
+                    size={idx === 0 ? IconSize.s : IconSize.xs}
+                    color="primary"
+                  />
                 </a>
               </Box>
             ))}

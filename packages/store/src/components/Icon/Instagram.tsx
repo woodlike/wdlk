@@ -9,6 +9,7 @@ export const Instagram: React.FC<{
     size={props.size}
     color={props.color}
     form="square"
+    type="highlight"
     viewBox="0 0 20 20"
     id="instagram">
     <title>Woodlike Instagram Icon</title>

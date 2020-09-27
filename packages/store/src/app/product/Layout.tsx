@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ThemeProvider } from 'emotion-theming';
 import { graphql } from 'gatsby';
 import { theme } from '@wdlk/components';
 
-import { Content, StageCarousel } from '.';
+import { Content, StageCarousel, SizingGuideLayer } from '.';
 import { Footer, Header } from '..';
 import { CartProvider, ProductLayout } from '../..';
 import { ShopifyProductNode } from '../../gatsby';
@@ -15,6 +15,7 @@ export interface ProductLayoutProps {
 }
 
 export const App: React.FC<ProductLayoutProps> = ({ data }) => {
+  const [sizingLayerIsOpen, setSizingLayerIsOpen] = useState(false);
   const {
     shopifyProduct: { description, images, shopifyId, tags, title, variants },
   } = data;
@@ -28,7 +29,9 @@ export const App: React.FC<ProductLayoutProps> = ({ data }) => {
             content={
               <Content
                 description={description}
+                isOpen={sizingLayerIsOpen}
                 shopifyId={shopifyId}
+                setIsOpen={setSizingLayerIsOpen}
                 tags={tags}
                 title={title}
                 variants={variants}
@@ -37,6 +40,10 @@ export const App: React.FC<ProductLayoutProps> = ({ data }) => {
           />
         </main>
         <Footer />
+        <SizingGuideLayer
+          setIsOpen={setSizingLayerIsOpen}
+          isOpen={sizingLayerIsOpen}
+        />
       </CartProvider>
     </ThemeProvider>
   );

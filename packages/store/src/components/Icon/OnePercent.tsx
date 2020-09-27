@@ -8,6 +8,7 @@ export const OnePercent: React.FC<{
   <StyledSVGIcon
     size={props.size}
     color={props.color}
+    type="highlight"
     form="rect"
     viewBox="0 0 264 110"
     id="onepfp">
