@@ -14,6 +14,7 @@ export * from './Select';
 export * from './Small';
 export * from './Stack';
 export * from './styles';
+export * from './Table';
 export * from './Text';
 export * from './theme';
 export * from './Video';

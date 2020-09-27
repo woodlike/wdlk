@@ -192,6 +192,12 @@ export const theme: Theme = {
       fontSize: fontSizes[2],
     },
   },
+  table: {
+    cellPadding: [3, 0],
+    color: colors.grays[1],
+    fontFamily: fonts.body,
+    fontSize: fontSizes[1],
+  },
   text: {
     fontFamily: fonts.body,
     color: colors.blacks[0],
