@@ -6,11 +6,12 @@ import { theme } from '@wdlk/components';
 import { Content, StageCarousel, SizingGuideLayer } from '.';
 import { Footer, Header } from '..';
 import { CartProvider, ProductLayout } from '../..';
-import { ShopifyProductNode } from '../../gatsby';
+import { ShopifyProductNode, ShopifyPageNode } from '../../gatsby';
 
 export interface ProductLayoutProps {
   readonly data: {
     readonly shopifyProduct: ShopifyProductNode;
+    readonly shopifyPage: ShopifyPageNode;
   };
 }
 
@@ -18,6 +19,7 @@ export const App: React.FC<ProductLayoutProps> = ({ data }) => {
   const [sizingLayerIsOpen, setSizingLayerIsOpen] = useState(false);
   const {
     shopifyProduct: { description, images, shopifyId, tags, title, variants },
+    shopifyPage,
   } = data;
   return (
     <ThemeProvider theme={theme}>
@@ -41,6 +43,7 @@ export const App: React.FC<ProductLayoutProps> = ({ data }) => {
         </main>
         <Footer />
         <SizingGuideLayer
+          sizingPage={shopifyPage}
           setIsOpen={setSizingLayerIsOpen}
           isOpen={sizingLayerIsOpen}
         />
@@ -52,7 +55,7 @@ export const App: React.FC<ProductLayoutProps> = ({ data }) => {
 export default App;
 
 export const query = graphql`
-  query ProductQuery($id: String) {
+  query ProductQuery($id: String!, $layerId: String!) {
     shopifyProduct(id: { eq: $id }) {
       description
       images {
@@ -75,6 +78,11 @@ export const query = graphql`
           amount
         }
       }
+    }
+    shopifyPage(id: { eq: $layerId }) {
+      body
+      bodySummary
+      title
     }
   }
 `;
