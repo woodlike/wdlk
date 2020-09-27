@@ -40,7 +40,9 @@ describe('<Layer />', () => {
       const layer = getByText(id);
       expect(layer).toHaveStyleRule('transform', 'translate3d(0,0,0)');
       expect(layer).toHaveStyleRule('opacity', '1');
-      expect(layer).toHaveStyleRule('top', `${theme.layer.top}px`);
+      expect(layer).toHaveStyleRule('top', `${theme.layer.top}px`, {
+        media: `(min-width: ${theme.breakpoints[2]})`,
+      });
       unmount();
     });
 
@@ -53,7 +55,9 @@ describe('<Layer />', () => {
       const layer = getByText(id);
       expect(layer).toHaveStyleRule('transform', 'translate3d(0,100%,0)');
       expect(layer).toHaveStyleRule('opacity', '0');
-      expect(layer).toHaveStyleRule('top', `${theme.layer.top}px`);
+      expect(layer).toHaveStyleRule('top', `${theme.layer.top}px`, {
+        media: `(min-width: ${theme.breakpoints[2]})`,
+      });
       unmount();
     });
 
