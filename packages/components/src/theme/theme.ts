@@ -127,7 +127,7 @@ export const theme: Theme = {
   layer: {
     maxWidth: breakpoints[3],
     top: spaces[9],
-    shimColor: colors.grays[0],
+    shimColor: colors.whites[2],
   },
   legend: {
     color: colors.blacks[1],
