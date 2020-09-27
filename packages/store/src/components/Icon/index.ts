@@ -1,3 +1,4 @@
+export * from './Close';
 export * from './Facebook';
 export * from './Icon';
 export * from './Instagram';

@@ -1,33 +1,42 @@
 import React from 'react';
-import { Facebook, Instagram, OnePercent } from '.';
+import { Facebook, Instagram, OnePercent, Close } from '.';
 import styled from '../styled';
 
 export interface IconProps {
   readonly color: IconColor;
   readonly name: IconName;
   readonly size: IconSize;
+  readonly type?: IconType;
+  readonly onClick?: React.MouseEventHandler<SVGElement>;
 }
 
 export interface StyledSVGIconProps {
   readonly color: IconColor;
   readonly form: 'square' | 'rect';
   readonly size: IconSize;
+  readonly type: IconType;
+  readonly onClick?: React.MouseEventHandler<SVGElement>;
 }
 
+export type IconType = 'utility' | 'highlight';
+
 export enum IconSize {
+  xs = 'xs',
   s = 's',
   m = 'm',
   l = 'l',
 }
 
-export type IconName = 'facebook' | 'instagram' | 'onepercent';
+export type IconName = 'close' | 'facebook' | 'instagram' | 'onepercent';
 
 export type IconColor = 'primary' | 'secondary';
 
-export const getRectIconSize = (size: IconSize): number => {
+export const getBaseIconSize = (size: IconSize): number => {
   switch (size) {
+    case IconSize.xs:
+      return 24;
     case IconSize.s:
-      return 70;
+      return 64;
     case IconSize.m:
       return 90;
     case IconSize.l:
@@ -35,30 +44,27 @@ export const getRectIconSize = (size: IconSize): number => {
   }
 };
 
-export const getSquaredIconSize = (size: IconSize): number => {
-  switch (size) {
-    case IconSize.s:
-      return 20;
-    case IconSize.m:
-      return 35;
-    case IconSize.l:
-      return 50;
-  }
-};
-
 export const StyledSVGIcon = styled.svg<StyledSVGIconProps>`
   ${props =>
     props.form === 'square'
       ? `
-      width: ${getSquaredIconSize(props.size)}px;
-      height: ${getSquaredIconSize(props.size)}px;
+      width: ${getBaseIconSize(props.size)}px;
+      height: ${getBaseIconSize(props.size)}px;
     `
       : `
-      width: ${getRectIconSize(props.size)}px;
-      height: ${getRectIconSize(props.size) / 2}px;
+      width: ${getBaseIconSize(props.size)}px;
+      height: ${getBaseIconSize(props.size) / 2}px;
     `};
-  fill: ${props => props.theme.colors[props.color]};
+  color: ${props =>
+    props.color === 'primary'
+      ? props.theme.colors[props.color]
+      : props.theme.colors.blacks[0]};
+  fill: ${props => (props.type === 'utility' ? 'none' : 'currentColor')};
+  stroke: ${props => (props.type === 'utility' ? 'currentColor' : 'none')};
+  stroke-width: ${props => (props.type === 'utility' ? '1px' : '0')};
   transition: fill 500ms ease;
+  pointer-events: auto;
+  cursor: ${props => (!!props.onClick ? 'pointer' : 'none')};
   :hover {
     fill: ${props => props.theme.colors.secondary};
   }
@@ -68,6 +74,10 @@ StyledSVGIcon.displayName = 'StyledSVGIcon';
 
 export const Icon: React.FC<IconProps> = props => {
   switch (props.name) {
+    case 'close':
+      return (
+        <Close onClick={props.onClick} size={props.size} color={props.color} />
+      );
     case 'facebook':
       return <Facebook size={props.size} color={props.color} />;
     case 'instagram':

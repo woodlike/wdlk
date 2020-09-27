@@ -2,12 +2,13 @@ import React from 'react';
 import { IconSize, IconColor, StyledSVGIcon } from '.';
 
 export const Facebook: React.FC<{
-  readonly size: IconSize;
   readonly color: IconColor;
+  readonly size: IconSize;
 }> = props => (
   <StyledSVGIcon
-    size={props.size}
     color={props.color}
+    size={props.size}
+    type="highlight"
     form="square"
     viewBox="0 0 20 20"
     id="facebook">

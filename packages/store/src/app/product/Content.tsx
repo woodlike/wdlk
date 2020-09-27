@@ -6,7 +6,6 @@ import {
   Button,
   Columns,
   Heading,
-  Layer,
   Legend,
   Link,
   ScaleArea,
@@ -33,6 +32,8 @@ export interface StageContentProps {
   readonly tags: string[];
   readonly title: string;
   readonly variants: Variant[];
+  readonly isOpen: boolean;
+  readonly setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 interface FetchVariantsArgs {
@@ -171,7 +172,11 @@ export const Content: React.FC<StageContentProps> = props => {
               <Legend size="xs" as="strong">
                 {sizes.label}
               </Legend>
-              <Link as="span" size="s" color="secondary">
+              <Link
+                as="span"
+                color="secondary"
+                onClick={() => props.setIsOpen(!props.isOpen)}
+                size="s">
                 {sizes.link}
               </Link>
             </Columns>
@@ -221,9 +226,6 @@ export const Content: React.FC<StageContentProps> = props => {
           </Stack>
         </Stack>
       </Box>
-      <Layer isOpen={true} padding={8}>
-        Hi mom
-      </Layer>
     </>
   );
 };
