@@ -1,4 +1,4 @@
-import { ButtonVariants } from '.';
+import { ButtonVariants, ScaleArea } from '.';
 import { PrismTheme } from '..';
 
 export interface Theme {
@@ -82,6 +82,12 @@ export interface Theme {
     readonly s: TextSize;
     readonly m: TextSize;
     readonly l: TextSize;
+  };
+  readonly table: {
+    readonly cellPadding: ScaleArea;
+    readonly color: string;
+    readonly fontSize: number;
+    readonly fontFamily: string;
   };
   readonly text: {
     readonly color: string;
