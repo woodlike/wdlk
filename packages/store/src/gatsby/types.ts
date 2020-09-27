@@ -1,4 +1,9 @@
-export interface ShopifyProductNode {
+export interface ShopifyNode {
+  readonly id: string;
+  readonly title: string;
+}
+
+export interface ShopifyProductNode extends ShopifyNode {
   readonly description: string;
   readonly handle: string;
   readonly id: string;
@@ -9,6 +14,11 @@ export interface ShopifyProductNode {
   readonly slug: string;
   readonly shopifyId: string;
   readonly variants: Variant[];
+}
+
+export interface ShopifyPageNode extends ShopifyNode {
+  readonly body: string;
+  readonly bodySummary: string;
 }
 
 export interface Variant {

@@ -10,6 +10,7 @@ export interface TextProps {
 export type TextType = 'p' | 'div';
 
 const StyledText = styled.p<TextProps>`
+  margin: 0;
   font-family: ${({ theme }) => theme.text.fontFamily};
   font-kerning: normal;
   font-size: ${({ size, theme }) => `${theme.text[size].fontSize}px`};

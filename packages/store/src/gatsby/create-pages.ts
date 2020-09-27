@@ -27,6 +27,7 @@ export async function createPages({
   reporter,
 }: CreatePagesArgs): Promise<void> {
   const { createPage } = actions;
+  const layerId = 'Shopify__Page__Z2lkOi8vc2hvcGlmeS9QYWdlLzEyNTg5NzAyOA==';
   try {
     const result: ProductQuery = await graphql(`
       query {
@@ -48,6 +49,7 @@ export async function createPages({
           component: resolve('./src/app/product/Layout.tsx'),
           context: {
             id: edge.node.id,
+            layerId,
           },
         });
       },
