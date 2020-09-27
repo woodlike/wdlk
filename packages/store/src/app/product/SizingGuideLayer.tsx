@@ -1,5 +1,6 @@
 import React from 'react';
 import { Columns, Layer, Heading, Text, Box } from '@wdlk/components';
+import { SizingTable } from '.';
 import { IconSize, Icon } from '../..';
 import { ShopifyPageNode } from '../../gatsby';
 
@@ -32,6 +33,7 @@ export const SizingGuideLayer: React.FC<SizingGuideLayerProps> = props => {
       <Box padding={[0, 0, 4, 0]}>
         <Text size="s">{props.sizingPage.bodySummary}</Text>
       </Box>
+      <SizingTable />
     </Layer>
   );
 };
