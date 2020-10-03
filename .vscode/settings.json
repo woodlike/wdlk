@@ -1,7 +1,11 @@
 {
-    "typescript.tsdk": "/Users/mauricio.palma/Projects/wdlk/node_modules/typescript/lib",
-    "prettier.packageManager": "yarn",
-    "prettier.configPath": "/Users/mauricio.palma/Projects/wdlk/.prettierrc.js",
-    "prettier.singleQuote": true,
-    "editor.formatOnSave": true
+  "typescript.tsdk": "/Users/mau/projects/wdlk/node_modules/typescript/lib",
+  "prettier.packageManager": "yarn",
+  "prettier.configPath": "/Users/mau/projects/wdlk/.prettierrc.js",
+  "prettier.singleQuote": true,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
