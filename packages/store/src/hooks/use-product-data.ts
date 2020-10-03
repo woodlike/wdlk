@@ -1,6 +1,37 @@
 import { useStaticQuery, graphql } from 'gatsby';
 
-export function useProductData() {
+export interface ProductData {
+  readonly cartButton: string;
+  readonly description: {
+    readonly label: string;
+  };
+  readonly preOrder: {
+    readonly label: string;
+    readonly title: string;
+  };
+  readonly sizes: {
+    readonly label: string;
+    readonly link: string;
+    readonly ariaLabel: string;
+  };
+  readonly sizingLayer: SizingLayerData;
+  readonly taxLabel: string;
+}
+
+export interface SizingLayerData {
+  readonly sizeChart: {
+    readonly id: string;
+    readonly title: string;
+    readonly values: string[];
+  }[];
+  readonly bodyMeasurement: {
+    readonly id: string;
+    readonly title: string;
+    readonly values: string[];
+  }[];
+}
+
+export function useProductData(): ProductData {
   const { allProductJson } = useStaticQuery(graphql`
     query ProductDetailQuery {
       allProductJson {
@@ -17,6 +48,18 @@ export function useProductData() {
             label
             link
             ariaLabel
+          }
+          sizingLayer {
+            bodyMeasurement {
+              id
+              title
+              values
+            }
+            sizeChart {
+              id
+              title
+              values
+            }
           }
           taxLabel
         }
