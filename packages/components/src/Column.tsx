@@ -1,10 +1,13 @@
 import { css } from '@emotion/core';
 import React from 'react';
+
+import { Scale, ScaleArea } from '.';
 import styled from './styled';
 
 export interface ColumnProps {
   readonly as?: HTMLRowType;
   readonly basis?: RowFlexBasis;
+  readonly padding?: ScaleArea;
 }
 
 export type RowFlexBasis =
@@ -35,13 +38,19 @@ const StyledColumn = styled.div<ColumnProps>`
           flex: 0 0 ${calculateFlexBasis(basis)}%;
         `
       : '';
-  }}
+  }};
+  padding: ${props =>
+    !!props.padding &&
+    Scale.toCSSPixel(Scale.create(props.padding, props.theme.space))};
 `;
 
 StyledColumn.displayName = 'StyledColumn';
 
 export const Column: React.FC<ColumnProps> = props => (
-  <StyledColumn as={props.as || 'div'} basis={props.basis}>
+  <StyledColumn
+    as={props.as || 'div'}
+    basis={props.basis}
+    padding={props.padding}>
     {props.children}
   </StyledColumn>
 );

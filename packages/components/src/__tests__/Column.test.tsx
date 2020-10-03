@@ -1,9 +1,9 @@
 import React from 'react';
 import { axe, toHaveNoViolations } from 'jest-axe';
 import { matchers } from 'jest-emotion';
-import { render, cleanup } from '@testing-library/react';
+import { render, cleanup } from '../../testing-library';
 
-import { Column } from '..';
+import { Column, theme } from '..';
 
 expect.extend(matchers);
 expect.extend(toHaveNoViolations);
@@ -126,6 +126,20 @@ describe('<Column />', () => {
       );
       const column = queryByText(id);
       expect(column).toHaveStyleRule('flex', '0 0 80%');
+      unmount();
+    });
+  });
+
+  describe('Space padding', () => {
+    it('(top | right | bottom | left): handles the theme box padding internally', () => {
+      const { getByText, unmount } = render(
+        <Column padding={[2, 6]}>{id}</Column>,
+      );
+      const column = getByText(id);
+      expect(column).toHaveStyleRule(
+        'padding',
+        `${theme.space[2]}px ${theme.space[6]}px ${theme.space[2]}px ${theme.space[6]}px`,
+      );
       unmount();
     });
   });

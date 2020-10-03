@@ -1,12 +1,8 @@
 import React from 'react';
 import { axe } from 'jest-axe';
-import { matchers } from 'jest-emotion';
-import { render, cleanup } from '../../testing-library';
 
 import { theme, Columns } from '..';
-
-expect.extend(matchers);
-// expect.extend(toHaveNoViolations);
+import { render, cleanup } from '../../testing-library';
 
 describe('<Columns />', () => {
   let id: string;
@@ -76,6 +72,7 @@ describe('<Columns />', () => {
       expect(columns).toHaveStyleRule('justify-content', 'center');
       unmount();
     });
+
     it('should have justify-content flex-end rule', () => {
       const { queryByText, unmount } = render(
         <Columns justifyContent="flex-end">{id}</Columns>,
@@ -84,6 +81,7 @@ describe('<Columns />', () => {
       expect(columns).toHaveStyleRule('justify-content', 'flex-end');
       unmount();
     });
+
     it('should have justify-content flex-start rule', () => {
       const { queryByText, unmount } = render(
         <Columns justifyContent="flex-start">{id}</Columns>,
@@ -103,6 +101,7 @@ describe('<Columns />', () => {
       ).toBeFalsy();
       unmount();
     });
+
     it('should have align-items center rule', () => {
       const { queryByText, unmount } = render(
         <Columns align="center">{id}</Columns>,
@@ -111,6 +110,7 @@ describe('<Columns />', () => {
       expect(columns).toHaveStyleRule('align-items', 'center');
       unmount();
     });
+
     it('should have align-items flex-end rule', () => {
       const { queryByText, unmount } = render(
         <Columns align="flex-end">{id}</Columns>,
@@ -119,12 +119,27 @@ describe('<Columns />', () => {
       expect(columns).toHaveStyleRule('align-items', 'flex-end');
       unmount();
     });
+
     it('should have align-items flex-start rule', () => {
       const { queryByText, unmount } = render(
         <Columns align="flex-start">{id}</Columns>,
       );
       const columns = queryByText(id);
       expect(columns).toHaveStyleRule('align-items', 'flex-start');
+      unmount();
+    });
+  });
+
+  describe('Space padding', () => {
+    it('(top | right | bottom | left): handles the theme box padding internally', () => {
+      const { getByText, unmount } = render(
+        <Columns padding={[2, 3, 4, 5]}>{id}</Columns>,
+      );
+      const columns = getByText(id);
+      expect(columns).toHaveStyleRule(
+        'padding',
+        `${theme.space[2]}px ${theme.space[3]}px ${theme.space[4]}px ${theme.space[5]}px`,
+      );
       unmount();
     });
   });

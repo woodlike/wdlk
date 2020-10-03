@@ -45,7 +45,8 @@ const StyledLayer = styled.section<LayerProps>`
     Scale.toCSSPixel(Scale.create(props.padding, props.theme.space))};
   margin: auto;
   opacity: ${props => (props.isOpen ? 1 : 0)};
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
   background-color: ${props => props.theme.colors.background};
   transform: ${props =>
     props.isOpen ? 'translate3d(0, 0, 0)' : 'translate3d(0, 100%, 0)'};
