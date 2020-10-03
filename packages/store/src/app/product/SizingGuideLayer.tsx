@@ -10,30 +10,28 @@ export interface SizingGuideLayerProps {
   readonly sizingPage: ShopifyPageNode;
 }
 
-export const SizingGuideLayer: React.FC<SizingGuideLayerProps> = props => {
-  return (
-    <Layer
-      isOpen={props.isOpen}
-      padding={[6, 8]}
-      onClickShim={() => props.setIsOpen(!props.isOpen)}>
-      <Columns
-        align="center"
-        justifyContent="space-between"
-        padding={[0, 0, 8, 0]}>
-        <Heading type="secondary" size="xs">
-          {props.sizingPage.title}
-        </Heading>
-        <Icon
-          onClick={() => props.setIsOpen(!props.isOpen)}
-          name="close"
-          size={IconSize.xs}
-          color="secondary"
-        />
-      </Columns>
-      <Box padding={[0, 0, 4, 0]}>
-        <Text size="s">{props.sizingPage.bodySummary}</Text>
-      </Box>
-      <SizingTable />
-    </Layer>
-  );
-};
+export const SizingGuideLayer: React.FC<SizingGuideLayerProps> = props => (
+  <Layer
+    isOpen={props.isOpen}
+    padding={[6, 8]}
+    onClickShim={() => props.setIsOpen(!props.isOpen)}>
+    <Columns
+      align="center"
+      justifyContent="space-between"
+      padding={[0, 0, 8, 0]}>
+      <Heading type="secondary" size="xs">
+        {props.sizingPage.title}
+      </Heading>
+      <Icon
+        onClick={() => props.setIsOpen(!props.isOpen)}
+        name="close"
+        size={IconSize.xs}
+        color="secondary"
+      />
+    </Columns>
+    <Box padding={[0, 0, 4, 0]}>
+      <Text size="s">{props.sizingPage.bodySummary}</Text>
+    </Box>
+    <SizingTable />
+  </Layer>
+);
