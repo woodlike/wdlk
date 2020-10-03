@@ -16,7 +16,7 @@ describe('<Column />', () => {
   });
 
   afterEach(() => {
-    id = undefined;
+    id = (undefined as unknown) as string;
   });
 
   it('should not have accessibility violations', async done => {
@@ -32,7 +32,7 @@ describe('<Column />', () => {
   describe('flex basis', () => {
     it('should not have flex style property', () => {
       const { queryByText, unmount } = render(<Column>{id}</Column>);
-      const column = queryByText(id);
+      const column = queryByText(id) as HTMLElement;
       const style = getComputedStyle(column);
       expect(style.getPropertyValue('flex')).toBeFalsy();
       unmount();
@@ -42,7 +42,7 @@ describe('<Column />', () => {
       const { queryByText, unmount } = render(
         <Column basis="fluid">{id}</Column>,
       );
-      const column = queryByText(id);
+      const column = queryByText(id) as HTMLElement;
       const style = getComputedStyle(column);
       expect(style.getPropertyValue('flex')).toBeFalsy();
       unmount();
@@ -52,7 +52,7 @@ describe('<Column />', () => {
       const { queryByText, unmount } = render(
         <Column basis="1/2">{id}</Column>,
       );
-      const column = queryByText(id);
+      const column = queryByText(id) as HTMLElement;
       expect(column).toHaveStyleRule('flex', '0 0 50%');
       unmount();
     });

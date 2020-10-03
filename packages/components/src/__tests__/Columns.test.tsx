@@ -1,13 +1,12 @@
 import React from 'react';
-import { axe, toHaveNoViolations } from 'jest-axe';
+import { axe } from 'jest-axe';
 import { matchers } from 'jest-emotion';
-import { render, cleanup } from '@testing-library/react';
-import { ThemeProvider } from 'emotion-theming';
+import { render, cleanup } from '../../testing-library';
 
 import { theme, Columns } from '..';
 
 expect.extend(matchers);
-expect.extend(toHaveNoViolations);
+// expect.extend(toHaveNoViolations);
 
 describe('<Columns />', () => {
   let id: string;
@@ -31,33 +30,29 @@ describe('<Columns />', () => {
   });
 
   describe('collapseBelow', () => {
-    it('should use the flex column on missing collapseBelow props', () => {
+    it('should use the flex direction row on missing collapseBelow props', () => {
       const { queryByText, unmount } = render(<Columns>{id}</Columns>);
       const columns = queryByText(id);
       expect(columns).toHaveStyleRule('flex-direction', 'row');
       unmount();
     });
 
-    it('should use flex-direction column as default value on provided collapseBelow', () => {
+    it('should use flex-direction row collapseBelow not matches the media query', () => {
       const { queryByText, unmount } = render(
-        <ThemeProvider theme={theme}>
-          <Columns collapseBelow={2}>{id}</Columns>
-        </ThemeProvider>,
+        <Columns collapseBelow={2}>{id}</Columns>,
       );
       const columns = queryByText(id);
       expect(columns).toHaveStyleRule('flex-direction', 'row');
       unmount();
     });
 
-    it('should use flex-direction row as value matching @media min-width', () => {
+    it('should use flex-direction row as value matching @media max-width', () => {
       const { queryByText, unmount } = render(
-        <ThemeProvider theme={theme}>
-          <Columns collapseBelow={2}>{id}</Columns>
-        </ThemeProvider>,
+        <Columns collapseBelow={2}>{id}</Columns>,
       );
       const columns = queryByText(id);
       expect(columns).toHaveStyleRule('flex-direction', 'column', {
-        media: `(min-width: ${theme.breakpoints[2]})`,
+        media: `(max-width: ${theme.breakpoints[2]})`,
       });
       unmount();
     });
@@ -72,6 +67,7 @@ describe('<Columns />', () => {
       ).toBeFalsy();
       unmount();
     });
+
     it('should have justify-content center rule', () => {
       const { queryByText, unmount } = render(
         <Columns justifyContent="center">{id}</Columns>,

@@ -54,11 +54,12 @@ const StyledColumns = styled.div<ColumnsProps>`
   padding: ${props =>
     !!props.padding &&
     Scale.toCSSPixel(Scale.create(props.padding, props.theme.space))};
+  
   ${props => {
     const { collapseBelow, theme } = props;
     return !!collapseBelow
       ? css`
-          @media screen and (min-width: ${theme.breakpoints[collapseBelow]}) {
+          @media screen and (max-width: ${theme.breakpoints[collapseBelow]}) {
             flex-direction: column;
           }
         `
