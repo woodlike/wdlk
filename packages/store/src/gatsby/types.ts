@@ -9,11 +9,33 @@ export interface ShopifyProductNode extends ShopifyNode {
   readonly id: string;
   readonly images: ProductImage[];
   readonly fields: ProductFields;
+  readonly features: ProductFeatures;
   readonly tags: string[];
   readonly title: string;
   readonly slug: string;
   readonly shopifyId: string;
   readonly variants: Variant[];
+}
+
+export interface ProductFeatures {
+  readonly productTitle: string;
+  readonly modelTitle: string;
+  readonly modelDescription: string;
+  readonly fitAndCoverageTitle: string;
+  readonly fabricFeature: FabricFeature;
+  readonly productMarineProtection: ProductMarineProtection;
+}
+
+export interface FabricFeature {
+  readonly title: string;
+  readonly fabricFeaturesDescription: string;
+  readonly compositionTitle: string;
+  readonly compositionDescription: string;
+}
+
+export interface ProductMarineProtection {
+  readonly title: string;
+  readonly description: string;
 }
 
 export interface ShopifyPageNode extends ShopifyNode {

@@ -8,6 +8,7 @@ const schema = `
     title: String!
     slug: String!
     variants: [ShopifyProductVariant!]!
+    features: ProductFeatures
   }
 
   type ShopifyProductVariant implements Node @dontInfer {
@@ -30,6 +31,27 @@ const schema = `
     srcSet: [String!]!
   }
 
+  type ProductFeatures @dontInfer {
+    productTitle: String!
+    modelTitle: String!
+    modelDescription: String!
+    fitAndCoverageTitle: String!
+    fitAndCoverageDescription: String!
+    fabricFeature: FabricFeature!
+  }
+
+  type FabricFeature @dontInfer {
+    title: String!
+    fabricFeaturesDescription: String!
+    compositionTitle: String!
+    compositionDescription: String!
+    productMarineProtection: ProductMarineProtection!
+  }
+
+  type ProductMarineProtection @dontInfer {
+    title: String!
+    description: String!
+  }
 `;
 
 export function createCustomSchema(actions: Actions): void {

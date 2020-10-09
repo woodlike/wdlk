@@ -1,0 +1,20 @@
+fragment FabricFeature on FabricFeature {
+  stage
+  locale
+  remoteId: id
+  createdAt(variation: COMBINED)
+  updatedAt(variation: COMBINED)
+  publishedAt(variation: COMBINED)
+  internalTitle
+  compositionTitle
+  compositionDescription
+  title
+  fabricFeaturesDescription
+  products {
+    ... on Product {
+      remoteTypeName: __typename
+      remoteId: id
+      locale
+    }
+  }
+}

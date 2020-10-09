@@ -11,6 +11,13 @@ module.exports = {
   plugins: [
     'gatsby-transformer-json',
     {
+      resolve: 'gatsby-source-graphcms',
+      options: {
+        endpoint: process.env.GRAPHCMS_ENDPOINT,
+        token: process.env.GRAPHCMS_TOKEN,
+      },
+    },
+    {
       resolve: 'gatsby-source-shopify',
       options: {
         accessToken: process.env.ACCESS_TOKEN,
