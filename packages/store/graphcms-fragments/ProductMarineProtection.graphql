@@ -1,0 +1,17 @@
+fragment ProductMarineProtection on ProductMarineProtection {
+  stage
+  locale
+  remoteId: id
+  createdAt(variation: COMBINED)
+  updatedAt(variation: COMBINED)
+  publishedAt(variation: COMBINED)
+  title
+  description
+  products {
+    ... on Product {
+      remoteTypeName: __typename
+      remoteId: id
+      locale
+    }
+  }
+}

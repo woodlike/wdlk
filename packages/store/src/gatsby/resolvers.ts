@@ -1,10 +1,40 @@
 import { Reporter } from 'gatsby';
-import { ProductImage, ProductImageSize, Variant, ShopifyProductNode } from '.';
+import fetch from 'node-fetch';
+
+import {
+  ProductImage,
+  ProductImageSize,
+  Variant,
+  ShopifyProductNode,
+  ProductFeatures,
+} from '.';
 import { priceFormatter } from '../utils';
 
 const LOCALE = 'en-GB';
 
-export function createShopifyProductResolver() {
+const allGraphCmsProduct = `
+  {
+    products {
+      productTitle
+      modelTitle
+      modelDescription
+      fitAndCoverageTitle
+      fitAndCoverageDescription
+      fabricFeature {
+        title
+        fabricFeaturesDescription
+        compositionTitle
+        compositionDescription
+      }
+      productMarineProtection {
+        title
+        description
+      }
+    }
+  }
+`;
+
+export function shopifyProductResolver() {
   return {
     ShopifyProduct: {
       slug: {
@@ -13,11 +43,40 @@ export function createShopifyProductResolver() {
           return `/products/${source.handle}`.replace(/\/\/+/g, '/');
         },
       },
+      features: {
+        async resolve(source: ShopifyProductNode) {
+          const res = await fetch(process.env.GRAPHCMS_ENDPOINT as string, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${process.env.GRAPHCMS_TOKEN}`,
+            },
+            body: JSON.stringify({ query: allGraphCmsProduct }),
+          });
+
+          const {
+            data: { products },
+          } = await res.json();
+
+          const productMatch = products.find(
+            ({ productTitle }: ProductFeatures) => {
+              const regex = new RegExp(`(^\s*${productTitle})`, 'gi');
+              return regex.test(source.title);
+            },
+          );
+
+          if (productMatch) {
+            return productMatch;
+          }
+
+          return null;
+        },
+      },
     },
   };
 }
 
-export function createShopifyProductImagesField() {
+export function shopifyProductImagesField() {
   return {
     ShopifyProductImages: {
       srcSet: {
@@ -32,7 +91,7 @@ export function createShopifyProductImagesField() {
   };
 }
 
-export function createProductVariantPriceFields(reporter: Reporter) {
+export function productVariantPriceFields(reporter: Reporter) {
   return {
     ShopifyProductVariant: {
       compareAtLocalePrice: {
@@ -85,8 +144,8 @@ export function createStoreResolvers(
   reporter: Reporter,
 ): void {
   createResolvers({
-    ...createShopifyProductResolver(),
-    ...createShopifyProductImagesField(),
-    ...createProductVariantPriceFields(reporter),
+    ...shopifyProductResolver(),
+    ...shopifyProductImagesField(),
+    ...productVariantPriceFields(reporter),
   });
 }
