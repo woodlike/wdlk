@@ -5,7 +5,7 @@ fragment Product on Product {
   createdAt(variation: COMBINED)
   updatedAt(variation: COMBINED)
   publishedAt(variation: COMBINED)
-  productTitle
+  title
   modelTitle
   modelDescription
   fitAndCoverageTitle

@@ -1,3 +1,6 @@
+import { NodeInput } from 'gatsby';
+import { GraphQLOutputType } from 'graphql';
+
 export interface ShopifyNode {
   readonly id: string;
   readonly title: string;
@@ -18,7 +21,7 @@ export interface ShopifyProductNode extends ShopifyNode {
 }
 
 export interface ProductFeatures {
-  readonly productTitle: string;
+  readonly title: string;
   readonly modelTitle: string;
   readonly modelDescription: string;
   readonly fitAndCoverageTitle: string;
@@ -78,6 +81,14 @@ export interface ProductImage {
 export interface SourceSetProps {
   readonly src: string;
   readonly id?: string;
+}
+
+export interface GatsbyCtx<T> {
+  readonly nodeModel: {
+    getAllNodes(args: {
+      readonly type: string | GraphQLOutputType;
+    }): NodeInput & T[];
+  };
 }
 
 /**

@@ -1,38 +1,31 @@
 import { Reporter } from 'gatsby';
-import fetch from 'node-fetch';
 
 import {
+  GatsbyCtx,
+  ProductFeatures,
   ProductImage,
   ProductImageSize,
-  Variant,
   ShopifyProductNode,
-  ProductFeatures,
+  Variant,
 } from '.';
 import { priceFormatter } from '../utils';
 
 const LOCALE = 'en-GB';
 
-const allGraphCmsProduct = `
-  {
-    products {
-      productTitle
-      modelTitle
-      modelDescription
-      fitAndCoverageTitle
-      fitAndCoverageDescription
-      fabricFeature {
-        title
-        fabricFeaturesDescription
-        compositionTitle
-        compositionDescription
-      }
-      productMarineProtection {
-        title
-        description
-      }
-    }
-  }
-`;
+function productFeaturesResolver(
+  source: ShopifyProductNode,
+  _: object,
+  ctx: GatsbyCtx<ProductFeatures>,
+) {
+  return (
+    ctx.nodeModel
+      .getAllNodes({ type: 'GraphCMS_Product' })
+      .find(({ title }) => {
+        const regex = new RegExp(`(^\s*${title})`, 'gi');
+        return regex.test(source.title);
+      }) ?? null
+  );
+}
 
 export function shopifyProductResolver() {
   return {
@@ -44,33 +37,7 @@ export function shopifyProductResolver() {
         },
       },
       features: {
-        async resolve(source: ShopifyProductNode) {
-          const res = await fetch(process.env.GRAPHCMS_ENDPOINT as string, {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              Authorization: `Bearer ${process.env.GRAPHCMS_TOKEN}`,
-            },
-            body: JSON.stringify({ query: allGraphCmsProduct }),
-          });
-
-          const {
-            data: { products },
-          } = await res.json();
-
-          const productMatch = products.find(
-            ({ productTitle }: ProductFeatures) => {
-              const regex = new RegExp(`(^\s*${productTitle})`, 'gi');
-              return regex.test(source.title);
-            },
-          );
-
-          if (productMatch) {
-            return productMatch;
-          }
-
-          return null;
-        },
+        resolve: productFeaturesResolver,
       },
     },
   };
