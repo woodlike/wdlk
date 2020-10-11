@@ -12,19 +12,47 @@ import { priceFormatter } from '../utils';
 
 const LOCALE = 'en-GB';
 
-function productFeaturesResolver(
+export function getNodeModelById(
+  type: string,
+  id: string,
+  ctx: GatsbyCtx<ProductFeatures>,
+) {
+  return (
+    ctx.nodeModel.getAllNodes({ type }).find(node => node.remoteId === id) ??
+    null
+  );
+}
+
+export function productFeaturesResolver(
   source: ShopifyProductNode,
   _: object,
   ctx: GatsbyCtx<ProductFeatures>,
 ) {
-  return (
-    ctx.nodeModel
-      .getAllNodes({ type: 'GraphCMS_Product' })
-      .find(({ title }) => {
-        const regex = new RegExp(`(^\s*${title})`, 'gi');
-        return regex.test(source.title);
-      }) ?? null
-  );
+  const product = ctx.nodeModel
+    .getAllNodes({ type: 'GraphCMS_Product' })
+    .find(product => {
+      const regex = new RegExp(`(^\s*${product.title})`, 'gi');
+
+      return regex.test(source.title);
+    });
+
+  if (!product) {
+    return null;
+  }
+
+  return {
+    ...product,
+    fabricFeature: getNodeModelById(
+      'GraphCMS_FabricFeature',
+      product.fabricFeature.remoteId,
+      ctx,
+    ),
+    productMarineProtection: getNodeModelById(
+      'GraphCMS_ProductMarineProtection',
+      product.productMarineProtection.remoteId,
+      ctx,
+    ),
+  };
 }
 
 export function shopifyProductResolver() {
