@@ -34,10 +34,11 @@ const schema = `
   type ProductFeatures @dontInfer {
     remoteId: String!
     title: String!
+    name: String!
     modelTitle: String!
-    modelDescription: String!
+    features: [String!]!
     fitAndCoverageTitle: String!
-    fitAndCoverageDescription: String!
+    fitAndCoverageFeatureList: [String!]!
     fabricFeature: GraphCMS_FabricFeature!
     productMarineProtection: GraphCMS_ProductMarineProtection!
   }

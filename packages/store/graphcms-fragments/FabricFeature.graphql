@@ -6,10 +6,10 @@ fragment FabricFeature on FabricFeature {
   updatedAt(variation: COMBINED)
   publishedAt(variation: COMBINED)
   internalTitle
-  compositionTitle
-  compositionDescription
   title
-  fabricFeaturesDescription
+  features
+  compositionTitle
+  compositionFeatureList
   products {
     ... on Product {
       remoteTypeName: __typename

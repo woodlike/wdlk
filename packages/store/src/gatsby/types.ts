@@ -22,10 +22,12 @@ export interface ShopifyProductNode extends ShopifyNode {
 
 export interface ProductFeatures {
   readonly remoteId: string;
+  readonly name: string;
   readonly title: string;
   readonly modelTitle: string;
-  readonly modelDescription: string;
+  readonly features: string[];
   readonly fitAndCoverageTitle: string;
+  readonly fitAndCoverageFeatureList: string[];
   readonly fabricFeature: FabricFeature;
   readonly productMarineProtection: ProductMarineProtection;
 }
@@ -33,15 +35,15 @@ export interface ProductFeatures {
 export interface FabricFeature {
   readonly remoteId: string;
   readonly title: string;
-  readonly fabricFeaturesDescription: string;
+  readonly features: string[];
   readonly compositionTitle: string;
-  readonly compositionDescription: string;
+  readonly compositionFeatureList: string[];
 }
 
 export interface ProductMarineProtection {
   readonly remoteId: string;
   readonly title: string;
-  readonly description: string;
+  readonly features: string[];
 }
 
 export interface ShopifyPageNode extends ShopifyNode {
