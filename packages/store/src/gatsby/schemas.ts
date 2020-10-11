@@ -32,7 +32,7 @@ const schema = `
   }
 
   type ProductFeatures @dontInfer {
-    productTitle: String!
+    title: String!
     modelTitle: String!
     modelDescription: String!
     fitAndCoverageTitle: String!
