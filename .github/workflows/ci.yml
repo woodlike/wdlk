@@ -52,6 +52,8 @@ jobs:
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           SHOP_NAME: ${{ secrets.SHOP_NAME }}
+          GRAPHCMS_TOKEN: ${{ secrets.GRAPHCMS_TOKEN }}
+          GRAPHCMS_ENDPOINT: ${{ secrets.GRAPHCMS_ENDPOINT }}
         run: |
           yarn clean:store
           yarn build:store
