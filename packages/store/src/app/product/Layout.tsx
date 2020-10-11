@@ -3,7 +3,7 @@ import { ThemeProvider } from 'emotion-theming';
 import { graphql } from 'gatsby';
 import { theme } from '@wdlk/components';
 
-import { Content, StageCarousel, SizingGuideLayer } from '.';
+import { Content, Features, StageCarousel, SizingGuideLayer } from '.';
 import { Footer, Header } from '..';
 import { CartProvider, GlobalCss, ProductLayout } from '../..';
 import { ShopifyProductNode, ShopifyPageNode } from '../../gatsby';
@@ -18,9 +18,19 @@ export interface ProductLayoutProps {
 export const App: React.FC<ProductLayoutProps> = ({ data }) => {
   const [sizingLayerIsOpen, setSizingLayerIsOpen] = useState(false);
   const {
-    shopifyProduct: { description, images, shopifyId, tags, title, variants },
+    shopifyProduct: {
+      description,
+      features,
+      images,
+      shopifyId,
+      tags,
+      title,
+      variants,
+    },
     shopifyPage,
   } = data;
+
+  console.log(features);
   return (
     <ThemeProvider theme={theme}>
       <CartProvider>
@@ -41,6 +51,7 @@ export const App: React.FC<ProductLayoutProps> = ({ data }) => {
               />
             }
           />
+          <Features features={features} />
         </main>
         <Footer />
         <SizingGuideLayer
@@ -60,11 +71,23 @@ export const query = graphql`
     shopifyProduct(id: { eq: $id }) {
       description
       features {
+        remoteId
         title
+        name
         modelTitle
-        modelDescription
+        features
         fitAndCoverageTitle
-        fitAndCoverageDescription
+        fitAndCoverageFeatureList
+        fabricFeature {
+          title
+          features
+          compositionTitle
+          compositionFeatureList
+        }
+        productMarineProtection {
+          title
+          features
+        }
       }
       images {
         id

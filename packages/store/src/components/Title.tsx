@@ -1,9 +1,13 @@
 import React from 'react';
 import { useTheme } from 'emotion-theming';
-import { Heading, HeadlineSize } from '@wdlk/components';
+import { Heading, HeadlineSize, HeadingLevel } from '@wdlk/components';
 import { useMedia } from '@wdlk/hooks';
 
-export const Title: React.FC = props => {
+export interface TitleProps {
+  readonly as?: HeadingLevel;
+}
+
+export const Title: React.FC<TitleProps> = props => {
   const { breakpoints } = useTheme();
   const size = useMedia<HeadlineSize>(
     [
@@ -17,7 +21,7 @@ export const Title: React.FC = props => {
   );
 
   return (
-    <Heading as="h1" size={size} type="primary">
+    <Heading as={props.as || 'h1'} size={size} type="primary">
       {props.children}
     </Heading>
   );

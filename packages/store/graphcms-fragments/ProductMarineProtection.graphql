@@ -6,7 +6,7 @@ fragment ProductMarineProtection on ProductMarineProtection {
   updatedAt(variation: COMBINED)
   publishedAt(variation: COMBINED)
   title
-  description
+  features
   products {
     ... on Product {
       remoteTypeName: __typename

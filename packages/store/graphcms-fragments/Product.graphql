@@ -5,11 +5,12 @@ fragment Product on Product {
   createdAt(variation: COMBINED)
   updatedAt(variation: COMBINED)
   publishedAt(variation: COMBINED)
+  name
   title
   modelTitle
-  modelDescription
+  features
   fitAndCoverageTitle
-  fitAndCoverageDescription
+  fitAndCoverageFeatureList
   fabricFeature {
     ... on FabricFeature {
       remoteTypeName: __typename
