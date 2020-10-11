@@ -1,6 +1,6 @@
 {
   "name": "@wdlk/components",
-  "version": "3.4.1",
+  "version": "3.4.2",
   "description": "Stateless functional components that are coherent to a design system",
   "repository": "git@github.com:woodlike/component-library.git",
   "license": "MIT",
