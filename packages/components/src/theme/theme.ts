@@ -96,7 +96,7 @@ export const theme: Theme = {
   },
   heading: {
     color: colors.blacks[0],
-    fontWeight: 400,
+    fontWeight: 300,
     fonts: {
       primary: fonts.heading.display,
       secondary: fonts.heading.secondary,
