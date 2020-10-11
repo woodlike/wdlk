@@ -12,7 +12,7 @@ import { priceFormatter } from '../utils';
 
 const LOCALE = 'en-GB';
 
-export function getNodeModelById(
+export function getNodeModelByRemoteId(
   type: string,
   id: string,
   ctx: GatsbyCtx<ProductFeatures>,
@@ -40,18 +40,22 @@ export function productFeaturesResolver(
     return null;
   }
 
+  const fabricFeature = getNodeModelByRemoteId(
+    'GraphCMS_FabricFeature',
+    product.fabricFeature.remoteId,
+    ctx,
+  );
+
+  const productMarineProtection = getNodeModelByRemoteId(
+    'GraphCMS_ProductMarineProtection',
+    product.productMarineProtection.remoteId,
+    ctx,
+  );
+
   return {
     ...product,
-    fabricFeature: getNodeModelById(
-      'GraphCMS_FabricFeature',
-      product.fabricFeature.remoteId,
-      ctx,
-    ),
-    productMarineProtection: getNodeModelById(
-      'GraphCMS_ProductMarineProtection',
-      product.productMarineProtection.remoteId,
-      ctx,
-    ),
+    fabricFeature,
+    productMarineProtection,
   };
 }
 
