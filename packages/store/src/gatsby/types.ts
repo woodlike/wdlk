@@ -21,6 +21,7 @@ export interface ShopifyProductNode extends ShopifyNode {
 }
 
 export interface ProductFeatures {
+  readonly remoteId: string;
   readonly title: string;
   readonly modelTitle: string;
   readonly modelDescription: string;
@@ -30,6 +31,7 @@ export interface ProductFeatures {
 }
 
 export interface FabricFeature {
+  readonly remoteId: string;
   readonly title: string;
   readonly fabricFeaturesDescription: string;
   readonly compositionTitle: string;
@@ -37,6 +39,7 @@ export interface FabricFeature {
 }
 
 export interface ProductMarineProtection {
+  readonly remoteId: string;
   readonly title: string;
   readonly description: string;
 }
@@ -85,9 +88,18 @@ export interface SourceSetProps {
 
 export interface GatsbyCtx<T> {
   readonly nodeModel: {
+    getNodeById(args: {
+      readonly id: string;
+      readonly type?: string | GraphQLOutputType;
+    }): (NodeInput & T[]) | null;
+    getNodesByIds(args: {
+      readonly ids: string[];
+      readonly type?: string | GraphQLOutputType;
+    }): (NodeInput & T[]) | null;
     getAllNodes(args: {
       readonly type: string | GraphQLOutputType;
     }): NodeInput & T[];
+    getTypes(): NodeInput & T[];
   };
 }
 

@@ -5,7 +5,7 @@ import { theme } from '@wdlk/components';
 
 import { Content, StageCarousel, SizingGuideLayer } from '.';
 import { Footer, Header } from '..';
-import { CartProvider, ProductLayout } from '../..';
+import { CartProvider, GlobalCss, ProductLayout } from '../..';
 import { ShopifyProductNode, ShopifyPageNode } from '../../gatsby';
 
 export interface ProductLayoutProps {
@@ -24,6 +24,7 @@ export const App: React.FC<ProductLayoutProps> = ({ data }) => {
   return (
     <ThemeProvider theme={theme}>
       <CartProvider>
+        <GlobalCss />
         <Header />
         <main>
           <ProductLayout
@@ -58,6 +59,13 @@ export const query = graphql`
   query ProductQuery($id: String!, $layerId: String!) {
     shopifyProduct(id: { eq: $id }) {
       description
+      features {
+        title
+        modelTitle
+        modelDescription
+        fitAndCoverageTitle
+        fitAndCoverageDescription
+      }
       images {
         id
         altText

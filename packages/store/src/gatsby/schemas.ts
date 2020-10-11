@@ -32,25 +32,14 @@ const schema = `
   }
 
   type ProductFeatures @dontInfer {
+    remoteId: String!
     title: String!
     modelTitle: String!
     modelDescription: String!
     fitAndCoverageTitle: String!
     fitAndCoverageDescription: String!
-    fabricFeature: FabricFeature!
-  }
-
-  type FabricFeature @dontInfer {
-    title: String!
-    fabricFeaturesDescription: String!
-    compositionTitle: String!
-    compositionDescription: String!
-    productMarineProtection: ProductMarineProtection!
-  }
-
-  type ProductMarineProtection @dontInfer {
-    title: String!
-    description: String!
+    fabricFeature: GraphCMS_FabricFeature!
+    productMarineProtection: GraphCMS_ProductMarineProtection!
   }
 `;
 
