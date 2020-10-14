@@ -8,7 +8,7 @@ const schema = `
     title: String!
     slug: String!
     variants: [ShopifyProductVariant!]!
-    features: ProductFeatures
+    features: GraphCMS_Product
   }
 
   type ShopifyProductVariant implements Node @dontInfer {
@@ -29,18 +29,6 @@ const schema = `
     altText: String
     originalSrc: String!
     srcSet: [String!]!
-  }
-
-  type ProductFeatures @dontInfer {
-    remoteId: String!
-    title: String!
-    name: String!
-    modelTitle: String!
-    features: [String!]!
-    fitAndCoverageTitle: String!
-    fitAndCoverageFeatureList: [String!]!
-    fabricFeature: GraphCMS_FabricFeature!
-    productMarineProtection: GraphCMS_ProductMarineProtection!
   }
 `;
 
