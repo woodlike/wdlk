@@ -18,6 +18,7 @@ import {
 import {
   CartContext,
   CartDispatchContext,
+  contestScales,
   findString,
   Price,
   PriceLayout,
@@ -41,12 +42,6 @@ interface FetchVariantsArgs {
   readonly localVariantsId: string;
   readonly shopifyId: string;
 }
-
-const contestScales: ScaleArea[] = [
-  [8, 9],
-  [8, 8],
-  [8, 4],
-];
 
 async function fetchVariants({
   client,
