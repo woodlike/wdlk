@@ -29,7 +29,7 @@ export const App: React.FC<ProductLayoutProps> = ({ data }) => {
     },
     shopifyPage,
   } = data;
-  console.log(features, '&&&&&&');
+
   return (
     <ThemeProvider theme={theme}>
       <CartProvider>
@@ -51,7 +51,7 @@ export const App: React.FC<ProductLayoutProps> = ({ data }) => {
             }
           />
         </main>
-        {features !== null && <Features features={features} />}
+        {features !== null && <Features features={features} images={images} />}
         <Footer />
         <SizingGuideLayer
           sizingPage={shopifyPage}
