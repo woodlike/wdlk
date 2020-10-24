@@ -2,6 +2,7 @@ export * from './CarouselLayout';
 export * from './FooterLayout';
 export * from './Global';
 export * from './HeaderLayout';
+export * from './HighlightSection';
 export * from './Icon';
 export * from './Image';
 export * from './List';
