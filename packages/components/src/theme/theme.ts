@@ -46,13 +46,13 @@ const colors: Colors = {
 };
 
 const fonts = {
-  body: `"MuseoSans", Helvetica, sans-serif`,
+  body: 'museo-sans, Helvetica, sans-serif',
   heading: {
-    display: `"Museo", serif`,
-    secondary: `"MuseoSans", Helvetica, sans-serif`,
-    campaign: `"Challista_signature", serif`,
+    display: 'museo, serif',
+    secondary: 'museo-sans, Helvetica, sans-serif',
+    campaign: 'Challista_signature, serif',
   },
-  monospace: `"IBM Plex Mono", monospace`,
+  monospace: '"IBM Plex Mono", monospace',
 };
 
 export const theme: Theme = {
