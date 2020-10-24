@@ -6,6 +6,7 @@ fragment FabricFeature on FabricFeature {
   updatedAt(variation: COMBINED)
   publishedAt(variation: COMBINED)
   internalTitle
+  materialTitle
   title
   features
   compositionTitle
@@ -17,4 +18,5 @@ fragment FabricFeature on FabricFeature {
       locale
     }
   }
+  description
 }

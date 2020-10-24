@@ -3,7 +3,7 @@ import { ThemeProvider } from 'emotion-theming';
 import { graphql } from 'gatsby';
 import { theme } from '@wdlk/components';
 
-import { Content, Features, StageCarousel, SizingGuideLayer } from '.';
+import { Content, Features, StageCarousel, SizingGuideLayer, Fabric } from '.';
 import { Footer, Header } from '..';
 import { CartProvider, GlobalCss, ProductLayout } from '../..';
 import { ShopifyProductNode, ShopifyPageNode } from '../../gatsby';
@@ -51,7 +51,10 @@ export const App: React.FC<ProductLayoutProps> = ({ data }) => {
             }
           />
         </main>
-        {features !== null && <Features features={features} images={images} />}
+        {!!features && <Features features={features} images={images} />}
+        {!!features.fabricFeature && (
+          <Fabric fabricFeature={features.fabricFeature} images={images} />
+        )}
         <Footer />
         <SizingGuideLayer
           sizingPage={shopifyPage}
@@ -79,6 +82,8 @@ export const query = graphql`
         fitAndCoverageFeatureList
         fabricFeature {
           title
+          materialTitle
+          description
           features
           compositionTitle
           compositionFeatureList
