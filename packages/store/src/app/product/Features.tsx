@@ -1,10 +1,17 @@
-import { Box, Column, Columns, Heading, ScaleArea } from '@wdlk/components';
+import { Box, Columns, Heading, ScaleArea } from '@wdlk/components';
 import { useMedia } from '@wdlk/hooks';
 import { useTheme } from 'emotion-theming';
 import React from 'react';
 
-import { contestScales, Image, List, Title } from '../..';
-import { ListItem } from '../../components';
+import {
+  contestScales,
+  Image,
+  List,
+  HighlightSection,
+  ListItem,
+  Title,
+  StickyBox,
+} from '../..';
 import { ProductFeatures, ProductImage } from '../../gatsby';
 
 export interface FeaturesProps {
@@ -37,7 +44,7 @@ export const Features: React.FC<FeaturesProps> = props => {
   } = props;
   return (
     <Columns collapseBelow={3}>
-      <Column basis="1/2" padding={scales}>
+      <HighlightSection basis="1/2" direction="right" padding={scales}>
         <Title as="h2">{name}</Title>
         {!!features.length && (
           <>
@@ -74,7 +81,7 @@ export const Features: React.FC<FeaturesProps> = props => {
             <Heading as="h3" size="m" type="primary">
               {productMarineProtection.title}
             </Heading>
-            <Box padding={[5, 0, 4, 0]}>
+            <Box padding={[5, 0]}>
               <List indent={6} space={2}>
                 {productMarineProtection.features.map(feature => (
                   <ListItem key={`${remoteId}-${feature}`}>{feature}</ListItem>
@@ -83,16 +90,16 @@ export const Features: React.FC<FeaturesProps> = props => {
             </Box>
           </>
         )}
-      </Column>
+      </HighlightSection>
       {!!images.length && (
-        <Column basis="1/2">
+        <StickyBox breakpoint={2}>
           <Image
             alt={`${name}-${modelTitle}`}
             fit="cover"
             height="100%"
             src={images[4].originalSrc}
           />
-        </Column>
+        </StickyBox>
       )}
     </Columns>
   );

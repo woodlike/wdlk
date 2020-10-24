@@ -9,7 +9,6 @@ export interface StickyBoxProps {
 
 const StyledStickyBox = styled.div<StickyBoxProps>`
   position: relative;
-  top: 0;
   box-sizing: border-box;
   height: calc(100vh - ${props => props.theme.header.height}px);
   padding: ${props =>
@@ -18,6 +17,7 @@ const StyledStickyBox = styled.div<StickyBoxProps>`
 
   @media (min-width: ${props => props.theme.breakpoints[props.breakpoint]}) {
     position: sticky;
+    top: ${props => props.theme.header.height}px;
   }
 `;
 
