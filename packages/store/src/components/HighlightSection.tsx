@@ -21,6 +21,7 @@ const pointerStyles = css`
   position: absolute;
   top: 0;
   bottom: 0;
+  z-index: 2;
   width: ${pointerSize}px;
   height: ${pointerSize}px;
   margin: auto;

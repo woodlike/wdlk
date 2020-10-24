@@ -55,9 +55,9 @@ export const Fabric: React.FC<FabricProps> = props => {
           />
         </StickyBox>
       )}
-      <HighlightSection basis="1/2" direction="right" padding={scales}>
+      <HighlightSection basis="1/2" direction="left" padding={scales}>
         <Title as="h2">{materialTitle}</Title>
-        <Box padding={[5, 0, 4, 0]}>
+        <Box padding={[5, 0, 6, 0]}>
           <Text size="m">{description}</Text>
         </Box>
         {!!features.length && (
