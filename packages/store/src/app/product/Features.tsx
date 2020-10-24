@@ -1,9 +1,10 @@
-import { Column, Columns, Heading, ScaleArea } from '@wdlk/components';
+import { Box, Column, Columns, Heading, ScaleArea } from '@wdlk/components';
 import { useMedia } from '@wdlk/hooks';
 import { useTheme } from 'emotion-theming';
 import React from 'react';
 
-import { contestScales, Image, Title } from '../..';
+import { contestScales, Image, List, Title } from '../..';
+import { ListItem } from '../../components';
 import { ProductFeatures, ProductImage } from '../../gatsby';
 
 export interface FeaturesProps {
@@ -38,32 +39,52 @@ export const Features: React.FC<FeaturesProps> = props => {
     <Columns collapseBelow={3}>
       <Column basis="1/2" padding={scales}>
         <Title as="h2">{name}</Title>
-        <Heading as="h3" size="m" type="primary">
-          {modelTitle}
-        </Heading>
-        <ul>
-          {features.map(feature => (
-            <li key={`${remoteId}-${feature}`}>{feature}</li>
-          ))}
-        </ul>
-        <Heading as="h3" size="m" type="primary">
-          {fitAndCoverageTitle}
-        </Heading>
-        <ul>
-          {fitAndCoverageFeatureList.map(feature => (
-            <li key={`${remoteId}-${feature}`}>{feature}</li>
-          ))}
-        </ul>
-        <Heading as="h3" size="m" type="primary">
-          {productMarineProtection.title}
-        </Heading>
-        <ul>
-          {productMarineProtection.features.map(feature => (
-            <li key={`${remoteId}-${feature}`}>{feature}</li>
-          ))}
-        </ul>
+        {!!features.length && (
+          <>
+            <Box padding={[5, 0, 4, 0]}>
+              <Heading as="h3" size="m" type="primary">
+                {modelTitle}
+              </Heading>
+            </Box>
+            <Box padding={[0, 0, 4, 0]}>
+              <List indent={6} space={2}>
+                {features.map(feature => (
+                  <ListItem key={`${remoteId}-${feature}`}>{feature}</ListItem>
+                ))}
+              </List>
+            </Box>
+          </>
+        )}
+        {!!fitAndCoverageFeatureList.length && (
+          <>
+            <Heading as="h3" size="m" type="primary">
+              {fitAndCoverageTitle}
+            </Heading>
+            <Box padding={[5, 0, 4, 0]}>
+              <List indent={6} space={2}>
+                {fitAndCoverageFeatureList.map(feature => (
+                  <ListItem key={`${remoteId}-${feature}`}>{feature}</ListItem>
+                ))}
+              </List>
+            </Box>
+          </>
+        )}
+        {!!productMarineProtection.features && (
+          <>
+            <Heading as="h3" size="m" type="primary">
+              {productMarineProtection.title}
+            </Heading>
+            <Box padding={[5, 0, 4, 0]}>
+              <List indent={6} space={2}>
+                {productMarineProtection.features.map(feature => (
+                  <ListItem key={`${remoteId}-${feature}`}>{feature}</ListItem>
+                ))}
+              </List>
+            </Box>
+          </>
+        )}
       </Column>
-      {images.length > 0 && (
+      {!!images.length && (
         <Column basis="1/2">
           <Image
             alt={`${name}-${modelTitle}`}
