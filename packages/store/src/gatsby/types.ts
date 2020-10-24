@@ -35,6 +35,8 @@ export interface ProductFeatures {
 export interface FabricFeature {
   readonly remoteId: string;
   readonly title: string;
+  readonly materialTitle: string;
+  readonly description: string;
   readonly features: string[];
   readonly compositionTitle: string;
   readonly compositionFeatureList: string[];
