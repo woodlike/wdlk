@@ -278,7 +278,7 @@ describe('<Select />', () => {
           -webkit-text-decoration: none;
           text-decoration: none;
           list-style: none;
-          font-family: "MuseoSans",Helvetica,sans-serif;
+          font-family: museo-sans,Helvetica,sans-serif;
           font-size: 12px;
           text-align: center;
         }
@@ -330,7 +330,7 @@ describe('<Select />', () => {
           -webkit-text-decoration: none;
           text-decoration: none;
           list-style: none;
-          font-family: "MuseoSans",Helvetica,sans-serif;
+          font-family: museo-sans,Helvetica,sans-serif;
           font-size: 12px;
           text-align: center;
         }
@@ -381,7 +381,7 @@ describe('<Select />', () => {
           -webkit-text-decoration: line-through;
           text-decoration: line-through;
           list-style: none;
-          font-family: "MuseoSans",Helvetica,sans-serif;
+          font-family: museo-sans,Helvetica,sans-serif;
           font-size: 12px;
           text-align: center;
         }
