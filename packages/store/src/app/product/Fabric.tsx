@@ -15,6 +15,7 @@ import {
 import { FabricFeature, ProductImage } from '../../gatsby';
 
 export interface FabricProps {
+  readonly productName: string;
   readonly fabricFeature: FabricFeature;
   readonly images: ProductImage[];
 }
@@ -41,6 +42,7 @@ export const Fabric: React.FC<FabricProps> = props => {
       compositionFeatureList,
     },
     images,
+    productName,
   } = props;
 
   return (
@@ -48,7 +50,7 @@ export const Fabric: React.FC<FabricProps> = props => {
       {!!images.length && (
         <StickyBox breakpoint={3}>
           <Image
-            alt={`${name}-${title}`}
+            alt={`${productName}-${title}`}
             fit="cover"
             height="100%"
             src={images[5].originalSrc}
