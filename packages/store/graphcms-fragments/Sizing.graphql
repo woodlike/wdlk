@@ -1,0 +1,10 @@
+fragment Sizing on Sizing {
+  stage
+  locale
+  remoteId: id
+  createdAt(variation: COMBINED)
+  updatedAt(variation: COMBINED)
+  publishedAt(variation: COMBINED)
+  title
+  description
+}
