@@ -53,7 +53,11 @@ export const App: React.FC<ProductLayoutProps> = ({ data }) => {
         </main>
         {!!features && <Features features={features} images={images} />}
         {!!features?.fabricFeature && (
-          <Fabric fabricFeature={features.fabricFeature} images={images} />
+          <Fabric
+            productName={title}
+            fabricFeature={features.fabricFeature}
+            images={images}
+          />
         )}
         <Footer />
         <SizingGuideLayer
