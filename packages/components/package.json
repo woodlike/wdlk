@@ -8,19 +8,14 @@
   "main": "lib/index.js",
   "scripts": {
     "build": "tsc --module commonjs --target es6 --outDir lib/",
+    "codemod:prism": "ts-node node/codemod-prism.ts",
     "dev": "tsc --watch --target es6 --outDir lib/",
     "lint": "eslint src --ext .ts,.tsx",
-    "codemod:prism": "ts-node node/codemod-prism.ts",
     "test": "jest",
     "test:coverage": "npm test -- --coverage"
   },
   "dependencies": {
-    "@emotion/core": "^10.0.22",
-    "@emotion/styled": "^10.0.27",
-    "emotion-theming": "^10.0.27",
     "prismjs": "^1.19.0",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
     "shortid": "^2.2.15",
     "theme-query": "1.5.0"
   },
@@ -36,8 +31,8 @@
     "@types/jest-axe": "^3.2.1",
     "@types/node": "^13.9.1",
     "@types/prismjs": "^1.16.0",
-    "@types/react": "^16.9.13",
-    "@types/react-dom": "^16.9.4",
+    "@types/react": "^16.9.56",
+    "@types/react-dom": "^16.9.9",
     "@types/testing-library__dom": "^7.5.0",
     "eslint-plugin-react-hooks": "^2.5.0",
     "jest": "^24.9.0",
@@ -47,5 +42,12 @@
     "ts-jest": "^24.1.0",
     "ts-node": "^8.6.2",
     "typescript": "3.8.2"
+  },
+  "peerDependencies": {
+    "@emotion/core": "^10.0.35",
+    "@emotion/styled": "^10.0.27",
+    "emotion-theming": "^10.0.27",
+    "react": "16.14.0",
+    "react-dom": "16.14.0"
   }
 }
