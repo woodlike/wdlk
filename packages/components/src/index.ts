@@ -8,6 +8,7 @@ export * from './Columns';
 export * from './CSSConverter';
 export * from './Heading';
 export * from './Layer';
+export * from './LayerShim';
 export * from './Legend';
 export * from './Link';
 export * from './Select';
