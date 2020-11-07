@@ -1,15 +1,11 @@
 import React from 'react';
 import { keyframes } from '@emotion/core';
-import { useTheme } from 'emotion-theming';
-import { Volume2, VolumeX } from 'react-feather';
-
-import { Theme } from '..';
 import styled from '../styled';
 
 export interface ControlProps {
   readonly size: number;
   readonly muted: boolean;
-  readonly onClick: React.MouseEventHandler<SVGElement>;
+  readonly onClick: React.MouseEventHandler<HTMLDivElement>;
 }
 
 const heartbeat = keyframes`
@@ -33,7 +29,7 @@ const heartbeat = keyframes`
   }
 `;
 
-const StyledControlMuted = styled(VolumeX)`
+const StyledControlMuted = styled.div`
   cursor: pointer;
   animation: ${heartbeat} 1.8s infinite cubic-bezier(0.455, 0.03, 0.515, 0.955);
   transition: color ${props => props.theme.transition.duration[0]}s linear;
@@ -45,7 +41,7 @@ const StyledControlMuted = styled(VolumeX)`
 
 StyledControlMuted.displayName = 'Video.StyledControlMuted';
 
-const StyledControlLoud = styled(Volume2)`
+const StyledControlLoud = styled.div`
   cursor: pointer;
   transition: color ${props => props.theme.transition.duration[0]}s linear;
   :hover {
@@ -56,12 +52,9 @@ const StyledControlLoud = styled(Volume2)`
 StyledControlLoud.displayName = 'Video.StyledControlLoud';
 
 export const Controls: React.FC<ControlProps> = props => {
-  const { space }: Theme = useTheme();
-  const size = !!space[props.size] ? space[props.size] : 10;
-
   return props.muted ? (
-    <StyledControlMuted onClick={props.onClick} size={size} />
+    <StyledControlMuted onClick={props.onClick} />
   ) : (
-    <StyledControlLoud onClick={props.onClick} size={size} />
+    <StyledControlLoud onClick={props.onClick} />
   );
 };

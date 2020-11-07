@@ -1,6 +1,6 @@
 {
   "name": "@wdlk/components",
-  "version": "3.4.7",
+  "version": "3.4.8",
   "description": "Stateless functional components that are coherent to a design system",
   "repository": "git@github.com:woodlike/component-library.git",
   "license": "MIT",
@@ -16,7 +16,6 @@
   },
   "dependencies": {
     "prismjs": "^1.22.0",
-    "react-feather": "^2.0.8",
     "shortid": "^2.2.15",
     "theme-query": "1.5.0"
   },
