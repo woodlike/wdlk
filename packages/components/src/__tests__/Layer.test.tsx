@@ -1,7 +1,10 @@
 import React from 'react';
+import { matchers } from 'jest-emotion';
 import { axe } from 'jest-axe';
 import { Layer, theme } from '..';
 import { cleanup, render } from '../../testing-library';
+
+expect.extend(matchers);
 
 describe('<Layer />', () => {
   let id: string;
