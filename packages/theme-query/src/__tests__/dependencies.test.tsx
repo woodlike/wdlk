@@ -24,10 +24,12 @@ describe('Theme UI & Emotion Theming', () => {
         </div>
       </ThemeProvider>,
     );
-    expect(getByTestId('test-1').innerHTML).toMatch('1st color: #000, 2nd color: #fff, 3d color: papayawhip');
+    expect(getByTestId('test-1').innerHTML).toMatch(
+      '1st color: #000, 2nd color: #fff, 3d color: papayawhip',
+    );
     unmount();
   });
-  it('should style an element according to the overwritten theme values', () => {
+  it.skip('should style an element according to the overwritten theme values', () => {
     const { getByTestId, unmount } = render(
       <ThemeProvider theme={themeMock}>
         <div
@@ -45,7 +47,9 @@ describe('Theme UI & Emotion Theming', () => {
     const div = getByTestId('test-1');
     const styles = getComputedStyle(div);
     expect(styles.getPropertyValue('color')).toMatch('papayawhip');
-    expect(styles.getPropertyValue('background-color')).toMatch('rgb(255, 255, 255)');
+    expect(styles.getPropertyValue('background-color')).toMatch(
+      'rgb(255, 255, 255)',
+    );
     unmount();
   });
 });

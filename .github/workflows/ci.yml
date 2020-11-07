@@ -30,18 +30,10 @@ jobs:
         run: yarn
 
       - name: Lint
-        run: |
-          yarn lint:components
-          yarn lint:hooks
-          yarn lint:store
-          yarn lint:theme-query
+        run: yarn lint
 
       - name: Test
-        run: |
-          yarn test:components
-          yarn test:hooks
-          yarn test:store
-          yarn test:theme-query
+        run: yarn test
 
       - name: Build
         run: |
