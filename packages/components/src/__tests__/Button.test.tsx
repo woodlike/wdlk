@@ -1,7 +1,7 @@
 import React from 'react';
 import { matchers } from 'jest-emotion';
 import { render, cleanup } from '@testing-library/react';
-import { ThemeProvider } from 'theme-ui';
+import { ThemeProvider } from 'emotion-theming';
 
 import { Button, theme } from '..';
 import { axe, toHaveNoViolations } from 'jest-axe';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { matchers } from 'jest-emotion';
 import { render, cleanup } from '@testing-library/react';
-import { ThemeProvider } from 'theme-ui';
+import { ThemeProvider } from 'emotion-theming';
 
 import { theme, Select } from '..';
 import { axe, toHaveNoViolations } from 'jest-axe';
@@ -272,7 +272,7 @@ describe('<Select />', () => {
           border-style: solid;
           line-height: 30px;
           color: currentColor;
-          border-color: var(--theme-ui-colors-border,rgb(222,223,224));
+          border-color: rgb(222,223,224);
           cursor: pointer;
           pointer-events: all;
           -webkit-text-decoration: none;
@@ -324,7 +324,7 @@ describe('<Select />', () => {
           border-style: solid;
           line-height: 30px;
           color: currentColor;
-          border-color: var(--theme-ui-colors-borderActive,rgb(34,34,34));
+          border-color: rgb(34,34,34);
           cursor: pointer;
           pointer-events: all;
           -webkit-text-decoration: none;
@@ -374,8 +374,8 @@ describe('<Select />', () => {
           border-width: 1px;
           border-style: solid;
           line-height: 30px;
-          color: var(--theme-ui-colors-borderDisabled,rgb(222,223,224));
-          border-color: var(--theme-ui-colors-borderDisabled,rgb(222,223,224));
+          color: rgb(222,223,224);
+          border-color: rgb(222,223,224);
           cursor: unset;
           pointer-events: none;
           -webkit-text-decoration: line-through;
