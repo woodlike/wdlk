@@ -29,6 +29,9 @@ jobs:
       - name: Yarn Install
         run: yarn
 
+      - name: Yarn Clean
+        run: yarn clean
+
       - name: Lint
         run: yarn lint
 
@@ -47,5 +50,4 @@ jobs:
           GRAPHCMS_TOKEN: ${{ secrets.GRAPHCMS_TOKEN }}
           GRAPHCMS_ENDPOINT: ${{ secrets.GRAPHCMS_ENDPOINT }}
         run: |
-          yarn clean:store
-          yarn build:store
+          yarn store:build
