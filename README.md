@@ -34,13 +34,17 @@ The list of most important commands to work with the selected workspace.
 
 | Commands                 | Package              | Description                                                   |
 | ------------------------ | -------------------- | ------------------------------------------------------------- |
+| `yarn dev`               | **@wdlk/\*\***       | Lerna executes the dev command on all the packages            |
+| `yarn build`             | **@wdlk/\*\***       | Lerna executes the build command on all the packages          |
+| `yarn lint`              | **@wdlk/\*\***       | Lerna executes the lint command on all the packages           |
+| `yarn test`              | **@wdlk/\*\***       | Lerna executes the test command on all the packages           |
 | `yarn build:components`  | **@wdlk/components** | compile Typescript into JavaScript                            |
 | `yarn build:containers`  | **@wdlk/containers** | compile Typescript into JavaScript                            |
-| `yarn build:store`       | **@wdlk/store**      | Generate static site using Gatsby                             |
+| `yarn store:build`       | **@wdlk/store**      | Generate static site using Gatsby                             |
 | `yarn build:theme-query` | **theme-query**      | compile Typescript into JavaScript                            |
 | `yarn dev:components`    | **@wdlk/components** | compile Typescript into JavaScript in watch mode              |
 | `yarn dev:containers`    | **@wdlk/containers** | compile Typescript into JavaScript in watch mode              |
-| `yarn dev:store`         | **@wdlk/store**      | Run the development server to develop the Shopify store front |
+| `yarn store`             | **@wdlk/store**      | Run the development server to develop the Shopify store front |
 | `yarn lint:components`   | **@wdlk/components** | Lint the package according to the Eslint configuration        |
 | `yarn lint:containers`   | **@wdlk/containers** | Lint the package according to the Eslint configuration        |
 | `yarn lint:store`        | **@wdlk/store**      | Lint the package according to the Eslint configuration        |

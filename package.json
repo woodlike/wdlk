@@ -14,14 +14,19 @@
     ]
   },
   "scripts": {
+    "dev": "lerna run dev --parallel",
+    "clean": "lerna run clean --parallel",
+    "lint": "lerna run lint --parallel",
+    "test": "lerna run test --parallel",
+    "build": "lerna run build --parallel",
     "build:components": "yarn workspace @wdlk/components build",
     "build:hooks": "yarn workspace @wdlk/hooks build",
-    "build:store": "yarn workspace @wdlk/store build",
+    "store:build": "yarn workspace @wdlk/store store:build",
     "build:theme-query": "yarn workspace theme-query build",
     "clean:store": "yarn workspace @wdlk/store clean",
     "dev:components": "yarn workspace @wdlk/components dev",
     "dev:hooks": "yarn workspace @wdlk/hooks dev",
-    "dev:store": "yarn workspace @wdlk/store dev",
+    "store": "yarn workspace @wdlk/store store",
     "dev:theme-query": "yarn workspace theme-query dev",
     "lint:components": "yarn workspace @wdlk/components lint",
     "lint:hooks": "yarn workspace @wdlk/hooks lint",
@@ -43,6 +48,7 @@
     "eslint-plugin-prettier": "3.1.2",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "7.18.3",
+    "lerna": "^3.22.1",
     "typescript": "3.8.2"
   }
 }
