@@ -8,12 +8,11 @@
   "author": "Mauricio Palma <mauricio.palma@woodlikeocean.com>",
   "main": "index.js",
   "scripts": {
-    "build": "gatsby build",
+    "gatsby:build": "gatsby build",
     "clean": "gatsby clean",
-    "dev": "gatsby develop",
+    "gatsby": "gatsby develop",
     "lint": "eslint src --ext .ts,.tsx",
     "serve": "gatsby serve",
-    "start": "gatsby develop",
     "test": "jest",
     "test:coverage": "npm test -- --coverage",
     "type-check": "tsc --noEmit"
