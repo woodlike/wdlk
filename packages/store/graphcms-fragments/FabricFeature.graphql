@@ -7,10 +7,12 @@ fragment FabricFeature on FabricFeature {
   publishedAt(variation: COMBINED)
   internalTitle
   materialTitle
+  description
   title
   features
   compositionTitle
   compositionFeatureList
+  careInstructions
   products {
     ... on Product {
       remoteTypeName: __typename
@@ -18,5 +20,4 @@ fragment FabricFeature on FabricFeature {
       locale
     }
   }
-  description
 }
