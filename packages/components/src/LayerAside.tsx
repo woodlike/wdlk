@@ -45,7 +45,7 @@ const StyledLayerAside = styled.aside<LayerAsideProps>`
 
   @media (min-width: ${props => props.theme.layerAside.breakpoint}) {
     top: 0;
-    width: 40vw;
+    width: 50vw;
     height: 100vh;
     max-width: ${props => props.theme.layerAside.maxWidth};
   }

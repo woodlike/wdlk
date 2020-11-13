@@ -76,14 +76,14 @@ describe('LayerAside', () => {
       unmount();
     });
 
-    it('should have a 40vw default on the defined theme breakpoint', () => {
+    it('should have a 50vw default on the defined theme breakpoint', () => {
       const { getByText, unmount } = render(
         <LayerAside isOpen={true} padding={[2, 5]}>
           {id}
         </LayerAside>,
       );
       const layerAside = getByText(id);
-      expect(layerAside).toHaveStyleRule('width', '40vw', {
+      expect(layerAside).toHaveStyleRule('width', '50vw', {
         media: `(min-width: ${theme.breakpoints[2]})`,
       });
       unmount();
