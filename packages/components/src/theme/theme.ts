@@ -133,6 +133,7 @@ export const theme: Theme = {
     breakpoint: breakpoints[2],
     maxWidth: breakpoints[2],
     position: 'right',
+    top: spaces[9],
   },
   legend: {
     color: colors.blacks[1],

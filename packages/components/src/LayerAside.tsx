@@ -26,11 +26,13 @@ const getX = (
 };
 
 const StyledLayerAside = styled.aside<LayerAsideProps>`
+  ${props => getLayerPosition(props.position)};
   position: fixed;
-  ${props => getLayerPosition(props.position)}
-  top: 0;
+  top: ${props => props.theme.layerAside.top}px;
+  z-index: 3;
+  box-sizing: border-box;
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - ${props => props.theme.layerAside.top}px);
   padding: ${props =>
     Scale.toCSSPixel(Scale.create(props.padding, props.theme.space))};
   opacity: ${props => (props.isOpen ? 1 : 0)};
@@ -42,7 +44,9 @@ const StyledLayerAside = styled.aside<LayerAsideProps>`
     `transform ${props.theme.transition.duration[0]}s  ${props.theme.transition.timing[0]}, opacity ${props.theme.transition.duration[0]}s linear`};
 
   @media (min-width: ${props => props.theme.layerAside.breakpoint}) {
+    top: 0;
     width: 40vw;
+    height: 100vh;
     max-width: ${props => props.theme.layerAside.maxWidth};
   }
 `;

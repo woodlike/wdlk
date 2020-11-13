@@ -46,6 +46,7 @@ export interface Theme {
     readonly maxWidth: string;
     readonly breakpoint: string;
     readonly position: 'left' | 'right';
+    readonly top: number;
   };
   readonly legend: {
     readonly color: string;
