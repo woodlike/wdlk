@@ -1,0 +1,13 @@
+fragment Cart on Cart {
+  stage
+  locale
+  remoteId: id
+  createdAt(variation: COMBINED)
+  updatedAt(variation: COMBINED)
+  publishedAt(variation: COMBINED)
+  title
+  vatValueLabel
+  totalLabel
+  shippingLabel
+  itemsLabel
+}

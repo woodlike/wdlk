@@ -20,6 +20,14 @@ export interface ShopifyProductNode extends ShopifyNode {
   readonly variants: Variant[];
 }
 
+export interface CartData {
+  readonly title: string;
+  readonly itemsLabel: string;
+  readonly shippingLabel: string;
+  readonly totalLabel: string;
+  readonly vatValueLabel: string;
+}
+
 export interface ProductFeatures {
   readonly remoteId: string;
   readonly name: string;
