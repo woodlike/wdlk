@@ -129,6 +129,11 @@ export const theme: Theme = {
     top: spaces[9],
     shimColor: colors.whites[2],
   },
+  layerAside: {
+    breakpoint: breakpoints[2],
+    maxWidth: breakpoints[2],
+    position: 'right',
+  },
   legend: {
     color: colors.blacks[1],
     fontFamily: fonts.body,
