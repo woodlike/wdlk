@@ -40,7 +40,7 @@ const colors: Colors = {
     toRGB([56, 72, 82]),
   ],
   blacks: [toRGB([0, 0, 0]), toRGB([34, 34, 34]), toRGB([51, 51, 51])],
-  beiges: [toRGB([250, 245, 244])],
+  beiges: [toRGB([250, 245, 244]), toRGB([243, 238, 232])],
   sand: toRGB([204, 153, 102]),
   yellows: [toRGB([223, 199, 129]), toRGB([255, 202, 84])],
 };
