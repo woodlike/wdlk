@@ -79,6 +79,10 @@ export const theme: Theme = {
   fontWeights,
   fonts,
   lineHeights: [1, 1.5, 2],
+  cart: {
+    width: 28,
+    height: 26,
+  },
   header: {
     height: 70,
   },

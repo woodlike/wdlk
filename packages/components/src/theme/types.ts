@@ -10,6 +10,10 @@ export interface Theme {
   readonly fontSizes: number[];
   readonly fontWeights: number[];
   readonly lineHeights: number[];
+  readonly cart: {
+    readonly width: number;
+    readonly height: number;
+  };
   readonly header: {
     readonly height: number;
   };
