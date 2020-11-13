@@ -1,5 +1,4 @@
 import React from 'react';
-import { matchers } from 'jest-emotion';
 import { axe } from 'jest-axe';
 import { LayerAside, theme } from '..';
 import { cleanup, render } from '../../testing-library';
@@ -74,7 +73,6 @@ describe('LayerAside', () => {
       );
       const layerAside = getByText(id);
       expect(layerAside).toHaveStyleRule('width', '100vw');
-      expect(layerAside).toHaveStyleRule('height', '100vh');
       unmount();
     });
 
@@ -105,6 +103,33 @@ describe('LayerAside', () => {
           media: `(min-width: ${theme.breakpoints[2]})`,
         },
       );
+      unmount();
+    });
+
+    it('should have the specified theme top position', () => {
+      const { getByText, unmount } = render(
+        <LayerAside isOpen={true} padding={[2, 5]}>
+          {id}
+        </LayerAside>,
+      );
+      const layerAside = getByText(id);
+      expect(layerAside).toHaveStyleRule(
+        'height',
+        `calc(100vh - ${theme.layerAside.top}px)`,
+      );
+      unmount();
+    });
+
+    it('should have a top 0 position on the defined breakpoint', () => {
+      const { getByText, unmount } = render(
+        <LayerAside isOpen={true} padding={[2, 5]}>
+          {id}
+        </LayerAside>,
+      );
+      const layerAside = getByText(id);
+      expect(layerAside).toHaveStyleRule('height', `100vh`, {
+        media: `(min-width: ${theme.breakpoints[2]})`,
+      });
       unmount();
     });
   });
