@@ -42,6 +42,11 @@ export interface Theme {
     readonly shimColor: string;
     readonly top: number;
   };
+  readonly layerAside: {
+    readonly maxWidth: string;
+    readonly breakpoint: string;
+    readonly position: 'left' | 'right';
+  };
   readonly legend: {
     readonly color: string;
     readonly fontFamily: string;
