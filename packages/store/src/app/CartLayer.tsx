@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import { LayerAside, LayerShim } from '@wdlk/components';
 import { useMedia } from '@wdlk/hooks';
 import { useTheme } from 'emotion-theming';
 
 export interface CartLayer {
   readonly isOpen: boolean;
+  readonly setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 export const CartLayer: React.FC<CartLayer> = props => {
@@ -14,12 +15,15 @@ export const CartLayer: React.FC<CartLayer> = props => {
     [true, false],
     false,
   );
+  const { isOpen, setIsOpen } = props;
   return (
     <>
-      <LayerAside padding={[6, 8]} isOpen={props.isOpen}>
+      <LayerAside padding={[6, 8]} isOpen={isOpen}>
         Hi Mom
       </LayerAside>
-      {isVisible && <LayerShim isOpen={props.isOpen} />}
+      {isVisible && (
+        <LayerShim isOpen={isOpen} onClick={() => setIsOpen(false)} />
+      )}
     </>
   );
 };

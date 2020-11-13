@@ -18,6 +18,7 @@ export interface ProductLayoutProps {
 
 export const App: React.FC<ProductLayoutProps> = ({ data }) => {
   const [sizingLayerIsOpen, setSizingLayerIsOpen] = useState(false);
+  const [cartLayerIsOpen, setCartLayerIsOpen] = useState(false);
   const {
     shopifyProduct: {
       description,
@@ -35,7 +36,10 @@ export const App: React.FC<ProductLayoutProps> = ({ data }) => {
     <ThemeProvider theme={theme}>
       <CartProvider>
         <GlobalCss />
-        <Header />
+        <Header
+          isCartOpen={cartLayerIsOpen}
+          setIsCartOpen={setCartLayerIsOpen}
+        />
         <main>
           <ProductLayout
             image={<StageCarousel images={images} />}
@@ -66,7 +70,7 @@ export const App: React.FC<ProductLayoutProps> = ({ data }) => {
           setIsOpen={setSizingLayerIsOpen}
           isOpen={sizingLayerIsOpen}
         />
-        <CartLayer isOpen={true} />
+        <CartLayer isOpen={cartLayerIsOpen} setIsOpen={setCartLayerIsOpen} />
       </CartProvider>
     </ThemeProvider>
   );

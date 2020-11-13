@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, Dispatch, SetStateAction } from 'react';
 import { useTheme } from 'emotion-theming';
 import { useMedia } from '@wdlk/hooks';
 import {
@@ -26,6 +26,11 @@ import {
   useNavigationData,
   useSiteData,
 } from '../hooks';
+
+export interface HeaderProps {
+  readonly isCartOpen: boolean;
+  readonly setIsCartOpen: Dispatch<SetStateAction<boolean>>;
+}
 
 interface MobileNavigationProps {
   readonly header: HeaderData;
@@ -89,12 +94,13 @@ const MobileNavigation: React.FC<MobileNavigationProps> = props => {
   );
 };
 
-export const Header: React.FC = () => {
+export const Header: React.FC<HeaderProps> = props => {
   const [isExpanded, setIsExpanded] = useState(false);
   const { cart } = useContext(CartContext);
   const { breakpoints } = useTheme();
   const { header } = useHeaderData();
   const { items, url } = useNavigationData();
+  const { isCartOpen, setIsCartOpen: setCartIsOpen } = props;
 
   const isCompact = useMedia(
     [
@@ -123,7 +129,7 @@ export const Header: React.FC = () => {
       }
       lastSlot={
         <Cart
-          href={`${url}/${header.cart.handle}`}
+          onClick={() => setCartIsOpen(!isCartOpen)}
           isFocused={false}
           count={cart.lineItems.length}
           isFilled={!!cart.lineItems.length}
@@ -164,7 +170,7 @@ export const Header: React.FC = () => {
           ))}
           <Column>
             <Cart
-              href={`${url}/${header.cart.handle}`}
+              onClick={() => setCartIsOpen(!isCartOpen)}
               isFocused={false}
               count={cart.lineItems.length}
               isFilled={!!cart.lineItems.length}
