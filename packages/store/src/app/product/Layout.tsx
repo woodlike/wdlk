@@ -7,6 +7,7 @@ import { Content, Features, StageCarousel, SizingGuideLayer, Fabric } from '.';
 import { Footer, Header } from '..';
 import { CartProvider, GlobalCss, ProductLayout } from '../..';
 import { ShopifyProductNode, ShopifyPageNode } from '../../gatsby';
+import { CartLayer } from '../CartLayer';
 
 export interface ProductLayoutProps {
   readonly data: {
@@ -65,6 +66,7 @@ export const App: React.FC<ProductLayoutProps> = ({ data }) => {
           setIsOpen={setSizingLayerIsOpen}
           isOpen={sizingLayerIsOpen}
         />
+        <CartLayer isOpen={true} />
       </CartProvider>
     </ThemeProvider>
   );

@@ -21,8 +21,6 @@
   "dependencies": {
     "@emotion/core": "^10.0.35",
     "@emotion/styled": "^10.0.27",
-    "@wdlk/components": "3.4.6",
-    "@wdlk/hooks": "1.4.8",
     "emotion-theming": "^10.0.27",
     "gatsby": "2.24.7",
     "gatsby-plugin-web-font-loader": "^1.0.4",

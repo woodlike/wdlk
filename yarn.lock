@@ -3031,16 +3031,6 @@
     semver "^7.3.2"
     tsutils "^3.17.1"
 
-"@wdlk/components@3.4.6":
-  version "3.4.6"
-  resolved "https://registry.yarnpkg.com/@wdlk/components/-/components-3.4.6.tgz#bee312a1519636fe2f460288b2fd8f4853e3285b"
-  integrity sha512-rsWheK8dWawbrpz3XBqYH8Huidb1md3JSLVMTra/s58/5bSCMEfw+BUo+t+zENaiTKAESTAVn6KhPIcLKNAFrg==
-  dependencies:
-    prismjs "^1.22.0"
-    react-feather "^2.0.8"
-    shortid "^2.2.15"
-    theme-query "1.5.0"
-
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.9.0.tgz#bd850604b4042459a5a41cd7d338cbed695ed964"
