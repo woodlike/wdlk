@@ -1,7 +1,7 @@
 import React from 'react';
 import { matchers } from 'jest-emotion';
 import { axe } from 'jest-axe';
-import { Layer, theme } from '..';
+import { Layer, theme, LayerShim } from '..';
 import { cleanup, render } from '../../testing-library';
 
 expect.extend(matchers);
@@ -66,9 +66,12 @@ describe('<Layer />', () => {
 
     it('should have a visible Shim', () => {
       const { getByText, unmount } = render(
-        <Layer isOpen={true} padding={[2, 5]}>
-          {id}
-        </Layer>,
+        <>
+          <Layer isOpen={true} padding={[2, 5]}>
+            {id}
+          </Layer>
+          <LayerShim isOpen={true} />
+        </>,
       );
       const shim = getByText(id).nextSibling;
       expect(shim).toHaveStyleRule('opacity', '0.8');
@@ -78,9 +81,12 @@ describe('<Layer />', () => {
 
     it('should not have a visible Shim', () => {
       const { getByText, unmount } = render(
-        <Layer isOpen={false} padding={[2, 5]}>
-          {id}
-        </Layer>,
+        <>
+          <Layer isOpen={false} padding={[2, 5]}>
+            {id}
+          </Layer>
+          <LayerShim isOpen={false} />
+        </>,
       );
       const shim = getByText(id).nextSibling;
       expect(shim).toHaveStyleRule('opacity', '0');
