@@ -7,6 +7,7 @@ export * from './HighlightSection';
 export * from './Icon';
 export * from './Image';
 export * from './Label';
+export * from './LayerFooter';
 export * from './List';
 export * from './ListItem';
 export * from './Logo';

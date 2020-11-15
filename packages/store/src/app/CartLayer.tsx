@@ -12,7 +12,7 @@ import { useTheme } from 'emotion-theming';
 import { useStaticQuery, graphql } from 'gatsby';
 
 import { CartItem, CartSummary } from '.';
-import { Icon, IconSize } from '../components';
+import { Icon, IconSize, LayerFooter } from '../components';
 import { CartContext, LineItemProps } from '../context';
 
 export interface CartLayer {
@@ -79,6 +79,7 @@ export const CartLayer: React.FC<CartLayer> = props => {
                 ))}
               </Stack>
             </Box>
+            <LayerFooter>Hi MOm</LayerFooter>
           </>
         ) : (
           <Box padding={isLargeViewPort ? [2, 0] : [0, 4]}>
