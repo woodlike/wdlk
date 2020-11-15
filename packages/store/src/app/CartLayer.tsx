@@ -5,18 +5,35 @@ import {
   Columns,
   Heading,
   Text,
+  Stack,
+  Box,
 } from '@wdlk/components';
 import { useMedia } from '@wdlk/hooks';
 import { useTheme } from 'emotion-theming';
 import { useStaticQuery, graphql } from 'gatsby';
 
-import { Icon, IconSize, Summary, Label, CartContext } from '..';
-import { SummaryItem } from '../components';
+import { CartItem } from '.';
+import { Icon, IconSize, Summary, Label, CartContext, SummaryItem } from '..';
 
 export interface CartLayer {
   readonly isOpen: boolean;
   readonly setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
+
+export type CartItemProps = {
+  readonly customAttributes: ShopifyBuy.CustomAttribute[];
+  readonly variant: {
+    readonly image: {
+      readonly altText?: string | null;
+      readonly src: string;
+    };
+    readonly priceV2: {
+      readonly amount: string;
+      readonly currencyCode: string;
+    };
+    readonly title: string;
+  };
+} & ShopifyBuy.LineItem;
 
 export const CartLayer: React.FC<CartLayer> = props => {
   const { graphCmsCart } = useStaticQuery(graphql`
@@ -41,6 +58,8 @@ export const CartLayer: React.FC<CartLayer> = props => {
   );
   const { isOpen, setIsOpen } = props;
 
+  console.log(cart, '****');
+
   return (
     <>
       <LayerAside padding={[6, isLargeViewPort ? 8 : 0]} isOpen={isOpen}>
@@ -58,42 +77,60 @@ export const CartLayer: React.FC<CartLayer> = props => {
             color="secondary"
           />
         </Columns>
-        {cart ? (
-          <Summary>
-            <SummaryItem>
-              <Label size="s">
-                {cart.lineItems.length} {graphCmsCart.itemsLabel}
-              </Label>
-            </SummaryItem>
-            <SummaryItem justify="end">
-              {cart.subtotalPriceV2 && (
+
+        {!!cart.lineItems.length ? (
+          <>
+            <Summary>
+              <SummaryItem>
                 <Label size="s">
-                  {cart.subtotalPriceV2.amount}{' '}
-                  {cart.subtotalPriceV2.currencyCode}
+                  {cart.lineItems.length} {graphCmsCart.itemsLabel}
                 </Label>
-              )}
-            </SummaryItem>
-            <SummaryItem>
-              <Label size="s">{graphCmsCart.shippingLabel}</Label>
-            </SummaryItem>
-            <SummaryItem justify="end">
-              <Label size="s">{graphCmsCart.shippingPrecalculated}</Label>
-            </SummaryItem>
-            <SummaryItem>
-              <Text as="div" size="s">
-                {graphCmsCart.totalLabel.toUpperCase()}
-              </Text>
-              <Label size="s">{graphCmsCart.vatValueLabel}</Label>
-            </SummaryItem>
-            <SummaryItem justify="end">
-              {cart.subtotalPriceV2 && (
-                <Heading type="secondary" size="m">
-                  {cart.subtotalPriceV2.amount}{' '}
-                  {cart.subtotalPriceV2.currencyCode}
-                </Heading>
-              )}
-            </SummaryItem>
-          </Summary>
+              </SummaryItem>
+              <SummaryItem justify="end">
+                {cart.subtotalPriceV2 && (
+                  <Label size="s">
+                    {cart.subtotalPriceV2.amount}{' '}
+                    {cart.subtotalPriceV2.currencyCode}
+                  </Label>
+                )}
+              </SummaryItem>
+              <SummaryItem>
+                <Label size="s">{graphCmsCart.shippingLabel}</Label>
+              </SummaryItem>
+              <SummaryItem justify="end">
+                <Label size="s">{graphCmsCart.shippingPrecalculated}</Label>
+              </SummaryItem>
+              <SummaryItem>
+                <Text as="div" size="s">
+                  {graphCmsCart.totalLabel.toUpperCase()}
+                </Text>
+                <Label size="s">{graphCmsCart.vatValueLabel}</Label>
+              </SummaryItem>
+              <SummaryItem justify="end">
+                {cart.subtotalPriceV2 && (
+                  <Heading type="secondary" size="m">
+                    {cart.subtotalPriceV2.amount}{' '}
+                    {cart.subtotalPriceV2.currencyCode}
+                  </Heading>
+                )}
+              </SummaryItem>
+            </Summary>
+            <Box padding={[5, isLargeViewPort ? 0 : 4]}>
+              <Stack as="ul" space={4}>
+                {cart.lineItems.map((item: CartItemProps) => (
+                  <CartItem
+                    alt={item.variant.image.altText ?? item.title}
+                    title={item.title}
+                    key={`cart-item-${item.id}`}
+                    price={`${item.variant.priceV2.amount} ${item.variant.priceV2.currencyCode}`}
+                    src={item.variant.image.src}
+                    size={item.variant.title}
+                    slug={item.customAttributes[0].value}
+                  />
+                ))}
+              </Stack>
+            </Box>
+          </>
         ) : null}
       </LayerAside>
       {isLargeViewPort && (

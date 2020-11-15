@@ -28,6 +28,7 @@ export const App: React.FC<ProductLayoutProps> = ({ data }) => {
       tags,
       title,
       variants,
+      slug,
     },
     shopifyPage,
   } = data;
@@ -49,6 +50,7 @@ export const App: React.FC<ProductLayoutProps> = ({ data }) => {
                 isOpen={sizingLayerIsOpen}
                 shopifyId={shopifyId}
                 setIsOpen={setSizingLayerIsOpen}
+                slug={slug}
                 tags={tags}
                 title={title}
                 variants={variants}
@@ -110,6 +112,7 @@ export const query = graphql`
         srcSet
       }
       shopifyId
+      slug
       tags
       title
       updatedAt
