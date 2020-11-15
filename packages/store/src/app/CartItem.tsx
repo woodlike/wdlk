@@ -2,21 +2,20 @@ import React, { useContext, Dispatch } from 'react';
 import { Box, Link, Text } from '@wdlk/components';
 import { Link as GatsbyLink } from 'gatsby';
 
+import { GraphCMSCart } from '.';
+import { CartItemLayout, Image, Label } from '../components';
 import {
   Action,
-  CartItemLayout,
-  Image,
-  Label,
   LineItemProps,
   CartContext,
   CartDispatchContext,
   RemoveCartItemPayload,
-} from '..';
+} from '../context';
 
 export interface CartItemProps {
   readonly altText: string;
   readonly lineItem: LineItemProps;
-  readonly removeLabel: string;
+  readonly cmsCart: GraphCMSCart;
 }
 
 export const CartItem: React.FC<CartItemProps> = props => {
@@ -41,7 +40,9 @@ export const CartItem: React.FC<CartItemProps> = props => {
       <div>
         <Text size="m">{props.lineItem.title}</Text>
         <Box padding={[2, 0]}>
-          <Label size="s">{props.lineItem.variant.title}</Label>
+          <Label size="s">
+            {props.cmsCart.sizeLabel}: {props.lineItem.variant.title}
+          </Label>
         </Box>
         <Link
           as="span"
@@ -53,7 +54,7 @@ export const CartItem: React.FC<CartItemProps> = props => {
               payload: removeCartPayload,
             })
           }>
-          {props.removeLabel}
+          {props.cmsCart.removeLabel}
         </Link>
       </div>
       <Text size="m">

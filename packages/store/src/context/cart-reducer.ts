@@ -1,13 +1,20 @@
 import { Dispatch } from 'react';
 
-export interface CartState {
-  readonly client: ShopifyBuy.Client;
-  readonly cart: ShopifyBuy.Cart;
-}
-
 export interface ActionType<T extends string, P = undefined> {
   readonly type: T;
   readonly payload: P;
+}
+
+export interface CartState {
+  readonly client: ShopifyBuy.Client;
+  readonly cart: ShopifyCartProps;
+}
+
+export interface ShopifyCartProps extends ShopifyBuy.Cart {
+  readonly subtotalPriceV2: {
+    readonly amount: string;
+    readonly currencyCode: string;
+  };
 }
 
 export interface LineItemProps extends ShopifyBuy.LineItem {

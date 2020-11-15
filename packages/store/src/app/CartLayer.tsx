@@ -4,24 +4,16 @@ import {
   LayerShim,
   Columns,
   Heading,
-  Text,
   Stack,
   Box,
 } from '@wdlk/components';
 import { useMedia } from '@wdlk/hooks';
 import { useTheme } from 'emotion-theming';
 import { useStaticQuery, graphql } from 'gatsby';
-import {
-  Icon,
-  IconSize,
-  Summary,
-  Label,
-  CartContext,
-  SummaryItem,
-  LineItemProps,
-} from '..';
 
-import { CartItem } from '.';
+import { CartItem, CartSummary } from '.';
+import { Icon, IconSize } from '../components';
+import { CartContext, LineItemProps } from '../context';
 
 export interface CartLayer {
   readonly isOpen: boolean;
@@ -41,6 +33,7 @@ export const CartLayer: React.FC<CartLayer> = props => {
         shippingPrecalculated
         totalLabel
         vatValueLabel
+        sizeLabel
       }
     }
   `);
@@ -73,58 +66,26 @@ export const CartLayer: React.FC<CartLayer> = props => {
 
         {!!cart.lineItems.length ? (
           <>
-            <Summary>
-              <SummaryItem>
-                <Label size="s">
-                  {cart.lineItems.length} {graphCmsCart.itemsLabel}
-                </Label>
-              </SummaryItem>
-              <SummaryItem justify="end">
-                {cart.subtotalPriceV2 && (
-                  <Label size="s">
-                    {cart.subtotalPriceV2.amount}{' '}
-                    {cart.subtotalPriceV2.currencyCode}
-                  </Label>
-                )}
-              </SummaryItem>
-              <SummaryItem>
-                <Label size="s">{graphCmsCart.shippingLabel}</Label>
-              </SummaryItem>
-              <SummaryItem justify="end">
-                <Label size="s">{graphCmsCart.shippingPrecalculated}</Label>
-              </SummaryItem>
-              <SummaryItem>
-                <Text as="div" size="s">
-                  {graphCmsCart.totalLabel.toUpperCase()}
-                </Text>
-                <Label size="s">{graphCmsCart.vatValueLabel}</Label>
-              </SummaryItem>
-              <SummaryItem justify="end">
-                {cart.subtotalPriceV2 && (
-                  <Heading type="secondary" size="m">
-                    {cart.subtotalPriceV2.amount}{' '}
-                    {cart.subtotalPriceV2.currencyCode}
-                  </Heading>
-                )}
-              </SummaryItem>
-            </Summary>
+            <CartSummary cart={cart} cmsCart={graphCmsCart} />
             <Box padding={[5, isLargeViewPort ? 0 : 4]}>
               <Stack as="ul" space={4}>
                 {cart.lineItems.map((item: LineItemProps) => (
                   <CartItem
                     altText={item.variant.image.altText ?? item.title}
+                    cmsCart={graphCmsCart}
                     lineItem={item}
                     key={`cart-item-${item.id}`}
-                    removeLabel={graphCmsCart.removeLabel}
                   />
                 ))}
               </Stack>
             </Box>
           </>
         ) : (
-          <Heading as="h3" type="secondary" size="m">
-            {graphCmsCart.emptyCartMessage}
-          </Heading>
+          <Box padding={isLargeViewPort ? [2, 0] : [0, 4]}>
+            <Heading as="h3" type="secondary" size="m">
+              {graphCmsCart.emptyCartMessage}
+            </Heading>
+          </Box>
         )}
       </LayerAside>
       {isLargeViewPort && (
