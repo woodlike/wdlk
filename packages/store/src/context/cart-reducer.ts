@@ -10,6 +10,21 @@ export interface ActionType<T extends string, P = undefined> {
   readonly payload: P;
 }
 
+export interface LineItemProps extends ShopifyBuy.LineItem {
+  readonly customAttributes: ShopifyBuy.CustomAttribute[];
+  readonly variant: {
+    readonly image: {
+      readonly altText?: string | null;
+      readonly src: string;
+    };
+    readonly priceV2: {
+      readonly amount: string;
+      readonly currencyCode: string;
+    };
+    readonly title: string;
+  };
+}
+
 export interface InitCheckoutPayload {
   readonly cartId: string | null;
   readonly client: ShopifyBuy.Client;

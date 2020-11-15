@@ -3,44 +3,45 @@ import { Box, Link, Text } from '@wdlk/components';
 import { Link as GatsbyLink } from 'gatsby';
 
 import {
+  Action,
   CartItemLayout,
   Image,
   Label,
+  LineItemProps,
   CartContext,
   CartDispatchContext,
+  RemoveCartItemPayload,
 } from '..';
-import { Action, RemoveCartItemPayload } from '../context/cart-reducer';
 
-export interface CartItem {
-  readonly alt: string;
-  readonly id: string;
-  readonly src: string;
-  readonly title: string;
-  readonly size: string;
-  readonly slug: string;
-  readonly price: string;
+export interface CartItemProps {
+  readonly altText: string;
+  readonly lineItem: LineItemProps;
   readonly removeLabel: string;
 }
 
-export const CartItem: React.FC<CartItem> = props => {
+export const CartItem: React.FC<CartItemProps> = props => {
   const dispatch = useContext<Dispatch<Action>>(CartDispatchContext);
   const { client, cart } = useContext(CartContext);
   const removeCartPayload: RemoveCartItemPayload = {
     client,
     dispatch,
     cartId: cart.id,
-    lineItemId: props.id,
+    lineItemId: props.lineItem.id as string,
   };
 
   return (
     <CartItemLayout>
-      <GatsbyLink to={props.slug}>
-        <Image alt={props.alt} fit="cover" src={props.src} />
+      <GatsbyLink to={props.lineItem.customAttributes[0].value}>
+        <Image
+          alt={props.altText}
+          fit="cover"
+          src={props.lineItem.variant.image.src}
+        />
       </GatsbyLink>
       <div>
-        <Text size="m">{props.title}</Text>
+        <Text size="m">{props.lineItem.title}</Text>
         <Box padding={[2, 0]}>
-          <Label size="s">{props.size}</Label>
+          <Label size="s">{props.lineItem.variant.title}</Label>
         </Box>
         <Link
           as="span"
@@ -55,7 +56,10 @@ export const CartItem: React.FC<CartItem> = props => {
           {props.removeLabel}
         </Link>
       </div>
-      <Text size="m">{props.price}</Text>
+      <Text size="m">
+        {props.lineItem.variant.priceV2.amount}{' '}
+        {props.lineItem.variant.priceV2.currencyCode}
+      </Text>
     </CartItemLayout>
   );
 };

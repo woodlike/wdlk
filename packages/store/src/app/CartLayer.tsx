@@ -11,29 +11,22 @@ import {
 import { useMedia } from '@wdlk/hooks';
 import { useTheme } from 'emotion-theming';
 import { useStaticQuery, graphql } from 'gatsby';
+import {
+  Icon,
+  IconSize,
+  Summary,
+  Label,
+  CartContext,
+  SummaryItem,
+  LineItemProps,
+} from '..';
 
 import { CartItem } from '.';
-import { Icon, IconSize, Summary, Label, CartContext, SummaryItem } from '..';
 
 export interface CartLayer {
   readonly isOpen: boolean;
   readonly setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
-
-export type CartItemProps = {
-  readonly customAttributes: ShopifyBuy.CustomAttribute[];
-  readonly variant: {
-    readonly image: {
-      readonly altText?: string | null;
-      readonly src: string;
-    };
-    readonly priceV2: {
-      readonly amount: string;
-      readonly currencyCode: string;
-    };
-    readonly title: string;
-  };
-} & ShopifyBuy.LineItem;
 
 export const CartLayer: React.FC<CartLayer> = props => {
   const { graphCmsCart } = useStaticQuery(graphql`
@@ -117,17 +110,12 @@ export const CartLayer: React.FC<CartLayer> = props => {
             </Summary>
             <Box padding={[5, isLargeViewPort ? 0 : 4]}>
               <Stack as="ul" space={4}>
-                {cart.lineItems.map((item: CartItemProps) => (
+                {cart.lineItems.map((item: LineItemProps) => (
                   <CartItem
-                    alt={item.variant.image.altText ?? item.title}
-                    id={item.id as string}
-                    title={item.title}
+                    altText={item.variant.image.altText ?? item.title}
+                    lineItem={item}
                     key={`cart-item-${item.id}`}
-                    price={`${item.variant.priceV2.amount} ${item.variant.priceV2.currencyCode}`}
                     removeLabel={graphCmsCart.removeLabel}
-                    src={item.variant.image.src}
-                    size={item.variant.title}
-                    slug={item.customAttributes[0].value}
                   />
                 ))}
               </Stack>
