@@ -12,13 +12,14 @@ import {
 import { Action, RemoveCartItemPayload } from '../context/cart-reducer';
 
 export interface CartItem {
-  alt: string;
-  id: string;
-  src: string;
-  title: string;
-  size: string;
-  slug: string;
-  price: string;
+  readonly alt: string;
+  readonly id: string;
+  readonly src: string;
+  readonly title: string;
+  readonly size: string;
+  readonly slug: string;
+  readonly price: string;
+  readonly removeLabel: string;
 }
 
 export const CartItem: React.FC<CartItem> = props => {
@@ -51,7 +52,7 @@ export const CartItem: React.FC<CartItem> = props => {
               payload: removeCartPayload,
             })
           }>
-          Remove
+          {props.removeLabel}
         </Link>
       </div>
       <Text size="m">{props.price}</Text>

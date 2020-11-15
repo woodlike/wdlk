@@ -39,13 +39,15 @@ export const CartLayer: React.FC<CartLayer> = props => {
   const { graphCmsCart } = useStaticQuery(graphql`
     query CartQuery {
       graphCmsCart {
-        title
-        vatValueLabel
-        totalLabel
-        shippingLabel
+        emptyCartMessage
         itemsLabel
+        title
+        removeLabel
+        shippingLabel
         subtotalLabel
         shippingPrecalculated
+        totalLabel
+        vatValueLabel
       }
     }
   `);
@@ -58,8 +60,6 @@ export const CartLayer: React.FC<CartLayer> = props => {
   );
   const { isOpen, setIsOpen } = props;
 
-  console.log(cart, '****');
-
   return (
     <>
       <LayerAside padding={[6, isLargeViewPort ? 8 : 0]} isOpen={isOpen}>
@@ -67,7 +67,7 @@ export const CartLayer: React.FC<CartLayer> = props => {
           align="center"
           justifyContent="space-between"
           padding={isLargeViewPort ? [0, 0, 4, 0] : [0, 4, 4, 4]}>
-          <Heading type="secondary" size="xs">
+          <Heading as="h2" type="secondary" size="xs">
             {graphCmsCart.title}
           </Heading>
           <Icon
@@ -124,6 +124,7 @@ export const CartLayer: React.FC<CartLayer> = props => {
                     title={item.title}
                     key={`cart-item-${item.id}`}
                     price={`${item.variant.priceV2.amount} ${item.variant.priceV2.currencyCode}`}
+                    removeLabel={graphCmsCart.removeLabel}
                     src={item.variant.image.src}
                     size={item.variant.title}
                     slug={item.customAttributes[0].value}
@@ -132,7 +133,11 @@ export const CartLayer: React.FC<CartLayer> = props => {
               </Stack>
             </Box>
           </>
-        ) : null}
+        ) : (
+          <Heading as="h3" type="secondary" size="m">
+            {graphCmsCart.emptyCartMessage}
+          </Heading>
+        )}
       </LayerAside>
       {isLargeViewPort && (
         <LayerShim isOpen={isOpen} onClick={() => setIsOpen(false)} />
