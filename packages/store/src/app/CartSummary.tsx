@@ -10,6 +10,7 @@ export interface CartSummaryProps {
 }
 
 export interface GraphCMSCart {
+  readonly checkoutLabel: string;
   readonly itemsLabel: string;
   readonly shippingLabel: string;
   readonly totalLabel: string;

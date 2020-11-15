@@ -6,6 +6,7 @@ import {
   Heading,
   Stack,
   Box,
+  Button,
 } from '@wdlk/components';
 import { useMedia } from '@wdlk/hooks';
 import { useTheme } from 'emotion-theming';
@@ -21,6 +22,14 @@ export interface CartLayer {
 }
 
 export const CartLayer: React.FC<CartLayer> = props => {
+  const { cart } = useContext(CartContext);
+  const { breakpoints } = useTheme();
+  const isLargeViewPort = useMedia(
+    [`(min-width: ${breakpoints[2]})`, `(min-width: ${breakpoints[1]})`],
+    [true, false],
+    false,
+  );
+  const { isOpen, setIsOpen } = props;
   const { graphCmsCart } = useStaticQuery(graphql`
     query CartQuery {
       graphCmsCart {
@@ -34,21 +43,14 @@ export const CartLayer: React.FC<CartLayer> = props => {
         totalLabel
         vatValueLabel
         sizeLabel
+        checkoutLabel
       }
     }
   `);
-  const { cart } = useContext(CartContext);
-  const { breakpoints } = useTheme();
-  const isLargeViewPort = useMedia(
-    [`(min-width: ${breakpoints[2]})`, `(min-width: ${breakpoints[1]})`],
-    [true, false],
-    false,
-  );
-  const { isOpen, setIsOpen } = props;
 
   return (
     <>
-      <LayerAside padding={[6, isLargeViewPort ? 8 : 0]} isOpen={isOpen}>
+      <LayerAside padding={[6, isLargeViewPort ? 8 : 0, 0]} isOpen={isOpen}>
         <Columns
           align="center"
           justifyContent="space-between"
@@ -79,7 +81,13 @@ export const CartLayer: React.FC<CartLayer> = props => {
                 ))}
               </Stack>
             </Box>
-            <LayerFooter>Hi MOm</LayerFooter>
+            <LayerFooter>
+              <Button
+                onClick={() => window && window.open(cart.webUrl)}
+                padding={[3, 4]}>
+                {graphCmsCart.checkoutLabel}
+              </Button>
+            </LayerFooter>
           </>
         ) : (
           <Box padding={isLargeViewPort ? [2, 0] : [0, 4]}>

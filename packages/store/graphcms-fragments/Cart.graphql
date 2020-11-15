@@ -15,4 +15,5 @@ fragment Cart on Cart {
   removeLabel
   emptyCartMessage
   sizeLabel
+  checkoutLabel
 }

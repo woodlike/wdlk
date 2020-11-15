@@ -2,7 +2,7 @@ import React from 'react';
 import styled from './styled';
 
 const StyledLayerFooter = styled.footer`
-  position: absolute;
+  position: sticky;
   bottom: 0;
   right: 0;
   box-sizing: border-box;
