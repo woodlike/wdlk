@@ -1,11 +1,19 @@
-import React from 'react';
-import { Text, Stack, Box } from '@wdlk/components';
-import { Link } from 'gatsby';
+import React, { useContext, Dispatch } from 'react';
+import { Box, Link, Text } from '@wdlk/components';
+import { Link as GatsbyLink } from 'gatsby';
 
-import { CartItemLayout, Image, Label } from '..';
+import {
+  CartItemLayout,
+  Image,
+  Label,
+  CartContext,
+  CartDispatchContext,
+} from '..';
+import { Action, RemoveCartItemPayload } from '../context/cart-reducer';
 
 export interface CartItem {
   alt: string;
+  id: string;
   src: string;
   title: string;
   size: string;
@@ -14,16 +22,37 @@ export interface CartItem {
 }
 
 export const CartItem: React.FC<CartItem> = props => {
+  const dispatch = useContext<Dispatch<Action>>(CartDispatchContext);
+  const { client, cart } = useContext(CartContext);
+  const removeCartPayload: RemoveCartItemPayload = {
+    client,
+    dispatch,
+    cartId: cart.id,
+    lineItemId: props.id,
+  };
+
   return (
     <CartItemLayout>
-      <Link to={props.slug}>
+      <GatsbyLink to={props.slug}>
         <Image alt={props.alt} fit="cover" src={props.src} />
-      </Link>
+      </GatsbyLink>
       <div>
-        <Box padding={[0, 0, 3, 0]}>
-          <Text size="m">{props.title}</Text>
+        <Text size="m">{props.title}</Text>
+        <Box padding={[2, 0]}>
+          <Label size="s">{props.size}</Label>
         </Box>
-        <Label size="s">{props.size}</Label>
+        <Link
+          as="span"
+          color="secondary"
+          size="s"
+          onClick={() =>
+            dispatch({
+              type: 'remove_cart_item',
+              payload: removeCartPayload,
+            })
+          }>
+          Remove
+        </Link>
       </div>
       <Text size="m">{props.price}</Text>
     </CartItemLayout>

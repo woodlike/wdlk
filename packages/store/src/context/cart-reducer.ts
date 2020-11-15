@@ -23,10 +23,18 @@ export interface AddCartItemsPayload {
   readonly dispatch: Dispatch<Action>;
 }
 
+export interface RemoveCartItemPayload {
+  readonly cartId: string | number;
+  readonly client: ShopifyBuy.Client;
+  readonly dispatch: Dispatch<Action>;
+  readonly lineItemId: string;
+}
+
 export type Action =
   | ActionType<'initialize_checkout', InitCheckoutPayload>
   | ActionType<'update_cart', ShopifyBuy.Cart>
-  | ActionType<'add_cart_items', AddCartItemsPayload>;
+  | ActionType<'add_cart_items', AddCartItemsPayload>
+  | ActionType<'remove_cart_item', RemoveCartItemPayload>;
 
 export function initializeCheckout(payload: InitCheckoutPayload) {
   const { cartId, client, dispatch } = payload;
@@ -67,6 +75,17 @@ export function handleAddLineItems(payload: AddCartItemsPayload) {
     );
 }
 
+export function removeLineItem(payload: RemoveCartItemPayload) {
+  const { cartId, client, dispatch, lineItemId } = payload;
+
+  client.checkout
+    .removeLineItems(cartId, [lineItemId])
+    .then(cart => dispatch({ type: 'update_cart', payload: cart }))
+    .catch(error =>
+      console.warn(`CartProvider Shopify reducer (removeLineItems): ${error}`),
+    );
+}
+
 export function cartReducer(state: CartState, action: Action) {
   switch (action.type) {
     case 'initialize_checkout': {
@@ -85,6 +104,13 @@ export function cartReducer(state: CartState, action: Action) {
 
     case 'add_cart_items': {
       handleAddLineItems(action.payload);
+      return {
+        ...state,
+      };
+    }
+
+    case 'remove_cart_item': {
+      removeLineItem(action.payload);
       return {
         ...state,
       };

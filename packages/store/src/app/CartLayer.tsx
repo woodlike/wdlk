@@ -120,6 +120,7 @@ export const CartLayer: React.FC<CartLayer> = props => {
                 {cart.lineItems.map((item: CartItemProps) => (
                   <CartItem
                     alt={item.variant.image.altText ?? item.title}
+                    id={item.id as string}
                     title={item.title}
                     key={`cart-item-${item.id}`}
                     price={`${item.variant.priceV2.amount} ${item.variant.priceV2.currencyCode}`}
