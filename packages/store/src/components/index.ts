@@ -1,4 +1,5 @@
 export * from './CarouselLayout';
+export * from './CartItemLayout';
 export * from './FooterLayout';
 export * from './Global';
 export * from './HeaderLayout';
@@ -6,6 +7,7 @@ export * from './HighlightSection';
 export * from './Icon';
 export * from './Image';
 export * from './Label';
+export * from './LayerFooter';
 export * from './List';
 export * from './ListItem';
 export * from './Logo';

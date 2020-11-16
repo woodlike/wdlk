@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, Dispatch } from 'react';
 import { useTheme } from 'emotion-theming';
 import { useMedia } from '@wdlk/hooks';
 import {
@@ -26,6 +26,7 @@ import {
   useProductData,
 } from '../..';
 import { Variant } from '../../gatsby';
+import { Action } from '../../context/cart-reducer';
 
 export interface StageContentProps {
   readonly description: string;
@@ -35,6 +36,7 @@ export interface StageContentProps {
   readonly variants: Variant[];
   readonly isOpen: boolean;
   readonly setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  readonly slug: string;
 }
 
 interface FetchVariantsArgs {
@@ -61,7 +63,7 @@ async function fetchVariants({
 }
 
 export const Content: React.FC<StageContentProps> = props => {
-  const dispatch = useContext(CartDispatchContext);
+  const dispatch = useContext<Dispatch<Action>>(CartDispatchContext);
   const { client, cart } = useContext(CartContext);
   const {
     cartButton,
@@ -75,6 +77,7 @@ export const Content: React.FC<StageContentProps> = props => {
     shopifyId,
     tags,
     title,
+    slug,
     variants: queryVariants,
   } = props;
   const { breakpoints } = useTheme();
@@ -100,7 +103,14 @@ export const Content: React.FC<StageContentProps> = props => {
   const addCartItemsPayload = {
     cartId: cart.id,
     client,
-    lineItemsToAdd: [{ variantId: activeVariant.shopifyId, quantity: 1 }],
+    lineItemsToAdd: [
+      {
+        variantId: activeVariant.shopifyId,
+        quantity: 1,
+        customAttributes: [{ key: 'slug', value: slug }],
+      },
+    ],
+    slug,
     dispatch,
   };
 

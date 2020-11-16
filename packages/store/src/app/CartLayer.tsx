@@ -4,14 +4,17 @@ import {
   LayerShim,
   Columns,
   Heading,
-  Text,
+  Stack,
+  Box,
+  Button,
 } from '@wdlk/components';
 import { useMedia } from '@wdlk/hooks';
 import { useTheme } from 'emotion-theming';
 import { useStaticQuery, graphql } from 'gatsby';
 
-import { Icon, IconSize, Summary, Label, CartContext } from '..';
-import { SummaryItem } from '../components';
+import { CartItem, CartSummary } from '.';
+import { Icon, IconSize, LayerFooter } from '../components';
+import { CartContext, LineItemProps } from '../context';
 
 export interface CartLayer {
   readonly isOpen: boolean;
@@ -19,19 +22,6 @@ export interface CartLayer {
 }
 
 export const CartLayer: React.FC<CartLayer> = props => {
-  const { graphCmsCart } = useStaticQuery(graphql`
-    query CartQuery {
-      graphCmsCart {
-        title
-        vatValueLabel
-        totalLabel
-        shippingLabel
-        itemsLabel
-        subtotalLabel
-        shippingPrecalculated
-      }
-    }
-  `);
   const { cart } = useContext(CartContext);
   const { breakpoints } = useTheme();
   const isLargeViewPort = useMedia(
@@ -40,15 +30,32 @@ export const CartLayer: React.FC<CartLayer> = props => {
     false,
   );
   const { isOpen, setIsOpen } = props;
+  const { graphCmsCart } = useStaticQuery(graphql`
+    query CartQuery {
+      graphCmsCart {
+        emptyCartMessage
+        itemsLabel
+        title
+        removeLabel
+        shippingLabel
+        subtotalLabel
+        shippingPrecalculated
+        totalLabel
+        vatValueLabel
+        sizeLabel
+        checkoutLabel
+      }
+    }
+  `);
 
   return (
     <>
-      <LayerAside padding={[6, isLargeViewPort ? 8 : 0]} isOpen={isOpen}>
+      <LayerAside padding={[6, isLargeViewPort ? 8 : 0, 0]} isOpen={isOpen}>
         <Columns
           align="center"
           justifyContent="space-between"
           padding={isLargeViewPort ? [0, 0, 4, 0] : [0, 4, 4, 4]}>
-          <Heading type="secondary" size="xs">
+          <Heading as="h2" type="secondary" size="xs">
             {graphCmsCart.title}
           </Heading>
           <Icon
@@ -58,43 +65,37 @@ export const CartLayer: React.FC<CartLayer> = props => {
             color="secondary"
           />
         </Columns>
-        {cart ? (
-          <Summary>
-            <SummaryItem>
-              <Label size="s">
-                {cart.lineItems.length} {graphCmsCart.itemsLabel}
-              </Label>
-            </SummaryItem>
-            <SummaryItem justify="end">
-              {cart.subtotalPriceV2 && (
-                <Label size="s">
-                  {cart.subtotalPriceV2.amount}{' '}
-                  {cart.subtotalPriceV2.currencyCode}
-                </Label>
-              )}
-            </SummaryItem>
-            <SummaryItem>
-              <Label size="s">{graphCmsCart.shippingLabel}</Label>
-            </SummaryItem>
-            <SummaryItem justify="end">
-              <Label size="s">{graphCmsCart.shippingPrecalculated}</Label>
-            </SummaryItem>
-            <SummaryItem>
-              <Text as="div" size="s">
-                {graphCmsCart.totalLabel.toUpperCase()}
-              </Text>
-              <Label size="s">{graphCmsCart.vatValueLabel}</Label>
-            </SummaryItem>
-            <SummaryItem justify="end">
-              {cart.subtotalPriceV2 && (
-                <Heading type="secondary" size="m">
-                  {cart.subtotalPriceV2.amount}{' '}
-                  {cart.subtotalPriceV2.currencyCode}
-                </Heading>
-              )}
-            </SummaryItem>
-          </Summary>
-        ) : null}
+
+        {!!cart.lineItems.length ? (
+          <>
+            <CartSummary cart={cart} cmsCart={graphCmsCart} />
+            <Box padding={[5, isLargeViewPort ? 0 : 4]}>
+              <Stack as="ul" space={4}>
+                {cart.lineItems.map((item: LineItemProps) => (
+                  <CartItem
+                    altText={item.variant.image.altText ?? item.title}
+                    cmsCart={graphCmsCart}
+                    lineItem={item}
+                    key={`cart-item-${item.id}`}
+                  />
+                ))}
+              </Stack>
+            </Box>
+            <LayerFooter>
+              <Button
+                onClick={() => window && window.open(cart.webUrl)}
+                padding={[3, 4]}>
+                {graphCmsCart.checkoutLabel}
+              </Button>
+            </LayerFooter>
+          </>
+        ) : (
+          <Box padding={isLargeViewPort ? [2, 0] : [0, 4]}>
+            <Heading as="h3" type="secondary" size="m">
+              {graphCmsCart.emptyCartMessage}
+            </Heading>
+          </Box>
+        )}
       </LayerAside>
       {isLargeViewPort && (
         <LayerShim isOpen={isOpen} onClick={() => setIsOpen(false)} />

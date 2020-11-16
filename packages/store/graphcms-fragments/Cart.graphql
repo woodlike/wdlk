@@ -12,4 +12,8 @@ fragment Cart on Cart {
   itemsLabel
   subtotalLabel
   shippingPrecalculated
+  removeLabel
+  emptyCartMessage
+  sizeLabel
+  checkoutLabel
 }
