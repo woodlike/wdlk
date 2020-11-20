@@ -10,7 +10,7 @@ import {
   CartContext,
   CartDispatchContext,
   RemoveCartItemPayload,
-} from '../context';
+} from '../model';
 
 export interface CartItemProps {
   readonly altText: string;

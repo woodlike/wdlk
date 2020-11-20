@@ -11,7 +11,7 @@ export interface CartState {
 }
 
 export interface ShopifyCartProps extends ShopifyBuy.Cart {
-  readonly subtotalPriceV2: {
+  readonly subtotalPriceV2?: {
     readonly amount: string;
     readonly currencyCode: string;
   };
@@ -54,7 +54,7 @@ export interface RemoveCartItemPayload {
 
 export type Action =
   | ActionType<'initialize_checkout', InitCheckoutPayload>
-  | ActionType<'update_cart', ShopifyBuy.Cart>
+  | ActionType<'update_cart', ShopifyCartProps>
   | ActionType<'add_cart_items', AddCartItemsPayload>
   | ActionType<'remove_cart_item', RemoveCartItemPayload>;
 
@@ -108,7 +108,7 @@ export function removeLineItem(payload: RemoveCartItemPayload) {
     );
 }
 
-export function cartReducer(state: CartState, action: Action) {
+export function cartReducer(state: CartState, action: Action): CartState {
   switch (action.type) {
     case 'initialize_checkout': {
       initializeCheckout(action.payload);
@@ -120,7 +120,10 @@ export function cartReducer(state: CartState, action: Action) {
     case 'update_cart': {
       return {
         ...state,
-        cart: action.payload,
+        cart: {
+          ...action.payload,
+          subtotalPriceV2: action.payload?.subtotalPriceV2,
+        },
       };
     }
 
