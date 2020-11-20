@@ -2,7 +2,7 @@ import React from 'react';
 import { Heading, Text } from '@wdlk/components';
 
 import { Label, Summary, SummaryItem } from '../components';
-import { ShopifyCartProps } from '../context';
+import { ShopifyCartProps } from '../model';
 
 export interface CartSummaryProps {
   readonly cart: ShopifyCartProps;

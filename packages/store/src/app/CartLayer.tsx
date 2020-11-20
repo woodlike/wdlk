@@ -14,7 +14,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 
 import { CartItem, CartSummary } from '.';
 import { Icon, IconSize, LayerFooter } from '../components';
-import { CartContext, LineItemProps } from '../context';
+import { CartContext, LineItemProps } from '../model';
 
 export interface CartLayer {
   readonly isOpen: boolean;

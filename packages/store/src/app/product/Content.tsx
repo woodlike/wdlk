@@ -26,7 +26,7 @@ import {
   useProductData,
 } from '../..';
 import { Variant } from '../../gatsby';
-import { Action } from '../../context/cart-reducer';
+import { Action } from '../../model';
 
 export interface StageContentProps {
   readonly description: string;

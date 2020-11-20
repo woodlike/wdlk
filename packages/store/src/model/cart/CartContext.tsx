@@ -1,7 +1,7 @@
 import React, { useEffect, useReducer, Dispatch } from 'react';
 import Client from 'shopify-buy';
 
-import { cartReducer, Action, CartState } from './cart-reducer';
+import { cartReducer, Action, CartState, ShopifyCartProps } from '.';
 
 /**
  * @name CartContext
@@ -28,7 +28,7 @@ const initialState: CartState = {
   client,
   cart: {
     lineItems: [] as ShopifyBuy.LineItem[],
-  } as ShopifyBuy.Cart,
+  } as ShopifyCartProps,
 };
 
 export const CartProvider: React.FC = props => {
