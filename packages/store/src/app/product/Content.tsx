@@ -26,7 +26,7 @@ import {
   useProductData,
 } from '../..';
 import { Variant } from '../../gatsby';
-import { Action } from '../../model';
+import { CartAction } from '../../model';
 
 export interface StageContentProps {
   readonly description: string;
@@ -63,7 +63,7 @@ async function fetchVariants({
 }
 
 export const Content: React.FC<StageContentProps> = props => {
-  const dispatch = useContext<Dispatch<Action>>(CartDispatchContext);
+  const dispatch = useContext<Dispatch<CartAction>>(CartDispatchContext);
   const { client, cart } = useContext(CartContext);
   const {
     cartButton,
