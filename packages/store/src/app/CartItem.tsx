@@ -5,8 +5,8 @@ import { Link as GatsbyLink } from 'gatsby';
 import { GraphCMSCart } from '.';
 import { CartItemLayout, Image, Label } from '../components';
 import {
-  Action,
-  LineItemProps,
+  CartAction,
+  LineItem,
   CartContext,
   CartDispatchContext,
   RemoveCartItemPayload,
@@ -14,12 +14,12 @@ import {
 
 export interface CartItemProps {
   readonly altText: string;
-  readonly lineItem: LineItemProps;
+  readonly lineItem: LineItem;
   readonly cmsCart: GraphCMSCart;
 }
 
 export const CartItem: React.FC<CartItemProps> = props => {
-  const dispatch = useContext<Dispatch<Action>>(CartDispatchContext);
+  const dispatch = useContext<Dispatch<CartAction>>(CartDispatchContext);
   const { client, cart } = useContext(CartContext);
   const removeCartPayload: RemoveCartItemPayload = {
     client,

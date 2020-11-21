@@ -27,6 +27,7 @@
     "gatsby-source-graphcms": "^2.0.0-next.9",
     "gatsby-source-shopify": "^3.3.2",
     "gatsby-transformer-json": "2.4.0",
+    "ramda": "^0.27.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-feather": "^2.0.8",
@@ -41,6 +42,7 @@
     "@types/jest": "^24.0.23",
     "@types/node": "^14.0.22",
     "@types/node-fetch": "^2.5.7",
+    "@types/ramda": "^0.27.32",
     "@types/react": "^16.9.56",
     "@types/react-dom": "^16.9.9",
     "@types/shopify-buy": "^2.10.3",
@@ -58,6 +60,7 @@
     "prettier": "^2.0.5",
     "react-test-renderer": "^16.12.0",
     "ts-node": "^8.10.2",
+    "types": "^0.1.1",
     "typescript": "^3.9.6"
   }
 }

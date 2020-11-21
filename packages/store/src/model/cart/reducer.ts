@@ -1,62 +1,32 @@
 import { Dispatch } from 'react';
+import { Cart, CartState, ShopifyClient } from '.';
+import { ActionType } from '..';
 
-export interface ActionType<T extends string, P = undefined> {
-  readonly type: T;
-  readonly payload: P;
-}
-
-export interface CartState {
-  readonly client: ShopifyBuy.Client;
-  readonly cart: ShopifyCartProps;
-}
-
-export interface ShopifyCartProps extends ShopifyBuy.Cart {
-  readonly subtotalPriceV2?: {
-    readonly amount: string;
-    readonly currencyCode: string;
-  };
-}
-
-export interface LineItemProps extends ShopifyBuy.LineItem {
-  readonly customAttributes: ShopifyBuy.CustomAttribute[];
-  readonly variant: {
-    readonly image: {
-      readonly altText?: string | null;
-      readonly src: string;
-    };
-    readonly priceV2: {
-      readonly amount: string;
-      readonly currencyCode: string;
-    };
-    readonly title: string;
-  };
-}
+export type CartAction =
+  | ActionType<'initialize_checkout', InitCheckoutPayload>
+  | ActionType<'update_cart', Cart>
+  | ActionType<'add_cart_items', AddCartItemsPayload>
+  | ActionType<'remove_cart_item', RemoveCartItemPayload>;
 
 export interface InitCheckoutPayload {
   readonly cartId: string | null;
-  readonly client: ShopifyBuy.Client;
-  readonly dispatch: Dispatch<Action>;
+  readonly client: ShopifyClient;
+  readonly dispatch: Dispatch<CartAction>;
 }
 
 export interface AddCartItemsPayload {
   readonly cartId: string | number;
-  readonly client: ShopifyBuy.Client;
+  readonly client: ShopifyClient;
   readonly lineItemsToAdd: ShopifyBuy.LineItemToAdd[];
-  readonly dispatch: Dispatch<Action>;
+  readonly dispatch: Dispatch<CartAction>;
 }
 
 export interface RemoveCartItemPayload {
   readonly cartId: string | number;
-  readonly client: ShopifyBuy.Client;
-  readonly dispatch: Dispatch<Action>;
+  readonly client: ShopifyClient;
+  readonly dispatch: Dispatch<CartAction>;
   readonly lineItemId: string;
 }
-
-export type Action =
-  | ActionType<'initialize_checkout', InitCheckoutPayload>
-  | ActionType<'update_cart', ShopifyCartProps>
-  | ActionType<'add_cart_items', AddCartItemsPayload>
-  | ActionType<'remove_cart_item', RemoveCartItemPayload>;
 
 export function initializeCheckout(payload: InitCheckoutPayload) {
   const { cartId, client, dispatch } = payload;
@@ -67,6 +37,7 @@ export function initializeCheckout(payload: InitCheckoutPayload) {
           dispatch({ type: 'update_cart', payload: cart });
           return;
         }
+
         const newCart = await client.checkout.create();
         localStorage.setItem('shopify_checkout_id', `${newCart.id}`);
         dispatch({ type: 'update_cart', payload: newCart });
@@ -83,17 +54,25 @@ export function initializeCheckout(payload: InitCheckoutPayload) {
   }
 }
 
-export function handleAddLineItems(payload: AddCartItemsPayload) {
+export function addLineItems(payload: AddCartItemsPayload) {
   const { cartId, client, lineItemsToAdd, dispatch } = payload;
   client.checkout
     .addLineItems(cartId, lineItemsToAdd)
     .then(cart => {
-      dispatch({ type: 'update_cart', payload: cart });
+      const subtotalPriceV2 = {
+        amount: parseFloat(cart.subtotalPriceV2?.amount as string).toFixed(2),
+        currencyCode: cart.subtotalPriceV2?.currencyCode as string,
+      };
+      dispatch({
+        type: 'update_cart',
+        payload: {
+          ...cart,
+          subtotalPriceV2,
+        },
+      });
     })
     .catch(error =>
-      console.warn(
-        `CartProvider Shopify reducer (handleAddLineItems): ${error}`,
-      ),
+      console.warn(`CartProvider Shopify reducer (addLineItems): ${error}`),
     );
 }
 
@@ -108,7 +87,7 @@ export function removeLineItem(payload: RemoveCartItemPayload) {
     );
 }
 
-export function cartReducer(state: CartState, action: Action): CartState {
+export function cartReducer(state: CartState, action: CartAction): CartState {
   switch (action.type) {
     case 'initialize_checkout': {
       initializeCheckout(action.payload);
@@ -122,13 +101,13 @@ export function cartReducer(state: CartState, action: Action): CartState {
         ...state,
         cart: {
           ...action.payload,
-          subtotalPriceV2: action.payload?.subtotalPriceV2,
+          subtotalPriceV2: action.payload.subtotalPriceV2,
         },
       };
     }
 
     case 'add_cart_items': {
-      handleAddLineItems(action.payload);
+      addLineItems(action.payload);
       return {
         ...state,
       };

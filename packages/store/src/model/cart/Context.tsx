@@ -1,7 +1,7 @@
 import React, { useEffect, useReducer, Dispatch } from 'react';
 import Client from 'shopify-buy';
 
-import { cartReducer, Action, CartState, ShopifyCartProps } from '.';
+import { cartReducer, initialCart, CartAction, CartState } from '.';
 
 /**
  * @name CartContext
@@ -16,7 +16,9 @@ CartContext.displayName = 'CartContext';
  * The dispath value never changes.
  * We separate state values with state updates avoiding unnecessary re-rendering.
  */
-export const CartDispatchContext = React.createContext({} as Dispatch<Action>);
+export const CartDispatchContext = React.createContext(
+  {} as Dispatch<CartAction>,
+);
 CartDispatchContext.displayName = 'CartDispatchContext';
 
 const client = Client.buildClient({
@@ -26,9 +28,7 @@ const client = Client.buildClient({
 
 const initialState: CartState = {
   client,
-  cart: {
-    lineItems: [] as ShopifyBuy.LineItem[],
-  } as ShopifyCartProps,
+  cart: initialCart,
 };
 
 export const CartProvider: React.FC = props => {
@@ -46,6 +46,7 @@ export const CartProvider: React.FC = props => {
     client,
     cart,
   };
+  console.log(cart, '****');
 
   return (
     <CartDispatchContext.Provider value={dispatch}>
