@@ -1,5 +1,5 @@
 import { Dispatch } from 'react';
-import { Cart, CartState, ShopifyClient } from '.';
+import { Cart, CartState, ShopifyClient, subTotalLens, formatPrice } from '.';
 import { ActionType } from '..';
 
 export type CartAction =
@@ -32,9 +32,12 @@ export function initializeCheckout(payload: InitCheckoutPayload) {
   const { cartId, client, dispatch } = payload;
   try {
     if (!!cartId) {
-      client.checkout.fetch(cartId).then(async cart => {
-        if (cart && cart.id) {
-          dispatch({ type: 'update_cart', payload: cart });
+      client.checkout.fetch(cartId).then(async prevCart => {
+        if (prevCart && prevCart.id) {
+          dispatch({
+            type: 'update_cart',
+            payload: formatPrice(subTotalLens, prevCart),
+          });
           return;
         }
 
@@ -58,17 +61,10 @@ export function addLineItems(payload: AddCartItemsPayload) {
   const { cartId, client, lineItemsToAdd, dispatch } = payload;
   client.checkout
     .addLineItems(cartId, lineItemsToAdd)
-    .then(cart => {
-      const subtotalPriceV2 = {
-        amount: parseFloat(cart.subtotalPriceV2?.amount as string).toFixed(2),
-        currencyCode: cart.subtotalPriceV2?.currencyCode as string,
-      };
+    .then(prevCart => {
       dispatch({
         type: 'update_cart',
-        payload: {
-          ...cart,
-          subtotalPriceV2,
-        },
+        payload: formatPrice(subTotalLens, prevCart),
       });
     })
     .catch(error =>
@@ -101,7 +97,6 @@ export function cartReducer(state: CartState, action: CartAction): CartState {
         ...state,
         cart: {
           ...action.payload,
-          subtotalPriceV2: action.payload.subtotalPriceV2,
         },
       };
     }

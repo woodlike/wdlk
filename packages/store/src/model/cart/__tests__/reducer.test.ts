@@ -2,8 +2,6 @@ import { view } from 'ramda';
 import { cartMock } from '../../../../__mocks__';
 import { subTotalPriceV2Lens, ShopifyPriceV2, Cart } from '..';
 
-console.log();
-
 describe('Cart workflows', () => {
   describe('Format Subtotal', () => {
     it('should return a cart with a formatted subtotal', () => {
