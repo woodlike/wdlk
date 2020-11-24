@@ -13,9 +13,7 @@ function toCSSString(cssObject: PrismStyleProp | undefined): string {
         .reduce(
           (acc: string[], [key, val]) => [
             ...acc,
-            `${key
-              .replace(/(?<=[a-z])(?=[A-Z])/g, '-')
-              .toLowerCase()}: ${val};`,
+            `${key.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase()}: ${val};`,
           ],
           [],
         )
