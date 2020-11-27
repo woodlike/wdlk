@@ -1,16 +1,16 @@
-import React, { useContext, Dispatch } from 'react';
+import React, { useContext } from 'react';
 import { Box, Link, Text } from '@wdlk/components';
 import { Link as GatsbyLink } from 'gatsby';
 
 import { GraphCMSCart } from '.';
 import { CartItemLayout, Image, Label } from '../components';
 import {
-  CartAction,
   LineItem,
   CartContext,
-  CartDispatchContext,
-  RemoveCartItemPayload,
+  CartActionsContext,
+  ActionsContext,
 } from '../model';
+import { RemoveCartItemPayload } from '../model/cart/actions';
 
 export interface CartItemProps {
   readonly altText: string;
@@ -19,11 +19,10 @@ export interface CartItemProps {
 }
 
 export const CartItem: React.FC<CartItemProps> = props => {
-  const dispatch = useContext<Dispatch<CartAction>>(CartDispatchContext);
+  const { removeLineItem } = useContext<ActionsContext>(CartActionsContext);
   const { client, cart } = useContext(CartContext);
   const removeCartPayload: RemoveCartItemPayload = {
     client,
-    dispatch,
     cartId: cart.id,
     lineItemId: props.lineItem.id as string,
   };
@@ -48,12 +47,7 @@ export const CartItem: React.FC<CartItemProps> = props => {
           as="span"
           color="secondary"
           size="s"
-          onClick={() =>
-            dispatch({
-              type: 'remove_cart_item',
-              payload: removeCartPayload,
-            })
-          }>
+          onClick={() => removeLineItem(removeCartPayload)}>
           {props.cmsCart.removeLabel}
         </Link>
       </div>

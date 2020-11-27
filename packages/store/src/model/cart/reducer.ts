@@ -1,6 +1,7 @@
 import { Dispatch } from 'react';
 import { Cart, CartState, ShopifyClient, subTotalLens, formatPrice } from '.';
 import { ActionType } from '..';
+import { RemoveCartItemPayload } from './actions';
 
 export type CartAction =
   | ActionType<'initialize_checkout', InitCheckoutPayload>
@@ -19,13 +20,6 @@ export interface AddCartItemsPayload {
   readonly client: ShopifyClient;
   readonly lineItemsToAdd: ShopifyBuy.LineItemToAdd[];
   readonly dispatch: Dispatch<CartAction>;
-}
-
-export interface RemoveCartItemPayload {
-  readonly cartId: string | number;
-  readonly client: ShopifyClient;
-  readonly dispatch: Dispatch<CartAction>;
-  readonly lineItemId: string;
 }
 
 export function initializeCheckout(payload: InitCheckoutPayload) {
@@ -72,17 +66,6 @@ export function addLineItems(payload: AddCartItemsPayload) {
     );
 }
 
-export function removeLineItem(payload: RemoveCartItemPayload) {
-  const { cartId, client, dispatch, lineItemId } = payload;
-
-  client.checkout
-    .removeLineItems(cartId, [lineItemId])
-    .then(cart => dispatch({ type: 'update_cart', payload: cart }))
-    .catch(error =>
-      console.warn(`CartProvider Shopify reducer (removeLineItems): ${error}`),
-    );
-}
-
 export function cartReducer(state: CartState, action: CartAction): CartState {
   switch (action.type) {
     case 'initialize_checkout': {
@@ -103,13 +86,6 @@ export function cartReducer(state: CartState, action: CartAction): CartState {
 
     case 'add_cart_items': {
       addLineItems(action.payload);
-      return {
-        ...state,
-      };
-    }
-
-    case 'remove_cart_item': {
-      removeLineItem(action.payload);
       return {
         ...state,
       };
