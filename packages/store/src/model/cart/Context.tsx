@@ -1,7 +1,13 @@
 import React, { useEffect, useReducer, Dispatch } from 'react';
 import Client from 'shopify-buy';
 
+import * as Actions from './actions';
 import { cartReducer, initialCart, CartAction, CartState } from '.';
+
+export interface ActionsContext {
+  readonly dispatch: Dispatch<CartAction>;
+  readonly removeLineItem: (payload: RemoveCartItemPayload) => void;
+}
 
 /**
  * @name CartContext
@@ -21,6 +27,15 @@ export const CartDispatchContext = React.createContext(
 );
 CartDispatchContext.displayName = 'CartDispatchContext';
 
+/**
+ * @name CartActionsContext
+ * @description passes down the actions and dispatch functions.
+ * The action creators functions and dispath value never changes.
+ * We separate state values with state updates avoiding unnecessary re-rendering.
+ */
+export const CartActionsContext = React.createContext({} as ActionsContext);
+CartActionsContext.displayName = 'CartActionsContext';
+
 const client = Client.buildClient({
   domain: `${process.env.SHOP_NAME}.myshopify.com`,
   storefrontAccessToken: `${process.env.ACCESS_TOKEN}`,
@@ -34,6 +49,9 @@ const initialState: CartState = {
 export const CartProvider: React.FC = props => {
   const [{ cart, client }, dispatch] = useReducer(cartReducer, initialState);
 
+  const actionCreator = Actions.create(dispatch);
+  const removeLineItem = actionCreator(Actions.removeLineItem);
+
   useEffect(() => {
     const cartId = localStorage.getItem('shopify_checkout_id');
     dispatch({
@@ -41,6 +59,11 @@ export const CartProvider: React.FC = props => {
       payload: { cartId, client, dispatch },
     });
   }, [cart.id]);
+
+  const actions: ActionsContext = {
+    dispatch,
+    removeLineItem,
+  };
 
   const state = {
     client,
@@ -50,9 +73,11 @@ export const CartProvider: React.FC = props => {
 
   return (
     <CartDispatchContext.Provider value={dispatch}>
-      <CartContext.Provider value={state}>
-        {props.children}
-      </CartContext.Provider>
+      <CartActionsContext.Provider value={actions}>
+        <CartContext.Provider value={state}>
+          {props.children}
+        </CartContext.Provider>
+      </CartActionsContext.Provider>
     </CartDispatchContext.Provider>
   );
 };
