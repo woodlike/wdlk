@@ -9,8 +9,8 @@ import {
   CartContext,
   CartActionsContext,
   ActionsContext,
+  CartState,
 } from '../model';
-import { RemoveCartItemPayload } from '../model/cart/actions';
 
 export interface CartItemProps {
   readonly altText: string;
@@ -20,8 +20,8 @@ export interface CartItemProps {
 
 export const CartItem: React.FC<CartItemProps> = props => {
   const { removeLineItem } = useContext<ActionsContext>(CartActionsContext);
-  const { client, cart } = useContext(CartContext);
-  const removeCartPayload: RemoveCartItemPayload = {
+  const { client, cart } = useContext<CartState>(CartContext);
+  const removeCartPayload = {
     client,
     cartId: cart.id,
     lineItemId: props.lineItem.id as string,
