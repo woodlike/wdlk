@@ -6,8 +6,10 @@ import { cartReducer, initialCart, CartAction, CartState } from '.';
 
 export interface ActionsContext {
   readonly dispatch: Dispatch<CartAction>;
-  readonly removeLineItem: (payload: RemoveCartItemPayload) => void;
+  readonly removeLineItem: (payload: RemoveCartItem) => void;
 }
+
+export type RemoveCartItem = Omit<Actions.RemoveCartItemPayload, 'dispatch'>;
 
 /**
  * @name CartContext
@@ -49,8 +51,8 @@ const initialState: CartState = {
 export const CartProvider: React.FC = props => {
   const [{ cart, client }, dispatch] = useReducer(cartReducer, initialState);
 
-  const actionCreator = Actions.create(dispatch);
-  const removeLineItem = actionCreator(Actions.removeLineItem);
+  const actionCreator = Actions.create<CartAction>(dispatch);
+  const removeLineItem = actionCreator<RemoveCartItem>(Actions.removeLineItem);
 
   useEffect(() => {
     const cartId = localStorage.getItem('shopify_checkout_id');
@@ -69,7 +71,6 @@ export const CartProvider: React.FC = props => {
     client,
     cart,
   };
-  console.log(cart, '****');
 
   return (
     <CartDispatchContext.Provider value={dispatch}>
