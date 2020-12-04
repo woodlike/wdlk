@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect, Dispatch } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useTheme } from 'emotion-theming';
 import { useMedia } from '@wdlk/hooks';
 import {
@@ -17,7 +17,6 @@ import {
 
 import {
   CartContext,
-  CartDispatchContext,
   contestScales,
   findString,
   Price,
@@ -26,7 +25,7 @@ import {
   useProductData,
 } from '../..';
 import { Variant } from '../../gatsby';
-import { CartAction } from '../../model';
+import { CartActionsContext, ActionsContext } from '../../model';
 
 export interface StageContentProps {
   readonly description: string;
@@ -63,7 +62,7 @@ async function fetchVariants({
 }
 
 export const Content: React.FC<StageContentProps> = props => {
-  const dispatch = useContext<Dispatch<CartAction>>(CartDispatchContext);
+  const { addLineItem } = useContext<ActionsContext>(CartActionsContext);
   const { client, cart } = useContext(CartContext);
   const {
     cartButton,
@@ -113,14 +112,14 @@ export const Content: React.FC<StageContentProps> = props => {
       },
     ],
     slug,
-    dispatch,
   };
 
   const isPreOrder = findString(tags, 'pre-order');
 
   useEffect(() => {
     const localStorageVariants = localStorage.getItem(localVariantsId);
-
+    // $TODO: variants should be handle by a product reducer
+    // including localstorage handling
     if (!!localStorageVariants) {
       setVariants(prevVariants =>
         prevVariants.map((variant, idx) => ({
@@ -206,12 +205,7 @@ export const Content: React.FC<StageContentProps> = props => {
             </Select.Frame>
             <Box padding={[6, 0, 3, 0]}>
               <Button
-                onClick={() =>
-                  dispatch({
-                    type: 'add_cart_items',
-                    payload: addCartItemsPayload,
-                  })
-                }
+                onClick={() => addLineItem(addCartItemsPayload)}
                 padding={[3, 4]}>
                 {cartButton}
               </Button>
