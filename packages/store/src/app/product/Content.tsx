@@ -72,6 +72,7 @@ export const Content: React.FC<StageContentProps> = props => {
     sizes,
     taxLabel,
   } = useProductData();
+
   const {
     description,
     shopifyId,
@@ -80,6 +81,7 @@ export const Content: React.FC<StageContentProps> = props => {
     slug,
     variants: queryVariants,
   } = props;
+
   const { breakpoints } = useTheme();
 
   const [variants, setVariants] = useState(queryVariants);
