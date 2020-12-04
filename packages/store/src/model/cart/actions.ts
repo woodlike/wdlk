@@ -1,10 +1,10 @@
 import { Dispatch } from 'react';
-import { ShopifyClient, CartAction, subTotalLens, formatPrice } from '.';
+import { ShopifyClient, CartAction } from '.';
 
-export interface InitCheckoutPayload<D = Dispatch<CartAction>> {
+export interface InitCheckoutPayload {
   readonly cartId: string | null;
   readonly client: ShopifyClient;
-  readonly dispatch: D;
+  readonly dispatch: Dispatch<CartAction>;
 }
 
 export interface RemoveCartItemPayload {
@@ -25,11 +25,11 @@ export function initializeCheckout(payload: InitCheckoutPayload) {
   const { cartId, client, dispatch } = payload;
   try {
     if (!!cartId) {
-      client.checkout.fetch(cartId).then(async prevCart => {
-        if (prevCart && prevCart.id) {
+      client.checkout.fetch(cartId).then(async cart => {
+        if (cart && cart.id) {
           dispatch({
             type: 'update_cart',
-            payload: formatPrice(subTotalLens, prevCart),
+            payload: cart,
           });
           return;
         }
@@ -65,10 +65,10 @@ export function addLineItems(payload: AddCartItemsPayload) {
   const { cartId, client, lineItemsToAdd, dispatch } = payload;
   client.checkout
     .addLineItems(cartId, lineItemsToAdd)
-    .then(prevCart => {
+    .then(cart => {
       dispatch({
         type: 'update_cart',
-        payload: formatPrice(subTotalLens, prevCart),
+        payload: cart,
       });
     })
     .catch(error =>

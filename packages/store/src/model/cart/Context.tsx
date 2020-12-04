@@ -66,7 +66,7 @@ export const CartProvider: React.FC = props => {
     addLineItem,
   };
 
-  const state = {
+  const state: CartState = {
     client,
     cart,
   };
