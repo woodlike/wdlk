@@ -9,6 +9,7 @@ export interface Cart {
   readonly createdAt: string;
   readonly currencyCode: string;
   readonly customAttributes: number[];
+  readonly discountApplications?: unknown[];
   readonly email: string | null;
   readonly id: string;
   readonly lineItems: LineItem[];
@@ -41,6 +42,7 @@ export interface LineItem {
   readonly title: string;
   readonly quantity: number;
   readonly variant: Variant;
+  readonly discountAllocations?: unknown[];
 }
 
 export interface ShopifyPriceV2 {
@@ -62,6 +64,7 @@ export interface Variant {
   readonly price: string;
   readonly priceV2: ShopifyPriceV2;
   readonly product: Product;
+  readonly selectedOptions: SelectedOptions[];
   readonly title: string;
   readonly unitPrice: string | null;
   readonly unitPriceMeasurement: {
@@ -86,9 +89,14 @@ export interface PresentmentPrice {
 
   hasNextPage: boolean;
   hasPreviousPage: boolean;
-  variableValues: {
+  variableValues?: {
     id: string;
   };
+}
+
+export interface SelectedOptions {
+  readonly name: string;
+  readonly value: string;
 }
 
 export interface ShopifyClient {

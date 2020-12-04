@@ -1,13 +1,21 @@
-import { lensPath, set, view, Lens } from 'ramda';
-import * as Number from '../number';
-import { Cart } from '.';
+import { lensPath, set, view } from 'ramda';
+import currencyJS from 'currency.js';
+import { ShopifyPriceV2 } from '.';
 
-export const subTotalLens = lensPath(['subtotalPriceV2', 'amount']);
-export const subTotalPriceV2Lens = lensPath(['subtotalPriceV2']);
+export interface CurrencyConfig {
+  readonly decimal?: '.' | ',';
+  readonly precision?: number;
+  readonly symbol?: '€' | '$' | '';
+}
 
-export const setSubTotal = set(subTotalLens);
+export const currency = (
+  value: string,
+  config: CurrencyConfig = { decimal: '.', symbol: '' },
+) => currencyJS(value, config).format();
 
-export function formatPrice(lens: Lens, cart: Cart) {
-  const value = view<Cart, string>(lens, cart);
-  return set(lens, Number.fix(2, value), cart);
+export const priceV2Lens = lensPath(['amount']);
+
+export function formatCurrencyV2(priceV2: ShopifyPriceV2) {
+  const amount = view<ShopifyPriceV2, string>(priceV2Lens, priceV2);
+  return set(priceV2Lens, currency(amount), priceV2);
 }

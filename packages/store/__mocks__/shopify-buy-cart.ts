@@ -1,7 +1,8 @@
-export const cartMock = {
+import { Cart } from '../src/model/cart';
+
+export const cartMock: Cart = {
   __typename: 'Checkout',
-  id:
-    'Z2lkOi8vc2hvcGlmeS9DaGVja291dC8zMTkxYjU2YzM0YWU3M2FjYTJjZGUyYmRmNTQ2NGRhYT9rZXk9NTY2NGJjMzhiYmU2MmEyMWYzZTkzMGJhNmY5NDc1ZWM=',
+  id: 'fooo=',
   ready: true,
   requiresShipping: true,
   note: null,
@@ -9,12 +10,6 @@ export const cartMock = {
   paymentDueV2: {
     amount: '135.0',
     currencyCode: 'EUR',
-    type: {
-      name: 'MoneyV2',
-      kind: 'OBJECT',
-      fieldBaseTypes: { amount: 'Decimal', currencyCode: 'CurrencyCode' },
-      implementsNode: false,
-    },
   },
   webUrl:
     'https://wdkl-ocean.myshopify.com/7422733/checkouts/3191b56c34ae73aca2cde2bdf5464daa?key=5664bc38bbe62a21f3e930ba6f9475ec',
@@ -41,8 +36,7 @@ export const cartMock = {
   order: null,
   lineItems: [
     {
-      id:
-        'Z2lkOi8vc2hvcGlmeS9DaGVja291dExpbmVJdGVtLzMxMzY2ODM0MTkyNDczMD9jaGVja291dD0zMTkxYjU2YzM0YWU3M2FjYTJjZGUyYmRmNTQ2NGRhYQ==',
+      id: 'foo2==',
       title: 'ALLI One Piece - blue',
       variant: {
         id: 'Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8zMTM2NjgzNDE5MjQ3Mw==',
@@ -53,12 +47,6 @@ export const cartMock = {
           {
             price: { amount: '135.0', currencyCode: 'EUR' },
             compareAtPrice: { amount: '165.0', currencyCode: 'EUR' },
-            type: {
-              name: 'ProductVariantPricePair',
-              kind: 'OBJECT',
-              fieldBaseTypes: { compareAtPrice: 'MoneyV2', price: 'MoneyV2' },
-              implementsNode: false,
-            },
             hasNextPage: false,
             hasPreviousPage: false,
             variableValues: {
@@ -77,28 +65,11 @@ export const cartMock = {
           src:
             'https://cdn.shopify.com/s/files/1/0742/2733/products/155.jpg?v=1580458979',
           altText: null,
-          type: {
-            name: 'Image',
-            kind: 'OBJECT',
-            fieldBaseTypes: {
-              altText: 'String',
-              id: 'ID',
-              originalSrc: 'URL',
-              src: 'URL',
-            },
-            implementsNode: false,
-          },
         },
         selectedOptions: [
           {
             name: 'Size',
             value: 'S/M',
-            type: {
-              name: 'SelectedOption',
-              kind: 'OBJECT',
-              fieldBaseTypes: { name: 'String', value: 'String' },
-              implementsNode: false,
-            },
           },
         ],
         unitPrice: null,
@@ -108,66 +79,10 @@ export const cartMock = {
           quantityValue: 0,
           referenceUnit: null,
           referenceValue: 0,
-          type: {
-            name: 'UnitPriceMeasurement',
-            kind: 'OBJECT',
-            fieldBaseTypes: {
-              measuredType: 'UnitPriceMeasurementMeasuredType',
-              quantityUnit: 'UnitPriceMeasurementMeasuredUnit',
-              quantityValue: 'Float',
-              referenceUnit: 'UnitPriceMeasurementMeasuredUnit',
-              referenceValue: 'Int',
-            },
-            implementsNode: false,
-          },
         },
         product: {
           id: 'Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0LzQ0MzQ1OTE1ODAyNDk=',
           handle: 'alli-one-piece-blue',
-          type: {
-            name: 'Product',
-            kind: 'OBJECT',
-            fieldBaseTypes: {
-              availableForSale: 'Boolean',
-              createdAt: 'DateTime',
-              description: 'String',
-              descriptionHtml: 'HTML',
-              handle: 'String',
-              id: 'ID',
-              images: 'ImageConnection',
-              onlineStoreUrl: 'URL',
-              options: 'ProductOption',
-              productType: 'String',
-              publishedAt: 'DateTime',
-              title: 'String',
-              updatedAt: 'DateTime',
-              variants: 'ProductVariantConnection',
-              vendor: 'String',
-            },
-            implementsNode: true,
-          },
-        },
-        type: {
-          name: 'ProductVariant',
-          kind: 'OBJECT',
-          fieldBaseTypes: {
-            availableForSale: 'Boolean',
-            compareAtPrice: 'Money',
-            compareAtPriceV2: 'MoneyV2',
-            id: 'ID',
-            image: 'Image',
-            presentmentPrices: 'ProductVariantPricePairConnection',
-            price: 'Money',
-            priceV2: 'MoneyV2',
-            product: 'Product',
-            selectedOptions: 'SelectedOption',
-            sku: 'String',
-            title: 'String',
-            unitPrice: 'MoneyV2',
-            unitPriceMeasurement: 'UnitPriceMeasurement',
-            weight: 'Float',
-          },
-          implementsNode: true,
         },
       },
       quantity: 1,
@@ -175,66 +90,121 @@ export const cartMock = {
         {
           key: 'slug',
           value: '/products/alli-one-piece-blue',
-          type: {
-            name: 'Attribute',
-            kind: 'OBJECT',
-            fieldBaseTypes: { key: 'String', value: 'String' },
-            implementsNode: false,
-          },
         },
       ],
       discountAllocations: [],
-      type: {
-        name: 'CheckoutLineItem',
-        kind: 'OBJECT',
-        fieldBaseTypes: {
-          customAttributes: 'Attribute',
-          discountAllocations: 'DiscountAllocation',
-          id: 'ID',
-          quantity: 'Int',
-          title: 'String',
-          variant: 'ProductVariant',
+    },
+    {
+      id:
+        'Z2lkOi8vc2hvcGlmeS9DaGVja291dExpbmVJdGVtLzE2OTQxMDIzNjkwODQxMD9jaGVja291dD0zMTkxYjU2YzM0YWU3M2FjYTJjZGUyYmRmNTQ2NGRhYQ==',
+      title: 'Sole One Piece Reversible - White Bird / Riad',
+      variant: {
+        id: 'Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8xNjk0MTAyMzY5MDg0MQ==',
+        title: 'L',
+        price: '135.00',
+        priceV2: {
+          amount: '135.0',
+          currencyCode: 'EUR',
         },
-        implementsNode: true,
+        presentmentPrices: [
+          {
+            price: { amount: '135.0', currencyCode: 'EUR' },
+            compareAtPrice: { amount: '165.0', currencyCode: 'EUR' },
+
+            hasNextPage: false,
+            hasPreviousPage: false,
+            variableValues: {
+              id:
+                'Z2lkOi8vc2hvcGlmeS9DaGVja291dC8zMTkxYjU2YzM0YWU3M2FjYTJjZGUyYmRmNTQ2NGRhYT9rZXk9NTY2NGJjMzhiYmU2MmEyMWYzZTkzMGJhNmY5NDc1ZWM=',
+            },
+          },
+        ],
+        weight: 0,
+        available: true,
+        sku: 'WDLK3037',
+        compareAtPrice: '165.00',
+        compareAtPriceV2: { amount: '165.0', currencyCode: 'EUR' },
+        image: {
+          id: 'Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0SW1hZ2UvNDgwNDQxNjI0MTc1Mw==',
+          src:
+            'https://cdn.shopify.com/s/files/1/0742/2733/products/one_suit_bandeau-weiss-front-2.jpg?v=1544040728',
+          altText: null,
+        },
+        selectedOptions: [
+          {
+            name: 'Size',
+            value: 'L',
+          },
+        ],
+        unitPrice: null,
+        unitPriceMeasurement: {
+          measuredType: null,
+          quantityUnit: null,
+          quantityValue: 0,
+          referenceUnit: null,
+          referenceValue: 0,
+        },
+        product: {
+          id: 'Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0LzE3MDUyMjk5NzU2NDE=',
+          handle: 'sole-one-piece-reversible-white-bird',
+        },
       },
-      hasNextPage: false,
-      hasPreviousPage: false,
+      quantity: 1,
+      customAttributes: [
+        {
+          key: 'slug',
+          value: '/products/sole-one-piece-reversible-white-bird',
+        },
+      ],
+      discountAllocations: [],
+    },
+    {
+      id:
+        'Z2lkOi8vc2hvcGlmeS9DaGVja291dExpbmVJdGVtLzMxMzY2ODM0MTkyNDczMD9jaGVja291dD0zMTkxYjU2YzM0YWU3M2FjYTJjZGUyYmRmNTQ2NGRhYQ==',
+      title: 'ALLI One Piece - blue',
+      variant: {
+        id: 'Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8zMTM2NjgzNDE5MjQ3Mw==',
+        title: 'S/M',
+        price: '135.00',
+        priceV2: { amount: '135.0', currencyCode: 'EUR' },
+        presentmentPrices: [
+          {
+            price: { amount: '135.0', currencyCode: 'EUR' },
+            compareAtPrice: { amount: '165.0', currencyCode: 'EUR' },
+            hasNextPage: false,
+            hasPreviousPage: false,
+          },
+        ],
+        weight: 195,
+        available: true,
+        sku: 'WDLK202013-2',
+        compareAtPrice: '165.00',
+        compareAtPriceV2: { amount: '165.0', currencyCode: 'EUR' },
+        image: {
+          id: 'Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0SW1hZ2UvMTM2OTQzNDU5MzY5ODU=',
+          src:
+            'https://cdn.shopify.com/s/files/1/0742/2733/products/155.jpg?v=1580458979',
+          altText: null,
+        },
+        selectedOptions: [{ name: 'Size', value: 'S/M' }],
+        unitPrice: null,
+        unitPriceMeasurement: {
+          measuredType: null,
+          quantityUnit: null,
+          quantityValue: 0,
+          referenceUnit: null,
+          referenceValue: 0,
+        },
+        product: {
+          id: 'Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0LzQ0MzQ1OTE1ODAyNDk=',
+          handle: 'alli-one-piece-blue',
+        },
+      },
+      quantity: 1,
+      customAttributes: [
+        { key: 'slug', value: '/products/alli-one-piece-blue' },
+      ],
+      discountAllocations: [],
     },
   ],
-  type: {
-    name: 'Checkout',
-    kind: 'OBJECT',
-    fieldBaseTypes: {
-      appliedGiftCards: 'AppliedGiftCard',
-      completedAt: 'DateTime',
-      createdAt: 'DateTime',
-      currencyCode: 'CurrencyCode',
-      customAttributes: 'Attribute',
-      discountApplications: 'DiscountApplicationConnection',
-      email: 'String',
-      id: 'ID',
-      lineItems: 'CheckoutLineItemConnection',
-      lineItemsSubtotalPrice: 'MoneyV2',
-      note: 'String',
-      order: 'Order',
-      orderStatusUrl: 'URL',
-      paymentDue: 'Money',
-      paymentDueV2: 'MoneyV2',
-      ready: 'Boolean',
-      requiresShipping: 'Boolean',
-      shippingAddress: 'MailingAddress',
-      shippingLine: 'ShippingRate',
-      subtotalPrice: 'Money',
-      subtotalPriceV2: 'MoneyV2',
-      taxExempt: 'Boolean',
-      taxesIncluded: 'Boolean',
-      totalPrice: 'Money',
-      totalPriceV2: 'MoneyV2',
-      totalTax: 'Money',
-      totalTaxV2: 'MoneyV2',
-      updatedAt: 'DateTime',
-      webUrl: 'URL',
-    },
-    implementsNode: true,
-  },
 };
