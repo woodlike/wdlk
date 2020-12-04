@@ -28,17 +28,6 @@ export const CartContext = React.createContext({} as CartState);
 CartContext.displayName = 'CartContext';
 
 /**
- * @name CartDispatchContext
- * @description passes down the useReducer dispatch function.
- * The dispath value never changes.
- * We separate state values with state updates avoiding unnecessary re-rendering.
- */
-export const CartDispatchContext = React.createContext(
-  {} as Dispatch<CartAction>,
-);
-CartDispatchContext.displayName = 'CartDispatchContext';
-
-/**
  * @name CartActionsContext
  * @description passes down the actions and dispatch functions.
  * The action creators functions and dispath value never changes.
@@ -83,12 +72,10 @@ export const CartProvider: React.FC = props => {
   };
 
   return (
-    <CartDispatchContext.Provider value={dispatch}>
-      <CartActionsContext.Provider value={actions}>
-        <CartContext.Provider value={state}>
-          {props.children}
-        </CartContext.Provider>
-      </CartActionsContext.Provider>
-    </CartDispatchContext.Provider>
+    <CartActionsContext.Provider value={actions}>
+      <CartContext.Provider value={state}>
+        {props.children}
+      </CartContext.Provider>
+    </CartActionsContext.Provider>
   );
 };
