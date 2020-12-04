@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { CartProvider, CartDispatchContext, CartContext } from '..';
+import { CartProvider, CartContext, CartActionsContext, CartState } from '..';
 
 describe('<CartProvider />', () => {
   describe('CartContext', () => {
@@ -8,7 +8,7 @@ describe('<CartProvider />', () => {
       const { getByText } = render(
         <CartProvider>
           <CartContext.Consumer>
-            {value => (
+            {(value: CartState) => (
               <div>
                 Received: {JSON.stringify(value.client.checkout, null, 2)}
               </div>
@@ -25,7 +25,7 @@ describe('<CartProvider />', () => {
       const fn = jest.fn();
       render(
         <CartProvider>
-          <CartDispatchContext.Consumer>{fn}</CartDispatchContext.Consumer>
+          <CartActionsContext.Consumer>{fn}</CartActionsContext.Consumer>
         </CartProvider>,
       );
       expect(fn).toHaveBeenCalled();
