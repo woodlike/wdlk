@@ -2,7 +2,14 @@ import React, { useEffect, useReducer, Dispatch } from 'react';
 import Client from 'shopify-buy';
 
 import * as Actions from './actions';
-import { cartReducer, initialCart, CartAction, CartState } from '.';
+import {
+  cartReducer,
+  initialCart,
+  CartAction,
+  CartState,
+  ShopifyClient,
+  InitCheckoutPayload,
+} from '.';
 
 export interface ActionsContext {
   readonly dispatch: Dispatch<CartAction>;
@@ -10,6 +17,7 @@ export interface ActionsContext {
 }
 
 export type RemoveCartItem = Omit<Actions.RemoveCartItemPayload, 'dispatch'>;
+export type InitCart = Omit<InitCheckoutPayload, 'dispatch'>;
 
 /**
  * @name CartContext
@@ -38,10 +46,10 @@ CartDispatchContext.displayName = 'CartDispatchContext';
 export const CartActionsContext = React.createContext({} as ActionsContext);
 CartActionsContext.displayName = 'CartActionsContext';
 
-const client = Client.buildClient({
+const client = (Client.buildClient({
   domain: `${process.env.SHOP_NAME}.myshopify.com`,
   storefrontAccessToken: `${process.env.ACCESS_TOKEN}`,
-});
+}) as unknown) as ShopifyClient;
 
 const initialState: CartState = {
   client,
@@ -53,13 +61,11 @@ export const CartProvider: React.FC = props => {
 
   const actionCreator = Actions.create<CartAction>(dispatch);
   const removeLineItem = actionCreator<RemoveCartItem>(Actions.removeLineItem);
+  const initialize = actionCreator<InitCart>(Actions.initializeCheckout);
 
   useEffect(() => {
     const cartId = localStorage.getItem('shopify_checkout_id');
-    dispatch({
-      type: 'initialize_checkout',
-      payload: { cartId, client, dispatch },
-    });
+    initialize({ cartId, client });
   }, [cart.id]);
 
   const actions: ActionsContext = {

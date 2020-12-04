@@ -1,7 +1,8 @@
 import { Dispatch } from 'react';
+
 import { Cart, CartState, ShopifyClient, subTotalLens, formatPrice } from '.';
+import { RemoveCartItemPayload, InitCheckoutPayload } from './actions';
 import { ActionType } from '..';
-import { RemoveCartItemPayload } from './actions';
 
 export type CartAction =
   | ActionType<'initialize_checkout', InitCheckoutPayload>
@@ -9,46 +10,11 @@ export type CartAction =
   | ActionType<'add_cart_items', AddCartItemsPayload>
   | ActionType<'remove_cart_item', RemoveCartItemPayload>;
 
-export interface InitCheckoutPayload {
-  readonly cartId: string | null;
-  readonly client: ShopifyClient;
-  readonly dispatch: Dispatch<CartAction>;
-}
-
 export interface AddCartItemsPayload {
   readonly cartId: string | number;
   readonly client: ShopifyClient;
   readonly lineItemsToAdd: ShopifyBuy.LineItemToAdd[];
   readonly dispatch: Dispatch<CartAction>;
-}
-
-export function initializeCheckout(payload: InitCheckoutPayload) {
-  const { cartId, client, dispatch } = payload;
-  try {
-    if (!!cartId) {
-      client.checkout.fetch(cartId).then(async prevCart => {
-        if (prevCart && prevCart.id) {
-          dispatch({
-            type: 'update_cart',
-            payload: formatPrice(subTotalLens, prevCart),
-          });
-          return;
-        }
-
-        const newCart = await client.checkout.create();
-        localStorage.setItem('shopify_checkout_id', `${newCart.id}`);
-        dispatch({ type: 'update_cart', payload: newCart });
-      });
-    } else {
-      client.checkout.create().then(cart => {
-        localStorage.setItem('shopify_checkout_id', `${cart.id}`);
-        dispatch({ type: 'update_cart', payload: cart });
-      });
-    }
-  } catch (error) {
-    console.warn(`CartProvider Shopify reducer (initializeCheckout): ${error}`);
-    localStorage.setItem('shopify_checkout_id', '');
-  }
 }
 
 export function addLineItems(payload: AddCartItemsPayload) {
@@ -69,7 +35,6 @@ export function addLineItems(payload: AddCartItemsPayload) {
 export function cartReducer(state: CartState, action: CartAction): CartState {
   switch (action.type) {
     case 'initialize_checkout': {
-      initializeCheckout(action.payload);
       return {
         ...state,
       };
