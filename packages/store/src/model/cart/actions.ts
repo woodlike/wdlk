@@ -14,6 +14,13 @@ export interface RemoveCartItemPayload {
   readonly lineItemId: string;
 }
 
+export interface AddCartItemsPayload {
+  readonly cartId: string | number;
+  readonly client: ShopifyClient;
+  readonly lineItemsToAdd: ShopifyBuy.LineItemToAdd[];
+  readonly dispatch: Dispatch<CartAction>;
+}
+
 export function initializeCheckout(payload: InitCheckoutPayload) {
   const { cartId, client, dispatch } = payload;
   try {
@@ -51,6 +58,21 @@ export function removeLineItem(payload: RemoveCartItemPayload) {
     .then(cart => dispatch({ type: 'update_cart', payload: cart }))
     .catch(error =>
       console.warn(`CartProvider Shopify reducer (removeLineItems): ${error}`),
+    );
+}
+
+export function addLineItems(payload: AddCartItemsPayload) {
+  const { cartId, client, lineItemsToAdd, dispatch } = payload;
+  client.checkout
+    .addLineItems(cartId, lineItemsToAdd)
+    .then(prevCart => {
+      dispatch({
+        type: 'update_cart',
+        payload: formatPrice(subTotalLens, prevCart),
+      });
+    })
+    .catch(error =>
+      console.warn(`CartProvider Shopify reducer (addLineItems): ${error}`),
     );
 }
 

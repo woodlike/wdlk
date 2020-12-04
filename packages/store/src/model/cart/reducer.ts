@@ -1,7 +1,9 @@
-import { Dispatch } from 'react';
-
-import { Cart, CartState, ShopifyClient, subTotalLens, formatPrice } from '.';
-import { RemoveCartItemPayload, InitCheckoutPayload } from './actions';
+import { Cart, CartState } from '.';
+import {
+  RemoveCartItemPayload,
+  InitCheckoutPayload,
+  AddCartItemsPayload,
+} from './actions';
 import { ActionType } from '..';
 
 export type CartAction =
@@ -9,28 +11,6 @@ export type CartAction =
   | ActionType<'update_cart', Cart>
   | ActionType<'add_cart_items', AddCartItemsPayload>
   | ActionType<'remove_cart_item', RemoveCartItemPayload>;
-
-export interface AddCartItemsPayload {
-  readonly cartId: string | number;
-  readonly client: ShopifyClient;
-  readonly lineItemsToAdd: ShopifyBuy.LineItemToAdd[];
-  readonly dispatch: Dispatch<CartAction>;
-}
-
-export function addLineItems(payload: AddCartItemsPayload) {
-  const { cartId, client, lineItemsToAdd, dispatch } = payload;
-  client.checkout
-    .addLineItems(cartId, lineItemsToAdd)
-    .then(prevCart => {
-      dispatch({
-        type: 'update_cart',
-        payload: formatPrice(subTotalLens, prevCart),
-      });
-    })
-    .catch(error =>
-      console.warn(`CartProvider Shopify reducer (addLineItems): ${error}`),
-    );
-}
 
 export function cartReducer(state: CartState, action: CartAction): CartState {
   switch (action.type) {
@@ -50,7 +30,6 @@ export function cartReducer(state: CartState, action: CartAction): CartState {
     }
 
     case 'add_cart_items': {
-      addLineItems(action.payload);
       return {
         ...state,
       };

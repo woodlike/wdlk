@@ -8,16 +8,17 @@ import {
   CartAction,
   CartState,
   ShopifyClient,
-  InitCheckoutPayload,
 } from '.';
 
 export interface ActionsContext {
   readonly dispatch: Dispatch<CartAction>;
+  readonly addLineItem: (payload: AddCartItem) => void;
   readonly removeLineItem: (payload: RemoveCartItem) => void;
 }
 
+type InitCart = Omit<Actions.InitCheckoutPayload, 'dispatch'>;
 export type RemoveCartItem = Omit<Actions.RemoveCartItemPayload, 'dispatch'>;
-export type InitCart = Omit<InitCheckoutPayload, 'dispatch'>;
+export type AddCartItem = Omit<Actions.AddCartItemsPayload, 'dispatch'>;
 
 /**
  * @name CartContext
@@ -60,8 +61,10 @@ export const CartProvider: React.FC = props => {
   const [{ cart, client }, dispatch] = useReducer(cartReducer, initialState);
 
   const actionCreator = Actions.create<CartAction>(dispatch);
-  const removeLineItem = actionCreator<RemoveCartItem>(Actions.removeLineItem);
+
   const initialize = actionCreator<InitCart>(Actions.initializeCheckout);
+  const removeLineItem = actionCreator<RemoveCartItem>(Actions.removeLineItem);
+  const addLineItem = actionCreator<AddCartItem>(Actions.addLineItems);
 
   useEffect(() => {
     const cartId = localStorage.getItem('shopify_checkout_id');
@@ -71,6 +74,7 @@ export const CartProvider: React.FC = props => {
   const actions: ActionsContext = {
     dispatch,
     removeLineItem,
+    addLineItem,
   };
 
   const state = {
