@@ -23,7 +23,7 @@
     "@emotion/styled": "^10.0.27",
     "currency.js": "^2.0.3",
     "emotion-theming": "^10.0.27",
-    "gatsby": "2.24.7",
+    "gatsby": "2.26.0",
     "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-source-graphcms": "^2.0.0-next.9",
     "gatsby-source-shopify": "^3.3.2",
