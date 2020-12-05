@@ -1,9 +1,10 @@
-import { GatsbyCtx, getNodeModelByRemoteId, ProductFeatures } from '..';
+import { getNodeModelByRemoteId } from '..';
+import { GatsbyCtx, ProductFeatures } from '../../../gatsby';
 import {
   graphcmsFabric,
   graphcmsMarineProtection,
   graphcmsProducts,
-} from '../../../__mocks__';
+} from '../../../../__mocks__';
 
 describe('Gatsby Resolvers', () => {
   const context = {} as GatsbyCtx<ProductFeatures>;
