@@ -67,7 +67,13 @@ export function shopifyProductResolver() {
         },
       },
       features: {
-        resolve: productFeaturesResolver,
+        resolve(
+          source: ShopifyProductNode,
+          args: Record<string, unknown>,
+          ctx: GatsbyCtx<ProductFeatures>,
+        ) {
+          return productFeaturesResolver(source, args, ctx);
+        },
       },
     },
   };
