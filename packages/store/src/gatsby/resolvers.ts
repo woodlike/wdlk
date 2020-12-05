@@ -8,9 +8,7 @@ import {
   ShopifyProductNode,
   Variant,
 } from '.';
-import { priceFormatter } from '../utils';
-
-const LOCALE = 'en-GB';
+import { currency } from '../model';
 
 export function getNodeModelByRemoteId(
   type: string,
@@ -103,7 +101,7 @@ export function productVariantPriceFields(reporter: Reporter) {
             }
             const { amount, currencyCode } = compareAtPriceV2;
             return {
-              amount: priceFormatter(amount, LOCALE, currencyCode),
+              amount: currency(amount),
               currencyCode: currencyCode,
             };
           } catch (error) {
@@ -123,7 +121,7 @@ export function productVariantPriceFields(reporter: Reporter) {
             } = source;
 
             return {
-              amount: priceFormatter(amount, LOCALE, currencyCode),
+              amount: currency(amount),
               currencyCode: currencyCode,
             };
           } catch (error) {

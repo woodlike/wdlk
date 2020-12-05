@@ -1,17 +1,6 @@
 import { lensPath, set, view, Lens } from 'ramda';
-import currencyJS from 'currency.js';
 import { ShopifyPriceV2, LineItem, Variant, Cart } from '.';
-
-export interface CurrencyConfig {
-  readonly decimal?: '.' | ',';
-  readonly precision?: number;
-  readonly symbol?: '€' | '$' | '';
-}
-
-export const currency = (
-  value: string,
-  config: CurrencyConfig = { decimal: '.', symbol: '' },
-) => currencyJS(value, config).format();
+import { currency } from '..';
 
 export const variantLens = lensPath(['variant']);
 export const subtotalPriceV2Lens = lensPath(['amount']);
