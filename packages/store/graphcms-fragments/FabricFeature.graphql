@@ -12,6 +12,7 @@ fragment FabricFeature on FabricFeature {
   features
   compositionTitle
   compositionFeatureList
+  careInstructionsTitle
   careInstructions
   products {
     ... on Product {

@@ -1,0 +1,256 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` 1`] = `
+Object {
+  "__typename": "Checkout",
+  "appliedGiftCards": Array [],
+  "completedAt": null,
+  "createdAt": "2020-11-15T15:25:35Z",
+  "currencyCode": "EUR",
+  "customAttributes": Array [],
+  "discountApplications": Array [],
+  "email": null,
+  "id": "fooo=",
+  "lineItems": Array [
+    Object {
+      "customAttributes": Array [
+        Object {
+          "key": "slug",
+          "value": "/products/alli-one-piece-blue",
+        },
+      ],
+      "discountAllocations": Array [],
+      "id": "foo2==",
+      "quantity": 1,
+      "title": "ALLI One Piece - blue",
+      "variant": Object {
+        "available": true,
+        "compareAtPrice": "165.00",
+        "compareAtPriceV2": Object {
+          "amount": "165.0",
+          "currencyCode": "EUR",
+        },
+        "id": "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8zMTM2NjgzNDE5MjQ3Mw==",
+        "image": Object {
+          "altText": null,
+          "id": "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0SW1hZ2UvMTM2OTQzNDU5MzY5ODU=",
+          "src": "https://cdn.shopify.com/s/files/1/0742/2733/products/155.jpg?v=1580458979",
+        },
+        "presentmentPrices": Array [
+          Object {
+            "compareAtPrice": Object {
+              "amount": "165.0",
+              "currencyCode": "EUR",
+            },
+            "hasNextPage": false,
+            "hasPreviousPage": false,
+            "price": Object {
+              "amount": "135.0",
+              "currencyCode": "EUR",
+            },
+            "variableValues": Object {
+              "id": "Z2lkOi8vc2hvcGlmeS9DaGVja291dC8zMTkxYjU2YzM0YWU3M2FjYTJjZGUyYmRmNTQ2NGRhYT9rZXk9NTY2NGJjMzhiYmU2MmEyMWYzZTkzMGJhNmY5NDc1ZWM=",
+            },
+          },
+        ],
+        "price": "135.00",
+        "priceV2": Object {
+          "amount": "135.00",
+          "currencyCode": "EUR",
+        },
+        "product": Object {
+          "handle": "alli-one-piece-blue",
+          "id": "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0LzQ0MzQ1OTE1ODAyNDk=",
+        },
+        "selectedOptions": Array [
+          Object {
+            "name": "Size",
+            "value": "S/M",
+          },
+        ],
+        "sku": "WDLK202013-2",
+        "title": "S/M",
+        "unitPrice": null,
+        "unitPriceMeasurement": Object {
+          "measuredType": null,
+          "quantityUnit": null,
+          "quantityValue": 0,
+          "referenceUnit": null,
+          "referenceValue": 0,
+        },
+        "weight": 195,
+      },
+    },
+    Object {
+      "customAttributes": Array [
+        Object {
+          "key": "slug",
+          "value": "/products/sole-one-piece-reversible-white-bird",
+        },
+      ],
+      "discountAllocations": Array [],
+      "id": "Z2lkOi8vc2hvcGlmeS9DaGVja291dExpbmVJdGVtLzE2OTQxMDIzNjkwODQxMD9jaGVja291dD0zMTkxYjU2YzM0YWU3M2FjYTJjZGUyYmRmNTQ2NGRhYQ==",
+      "quantity": 1,
+      "title": "Sole One Piece Reversible - White Bird / Riad",
+      "variant": Object {
+        "available": true,
+        "compareAtPrice": "165.00",
+        "compareAtPriceV2": Object {
+          "amount": "165.0",
+          "currencyCode": "EUR",
+        },
+        "id": "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8xNjk0MTAyMzY5MDg0MQ==",
+        "image": Object {
+          "altText": null,
+          "id": "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0SW1hZ2UvNDgwNDQxNjI0MTc1Mw==",
+          "src": "https://cdn.shopify.com/s/files/1/0742/2733/products/one_suit_bandeau-weiss-front-2.jpg?v=1544040728",
+        },
+        "presentmentPrices": Array [
+          Object {
+            "compareAtPrice": Object {
+              "amount": "165.0",
+              "currencyCode": "EUR",
+            },
+            "hasNextPage": false,
+            "hasPreviousPage": false,
+            "price": Object {
+              "amount": "135.0",
+              "currencyCode": "EUR",
+            },
+            "variableValues": Object {
+              "id": "Z2lkOi8vc2hvcGlmeS9DaGVja291dC8zMTkxYjU2YzM0YWU3M2FjYTJjZGUyYmRmNTQ2NGRhYT9rZXk9NTY2NGJjMzhiYmU2MmEyMWYzZTkzMGJhNmY5NDc1ZWM=",
+            },
+          },
+        ],
+        "price": "135.00",
+        "priceV2": Object {
+          "amount": "135.00",
+          "currencyCode": "EUR",
+        },
+        "product": Object {
+          "handle": "sole-one-piece-reversible-white-bird",
+          "id": "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0LzE3MDUyMjk5NzU2NDE=",
+        },
+        "selectedOptions": Array [
+          Object {
+            "name": "Size",
+            "value": "L",
+          },
+        ],
+        "sku": "WDLK3037",
+        "title": "L",
+        "unitPrice": null,
+        "unitPriceMeasurement": Object {
+          "measuredType": null,
+          "quantityUnit": null,
+          "quantityValue": 0,
+          "referenceUnit": null,
+          "referenceValue": 0,
+        },
+        "weight": 0,
+      },
+    },
+    Object {
+      "customAttributes": Array [
+        Object {
+          "key": "slug",
+          "value": "/products/alli-one-piece-blue",
+        },
+      ],
+      "discountAllocations": Array [],
+      "id": "Z2lkOi8vc2hvcGlmeS9DaGVja291dExpbmVJdGVtLzMxMzY2ODM0MTkyNDczMD9jaGVja291dD0zMTkxYjU2YzM0YWU3M2FjYTJjZGUyYmRmNTQ2NGRhYQ==",
+      "quantity": 1,
+      "title": "ALLI One Piece - blue",
+      "variant": Object {
+        "available": true,
+        "compareAtPrice": "165.00",
+        "compareAtPriceV2": Object {
+          "amount": "165.0",
+          "currencyCode": "EUR",
+        },
+        "id": "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0VmFyaWFudC8zMTM2NjgzNDE5MjQ3Mw==",
+        "image": Object {
+          "altText": null,
+          "id": "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0SW1hZ2UvMTM2OTQzNDU5MzY5ODU=",
+          "src": "https://cdn.shopify.com/s/files/1/0742/2733/products/155.jpg?v=1580458979",
+        },
+        "presentmentPrices": Array [
+          Object {
+            "compareAtPrice": Object {
+              "amount": "165.0",
+              "currencyCode": "EUR",
+            },
+            "hasNextPage": false,
+            "hasPreviousPage": false,
+            "price": Object {
+              "amount": "135.0",
+              "currencyCode": "EUR",
+            },
+          },
+        ],
+        "price": "135.00",
+        "priceV2": Object {
+          "amount": "135.00",
+          "currencyCode": "EUR",
+        },
+        "product": Object {
+          "handle": "alli-one-piece-blue",
+          "id": "Z2lkOi8vc2hvcGlmeS9Qcm9kdWN0LzQ0MzQ1OTE1ODAyNDk=",
+        },
+        "selectedOptions": Array [
+          Object {
+            "name": "Size",
+            "value": "S/M",
+          },
+        ],
+        "sku": "WDLK202013-2",
+        "title": "S/M",
+        "unitPrice": null,
+        "unitPriceMeasurement": Object {
+          "measuredType": null,
+          "quantityUnit": null,
+          "quantityValue": 0,
+          "referenceUnit": null,
+          "referenceValue": 0,
+        },
+        "weight": 195,
+      },
+    },
+  ],
+  "lineItemsSubtotalPrice": Object {
+    "amount": "135.0",
+    "currencyCode": "EUR",
+  },
+  "note": null,
+  "order": null,
+  "orderStatusUrl": null,
+  "paymentDue": "135.00",
+  "paymentDueV2": Object {
+    "amount": "135.0",
+    "currencyCode": "EUR",
+  },
+  "ready": true,
+  "requiresShipping": true,
+  "shippingAddress": null,
+  "shippingLine": null,
+  "subtotalPrice": "135.00",
+  "subtotalPriceV2": Object {
+    "amount": "135.00",
+    "currencyCode": "EUR",
+  },
+  "taxExempt": false,
+  "taxesIncluded": true,
+  "totalPrice": "135.00",
+  "totalPriceV2": Object {
+    "amount": "135.0",
+    "currencyCode": "EUR",
+  },
+  "totalTax": "0.00",
+  "totalTaxV2": Object {
+    "amount": "0.0",
+    "currencyCode": "EUR",
+  },
+  "updatedAt": "2020-11-20T16:52:59Z",
+  "webUrl": "https://wdkl-ocean.myshopify.com/7422733/checkouts/3191b56c34ae73aca2cde2bdf5464daa?key=5664bc38bbe62a21f3e930ba6f9475ec",
+}
+`;
