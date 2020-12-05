@@ -1,3 +1,4 @@
+import * as Lens from './lenses';
 import { Cart, CartState } from '.';
 import {
   RemoveCartItemPayload,
@@ -23,9 +24,7 @@ export function cartReducer(state: CartState, action: CartAction): CartState {
     case 'update_cart': {
       return {
         ...state,
-        cart: {
-          ...action.payload,
-        },
+        cart: Lens.reduceCart(action.payload),
       };
     }
 
