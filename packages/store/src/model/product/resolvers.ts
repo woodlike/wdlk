@@ -37,22 +37,23 @@ export function productFeaturesResolver(
     return null;
   }
 
-  const fabricFeature = getNodeModelByRemoteId(
-    'GraphCMS_FabricFeature',
-    product.fabricFeature.remoteId,
-    ctx,
-  );
-
-  const productMarineProtection = getNodeModelByRemoteId(
-    'GraphCMS_ProductMarineProtection',
-    product.productMarineProtection.remoteId,
-    ctx,
-  );
-
+  const { fabricFeature, productMarineProtection } = product;
   return {
     ...product,
-    fabricFeature,
-    productMarineProtection,
+    fabricFeature: !!fabricFeature
+      ? getNodeModelByRemoteId(
+          'GraphCMS_FabricFeature',
+          fabricFeature.remoteId,
+          ctx,
+        )
+      : null,
+    productMarineProtection: !!productMarineProtection
+      ? getNodeModelByRemoteId(
+          'GraphCMS_ProductMarineProtection',
+          productMarineProtection.remoteId,
+          ctx,
+        )
+      : null,
   };
 }
 

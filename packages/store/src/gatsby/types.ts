@@ -11,13 +11,14 @@ export interface ShopifyProductNode extends ShopifyNode {
   readonly handle: string;
   readonly id: string;
   readonly images: ProductImage[];
-  readonly fields: ProductFields;
-  readonly features: ProductFeatures;
+  readonly fields?: ProductFields;
+  readonly features?: ProductFeatures;
   readonly tags: string[];
   readonly title: string;
   readonly slug: string;
   readonly shopifyId: string;
   readonly variants: Variant[];
+  readonly onlineStoreUrl?: string;
 }
 
 export interface CartData {
@@ -68,10 +69,10 @@ export interface Variant {
   readonly priceLocale: Price;
   readonly priceV2: Price;
   readonly shopifyId: string;
-  readonly sku: string;
+  readonly sku?: string;
   readonly title: string;
-  readonly weight: number;
-  readonly weightUnit: string;
+  readonly weight?: number;
+  readonly weightUnit?: string;
 }
 
 export interface Price {
@@ -87,9 +88,9 @@ export interface ProductImage {
   readonly altText: string;
   readonly id: string;
   readonly originalSrc: string;
-  readonly srcSet: SourceSetProps[];
-  readonly localFile: {
-    readonly name: string;
+  readonly srcSet: SourceSetProps[] | string[];
+  readonly localFile?: {
+    readonly name?: string;
   };
 }
 

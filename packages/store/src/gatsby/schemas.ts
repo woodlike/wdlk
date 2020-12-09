@@ -1,6 +1,10 @@
 import { Actions } from 'gatsby';
 
 const schema = `
+  type ShopifyCollection implements Node {
+    slug: String!
+  }
+  
   type ShopifyProduct implements Node  {
     id: String!
     description: String!
