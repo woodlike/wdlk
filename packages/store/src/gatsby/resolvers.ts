@@ -1,6 +1,7 @@
 import { Reporter } from 'gatsby';
 
 import {
+  collectionResolver,
   shopifyProductResolver,
   shopifyProductImagesField,
   productVariantPriceFields,
@@ -11,6 +12,7 @@ export function createStoreResolvers(
   reporter: Reporter,
 ): void {
   createResolvers({
+    ...collectionResolver(),
     ...shopifyProductResolver(),
     ...shopifyProductImagesField(),
     ...productVariantPriceFields(reporter),
