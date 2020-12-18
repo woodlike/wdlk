@@ -1,7 +1,8 @@
 import React from 'react';
+import { Layout } from '..';
 
 export const Collection: React.FC = () => {
-  return <div>Hi mom!!!</div>;
+  return <Layout>content</Layout>;
 };
 
 export default Collection;
