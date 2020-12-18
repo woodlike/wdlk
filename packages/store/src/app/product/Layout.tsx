@@ -16,7 +16,7 @@ export interface ProductLayoutProps {
   };
 }
 
-export const App: React.FC<ProductLayoutProps> = ({ data }) => {
+export const Product: React.FC<ProductLayoutProps> = ({ data }) => {
   const [sizingLayerIsOpen, setSizingLayerIsOpen] = useState(false);
   const [cartLayerIsOpen, setCartLayerIsOpen] = useState(false);
   const {
@@ -78,7 +78,7 @@ export const App: React.FC<ProductLayoutProps> = ({ data }) => {
   );
 };
 
-export default App;
+export default Product;
 
 export const query = graphql`
   query ProductQuery($id: String!, $layerId: String!) {

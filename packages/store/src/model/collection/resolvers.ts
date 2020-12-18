@@ -1,12 +1,11 @@
-import * as Lens from './lenses';
-import { ShopifyCollection } from '.';
+import { Collection } from '.';
 
 export function collectionResolver() {
   return {
     ShopifyCollection: {
       slug: {
-        resolve(source: ShopifyCollection) {
-          return Lens.setCollectionSlug('collections', source);
+        resolve(source: Collection) {
+          return `/collections/${source.handle}`.replace(/\/\/+/g, '/');
         },
       },
     },

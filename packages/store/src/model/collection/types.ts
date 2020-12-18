@@ -1,7 +1,16 @@
+import { Image } from '..';
 import { ShopifyProductNode } from '../../gatsby';
 
-export interface ShopifyCollection {
+export interface Collection {
   readonly handle: string;
+  readonly id: string;
+  readonly children: unknown;
   readonly products: ShopifyProductNode[];
-  readonly slug?: string;
+  readonly title: string;
+  readonly slug: string;
+  readonly shopifyId: string;
+  readonly updatedAt: string;
+  readonly description?: string;
+  readonly descriptionHtml?: string;
+  readonly image: Image;
 }
