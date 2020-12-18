@@ -1,6 +1,10 @@
 import { NodeInput } from 'gatsby';
 import { GraphQLOutputType } from 'graphql';
 
+export interface ProductNode {
+  readonly node: ShopifyProductNode;
+}
+
 export interface ShopifyNode {
   readonly id: string;
   readonly title: string;

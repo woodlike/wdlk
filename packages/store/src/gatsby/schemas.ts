@@ -1,8 +1,17 @@
 import { Actions } from 'gatsby';
 
 const schema = `
-  type ShopifyCollection implements Node {
+  type ShopifyCollection implements Node @dontInfer {
+    description: String!
+    descriptionHtml: String!
+    handle: String!
+    id: String!
+    image: Image
+    products: [ShopifyProduct!]!
+    shopifyId: String!
     slug: String!
+    title: String!
+    updatedAt: String
   }
   
   type ShopifyProduct implements Node  {
@@ -33,6 +42,11 @@ const schema = `
     altText: String
     originalSrc: String!
     srcSet: [String!]!
+  }
+
+  type Image @dontInfer {
+    id: String!
+    src: String!
   }
 `;
 
