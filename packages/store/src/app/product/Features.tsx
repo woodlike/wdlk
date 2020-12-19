@@ -91,7 +91,7 @@ export const Features: React.FC<FeaturesProps> = props => {
           </>
         )}
       </HighlightSection>
-      {!!images.length && (
+      {images.length >= 5 && (
         <StickyBox breakpoint={2}>
           <Image
             alt={`${name}-${modelTitle}`}
