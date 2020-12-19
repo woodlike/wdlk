@@ -47,7 +47,7 @@ export const Fabric: React.FC<FabricProps> = props => {
 
   return (
     <Columns collapseBelow={3}>
-      {!!images.length && (
+      {images.length >= 6 && (
         <StickyBox breakpoint={3}>
           <Image
             alt={`${productName}-${title}`}
