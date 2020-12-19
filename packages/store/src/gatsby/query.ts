@@ -1,5 +1,5 @@
 import { ProductNode } from '.';
-import { Collection } from '..';
+import { Collection } from '../model';
 
 export interface CreatePageQuery {
   readonly data: {

@@ -2,7 +2,7 @@ import { resolve } from 'path';
 import { Actions } from 'gatsby';
 
 import { ShopifyProductNode, ProductNode } from '.';
-import { Collection } from '..';
+import { Collection } from '../model';
 
 export interface ProductQueryData {
   readonly allShopifyProduct: {
