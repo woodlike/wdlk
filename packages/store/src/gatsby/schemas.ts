@@ -1,13 +1,12 @@
 import { Actions } from 'gatsby';
 
 const schema = `
-  type ShopifyCollection implements Node @dontInfer {
+  type ShopifyCollection implements Node  {
     description: String!
     descriptionHtml: String!
     handle: String!
     id: String!
     image: Image
-    products: [ShopifyProduct!]!
     shopifyId: String!
     slug: String!
     title: String!
