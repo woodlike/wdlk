@@ -2,11 +2,15 @@ import React, { useState } from 'react';
 import { ThemeProvider } from 'emotion-theming';
 import { theme } from '@wdlk/components';
 
-import { Header, CartLayer } from '.';
+import { Header, CartLayer, Footer } from '.';
 import { GlobalCss } from '..';
 import { CartProvider } from '../model';
 
-export const Layout: React.FC = props => {
+export interface LayoutProps {
+  readonly layer?: JSX.Element;
+}
+
+export const Layout: React.FC<LayoutProps> = props => {
   const [cartLayerIsOpen, setCartLayerIsOpen] = useState(false);
   return (
     <ThemeProvider theme={theme}>
@@ -16,8 +20,10 @@ export const Layout: React.FC = props => {
           isCartOpen={cartLayerIsOpen}
           setIsCartOpen={setCartLayerIsOpen}
         />
-        <main>{props.children}</main>
+        <>{props.children}</>
+        <Footer />
         <CartLayer isOpen={cartLayerIsOpen} setIsOpen={setCartLayerIsOpen} />
+        {!!props.layer && props.layer}
       </CartProvider>
     </ThemeProvider>
   );
