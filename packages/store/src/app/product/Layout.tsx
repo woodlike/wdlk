@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
-import { ThemeProvider } from 'emotion-theming';
 import { graphql } from 'gatsby';
-import { theme } from '@wdlk/components';
 
 import { Content, Features, StageCarousel, SizingGuideLayer, Fabric } from '.';
-import { Footer, Header } from '..';
-import { CartProvider, GlobalCss, ProductLayout } from '../..';
+import { Layout } from '..';
+import { ProductLayout } from '../..';
 import { ShopifyProductNode, ShopifyPageNode } from '../../gatsby';
-import { CartLayer } from '../CartLayer';
 
 export interface ProductLayoutProps {
   readonly data: {
@@ -18,7 +15,6 @@ export interface ProductLayoutProps {
 
 export const Product: React.FC<ProductLayoutProps> = ({ data }) => {
   const [sizingLayerIsOpen, setSizingLayerIsOpen] = useState(false);
-  const [cartLayerIsOpen, setCartLayerIsOpen] = useState(false);
   const {
     shopifyProduct: {
       description,
@@ -34,47 +30,40 @@ export const Product: React.FC<ProductLayoutProps> = ({ data }) => {
   } = data;
 
   return (
-    <ThemeProvider theme={theme}>
-      <CartProvider>
-        <GlobalCss />
-        <Header
-          isCartOpen={cartLayerIsOpen}
-          setIsCartOpen={setCartLayerIsOpen}
-        />
-        <main>
-          <ProductLayout
-            image={<StageCarousel images={images} />}
-            content={
-              <Content
-                description={description}
-                isOpen={sizingLayerIsOpen}
-                shopifyId={shopifyId}
-                setIsOpen={setSizingLayerIsOpen}
-                slug={slug}
-                tags={tags}
-                title={title}
-                variants={variants}
-              />
-            }
-          />
-        </main>
-        {!!features && <Features features={features} images={images} />}
-        {!!features?.fabricFeature && (
-          <Fabric
-            productName={title}
-            fabricFeature={features.fabricFeature}
-            images={images}
-          />
-        )}
-        <Footer />
+    <Layout
+      layer={
         <SizingGuideLayer
           sizingPage={shopifyPage}
           setIsOpen={setSizingLayerIsOpen}
           isOpen={sizingLayerIsOpen}
         />
-        <CartLayer isOpen={cartLayerIsOpen} setIsOpen={setCartLayerIsOpen} />
-      </CartProvider>
-    </ThemeProvider>
+      }>
+      <main>
+        <ProductLayout
+          image={<StageCarousel images={images} />}
+          content={
+            <Content
+              description={description}
+              isOpen={sizingLayerIsOpen}
+              shopifyId={shopifyId}
+              setIsOpen={setSizingLayerIsOpen}
+              slug={slug}
+              tags={tags}
+              title={title}
+              variants={variants}
+            />
+          }
+        />
+      </main>
+      {!!features && <Features features={features} images={images} />}
+      {!!features?.fabricFeature && (
+        <Fabric
+          productName={title}
+          fabricFeature={features.fabricFeature}
+          images={images}
+        />
+      )}
+    </Layout>
   );
 };
 
