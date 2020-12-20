@@ -1,6 +1,7 @@
 export * from './CarouselLayout';
 export * from './CartItemLayout';
 export * from './CollectionLayout';
+export * from './CollectionImg';
 export * from './FooterLayout';
 export * from './Global';
 export * from './HeaderLayout';

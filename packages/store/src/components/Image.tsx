@@ -5,6 +5,7 @@ export interface ImageProps {
   readonly src: string;
   readonly alt: string;
   readonly fit: ImageFit;
+  readonly className?: string;
   readonly width?: string;
   readonly height?: string;
   readonly sizes?: string;
@@ -27,6 +28,7 @@ const StyledImage = styled.img<StyledImage>`
 
 export const Image: React.FC<ImageProps> = props => (
   <StyledImage
+    className={props.className}
     width={props.width}
     height={props.height}
     alt={props.alt}

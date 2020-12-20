@@ -1,4 +1,4 @@
-import { Image } from '..';
+import { ProductImageProps } from '..';
 import { ShopifyProductNode } from '../../gatsby';
 
 export interface Collection {
@@ -12,5 +12,5 @@ export interface Collection {
   readonly updatedAt: string;
   readonly description?: string;
   readonly descriptionHtml?: string;
-  readonly image: Image;
+  readonly images: ProductImageProps[];
 }
