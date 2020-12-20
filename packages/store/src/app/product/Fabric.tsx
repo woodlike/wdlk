@@ -1,18 +1,18 @@
 import { Box, Columns, Heading, ScaleArea, Text } from '@wdlk/components';
-import { useMedia } from '@wdlk/hooks';
-import { useTheme } from 'emotion-theming';
-import React from 'react';
-
+import { FabricFeature, ProductImage } from '../../gatsby';
 import {
-  contestScales,
+  HighlightSection,
   Image,
   List,
-  HighlightSection,
   ListItem,
-  Title,
   StickyBox,
+  Title,
+  contestScales,
 } from '../..';
-import { FabricFeature, ProductImage } from '../../gatsby';
+
+import React from 'react';
+import { useMedia } from '@wdlk/hooks';
+import { useTheme } from 'emotion-theming';
 
 export interface FabricProps {
   readonly productName: string;

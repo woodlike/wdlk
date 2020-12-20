@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from '../styled';
 
-const StyledItem = styled.li``;
+const StyledItem = styled.li`
+`;
 
 StyledItem.displayName = 'Collection.StyledItem';
 

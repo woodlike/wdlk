@@ -92,7 +92,7 @@ export interface ProductImage {
   readonly altText: string;
   readonly id: string;
   readonly originalSrc: string;
-  readonly srcSet: SourceSetProps[] | string[];
+  readonly srcSet: SourceSetProps[];
   readonly localFile?: {
     readonly name?: string;
   };
