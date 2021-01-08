@@ -1,6 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { useTheme } from 'emotion-theming';
-import { useMedia } from '@wdlk/hooks';
+import { ActionsContext, CartActionsContext } from '../../model';
 import {
   Box,
   Button,
@@ -14,20 +12,23 @@ import {
   Stack,
   Text,
 } from '@wdlk/components';
-
 import {
   CartContext,
+  PriceLayout,
+  ProductPrice,
+  Title,
   contestScales,
   findString,
-  Price,
-  PriceLayout,
-  Title,
   useProductData,
 } from '../..';
+import React, { useContext, useEffect, useState } from 'react';
+
 import { Variant } from '../../gatsby';
-import { CartActionsContext, ActionsContext } from '../../model';
+import { useMedia } from '@wdlk/hooks';
+import { useTheme } from 'emotion-theming';
 
 export interface StageContentProps {
+  readonly currencyCode: string;
   readonly description: string;
   readonly shopifyId: string;
   readonly tags: string[];
@@ -164,12 +165,12 @@ export const Content: React.FC<StageContentProps> = props => {
               }
               sale={
                 activeVariant.compareAtLocalePrice && (
-                  <Price type="secondary">
-                    {activeVariant.compareAtLocalePrice.amount}
-                  </Price>
+                  <ProductPrice type="secondary">
+                    {activeVariant.compareAtLocalePrice.amount} {props.currencyCode}
+                  </ProductPrice>
                 )
               }>
-              <Price type="primary">{activeVariant.priceLocale.amount}</Price>
+              <ProductPrice type="primary">{activeVariant.priceLocale.amount} {props.currencyCode}</ProductPrice>
             </PriceLayout>
           </Box>
 
