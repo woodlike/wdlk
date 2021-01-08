@@ -1,58 +1,36 @@
 import React from 'react';
-import { useTheme } from 'emotion-theming';
-import { Heading, HeadlineSize } from '@wdlk/components';
-import { useMedia } from '@wdlk/hooks';
+import { Theme } from '@wdlk/components';
+import { css } from '@emotion/core';
 import styled from './styled';
 
 export interface PriceProps {
-  readonly type: 'primary' | 'secondary';
+  readonly size: 's' | 'm' | 'l';
+  readonly isStrikethrough: boolean;
 }
 
-const StyledSecondaryPrice = styled.strong`
-  display: inline-block;
-  color: ${props => props.theme.colors.grays[1]};
-  font-family: ${props => props.theme.fonts.body};
-  font-size: ${props => props.theme.fontSizes[1]};
-  font-weight: 300;
-  line-height: 1;
-  text-decoration: line-through;
-
-  ${props => {
-    const {
-      theme: { breakpoints, fontSizes },
-    } = props;
-    return `
-    @media (min-width: ${breakpoints[2]}) {
-      font-size: ${fontSizes[2]};
-    }
-    @media (min-width: ${breakpoints[3]}) {
-      font-size: ${fontSizes[3]};
-    }
-    `;
-  }};
+const defaultPrice = (theme: Theme) => css`
+  color: ${theme.text.color};
+  text-decoration: unset;
 `;
 
-StyledSecondaryPrice.displayName = 'StyledSecondaryPrice';
+const strikethroughPrice = (theme: Theme) => css`
+  color: ${theme.colors.grays[1]};
+  text-decoration: line-through;
+`;
 
-export const Price: React.FC<PriceProps> = props => {
-  const { breakpoints } = useTheme();
-  const size = useMedia<HeadlineSize>(
-    [
-      `(min-width: ${breakpoints[3]})`,
-      `(min-width: ${breakpoints[2]})`,
-      `(min-width: ${breakpoints[1]})`,
-      `(min-width: ${breakpoints[0]})`,
-    ],
-    ['m', 'm', 's', 's'],
-    's',
-  );
-  return props.type === 'primary' ? (
-    <Heading as="h2" size={size} type="primary">
-      {props.children}
-    </Heading>
-  ) : (
-    <StyledSecondaryPrice itemProp="price">
-      {props.children}
-    </StyledSecondaryPrice>
-  );
-};
+const StyledPrice = styled.span<PriceProps>`
+  font-family: ${props => props.theme.fonts.body};
+  font-size: ${props => `${props.theme.text[props.size].fontSize}px`};
+  font-weight: 300;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  ${props => props.isStrikethrough ? defaultPrice(props.theme) : strikethroughPrice(props.theme)};
+`;
+
+StyledPrice.displayName = 'StyledPrice';
+
+export const Price: React.FC<PriceProps> = props => (
+  <StyledPrice isStrikethrough={props.isStrikethrough} size={props.size}>
+    {props.children}
+  </StyledPrice>
+);

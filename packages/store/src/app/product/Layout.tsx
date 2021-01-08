@@ -1,10 +1,10 @@
+import { Content, Fabric, Features, SizingGuideLayer, StageCarousel } from '.';
 import React, { useState } from 'react';
-import { graphql } from 'gatsby';
+import { ShopifyPageNode, ShopifyProductNode } from '../../gatsby';
 
-import { Content, Features, StageCarousel, SizingGuideLayer, Fabric } from '.';
 import { Layout } from '..';
 import { ProductLayout } from '../..';
-import { ShopifyProductNode, ShopifyPageNode } from '../../gatsby';
+import { graphql } from 'gatsby';
 
 export interface ProductLayoutProps {
   readonly data: {
@@ -43,6 +43,7 @@ export const Product: React.FC<ProductLayoutProps> = ({ data }) => {
           image={<StageCarousel images={images} />}
           content={
             <Content
+              currencyCode={variants[0].priceLocale.currencyCode}
               description={description}
               isOpen={sizingLayerIsOpen}
               shopifyId={shopifyId}
@@ -110,9 +111,11 @@ export const query = graphql`
         title
         priceLocale {
           amount
+          currencyCode
         }
         compareAtLocalePrice {
           amount
+          currencyCode
         }
       }
     }
