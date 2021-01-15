@@ -1,6 +1,10 @@
 import React from 'react';
 import styled from './styled';
 
+export interface CartItemLayoutProps {
+  readonly priceSlot: JSX.Element;
+}
+
 const StyledCartItemLayout = styled.li`
   display: grid;
   grid-template-columns: 30% 50% auto;
@@ -10,6 +14,14 @@ const StyledCartItemLayout = styled.li`
 
 StyledCartItemLayout.displayName = 'StyledCartItemLayout';
 
-export const CartItemLayout: React.FC = props => (
-  <StyledCartItemLayout>{props.children}</StyledCartItemLayout>
+const StyledPriceSlot = styled.div`
+  text-align: right;
+`;
+StyledPriceSlot.displayName = 'StyledPriceSlot';
+
+export const CartItemLayout: React.FC<CartItemLayoutProps> = props => (
+  <StyledCartItemLayout>
+    {props.children}
+    <StyledPriceSlot>{props.priceSlot}</StyledPriceSlot>
+  </StyledCartItemLayout>
 );

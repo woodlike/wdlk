@@ -1,16 +1,16 @@
-import React, { useContext } from 'react';
-import { Box, Link, Text } from '@wdlk/components';
-import { Link as GatsbyLink } from 'gatsby';
-
-import { GraphCMSCart } from '.';
-import { CartItemLayout, Image, Label } from '../components';
 import {
-  LineItem,
-  CartContext,
-  CartActionsContext,
   ActionsContext,
+  CartActionsContext,
+  CartContext,
   CartState,
+  LineItem,
 } from '../model';
+import { Box, Link, Text } from '@wdlk/components';
+import { CartItemLayout, Image, Label, Price } from '..';
+import React, { useContext } from 'react';
+
+import { Link as GatsbyLink } from 'gatsby';
+import { GraphCMSCart } from '.';
 
 export interface CartItemProps {
   readonly altText: string;
@@ -28,7 +28,23 @@ export const CartItem: React.FC<CartItemProps> = props => {
   };
 
   return (
-    <CartItemLayout>
+    <CartItemLayout
+      priceSlot={
+        <>
+          {props.lineItem.variant.compareAtPriceV2 && (
+            <>
+              <Price as="div" size="m" isStrikethrough>
+                {props.lineItem.variant.compareAtPriceV2?.amount}{' '}
+                {props.lineItem.variant.compareAtPriceV2?.currencyCode}
+              </Price>{' '}
+            </>
+          )}
+          <Price size="m">
+            {props.lineItem.variant.priceV2.amount}{' '}
+            {props.lineItem.variant.priceV2.currencyCode}
+          </Price>
+        </>
+      }>
       <GatsbyLink to={props.lineItem.customAttributes[0].value}>
         <Image
           alt={props.altText}
@@ -51,10 +67,6 @@ export const CartItem: React.FC<CartItemProps> = props => {
           {props.cmsCart.removeLabel}
         </Link>
       </div>
-      <Text size="m">
-        {props.lineItem.variant.priceV2.amount}{' '}
-        {props.lineItem.variant.priceV2.currencyCode}
-      </Text>
     </CartItemLayout>
   );
 };

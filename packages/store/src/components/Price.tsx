@@ -5,6 +5,7 @@ import styled from './styled';
 
 export interface PriceProps {
   readonly size: 's' | 'm' | 'l';
+  readonly as?: 'span' | 'div';
   readonly isStrikethrough?: boolean;
 }
 
@@ -33,7 +34,7 @@ const StyledPrice = styled.span<PriceProps>`
 StyledPrice.displayName = 'StyledPrice';
 
 export const Price: React.FC<PriceProps> = props => (
-  <StyledPrice isStrikethrough={props.isStrikethrough} size={props.size}>
+  <StyledPrice as={props.as || 'span'} isStrikethrough={props.isStrikethrough} size={props.size}>
     {props.children}
   </StyledPrice>
 );
