@@ -1,5 +1,6 @@
-import React from 'react';
 import { Box, Columns } from '@wdlk/components';
+
+import React from 'react';
 
 export interface PriceLayoutProps {
   readonly label: JSX.Element;
@@ -8,7 +9,7 @@ export interface PriceLayoutProps {
 
 export const PriceLayout: React.FC<PriceLayoutProps> = props => (
   <>
-    {props.sale && <Box padding={[0, 2]}>{props.sale}</Box>}
+    {props.sale && props.sale}
     <Columns align="center">
       {props.children}
       <Box padding={[0, 0, 0, 4]}>{props.label}</Box>
