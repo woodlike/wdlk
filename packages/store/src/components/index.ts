@@ -16,6 +16,7 @@ export * from './Logo';
 export * from './NavigationItem';
 export * from './NavigationList';
 export * from './NavigationLayout';
+export * from './ProductPrice';
 export * from './Price';
 export * from './PriceLayout';
 export * from './ProductLayout';

@@ -3,20 +3,23 @@ import styled from '../styled';
 
 const StyledList = styled.ul`
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(10, 60vh);
+  grid-template-columns: repeat(1, 1fr);
   column-gap: ${props => props.theme.space[3]}px;
   row-gap: ${props => props.theme.space[4]}px;
-  padding: 0;
+  padding: ${props => props.theme.space[4]}px;
   list-style: none;
 
-  @media (min-width: ${props => props.theme.breakpoints[2]}) {
+  @media (min-width: ${props => props.theme.breakpoints[1]}) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: ${props => props.theme.breakpoints[3]}) {
     grid-template-columns: repeat(3, 1fr);
     column-gap: ${props => props.theme.space[4]}px;
     row-gap: ${props => props.theme.space[5]}px;
   }
 
-  @media (min-width: ${props => props.theme.breakpoints[3]}) {
+  @media (min-width: ${props => props.theme.breakpoints[5]}) {
     grid-template-columns: repeat(4, 1fr);
   }
 `;

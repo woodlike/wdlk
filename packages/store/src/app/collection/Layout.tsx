@@ -1,4 +1,5 @@
-import { CollectionImg, CollectionLayout, } from '../../';
+import { Box, Text } from '@wdlk/components';
+import { CollectionImg, CollectionLayout, Price } from '../../';
 
 import { Collection } from '../../model';
 import { Layout } from '..';
@@ -15,18 +16,41 @@ export const CollectionLayoutPage: React.FC<ProductLayoutProps> = ({
   data,
 }) => {
   const {
-    shopifyCollection: { products},
+    shopifyCollection: { products },
   } = data;
   return (
     <Layout>
       {!!products.length && (
         <CollectionLayout.Frame>
           {products.map(product => (
-            <CollectionLayout.Item key={product.shopifyId}>
-              
+            <CollectionLayout.Item
+              key={product.shopifyId}
+              slug={product.slug}
+              caption={
+                <>
+                  <Box padding={[0, 0, 1, 0]}>
+                  <Text as="div" size="s">{product.title}</Text>
+                  </Box>
+                  <Price size="s">
+                    {product.variants[0].priceLocale?.amount}
+                    {product.variants[0].priceLocale?.currencyCode}
+                  </Price>
+                  {product.variants[0].compareAtLocalePrice && (
+                    <>
+                    {' '}
+                    <Price size="s" isStrikethrough>
+                      {product.variants[0].compareAtLocalePrice?.amount}
+                      {product.variants[0].compareAtLocalePrice?.currencyCode}
+                    </Price>
+                    </>
+                  )}
+                </>
+              }>
               {/* TODO: Collection images should be taken care by Gatsby on build time */}
-              <CollectionImg isActive={false} images={[product.images[0], product.images[2]]}/>
-              <h2>{product.title}</h2>
+              <CollectionImg
+                isActive={false}
+                images={[product.images[0], product.images[2]]}
+              />
             </CollectionLayout.Item>
           ))}
         </CollectionLayout.Frame>
