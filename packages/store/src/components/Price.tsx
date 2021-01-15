@@ -5,7 +5,7 @@ import styled from './styled';
 
 export interface PriceProps {
   readonly size: 's' | 'm' | 'l';
-  readonly isStrikethrough: boolean;
+  readonly isStrikethrough?: boolean;
 }
 
 const defaultPrice = (theme: Theme) => css`
@@ -19,12 +19,15 @@ const strikethroughPrice = (theme: Theme) => css`
 `;
 
 const StyledPrice = styled.span<PriceProps>`
-  font-family: ${props => props.theme.fonts.body};
+  font-family: ${props => props.theme.text.fontFamily};
   font-size: ${props => `${props.theme.text[props.size].fontSize}px`};
-  font-weight: 300;
   line-height: 1;
   -webkit-font-smoothing: antialiased;
-  ${props => props.isStrikethrough ? defaultPrice(props.theme) : strikethroughPrice(props.theme)};
+  
+  ${props =>
+    props.isStrikethrough
+      ? strikethroughPrice(props.theme)
+      : defaultPrice(props.theme)};
 `;
 
 StyledPrice.displayName = 'StyledPrice';

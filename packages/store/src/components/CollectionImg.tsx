@@ -26,12 +26,15 @@ const idleTransition = css`
   }
 `;
 
+// 1.20 aspect ratio. Width * 1.20
+const imgHeight = '120%';
+
 const StyledCollectionImgContainer = styled.div`
   position: relative;
   ::before {
     content: '';
     display: block;
-    padding-top: 150%;
+    padding-top: ${imgHeight};
   }
 `;
 StyledCollectionImgContainer.displayName = 'StyledCollectionImgContainer';
