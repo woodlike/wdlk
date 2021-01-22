@@ -12,6 +12,16 @@ const schema = `
     title: String!
     updatedAt: String
   }
+
+  type ShopifyPage implements Node  {
+    body: String!
+    handle: String!
+    id: String!
+    shopifyId: String!
+    slug: String!
+    title: String!
+    updatedAt: String
+  }
   
   type ShopifyProduct implements Node  {
     id: String!

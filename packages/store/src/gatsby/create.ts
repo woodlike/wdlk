@@ -1,7 +1,7 @@
-import { Actions, Reporter } from 'gatsby';
-
 import * as Page from './page';
 import * as Query from './query';
+
+import { Actions, Reporter } from 'gatsby';
 
 export interface CreatePagesArgs {
   readonly actions: Actions;
@@ -19,8 +19,10 @@ export async function createPages({
 
     const { edges } = data.allShopifyProduct;
     const { nodes } = data.allShopifyCollection;
+    const page = data.allShopifyPage;
 
     Page.createCollection(nodes, actions);
+    Page.createLegal(page.nodes, actions);
     Page.createProduct(edges, actions);
   } catch (error) {
     if (error) {

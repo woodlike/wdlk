@@ -1,10 +1,12 @@
+import { Collection, Legal } from '../model';
+
 import { ProductNode } from '.';
-import { Collection } from '../model';
 
 export interface CreatePageQuery {
   readonly data: {
     readonly allShopifyProduct: { readonly edges: ProductNode[] };
     readonly allShopifyCollection: { readonly nodes: Collection[] };
+    readonly allShopifyPage: { readonly nodes: Legal[] };
   };
   readonly errors: boolean;
 }
@@ -23,6 +25,12 @@ export async function create(
         }
       }
       allShopifyCollection {
+        nodes {
+          id
+          slug
+        }
+      }
+      allShopifyPage {
         nodes {
           id
           slug
