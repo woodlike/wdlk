@@ -1,11 +1,12 @@
-import { Reporter } from 'gatsby';
-
 import {
   collectionResolver,
-  shopifyProductResolver,
-  shopifyProductImagesField,
+  legalResolver,
   productVariantPriceFields,
+  shopifyProductImagesField,
+  shopifyProductResolver,
 } from '../model';
+
+import { Reporter } from 'gatsby';
 
 export function createStoreResolvers(
   createResolvers: (schema: object) => void,
@@ -13,6 +14,7 @@ export function createStoreResolvers(
 ): void {
   createResolvers({
     ...collectionResolver(),
+    ...legalResolver(),
     ...shopifyProductResolver(),
     ...shopifyProductImagesField(),
     ...productVariantPriceFields(reporter),

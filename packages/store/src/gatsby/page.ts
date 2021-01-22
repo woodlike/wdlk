@@ -1,8 +1,8 @@
-import { resolve } from 'path';
-import { Actions } from 'gatsby';
+import { Collection, Legal } from '../model';
+import { ProductNode, ShopifyProductNode } from '.';
 
-import { ShopifyProductNode, ProductNode } from '.';
-import { Collection } from '../model';
+import { Actions } from 'gatsby';
+import { resolve } from 'path';
 
 export interface ProductQueryData {
   readonly allShopifyProduct: {
@@ -16,13 +16,21 @@ export interface CollectionQuery {
   };
 }
 
+export interface PageQuery {
+  readonly allShopifyPage: {
+    readonly nodes: Legal[];
+  };
+}
+
+const basePath = './src/app';
+
 export function createProduct(edges: ProductNode[], actions: Actions) {
   const layerId = 'Shopify__Page__Z2lkOi8vc2hvcGlmeS9QYWdlLzEyNTg5NzAyOA==';
   const { createPage } = actions;
   edges.forEach((edge: { readonly node: ShopifyProductNode }) => {
     createPage({
       path: edge.node.slug,
-      component: resolve('./src/app/product/Layout.tsx'),
+      component: resolve(`${basePath}/product/Layout.tsx`),
       context: {
         id: edge.node.id,
         layerId,
@@ -36,7 +44,20 @@ export function createCollection(nodes: Collection[], actions: Actions) {
   nodes.forEach(node => {
     createPage({
       path: node.slug,
-      component: resolve('./src/app/collection/Layout.tsx'),
+      component: resolve(`${basePath}/collection/Layout.tsx`),
+      context: {
+        id: node.id,
+      },
+    });
+  });
+}
+
+export function createLegal(nodes: Legal[], actions: Actions) {
+  const { createPage } = actions;
+  nodes.forEach(node => {
+    createPage({
+      path: node.slug,
+      component: resolve(`${basePath}/legal/Layout.tsx`),
       context: {
         id: node.id,
       },
