@@ -5,4 +5,5 @@ export * from './navigation-data-mock';
 export * from './product-data-mock';
 export * from './shopify-buy-cart';
 export * from './shopify-collection';
+export * from './shopify-page';
 export * from './shopify-product';
