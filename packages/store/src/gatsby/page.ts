@@ -2,7 +2,7 @@ import { ProductNode, ShopifyProductNode } from '.';
 
 import { Actions } from 'gatsby';
 import { Collection, } from '../model';
-import { PageProps } from '../model/page'
+import { ShopifyPage } from '../model/page'
 import { resolve } from 'path';
 
 export interface ProductQueryData {
@@ -19,7 +19,7 @@ export interface CollectionQuery {
 
 export interface PageQuery {
   readonly allShopifyPage: {
-    readonly nodes: PageProps[];
+    readonly nodes: ShopifyPage[];
   };
 }
 
@@ -53,7 +53,7 @@ export function createCollection(nodes: Collection[], actions: Actions) {
   });
 }
 
-export function createLegal(nodes: PageProps[], actions: Actions) {
+export function createLegal(nodes: ShopifyPage[], actions: Actions) {
   const { createPage } = actions;
   nodes.forEach(node => {
     createPage({

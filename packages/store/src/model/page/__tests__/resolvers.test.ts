@@ -1,6 +1,6 @@
-import { ShopifyPage } from '../..';
-import { filterPageByTitle } from '../../utils';
-import { legalIds } from '..';
+import { ShopifyPage, legalIds } from '..';
+
+import { filterPageByTitle } from '../utils';
 import { shopifyPages } from '../../../../__mocks__';
 
 type LegalPageResult = Pick<ShopifyPage, 'slug'| 'title'>;
@@ -52,9 +52,9 @@ describe('Page Resolvers', () => {
   describe('filterPageLegalPages', () => {
 
     it('should return a filterd list of lega page nodes', () => {
-      const filterPageLegalPages = filterPageByTitle(legalIds);
+      const filterLegalPages = filterPageByTitle(legalIds);
       const pages = shopifyPages.nodes as ShopifyPage[]
-      expect(filterPageLegalPages(pages)).toStrictEqual(legalPageResult)
+      expect(filterLegalPages(pages)).toStrictEqual(legalPageResult)
     });
   });
 });

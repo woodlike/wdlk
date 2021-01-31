@@ -1,12 +1,12 @@
 import { Collection } from '../model';
-import { PageProps } from '../model/page'
 import { ProductNode } from '.';
+import { ShopifyPage } from '../model/page'
 
 export interface CreatePageQuery {
   readonly data: {
     readonly allShopifyProduct: { readonly edges: ProductNode[] };
     readonly allShopifyCollection: { readonly nodes: Collection[] };
-    readonly allShopifyPage: { readonly nodes: PageProps[] };
+    readonly allShopifyPage: { readonly nodes: ShopifyPage[] };
   };
   readonly errors: boolean;
 }

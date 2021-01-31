@@ -1,5 +1,5 @@
-import { NodeInput } from 'gatsby';
 import { GraphQLOutputType } from 'graphql';
+import { NodeInput } from 'gatsby';
 
 export interface ProductNode {
   readonly node: ShopifyProductNode;
@@ -103,6 +103,26 @@ export interface SourceSetProps {
   readonly id?: string;
 }
 
+// Parameters
+// args Object
+// query Object
+// Query arguments (filter and sort)
+
+// type string | GraphQLOutputType
+// Type
+
+// firstOnly boolean
+// If true, return only first match
+
+// pageDependencies Object
+// Optional page dependency information.
+
+// path string
+// The path of the page that depends on the retrieved nodes’ data
+
+// connectionType string
+// Mark this dependency as a connection
+
 export interface GatsbyCtx<T> {
   readonly nodeModel: {
     getNodeById(args: {
@@ -117,6 +137,7 @@ export interface GatsbyCtx<T> {
       readonly type: string | GraphQLOutputType;
     }): NodeInput & T[];
     getTypes(): NodeInput & T[];
+    runQuery<T>(args: T): Promise<Node[]>
   };
 }
 
