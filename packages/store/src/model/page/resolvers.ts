@@ -1,10 +1,10 @@
-import { Legal } from '.';
+import { PageProps } from '.';
 
-export function legalResolver() {
+export function createResolver() {
   return {
     ShopifyPage: {
       slug: {
-        resolve(source: Legal) {
+        resolve(source: PageProps) {
           return `/legal/${source.handle}`.replace(/\/\/+/g, '/');
         },
       },

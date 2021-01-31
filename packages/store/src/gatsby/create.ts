@@ -1,4 +1,4 @@
-import * as Page from './page';
+import * as GatsbyPage from './page';
 import * as Query from './query';
 
 import { Actions, Reporter } from 'gatsby';
@@ -21,9 +21,9 @@ export async function createPages({
     const { nodes } = data.allShopifyCollection;
     const page = data.allShopifyPage;
 
-    Page.createCollection(nodes, actions);
-    Page.createLegal(page.nodes, actions);
-    Page.createProduct(edges, actions);
+    GatsbyPage.createCollection(nodes, actions);
+    GatsbyPage.createLegal(page.nodes, actions);
+    GatsbyPage.createProduct(edges, actions);
   } catch (error) {
     if (error) {
       reporter.panicOnBuild(`🚨  ERROR: creating custom pages: ${error}`);

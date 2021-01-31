@@ -1,4 +1,4 @@
-export interface Legal {
+export interface PageProps {
     readonly title: string;
     readonly handle: string;
     readonly shopifyId: string;
