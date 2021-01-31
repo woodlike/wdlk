@@ -21,6 +21,7 @@ const schema = `
     slug: String!
     title: String!
     updatedAt: String
+    legal: [ShopifyPage!]
   }
   
   type ShopifyProduct implements Node  {
