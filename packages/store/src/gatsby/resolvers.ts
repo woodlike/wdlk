@@ -1,6 +1,7 @@
+import * as Page from '../model/page';
+
 import {
   collectionResolver,
-  legalResolver,
   productVariantPriceFields,
   shopifyProductImagesField,
   shopifyProductResolver,
@@ -14,7 +15,7 @@ export function createStoreResolvers(
 ): void {
   createResolvers({
     ...collectionResolver(),
-    ...legalResolver(),
+    ...Page.createResolver(),
     ...shopifyProductResolver(),
     ...shopifyProductImagesField(),
     ...productVariantPriceFields(reporter),
