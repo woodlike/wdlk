@@ -1,33 +1,33 @@
-import { ProductNode, ShopifyProductNode } from '.';
+import { ProductNode, ShopifyProductNode } from "."
 
-import { Actions } from 'gatsby';
-import { Collection, } from '../model';
-import { ShopifyPage } from '../model/page'
-import { resolve } from 'path';
+import { Actions } from "gatsby"
+import { Collection } from "../model"
+import { ShopifyPage } from "../model/page"
+import { resolve } from "path"
 
 export interface ProductQueryData {
   readonly allShopifyProduct: {
-    readonly edges: ProductNode[];
-  };
+    readonly edges: ProductNode[]
+  }
 }
 
 export interface CollectionQuery {
   readonly allShopifyCollection: {
-    readonly nodes: Collection[];
-  };
+    readonly nodes: Collection[]
+  }
 }
 
 export interface PageQuery {
   readonly allShopifyPage: {
-    readonly nodes: ShopifyPage[];
-  };
+    readonly nodes: ShopifyPage[]
+  }
 }
 
-const basePath = './src/app';
+const basePath = "./src/app"
 
 export function createProduct(edges: ProductNode[], actions: Actions) {
-  const layerId = 'Shopify__Page__Z2lkOi8vc2hvcGlmeS9QYWdlLzEyNTg5NzAyOA==';
-  const { createPage } = actions;
+  const layerId = "Shopify__Page__Z2lkOi8vc2hvcGlmeS9QYWdlLzEyNTg5NzAyOA=="
+  const { createPage } = actions
   edges.forEach((edge: { readonly node: ShopifyProductNode }) => {
     createPage({
       path: edge.node.slug,
@@ -36,12 +36,12 @@ export function createProduct(edges: ProductNode[], actions: Actions) {
         id: edge.node.id,
         layerId,
       },
-    });
-  });
+    })
+  })
 }
 
 export function createCollection(nodes: Collection[], actions: Actions) {
-  const { createPage } = actions;
+  const { createPage } = actions
   nodes.forEach(node => {
     createPage({
       path: node.slug,
@@ -49,12 +49,13 @@ export function createCollection(nodes: Collection[], actions: Actions) {
       context: {
         id: node.id,
       },
-    });
-  });
+    })
+  })
 }
 
 export function createLegal(nodes: ShopifyPage[], actions: Actions) {
-  const { createPage } = actions;
+  const { createPage } = actions
+
   nodes.forEach(node => {
     createPage({
       path: node.slug,
@@ -62,6 +63,6 @@ export function createLegal(nodes: ShopifyPage[], actions: Actions) {
       context: {
         id: node.id,
       },
-    });
-  });
+    })
+  })
 }

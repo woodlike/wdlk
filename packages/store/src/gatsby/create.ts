@@ -1,12 +1,12 @@
-import * as GatsbyPage from './page';
-import * as Query from './query';
+import * as GatsbyPage from "./page"
+import * as Query from "./query"
 
-import { Actions, Reporter } from 'gatsby';
+import { Actions, Reporter } from "gatsby"
 
 export interface CreatePagesArgs {
-  readonly actions: Actions;
-  readonly reporter: Reporter;
-  graphql: (query: string) => Promise<Query.CreatePageQuery>;
+  readonly actions: Actions
+  readonly reporter: Reporter
+  graphql: (query: string) => Promise<Query.CreatePageQuery>
 }
 
 export async function createPages({
@@ -15,19 +15,18 @@ export async function createPages({
   reporter,
 }: CreatePagesArgs): Promise<void> {
   try {
-    const data = await Query.create(graphql);
+    const data = await Query.create(graphql)
 
-    const { edges } = data.allShopifyProduct;
-    const { nodes } = data.allShopifyCollection;
-    const page = data.allShopifyPage;
+    const { edges } = data.allShopifyProduct
+    const { nodes } = data.allShopifyCollection
 
-    GatsbyPage.createCollection(nodes, actions);
-    GatsbyPage.createLegal(page.nodes, actions);
-    GatsbyPage.createProduct(edges, actions);
+    GatsbyPage.createCollection(nodes, actions)
+    GatsbyPage.createLegal(data.allLegalPages, actions)
+    GatsbyPage.createProduct(edges, actions)
   } catch (error) {
     if (error) {
-      reporter.panicOnBuild(`🚨  ERROR: creating custom pages: ${error}`);
-      return Promise.reject(new Error(error));
+      reporter.panicOnBuild(`🚨  ERROR: creating custom pages: ${error}`)
+      return Promise.reject(new Error(error))
     }
   }
 }
