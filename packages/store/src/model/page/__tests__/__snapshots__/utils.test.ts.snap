@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pages Utils should return a filterd list of legal page nodes - (filterPageByTitle) 1`] = `
+Array [
+  Object {
+    "handle": "terms-conditions",
+    "id": "Shopify__Page__Z2lkOi8vc2hvcGlmeS9QYWdlLzEyOTAxNjkwMA==",
+    "title": "Standard Business Terms and customer information",
+  },
+  Object {
+    "handle": "privacy-policy",
+    "id": "Shopify__Page__Z2lkOi8vc2hvcGlmeS9QYWdlLzEyOTIxNTc0OA==",
+    "title": "Data protection declaration",
+  },
+  Object {
+    "handle": "agb",
+    "id": "Shopify__Page__Z2lkOi8vc2hvcGlmeS9QYWdlLzEyOTIxNTk0MA==",
+    "title": "Allgemeine Geschäftsbedingungen und Kundeninformationen",
+  },
+  Object {
+    "handle": "impressum",
+    "id": "Shopify__Page__Z2lkOi8vc2hvcGlmeS9QYWdlLzEyOTIxNjA2OA==",
+    "title": "Impressum",
+  },
+  Object {
+    "handle": "datenschutzerklarung",
+    "id": "Shopify__Page__Z2lkOi8vc2hvcGlmeS9QYWdlLzEyOTIxNjE5Ng==",
+    "title": "Datenschutzerklärung",
+  },
+  Object {
+    "handle": "cancellation-right",
+    "id": "Shopify__Page__Z2lkOi8vc2hvcGlmeS9QYWdlLzEzMDAwODc3Mg==",
+    "title": "Returns & Exchanges",
+  },
+  Object {
+    "handle": "imprint",
+    "id": "Shopify__Page__Z2lkOi8vc2hvcGlmeS9QYWdlLzEzMDA2MTEyNA==",
+    "title": "About Us - Imprint",
+  },
+  Object {
+    "handle": "widerrufsbelehrung",
+    "id": "Shopify__Page__Z2lkOi8vc2hvcGlmeS9QYWdlLzI1MDc1MTMxMw==",
+    "title": "Widerrufsbelehrung",
+  },
+]
+`;

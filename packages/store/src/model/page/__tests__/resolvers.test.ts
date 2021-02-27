@@ -1,59 +1,41 @@
-import { ShopifyPage, legalIds } from ".."
+import * as Page from ".."
 
-import { filterPageByTitle } from "../utils"
+import { ResolverArgs, ShopifyPage } from ".."
+
+import { GatsbyCtx } from "../../../gatsby"
 import { shopifyPages } from "../../../../__mocks__"
 
-type LegalPageResult = Pick<ShopifyPage, "slug" | "title">
-
 describe("Page Resolvers", () => {
-  let legalPageResult: LegalPageResult[]
+  let resolverSrc: Record<string, string>
+  let resolverArgs: ResolverArgs
+  let resolverContext: GatsbyCtx<ShopifyPage>
 
   beforeEach(() => {
-    legalPageResult = [
-      {
-        title: "Standard Business Terms and customer information",
-        slug: "/legal/terms-conditions",
+    resolverContext = Object.create({
+      nodeModel: {
+        getAllNodes: jest.fn().mockImplementation(() => shopifyPages.nodes),
       },
-      {
-        title: "Data protection declaration",
-        slug: "/legal/privacy-policy",
-      },
-      {
-        title: "Allgemeine Geschäftsbedingungen und Kundeninformationen",
-        slug: "/legal/agb",
-      },
-      {
-        title: "Impressum",
-        slug: "/legal/impressum",
-      },
-      {
-        title: "Datenschutzerklärung",
-        slug: "/legal/datenschutzerklarung",
-      },
-      {
-        title: "Returns & Exchanges",
-        slug: "/legal/cancellation-right",
-      },
-      {
-        title: "About Us - Imprint",
-        slug: "/legal/imprint",
-      },
-      {
-        title: "Widerrufsbelehrung",
-        slug: "/legal/widerrufsbelehrung",
-      },
-    ]
+    })
+
+    resolverSrc = {}
+    resolverArgs = {}
   })
 
   afterEach(() => {
-    legalPageResult = (undefined as unknown) as LegalPageResult[]
+    resolverSrc = (undefined as unknown) as Record<string, string>
+    resolverArgs = (undefined as unknown) as ResolverArgs
+    resolverContext = (undefined as unknown) as GatsbyCtx<ShopifyPage>
   })
 
-  describe("filterPageLegalPages", () => {
-    it("should return a filterd list of lega page nodes", () => {
-      const filterLegalPages = filterPageByTitle(legalIds)
-      const pages = shopifyPages.nodes as ShopifyPage[]
-      expect(filterLegalPages(pages)).toStrictEqual(legalPageResult)
+  describe("Legal Pages", () => {
+    it("should return an Array containing all the legal pages", () => {
+      expect(
+        Page.legal().allLegalPages.resolve(
+          resolverSrc,
+          resolverArgs,
+          resolverContext,
+        ),
+      ).toMatchSnapshot()
     })
   })
 })

@@ -1,10 +1,10 @@
 import { ResolverArgs, ShopifyPage, legalIds } from "."
-import { addPathToSlug, addSlugs, filterPageByTitle } from "./utils"
+import { _addPathToSlug, _addSlugs, _filterPageByTitle } from "./utils"
 
 import { GatsbyCtx } from "../../gatsby"
 
-const filterLegalPages = filterPageByTitle(legalIds)
-const addSlugToLegalPage = addPathToSlug("legal")
+const filterLegalPages = _filterPageByTitle(legalIds)
+const addSlugToLegalPage = _addPathToSlug("legal")
 
 export function legal() {
   return {
@@ -14,7 +14,7 @@ export function legal() {
         const pages = ctx.nodeModel.getAllNodes({ type: "ShopifyPage" })
         const legalPages = filterLegalPages(pages)
 
-        return addSlugs(addSlugToLegalPage, legalPages)
+        return _addSlugs(addSlugToLegalPage, legalPages)
       },
     },
   }
