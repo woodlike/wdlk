@@ -53,13 +53,27 @@ export function createCollection(nodes: Collection[], actions: Actions) {
   })
 }
 
-export function createLegal(nodes: ShopifyPage[], actions: Actions) {
+export function createLegalDe(nodes: ShopifyPage[], actions: Actions) {
   const { createPage } = actions
 
   nodes.forEach(node => {
     createPage({
       path: node.slug,
-      component: resolve(`${basePath}/legal/Layout.tsx`),
+      component: resolve(`${basePath}/legal/LayoutDe.tsx`),
+      context: {
+        id: node.id,
+      },
+    })
+  })
+}
+
+export function createLegalEn(nodes: ShopifyPage[], actions: Actions) {
+  const { createPage } = actions
+
+  nodes.forEach(node => {
+    createPage({
+      path: node.slug,
+      component: resolve(`${basePath}/legal/LayoutEn.tsx`),
       context: {
         id: node.id,
       },
