@@ -1,14 +1,14 @@
-import { Collection } from '../model';
-import { ProductNode } from '.';
-import { ShopifyPage } from '../model/page'
+import { Collection } from "../model"
+import { ProductNode } from "."
+import { ShopifyPage } from "../model/page"
 
 export interface CreatePageQuery {
   readonly data: {
-    readonly allShopifyProduct: { readonly edges: ProductNode[] };
-    readonly allShopifyCollection: { readonly nodes: Collection[] };
-    readonly allShopifyPage: { readonly nodes: ShopifyPage[] };
-  };
-  readonly errors: boolean;
+    readonly allShopifyProduct: { readonly edges: ProductNode[] }
+    readonly allShopifyCollection: { readonly nodes: Collection[] }
+    readonly allLegalPages: ShopifyPage[]
+  }
+  readonly errors: boolean
 }
 
 export async function create(
@@ -30,13 +30,11 @@ export async function create(
           slug
         }
       }
-      allShopifyPage {
-        nodes {
-          id
-          slug
-        }
+      allLegalPages {
+        id
+        slug
       }
     }
-  `);
-  return data;
+  `)
+  return data
 }

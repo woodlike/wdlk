@@ -25,8 +25,17 @@ export function shopify() {
     ShopifyPage: {
       slug: {
         resolve(source: ShopifyPage) {
-          console.log()
           return `/legal/${source.handle}`.replace(/\/\/+/g, "/")
+        },
+      },
+      legal: {
+        resolve(
+          _source: ShopifyPage,
+          _args: ResolverArgs,
+          ctx: GatsbyCtx<ShopifyPage>,
+        ) {
+          const pages = ctx.nodeModel.getAllNodes({ type: "ShopifyPage" })
+          return filterLegalPages(pages)
         },
       },
     },

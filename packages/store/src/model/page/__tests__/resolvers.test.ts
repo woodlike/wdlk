@@ -22,6 +22,7 @@ describe("Page Resolvers", () => {
   })
 
   afterEach(() => {
+    jest.clearAllMocks()
     resolverSrc = (undefined as unknown) as Record<string, string>
     resolverArgs = (undefined as unknown) as ResolverArgs
     resolverContext = (undefined as unknown) as GatsbyCtx<ShopifyPage>
