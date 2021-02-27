@@ -29,9 +29,19 @@ describe("Page Resolvers", () => {
   })
 
   describe("Legal Pages", () => {
-    it("should return an Array containing all the legal pages", () => {
+    it("should return an Array containing all the legal pages in english", () => {
       expect(
-        Page.legal().allLegalPages.resolve(
+        Page.legal().allLegalPageEn.resolve(
+          resolverSrc,
+          resolverArgs,
+          resolverContext,
+        ),
+      ).toMatchSnapshot()
+    })
+
+    it("should return an Array containing all the legal pages in german", () => {
+      expect(
+        Page.legal().allLegalPageDe.resolve(
           resolverSrc,
           resolverArgs,
           resolverContext,

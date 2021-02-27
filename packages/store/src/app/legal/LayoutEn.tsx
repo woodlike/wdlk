@@ -7,7 +7,7 @@ import { ShopifyPage } from "../../model/page"
 import { graphql } from "gatsby"
 
 interface LegalLayoutQuery {
-  readonly allLegalPages: ShopifyPage[]
+  readonly allLegalPageEn: ShopifyPage[]
   readonly shopifyPage: ShopifyPage
 }
 
@@ -22,7 +22,7 @@ const LegalLayout: React.FC<LegalLayoutProps> = ({ data }) => {
         headline={data.shopifyPage.title}
         menu={
           <Box as="ul" padding={[0, 0, 8, 0]}>
-            {data.allLegalPages.map(page => (
+            {data.allLegalPageEn.map(page => (
               <Box as="li" key={page.id} padding={[0, 0, 3, 0]}>
                 <Text size="m">
                   <GatsbyLink size="s" to={page.slug}>
@@ -42,7 +42,7 @@ const LegalLayout: React.FC<LegalLayoutProps> = ({ data }) => {
 export default LegalLayout
 
 export const query = graphql`
-  query LegalQuery($id: String!) {
+  query LegalQueryEn($id: String!) {
     shopifyPage(id: { eq: $id }) {
       id
       slug
@@ -50,7 +50,7 @@ export const query = graphql`
       body
       shopifyId
     }
-    allLegalPages {
+    allLegalPageEn {
       title
       slug
     }

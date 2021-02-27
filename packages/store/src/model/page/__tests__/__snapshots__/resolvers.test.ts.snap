@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Page Resolvers Legal Pages should return an Array containing all the legal pages 1`] = `
+exports[`Page Resolvers Legal Pages should return an Array containing all the legal pages in english 1`] = `
 Array [
   Object {
     "handle": "terms-conditions",
@@ -14,6 +14,23 @@ Array [
     "slug": "/legal/privacy-policy",
     "title": "Data protection declaration",
   },
+  Object {
+    "handle": "cancellation-right",
+    "id": "Shopify__Page__Z2lkOi8vc2hvcGlmeS9QYWdlLzEzMDAwODc3Mg==",
+    "slug": "/legal/cancellation-right",
+    "title": "Returns & Exchanges",
+  },
+  Object {
+    "handle": "imprint",
+    "id": "Shopify__Page__Z2lkOi8vc2hvcGlmeS9QYWdlLzEzMDA2MTEyNA==",
+    "slug": "/legal/imprint",
+    "title": "About Us - Imprint",
+  },
+]
+`;
+
+exports[`Page Resolvers Legal Pages should return an Array containing all the legal pages in german 1`] = `
+Array [
   Object {
     "handle": "agb",
     "id": "Shopify__Page__Z2lkOi8vc2hvcGlmeS9QYWdlLzEyOTIxNTk0MA==",
@@ -31,18 +48,6 @@ Array [
     "id": "Shopify__Page__Z2lkOi8vc2hvcGlmeS9QYWdlLzEyOTIxNjE5Ng==",
     "slug": "/legal/datenschutzerklarung",
     "title": "Datenschutzerklärung",
-  },
-  Object {
-    "handle": "cancellation-right",
-    "id": "Shopify__Page__Z2lkOi8vc2hvcGlmeS9QYWdlLzEzMDAwODc3Mg==",
-    "slug": "/legal/cancellation-right",
-    "title": "Returns & Exchanges",
-  },
-  Object {
-    "handle": "imprint",
-    "id": "Shopify__Page__Z2lkOi8vc2hvcGlmeS9QYWdlLzEzMDA2MTEyNA==",
-    "slug": "/legal/imprint",
-    "title": "About Us - Imprint",
   },
   Object {
     "handle": "widerrufsbelehrung",
