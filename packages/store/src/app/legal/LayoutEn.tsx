@@ -1,13 +1,13 @@
 import { Box, Text } from "@wdlk/components"
 import { GatsbyLink, PageContentLayout } from "../.."
+import { LegalPage, ShopifyPage } from "../../model/page"
 
 import { Layout } from ".."
 import React from "react"
-import { ShopifyPage } from "../../model/page"
 import { graphql } from "gatsby"
 
 interface LegalLayoutQuery {
-  readonly allLegalPageEn: ShopifyPage[]
+  readonly allLegalPageEn: LegalPage[]
   readonly shopifyPage: ShopifyPage
 }
 
@@ -26,7 +26,7 @@ const LegalLayout: React.FC<LegalLayoutProps> = ({ data }) => {
               <Box as="li" key={page.id} padding={[0, 0, 3, 0]}>
                 <Text size="m">
                   <GatsbyLink size="s" to={page.slug}>
-                    {page.title}
+                    {page.shortTitle}
                   </GatsbyLink>
                 </Text>
               </Box>
@@ -52,6 +52,7 @@ export const query = graphql`
     }
     allLegalPageEn {
       title
+      shortTitle
       slug
     }
   }
