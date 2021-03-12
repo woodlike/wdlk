@@ -10,6 +10,9 @@ import { graphql } from "gatsby"
 interface ServiceQuery {
   readonly allServicePage: ShopifyPage[]
   readonly shopifyPage: ShopifyPage
+  readonly graphCmsSizing: {
+    readonly description: string
+  }
 }
 
 interface ServiceLayoutProps {
@@ -38,7 +41,14 @@ const ServiceLayout: React.FC<ServiceLayoutProps> = ({ data }) => {
         dangerouslySetChildren={
           !isSizingType ? data.shopifyPage.body : undefined
         }>
-        {isSizingType ? <SizingTable /> : null}
+        {isSizingType ? (
+          <>
+            <Box padding={[0, 0, 9]}>
+              <Text size="m">{data.graphCmsSizing.description}</Text>
+            </Box>
+            <SizingTable />
+          </>
+        ) : null}
       </PageContentLayout>
     </Layout>
   )
@@ -59,6 +69,9 @@ export const query = graphql`
       id
       title
       slug
+    }
+    graphCmsSizing {
+      description
     }
   }
 `
