@@ -1,4 +1,4 @@
-import { Actions } from 'gatsby';
+import { Actions } from "gatsby"
 
 const schema = `
   type ShopifyCollection implements Node  {
@@ -22,6 +22,7 @@ const schema = `
     title: String!
     updatedAt: String
     legal: [ShopifyPage!]
+    shortTitle: String
   }
   
   type ShopifyProduct implements Node  {
@@ -58,8 +59,8 @@ const schema = `
     id: String!
     src: String!
   }
-`;
+`
 
 export function createCustomSchema(actions: Actions): void {
-  actions.createTypes(schema);
+  actions.createTypes(schema)
 }

@@ -13,6 +13,10 @@ export interface ShopifyPage {
   readonly parent: Node
 }
 
+export interface LegalPage extends ShopifyPage {
+  readonly shortTitle: string
+}
+
 export type ResolverArgs = Record<string, unknown>
 
 export type FilterOnceApplied<A> = <K extends A[] | Dictionary<A>>(

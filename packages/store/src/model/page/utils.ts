@@ -51,6 +51,17 @@ export const _addPathToSlug = <T extends ShopifyNode>(pathname: string) => (
   node: T,
 ) => ({ ...node, slug: `/${pathname}/${node.handle}`.replace(/\/\/+/g, "/") })
 
+export const capitalize = (str: string) => {
+  return str.charAt(0).toUpperCase() + str.slice(1)
+}
+
+export const _addShortTitle = <T extends ShopifyNode>(node: T) => {
+  const title = node.handle.split("-")
+  const capitalizedTitle = map(capitalize, title).join(" ")
+
+  return { ...node, shortTitle: capitalizedTitle }
+}
+
 export const _addPropsToNode = <T extends ShopifyNode>(
   callback: (node: T) => ShopifyNode,
   nodes: T[],
