@@ -7,4 +7,12 @@ export const legalIdMap = [
   { name: "returns", lang: "en" },
   { name: "terms", lang: "en" },
   { name: "widerrufsbelehrung", lang: "de" },
+  { name: "giveaway", lang: "en" },
+]
+
+export const ServiceIdMap = [
+  { name: "returns" },
+  { name: "sizing" },
+  { name: "sustainability" },
+  { name: "about" },
 ]

@@ -10,6 +10,7 @@ export interface CreatePageQuery {
     readonly allShopifyCollection: { readonly nodes: Collection[] }
     readonly allLegalPageDe: ShopifyPage[]
     readonly allLegalPageEn: ShopifyPage[]
+    readonly allServicePage: ShopifyPage[]
   }
   readonly errors: boolean
 }
@@ -42,6 +43,14 @@ export async function create(
         body
       }
       allLegalPageDe {
+        title
+        slug
+        shopifyId
+        id
+        handle
+        body
+      }
+      allServicePage {
         title
         slug
         shopifyId

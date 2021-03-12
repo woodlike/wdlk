@@ -45,7 +45,6 @@ export const query = graphql`
   query LegalQueryEn($id: String!) {
     shopifyPage(id: { eq: $id }) {
       id
-      slug
       title
       body
       shopifyId

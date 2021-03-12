@@ -25,6 +25,27 @@ export interface PageQuery {
 
 const basePath = "./src/app"
 
+interface Node {
+  readonly id: string
+  readonly slug: string
+}
+
+export function createPage<T extends Node>(
+  actions: Actions,
+  path: string,
+  nodes: T[],
+) {
+  nodes.forEach(node => {
+    actions.createPage({
+      path: node.slug,
+      component: resolve(basePath, path),
+      context: {
+        id: node.id,
+      },
+    })
+  })
+}
+
 export function createProduct(edges: ProductNode[], actions: Actions) {
   const layerId = "Shopify__Page__Z2lkOi8vc2hvcGlmeS9QYWdlLzEyNTg5NzAyOA=="
   const { createPage } = actions

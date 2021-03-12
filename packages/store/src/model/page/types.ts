@@ -11,6 +11,7 @@ export interface ShopifyPage {
   readonly bodySummary: string
   readonly url: string
   readonly parent: Node
+  readonly type?: string
 }
 
 export interface LegalPage extends ShopifyPage {

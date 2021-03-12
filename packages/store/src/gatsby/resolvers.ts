@@ -15,9 +15,9 @@ export function createStoreResolvers(
 ): void {
   createResolvers({
     // Custom root nodes
-    Query: { ...Page.legal() },
-    ...collectionResolver(),
+    Query: { ...Page.legal(), ...Page.service() },
     ...Page.shopify(),
+    ...collectionResolver(),
     ...shopifyProductResolver(),
     ...shopifyProductImagesField(),
     ...productVariantPriceFields(reporter),

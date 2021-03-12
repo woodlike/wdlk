@@ -21,6 +21,7 @@ export async function createPages({
     const { nodes } = data.allShopifyCollection
 
     GatsbyPage.createCollection(nodes, actions)
+    GatsbyPage.createPage(actions, "service/Layout.tsx", data.allServicePage)
     GatsbyPage.createLegalDe(data.allLegalPageDe, actions)
     GatsbyPage.createLegalEn(data.allLegalPageEn, actions)
     GatsbyPage.createProduct(edges, actions)

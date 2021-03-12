@@ -23,6 +23,7 @@ const schema = `
     updatedAt: String
     legal: [ShopifyPage!]
     shortTitle: String
+    type: String
   }
   
   type ShopifyProduct implements Node  {
