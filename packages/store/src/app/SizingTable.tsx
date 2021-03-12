@@ -1,24 +1,24 @@
-import React from 'react';
-import { Box, Column, Columns, Table } from '@wdlk/components';
+import { Box, Column, Columns, Table } from "@wdlk/components"
+import { Image, useProductData } from ".."
 
-import { Image, useProductData } from '../..';
-import sizingImgSrc from '../../assets/size-chart-silhouette-mobile.png';
+import React from "react"
+import sizingImgSrc from "../assets/size-chart-silhouette-mobile.png"
 
 export const SizingTable: React.FC = () => {
   const {
     sizingLayer: { sizeChart, bodyMeasurement },
-  } = useProductData();
+  } = useProductData()
 
-  const [sizingHeadline] = sizeChart;
-  const sizingBody = sizeChart.slice(1, sizeChart.length);
-  const [measurementHeadline] = bodyMeasurement;
-  const measurementBody = bodyMeasurement.slice(1, sizeChart.length);
+  const [sizingHeadline] = sizeChart
+  const sizingBody = sizeChart.slice(1, sizeChart.length)
+  const [measurementHeadline] = bodyMeasurement
+  const measurementBody = bodyMeasurement.slice(1, sizeChart.length)
   return (
     <Columns collapseBelow={2}>
       <Column basis="1/2" padding={[0, 0, 5, 0]}>
         <Image
           alt={
-            'Silhouette graphic describing sizing for bust, underbust, waist, and hips.'
+            "Silhouette graphic describing sizing for bust, underbust, waist, and hips."
           }
           fit="contain"
           src={sizingImgSrc}
@@ -77,5 +77,5 @@ export const SizingTable: React.FC = () => {
         </Table.Frame>
       </Column>
     </Columns>
-  );
-};
+  )
+}

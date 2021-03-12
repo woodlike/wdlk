@@ -7,23 +7,23 @@ export interface NodeByLang {
   readonly de: ShopifyNode[]
 }
 
-interface LegalIdMap {
+interface PageIdMap {
   readonly name: string
-  readonly lang: string
+  readonly lang?: string
 }
 
-const findByTitle = <T extends ShopifyNode>(idsMap: LegalIdMap[], node: T) => {
+const findByTitle = <T extends ShopifyNode>(idsMap: PageIdMap[], node: T) => {
   return find(idMap => includes(idMap.name, toLower(node.title)), idsMap)
 }
 
-export const _hasNodeTitle = <T extends ShopifyNode>(idsMap: LegalIdMap[]) => (
+export const _hasNodeTitle = <T extends ShopifyNode>(idsMap: PageIdMap[]) => (
   node: T,
 ) => {
   return !!findByTitle(idsMap, node)
 }
 
 export const _filterPageByTitle = <T extends ShopifyNode>(
-  idsMap: LegalIdMap[],
+  idsMap: PageIdMap[],
 ) => {
   // The filter operator is a curried function
   // It accepts an implicity second argument which accepts
@@ -32,7 +32,7 @@ export const _filterPageByTitle = <T extends ShopifyNode>(
 }
 
 export const reduceToLanguage = <T extends ShopifyNode>(
-  idsMap: LegalIdMap[],
+  idsMap: PageIdMap[],
   nodes: T[],
 ) =>
   nodes.reduce(

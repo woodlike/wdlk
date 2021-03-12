@@ -1,12 +1,13 @@
-import { Box, Heading } from "@wdlk/components"
+import { Box, Heading, Theme } from "@wdlk/components"
 
 import React from "react"
+import { css } from "@emotion/core"
 import styled from "./styled"
 
 interface PageLayout {
   readonly menu: JSX.Element
   readonly headline: string
-  readonly dangerouslySetChildren: string
+  readonly dangerouslySetChildren?: string
 }
 
 const StyledContainer = styled.div`
@@ -17,9 +18,13 @@ const StyledContainer = styled.div`
   padding: ${props => props.theme.space[8]}px ${props => props.theme.space[5]}px;
 `
 
+StyledContainer.displayName = "StyledContainer"
+
 const StyledSidebar = styled.aside`
   min-height: 100vh;
 `
+
+StyledSidebar.displayName = "StyledSidebar"
 
 const StyledNavSlot = styled.nav`
   position: sticky;
@@ -27,15 +32,30 @@ const StyledNavSlot = styled.nav`
   max-width: 300px;
 `
 
-const StyledDangerousContent = styled.div`
-  font-family: ${props => props.theme.fonts.body};
+StyledNavSlot.displayName = "StyledNavSlot"
+
+const contentStyles = (theme: Theme) => css`
+  font-family: ${theme.fonts.body};
   font-weight: 300;
-  font-size: ${props => props.theme.fontSizes[2]}px;
+  font-size: ${theme.fontSizes[2]}px;
   line-height: 1.2;
 
-  @media (min-width: ${props => props.theme.breakpoints[3]}) {
+  @media (min-width: ${theme.breakpoints[3]}) {
     max-width: 40vw;
   }
+`
+
+const StyledContent = styled.div`
+  ${props => contentStyles(props.theme)}
+
+  @media (min-width: ${props => props.theme.breakpoints[3]}) {
+    max-width: 100%;
+  }
+`
+StyledContent.displayName = "StyledContent"
+
+const StyledDangerousContent = styled.div`
+  ${props => contentStyles(props.theme)}
 
   strong {
     display: inline-block;
@@ -43,6 +63,8 @@ const StyledDangerousContent = styled.div`
     padding-bottom: ${props => props.theme.space[4]}px;
   }
 `
+
+StyledDangerousContent.displayName = "StyledDangerousContent"
 
 export const PageContentLayout: React.FC<PageLayout> = props => (
   <StyledContainer>
@@ -55,9 +77,14 @@ export const PageContentLayout: React.FC<PageLayout> = props => (
           {props.headline}
         </Heading>
       </Box>
-      <StyledDangerousContent
-        dangerouslySetInnerHTML={{ __html: props.dangerouslySetChildren }}
-      />
+      {!!props.dangerouslySetChildren ? (
+        <StyledDangerousContent
+          dangerouslySetInnerHTML={{ __html: props.dangerouslySetChildren }}
+        />
+      ) : null}
+      {!!props.children ? (
+        <StyledContent>{props.children}</StyledContent>
+      ) : null}
     </main>
   </StyledContainer>
 )
