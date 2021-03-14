@@ -41,7 +41,11 @@ const colors: Colors = {
     toRGB([56, 72, 82]),
   ],
   blacks: [toRGB([0, 0, 0]), toRGB([34, 34, 34]), toRGB([51, 51, 51])],
-  beiges: [toRGB([250, 245, 244]), toRGB([243, 238, 232])],
+  beiges: [
+    toRGB([250, 245, 244]),
+    toRGB([243, 238, 232]),
+    toRGB([185, 124, 68]),
+  ],
   sand: toRGB([204, 153, 102]),
   yellows: [toRGB([223, 199, 129]), toRGB([255, 202, 84])],
 }
@@ -63,6 +67,7 @@ export const theme: Theme = {
   breakpoints,
   colors: {
     ...colors,
+    active: colors.beiges[2],
     background: colors.whites[0],
     border: colors.grays[0],
     borderActive: colors.blacks[1],
@@ -70,7 +75,7 @@ export const theme: Theme = {
     headline: colors.grays[5],
     link: colors.grays[3],
     primary: colors.corals[0],
-    muted: colors.grays[1],
+    muted: colors.grays[2],
     mutedHover: colors.grays[2],
     secondary: colors.corals[1],
     text: colors.blacks[0],

@@ -1,5 +1,5 @@
 import { Box, Column, Columns, Heading, Small } from "@wdlk/components"
-import { FooterLayout, GatsbyLink, Icon, IconSize } from ".."
+import { FooterLayout, GatsbyLink, Icon, IconSize, NewsletterForm } from ".."
 import {
   useLegalPages,
   useServicePages,
@@ -88,6 +88,7 @@ export const Footer: React.FC = () => {
             ))}
           </Box>
         </div>
+        <NewsletterForm />
       </>
     </FooterLayout>
   )
