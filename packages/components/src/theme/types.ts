@@ -141,6 +141,7 @@ export interface ThemeHeadingProps {
 }
 
 export interface ThemeColor {
+  readonly active: string
   readonly primary: string
   readonly secondary: string
   readonly text: string
