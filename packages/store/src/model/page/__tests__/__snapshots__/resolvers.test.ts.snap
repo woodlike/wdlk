@@ -3,11 +3,11 @@
 exports[`Page Resolvers Legal Pages should return an Array containing all the legal pages in english 1`] = `
 Array [
   Object {
-    "handle": "terms-conditions",
-    "id": "Shopify__Page__Z2lkOi8vc2hvcGlmeS9QYWdlLzEyOTAxNjkwMA==",
-    "shortTitle": "Terms Conditions",
-    "slug": "/legal/terms-conditions",
-    "title": "Standard Business Terms and customer information",
+    "handle": "imprint",
+    "id": "Shopify__Page__Z2lkOi8vc2hvcGlmeS9QYWdlLzEzMDA2MTEyNA==",
+    "shortTitle": "Imprint",
+    "slug": "/legal/imprint",
+    "title": "About Us - Imprint",
   },
   Object {
     "handle": "privacy-policy",
@@ -24,11 +24,11 @@ Array [
     "title": "Returns & Exchanges",
   },
   Object {
-    "handle": "imprint",
-    "id": "Shopify__Page__Z2lkOi8vc2hvcGlmeS9QYWdlLzEzMDA2MTEyNA==",
-    "shortTitle": "Imprint",
-    "slug": "/legal/imprint",
-    "title": "About Us - Imprint",
+    "handle": "terms-conditions",
+    "id": "Shopify__Page__Z2lkOi8vc2hvcGlmeS9QYWdlLzEyOTAxNjkwMA==",
+    "shortTitle": "Terms Conditions",
+    "slug": "/legal/terms-conditions",
+    "title": "Standard Business Terms and customer information",
   },
 ]
 `;
@@ -43,18 +43,18 @@ Array [
     "title": "Allgemeine Geschäftsbedingungen und Kundeninformationen",
   },
   Object {
-    "handle": "impressum",
-    "id": "Shopify__Page__Z2lkOi8vc2hvcGlmeS9QYWdlLzEyOTIxNjA2OA==",
-    "shortTitle": "Impressum",
-    "slug": "/legal/impressum",
-    "title": "Impressum",
-  },
-  Object {
     "handle": "datenschutzerklarung",
     "id": "Shopify__Page__Z2lkOi8vc2hvcGlmeS9QYWdlLzEyOTIxNjE5Ng==",
     "shortTitle": "Datenschutzerklarung",
     "slug": "/legal/datenschutzerklarung",
     "title": "Datenschutzerklärung",
+  },
+  Object {
+    "handle": "impressum",
+    "id": "Shopify__Page__Z2lkOi8vc2hvcGlmeS9QYWdlLzEyOTIxNjA2OA==",
+    "shortTitle": "Impressum",
+    "slug": "/legal/impressum",
+    "title": "Impressum",
   },
   Object {
     "handle": "widerrufsbelehrung",

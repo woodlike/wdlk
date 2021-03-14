@@ -66,3 +66,12 @@ export const _addPropsToNode = <T extends ShopifyNode>(
   callback: (node: T) => ShopifyNode,
   nodes: T[],
 ) => map(callback, nodes)
+
+export const sortByTitle = <T extends ShopifyNode>(a: T, b: T) => {
+  const titleA = a.title.toLowerCase()
+  const titleB = b.title.toLowerCase()
+  if (titleA < titleB) return -1
+  if (titleA > titleB) return 1
+
+  return 0
+}

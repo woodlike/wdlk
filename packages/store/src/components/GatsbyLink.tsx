@@ -4,16 +4,7 @@ import { Link } from "gatsby"
 import { Theme } from "@wdlk/components"
 import styled from "./styled"
 
-type LinkSize = "s" | "m" | "l" | "xl"
-
-interface LinkProps {
-  readonly size: LinkSize
-  readonly as?: "a" | "span" | "button"
-  readonly color?: "primary" | "secondary" | "tertiary"
-  readonly href?: string
-  readonly isActive?: boolean
-  readonly type?: "inline" | "block"
-}
+type LinkSize = "xs" | "s" | "m" | "l" | "xl"
 
 interface StyledLinkProps {
   readonly theme: Theme
