@@ -19,7 +19,6 @@
   },
   "references": [
     { "path": "./packages/components" },
-    { "path": "./packages/hooks" },
-    { "path": "./packages/store" }
+    { "path": "./packages/hooks" }
   ]
 }
