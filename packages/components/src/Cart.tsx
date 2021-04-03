@@ -1,22 +1,22 @@
-import React from 'react';
-import styled from './styled';
+import React from "react"
+import styled from "./styled"
 
 export interface CartProps {
-  readonly isFocused: boolean;
-  readonly isFilled: boolean;
-  readonly title: string;
-  readonly count: number | undefined;
-  readonly onClick: React.MouseEventHandler<SVGElement>;
+  readonly isFocused: boolean
+  readonly isFilled: boolean
+  readonly title: string
+  readonly count: number | undefined
+  readonly onClick: React.MouseEventHandler<SVGElement>
 }
 
 interface StyledCartProps {
-  readonly isFilled: boolean;
+  readonly isFilled: boolean
 }
 
 const StyledCart = styled.svg<StyledCartProps>`
   width: ${props => props.theme.cart.width}px;
   height ${props => props.theme.cart.height}px;;
-  color: ${props => props.theme.colors.primary};
+  color: ${props => props.theme.cart.color};
   fill: currentColor;
   stroke: currentColor;
   stroke-width: 2px;
@@ -27,11 +27,11 @@ const StyledCart = styled.svg<StyledCartProps>`
   cursor: pointer;
 
   :hover {
-    color: ${props => props.theme.colors.secondary};
+    color: ${props => props.theme.cart.hover};
   }
-`;
+`
 
-StyledCart.displayName = 'StyledCart';
+StyledCart.displayName = "StyledCart"
 
 const StyledBagLabel = styled.text`
   font-family: ${props => props.theme.fonts.heading.display};
@@ -39,9 +39,9 @@ const StyledBagLabel = styled.text`
   letter-spacing: ${props => props.theme.letterSpacings[2]}px;
   stroke-width: 0;
   transform: translate(38%, 85%);
-`;
+`
 
-StyledBagLabel.displayName = 'StyledBagLabel';
+StyledBagLabel.displayName = "StyledBagLabel"
 
 export const Cart: React.FC<CartProps> = (props): JSX.Element => {
   return (
@@ -60,5 +60,5 @@ export const Cart: React.FC<CartProps> = (props): JSX.Element => {
       />
       <StyledBagLabel>{props.count}</StyledBagLabel>
     </StyledCart>
-  );
-};
+  )
+}
