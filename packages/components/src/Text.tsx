@@ -1,33 +1,36 @@
-import React from 'react';
-import styled from './styled';
+import React from "react"
+import styled from "./styled"
 
 export interface TextProps {
-  readonly size: 's' | 'm' | 'l';
-  readonly as?: TextType;
-  readonly isInverted?: boolean;
+  readonly size: "s" | "m" | "l"
+  readonly as?: TextType
+  readonly isInverted?: boolean
+  readonly weight?: 100 | 300 | 500
 }
 
-export type TextType = 'p' | 'div';
+export type TextType = "p" | "div"
 
 const StyledText = styled.p<TextProps>`
   margin: 0;
   font-family: ${({ theme }) => theme.text.fontFamily};
   font-kerning: normal;
   font-size: ${({ size, theme }) => `${theme.text[size].fontSize}px`};
+  font-weight: ${props => props.weight};
   line-height: ${props => props.theme.lineHeights[1]};
   letter-spacing: 0.2px;
   color: ${({ isInverted, theme }) =>
     !!isInverted ? theme.text.modes.color : theme.text.color};
   -webkit-font-smoothing: antialiased;
-`;
+`
 
-StyledText.displayName = 'StyledText';
+StyledText.displayName = "StyledText"
 
 export const Text: React.FC<TextProps> = props => (
   <StyledText
-    as={props.as || 'p'}
+    as={props.as || "p"}
     isInverted={props.isInverted}
-    size={props.size}>
+    size={props.size}
+    weight={props.weight ?? 100}>
     {props.children}
   </StyledText>
-);
+)

@@ -6,7 +6,7 @@ export interface HeadingProps {
   readonly type: HeadingFamily
   readonly as?: HeadingLevel
   readonly isInverted?: boolean
-  readonly weight?: number
+  readonly weight?: 100 | 300 | 500
 }
 
 export type HeadingFamily = "primary" | "secondary" | "campaign"

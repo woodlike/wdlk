@@ -12,6 +12,7 @@ export interface LinkProps {
   readonly isActive?: boolean
   readonly onClick?: React.MouseEventHandler<HTMLElement>
   readonly type?: "inline" | "block"
+  readonly weight?: 100 | 300 | 500
 }
 
 interface StyledLinkProps {
@@ -21,6 +22,7 @@ interface StyledLinkProps {
   readonly color?: "primary" | "secondary" | "tertiary"
   readonly onClick?: React.MouseEventHandler<HTMLElement>
   readonly type?: "inline" | "block"
+  readonly weight: 100 | 300 | 500
 }
 
 const stylesUnderline = (
@@ -64,6 +66,7 @@ const StyledLink = styled.a<StyledLinkProps>`
     const { size, theme } = props
     return !!theme.link[size] ? `${theme.link[size].fontSize}px` : ""
   }};
+  font-weight: ${props => props.weight};
   color: ${props => {
     const { color, theme } = props
     return !!color
@@ -97,7 +100,8 @@ export const Link: React.FC<LinkProps> = props => (
     isActive={props.isActive}
     onClick={props.onClick}
     size={props.size}
-    type={props.type || "inline"}>
+    type={props.type || "inline"}
+    weight={props.weight ?? 100}>
     {props.children}
   </StyledLink>
 )

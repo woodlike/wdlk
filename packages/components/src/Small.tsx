@@ -10,6 +10,7 @@ export interface SmallProps {
     | "muted"
     | "background"
     | "mutedHover"
+  readonly weight?: 100 | 300 | 500
 }
 
 const StyledSmall = styled.small<SmallProps>`
@@ -24,6 +25,7 @@ const StyledSmall = styled.small<SmallProps>`
     const { size, theme } = props
     return !!theme.small[size] ? `${theme.small[size].fontSize}px` : ""
   }};
+  font-weight: ${props => props.weight};
   font-kerning: normal;
   letter-spacing: 1px;
   -webkit-font-smoothing: antialiased;
@@ -32,7 +34,10 @@ const StyledSmall = styled.small<SmallProps>`
 StyledSmall.displayName = "StyledSmall"
 
 export const Small: React.FC<SmallProps> = props => (
-  <StyledSmall color={props.color} size={props.size}>
+  <StyledSmall
+    color={props.color}
+    size={props.size}
+    weight={props.weight ?? 100}>
     {props.children}
   </StyledSmall>
 )
