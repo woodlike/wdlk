@@ -40,7 +40,7 @@ const colors: Colors = {
     toRGB([77, 77, 79]),
     toRGB([56, 72, 82]),
   ],
-  blacks: [toRGB([0, 0, 0]), toRGB([34, 34, 34]), toRGB([51, 51, 51])],
+  blacks: [toRGB([0, 0, 0]), toRGB([34, 34, 34]), toRGB([46, 46, 46])],
   beiges: [
     toRGB([250, 245, 244]),
     toRGB([243, 238, 232]),
@@ -86,8 +86,10 @@ export const theme: Theme = {
   fonts,
   lineHeights: [1, 1.5, 2],
   cart: {
-    width: 28,
-    height: 26,
+    width: 26,
+    height: 24,
+    color: colors.beiges[2],
+    hover: colors.blacks[2],
   },
   header: {
     height: 70,
@@ -164,8 +166,8 @@ export const theme: Theme = {
   link: {
     color: {
       primary: {
-        default: colors.blacks[0],
-        hover: colors.blacks[2],
+        default: colors.blacks[2],
+        hover: colors.blacks[0],
       },
       secondary: {
         default: colors.grays[2],
