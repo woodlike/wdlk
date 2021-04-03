@@ -14,6 +14,8 @@ export interface Theme {
   readonly cart: {
     readonly width: number
     readonly height: number
+    readonly color: string
+    readonly hover: string
   }
   readonly header: {
     readonly height: number
