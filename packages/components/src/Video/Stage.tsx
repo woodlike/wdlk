@@ -17,7 +17,7 @@ interface StyledStageContainer {
 
 const StyledStageContainer = styled.figure<StyledStageContainer>`
   position: relative;
-  height: ${props => props.height}
+  height: ${props => props.height};
   margin: 0;
 `
 
