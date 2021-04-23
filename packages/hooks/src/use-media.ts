@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react"
 
 export function useMedia<T>(
   queries: string[],
@@ -6,35 +6,32 @@ export function useMedia<T>(
   defaultValue: T,
 ): T {
   const mql = queries.map(q => {
-    if (typeof window === 'undefined') {
-      console.error(`
-      🚨 Error: you're trying to call window on the server.
-      This script is being executed with a mocked MediaQueryList`);
+    if (typeof window === "undefined") {
       return {
         matches: false,
         addListener() {
-          return;
+          return
         },
         removeListener() {
-          return;
+          return
         },
-      };
+      }
     }
-    return window.matchMedia(q);
-  });
+    return window.matchMedia(q)
+  })
 
   const getValue = (): T => {
-    const idx = mql.findIndex(ql => ql.matches);
-    return values[idx] ?? defaultValue;
-  };
+    const idx = mql.findIndex(ql => ql.matches)
+    return values[idx] ?? defaultValue
+  }
 
-  const [value, setValue] = useState<T>(getValue);
+  const [value, setValue] = useState<T>(getValue)
   useEffect(() => {
-    const handler = (): void => setValue(getValue);
-    mql.forEach(q => q.addListener(handler));
+    const handler = (): void => setValue(getValue)
+    mql.forEach(q => q.addListener(handler))
 
-    return () => mql.forEach(q => q.removeListener(handler));
-  }, []);
+    return () => mql.forEach(q => q.removeListener(handler))
+  }, [value])
 
-  return value;
+  return value
 }
