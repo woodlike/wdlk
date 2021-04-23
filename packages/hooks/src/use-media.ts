@@ -6,7 +6,17 @@ export function useMedia<T>(
   defaultValue: T,
 ): T {
   const mediaQueryList = queries.map(q => {
-    return window?.matchMedia(q)
+    return typeof window !== "undefined"
+      ? window.matchMedia(q)
+      : {
+          matches: false,
+          addListener: () => {
+            return
+          },
+          removeListener: () => {
+            return
+          },
+        }
   })
 
   // It creates only one instance of the handler on mount
