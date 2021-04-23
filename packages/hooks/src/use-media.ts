@@ -5,33 +5,36 @@ export function useMedia<T>(
   values: T[],
   defaultValue: T,
 ): T {
-  const mql = queries.map(q => {
-    if (typeof window === "undefined") {
-      return {
-        matches: false,
-        addListener() {
-          return
-        },
-        removeListener() {
-          return
-        },
-      }
-    }
-    return window.matchMedia(q)
+  const mediaQueryList = queries.map(q => {
+    return window?.matchMedia(q)
   })
 
+  // It creates only one instance of the handler on mount
   const getValue = (): T => {
-    const idx = mql.findIndex(ql => ql.matches)
+    const idx = mediaQueryList.findIndex(ql => ql.matches)
     return values[idx] ?? defaultValue
   }
 
-  const [value, setValue] = useState<T>(getValue)
-  useEffect(() => {
-    const handler = (): void => setValue(getValue)
-    mql.forEach(q => q.addListener(handler))
+  const [initialValue, setInitialValue] = useState<T>(getValue)
+  const [value, setValue] = useState<T>(initialValue)
 
-    return () => mql.forEach(q => q.removeListener(handler))
-  }, [value])
+  useEffect(() => {
+    const handler = (): void => setInitialValue(getValue)
+    for (const query of mediaQueryList) {
+      query.addListener(handler)
+    }
+
+    return () => {
+      for (const query of mediaQueryList) {
+        query.removeListener(handler)
+      }
+    }
+  }, [])
+
+  // Necesary for getting the right media query on the first render
+  useEffect(() => {
+    setValue(initialValue)
+  }, [value, initialValue])
 
   return value
 }
