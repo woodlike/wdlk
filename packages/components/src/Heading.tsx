@@ -24,7 +24,7 @@ const createBreakpointStyles = (
 ): SerializedStyles => {
   return css`
     @media (min-width: ${theme.breakpoints[breakpointIdx]}) {
-      line-height: 1.4;
+      line-height: 1.5;
       font-size: ${theme.heading[size].growSize
         ? theme.heading[size].growSize
         : theme.heading[size].fontSize}px;
@@ -52,7 +52,7 @@ const StyledHeading = styled.h1<HeadingProps>`
     return isInverted ? theme.heading.modes.color : theme.heading.color
   }};
 
-  line-height: 1;
+  line-height: 1.3;
   -webkit-font-smoothing: antialiased;
 
   ${({ breakpoint, size, theme }) =>
