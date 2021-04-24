@@ -19,14 +19,14 @@ const createBreakpointStyles = (
   size: TextSize,
   theme: Theme,
 ): SerializedStyles => {
-  return css`
-    @media (min-width: ${theme.breakpoints[breakpointIdx]}) {
-      line-height: 1.4;
-      font-size: ${theme.text[size].growSize
-        ? theme.text[size].growSize
-        : theme.text[size].fontSize}px;
-    }
-  `
+  return theme.text[size].growSize
+    ? css`
+        @media (min-width: ${theme.breakpoints[breakpointIdx]}) {
+          line-height: 1.4;
+          font-size: ${theme.text[size].growSize}px;
+        }
+      `
+    : css``
 }
 
 const StyledText = styled.p<TextProps>`

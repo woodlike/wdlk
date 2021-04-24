@@ -22,14 +22,14 @@ const createBreakpointStyles = (
   size: HeadlineSize,
   theme: Theme,
 ): SerializedStyles => {
-  return css`
-    @media (min-width: ${theme.breakpoints[breakpointIdx]}) {
-      line-height: 1.5;
-      font-size: ${theme.heading[size].growSize
-        ? theme.heading[size].growSize
-        : theme.heading[size].fontSize}px;
-    }
-  `
+  return theme.heading[size].growSize
+    ? css`
+        @media (min-width: ${theme.breakpoints[breakpointIdx]}) {
+          line-height: 1.5;
+          font-size: ${theme.heading[size].growSize}px;
+        }
+      `
+    : css``
 }
 
 const StyledHeading = styled.h1<HeadingProps>`

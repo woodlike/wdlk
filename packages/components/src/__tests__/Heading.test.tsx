@@ -196,7 +196,7 @@ describe("<Heading />", () => {
       const heading = getByText(testId)
       const media = `(min-width: ${theme.breakpoints[2]})`
 
-      expect(heading).toHaveStyleRule(
+      expect(heading).not.toHaveStyleRule(
         "font-size",
         `${theme.heading.s.fontSize}px`,
         {
