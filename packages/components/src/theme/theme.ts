@@ -124,7 +124,8 @@ export const theme: Theme = {
       fontSize: fontSizes[5],
     },
     m: {
-      fontSize: fontSizes[6],
+      fontSize: fontSizes[5],
+      growSize: fontSizes[6],
     },
     l: {
       fontSize: fontSizes[6],

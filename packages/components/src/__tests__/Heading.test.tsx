@@ -187,7 +187,7 @@ describe("<Heading />", () => {
     it("should return a default font-size on m size", () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
-          <Heading as="h2" breakpoint={2} size="m" type="campaign">
+          <Heading as="h2" breakpoint={2} size="s" type="campaign">
             {testId}
           </Heading>
         </ThemeProvider>,
@@ -198,7 +198,7 @@ describe("<Heading />", () => {
 
       expect(heading).toHaveStyleRule(
         "font-size",
-        `${theme.heading.m.fontSize}px`,
+        `${theme.heading.s.fontSize}px`,
         {
           media,
         },
