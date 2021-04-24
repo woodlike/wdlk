@@ -22,7 +22,6 @@ const createBreakpointStyles = (
   size: HeadlineSize,
   theme: Theme,
 ): SerializedStyles => {
-  console.log("are you going here", theme.breakpoints[breakpointIdx])
   return css`
     @media (min-width: ${theme.breakpoints[breakpointIdx]}) {
       line-height: 1.4;

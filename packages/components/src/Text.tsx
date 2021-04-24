@@ -1,13 +1,33 @@
-import React from 'react';
-import styled from './styled';
+import { SerializedStyles, css } from "@emotion/core"
+
+import React from "react"
+import { Theme } from "."
+import styled from "./styled"
 
 export interface TextProps {
-  readonly size: 's' | 'm' | 'l';
-  readonly as?: TextType;
-  readonly isInverted?: boolean;
+  readonly size: TextSize
+  readonly breakpoint?: number
+  readonly as?: TextType
+  readonly isInverted?: boolean
 }
 
-export type TextType = 'p' | 'div';
+type TextSize = "s" | "m" | "l"
+export type TextType = "p" | "div"
+
+const createBreakpointStyles = (
+  breakpointIdx: number,
+  size: TextSize,
+  theme: Theme,
+): SerializedStyles => {
+  return css`
+    @media (min-width: ${theme.breakpoints[breakpointIdx]}) {
+      line-height: 1.4;
+      font-size: ${theme.text[size].growSize
+        ? theme.text[size].growSize
+        : theme.text[size].fontSize}px;
+    }
+  `
+}
 
 const StyledText = styled.p<TextProps>`
   margin: 0;
@@ -19,15 +39,19 @@ const StyledText = styled.p<TextProps>`
   color: ${({ isInverted, theme }) =>
     !!isInverted ? theme.text.modes.color : theme.text.color};
   -webkit-font-smoothing: antialiased;
-`;
 
-StyledText.displayName = 'StyledText';
+  ${({ breakpoint, size, theme }) =>
+    breakpoint ? createBreakpointStyles(breakpoint, size, theme) : ""}
+`
+
+StyledText.displayName = "StyledText"
 
 export const Text: React.FC<TextProps> = props => (
   <StyledText
-    as={props.as || 'p'}
+    as={props.as || "p"}
+    breakpoint={props.breakpoint}
     isInverted={props.isInverted}
     size={props.size}>
     {props.children}
   </StyledText>
-);
+)

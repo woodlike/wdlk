@@ -234,12 +234,15 @@ export const theme: Theme = {
     },
     s: {
       fontSize: fontSizes[1],
+      growSize: fontSizes[2],
     },
     m: {
       fontSize: fontSizes[2],
+      growSize: fontSizes[3],
     },
     l: {
       fontSize: fontSizes[3],
+      growSize: fontSizes[4],
     },
   },
   video: { color: colors.whites[0], controls: { color: colors.corals[0] } },
