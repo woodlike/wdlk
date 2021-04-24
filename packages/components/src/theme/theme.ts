@@ -18,7 +18,7 @@ const borderStyles = [
 
 const borderWidths = [0, 1, 2, 3, 4]
 const breakpoints = ["0px", "480px", "768px", "990px", "1024px", "1440px"]
-const fontSizes: number[] = [12, 14, 16, 18, 20, 24, 32, 44, 72]
+const fontSizes: number[] = [12, 14, 16, 18, 20, 24, 32, 44, 64, 72, 96]
 const fontWeights: number[] = [100, 200, 300, 400, 500, 600, 700, 800, 900]
 const spaces = [0, 3, 6, 12, 18, 24, 30, 36, 48, 72]
 
@@ -118,22 +118,29 @@ export const theme: Theme = {
       color: colors.whites[0],
     },
     xs: {
-      fontSize: fontSizes[3],
-    },
-    s: {
       fontSize: fontSizes[4],
     },
-    m: {
+    s: {
       fontSize: fontSizes[5],
+    },
+    m: {
+      fontSize: fontSizes[6],
     },
     l: {
       fontSize: fontSizes[6],
+      growSize: fontSizes[7],
     },
     xl: {
       fontSize: fontSizes[7],
+      growSize: fontSizes[8],
     },
     xxl: {
+      fontSize: fontSizes[7],
+      growSize: fontSizes[9],
+    },
+    xxxl: {
       fontSize: fontSizes[8],
+      growSize: fontSizes[10],
     },
   },
   layer: {

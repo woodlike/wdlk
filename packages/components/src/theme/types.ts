@@ -43,6 +43,7 @@ export interface Theme {
     readonly l: TextSize
     readonly xl: TextSize
     readonly xxl: TextSize
+    readonly xxxl: TextSize
   }
   readonly layer: {
     readonly maxWidth: string
@@ -162,4 +163,5 @@ export interface ThemeHeader {
 
 export interface TextSize {
   readonly fontSize: number
+  readonly growSize?: number
 }
