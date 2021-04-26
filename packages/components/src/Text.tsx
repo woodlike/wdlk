@@ -39,7 +39,7 @@ const StyledText = styled.p<TextProps>`
   letter-spacing: 0.2px;
   color: ${({ isInverted, theme }) =>
     !!isInverted ? theme.text.modes.color : theme.text.color};
-  weight: ${({ weight }) => weight ?? 300};
+  font-weight: ${({ weight }) => weight ?? 300};
   -webkit-font-smoothing: antialiased;
 
   ${({ breakpoint, size, theme }) =>
