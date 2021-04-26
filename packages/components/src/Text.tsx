@@ -9,6 +9,7 @@ export interface TextProps {
   readonly breakpoint?: number
   readonly as?: TextType
   readonly isInverted?: boolean
+  readonly weight?: 300 | 500 | 700
 }
 
 type TextSize = "s" | "m" | "l"
@@ -38,6 +39,7 @@ const StyledText = styled.p<TextProps>`
   letter-spacing: 0.2px;
   color: ${({ isInverted, theme }) =>
     !!isInverted ? theme.text.modes.color : theme.text.color};
+  weight: ${({ weight }) => weight ?? 300};
   -webkit-font-smoothing: antialiased;
 
   ${({ breakpoint, size, theme }) =>
@@ -51,7 +53,8 @@ export const Text: React.FC<TextProps> = props => (
     as={props.as || "p"}
     breakpoint={props.breakpoint}
     isInverted={props.isInverted}
-    size={props.size}>
+    size={props.size}
+    weight={props.weight}>
     {props.children}
   </StyledText>
 )
