@@ -42,7 +42,7 @@ const colors: Colors = {
   ],
   blacks: [toRGB([0, 0, 0]), toRGB([34, 34, 34]), toRGB([46, 46, 46])],
   beiges: [
-    toRGB([250, 245, 244]),
+    toRGB([251, 245, 238]),
     toRGB([243, 238, 232]),
     toRGB([185, 124, 68]),
   ],
