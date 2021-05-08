@@ -193,12 +193,11 @@ const initialState: State = {
 }
 
 export function useCarousel(length: number): UseCarousel {
-  Object.defineProperty(initialState, "length", {
-    value: length,
-    writable: false,
-  })
   const carouselRef = useRef<HTMLDivElement>(null)
-  const [{ coordinate, current }, dispatch] = useReducer(reducer, initialState)
+  const [{ coordinate, current }, dispatch] = useReducer(reducer, {
+    ...initialState,
+    length,
+  })
 
   const jump = (idx: number) =>
     dispatch({ type: CarouselType.jump, current: idx })
@@ -231,7 +230,7 @@ export function useCarousel(length: number): UseCarousel {
       carouselRef.current?.removeEventListener("touchmove", move)
       carouselRef.current?.removeEventListener("touchend", moveEnd)
     }
-  }, [])
+  }, [length])
 
   return { coordinate, current, jump, previous, next, carouselRef }
 }
