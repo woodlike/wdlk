@@ -17,7 +17,15 @@ const borderStyles = [
 ]
 
 const borderWidths = [0, 1, 2, 3, 4]
-const breakpoints = ["0px", "480px", "768px", "990px", "1024px", "1440px"]
+const breakpoints = [
+  "0px",
+  "480px",
+  "768px",
+  "990px",
+  "1024px",
+  "1440px",
+  "1940px",
+]
 const fontSizes: number[] = [12, 14, 16, 18, 20, 24, 32, 44, 64, 72, 96]
 const fontWeights: number[] = [100, 200, 300, 400, 500, 600, 700, 800, 900]
 const spaces = [0, 3, 6, 12, 18, 24, 30, 36, 48, 72]
@@ -92,7 +100,7 @@ export const theme: Theme = {
     hover: colors.blacks[2],
   },
   header: {
-    height: 70,
+    height: 80,
   },
   code: {
     s: {
