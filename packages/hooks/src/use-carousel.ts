@@ -18,7 +18,7 @@ export enum CarouselType {
   moveEnd = "moveEnd",
 }
 
-interface State {
+export interface CarouselState {
   readonly coordinate: number
   readonly current: number
   readonly direction: number
@@ -41,7 +41,7 @@ export interface MoveInit {
 }
 
 export interface MoveEndInit {
-  readonly state: State
+  readonly state: CarouselState
   readonly threshold: number
   next(curr: number, length: number): number
   nextItem(curr: number, length: number): number
@@ -110,7 +110,7 @@ export function moveEnd({ state, threshold, next }: MoveEndInit) {
   }
 }
 
-function reducer(state: State, action: Action): State {
+function reducer(state: CarouselState, action: Action): CarouselState {
   switch (action.type) {
     case CarouselType.jump: {
       return {
@@ -183,7 +183,7 @@ function reducer(state: State, action: Action): State {
   }
 }
 
-const initialState: State = {
+const initialState: CarouselState = {
   coordinate: 0,
   current: 0,
   direction: 1,
@@ -192,12 +192,15 @@ const initialState: State = {
   startX: 0,
 }
 
-export function useCarousel(length: number): UseCarousel {
+export function useCarousel(
+  lazyInit: (initialize: CarouselState) => CarouselState,
+): UseCarousel {
   const carouselRef = useRef<HTMLDivElement>(null)
-  const [{ coordinate, current }, dispatch] = useReducer(reducer, {
-    ...initialState,
-    length,
-  })
+  const [{ coordinate, current }, dispatch] = useReducer(
+    reducer,
+    initialState,
+    lazyInit,
+  )
 
   const jump = (idx: number) =>
     dispatch({ type: CarouselType.jump, current: idx })
@@ -230,7 +233,7 @@ export function useCarousel(length: number): UseCarousel {
       carouselRef.current?.removeEventListener("touchmove", move)
       carouselRef.current?.removeEventListener("touchend", moveEnd)
     }
-  }, [length])
+  }, [])
 
   return { coordinate, current, jump, previous, next, carouselRef }
 }
