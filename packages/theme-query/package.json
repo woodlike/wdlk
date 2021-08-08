@@ -17,12 +17,11 @@
     "theme-ui": "0.3.1"
   },
   "devDependencies": {
-    "@emotion/core": "^10.0.22",
-    "@emotion/styled": "^10.0.23",
+    "@emotion/react": "^11.4.0",
+    "@emotion/styled": "^11.3.0",
     "@types/jest": "^24.0.23",
     "@types/styled-system": "^5.1.4",
     "@types/theme-ui": "^0.2.4",
-    "emotion-theming": "^10.0.19",
     "jest": "^24.9.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",

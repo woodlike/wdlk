@@ -1,10 +1,9 @@
 module.exports = {
   parser: "@typescript-eslint/parser",
-  plugins: ["react-hooks"],
+  plugins: ["react-hooks", "@emotion"],
   extends: [
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
-    "prettier/@typescript-eslint",
     "prettier",
   ],
   parserOptions: {
@@ -24,6 +23,16 @@ module.exports = {
         args: "after-used",
         ignoreRestSiblings: false,
       },
+    ],
+    "react/prop-types": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "@typescript-eslint/explicit-module-boundary-types": [
+      "off",
+      { allowExpressions: true },
+    ],
+    "@typescript-eslint/explicit-function-return-type": [
+      "off",
+      { allowExpressions: true },
     ],
   },
   settings: {
