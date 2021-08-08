@@ -1,16 +1,15 @@
-import React from 'react';
-
-import styled from '../styled';
-import { calcSize } from './utils';
+import React from "react"
+import { calcSize } from "./utils"
+import styled from "@emotion/styled"
 
 export interface SelectFrameProps {
-  readonly ariaLabel: string;
-  readonly ariaActivedescendant: string;
-  readonly fontSize: number;
+  readonly ariaLabel: string
+  readonly ariaActivedescendant: string
+  readonly fontSize: number
 }
 
 interface StyledFrameProps {
-  readonly fontSize: number;
+  readonly fontSize: number
 }
 
 const StyledFrame = styled.ul<StyledFrameProps>`
@@ -22,9 +21,9 @@ const StyledFrame = styled.ul<StyledFrameProps>`
   padding: 0;
   margin: 0;
   outline: none;
-`;
+`
 
-StyledFrame.displayName = 'Select.StyledFrame';
+StyledFrame.displayName = "Select.StyledFrame"
 
 export const Frame: React.FC<SelectFrameProps> = props => (
   <StyledFrame
@@ -35,6 +34,6 @@ export const Frame: React.FC<SelectFrameProps> = props => (
     tabIndex={0}>
     {props.children}
   </StyledFrame>
-);
+)
 
-Frame.displayName = 'Select.Frame';
+Frame.displayName = "Select.Frame"

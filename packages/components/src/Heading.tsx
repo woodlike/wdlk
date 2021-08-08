@@ -1,13 +1,15 @@
-import { SerializedStyles, css } from "@emotion/core"
+/** @jsx jsx */
+import { SerializedStyles, css, jsx } from "@emotion/react"
 
 import React from "react"
-import { Theme } from "."
-import styled from "./styled"
+import { Theme } from "@emotion/react"
+import styled from "@emotion/styled"
 
 export interface HeadingProps {
   readonly size: HeadlineSize
   readonly type: HeadingFamily
   readonly breakpoint?: number
+
   readonly as?: HeadingLevel
   readonly isInverted?: boolean
   readonly weight?: number

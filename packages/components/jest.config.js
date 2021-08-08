@@ -1,19 +1,19 @@
-const TEST_REGEX = '(/__tests__/.*|(\\.|/)(test|spec))\\.(tsx?|ts?)$';
+const TEST_REGEX = "(/__tests__/.*|(\\.|/)(test|spec))\\.(tsx?|ts?)$"
 
 module.exports = {
   globals: {
-    'ts-jest': {
+    "ts-jest": {
       isolatedModules: true,
     },
   },
-  preset: 'ts-jest',
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
-  testEnvironment: 'jsdom',
+  preset: "ts-jest",
+  moduleFileExtensions: ["ts", "tsx", "js", "json"],
+  testEnvironment: "jsdom",
   transform: {
-    '.(ts|tsx)': 'ts-jest',
+    ".(ts|tsx)": "ts-jest",
   },
-  setupFilesAfterEnv: ['./jest-setup.ts'],
-  snapshotSerializers: ['jest-emotion'],
+  setupFilesAfterEnv: ["./jest-setup.ts"],
+  snapshotSerializers: ["@emotion/jest"],
   testRegex: TEST_REGEX,
-  testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/lib'],
-};
+  testPathIgnorePatterns: ["<rootDir>/node_modules/", "<rootDir>/lib"],
+}

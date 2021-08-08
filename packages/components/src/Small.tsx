@@ -1,5 +1,5 @@
 import React from "react"
-import styled from "./styled"
+import styled from "@emotion/styled"
 
 export interface SmallProps {
   readonly size: "s" | "m" | "l"

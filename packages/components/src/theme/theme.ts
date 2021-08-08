@@ -1,6 +1,6 @@
 import { Colors, theme as themeQuery, toRGB } from "theme-query"
 
-import { Theme } from "."
+import { Theme } from "@emotion/react"
 import { andromeda } from "./code-theme"
 
 const borderStyles = [

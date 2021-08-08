@@ -1,14 +1,14 @@
-import React from 'react';
-import styled from '../styled';
+import React from "react"
+import styled from "@emotion/styled"
 
 const StyledTableFrame = styled.table`
   width: 100%;
   border-collapse: collapse;
-`;
-StyledTableFrame.displayName = 'StyledTableFrame';
+`
+StyledTableFrame.displayName = "StyledTableFrame"
 
 export const Frame: React.FC = props => (
   <StyledTableFrame>{props.children}</StyledTableFrame>
-);
+)
 
-Frame.displayName = 'Table.Frame';
+Frame.displayName = "Table.Frame"

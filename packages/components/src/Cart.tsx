@@ -1,5 +1,5 @@
 import React from "react"
-import styled from "./styled"
+import styled from "@emotion/styled"
 
 export interface CartProps {
   readonly isFocused: boolean

@@ -1,24 +1,24 @@
-import React from 'react';
-import { css, SerializedStyles } from '@emotion/core';
+/** @jsx jsx */
+import { SerializedStyles, css, jsx } from "@emotion/react"
 
-import { Theme } from '..';
-import { calcSize } from './utils';
-import styled from '../styled';
+import { Theme } from ".."
+import { calcSize } from "./utils"
+import styled from "@emotion/styled"
 
 export interface SelectTileProps {
-  readonly id: string;
-  readonly fontSize: number;
-  readonly isActive: boolean;
-  readonly isAvailable: boolean;
-  readonly onClick: React.MouseEventHandler<HTMLLIElement>;
-  readonly borderWidth?: number;
+  readonly id: string
+  readonly fontSize: number
+  readonly isActive: boolean
+  readonly isAvailable: boolean
+  readonly onClick: React.MouseEventHandler<HTMLLIElement>
+  readonly borderWidth?: number
 }
 
 interface StyledSelectItemProps {
-  readonly borderWidth?: number;
-  readonly isActive: boolean;
-  readonly isAvailable: boolean;
-  readonly fontSize: number;
+  readonly borderWidth?: number
+  readonly isActive: boolean
+  readonly isAvailable: boolean
+  readonly fontSize: number
 }
 
 const createStylesSize = (
@@ -33,23 +33,23 @@ const createStylesSize = (
     : `${theme.borderWidths[0]}px`};
   border-style: solid;
   line-height: ${calcSize(fontSize, theme.fontSizes)}px;
-`;
+`
 
 const createActiveStyles = (
   theme: Theme,
   isActive: boolean,
   isAvailable: boolean,
 ): SerializedStyles => css`
-  color: ${isAvailable ? 'currentColor' : theme.colors.borderDisabled};
+  color: ${isAvailable ? "currentColor" : theme.colors.borderDisabled};
   border-color: ${isAvailable
     ? isActive
       ? theme.colors.borderActive
       : theme.colors.border
     : theme.colors.borderDisabled};
-  cursor: ${isAvailable ? 'pointer' : 'unset'};
-  pointer-events: ${isAvailable ? 'all' : 'none'};
-  text-decoration: ${isAvailable ? 'none' : 'line-through'};
-`;
+  cursor: ${isAvailable ? "pointer" : "unset"};
+  pointer-events: ${isAvailable ? "all" : "none"};
+  text-decoration: ${isAvailable ? "none" : "line-through"};
+`
 
 const StyledItem = styled.li<StyledSelectItemProps>`
   ${({ borderWidth = 1, fontSize, theme }) =>
@@ -64,9 +64,9 @@ const StyledItem = styled.li<StyledSelectItemProps>`
       ? `${theme.fontSizes[fontSize]}px`
       : `${theme.fontSizes[0]}px`};
   text-align: center;
-`;
+`
 
-StyledItem.displayName = 'Select.StyledItem';
+StyledItem.displayName = "Select.StyledItem"
 
 export const Item: React.FC<SelectTileProps> = props => (
   <StyledItem
@@ -80,6 +80,6 @@ export const Item: React.FC<SelectTileProps> = props => (
     onClick={props.onClick}>
     {props.children}
   </StyledItem>
-);
+)
 
-Item.displayName = 'Select.Item';
+Item.displayName = "Select.Item"

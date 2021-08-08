@@ -3,8 +3,8 @@ import { axe, toHaveNoViolations } from "jest-axe"
 import { cleanup, render } from "@testing-library/react"
 
 import React from "react"
-import { ThemeProvider } from "emotion-theming"
-import { matchers } from "jest-emotion"
+import { ThemeProvider } from "@emotion/react"
+import { matchers } from "@emotion/jest"
 
 expect.extend(matchers)
 expect.extend(toHaveNoViolations)
@@ -79,7 +79,7 @@ describe("<Text />", () => {
       const legend = getByText(testId)
       expect(legend).toHaveStyleRule(
         "font-family",
-        theme.text.fontFamily.replace(/\s/g, ""),
+        theme.text.fontFamily.replace(",", ", "),
       )
       unmount()
     })
@@ -93,7 +93,7 @@ describe("<Text />", () => {
         </ThemeProvider>,
       )
       const text = getByText(testId)
-      expect(text).toHaveStyleRule("color", theme.text.color.replace(/\s/g, ""))
+      expect(text).toHaveStyleRule("color", theme.text.color)
       unmount()
     })
   })

@@ -1,11 +1,10 @@
-import React from 'react';
-
-import { BoxHTMLElement } from '.';
-import styled from './styled';
+import { BoxHTMLElement } from "."
+import React from "react"
+import styled from "@emotion/styled"
 
 export interface StackProps {
-  readonly as: BoxHTMLElement;
-  readonly space: number;
+  readonly as: BoxHTMLElement
+  readonly space: number
 }
 
 const StyledStack = styled.div<StackProps>`
@@ -18,11 +17,11 @@ const StyledStack = styled.div<StackProps>`
     }px`};
   padding: 0;
   margin: 0;
-`;
-StyledStack.displayName = 'StyledStack';
+`
+StyledStack.displayName = "StyledStack"
 
 export const Stack: React.FC<StackProps> = props => (
   <StyledStack as={props.as} space={props.space}>
     {props.children}
   </StyledStack>
-);
+)

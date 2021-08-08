@@ -1,8 +1,8 @@
-import { SerializedStyles, css } from "@emotion/core"
+import { SerializedStyles, css } from "@emotion/react"
 
 import React from "react"
 import { Theme } from "."
-import styled from "./styled"
+import styled from "@emotion/styled"
 
 export interface LinkProps {
   readonly size: "xs" | "s" | "m" | "l" | "xl"
