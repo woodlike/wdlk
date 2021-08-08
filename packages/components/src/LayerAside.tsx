@@ -1,29 +1,32 @@
-import React from 'react';
-import { css, SerializedStyles } from '@emotion/core';
-import styled from './styled';
-import { ScaleArea, Scale } from '.';
+/** @jsx jsx */
+
+import { Scale, ScaleArea } from "."
+import { SerializedStyles, css, jsx } from "@emotion/react"
+
+import React from "react"
+import styled from "@emotion/styled"
 
 export interface LayerAsideProps {
-  readonly isOpen: boolean;
-  readonly padding: ScaleArea;
-  readonly position?: 'left' | 'right';
+  readonly isOpen: boolean
+  readonly padding: ScaleArea
+  readonly position?: "left" | "right"
 }
 
 const getLayerPosition = (
-  position: 'left' | 'right' = 'right',
+  position: "left" | "right" = "right",
 ): SerializedStyles => css`
   ${position}: 0;
-`;
+`
 
 const getX = (
   isOpen: boolean,
-  position: 'left' | 'right' = 'right',
+  position: "left" | "right" = "right",
 ): string => {
   if (isOpen) {
-    return '0';
+    return "0"
   }
-  return position === 'right' ? '100%' : '-100%';
-};
+  return position === "right" ? "100%" : "-100%"
+}
 
 const StyledLayerAside = styled.aside<LayerAsideProps>`
   ${props => getLayerPosition(props.position)};
@@ -49,9 +52,9 @@ const StyledLayerAside = styled.aside<LayerAsideProps>`
     height: 100vh;
     max-width: ${props => props.theme.layerAside.maxWidth};
   }
-`;
+`
 
-StyledLayerAside.displayName = 'StyledLayerAside';
+StyledLayerAside.displayName = "StyledLayerAside"
 
 export const LayerAside: React.FC<LayerAsideProps> = props => (
   <StyledLayerAside
@@ -60,4 +63,4 @@ export const LayerAside: React.FC<LayerAsideProps> = props => (
     padding={props.padding}>
     {props.children}
   </StyledLayerAside>
-);
+)

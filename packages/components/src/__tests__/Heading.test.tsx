@@ -1,11 +1,11 @@
-import * as React from "react"
+/** @jsx jsx */
 
 import { Heading, theme } from ".."
+import { ThemeProvider, jsx } from "@emotion/react"
 import { axe, toHaveNoViolations } from "jest-axe"
 import { cleanup, render } from "@testing-library/react"
 
-import { ThemeProvider } from "emotion-theming"
-import { matchers } from "jest-emotion"
+import { matchers } from "@emotion/jest"
 
 expect.extend(toHaveNoViolations)
 expect.extend(matchers)

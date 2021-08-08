@@ -1,8 +1,8 @@
-import { SerializedStyles, css } from "@emotion/core"
+/** @jsx jsx */
+import { SerializedStyles, css, jsx } from "@emotion/react"
 
-import React from "react"
 import { Theme } from "."
-import styled from "./styled"
+import styled from "@emotion/styled"
 
 export interface TextProps {
   readonly size: TextSize

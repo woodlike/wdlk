@@ -1,11 +1,11 @@
 import React, {
-  forwardRef,
-  useRef,
-  useImperativeHandle,
   RefObject,
+  forwardRef,
+  useImperativeHandle,
+  useRef,
 } from "react"
 
-import styled from "../styled"
+import styled from "@emotion/styled"
 
 export interface VideoProps {
   readonly controls: boolean

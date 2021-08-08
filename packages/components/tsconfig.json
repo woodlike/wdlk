@@ -7,6 +7,6 @@
     "rootDir": "./src",
     "outDir": "./lib"
   },
-  "include": ["./src", "globals.d.ts"],
+  "include": ["./src"],
   "exclude": ["./node_modules", "./src/**/*.test.tsx"]
 }

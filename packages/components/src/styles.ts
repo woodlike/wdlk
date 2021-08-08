@@ -1,5 +1,6 @@
-import { css, SerializedStyles } from '@emotion/core';
-import { Theme } from '.';
+import { SerializedStyles, css } from "@emotion/react"
+
+import { Theme } from "."
 
 export const createFocusStyles = (theme: Theme): SerializedStyles => css`
   :focus {
@@ -8,4 +9,4 @@ export const createFocusStyles = (theme: Theme): SerializedStyles => css`
     outline-width: ${theme.outline.width};
     outline-color: ${theme.outline.color};
   }
-`;
+`

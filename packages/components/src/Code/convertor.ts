@@ -1,4 +1,4 @@
-import { PrismTheme, PrismStyleProp, PrismStyleRule } from '.';
+import { PrismStyleProp, PrismStyleRule, PrismTheme } from '.';
 
 export type CodeTheme = Map<string, PrismStyleProp>;
 

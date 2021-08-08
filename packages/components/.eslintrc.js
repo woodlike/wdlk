@@ -1,12 +1,24 @@
-
 module.exports = {
-  ...require('../../.eslintrc.js'),
+  ...require("../../.eslintrc.js"),
   rules: {
-    '@typescript-eslint/no-use-before-define': 'off',
-    '@typescript-eslint/explicit-function-return-type': [
-      'warn',
-      { allowExpressions: true }
+    "@emotion/jsx-import": "error",
+    "@emotion/pkg-renaming": "error",
+    "@typescript-eslint/no-use-before-define": "off",
+    "@emotion/jsx-import": "error",
+    "@emotion/pkg-renaming": "error",
+    "@typescript-eslint/member-delimiter-style": [
+      "error",
+      {
+        multiline: {
+          delimiter: "none",
+          requireLast: true,
+        },
+      },
     ],
-    'react/prop-types': 'off',
-  }
-};
+    "@typescript-eslint/explicit-function-return-type": [
+      "warn",
+      { allowExpressions: true },
+    ],
+    "react/prop-types": "off",
+  },
+}

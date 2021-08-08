@@ -1,7 +1,8 @@
-import React, { ReactText } from "react"
-import { css } from "@emotion/core"
+/** @jsx jsx */
+import { css, jsx } from "@emotion/react"
 
-import styled from "../styled"
+import { ReactText } from "react"
+import styled from "@emotion/styled"
 
 export interface VideoStageProps {
   readonly muted: boolean

@@ -1,328 +1,295 @@
-import { matchers } from 'jest-emotion';
-import { render } from '@testing-library/react';
-import { ThemeProvider } from 'emotion-theming';
-import * as React from 'react';
+import * as React from "react"
 
-import { Box } from '../Box';
-import { theme } from '..';
+import { Box } from "../Box"
+import { ThemeProvider } from "@emotion/react"
+import { matchers } from "@emotion/jest"
+import { render } from "@testing-library/react"
+import { theme } from ".."
 
-expect.extend(matchers);
+expect.extend(matchers)
 
-describe('<Box />', () => {
-  const id = 'Test Box';
-  const { borderStyles, borderWidths, space } = theme;
-  describe('Padding handling', () => {
-    it('(shorthand): handles a Theme-UI shorthand padding area', () => {
+describe("<Box />", () => {
+  const id = "Test Box"
+  const { borderStyles, borderWidths, space } = theme
+  describe("Padding handling", () => {
+    it("(shorthand): handles a Theme-UI shorthand padding area", () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
           <Box padding={2}>{id}</Box>
         </ThemeProvider>,
-      );
-      const box = getByText(id);
+      )
+      const box = getByText(id)
       expect(box).toHaveStyleRule(
-        'padding',
+        "padding",
         `${space[2]}px ${space[2]}px ${space[2]}px ${space[2]}px`,
-      );
-      unmount();
-    });
+      )
+      unmount()
+    })
 
-    it('(vertical | horizontal): handles a Theme-UI tuple padding area', () => {
+    it("(vertical | horizontal): handles a Theme-UI tuple padding area", () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
           <Box padding={[3, 5]}>{id}</Box>
         </ThemeProvider>,
-      );
-      const box = getByText(id);
+      )
+      const box = getByText(id)
       expect(box).toHaveStyleRule(
-        'padding',
+        "padding",
         `${space[3]}px ${space[5]}px ${space[3]}px ${space[5]}px`,
-      );
-      unmount();
-    });
+      )
+      unmount()
+    })
 
-    it('(top | horizontal | bottom): handles a Theme-UI triple padding area', () => {
+    it("(top | horizontal | bottom): handles a Theme-UI triple padding area", () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
           <Box padding={[3, 5, 9]}>{id}</Box>
         </ThemeProvider>,
-      );
-      const box = getByText(id);
+      )
+      const box = getByText(id)
       expect(box).toHaveStyleRule(
-        'padding',
+        "padding",
         `${space[3]}px ${space[5]}px ${space[9]}px ${space[5]}px`,
-      );
-      unmount();
-    });
+      )
+      unmount()
+    })
 
-    it('(top | right | bottom | left): handles a Theme-UI triple padding area', () => {
+    it("(top | right | bottom | left): handles a Theme-UI triple padding area", () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
           <Box padding={[2, 6, 3, 2]}>{id}</Box>
         </ThemeProvider>,
-      );
-      const box = getByText(id);
+      )
+      const box = getByText(id)
       expect(box).toHaveStyleRule(
-        'padding',
+        "padding",
         `${space[2]}px ${space[6]}px ${space[3]}px ${space[2]}px`,
-      );
-      unmount();
-    });
-  });
+      )
+      unmount()
+    })
+  })
 
-  describe('Border width handling', () => {
-    it('(shorthand): handles a Theme-UI shorthand border width', () => {
+  describe("Border width handling", () => {
+    it("(shorthand): handles a Theme-UI shorthand border width", () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
           <Box padding={2} borderWidths={3}>
             {id}
           </Box>
         </ThemeProvider>,
-      );
-      const box = getByText(id);
+      )
+      const box = getByText(id)
       expect(box).toHaveStyleRule(
-        'border-width',
+        "border-width",
         `${borderWidths[3]}px ${borderWidths[3]}px ${borderWidths[3]}px ${borderWidths[3]}px`,
-      );
-      unmount();
-    });
+      )
+      unmount()
+    })
 
-    it('(vertical | horizontal): handles a Theme-UI tuple border width', () => {
+    it("(vertical | horizontal): handles a Theme-UI tuple border width", () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
           <Box padding={2} borderWidths={[3, 5]}>
             {id}
           </Box>
         </ThemeProvider>,
-      );
-      const box = getByText(id);
+      )
+      const box = getByText(id)
       expect(box).toHaveStyleRule(
-        'border-width',
+        "border-width",
         `${borderWidths[3]}px ${borderWidths[5]}px ${borderWidths[3]}px ${borderWidths[5]}px`,
-      );
-      unmount();
-    });
+      )
+      unmount()
+    })
 
-    it('(top | horizontal | bottom): handles a Theme-UI triple border width', () => {
+    it("(top | horizontal | bottom): handles a Theme-UI triple border width", () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
           <Box padding={2} borderWidths={[3, 5, 9]}>
             {id}
           </Box>
         </ThemeProvider>,
-      );
-      const box = getByText(id);
+      )
+      const box = getByText(id)
       expect(box).toHaveStyleRule(
-        'border-width',
+        "border-width",
         `${borderWidths[3]}px ${borderWidths[5]}px ${borderWidths[9]}px ${borderWidths[5]}px`,
-      );
-      unmount();
-    });
+      )
+      unmount()
+    })
 
-    it('(top | right | bottom | left): handles a Theme-UI triple border width', () => {
+    it("(top | right | bottom | left): handles a Theme-UI triple border width", () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
           <Box padding={2} borderWidths={[2, 6, 3, 2]}>
             {id}
           </Box>
         </ThemeProvider>,
-      );
-      const box = getByText(id);
+      )
+      const box = getByText(id)
       expect(box).toHaveStyleRule(
-        'border-width',
+        "border-width",
         `${borderWidths[2]}px ${borderWidths[6]}px ${borderWidths[3]}px ${borderWidths[2]}px`,
-      );
-      unmount();
-    });
-  });
+      )
+      unmount()
+    })
+  })
 
-  describe('Border styles handling', () => {
-    it('(shorthand): handles a Theme-UI shorthand border styles', () => {
+  describe("Border styles handling", () => {
+    it("(shorthand): handles a Theme-UI shorthand border styles", () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
           <Box padding={2} borderStyles={3}>
             {id}
           </Box>
         </ThemeProvider>,
-      );
-      const box = getByText(id);
+      )
+      const box = getByText(id)
       expect(box).toHaveStyleRule(
-        'border-style',
+        "border-style",
         `${borderStyles[3]} ${borderStyles[3]} ${borderStyles[3]} ${borderStyles[3]}`,
-      );
-      unmount();
-    });
+      )
+      unmount()
+    })
 
-    it('(vertical | horizontal): handles a Theme-UI tuple border styles', () => {
+    it("(vertical | horizontal): handles a Theme-UI tuple border styles", () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
           <Box padding={2} borderStyles={[3, 5]}>
             {id}
           </Box>
         </ThemeProvider>,
-      );
-      const box = getByText(id);
+      )
+      const box = getByText(id)
       expect(box).toHaveStyleRule(
-        'border-style',
+        "border-style",
         `${borderStyles[3]} ${borderStyles[5]} ${borderStyles[3]} ${borderStyles[5]}`,
-      );
-      unmount();
-    });
+      )
+      unmount()
+    })
 
-    it('(top | horizontal | bottom): handles a Theme-UI triple border styles', () => {
+    it("(top | horizontal | bottom): handles a Theme-UI triple border styles", () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
           <Box padding={2} borderStyles={[3, 5, 9]}>
             {id}
           </Box>
         </ThemeProvider>,
-      );
-      const box = getByText(id);
+      )
+      const box = getByText(id)
       expect(box).toHaveStyleRule(
-        'border-style',
+        "border-style",
         `${borderStyles[3]} ${borderStyles[5]} ${borderStyles[9]} ${borderStyles[5]}`,
-      );
-      unmount();
-    });
+      )
+      unmount()
+    })
 
-    it('(top | right | bottom | left): handles a Theme-UI triple border styles', () => {
+    it("(top | right | bottom | left): handles a Theme-UI triple border styles", () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
           <Box padding={2} borderStyles={[2, 6, 3, 2]}>
             {id}
           </Box>
         </ThemeProvider>,
-      );
-      const box = getByText(id);
+      )
+      const box = getByText(id)
       expect(box).toHaveStyleRule(
-        'border-style',
+        "border-style",
         `${borderStyles[2]} ${borderStyles[6]} ${borderStyles[3]} ${borderStyles[2]}`,
-      );
-      unmount();
-    });
-  });
+      )
+      unmount()
+    })
+  })
 
-  describe('Border color handling', () => {
-    it('(shorthand): handles a Theme-UI shorthand border color', () => {
+  describe("Border color handling", () => {
+    it("(shorthand): handles a Theme-UI shorthand border color", () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
-          <Box padding={2} borderColors={'primary'}>
+          <Box padding={2} borderColors={"primary"}>
             {id}
           </Box>
         </ThemeProvider>,
-      );
-      const box = getByText(id);
-      expect(box).toHaveStyleRule(
-        'border-color',
-        theme.colors.primary.replace(/\s/g, ''),
-      );
-      unmount();
-    });
+      )
+      const box = getByText(id)
+      expect(box).toHaveStyleRule("border-color", theme.colors.primary)
+      unmount()
+    })
 
-    it('(shorthand): handles a Theme-UI shorthand border color scale', () => {
-      const borderColors = { color: 'corals', idx: 1 };
+    it("(shorthand): handles a Theme-UI shorthand border color scale", () => {
+      const borderColors = { color: "corals", idx: 1 }
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
           <Box padding={2} borderColors={borderColors}>
             {id}
           </Box>
         </ThemeProvider>,
-      );
-      const box = getByText(id);
-      expect(box).toHaveStyleRule(
-        'border-color',
-        theme.colors.corals[1].replace(/\s/g, ''),
-      );
-      unmount();
-    });
+      )
+      const box = getByText(id)
+      expect(box).toHaveStyleRule("border-color", theme.colors.corals[1])
+      unmount()
+    })
 
-    it('(vertical | horizontal):  handles a Theme-UI tuple border color', () => {
+    it("(vertical | horizontal):  handles a Theme-UI tuple border color", () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
-          <Box padding={2} borderColors={['primary', 'secondary']}>
+          <Box padding={2} borderColors={["primary", "secondary"]}>
             {id}
           </Box>
         </ThemeProvider>,
-      );
-      const box = getByText(id);
+      )
+      const box = getByText(id)
       expect(box).toHaveStyleRule(
-        'border-color',
-        `${theme.colors.primary.replace(
-          /\s/g,
-          '',
-        )} ${theme.colors.secondary.replace(
-          /\s/g,
-          '',
-        )} ${theme.colors.primary.replace(
-          /\s/g,
-          '',
-        )} ${theme.colors.secondary.replace(/\s/g, '')}`,
-      );
-      unmount();
-    });
+        "border-color",
+        `${theme.colors.primary} ${theme.colors.secondary} ${theme.colors.primary} ${theme.colors.secondary}`,
+      )
+      unmount()
+    })
 
-    it('(vertical | horizontal):  handles a Theme-UI tuple border color scale', () => {
-      const borderColors = [{ color: 'corals', idx: 1 }, 'secondary'];
+    it("(vertical | horizontal):  handles a Theme-UI tuple border color scale", () => {
+      const borderColors = [{ color: "corals", idx: 1 }, "secondary"]
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
           <Box padding={2} borderColors={borderColors}>
             {id}
           </Box>
         </ThemeProvider>,
-      );
-      const box = getByText(id);
+      )
+      const box = getByText(id)
       expect(box).toHaveStyleRule(
-        'border-color',
-        `${theme.colors.corals[1].replace(
-          /\s/g,
-          '',
-        )} ${theme.colors.secondary.replace(
-          /\s/g,
-          '',
-        )} ${theme.colors.corals[1].replace(
-          /\s/g,
-          '',
-        )} ${theme.colors.secondary.replace(/\s/g, '')}`,
-      );
-      unmount();
-    });
+        "border-color",
+        `${theme.colors.corals[1]} ${theme.colors.secondary} ${theme.colors.corals[1]} ${theme.colors.secondary}`,
+      )
+      unmount()
+    })
 
-    it('(top | horizontal | bottom):  handles a Theme-UI triple border color scale', () => {
+    it("(top | horizontal | bottom):  handles a Theme-UI triple border color scale", () => {
       const borderColors = [
-        { color: 'whites', idx: 2 },
-        { color: 'blacks', idx: 1 },
-        'secondary',
-      ];
+        { color: "whites", idx: 2 },
+        { color: "blacks", idx: 1 },
+        "secondary",
+      ]
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
           <Box padding={2} borderColors={borderColors}>
             {id}
           </Box>
         </ThemeProvider>,
-      );
-      const box = getByText(id);
+      )
+      const box = getByText(id)
       expect(box).toHaveStyleRule(
-        'border-color',
-        `${theme.colors.whites[2].replace(
-          /\s/g,
-          '',
-        )} ${theme.colors.blacks[1].replace(
-          /\s/g,
-          '',
-        )} ${theme.colors.secondary.replace(
-          /\s/g,
-          '',
-        )} ${theme.colors.blacks[1].replace(/\s/g, '')}`,
-      );
-      unmount();
-    });
+        "border-color",
+        `${theme.colors.whites[2]} ${theme.colors.blacks[1]} ${theme.colors.secondary} ${theme.colors.blacks[1]}`,
+      )
+      unmount()
+    })
 
-    it('(top | right | bottom | left):  handles a Theme-UI triple border color scale', () => {
+    it("(top | right | bottom | left):  handles a Theme-UI triple border color scale", () => {
       const borderColors = [
-        { color: 'whites', idx: 2 },
-        { color: 'blacks', idx: 1 },
-        { color: 'grays', idx: 0 },
-        { color: 'corals', idx: 1 },
-      ];
+        { color: "whites", idx: 2 },
+        { color: "blacks", idx: 1 },
+        { color: "grays", idx: 0 },
+        { color: "corals", idx: 1 },
+      ]
 
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
@@ -330,111 +297,96 @@ describe('<Box />', () => {
             {id}
           </Box>
         </ThemeProvider>,
-      );
-      const box = getByText(id);
+      )
+      const box = getByText(id)
       expect(box).toHaveStyleRule(
-        'border-color',
-        `${theme.colors.whites[2].replace(
-          /\s/g,
-          '',
-        )} ${theme.colors.blacks[1].replace(
-          /\s/g,
-          '',
-        )} ${theme.colors.grays[0].replace(
-          /\s/g,
-          '',
-        )} ${theme.colors.corals[1].replace(/\s/g, '')}`,
-      );
-      unmount();
-    });
-  });
+        "border-color",
+        `${theme.colors.whites[2]} ${theme.colors.blacks[1]} ${theme.colors.grays[0]} ${theme.colors.corals[1]}`,
+      )
+      unmount()
+    })
+  })
 
-  describe('Background color handling', () => {
-    it('handles a Theme-UI background color', () => {
+  describe("Background color handling", () => {
+    it("handles a Theme-UI background color", () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
-          <Box padding={2} backgroundColor={'primary'}>
+          <Box padding={2} backgroundColor={"primary"}>
             {id}
           </Box>
         </ThemeProvider>,
-      );
-      const box = getByText(id);
-      expect(box).toHaveStyleRule(
-        'background-color',
-        theme.colors.primary.replace(/\s/g, ''),
-      );
-      unmount();
-    });
+      )
+      const box = getByText(id)
+      expect(box).toHaveStyleRule("background-color", theme.colors.primary)
+      unmount()
+    })
 
-    it('handles a Theme-UI background color scale', () => {
-      const backgroundColor = { color: 'grays', idx: 3 };
+    it("handles a Theme-UI background color scale", () => {
+      const backgroundColor = { color: "grays", idx: 3 }
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
           <Box padding={2} backgroundColor={backgroundColor}>
             {id}
           </Box>
         </ThemeProvider>,
-      );
-      const box = getByText(id);
-      expect(box).toHaveStyleRule(
-        'background-color',
-        theme.colors.grays[3].replace(/\s/g, ''),
-      );
-      unmount();
-    });
-  });
+      )
+      const box = getByText(id)
+      expect(box).toHaveStyleRule("background-color", theme.colors.grays[3])
+      unmount()
+    })
+  })
 
-  describe('HTML tag rendering', () => {
-    it('should render a DIV tag', () => {
+  describe("HTML tag rendering", () => {
+    it("should render a DIV tag", () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
           <Box as="div" padding={2}>
             {id}
           </Box>
         </ThemeProvider>,
-      );
-      const box = getByText(id);
-      expect(box.tagName).toBe('DIV');
-      unmount();
-    });
+      )
+      const box = getByText(id)
+      expect(box.tagName).toBe("DIV")
+      unmount()
+    })
 
-    it('should render a ASIDE tag', () => {
+    it("should render a ASIDE tag", () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
           <Box as="aside" padding={2}>
             {id}
           </Box>
         </ThemeProvider>,
-      );
-      const box = getByText(id);
-      expect(box.tagName).toBe('ASIDE');
-      unmount();
-    });
+      )
+      const box = getByText(id)
+      expect(box.tagName).toBe("ASIDE")
+      unmount()
+    })
 
-    it('should render a SECTION tag', () => {
+    it("should render a SECTION tag", () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
           <Box as="section" padding={2}>
             {id}
           </Box>
         </ThemeProvider>,
-      );
-      const box = getByText(id);
-      expect(box.tagName).toBe('SECTION');
-      unmount();
-    });
+      )
+      const box = getByText(id)
+      expect(box.tagName).toBe("SECTION")
+      unmount()
+    })
 
-    it('should render a MAIN tag', () => {
+    it("should render a MAIN tag", () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
           <Box as="main" padding={2}>
             {id}
           </Box>
         </ThemeProvider>,
-      );
-      const box = getByText(id);
-      expect(box.tagName).toBe('MAIN');
-      unmount();
-    });
-  });
-});
+      )
+      const box = getByText(id)
+      expect(box.tagName).toBe("MAIN")
+      unmount()
+    })
+  })
+})

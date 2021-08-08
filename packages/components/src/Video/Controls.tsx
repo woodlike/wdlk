@@ -1,6 +1,7 @@
-import React from "react"
-import { keyframes } from "@emotion/core"
-import styled from "../styled"
+/** @jsx jsx */
+import { jsx, keyframes } from "@emotion/react"
+
+import styled from "@emotion/styled"
 
 export interface ControlProps {
   readonly size: number

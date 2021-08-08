@@ -1,25 +1,25 @@
-import React from 'react';
-import { axe } from 'jest-axe';
-import { matchers } from 'jest-emotion';
+import { Table, theme } from ".."
+import { cleanup, render } from "../../testing-library"
 
-import { cleanup, render } from '../../testing-library';
-import { Table, theme } from '..';
+import React from "react"
+import { axe } from "jest-axe"
+import { matchers } from "@emotion/jest"
 
-expect.extend(matchers);
+expect.extend(matchers)
 
-describe('<Table />', () => {
-  let id: string;
+describe("<Table />", () => {
+  let id: string
 
   beforeEach(() => {
-    id = 'table-id';
-  });
+    id = "table-id"
+  })
 
   afterEach(() => {
-    id = (undefined as unknown) as string;
-  });
+    id = (undefined as unknown) as string
+  })
 
-  describe('Accessibility', () => {
-    it('should not have any accessibility violations', async done => {
+  describe("Accessibility", () => {
+    it("should not have any accessibility violations", async done => {
       const { container, unmount } = render(
         <Table.Frame>
           <thead>
@@ -40,18 +40,18 @@ describe('<Table />', () => {
             </tr>
           </tbody>
         </Table.Frame>,
-      );
+      )
 
-      const a11yResults = await axe(container);
-      expect(a11yResults).toHaveNoViolations();
-      cleanup();
-      unmount();
-      done();
-    });
-  });
+      const a11yResults = await axe(container)
+      expect(a11yResults).toHaveNoViolations()
+      cleanup()
+      unmount()
+      done()
+    })
+  })
 
-  describe('Table Cell', () => {
-    it('should have the default themed border styled', () => {
+  describe("Table Cell", () => {
+    it("should have the default themed border styled", () => {
       const { getByText, unmount } = render(
         <Table.Frame>
           <tbody>
@@ -60,17 +60,17 @@ describe('<Table />', () => {
             </tr>
           </tbody>
         </Table.Frame>,
-      );
+      )
 
-      const cell = getByText(id);
-      expect(cell).toHaveStyleRule('border-width', '0 0 1px 0');
-      expect(cell).toHaveStyleRule('border-width', '0 1px 1px 0', {
-        target: ':first-of-type',
-      });
-      unmount();
-    });
+      const cell = getByText(id)
+      expect(cell).toHaveStyleRule("border-width", "0 0 1px 0")
+      expect(cell).toHaveStyleRule("border-width", "0 1px 1px 0", {
+        target: ":first-of-type",
+      })
+      unmount()
+    })
 
-    it('should have the borderless themed border styled', () => {
+    it("should have the borderless themed border styled", () => {
       const { getByText, unmount } = render(
         <Table.Frame>
           <tbody>
@@ -79,17 +79,17 @@ describe('<Table />', () => {
             </tr>
           </tbody>
         </Table.Frame>,
-      );
+      )
 
-      const cell = getByText(id);
-      expect(cell).toHaveStyleRule('border-width', '0');
-      expect(cell).toHaveStyleRule('border-width', '0 1px 0 0', {
-        target: ':first-of-type',
-      });
-      unmount();
-    });
+      const cell = getByText(id)
+      expect(cell).toHaveStyleRule("border-width", "0")
+      expect(cell).toHaveStyleRule("border-width", "0 1px 0 0", {
+        target: ":first-of-type",
+      })
+      unmount()
+    })
 
-    it('should have a default theme cell color for a table cell', () => {
+    it("should have a default theme cell color for a table cell", () => {
       const { getByText, unmount } = render(
         <Table.Frame>
           <tbody>
@@ -98,16 +98,13 @@ describe('<Table />', () => {
             </tr>
           </tbody>
         </Table.Frame>,
-      );
-      const cell = getByText(id);
-      expect(cell).toHaveStyleRule(
-        'color',
-        theme.table.color.replace(/\s/g, ''),
-      );
-      unmount();
-    });
+      )
+      const cell = getByText(id)
+      expect(cell).toHaveStyleRule("color", theme.table.color)
+      unmount()
+    })
 
-    it('should have a default theme text color for the table header cell color', () => {
+    it("should have a default theme text color for the table header cell color", () => {
       const { getByText, unmount } = render(
         <Table.Frame>
           <thead>
@@ -118,16 +115,13 @@ describe('<Table />', () => {
             </tr>
           </thead>
         </Table.Frame>,
-      );
-      const cell = getByText(id);
-      expect(cell).toHaveStyleRule(
-        'color',
-        theme.colors.text.replace(/\s/g, ''),
-      );
-      unmount();
-    });
+      )
+      const cell = getByText(id)
+      expect(cell).toHaveStyleRule("color", theme.colors.text)
+      unmount()
+    })
 
-    it('should have a defined theme cell color', () => {
+    it("should have a defined theme cell color", () => {
       const { getByText, unmount } = render(
         <Table.Frame>
           <tbody>
@@ -138,13 +132,10 @@ describe('<Table />', () => {
             </tr>
           </tbody>
         </Table.Frame>,
-      );
-      const cell = getByText(id);
-      expect(cell).toHaveStyleRule(
-        'color',
-        theme.table.color.replace(/\s/g, ''),
-      );
-      unmount();
-    });
-  });
-});
+      )
+      const cell = getByText(id)
+      expect(cell).toHaveStyleRule("color", theme.table.color)
+      unmount()
+    })
+  })
+})
