@@ -2,6 +2,11 @@ import { ButtonVariants, ScaleArea } from "."
 
 import { PrismTheme } from ".."
 
+export type RGB = [number, number, number]
+export interface Colors {
+  [key: string]: string | string[]
+}
+
 export interface Theme {
   readonly borderStyles: string[]
   readonly borderWidths: number[]
