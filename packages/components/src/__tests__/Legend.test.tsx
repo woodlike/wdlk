@@ -78,19 +78,6 @@ describe("<Legend />", () => {
     })
   })
 
-  describe("Font Family", () => {
-    it("should have the legend variant font-family", () => {
-      const { getByText, unmount } = render(
-        <ThemeProvider theme={theme}>
-          <Legend size="s">test-legend</Legend>
-        </ThemeProvider>,
-      )
-      const legend = getByText(testId)
-      expect(legend).toHaveStyleRule("font-family", theme.legend.fontFamily)
-      unmount()
-    })
-  })
-
   describe("Font Type", () => {
     it("should have the styling for a primary type", () => {
       const { getByText, unmount } = render(
