@@ -265,27 +265,9 @@ describe("<Select />", () => {
       const item = getByText(id)
 
       expect(item).toMatchInlineSnapshot(`
-        .emotion-0 {
-          width: 30px;
-          height: 30px;
-          border-width: 1px;
-          border-style: solid;
-          line-height: 30px;
-          color: currentColor;
-          border-color: rgb(222,223,224);
-          cursor: pointer;
-          pointer-events: all;
-          -webkit-text-decoration: none;
-          text-decoration: none;
-          list-style: none;
-          font-family: museo-sans,Helvetica,sans-serif;
-          font-size: 12px;
-          text-align: center;
-        }
-
         <li
           aria-selected="false"
-          class="emotion-0"
+          class="css-1ldtis3"
           font-size="0"
           id="0"
           role="option"
@@ -317,27 +299,9 @@ describe("<Select />", () => {
       const item = getByText(id)
 
       expect(item).toMatchInlineSnapshot(`
-        .emotion-0 {
-          width: 30px;
-          height: 30px;
-          border-width: 1px;
-          border-style: solid;
-          line-height: 30px;
-          color: currentColor;
-          border-color: rgb(34,34,34);
-          cursor: pointer;
-          pointer-events: all;
-          -webkit-text-decoration: none;
-          text-decoration: none;
-          list-style: none;
-          font-family: museo-sans,Helvetica,sans-serif;
-          font-size: 12px;
-          text-align: center;
-        }
-
         <li
           aria-selected="true"
-          class="emotion-0"
+          class="css-n9c3w7"
           font-size="0"
           id="0"
           role="option"
@@ -368,27 +332,9 @@ describe("<Select />", () => {
       )
       const item = getByText(id)
       expect(item).toMatchInlineSnapshot(`
-        .emotion-0 {
-          width: 30px;
-          height: 30px;
-          border-width: 1px;
-          border-style: solid;
-          line-height: 30px;
-          color: rgb(222,223,224);
-          border-color: rgb(222,223,224);
-          cursor: unset;
-          pointer-events: none;
-          -webkit-text-decoration: line-through;
-          text-decoration: line-through;
-          list-style: none;
-          font-family: museo-sans,Helvetica,sans-serif;
-          font-size: 12px;
-          text-align: center;
-        }
-
         <li
           aria-selected="true"
-          class="emotion-0"
+          class="css-4p8q0i"
           font-size="0"
           id="0"
           role="option"

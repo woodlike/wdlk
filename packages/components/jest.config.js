@@ -13,7 +13,7 @@ module.exports = {
     ".(ts|tsx)": "ts-jest",
   },
   setupFilesAfterEnv: ["./jest-setup.ts"],
-  snapshotSerializers: ["@emotion/jest"],
+  // snapshotSerializers: ["@emotion/jest"],
   testRegex: TEST_REGEX,
   testPathIgnorePatterns: ["<rootDir>/node_modules/", "<rootDir>/lib"],
 }

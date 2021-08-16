@@ -5,6 +5,7 @@ import styled from "@emotion/styled"
 
 export interface CSSConverterProps {
   readonly cssObject: PrismStyleProp | undefined
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   readonly as?: (ElementType<any> & string) | undefined
 }
 
