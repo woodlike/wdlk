@@ -1,50 +1,39 @@
-import { useEffect, useState } from "react"
+import React from "react"
 
-export function useMedia<T>(
-  queries: string[],
-  values: T[],
-  defaultValue: T,
-): T {
-  const mediaQueryList = queries.map(q => {
-    return typeof window !== "undefined"
-      ? window.matchMedia(q)
-      : {
-          matches: false,
-          addListener: () => {
-            return
-          },
-          removeListener: () => {
-            return
-          },
-        }
+const useEnhancedEffect =
+  typeof window !== "undefined" ? React.useLayoutEffect : React.useEffect
+
+export function useMediaQuery(query: string) {
+  const supportsMatchMedia =
+    typeof window !== "undefined" && typeof window.matchMedia !== "undefined"
+
+  const [matches, setMatches] = React.useState(() => {
+    if (supportsMatchMedia) {
+      matchMedia(query).matches
+    }
+
+    // Once mounted we rely on the event listeners
+    return false
   })
 
-  // It creates only one instance of the handler on mount
-  const getValue = (): T => {
-    const idx = mediaQueryList.findIndex(ql => ql.matches)
-    return values[idx] ?? defaultValue
-  }
+  useEnhancedEffect(() => {
+    if (!supportsMatchMedia) return
+    const mql = matchMedia(query)
+    let isActive = true
 
-  const [initialValue, setInitialValue] = useState<T>(getValue)
-  const [value, setValue] = useState<T>(initialValue)
-
-  useEffect(() => {
-    const handler = (): void => setInitialValue(getValue)
-    for (const query of mediaQueryList) {
-      query.addListener(handler)
+    const updateMatchMedia = () => {
+      if (!isActive) return
+      setMatches(mql.matches)
     }
+
+    updateMatchMedia()
+    mql.addEventListener("change", updateMatchMedia)
 
     return () => {
-      for (const query of mediaQueryList) {
-        query.removeListener(handler)
-      }
+      mql.removeEventListener("change", updateMatchMedia)
+      isActive = false
     }
-  }, [])
+  }, [matches])
 
-  // Necesary for getting the right media query on the first render
-  useEffect(() => {
-    setValue(initialValue)
-  }, [value, initialValue])
-
-  return value
+  return matches
 }
