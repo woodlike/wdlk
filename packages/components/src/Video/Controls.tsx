@@ -1,15 +1,14 @@
-import React from 'react';
-import { keyframes } from '@emotion/core';
-import { useTheme } from 'emotion-theming';
-import { Volume2, VolumeX } from 'react-feather';
+/** @jsx jsx */
+import { jsx, keyframes } from "@emotion/react"
 
-import { Theme } from '..';
-import styled from '../styled';
+import styled from "@emotion/styled"
 
 export interface ControlProps {
-  readonly size: number;
-  readonly muted: boolean;
-  readonly onClick: React.MouseEventHandler<SVGElement>;
+  readonly size: number
+  readonly muted: boolean
+  readonly mutedIcon: JSX.Element
+  readonly loudIcon: JSX.Element
+  readonly onClick: React.MouseEventHandler<HTMLDivElement>
 }
 
 const heartbeat = keyframes`
@@ -31,9 +30,10 @@ const heartbeat = keyframes`
   100% {
     transform: scale(1);
   }
-`;
+`
 
-const StyledControlMuted = styled(VolumeX)`
+const StyledControlMuted = styled.div`
+  display: inline-block;
   cursor: pointer;
   animation: ${heartbeat} 1.8s infinite cubic-bezier(0.455, 0.03, 0.515, 0.955);
   transition: color ${props => props.theme.transition.duration[0]}s linear;
@@ -41,27 +41,29 @@ const StyledControlMuted = styled(VolumeX)`
     color: ${props => props.theme.video.controls.color};
     animation-play-state: paused;
   }
-`;
+`
 
-StyledControlMuted.displayName = 'Video.StyledControlMuted';
+StyledControlMuted.displayName = "Video.StyledControlMuted"
 
-const StyledControlLoud = styled(Volume2)`
+const StyledControlLoud = styled.div`
+  display: inline-block;
   cursor: pointer;
   transition: color ${props => props.theme.transition.duration[0]}s linear;
   :hover {
     color: ${props => props.theme.video.controls.color};
   }
-`;
+`
 
-StyledControlLoud.displayName = 'Video.StyledControlLoud';
+StyledControlLoud.displayName = "Video.StyledControlLoud"
 
 export const Controls: React.FC<ControlProps> = props => {
-  const { space }: Theme = useTheme();
-  const size = !!space[props.size] ? space[props.size] : 10;
-
   return props.muted ? (
-    <StyledControlMuted onClick={props.onClick} size={size} />
+    <StyledControlMuted onClick={props.onClick}>
+      {props.mutedIcon}
+    </StyledControlMuted>
   ) : (
-    <StyledControlLoud onClick={props.onClick} size={size} />
-  );
-};
+    <StyledControlLoud onClick={props.onClick}>
+      {props.loudIcon}
+    </StyledControlLoud>
+  )
+}

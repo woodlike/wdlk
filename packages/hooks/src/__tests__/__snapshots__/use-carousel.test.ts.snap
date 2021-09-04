@@ -150,56 +150,56 @@ exports[`UseCarousel previous() should return the previous coordinate of 9 1`] =
 
 exports[`UseCarousel previous() should return the previous coordinate of 10 1`] = `-81.81818181818181`;
 
-exports[`UseCarousel useCarousel() should return the coordinate of 0 1`] = `-0`;
+exports[`UseCarousel useCarousel() jump should return the coordinate of 0 1`] = `-0`;
 
-exports[`UseCarousel useCarousel() should return the coordinate of 1 1`] = `-11.11111111111111`;
+exports[`UseCarousel useCarousel() jump should return the coordinate of 1 1`] = `-11.11111111111111`;
 
-exports[`UseCarousel useCarousel() should return the coordinate of 2 1`] = `-22.22222222222222`;
+exports[`UseCarousel useCarousel() jump should return the coordinate of 2 1`] = `-22.22222222222222`;
 
-exports[`UseCarousel useCarousel() should return the coordinate of 3 1`] = `-33.333333333333336`;
+exports[`UseCarousel useCarousel() jump should return the coordinate of 3 1`] = `-33.333333333333336`;
 
-exports[`UseCarousel useCarousel() should return the coordinate of 4 1`] = `-44.44444444444444`;
+exports[`UseCarousel useCarousel() jump should return the coordinate of 4 1`] = `-44.44444444444444`;
 
-exports[`UseCarousel useCarousel() should return the coordinate of 5 1`] = `-55.55555555555556`;
+exports[`UseCarousel useCarousel() jump should return the coordinate of 5 1`] = `-55.55555555555556`;
 
-exports[`UseCarousel useCarousel() should return the coordinate of 6 1`] = `-66.66666666666667`;
+exports[`UseCarousel useCarousel() jump should return the coordinate of 6 1`] = `-66.66666666666667`;
 
-exports[`UseCarousel useCarousel() should return the coordinate of 7 1`] = `-77.77777777777777`;
+exports[`UseCarousel useCarousel() jump should return the coordinate of 7 1`] = `-77.77777777777777`;
 
-exports[`UseCarousel useCarousel() should return the coordinate of 8 1`] = `-88.88888888888889`;
+exports[`UseCarousel useCarousel() jump should return the coordinate of 8 1`] = `-88.88888888888889`;
 
-exports[`UseCarousel useCarousel() should return the previous coordinate of 0 1`] = `-88.88888888888889`;
+exports[`UseCarousel useCarousel() jump should return the previous coordinate of 0 1`] = `-88.88888888888889`;
 
-exports[`UseCarousel useCarousel() should return the previous coordinate of 1 1`] = `-0`;
+exports[`UseCarousel useCarousel() jump should return the previous coordinate of 1 1`] = `-0`;
 
-exports[`UseCarousel useCarousel() should return the previous coordinate of 2 1`] = `-11.11111111111111`;
+exports[`UseCarousel useCarousel() jump should return the previous coordinate of 2 1`] = `-11.11111111111111`;
 
-exports[`UseCarousel useCarousel() should return the previous coordinate of 3 1`] = `-22.22222222222222`;
+exports[`UseCarousel useCarousel() jump should return the previous coordinate of 3 1`] = `-22.22222222222222`;
 
-exports[`UseCarousel useCarousel() should return the previous coordinate of 4 1`] = `-33.333333333333336`;
+exports[`UseCarousel useCarousel() jump should return the previous coordinate of 4 1`] = `-33.333333333333336`;
 
-exports[`UseCarousel useCarousel() should return the previous coordinate of 5 1`] = `-44.44444444444444`;
+exports[`UseCarousel useCarousel() jump should return the previous coordinate of 5 1`] = `-44.44444444444444`;
 
-exports[`UseCarousel useCarousel() should return the previous coordinate of 6 1`] = `-55.55555555555556`;
+exports[`UseCarousel useCarousel() jump should return the previous coordinate of 6 1`] = `-55.55555555555556`;
 
-exports[`UseCarousel useCarousel() should return the previous coordinate of 7 1`] = `-66.66666666666667`;
+exports[`UseCarousel useCarousel() jump should return the previous coordinate of 7 1`] = `-66.66666666666667`;
 
-exports[`UseCarousel useCarousel() should return the previous coordinate of 8 1`] = `-77.77777777777777`;
+exports[`UseCarousel useCarousel() jump should return the previous coordinate of 8 1`] = `-77.77777777777777`;
 
-exports[`UseCarousel useCarousel() should return the the next coordinate of 0 1`] = `-11.11111111111111`;
+exports[`UseCarousel useCarousel() jump should return the the next coordinate of 0 1`] = `-11.11111111111111`;
 
-exports[`UseCarousel useCarousel() should return the the next coordinate of 1 1`] = `-22.22222222222222`;
+exports[`UseCarousel useCarousel() jump should return the the next coordinate of 1 1`] = `-22.22222222222222`;
 
-exports[`UseCarousel useCarousel() should return the the next coordinate of 2 1`] = `-33.333333333333336`;
+exports[`UseCarousel useCarousel() jump should return the the next coordinate of 2 1`] = `-33.333333333333336`;
 
-exports[`UseCarousel useCarousel() should return the the next coordinate of 3 1`] = `-44.44444444444444`;
+exports[`UseCarousel useCarousel() jump should return the the next coordinate of 3 1`] = `-44.44444444444444`;
 
-exports[`UseCarousel useCarousel() should return the the next coordinate of 4 1`] = `-55.55555555555556`;
+exports[`UseCarousel useCarousel() jump should return the the next coordinate of 4 1`] = `-55.55555555555556`;
 
-exports[`UseCarousel useCarousel() should return the the next coordinate of 5 1`] = `-66.66666666666667`;
+exports[`UseCarousel useCarousel() jump should return the the next coordinate of 5 1`] = `-66.66666666666667`;
 
-exports[`UseCarousel useCarousel() should return the the next coordinate of 6 1`] = `-77.77777777777777`;
+exports[`UseCarousel useCarousel() jump should return the the next coordinate of 6 1`] = `-77.77777777777777`;
 
-exports[`UseCarousel useCarousel() should return the the next coordinate of 7 1`] = `-88.88888888888889`;
+exports[`UseCarousel useCarousel() jump should return the the next coordinate of 7 1`] = `-88.88888888888889`;
 
-exports[`UseCarousel useCarousel() should return the the next coordinate of 8 1`] = `-0`;
+exports[`UseCarousel useCarousel() jump should return the the next coordinate of 8 1`] = `-0`;

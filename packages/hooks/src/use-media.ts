@@ -1,40 +1,39 @@
-import { useEffect, useState } from 'react';
+import React from "react"
 
-export function useMedia<T>(
-  queries: string[],
-  values: T[],
-  defaultValue: T,
-): T {
-  const mql = queries.map(q => {
-    if (typeof window === 'undefined') {
-      console.error(`
-      🚨 Error: you're trying to call window on the server.
-      This script is being executed with a mocked MediaQueryList`);
-      return {
-        matches: false,
-        addListener() {
-          return;
-        },
-        removeListener() {
-          return;
-        },
-      };
+const useEnhancedEffect =
+  typeof window !== "undefined" ? React.useLayoutEffect : React.useEffect
+
+export function useMediaQuery(query: string) {
+  const supportsMatchMedia =
+    typeof window !== "undefined" && typeof window.matchMedia !== "undefined"
+
+  const [matches, setMatches] = React.useState(() => {
+    if (supportsMatchMedia) {
+      matchMedia(query).matches
     }
-    return window.matchMedia(q);
-  });
 
-  const getValue = (): T => {
-    const idx = mql.findIndex(ql => ql.matches);
-    return values[idx] ?? defaultValue;
-  };
+    // Once mounted we rely on the event listeners
+    return false
+  })
 
-  const [value, setValue] = useState<T>(getValue);
-  useEffect(() => {
-    const handler = (): void => setValue(getValue);
-    mql.forEach(q => q.addListener(handler));
+  useEnhancedEffect(() => {
+    if (!supportsMatchMedia) return
+    const mql = matchMedia(query)
+    let isActive = true
 
-    return () => mql.forEach(q => q.removeListener(handler));
-  }, []);
+    const updateMatchMedia = () => {
+      if (!isActive) return
+      setMatches(mql.matches)
+    }
 
-  return value;
+    updateMatchMedia()
+    mql.addEventListener("change", updateMatchMedia)
+
+    return () => {
+      mql.removeEventListener("change", updateMatchMedia)
+      isActive = false
+    }
+  }, [matches])
+
+  return matches
 }

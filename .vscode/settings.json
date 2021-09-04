@@ -1,11 +1,7 @@
 {
   "typescript.tsdk": "/Users/mau/projects/wdlk/node_modules/typescript/lib",
   "prettier.packageManager": "yarn",
-  "prettier.configPath": "/Users/mau/projects/wdlk/.prettierrc.js",
   "prettier.singleQuote": true,
   "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
 }

@@ -1,27 +1,28 @@
-import React from 'react';
-import { css } from '@emotion/core';
-import styled from '@emotion/styled';
+/** @jsx jsx */
+import { css, jsx } from "@emotion/react"
+
+import styled from "@emotion/styled"
 
 export interface BurgerProps {
-  readonly isActive: boolean;
-  readonly onClick: React.MouseEventHandler<HTMLDivElement>;
+  readonly isActive: boolean
+  readonly onClick: React.MouseEventHandler<HTMLDivElement>
 }
 
 export interface StyledBurgerProps {
-  readonly isActive: boolean;
+  readonly isActive: boolean
 }
 
-const HEIGHT = 28;
-const WIDTH = 35;
+const HEIGHT = 28
+const WIDTH = 35
 
 const StyledBurger = styled.div`
   position: relative;
   width: ${WIDTH}px;
   height: ${HEIGHT}px;
   cursor: pointer;
-`;
+`
 
-StyledBurger.displayName = 'StyledBurger';
+StyledBurger.displayName = "StyledBurger"
 
 const stylesLine = css`
   position: absolute;
@@ -33,7 +34,7 @@ const stylesLine = css`
   background-color: black;
   transform-origin: center;
   transition: transform 250ms ease-in-out;
-`;
+`
 
 const StyledTopLine = styled.span<StyledBurgerProps>`
   ${stylesLine}
@@ -43,16 +44,16 @@ const StyledTopLine = styled.span<StyledBurgerProps>`
       : css`translate3d(0, ${Math.round(
           (HEIGHT / 3) * -1,
         )}px, 0) rotate(0deg)`};
-`;
+`
 
-StyledTopLine.displayName = 'StyledTopLine';
+StyledTopLine.displayName = "StyledTopLine"
 
 const StyledMidLine = styled.span<StyledBurgerProps>`
   ${stylesLine}
   opacity: ${({ isActive }) => (isActive ? 0 : 1)};
-`;
+`
 
-StyledMidLine.displayName = 'StyledMidLine';
+StyledMidLine.displayName = "StyledMidLine"
 
 const StyledBottomLine = styled.span<StyledBurgerProps>`
   ${stylesLine}
@@ -60,9 +61,9 @@ const StyledBottomLine = styled.span<StyledBurgerProps>`
     isActive
       ? css`translate3d(0, -50%, 0) rotate(-45deg)`
       : css`translate3d(0, ${Math.round(HEIGHT / 3)}px, 0) rotate(0deg)`};
-`;
+`
 
-StyledBottomLine.displayName = 'StyledBottomLine';
+StyledBottomLine.displayName = "StyledBottomLine"
 
 export const Burger: React.FC<BurgerProps> = props => (
   <StyledBurger onClick={props.onClick}>
@@ -70,4 +71,4 @@ export const Burger: React.FC<BurgerProps> = props => (
     <StyledMidLine isActive={props.isActive} />
     <StyledBottomLine isActive={props.isActive} />
   </StyledBurger>
-);
+)

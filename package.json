@@ -40,6 +40,7 @@
     "type-check:store": "yarn workspace @wdlk/store type-check"
   },
   "devDependencies": {
+    "@emotion/eslint-plugin": "^11.2.0",
     "@typescript-eslint/eslint-plugin": "2.20.0",
     "@typescript-eslint/parser": "2.20.0",
     "eslint": "6.8.0",
@@ -48,6 +49,7 @@
     "eslint-plugin-prettier": "3.1.2",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-react": "7.18.3",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "lerna": "^3.22.1",
     "typescript": "3.8.2"
   }

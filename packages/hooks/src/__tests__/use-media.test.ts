@@ -1,44 +1,38 @@
-import { renderHook } from '@testing-library/react-hooks';
-import { useMedia } from '..';
+import { renderHook } from "@testing-library/react-hooks"
+import { useMediaQuery } from ".."
 
-describe('useMedia', () => {
+describe("useMedia", () => {
+  let minWidth: number
+
   beforeEach(() => {
-    Object.defineProperty(window, 'matchMedia', {
+    minWidth = 1000
+    Object.defineProperty(window, "matchMedia", {
       writable: true,
-      value: jest.fn().mockImplementation(query => ({
-        matches: query === '(min-width: 1000px)' ? true : false,
-        media: query,
-        addListener: jest.fn(),
-        removeListener: jest.fn(),
-        dispatchEvent: jest.fn(),
-      })),
-    });
-  });
+      value: jest.fn().mockImplementation(query => {
+        return {
+          matches: query === `(min-width: ${minWidth}px)` ? true : false,
+          media: query,
+          addEventListener: jest.fn(),
+          removeEventListener: jest.fn(),
+          dispatchEvent: jest.fn(),
+        }
+      }),
+    })
+  })
 
-  it('should not match any query and return the default value', () => {
-    const queries = [
-      '(min-width: 1500px)',
-      '(min-width: 960px)',
-      '(min-width: 600px)',
-    ];
-    const values = [5, 4, 3];
-    const defaultValue = 666;
+  afterEach(() => {
+    minWidth = (undefined as unknown) as number
+  })
 
+  it("should match the media query", () => {
     const { result } = renderHook(() =>
-      useMedia<number>(queries, values, defaultValue),
-    );
-    expect(result.current).toBe(defaultValue);
-  });
+      useMediaQuery(`(min-width: ${minWidth}px)`),
+    )
+    expect(result.current).toBeTruthy()
+  })
 
-  it('should match the (min-width: 1000px) query and return the second value', () => {
-    const queries = [
-      '(min-width: 1500px)',
-      '(min-width: 1000px)',
-      '(min-width: 600px)',
-    ];
-    const values = [5, 4, 3];
-
-    const { result } = renderHook(() => useMedia<number>(queries, values, 2));
-    expect(result.current).toBe(values[1]);
-  });
-});
+  it("should not match the query", () => {
+    const { result } = renderHook(() => useMediaQuery("(min-width: 1500px)"))
+    expect(result.current).toBeFalsy()
+  })
+})

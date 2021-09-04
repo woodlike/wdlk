@@ -1,35 +1,35 @@
-import React from 'react';
-import { css, SerializedStyles } from '@emotion/core';
-import styled from '@emotion/styled';
+/** @jsx jsx */
+import { Scale, ScaleArea } from "."
+import { SerializedStyles, css, jsx } from "@emotion/react"
 
-import { Theme, Scale, ScaleArea } from '.';
-import { getVariant } from './theme';
+import React from "react"
+import { getVariant } from "./theme"
+import styled from "@emotion/styled"
 
 export interface ButtonProps {
-  readonly onClick: React.MouseEventHandler<HTMLButtonElement>;
-  readonly inverted?: boolean;
-  readonly padding?: ScaleArea;
-  readonly variant?: ButtonVariant;
+  readonly onClick: React.MouseEventHandler<HTMLButtonElement>
+  readonly inverted?: boolean
+  readonly padding?: ScaleArea
+  readonly variant?: ButtonVariant
 }
 
 interface StyledButtonProps {
-  readonly theme: Theme;
-  readonly inverted?: boolean;
-  readonly padding?: ScaleArea;
-  readonly variant?: ButtonVariant;
+  readonly inverted?: boolean
+  readonly padding?: ScaleArea
+  readonly variant?: ButtonVariant
 }
 
-type ButtonVariant = 'primary' | 'secondary';
+type ButtonVariant = "primary" | "secondary"
 
 const stylesPseudoElements = css`
-  content: '';
+  content: "";
   position: absolute;
   bottom: 0;
   right: 0;
   z-index: -1;
   width: 100%;
   height: 100%;
-`;
+`
 
 const createStylesVariant = (
   inverted: boolean,
@@ -63,7 +63,7 @@ const createStylesVariant = (
             pointer-events: auto;
           }
         }
-      `;
+      `
 
 const StyledButton = styled.button<StyledButtonProps>`
   position: relative;
@@ -80,15 +80,15 @@ const StyledButton = styled.button<StyledButtonProps>`
   overflow: hidden;
   background: transparent;
   ${({ inverted, variant, theme }) => {
-    const result = getVariant(theme, 'buttons', variant || 'primary');
+    const result = getVariant(theme, "buttons", variant || "primary")
 
     return result
       ? createStylesVariant(inverted || false, result.color, result.bg)
-      : ``;
+      : ``
   }};
-`;
+`
 
-StyledButton.displayName = 'StyledButton';
+StyledButton.displayName = "StyledButton"
 
 export const Button: React.FC<ButtonProps> = props => (
   <StyledButton
@@ -98,4 +98,4 @@ export const Button: React.FC<ButtonProps> = props => (
     variant={props.variant}>
     {props.children}
   </StyledButton>
-);
+)

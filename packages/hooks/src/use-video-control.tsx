@@ -1,34 +1,34 @@
-import { useRef, useState, RefObject } from 'react';
+import { RefObject, useRef, useState } from "react"
 
 export interface VideoControlState {
-  readonly mute: boolean;
-  readonly setMute: React.Dispatch<React.SetStateAction<boolean>>;
-  readonly videoRef: RefObject<HTMLVideoElement>;
-  readonly play: () => Promise<void>;
-  readonly pause: () => void;
+  readonly mute: boolean
+  readonly setMute: React.Dispatch<React.SetStateAction<boolean>>
+  readonly videoRef: RefObject<HTMLVideoElement>
+  readonly play: () => Promise<void>
+  readonly pause: () => void
 }
 
 export function useVideoControl(muted = true): VideoControlState {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [mute, setMute] = useState<boolean>(muted);
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const [mute, setMute] = useState<boolean>(muted)
 
   const play = async (): Promise<void> => {
     try {
       if (!videoRef || !videoRef.current) {
-        return;
+        return
       }
-      await videoRef.current.play();
+      await videoRef.current.play()
     } catch (err) {
-      Promise.resolve(console.error(`Video Control Hook [error]: ${err}`));
+      Promise.resolve(console.error(`Video Control Hook [error]: ${err}`))
     }
-  };
+  }
 
   const pause = (): void => {
     if (!videoRef || !videoRef.current) {
-      return;
+      return
     }
-    videoRef.current.pause();
-  };
+    videoRef.current.pause()
+  }
 
   return {
     videoRef,
@@ -36,5 +36,5 @@ export function useVideoControl(muted = true): VideoControlState {
     setMute,
     pause,
     play,
-  };
+  }
 }

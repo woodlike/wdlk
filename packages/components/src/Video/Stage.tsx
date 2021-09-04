@@ -1,21 +1,28 @@
-import React from 'react';
-import { css } from '@emotion/core';
+/** @jsx jsx */
+import { css, jsx } from "@emotion/react"
 
-import styled from '../styled';
+import { ReactText } from "react"
+import styled from "@emotion/styled"
 
 export interface VideoStageProps {
-  readonly muted: boolean;
-  readonly video: JSX.Element;
-  readonly controls?: JSX.Element;
-  handleClick(): void;
+  readonly muted: boolean
+  readonly video: JSX.Element
+  readonly controls?: JSX.Element
+  readonly height?: ReactText
+  handleClick(): void
 }
 
-const StyledStageContainer = styled.figure`
-  position: relative;
-  margin: 0;
-`;
+interface StyledStageContainer {
+  readonly height: ReactText
+}
 
-StyledStageContainer.displayName = 'Video.StyledStageContainer';
+const StyledStageContainer = styled.figure<StyledStageContainer>`
+  position: relative;
+  height: ${props => props.height};
+  margin: 0;
+`
+
+StyledStageContainer.displayName = "Video.StyledStageContainer"
 
 const StyledStageCaption = styled.figcaption`
   position: absolute;
@@ -28,7 +35,7 @@ const StyledStageCaption = styled.figcaption`
   ${props => {
     const {
       theme: { breakpoints, space },
-    } = props;
+    } = props
 
     return css`
       @media (min-width: ${breakpoints[1]}) {
@@ -37,18 +44,18 @@ const StyledStageCaption = styled.figcaption`
         left: ${space[7]}px;
         transform: none;
       }
-    `;
+    `
   }};
-`;
+`
 
-StyledStageCaption.displayName = 'Video.StyledStageCaption';
+StyledStageCaption.displayName = "Video.StyledStageCaption"
 
 export const Stage: React.FC<VideoStageProps> = props => (
-  <StyledStageContainer>
+  <StyledStageContainer height={props.height ?? "100%"}>
     {props.video}
     <StyledStageCaption>
       {props.controls}
       {props.children}
     </StyledStageCaption>
   </StyledStageContainer>
-);
+)

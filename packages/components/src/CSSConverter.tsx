@@ -1,10 +1,12 @@
-import React from 'react';
-import styled from '@emotion/styled';
-import { PrismStyleProp } from '.';
+import React, { ElementType } from "react"
+
+import { PrismStyleProp } from "."
+import styled from "@emotion/styled"
 
 export interface CSSConverterProps {
-  readonly cssObject: PrismStyleProp | undefined;
-  readonly as?: string;
+  readonly cssObject: PrismStyleProp | undefined
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  readonly as?: (ElementType<any> & string) | undefined
 }
 
 function toCSSString(cssObject: PrismStyleProp | undefined): string {
@@ -13,24 +15,22 @@ function toCSSString(cssObject: PrismStyleProp | undefined): string {
         .reduce(
           (acc: string[], [key, val]) => [
             ...acc,
-            `${key
-              .replace(/(?<=[a-z])(?=[A-Z])/g, '-')
-              .toLowerCase()}: ${val};`,
+            `${key.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase()}: ${val};`,
           ],
           [],
         )
-        .join('')
-    : '';
+        .join("")
+    : ""
 }
 
 const StyledCSSContainer = styled.span<CSSConverterProps>`
   ${props => toCSSString(props.cssObject)};
-`;
+`
 
-StyledCSSContainer.displayName = 'StyledCSSContainer';
+StyledCSSContainer.displayName = "StyledCSSContainer"
 
 export const CSSConverter: React.FC<CSSConverterProps> = props => (
-  <StyledCSSContainer as={props.as || 'span'} cssObject={props.cssObject}>
+  <StyledCSSContainer as={props.as ?? "span"} cssObject={props.cssObject}>
     {props.children}
   </StyledCSSContainer>
-);
+)
