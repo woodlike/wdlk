@@ -13,7 +13,7 @@ export interface TextProps {
 }
 
 type TextSize = "s" | "m" | "l"
-export type TextType = "p" | "div"
+export type TextType = "p" | "div" | "span"
 
 const createBreakpointStyles = (
   breakpointIdx: number,
