@@ -7,7 +7,7 @@ export interface TextProps {
   readonly isInverted?: boolean;
 }
 
-export type TextType = 'p' | 'div';
+export type TextType = 'p' | 'div' | 'span';
 
 const StyledText = styled.p<TextProps>`
   margin: 0;
