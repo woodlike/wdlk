@@ -1,10 +1,12 @@
 import React from "react"
 import { Scale } from ".."
+import { css } from "@emotion/react"
 import styled from "@emotion/styled"
 
 export interface TableCellProps {
   readonly as?: "td" | "th"
   readonly borderless?: boolean
+  readonly firstWidth?: number
 }
 
 const StyledTableCell = styled.td<TableCellProps>`
@@ -24,6 +26,12 @@ const StyledTableCell = styled.td<TableCellProps>`
   -webkit-font-smoothing: antialiased;
 
   :first-of-type {
+    ${props => {
+      if (!props.firstWidth) return ""
+      return css`
+        width: ${props.firstWidth}px;
+      `
+    }}
     position: sticky;
     border-width: ${props => (props.borderless ? "0 1px 0 0" : "0 1px 1px 0")};
     text-align: left;
@@ -32,7 +40,10 @@ const StyledTableCell = styled.td<TableCellProps>`
 StyledTableCell.displayName = "StyledTableCell"
 
 export const Cell: React.FC<TableCellProps> = props => (
-  <StyledTableCell as={props.as || "td"} borderless={props.borderless}>
+  <StyledTableCell
+    as={props.as || "td"}
+    borderless={props.borderless}
+    firstWidth={props.firstWidth}>
     {props.children}
   </StyledTableCell>
 )

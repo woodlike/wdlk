@@ -1,4 +1,4 @@
-import { Table, theme } from ".."
+import { Table, Theme, theme as rawTheme } from ".."
 import { cleanup, render } from "../../testing-library"
 
 import React from "react"
@@ -17,6 +17,8 @@ describe("<Table />", () => {
   afterEach(() => {
     id = (undefined as unknown) as string
   })
+
+  const theme = rawTheme as Theme
 
   describe("Accessibility", () => {
     it("should not have any accessibility violations", async done => {
@@ -135,6 +137,26 @@ describe("<Table />", () => {
       )
       const cell = getByText(id)
       expect(cell).toHaveStyleRule("color", theme.table.color)
+      unmount()
+    })
+
+    it("should have a fixed width", () => {
+      const { getByText, unmount } = render(
+        <Table.Frame>
+          <tbody>
+            <tr>
+              <Table.Cell as="td" borderless firstWidth={theme.space[2]}>
+                {id}
+              </Table.Cell>
+              <Table.Cell as="td">{""}</Table.Cell>
+            </tr>
+          </tbody>
+        </Table.Frame>,
+      )
+      const cell = getByText(id)
+      expect(cell).toHaveStyleRule("width", `${theme.space[2]}px`, {
+        target: ":first-of-type",
+      })
       unmount()
     })
   })
