@@ -1,16 +1,23 @@
 import * as React from "react"
 
+import { Theme, theme } from ".."
+
 import { Box } from "../Box"
 import { ThemeProvider } from "@emotion/react"
 import { matchers } from "@emotion/jest"
 import { render } from "@testing-library/react"
-import { theme } from ".."
 
 expect.extend(matchers)
 
 describe("<Box />", () => {
   const id = "Test Box"
-  const { borderStyles, borderWidths, space } = theme
+  const {
+    colors,
+    breakpoints,
+    borderStyles,
+    borderWidths,
+    space,
+  } = theme as Theme
   describe("Padding handling", () => {
     it("(shorthand): handles a Theme-UI shorthand padding area", () => {
       const { getByText, unmount } = render(
@@ -22,6 +29,26 @@ describe("<Box />", () => {
       expect(box).toHaveStyleRule(
         "padding",
         `${space[2]}px ${space[2]}px ${space[2]}px ${space[2]}px`,
+      )
+      unmount()
+    })
+
+    it("(shorthand): handles a Theme-UI shorthand area with min-width breakpoint", () => {
+      const { getByText, unmount } = render(
+        <ThemeProvider theme={theme}>
+          <Box padding={2} breakpoint={3} maxPadding={4}>
+            {id}
+          </Box>
+        </ThemeProvider>,
+      )
+      const box = getByText(id)
+
+      expect(box).toHaveStyleRule(
+        "padding",
+        `${space[4]}px ${space[4]}px ${space[4]}px ${space[4]}px`,
+        {
+          media: `(min-width: ${breakpoints[3]})`,
+        },
       )
       unmount()
     })
@@ -211,7 +238,7 @@ describe("<Box />", () => {
         </ThemeProvider>,
       )
       const box = getByText(id)
-      expect(box).toHaveStyleRule("border-color", theme.colors.primary)
+      expect(box).toHaveStyleRule("border-color", colors.primary)
       unmount()
     })
 
@@ -225,7 +252,7 @@ describe("<Box />", () => {
         </ThemeProvider>,
       )
       const box = getByText(id)
-      expect(box).toHaveStyleRule("border-color", theme.colors.corals[1])
+      expect(box).toHaveStyleRule("border-color", colors.corals[1])
       unmount()
     })
 
@@ -240,7 +267,7 @@ describe("<Box />", () => {
       const box = getByText(id)
       expect(box).toHaveStyleRule(
         "border-color",
-        `${theme.colors.primary} ${theme.colors.secondary} ${theme.colors.primary} ${theme.colors.secondary}`,
+        `${colors.primary} ${colors.secondary} ${colors.primary} ${colors.secondary}`,
       )
       unmount()
     })
@@ -257,7 +284,7 @@ describe("<Box />", () => {
       const box = getByText(id)
       expect(box).toHaveStyleRule(
         "border-color",
-        `${theme.colors.corals[1]} ${theme.colors.secondary} ${theme.colors.corals[1]} ${theme.colors.secondary}`,
+        `${colors.corals[1]} ${colors.secondary} ${colors.corals[1]} ${colors.secondary}`,
       )
       unmount()
     })
@@ -278,7 +305,7 @@ describe("<Box />", () => {
       const box = getByText(id)
       expect(box).toHaveStyleRule(
         "border-color",
-        `${theme.colors.whites[2]} ${theme.colors.blacks[1]} ${theme.colors.secondary} ${theme.colors.blacks[1]}`,
+        `${colors.whites[2]} ${colors.blacks[1]} ${colors.secondary} ${colors.blacks[1]}`,
       )
       unmount()
     })
@@ -301,7 +328,7 @@ describe("<Box />", () => {
       const box = getByText(id)
       expect(box).toHaveStyleRule(
         "border-color",
-        `${theme.colors.whites[2]} ${theme.colors.blacks[1]} ${theme.colors.grays[0]} ${theme.colors.corals[1]}`,
+        `${colors.whites[2]} ${colors.blacks[1]} ${colors.grays[0]} ${colors.corals[1]}`,
       )
       unmount()
     })
@@ -317,7 +344,7 @@ describe("<Box />", () => {
         </ThemeProvider>,
       )
       const box = getByText(id)
-      expect(box).toHaveStyleRule("background-color", theme.colors.primary)
+      expect(box).toHaveStyleRule("background-color", colors.primary)
       unmount()
     })
 
@@ -331,7 +358,7 @@ describe("<Box />", () => {
         </ThemeProvider>,
       )
       const box = getByText(id)
-      expect(box).toHaveStyleRule("background-color", theme.colors.grays[3])
+      expect(box).toHaveStyleRule("background-color", colors.grays[3])
       unmount()
     })
   })

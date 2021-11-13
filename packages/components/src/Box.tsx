@@ -5,12 +5,24 @@ import styled from "@emotion/styled"
 
 export interface BoxProps {
   readonly padding: ScaleArea
+  readonly breakpoint?: number
+  readonly maxPadding?: ScaleArea
   readonly as?: BoxHTMLElement
   readonly borderWidths?: ScaleArea
   readonly borderStyles?: ScaleArea
   readonly borderColors?: BorderColorProps
   readonly backgroundColor?: string | BorderColorScale
   readonly className?: string
+}
+
+interface StyledBoxProps {
+  readonly padding: ScaleArea
+  readonly breakpoint: number
+  readonly maxPadding?: ScaleArea
+  readonly borderWidths?: ScaleArea
+  readonly borderStyles?: ScaleArea
+  readonly borderColors?: BorderColorProps
+  readonly backgroundColor?: string | BorderColorScale
 }
 
 export interface BorderColorScale {
@@ -36,20 +48,21 @@ export type BorderColorProps =
   | (string | BorderColorScale)
   | (string | BorderColorScale)[]
 
-const StyledBox = styled.div<BoxProps>`
+const StyledBox = styled.div<StyledBoxProps>`
   padding: ${({ padding, theme }) =>
     Scale.toCSSPixel(Scale.create(padding, theme.space))};
-  border-width: ${({ borderWidths, theme }) =>
-    borderWidths &&
+  border-width: ${props =>
+    props.borderWidths &&
     Scale.toCSSPixel(
-      Scale.create(borderWidths as ScaleArea, theme.borderWidths),
+      Scale.create(props.borderWidths as ScaleArea, props.theme.borderWidths),
     )};
   border-style: ${({ borderStyles, theme }) =>
     borderStyles &&
     Scale.toCSSString(
       Scale.create(borderStyles as ScaleArea, theme.borderStyles),
     )};
-  border-color: ${({ borderColors, theme }) => {
+  border-color: ${props => {
+    const { borderColors, theme } = props
     if (Array.isArray(borderColors)) {
       const colors = borderColors.map(color => {
         return typeof color === "object"
@@ -70,6 +83,17 @@ const StyledBox = styled.div<BoxProps>`
       : Color.query(backgroundColor as string, theme.colors)};
   margin: 0;
   list-style: ${props => props.as === "ul" && "none"};
+
+  @media (min-width: ${props => props.theme.breakpoints[props.breakpoint]}) {
+    padding: ${props => {
+      const { maxPadding, padding, theme } = props
+      if (!maxPadding) {
+        return Scale.toCSSPixel(Scale.create(padding, theme.space))
+      }
+
+      return Scale.toCSSPixel(Scale.create(maxPadding, theme.space))
+    }};
+  }
 `
 
 StyledBox.displayName = "StyledBox"
@@ -81,6 +105,8 @@ export const Box: React.FC<BoxProps> = props => (
     borderColors={props.borderColors}
     borderStyles={props.borderStyles}
     borderWidths={props.borderWidths}
+    breakpoint={props.breakpoint ?? 2}
+    maxPadding={props.maxPadding}
     padding={props.padding}>
     {props.children}
   </StyledBox>

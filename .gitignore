@@ -10,3 +10,4 @@ public
 .env
 .env.*
 packages/*/tsconfig.tsbuildinfo
+.vercel
