@@ -35,10 +35,11 @@ StyledCart.displayName = "StyledCart"
 
 const StyledBagLabel = styled.text`
   font-family: ${props => props.theme.fonts.heading.display};
+  font-weight: ${props => props.theme.fontWeights[5]};
   color: ${props => props.theme.colors.background};
   letter-spacing: ${props => props.theme.letterSpacings[2]}px;
   stroke-width: 0;
-  transform: translate(38%, 85%);
+  fill: currentColor;
 `
 
 StyledBagLabel.displayName = "StyledBagLabel"
@@ -58,7 +59,9 @@ export const Cart: React.FC<CartProps> = (props): JSX.Element => {
         fillOpacity="0"
         d="M12.2 5.3c.4-2.2 2.5-3.9 4.7-3.9s4.3 1.8 4.7 3.9l1.3 7.3h-12l1.3-7.3z"
       />
-      <StyledBagLabel>{props.count}</StyledBagLabel>
+      <StyledBagLabel x="13" y="28">
+        {props.count}
+      </StyledBagLabel>
     </StyledCart>
   )
 }
