@@ -3,6 +3,7 @@ import { Theme } from "."
 export interface ButtonVariant {
   readonly color: string
   readonly bg: string
+  readonly disabled: string
 }
 
 export interface ButtonVariants {

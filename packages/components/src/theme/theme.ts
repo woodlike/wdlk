@@ -273,10 +273,12 @@ export const theme: Theme = {
     primary: {
       color: colors.whites[0],
       bg: colors.blacks[0],
+      disabled: colors.grays[5]
     },
     secondary: {
-      color: colors.whites[0],
-      bg: colors.corals[0],
+      color: colors.blacks[0],
+      bg: "transparent",
+      disabled: colors.grays[5]
     },
   },
 }

@@ -1,4 +1,4 @@
-import { Button, theme } from ".."
+import { Button, BUTTON_LOADING_Y_KEY, theme } from ".."
 import { axe, toHaveNoViolations } from "jest-axe"
 import { cleanup, render } from "@testing-library/react"
 
@@ -14,7 +14,7 @@ describe("<Button />", () => {
     it("should not have any accessibility violations", async done => {
       const { container, unmount } = render(
         <ThemeProvider theme={theme}>
-          <Button onClick={() => jest.fn()}>Test Button</Button>
+          <Button variant="primary" onClick={() => jest.fn()}>Test Button</Button>
         </ThemeProvider>,
       )
 
@@ -32,7 +32,7 @@ describe("<Button />", () => {
     it("should use the second scale on missing padding prop", () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
-          <Button onClick={() => jest.fn()}>{id}</Button>
+          <Button variant="primary" onClick={() => jest.fn()}>{id}</Button>
         </ThemeProvider>,
       )
       const button = getByText(id)
@@ -46,7 +46,7 @@ describe("<Button />", () => {
     it("should have a padding that matches with the provided ScaleArea (shorthand)", () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
-          <Button onClick={() => jest.fn()} padding={5}>
+          <Button variant="primary" onClick={() => jest.fn()} padding={5}>
             {id}
           </Button>
         </ThemeProvider>,
@@ -62,7 +62,7 @@ describe("<Button />", () => {
     it("should have a padding that matches with the provided ScaleArea (vertical | horizontal)", () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
-          <Button onClick={() => jest.fn()} padding={[2, 4]}>
+          <Button variant="primary" onClick={() => jest.fn()} padding={[2, 4]}>
             {id}
           </Button>
         </ThemeProvider>,
@@ -78,7 +78,7 @@ describe("<Button />", () => {
     it("should have a padding that matches with the provided ScaleArea (top | right | bottom | left)", () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
-          <Button onClick={() => jest.fn()} padding={[1, 2, 3, 4]}>
+          <Button variant="primary" onClick={() => jest.fn()} padding={[1, 2, 3, 4]}>
             {id}
           </Button>
         </ThemeProvider>,
@@ -95,60 +95,38 @@ describe("<Button />", () => {
   describe("Variant properties", () => {
     const id = "button-test-id"
     const { buttons } = theme
-    it("should have the primary variant styles as default", () => {
-      const { getByText, unmount } = render(
-        <ThemeProvider theme={theme}>
-          <Button onClick={() => jest.fn()}>{id}</Button>
-        </ThemeProvider>,
-      )
-      const button = getByText(id)
-      expect(button).toHaveStyleRule("color", buttons.primary.color)
-      expect(button).toHaveStyleRule("background-color", buttons.primary.bg, {
-        target: "::before",
-      })
-      unmount()
-    })
+
 
     it("should have the primary variant styles", () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
-          <Button onClick={() => jest.fn()} variant="primary">
+          <Button variant="primary" onClick={() => jest.fn()}>
             {id}
           </Button>
         </ThemeProvider>,
       )
       const button = getByText(id)
       expect(button).toHaveStyleRule("color", buttons.primary.color)
+      expect(button).toHaveStyleRule(
+        "border-color",
+        buttons.primary.color,
+      )
       expect(button).toHaveStyleRule("background-color", buttons.primary.bg, {
         target: "::before",
       })
       unmount()
     })
 
-    it("should have the secondary variant styles", () => {
-      const { getByText, unmount } = render(
-        <ThemeProvider theme={theme}>
-          <Button onClick={() => jest.fn()} variant="secondary">
-            {id}
-          </Button>
-        </ThemeProvider>,
-      )
-      const button = getByText(id)
-      expect(button).toHaveStyleRule("color", buttons.secondary.color)
-      expect(button).toHaveStyleRule("background-color", buttons.secondary.bg, {
-        target: "::before",
-      })
-      unmount()
-    })
+
   })
 
   describe("Inverted properties", () => {
     const id = "button-test-id"
     const { buttons } = theme
-    it("should have the inverted primary styles by default", () => {
+    it("should have the inverted styles", () => {
       const { getByText, unmount } = render(
         <ThemeProvider theme={theme}>
-          <Button onClick={() => jest.fn()} inverted>
+          <Button variant="secondary" onClick={() => jest.fn()}>
             {id}
           </Button>
         </ThemeProvider>,
@@ -156,53 +134,91 @@ describe("<Button />", () => {
 
       const button = getByText(id)
 
-      expect(button).toHaveStyleRule("color", buttons.primary.bg)
-
+      expect(button).toHaveStyleRule("color", buttons.secondary.color)
       expect(button).toHaveStyleRule(
-        "border",
-        `2px solid ${buttons.primary.bg}`,
-      )
-      unmount()
-    })
-
-    it("should have the primary variant styles inverted", () => {
-      const { getByText, unmount } = render(
-        <ThemeProvider theme={theme}>
-          <Button inverted onClick={() => jest.fn()} variant="primary">
-            {id}
-          </Button>
-        </ThemeProvider>,
-      )
-
-      const button = getByText(id)
-
-      expect(button).toHaveStyleRule("color", buttons.primary.bg)
-
-      expect(button).toHaveStyleRule(
-        "border",
-        `2px solid ${buttons.primary.bg}`,
-      )
-      unmount()
-    })
-
-    it("should have the secondary variant styles inverted", () => {
-      const { getByText, unmount } = render(
-        <ThemeProvider theme={theme}>
-          <Button inverted onClick={() => jest.fn()} variant="secondary">
-            {id}
-          </Button>
-        </ThemeProvider>,
-      )
-
-      const button = getByText(id)
-
-      expect(button).toHaveStyleRule("color", buttons.secondary.bg)
-
-      expect(button).toHaveStyleRule(
-        "border",
-        `2px solid ${buttons.secondary.bg}`,
+        "border-color",
+        buttons.secondary.color,
       )
       unmount()
     })
   })
+
+  describe("Disabled Styles", () => {
+    const id = "button-test-id"
+    const { buttons } = theme
+    it("should have the primary disabled styles", () => {
+      const { getByText, unmount } = render(
+        <ThemeProvider theme={theme}>
+          <Button variant="primary" disabled onClick={() => jest.fn()}>
+            {id}
+          </Button>
+        </ThemeProvider>,
+      )
+
+      const button = getByText(id)
+
+      expect(button).toHaveStyleRule("color", buttons.primary.color)
+      expect(button).toHaveStyleRule(
+        "background-color",
+        buttons.primary.disabled,
+        {target: "::before"},
+      )
+
+      unmount()
+    })
+
+    it("should have the secondary disabled styles", () => {
+      const { getByText, unmount } = render(
+        <ThemeProvider theme={theme}>
+          <Button variant="secondary" disabled onClick={() => jest.fn()}>
+            {id}
+          </Button>
+        </ThemeProvider>,
+      )
+
+      const button = getByText(id)
+
+      expect(button).toHaveStyleRule("color", buttons.secondary.color)
+      expect(button).toHaveStyleRule(
+        "background-color",
+        buttons.secondary.disabled,
+        {target: "::before"},
+      )
+
+      unmount()
+    })
+  })
+
+  describe("Loading", () => {
+    const id = "button-test-id"
+    const { buttons } = theme
+    it("should have the primary disabled styles", () => {
+      const { getByText, unmount } = render(
+        <ThemeProvider theme={theme}>
+          <Button variant="primary" isLoading loadingCounter={10} onClick={() => jest.fn()}>
+            {id}
+          </Button>
+        </ThemeProvider>,
+      )
+
+      const button = getByText(id)
+
+      expect(button).toHaveStyleRule("color", buttons.primary.color)
+
+      expect(button).toHaveStyleRule(
+        "background-color",
+        buttons.primary.disabled,
+        {target: "::before"},
+      )
+      expect(button).toHaveStyleRule(
+        "background-color",
+        buttons.primary.bg,
+        {target: "::after"},
+      )
+
+      unmount()
+    })
+
+  })
+
 })
