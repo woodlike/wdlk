@@ -14,6 +14,7 @@ describe("Theme Variant", () => {
       Object {
         "bg": "rgb(0, 0, 0)",
         "color": "rgb(255, 255, 255)",
+        "disabled": "rgb(56, 72, 82)",
       }
     `)
   })
@@ -21,8 +22,9 @@ describe("Theme Variant", () => {
   it("should find the secondary variant in the theme object", () => {
     expect(getVariant(theme, "buttons", "secondary")).toMatchInlineSnapshot(`
       Object {
-        "bg": "rgb(255, 113, 99)",
-        "color": "rgb(255, 255, 255)",
+        "bg": "transparent",
+        "color": "rgb(0, 0, 0)",
+        "disabled": "rgb(56, 72, 82)",
       }
     `)
   })
