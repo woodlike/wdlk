@@ -1,7 +1,5 @@
 import * as React from "react"
-
-import { act, renderHook } from "@testing-library/react-hooks"
-import { fireEvent, render } from "@testing-library/react"
+import { fireEvent, render, act, renderHook } from "@testing-library/react"
 
 import { useVideoControl } from ".."
 
