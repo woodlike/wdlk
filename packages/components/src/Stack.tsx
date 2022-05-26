@@ -20,7 +20,7 @@ const StyledStack = styled.div<StackProps>`
 `
 StyledStack.displayName = "StyledStack"
 
-export const Stack: React.FC<StackProps> = props => (
+export const Stack = (props: React.PropsWithChildren<StackProps>): JSX.Element => (
   <StyledStack as={props.as} space={props.space}>
     {props.children}
   </StyledStack>

@@ -2,6 +2,7 @@
 import { jsx, keyframes } from "@emotion/react"
 
 import styled from "@emotion/styled"
+import React from "react"
 
 export interface ControlProps {
   readonly size: number
@@ -56,7 +57,7 @@ const StyledControlLoud = styled.div`
 
 StyledControlLoud.displayName = "Video.StyledControlLoud"
 
-export const Controls: React.FC<ControlProps> = props => {
+export const Controls = (props: React.PropsWithChildren<ControlProps>): JSX.Element => {
   return props.muted ? (
     <StyledControlMuted onClick={props.onClick}>
       {props.mutedIcon}

@@ -1,5 +1,5 @@
-/** @jsx jsx */
-import { css, jsx } from "@emotion/react"
+import React from "react"
+import { css } from "@emotion/react"
 
 import styled from "@emotion/styled"
 
@@ -65,7 +65,7 @@ const StyledBottomLine = styled.span<StyledBurgerProps>`
 
 StyledBottomLine.displayName = "StyledBottomLine"
 
-export const Burger: React.FC<BurgerProps> = props => (
+export const Burger = (props: React.PropsWithChildren<BurgerProps>): JSX.Element => (
   <StyledBurger onClick={props.onClick}>
     <StyledTopLine isActive={props.isActive} />
     <StyledMidLine isActive={props.isActive} />

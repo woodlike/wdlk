@@ -98,7 +98,7 @@ const StyledBox = styled.div<StyledBoxProps>`
 
 StyledBox.displayName = "StyledBox"
 
-export const Box: React.FC<BoxProps> = props => (
+export const Box = (props: React.PropsWithChildren<BoxProps>): JSX.Element => (
   <StyledBox
     as={props.as || "div"}
     backgroundColor={props.backgroundColor}

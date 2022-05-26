@@ -15,7 +15,7 @@ interface StyledCartProps {
 
 const StyledCart = styled.svg<StyledCartProps>`
   width: ${props => props.theme.cart.width}px;
-  height ${props => props.theme.cart.height}px;;
+  height ${props => props.theme.cart.height}px;
   color: ${props => props.theme.cart.color};
   fill: currentColor;
   stroke: currentColor;

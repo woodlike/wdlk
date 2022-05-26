@@ -39,7 +39,7 @@ const StyledTableCell = styled.td<TableCellProps>`
 `
 StyledTableCell.displayName = "StyledTableCell"
 
-export const Cell: React.FC<TableCellProps> = props => (
+export const Cell = (props: React.PropsWithChildren<TableCellProps>): JSX.Element => (
   <StyledTableCell
     as={props.as || "td"}
     borderless={props.borderless}

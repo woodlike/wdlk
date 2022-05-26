@@ -113,7 +113,7 @@ const StyledButton = styled.button<StyledButtonProps>`
 
 StyledButton.displayName = "StyledButton"
 
-export const Button: React.FC<ButtonProps> = ({
+export const Button = ({
   children,
   disabled,
   isLoading,
@@ -121,7 +121,7 @@ export const Button: React.FC<ButtonProps> = ({
   onClick,
   padding,
   variant,
-}) => {
+}: React.PropsWithChildren<ButtonProps>): JSX.Element => {
   const buttonRef = React.useRef<HTMLButtonElement>(null)
 
   React.useEffect(() => {

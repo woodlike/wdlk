@@ -26,7 +26,7 @@ const StyledLegend = styled.div<LegendProps>`
 
 StyledLegend.displayName = "StyledLegend"
 
-export const Legend: React.FC<LegendProps> = props => (
+export const Legend = (props: React.PropsWithChildren<LegendProps>): JSX.Element => (
   <StyledLegend
     as={props.as || "div"}
     size={props.size}

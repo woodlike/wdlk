@@ -2,11 +2,15 @@ import React, { ElementType } from "react"
 
 import { PrismStyleProp } from "."
 import styled from "@emotion/styled"
+import type { TokenStream } from "prismjs"
+
+export const CSS_CONTAINER_TEST_ID = "css-container-test-id"
 
 export interface CSSConverterProps {
   readonly cssObject: PrismStyleProp | undefined
+  readonly tokenStream?: TokenStream
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  readonly as?: (ElementType<any> & string) | undefined
+  readonly as?: (ElementType<any> | undefined) & string
 }
 
 function toCSSString(cssObject: PrismStyleProp | undefined): string {
@@ -30,7 +34,9 @@ const StyledCSSContainer = styled.span<CSSConverterProps>`
 StyledCSSContainer.displayName = "StyledCSSContainer"
 
 export const CSSConverter: React.FC<CSSConverterProps> = props => (
-  <StyledCSSContainer as={props.as ?? "span"} cssObject={props.cssObject}>
-    {props.children}
-  </StyledCSSContainer>
+  <StyledCSSContainer
+    data-testid={CSS_CONTAINER_TEST_ID}
+    as={props.as ?? "span"}
+    cssObject={props.cssObject}
+    tokenStream={props.tokenStream} />
 )

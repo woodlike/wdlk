@@ -1,6 +1,5 @@
-/** @jsx jsx */
 import { Scale, ScaleArea } from "."
-import { css, jsx } from "@emotion/react"
+import { css } from "@emotion/react"
 
 import React from "react"
 import styled from "@emotion/styled"
@@ -56,7 +55,7 @@ const StyledColumns = styled.div<ColumnsProps>`
   padding: ${props =>
     !!props.padding &&
     Scale.toCSSPixel(Scale.create(props.padding, props.theme.space))};
-  
+
   ${props => {
     const { collapseBelow, theme } = props
     return !!collapseBelow
@@ -71,7 +70,7 @@ const StyledColumns = styled.div<ColumnsProps>`
 
 StyledColumns.displayName = "StyledColumns"
 
-export const Columns: React.FC<ColumnsProps> = props => (
+export const Columns = (props: React.PropsWithChildren<ColumnsProps>): JSX.Element => (
   <StyledColumns
     as={props.as || "div"}
     align={props.align}

@@ -1,5 +1,5 @@
-/** @jsx jsx */
-import { css, jsx } from "@emotion/react"
+import React from "react"
+import { css } from "@emotion/react"
 
 import { ReactText } from "react"
 import styled from "@emotion/styled"
@@ -50,7 +50,7 @@ const StyledStageCaption = styled.figcaption`
 
 StyledStageCaption.displayName = "Video.StyledStageCaption"
 
-export const Stage: React.FC<VideoStageProps> = props => (
+export const Stage = (props: React.PropsWithChildren<VideoStageProps>): JSX.Element => (
   <StyledStageContainer height={props.height ?? "100%"}>
     {props.video}
     <StyledStageCaption>

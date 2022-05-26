@@ -25,7 +25,7 @@ const StyledFrame = styled.ul<StyledFrameProps>`
 
 StyledFrame.displayName = "Select.StyledFrame"
 
-export const Frame: React.FC<SelectFrameProps> = props => (
+export const Frame = (props: React.PropsWithChildren<SelectFrameProps>): JSX.Element => (
   <StyledFrame
     aria-label={props.ariaLabel}
     aria-activedescendant={props.ariaActivedescendant}

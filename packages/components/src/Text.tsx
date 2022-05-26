@@ -48,7 +48,7 @@ const StyledText = styled.p<TextProps>`
 
 StyledText.displayName = "StyledText"
 
-export const Text: React.FC<TextProps> = props => (
+export const Text = (props: React.PropsWithChildren<TextProps>): JSX.Element => (
   <StyledText
     as={props.as || "p"}
     breakpoint={props.breakpoint}
