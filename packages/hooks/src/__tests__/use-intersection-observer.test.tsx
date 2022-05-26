@@ -75,7 +75,8 @@ describe("useIntersectionObserver()", () => {
           intersectionRect: el.getBoundingClientRect(),
           isIntersecting: true,
           rootBounds: instance.root
-            ? instance.root.getBoundingClientRect()
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            ? (instance.root as any).getBoundingClientRect()
             : {},
           target: el,
         } as Partial<IntersectionObserverEntry>,

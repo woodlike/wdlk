@@ -16,9 +16,12 @@ export function calcThreshold(steps: number): number | number[] {
   if (steps === 1) {
     return 1
   }
-  return Array.from({ length: steps }).map(
-    (_, i) => +(i / steps).toPrecision(2),
-  )
+  const result: number[] = []
+
+  for (let i = 0; i < steps; i++) {
+    result.push(+(i / steps).toPrecision(2))
+  }
+  return result
 }
 
 export function useIntersectionObserver<T>(

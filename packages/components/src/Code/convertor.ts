@@ -4,7 +4,7 @@ export type CodeTheme = Map<string, PrismStyleProp>;
 
 export function isEmptyObj<T>(obj: T): boolean {
   for (const prop in obj) {
-    if ((obj as {}).hasOwnProperty(prop)) {
+    if ((obj as Record<string, unknown>).hasOwnProperty(prop)) {
       return false;
     }
   }

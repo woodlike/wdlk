@@ -1,5 +1,5 @@
 import { CarouselState, jump, move, next, previous, useCarousel } from ".."
-import { act, renderHook } from "@testing-library/react-hooks"
+import {act, renderHook} from '@testing-library/react'
 
 const createTouchEventMock = (x: number, width: number) =>
   (({

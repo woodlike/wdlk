@@ -1,4 +1,4 @@
-import { Button, BUTTON_LOADING_Y_KEY, theme } from ".."
+import { Button, theme } from ".."
 import { axe, toHaveNoViolations } from "jest-axe"
 import { cleanup, render } from "@testing-library/react"
 
