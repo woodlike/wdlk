@@ -39,7 +39,7 @@ const StyledLayer = styled.section<LayerProps>`
 `
 StyledLayer.displayName = "StyledLayer"
 
-export const Layer: React.FC<LayerProps> = props => (
+export const Layer = (props: React.PropsWithChildren<LayerProps>): JSX.Element => (
   <StyledLayer isOpen={props.isOpen} padding={props.padding}>
     {props.children}
   </StyledLayer>

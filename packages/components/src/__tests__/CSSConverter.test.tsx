@@ -1,12 +1,11 @@
-import { CSSConverter } from ".."
+import { CSSConverter, CSS_CONTAINER_TEST_ID } from ".."
 import React from "react"
 import { matchers } from "@emotion/jest"
-import { render } from "@testing-library/react"
+import { render, screen } from "@testing-library/react"
 
 expect.extend(matchers)
 
 describe("<CSSConverter />", () => {
-  let testId: string
   let color: string
   let backgroundColor: string
   let fontStyle: "italic" | "normal"
@@ -17,7 +16,6 @@ describe("<CSSConverter />", () => {
     backgroundColor = "#e09142"
     fontStyle = "italic"
     textDecoration = "line-through"
-    testId = "test-cssconverter"
   })
 
   afterEach(() => {
@@ -25,15 +23,14 @@ describe("<CSSConverter />", () => {
     backgroundColor = (undefined as unknown) as string
     fontStyle = (undefined as unknown) as "italic" | "normal"
     textDecoration = (undefined as unknown) as string
-    testId = (undefined as unknown) as string
   })
 
   describe("Component", () => {
     it("should not have any style properties", () => {
-      const { getByText, unmount } = render(
-        <CSSConverter cssObject={undefined}>{testId}</CSSConverter>,
+      const { unmount } = render(
+        <CSSConverter cssObject={undefined} />
       )
-      const styledElement = getByText(testId)
+      const styledElement = screen.getByTestId(CSS_CONTAINER_TEST_ID)
       expect(styledElement).not.toHaveStyleRule("color", color)
       expect(styledElement).not.toHaveStyleRule(
         "background-color",
@@ -43,13 +40,11 @@ describe("<CSSConverter />", () => {
     })
 
     it("should return a formatted string style rule declaration", () => {
-      const { getByText, unmount } = render(
+      const { unmount } = render(
         <CSSConverter
-          cssObject={{ backgroundColor, color, fontStyle, textDecoration }}>
-          {testId}
-        </CSSConverter>,
+          cssObject={{ backgroundColor, color, fontStyle, textDecoration }} />
       )
-      const styledElement = getByText(testId)
+      const styledElement = screen.getByTestId(CSS_CONTAINER_TEST_ID)
       expect(styledElement).toHaveStyleRule("color", color)
       expect(styledElement).toHaveStyleRule("background-color", backgroundColor)
       expect(styledElement).toHaveStyleRule("font-style", fontStyle)

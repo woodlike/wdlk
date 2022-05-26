@@ -31,7 +31,7 @@ const StyledSmall = styled.small<SmallProps>`
 `
 StyledSmall.displayName = "StyledSmall"
 
-export const Small: React.FC<SmallProps> = props => (
+export const Small = (props: React.PropsWithChildren<SmallProps>): JSX.Element => (
   <StyledSmall color={props.color} size={props.size}>
     {props.children}
   </StyledSmall>

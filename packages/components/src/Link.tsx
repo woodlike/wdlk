@@ -89,7 +89,7 @@ const StyledLink = styled.a<StyledLinkProps>`
 `
 StyledLink.displayName = "StyledLink"
 
-export const Link: React.FC<LinkProps> = props => (
+export const Link = (props: React.PropsWithChildren<LinkProps>): JSX.Element => (
   <StyledLink
     as={props.as || "a"}
     color={props.color || "primary"}

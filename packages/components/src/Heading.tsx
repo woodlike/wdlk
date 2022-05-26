@@ -63,7 +63,7 @@ const StyledHeading = styled.h1<HeadingProps>`
 
 StyledHeading.displayName = "StyledHeading"
 
-export const Heading: React.FC<HeadingProps> = props => (
+export const Heading = (props: React.PropsWithChildren<HeadingProps>): JSX.Element => (
   <StyledHeading
     as={props.as || "h1"}
     breakpoint={props.breakpoint}

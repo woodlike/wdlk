@@ -48,7 +48,7 @@ const StyledColumn = styled.div<ColumnProps>`
 
 StyledColumn.displayName = "StyledColumn"
 
-export const Column: React.FC<ColumnProps> = props => (
+export const Column = (props: React.PropsWithChildren<ColumnProps>): JSX.Element => (
   <StyledColumn
     as={props.as ?? "div"}
     basis={props.basis}

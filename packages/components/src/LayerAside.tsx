@@ -56,7 +56,7 @@ const StyledLayerAside = styled.aside<LayerAsideProps>`
 
 StyledLayerAside.displayName = "StyledLayerAside"
 
-export const LayerAside: React.FC<LayerAsideProps> = props => (
+export const LayerAside = (props: React.PropsWithChildren<LayerAsideProps>): JSX.Element => (
   <StyledLayerAside
     position={props.position}
     isOpen={props.isOpen}

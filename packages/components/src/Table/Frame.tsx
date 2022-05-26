@@ -7,7 +7,7 @@ const StyledTableFrame = styled.table`
 `
 StyledTableFrame.displayName = "StyledTableFrame"
 
-export const Frame: React.FC = props => (
+export const Frame = (props: React.PropsWithChildren<{}>): JSX.Element => (
   <StyledTableFrame>{props.children}</StyledTableFrame>
 )
 

@@ -7,7 +7,7 @@ import { Theme, jsx, useTheme } from "@emotion/react"
 import { convertor, normalizer } from "."
 
 import { CSSConverter } from ".."
-import { Token } from "prismjs"
+import type { Token } from "prismjs"
 import styled from "@emotion/styled"
 
 export interface CodeProps {
@@ -118,9 +118,7 @@ export const Code: React.FC<CodeProps> = props => {
         {tokens.map((token, i) => (
           <CSSConverter
             cssObject={theme.get(token.type)}
-            key={`first-level-token-stream-${i}`}>
-            {token.content}
-          </CSSConverter>
+            key={`first-level-token-stream-${i}`} tokenStream={token.content} />
         ))}
       </React.Fragment>
     )

@@ -4,6 +4,7 @@ import { SerializedStyles, css, jsx } from "@emotion/react"
 import { Theme } from ".."
 import { calcSize } from "./utils"
 import styled from "@emotion/styled"
+import React from "react"
 
 export interface SelectTileProps {
   readonly id: string
@@ -68,7 +69,7 @@ const StyledItem = styled.li<StyledSelectItemProps>`
 
 StyledItem.displayName = "Select.StyledItem"
 
-export const Item: React.FC<SelectTileProps> = props => (
+export const Item = (props: React.PropsWithChildren<SelectTileProps>): JSX.Element => (
   <StyledItem
     id={props.id}
     isActive={props.isActive}
