@@ -1,5 +1,4 @@
 import React from "react"
-import { css } from "@emotion/react"
 
 import { ReactText } from "react"
 import styled from "@emotion/styled"
@@ -9,6 +8,7 @@ export interface VideoStageProps {
   readonly video: JSX.Element
   readonly controls?: JSX.Element
   readonly height?: ReactText
+
   handleClick(): void
 }
 
@@ -25,32 +25,15 @@ const StyledStageContainer = styled.figure<StyledStageContainer>`
 StyledStageContainer.displayName = "Video.StyledStageContainer"
 
 const StyledStageCaption = styled.figcaption`
-  position: absolute;
-  right: 50%;
-  bottom: 0;
-  z-index: 1;
-  transform: translate(50%, -10%);
+  position:relative
   color: ${props => props.theme.video.color};
-
-  ${props => {
-    const {
-      theme: { breakpoints, space },
-    } = props
-
-    return css`
-      @media (min-width: ${breakpoints[1]}) {
-        right: unset;
-        bottom: ${space[8]}px;
-        left: ${space[7]}px;
-        transform: none;
-      }
-    `
-  }};
 `
 
 StyledStageCaption.displayName = "Video.StyledStageCaption"
 
-export const Stage = (props: React.PropsWithChildren<VideoStageProps>): JSX.Element => (
+export const Stage = (
+  props: React.PropsWithChildren<VideoStageProps>,
+): JSX.Element => (
   <StyledStageContainer height={props.height ?? "100%"}>
     {props.video}
     <StyledStageCaption>
