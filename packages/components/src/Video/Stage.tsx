@@ -25,7 +25,7 @@ const StyledStageContainer = styled.figure<StyledStageContainer>`
 StyledStageContainer.displayName = "Video.StyledStageContainer"
 
 const StyledStageCaption = styled.figcaption`
-  position:relative
+  position: relative;
   color: ${props => props.theme.video.color};
 `
 
