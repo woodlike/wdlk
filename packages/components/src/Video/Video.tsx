@@ -15,6 +15,7 @@ export interface VideoProps {
   readonly preload: "auto" | "metadata" | "none"
   readonly sources: Source[]
   readonly poster?: string
+  readonly onPlaying?: React.ReactEventHandler<HTMLVideoElement>
 }
 
 export interface ImperativeRefProps {
@@ -23,6 +24,7 @@ export interface ImperativeRefProps {
 
 export interface CustomizedChildRef {
   play(): Promise<void>
+
   pause(): void
 }
 
@@ -50,7 +52,7 @@ export const Media = forwardRef<ImperativeRefProps, VideoProps>(
         try {
           ;(await childRef) && childRef.current && childRef.current.play()
         } catch (err) {
-          Promise.resolve(console.error(`Video play control [error]:${err}`))
+          return Promise.reject(`Video play control [error]:${err}`)
         }
       },
       pause(): void {
@@ -67,6 +69,7 @@ export const Media = forwardRef<ImperativeRefProps, VideoProps>(
         preload={props.preload}
         poster={props.poster}
         playsInline={true}
+        onPlaying={props.onPlaying}
         ref={(childRef as unknown) as RefObject<HTMLVideoElement>}>
         {sources.map(source => (
           <source key={source.id} src={source.src} type={source.type} />

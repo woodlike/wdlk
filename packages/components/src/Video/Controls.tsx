@@ -1,5 +1,4 @@
-/** @jsx jsx */
-import { jsx, keyframes } from "@emotion/react"
+import { keyframes } from "@emotion/react"
 
 import styled from "@emotion/styled"
 import React from "react"
@@ -7,8 +6,11 @@ import React from "react"
 export interface ControlProps {
   readonly size: number
   readonly muted: boolean
-  readonly mutedIcon: JSX.Element
-  readonly loudIcon: JSX.Element
+  readonly isPlaying: boolean
+  readonly mutedIcon?: JSX.Element
+  readonly loudIcon?: JSX.Element
+  readonly playIcon?: JSX.Element
+  readonly pauseIcon?: JSX.Element
   readonly onClick: React.MouseEventHandler<HTMLDivElement>
 }
 
@@ -57,14 +59,33 @@ const StyledControlLoud = styled.div`
 
 StyledControlLoud.displayName = "Video.StyledControlLoud"
 
-export const Controls = (props: React.PropsWithChildren<ControlProps>): JSX.Element => {
-  return props.muted ? (
-    <StyledControlMuted onClick={props.onClick}>
-      {props.mutedIcon}
-    </StyledControlMuted>
-  ) : (
-    <StyledControlLoud onClick={props.onClick}>
-      {props.loudIcon}
-    </StyledControlLoud>
+const StyledControlItem = styled.div`
+  display: inline-block;
+  cursor: pointer;
+  padding-right: ${props => props.theme.space[2]}px;
+`
+
+StyledControlItem.displayName = "StyledControlPlay"
+
+export const Controls = (
+  props: React.PropsWithChildren<ControlProps>,
+): JSX.Element => {
+  return (
+    <>
+      {props.muted ? (
+        <StyledControlMuted onClick={props.onClick}>
+          {props.mutedIcon}
+        </StyledControlMuted>
+      ) : (
+        <StyledControlLoud onClick={props.onClick}>
+          {props.loudIcon}
+        </StyledControlLoud>
+      )}
+      {!!props.playIcon && (
+        <StyledControlItem>
+          {props.isPlaying ? props.pauseIcon : props.playIcon}
+        </StyledControlItem>
+      )}
+    </>
   )
 }
