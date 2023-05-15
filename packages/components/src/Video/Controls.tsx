@@ -12,7 +12,6 @@ export interface ControlProps {
   readonly playIcon?: JSX.Element
   readonly pauseIcon?: JSX.Element
   readonly onClick: React.MouseEventHandler<HTMLDivElement>
-  readonly onPlayClick: React.MouseEventHandler<HTMLDivElement>
 }
 
 const heartbeat = keyframes`
@@ -73,6 +72,11 @@ export const Controls = (
 ): JSX.Element => {
   return (
     <>
+      {!!props.playIcon && (
+        <StyledControlItem>
+          {props.isPlaying ? props.pauseIcon : props.playIcon}
+        </StyledControlItem>
+      )}
       {props.muted ? (
         <StyledControlMuted onClick={props.onClick}>
           {props.mutedIcon}
@@ -81,11 +85,6 @@ export const Controls = (
         <StyledControlLoud onClick={props.onClick}>
           {props.loudIcon}
         </StyledControlLoud>
-      )}
-      {!!props.playIcon && (
-        <StyledControlItem onClick={props.onPlayClick}>
-          {props.isPlaying ? props.pauseIcon : props.playIcon}
-        </StyledControlItem>
       )}
     </>
   )
