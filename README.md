@@ -6,6 +6,7 @@
 </div>
 
 [![Actions Status](https://github.com/woodlike/wdlk/workflows/CI/badge.svg)](https://github.com/woodlike/wdlk/actions)
+[![Hypercommit](https://img.shields.io/badge/Hypercommit-DB2475)](https://hypercommit.com/wdlk)
 
 ## Motivation
 
